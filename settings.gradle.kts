@@ -1,4 +1,7 @@
 @file:Suppress("UnstableApiUsage")
+
+include(":common-ui")
+
 pluginManagement {
   repositories {
     google()
