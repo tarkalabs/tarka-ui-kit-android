@@ -17,5 +17,5 @@ dependencyResolutionManagement {
   }
 }
 rootProject.name = "eam360-ui-android"
-include(":app")
+include(":sample")
 include(":common-ui")
