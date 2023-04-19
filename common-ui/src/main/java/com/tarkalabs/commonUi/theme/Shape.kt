@@ -1,4 +1,4 @@
-package com.tarkalabs.ui.ui.theme
+package com.tarkalabs.commonUi.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
