@@ -1,6 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
-include(":common-ui")
+
 
 pluginManagement {
   repositories {
@@ -17,4 +17,5 @@ dependencyResolutionManagement {
   }
 }
 rootProject.name = "eam360-ui-android"
-include("app")
+include(":app")
+include(":common-ui")
