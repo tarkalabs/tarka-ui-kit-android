@@ -3,14 +3,32 @@ package com.tarkalabs.ui
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.tarkalabs.ui.R.drawable
 import com.tarkalabs.ui.theme.ExampleTheme
 
 class SettingActivity : ComponentActivity() {
@@ -25,10 +43,34 @@ class SettingActivity : ComponentActivity() {
 
   @Composable
   fun SettingScreen() {
-    EAMTopBar(
-      leadingIcon = { TopBarNavigationIcon(Icons.Default.ArrowBack)  },
-      titleContent = { Text(text = "Settings") }
-    )
+    Scaffold(topBar = {
+      EAMTopBar(
+        leadingIcon = { TopBarNavigationIcon(Icons.Default.ArrowBack) },
+        titleContent = { Text(text = "Settings") }
+      )
+    }) { paddingValues ->
+      Column(modifier = Modifier.padding(paddingValues)) {
+        SettingHeader()
+      }
+    }
+  }
+
+  @Preview(showBackground = true, showSystemUi = true)
+  @Composable
+  fun SettingHeader() {
+    // TODO: handle the center of the avatar
+    Row {
+      Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+        Image(painter = painterResource(id = drawable.avatar), contentDescription = null, modifier = Modifier
+          .clip(CircleShape)
+          .size(96.dp))
+        Text(text = "Ronald Richards")
+        Text(text = "BEDFORD")
+      }
+      Column {
+        Icon(imageVector = Icons.Default.Refresh, contentDescription = null)
+      }
+    }
   }
 
   @Composable
@@ -39,7 +81,7 @@ class SettingActivity : ComponentActivity() {
   }
   @Composable fun EAMTopBar(
     leadingIcon: @Composable () -> Unit,
-    titleContent: @Composable () -> Unit
+    titleContent: @Composable () -> Unit,
   ) {
     TopAppBar(
       navigationIcon =  leadingIcon,
