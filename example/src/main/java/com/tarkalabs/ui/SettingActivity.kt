@@ -8,9 +8,12 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Badge
 import androidx.compose.material.Divider
@@ -151,5 +154,14 @@ class SettingActivity : ComponentActivity() {
       navigationIcon = leadingIcon,
       title = titleContent,
     )
+  }
+
+  @Composable
+  fun VerticalSpacer(space : Int) {
+    Spacer(modifier = Modifier.height(space.dp))
+  }
+  @Composable
+  fun HorizontalSpacer(space : Int) {
+    Spacer(modifier = Modifier.width(space.dp))
   }
 }
