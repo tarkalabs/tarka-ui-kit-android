@@ -11,7 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/common-ui" />
-            <option value="$PROJECT_DIR$/sample" />
+            <option value="$PROJECT_DIR$/example" />
           </set>
         </option>
       </GradleProjectSettings>

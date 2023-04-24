@@ -1,4 +1,4 @@
-package com.tarkalabs.commonUi.components
+package com.tarkalabs.commonui.components
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable

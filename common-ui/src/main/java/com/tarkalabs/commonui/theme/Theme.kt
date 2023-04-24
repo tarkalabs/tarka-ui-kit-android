@@ -1,4 +1,4 @@
-package com.tarkalabs.commonUi.theme
+package com.tarkalabs.commonui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
