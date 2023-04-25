@@ -15,19 +15,18 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Badge
-import androidx.compose.material.Divider
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Badge
+import androidx.compose.material3.Divider
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,9 +35,11 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.commonui.components.EamTopBar
 import com.tarkalabs.ui.R.drawable
 import com.tarkalabs.ui.theme.ExampleTheme
 
+@OptIn(ExperimentalMaterial3Api::class)
 class SettingActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -52,9 +53,9 @@ class SettingActivity : ComponentActivity() {
   @Composable
   fun SettingScreen() {
     Scaffold(topBar = {
-      EAMTopBar(
-        leadingIcon = { TopBarNavigationIcon(Icons.Default.ArrowBack) },
-        titleContent = { Text(text = "Settings") }
+      EamTopBar(
+        title = "Settings",
+        navigationIcon = R.drawable.avatar
       )
     }) { paddingValues ->
       Column(modifier = Modifier.padding(paddingValues)) {
@@ -146,22 +147,13 @@ class SettingActivity : ComponentActivity() {
     }
   }
 
-  @Composable fun EAMTopBar(
-    leadingIcon: @Composable () -> Unit,
-    titleContent: @Composable () -> Unit,
-  ) {
-    TopAppBar(
-      navigationIcon = leadingIcon,
-      title = titleContent,
-    )
+  @Composable
+  fun VerticalSpacer(space: Int) {
+    Spacer(modifier = Modifier.height(space.dp))
   }
 
   @Composable
-  fun VerticalSpacer(space : Int) {
-    Spacer(modifier = Modifier.height(space.dp))
-  }
-  @Composable
-  fun HorizontalSpacer(space : Int) {
+  fun HorizontalSpacer(space: Int) {
     Spacer(modifier = Modifier.width(space.dp))
   }
 }
