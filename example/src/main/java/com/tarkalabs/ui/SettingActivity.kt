@@ -51,14 +51,16 @@ class SettingActivity : ComponentActivity() {
   }
 
   @Composable
+  @Preview(showSystemUi = true)
   fun SettingScreen() {
     Scaffold(topBar = {
       EamTopBar(
         title = "Settings",
-        navigationIcon = R.drawable.avatar
+        navigationIcon = R.drawable.arrow_back
       )
     }) { paddingValues ->
       Column(modifier = Modifier.padding(paddingValues)) {
+        Divider()
         SettingHeader()
         Lookup(label = "Role", body = "Supervisor")
         Divider()
@@ -93,7 +95,6 @@ class SettingActivity : ComponentActivity() {
     }
   }
 
-  @Preview(showBackground = true, showSystemUi = true)
   @Composable
   fun SettingHeader() {
     // TODO: handle the center of the avatar
@@ -119,7 +120,6 @@ class SettingActivity : ComponentActivity() {
     }
   }
 
-  @Preview(showBackground = true)
   @Composable
   fun Lookup(onClick: () -> Unit = {}, label: String = "", body: String = "") {
     Row(modifier = Modifier.clickable {
