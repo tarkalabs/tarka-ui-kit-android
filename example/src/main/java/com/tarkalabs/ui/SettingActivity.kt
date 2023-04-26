@@ -35,6 +35,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.commonui.components.EamGhostIconButton
 import com.tarkalabs.commonui.components.EamTopBar
 import com.tarkalabs.ui.R.drawable
 import com.tarkalabs.ui.theme.ExampleTheme
@@ -115,7 +116,7 @@ class SettingActivity : ComponentActivity() {
         Text(text = "BEDFORD")
       }
       Column {
-        Icon(imageVector = Icons.Default.Refresh, contentDescription = null)
+        EamGhostIconButton()
       }
     }
   }
