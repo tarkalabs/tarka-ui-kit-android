@@ -37,6 +37,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.commonui.components.EamGhostIconButton
 import com.tarkalabs.commonui.components.EamTopBar
+import com.tarkalabs.commonui.theme.Eam360uiandroidTheme
 import com.tarkalabs.ui.R.drawable
 import com.tarkalabs.ui.theme.ExampleTheme
 
@@ -45,7 +46,7 @@ class SettingActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContent {
-      ExampleTheme {
+      Eam360uiandroidTheme {
         SettingScreen()
       }
     }
@@ -116,7 +117,7 @@ class SettingActivity : ComponentActivity() {
         Text(text = "BEDFORD")
       }
       Column {
-        EamGhostIconButton()
+        EamGhostIconButton(icon = drawable.ic_refresh)
       }
     }
   }
