@@ -5,6 +5,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -13,8 +17,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.core.R.drawable
 import com.tarkalabs.common_ui.R
 
@@ -33,7 +39,7 @@ fun TextRowWithDescription(
   onInfoIconClick : () -> Unit = {},
   onTextRowClick : () -> Unit = {},
 ) {
-  Row(modifier.clickable { onTextRowClick() }, verticalAlignment = Alignment.CenterVertically) {
+  Row(modifier.clickable { onTextRowClick() }.height(40.dp), verticalAlignment = Alignment.CenterVertically) {
     Column(Modifier.weight(1f)) {
       Text(text = title)
       Text(text = description)
@@ -44,12 +50,12 @@ fun TextRowWithDescription(
       if (iconTwo != null)
         EamGhostIconButton(icon = iconTwo, onIconClick = onIconTwoClick)
       if (buttonTitle != null) {
-        OutlinedButton(onClick = onButtonClick) {
+        OutlinedButton(modifier = Modifier.height(40.dp).width(90.dp), onClick = onButtonClick,) {
           Text(text = buttonTitle)
         }
       }
       if (infoIcon != null){
-        IconButton(onClick = onInfoIconClick) {
+        IconButton(modifier = Modifier.size(24.dp), onClick = onInfoIconClick) {
           Icon(painter = painterResource(id = infoIcon), contentDescription = null)
         }
       }
@@ -57,7 +63,7 @@ fun TextRowWithDescription(
   }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(showBackground = true)
 @Composable
 fun TextRowWithDescriptionPreview() {
   TextRowWithDescription(title = "Title", description = "Description", infoIcon = drawable.ic_call_answer,
