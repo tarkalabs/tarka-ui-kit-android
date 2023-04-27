@@ -37,6 +37,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.commonui.components.EamGhostIconButton
 import com.tarkalabs.commonui.components.EamTopBar
+import com.tarkalabs.commonui.components.TextRowWithDescription
 import com.tarkalabs.commonui.theme.Eam360uiandroidTheme
 import com.tarkalabs.ui.R.drawable
 import com.tarkalabs.ui.theme.ExampleTheme
@@ -64,7 +65,7 @@ class SettingActivity : ComponentActivity() {
       Column(modifier = Modifier.padding(paddingValues)) {
         Divider()
         SettingHeader()
-        Lookup(label = "Role", body = "Supervisor")
+        TextRowWithDescription(title = "Role", description = "Supervisor", infoIcon = drawable.keyboard_arrow_right)
         Divider()
         SettingItem {
           SettingItemContent(Icons.Default.Search, "Transaction errors", 3)

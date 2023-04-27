@@ -1,6 +1,7 @@
 package com.tarkalabs.commonui.components
 
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,25 +26,30 @@ fun TextRowWithDescription(
   @DrawableRes iconOne : Int? = null,
   @DrawableRes iconTwo : Int? = null,
   buttonTitle : String? = null,
-  @DrawableRes infoIcon : Int? = null
+  @DrawableRes infoIcon : Int? = null,
+  onIconOneClick : () -> Unit = {},
+  onIconTwoClick : () -> Unit = {},
+  onButtonClick : () -> Unit = {},
+  onInfoIconClick : () -> Unit = {},
+  onTextRowClick : () -> Unit = {},
 ) {
-  Row(modifier, verticalAlignment = Alignment.CenterVertically) {
+  Row(modifier.clickable { onTextRowClick() }, verticalAlignment = Alignment.CenterVertically) {
     Column(Modifier.weight(1f)) {
       Text(text = title)
       Text(text = description)
     }
     Row(verticalAlignment = Alignment.CenterVertically) {
       if (iconOne != null)
-        EamGhostIconButton(icon = iconOne)
+        EamGhostIconButton(icon = iconOne, onIconClick = onIconOneClick)
       if (iconTwo != null)
-        EamGhostIconButton(icon = iconTwo)
+        EamGhostIconButton(icon = iconTwo, onIconClick = onIconTwoClick)
       if (buttonTitle != null) {
-        OutlinedButton(onClick = { /*TODO*/ }) {
+        OutlinedButton(onClick = onButtonClick) {
           Text(text = buttonTitle)
         }
       }
       if (infoIcon != null){
-        IconButton(onClick = { /*TODO*/ }) {
+        IconButton(onClick = onInfoIconClick) {
           Icon(painter = painterResource(id = infoIcon), contentDescription = null)
         }
       }
