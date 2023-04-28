@@ -7,6 +7,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -60,7 +61,9 @@ class SettingActivity : ComponentActivity() {
           title = "Role",
           description = "Supervisor",
           infoIcon = drawable.keyboard_arrow_right,
-          modifier = Modifier.padding(horizontal = 24.dp)
+          modifier = Modifier.fillMaxWidth(),
+          paddingValues = PaddingValues(horizontal = 24.dp)
+
         )
         VerticalSpacer(space = 16)
         Divider()
