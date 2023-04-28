@@ -31,7 +31,7 @@ import com.tarkalabs.commonui.components.TextRowWithDescription
 import com.tarkalabs.commonui.components.VerticalSpacer
 import com.tarkalabs.commonui.theme.ColorUtilityOutline
 import com.tarkalabs.commonui.theme.Eam360Theme
-import com.tarkalabs.commonui.theme.Eam360uiandroidTheme
+import com.tarkalabs.commonui.theme.EamTheme
 import com.tarkalabs.ui.R.drawable
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -39,7 +39,7 @@ class SettingActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContent {
-      Eam360uiandroidTheme {
+      EamTheme {
         SettingScreen()
       }
     }

@@ -9,11 +9,9 @@ import androidx.compose.material3.ProvideTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.commonui.theme.Eam360Theme
-import com.tarkalabs.commonui.theme.Eam360uiandroidTheme2
 
 @Preview(showBackground = true) @Composable fun TestText(text: String = "Hello There") {
   Text(text, style = Eam360Theme.typography.button6)
@@ -25,27 +23,6 @@ import com.tarkalabs.commonui.theme.Eam360uiandroidTheme2
     .padding(10.dp), onClick = {}) {
     Text(text = "Hello")
     // Text(text = "World", style = Eam360Theme.typography.button6)
-  }
-}
-
-@Composable
-@Preview(showBackground = true, name ="Custom Button")
-fun Testing() {
-  Eam360uiandroidTheme2 {
-    EAMButton(
-      modifier = Modifier
-        .fillMaxWidth()
-        .padding(10.dp),
-      onClick = {},
-      colors = ButtonDefaults.buttonColors(
-        containerColor = Color.Green
-      )
-
-    ) {
-      Text(text = "Custom Button")
-      // Text(text = "World", style = Eam360Theme.typography.button6)
-    }
-
   }
 }
 
