@@ -34,3 +34,5 @@ val LightColorOnBackGround= Color(0xFF171B21)
 val LightColorSurface = Color(0xFFF9FAFB)
 val LightColorOnSurface = Color(0xFF1A1B1F)
 
+val ColorUtilityOutline = Color(0xFF878B92)
+

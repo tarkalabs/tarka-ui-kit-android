@@ -4,35 +4,22 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowForward
-import androidx.compose.material3.Badge
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -41,6 +28,8 @@ import com.tarkalabs.commonui.components.EamTopBar
 import com.tarkalabs.commonui.components.NavigationRow
 import com.tarkalabs.commonui.components.TextRowWithDescription
 import com.tarkalabs.commonui.components.VerticalSpacer
+import com.tarkalabs.commonui.theme.ColorUtilityOutline
+import com.tarkalabs.commonui.theme.Eam360Theme
 import com.tarkalabs.commonui.theme.Eam360uiandroidTheme
 import com.tarkalabs.ui.R.drawable
 
@@ -55,15 +44,13 @@ class SettingActivity : ComponentActivity() {
     }
   }
 
-  @Composable
-  @Preview(showSystemUi = true)
-  fun SettingScreen() {
+  @Composable @Preview(showSystemUi = true) fun SettingScreen() {
     Scaffold(topBar = {
       EamTopBar(
-        title = "Settings",
-        navigationIcon = R.drawable.arrow_back
+        title = "Settings", navigationIcon = drawable.arrow_back
       )
-    }) { paddingValues ->
+    },
+    containerColor = MaterialTheme.colorScheme.surface) { paddingValues ->
       Column(modifier = Modifier.padding(paddingValues)) {
         Divider()
         VerticalSpacer(space = 24)
@@ -86,19 +73,13 @@ class SettingActivity : ComponentActivity() {
             leadingIcon = drawable.ic_transaction
           )
           NavigationRow(
-            title = "Sync status",
-            showRightArrow = true,
-            leadingIcon = drawable.checkmark_starburst
+            title = "Sync status", showRightArrow = true, leadingIcon = drawable.checkmark_starburst
           )
           NavigationRow(
-            title = "Tabs configuration",
-            showRightArrow = true,
-            leadingIcon = drawable.tabs
+            title = "Tabs configuration", showRightArrow = true, leadingIcon = drawable.tabs
           )
           NavigationRow(
-            title = "Export log",
-            showRightArrow = true,
-            leadingIcon = drawable.arrow_export
+            title = "Export log", showRightArrow = true, leadingIcon = drawable.arrow_export
           )
         }
         VerticalSpacer(space = 16)
@@ -106,14 +87,15 @@ class SettingActivity : ComponentActivity() {
     }
   }
 
-  @Composable
-  fun SettingHeader() {
-    Box(contentAlignment = Alignment.Center, modifier = Modifier
-      .fillMaxWidth()
-      .padding(horizontal = 24.dp)) {
+  @Composable fun SettingHeader() {
+    Box(
+      contentAlignment = Alignment.Center,
+      modifier = Modifier
+        .fillMaxWidth()
+        .padding(horizontal = 24.dp)
+    ) {
       Column(
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally
       ) {
         Image(
           painter = painterResource(id = drawable.avatar),
@@ -123,10 +105,16 @@ class SettingActivity : ComponentActivity() {
             .size(96.dp)
         )
         VerticalSpacer(space = 16)
-        Text(text = "Ronald Richards")
-        Text(text = "BEDFORD")
+        Text(
+          text = "Ronald Richards",
+          style = Eam360Theme.typography.heading6,
+          color = MaterialTheme.colorScheme.onSurface
+        )
+        Text(text = "BEDFORD",
+        style = Eam360Theme.typography.body7,
+        color = ColorUtilityOutline)
       }
-      Box(modifier = Modifier.align(Alignment.TopEnd)){
+      Box(modifier = Modifier.align(Alignment.TopEnd)) {
         EamGhostIconButton(icon = drawable.ic_refresh)
       }
     }
