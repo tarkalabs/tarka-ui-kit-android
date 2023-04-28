@@ -9,34 +9,45 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.graphics.Color
 
 private val DarkColorPalette = darkColorScheme(
-  primary = Color.Red,
-  primaryContainer = Color.Green,
-  secondary = Teal200
+  primary = DarkColorPrimary,
+  onPrimary = DarkColorOnPrimary,
+  primaryContainer = DarkColorAltPrimary,
+  onPrimaryContainer = DarkColorOnAltPrimary,
+  secondary = DarkColorSecondary,
+  onSecondary = DarkColorOnSecondary,
+  secondaryContainer = DarkColorAltSecondary,
+  onSecondaryContainer = DarkColorOnAltSecondary,
+  tertiary = DarkColorTertiary,
+  onTertiary = DarkColorOnTertiary,
+  onTertiaryContainer = DarkColorAltTertiary,
+  tertiaryContainer = DarkColorOnAltTertiary,
+  error = DarkColorError,
+  onError = DarkColorOnError,
+  background = DarkColorBackGround,
+  onBackground = DarkColorOnBackGround,
+  surface = DarkColorSurface,
+  onSurface = DarkColorOnSurface,
 )
 
 private val LightColorPalette = lightColorScheme(
-  primary = ColorPrimary,
-  onPrimary = ColorOnPrimary,
-  primaryContainer = ColorAltPrimary,
-  onPrimaryContainer = ColorOnAltPrimary,
-
-  secondary = ColorSecondary,
-  onSecondary = ColorOnSecondary,
-  secondaryContainer = ColorAltSecondary,
-  onSecondaryContainer = ColorOnAltSecondary,
-
-  tertiary = ColorTertiary,
-  onTertiary = ColorOnTertiary,
-  onTertiaryContainer = ColorAltTertiary,
-  tertiaryContainer = ColorOnAltTertiary,
-
-  error = ColorError,
-  onError = ColorOnError,
-
-  background = Color.White,
-  onBackground = Color.Black,
-  surface = Color.White,
-  onSurface = Color.Black,
+  primary = LightColorPrimary,
+  onPrimary = LightColorOnPrimary,
+  primaryContainer = LightColorAltPrimary,
+  onPrimaryContainer = LightColorOnAltPrimary,
+  secondary = LightColorSecondary,
+  onSecondary = LightColorOnSecondary,
+  secondaryContainer = LightColorAltSecondary,
+  onSecondaryContainer = LightColorOnAltSecondary,
+  tertiary = LightColorTertiary,
+  onTertiary = LightColorOnTertiary,
+  onTertiaryContainer = LightColorAltTertiary,
+  tertiaryContainer = LightColorOnAltTertiary,
+  error = LightColorError,
+  onError = LightColorOnError,
+  background = LightColorBackGround,
+  onBackground = LightColorOnBackGround,
+  surface = LightColorSurface,
+  onSurface = LightColorOnSurface,
   )
 
 @Composable fun Eam360uiandroidTheme(
