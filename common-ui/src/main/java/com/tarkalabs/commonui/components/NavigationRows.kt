@@ -5,7 +5,6 @@ package com.tarkalabs.commonui.components
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,7 +24,7 @@ import com.tarkalabs.commonui.theme.Eam360Theme
   badgeCount: Int? = null,
   showRightArrow: Boolean = false,
   modifier: Modifier = Modifier,
-  onClick: () -> Unit = {}
+  onClick: () -> Unit
 ) {
   Row(modifier = modifier
     .clickable { onClick() }
@@ -66,10 +65,10 @@ import com.tarkalabs.commonui.theme.Eam360Theme
   }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun NavigationRowPreview() {
+@Preview(showBackground = true) @Composable fun NavigationRowPreview() {
   NavigationRow(
     title = "Label", leadingIcon = drawable.ic_call_decline, badgeCount = 5, showRightArrow = true
-  )
+  ) {
+
+  }
 }
