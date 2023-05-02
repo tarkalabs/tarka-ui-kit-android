@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.commonui.components.ButtonType.PRIMARY
@@ -41,7 +40,6 @@ enum class ButtonType {
   buttonType: ButtonType = PRIMARY,
   badgeCount: String? = null,
   onIconClick: () -> Unit = {},
-
   ) {
   IconButton(
     onClick = onIconClick, modifier = Modifier.size(buttonSize.size),
@@ -51,14 +49,13 @@ enum class ButtonType {
   }
 }
 
-@Preview(showBackground = true)
 @Composable fun GhostIconButton(
-  @DrawableRes icon: Int = androidx.core.R.drawable.ic_call_answer,
-  contentDescription: String = "Test",
+  @DrawableRes icon: Int ,
+  contentDescription: String ,
   colors: IconButtonColors = IconButtonDefaults.iconButtonColors(),
   buttonSize: IconButtonSize = IconButtonSize.Size40,
   badgeCount: String? = null,
-  onIconClick: () -> Unit = {},
+  onIconClick: () -> Unit,
 ) {
   IconButton(
     onClick = onIconClick,
@@ -74,17 +71,13 @@ enum class ButtonType {
   }
 }
 
-@Preview(showBackground = true)
 @Composable fun SecondaryIconButton(
-  @DrawableRes icon: Int = androidx.core.R.drawable.ic_call_answer,
-  contentDescription: String = "Test",
-  colors: IconButtonColors = IconButtonDefaults.iconButtonColors(
-    containerColor = Color(0xff4D80B3),
-    contentColor = Color.White
-  ),
+  @DrawableRes icon: Int ,
+  contentDescription: String ,
+  colors: IconButtonColors = IconButtonDefaults.iconButtonColors(),
   buttonSize: IconButtonSize = IconButtonSize.Size40,
   badgeCount: String? = null,
-  onIconClick: () -> Unit = {},
+  onIconClick: () -> Unit,
 ) {
   IconButton(
     onClick = onIconClick,
@@ -100,17 +93,14 @@ enum class ButtonType {
   }
 }
 
-@Preview(showBackground = true)
+
 @Composable fun PrimaryIconButton(
-  @DrawableRes icon: Int = androidx.core.R.drawable.ic_call_answer,
-  contentDescription: String = "Test",
-  colors: IconButtonColors = IconButtonDefaults.iconButtonColors(
-    containerColor = Color(0xff0052D6),
-    contentColor = Color.White
-  ),
+  @DrawableRes icon: Int ,
+  contentDescription: String ,
+  colors: IconButtonColors = IconButtonDefaults.iconButtonColors(),
   buttonSize: IconButtonSize = IconButtonSize.Size40,
   badgeCount: String? = null,
-  onIconClick: () -> Unit = {},
+  onIconClick: () -> Unit,
 ) {
   IconButton(
     onClick = onIconClick,
@@ -126,16 +116,15 @@ enum class ButtonType {
   }
 }
 
-@Preview(showBackground = true)
 @Composable fun OutlineIconButton(
-  @DrawableRes icon: Int = androidx.core.R.drawable.ic_call_answer,
-  contentDescription: String = "Test",
+  @DrawableRes icon: Int ,
+  contentDescription: String,
   colors: IconButtonColors = IconButtonDefaults.iconButtonColors(
     containerColor = Color.Transparent,
   ),
   buttonSize: IconButtonSize = IconButtonSize.Size40,
   badgeCount: String? = null,
-  onIconClick: () -> Unit = {},
+  onIconClick: () -> Unit,
 ) {
   IconButton(
     onClick = onIconClick,
