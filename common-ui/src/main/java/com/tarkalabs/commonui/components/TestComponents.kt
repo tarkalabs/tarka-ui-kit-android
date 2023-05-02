@@ -11,18 +11,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.common_ui.R
+import com.tarkalabs.commonui.components.ButtonHeight.Large
+import com.tarkalabs.commonui.components.ButtonHeight.Regular
+import com.tarkalabs.commonui.components.ButtonHeight.Small
 import com.tarkalabs.commonui.theme.Eam360Theme
 
-@Preview(showBackground = true) @Composable fun TestText(text: String = "Hello There") {
+@Composable fun TestText(text: String = "Hello There") {
   Text(text, style = Eam360Theme.typography.button6)
 }
 
+@Preview(showBackground = true)
 @Composable fun TestButton() {
-  EAMButton(modifier = Modifier
-    .fillMaxWidth()
-    .padding(10.dp), onClick = {}) {
-    Text(text = "Hello")
-    // Text(text = "World", style = Eam360Theme.typography.button6)
+  PrimaryButton(
+    label = "Label",
+    leadingIcon = R.drawable.keyboard_arrow_right,
+    trailingIcon = R.drawable.keyboard_arrow_right,
+    height = Large
+  ) {
+
   }
 }
 

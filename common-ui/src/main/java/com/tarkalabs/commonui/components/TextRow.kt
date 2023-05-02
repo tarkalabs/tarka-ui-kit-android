@@ -58,8 +58,8 @@ import com.tarkalabs.commonui.theme.Eam360Theme
       )
     }
     Row(verticalAlignment = Alignment.CenterVertically) {
-      if (iconOne != null) GhostIconButton(icon = iconOne, onIconClick = onIconOneClick)
-      if (iconTwo != null) GhostIconButton(icon = iconTwo, onIconClick = onIconTwoClick)
+      if (iconOne != null) GhostIconButton(icon = iconOne, onIconClick = onIconOneClick, contentDescription = "")
+      if (iconTwo != null) GhostIconButton(icon = iconTwo, onIconClick = onIconTwoClick, contentDescription = "")
       if (buttonTitle != null) {
         OutlinedButton(
           modifier = Modifier

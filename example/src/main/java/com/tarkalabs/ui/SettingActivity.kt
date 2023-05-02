@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -25,6 +26,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.commonui.components.*
+import com.tarkalabs.commonui.components.ButtonHeight.Large
+import com.tarkalabs.commonui.components.ButtonHeight.Small
 import com.tarkalabs.commonui.theme.ColorUtilityOutline
 import com.tarkalabs.commonui.theme.Eam360Theme
 import com.tarkalabs.commonui.theme.EamTheme
@@ -50,6 +53,181 @@ class SettingActivity : ComponentActivity() {
       Column(modifier = Modifier.padding(paddingValues)) {
         Divider()
         VerticalSpacer(space = 24)
+       Row(horizontalArrangement = Arrangement.SpaceBetween) {
+         PrimaryButton(
+           label = "Label",
+           leadingIcon = R.drawable.keyboard_arrow_right,
+           trailingIcon = R.drawable.keyboard_arrow_right,
+           height = ButtonHeight.Large
+         ) {
+
+         }
+         PrimaryButton(
+           label = "Label",
+           leadingIcon = R.drawable.keyboard_arrow_right,
+           trailingIcon = R.drawable.keyboard_arrow_right,
+           height = ButtonHeight.Regular
+         ) {
+
+         }
+         PrimaryButton(
+           label = "Label",
+           leadingIcon = R.drawable.keyboard_arrow_right,
+           trailingIcon = R.drawable.keyboard_arrow_right,
+           height = ButtonHeight.Small
+         ) {
+
+         }
+         PrimaryButton(
+           label = "Label",
+           leadingIcon = R.drawable.keyboard_arrow_right,
+           trailingIcon = R.drawable.keyboard_arrow_right,
+           height = ButtonHeight.ExtraSmall
+         ) {
+
+         }
+       }
+        VerticalSpacer(space = 24)
+       Row(horizontalArrangement = Arrangement.SpaceBetween) {
+         SecondaryButton(
+           label = "Label",
+           leadingIcon = R.drawable.keyboard_arrow_right,
+           trailingIcon = R.drawable.keyboard_arrow_right,
+           height = ButtonHeight.Large
+         ) {
+
+         }
+         SecondaryButton(
+           label = "Label",
+           leadingIcon = R.drawable.keyboard_arrow_right,
+           trailingIcon = R.drawable.keyboard_arrow_right,
+           height = ButtonHeight.Regular
+         ) {
+
+         }
+         SecondaryButton(
+           label = "Label",
+           leadingIcon = R.drawable.keyboard_arrow_right,
+           trailingIcon = R.drawable.keyboard_arrow_right,
+           height = ButtonHeight.Small
+         ) {
+
+         }
+         SecondaryButton(
+           label = "Label",
+           leadingIcon = R.drawable.keyboard_arrow_right,
+           trailingIcon = R.drawable.keyboard_arrow_right,
+           height = ButtonHeight.ExtraSmall
+         ) {
+
+         }
+       }
+        VerticalSpacer(space = 24)
+       Row(horizontalArrangement = Arrangement.SpaceBetween) {
+         OutlinedButton(
+           label = "Label",
+           leadingIcon = R.drawable.keyboard_arrow_right,
+           trailingIcon = R.drawable.keyboard_arrow_right,
+           height = ButtonHeight.Large
+         ) {
+
+         }
+         OutlinedButton(
+           label = "Label",
+           leadingIcon = R.drawable.keyboard_arrow_right,
+           trailingIcon = R.drawable.keyboard_arrow_right,
+           height = ButtonHeight.Regular
+         ) {
+
+         }
+         OutlinedButton(
+           label = "Label",
+           leadingIcon = R.drawable.keyboard_arrow_right,
+           trailingIcon = R.drawable.keyboard_arrow_right,
+           height = ButtonHeight.Small
+         ) {
+
+         }
+         OutlinedButton(
+           label = "Label",
+           leadingIcon = R.drawable.keyboard_arrow_right,
+           trailingIcon = R.drawable.keyboard_arrow_right,
+           height = ButtonHeight.ExtraSmall
+         ) {
+
+         }
+       }
+        VerticalSpacer(space = 24)
+       Row(horizontalArrangement = Arrangement.SpaceBetween) {
+         GhostButton(
+           label = "Label",
+           leadingIcon = R.drawable.keyboard_arrow_right,
+           trailingIcon = R.drawable.keyboard_arrow_right,
+           height = ButtonHeight.Large
+         ) {
+
+         }
+         GhostButton(
+           label = "Label",
+           leadingIcon = R.drawable.keyboard_arrow_right,
+           trailingIcon = R.drawable.keyboard_arrow_right,
+           height = ButtonHeight.Regular
+         ) {
+
+         }
+         GhostButton(
+           label = "Label",
+           leadingIcon = R.drawable.keyboard_arrow_right,
+           trailingIcon = R.drawable.keyboard_arrow_right,
+           height = ButtonHeight.Small
+         ) {
+
+         }
+         GhostButton(
+           label = "Label",
+           leadingIcon = R.drawable.keyboard_arrow_right,
+           trailingIcon = R.drawable.keyboard_arrow_right,
+           height = ButtonHeight.ExtraSmall
+         ) {
+
+         }
+       }
+        VerticalSpacer(space = 24)
+       Row(horizontalArrangement = Arrangement.SpaceBetween) {
+         ErrorButton(
+           label = "Label",
+           leadingIcon = R.drawable.keyboard_arrow_right,
+           trailingIcon = R.drawable.keyboard_arrow_right,
+           height = ButtonHeight.Large
+         ) {
+
+         }
+         ErrorButton(
+           label = "Label",
+           leadingIcon = R.drawable.keyboard_arrow_right,
+           trailingIcon = R.drawable.keyboard_arrow_right,
+           height = ButtonHeight.Regular
+         ) {
+
+         }
+         ErrorButton(
+           label = "Label",
+           leadingIcon = R.drawable.keyboard_arrow_right,
+           trailingIcon = R.drawable.keyboard_arrow_right,
+           height = ButtonHeight.Small
+         ) {
+
+         }
+         ErrorButton(
+           label = "Label",
+           leadingIcon = R.drawable.keyboard_arrow_right,
+           trailingIcon = R.drawable.keyboard_arrow_right,
+           height = ButtonHeight.ExtraSmall
+         ) {
+
+         }
+       }
+        VerticalSpacer(space = 24)
         SettingHeader()
         VerticalSpacer(space = 16)
         TextRowWithDescription(
@@ -68,16 +246,16 @@ class SettingActivity : ComponentActivity() {
             badgeCount = 3,
             showRightArrow = true,
             leadingIcon = drawable.ic_transaction
-          )
+          ){}
           NavigationRow(
             title = "Sync status", showRightArrow = true, leadingIcon = drawable.checkmark_starburst
-          )
+          ){}
           NavigationRow(
             title = "Tabs configuration", showRightArrow = true, leadingIcon = drawable.tabs
-          )
+          ){}
           NavigationRow(
             title = "Export log", showRightArrow = true, leadingIcon = drawable.arrow_export
-          )
+          ){}
         }
         VerticalSpacer(space = 16)
       }
@@ -112,7 +290,7 @@ class SettingActivity : ComponentActivity() {
         color = ColorUtilityOutline)
       }
       Box(modifier = Modifier.align(Alignment.TopEnd)) {
-        GhostIconButton(icon = drawable.ic_refresh)
+        GhostIconButton(icon = drawable.ic_refresh, contentDescription = ""){}
       }
     }
   }
