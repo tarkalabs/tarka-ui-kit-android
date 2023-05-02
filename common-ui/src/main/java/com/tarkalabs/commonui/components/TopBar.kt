@@ -20,7 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import com.tarkalabs.commonui.theme.Eam360Theme
 
-@OptIn(ExperimentalMaterial3Api::class) @Composable fun EamTopBar(
+@OptIn(ExperimentalMaterial3Api::class) @Composable fun TopBar(
   title: String,
   @DrawableRes navigationIcon: Int? = null,
   @DrawableRes searchIcon: Int? = null,
@@ -102,5 +102,5 @@ import com.tarkalabs.commonui.theme.Eam360Theme
 @OptIn(ExperimentalMaterial3Api::class) @Composable fun EamNormalTopBar(
   title: String, @DrawableRes navigationIcon: Int? = null
 ) {
-  EamTopBar(title = title, navigationIcon = navigationIcon)
+  TopBar(title = title, navigationIcon = navigationIcon)
 }

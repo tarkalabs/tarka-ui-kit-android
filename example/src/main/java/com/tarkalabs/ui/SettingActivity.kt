@@ -24,11 +24,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.commonui.components.EamGhostIconButton
-import com.tarkalabs.commonui.components.EamTopBar
-import com.tarkalabs.commonui.components.NavigationRow
-import com.tarkalabs.commonui.components.TextRowWithDescription
-import com.tarkalabs.commonui.components.VerticalSpacer
+import com.tarkalabs.commonui.components.*
 import com.tarkalabs.commonui.theme.ColorUtilityOutline
 import com.tarkalabs.commonui.theme.Eam360Theme
 import com.tarkalabs.commonui.theme.EamTheme
@@ -47,11 +43,10 @@ class SettingActivity : ComponentActivity() {
 
   @Composable @Preview(showSystemUi = true) fun SettingScreen() {
     Scaffold(topBar = {
-      EamTopBar(
+      TopBar(
         title = "Settings", navigationIcon = drawable.arrow_back
       )
-    },
-    containerColor = MaterialTheme.colorScheme.surface) { paddingValues ->
+    }, containerColor = MaterialTheme.colorScheme.surface) { paddingValues ->
       Column(modifier = Modifier.padding(paddingValues)) {
         Divider()
         VerticalSpacer(space = 24)
@@ -63,7 +58,6 @@ class SettingActivity : ComponentActivity() {
           infoIcon = drawable.keyboard_arrow_right,
           modifier = Modifier.fillMaxWidth(),
           paddingValues = PaddingValues(horizontal = 24.dp)
-
         )
         VerticalSpacer(space = 16)
         Divider()
@@ -118,7 +112,7 @@ class SettingActivity : ComponentActivity() {
         color = ColorUtilityOutline)
       }
       Box(modifier = Modifier.align(Alignment.TopEnd)) {
-        EamGhostIconButton(icon = drawable.ic_refresh)
+        GhostIconButton(icon = drawable.ic_refresh)
       }
     }
   }

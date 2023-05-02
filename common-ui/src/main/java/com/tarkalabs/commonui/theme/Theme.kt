@@ -6,6 +6,7 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.graphics.Color
 
 private val DarkColorPalette = darkColorScheme(
   primary = DarkColorPrimary,
@@ -46,11 +47,11 @@ private val LightColorPalette = lightColorScheme(
   background = LightColorBackGround,
   onBackground = LightColorOnBackGround,
   surface = LightColorSurface,
-  onSurface = LightColorOnSurface,
+  onSurface = LightColorOnSurface
   )
 
 @Composable fun EamTheme(
-  darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit,
+  darkTheme: Boolean = true, content: @Composable () -> Unit,
 ) {
   val colors = if (darkTheme) DarkColorPalette else LightColorPalette
 

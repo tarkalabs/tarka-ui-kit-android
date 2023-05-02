@@ -8,14 +8,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Badge
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -52,7 +50,8 @@ import com.tarkalabs.commonui.theme.Eam360Theme
     )
     if (badgeCount != null) Badge(
       containerColor = MaterialTheme.colorScheme.error,
-      modifier = Modifier.size(18.dp)
+      modifier = Modifier
+        .size(18.dp)
         .align(Alignment.CenterVertically),
     ) {
       Text(
@@ -69,7 +68,9 @@ import com.tarkalabs.commonui.theme.Eam360Theme
   }
 }
 
-@Preview(showBackground = true) @Composable fun NavigationRowPreview() {
+@Preview(showBackground = true)
+@Composable
+fun NavigationRowPreview() {
   NavigationRow(
     title = "Label", leadingIcon = drawable.ic_call_decline, badgeCount = 5, showRightArrow = true
   )

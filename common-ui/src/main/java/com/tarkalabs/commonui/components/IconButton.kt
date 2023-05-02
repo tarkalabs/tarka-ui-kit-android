@@ -4,7 +4,6 @@ import androidx.annotation.DrawableRes
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonColors
@@ -17,9 +16,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.commonui.components.EamButtonType.PRIMARY
+import com.tarkalabs.commonui.components.ButtonType.PRIMARY
 
-enum class EamIconButtonSize(val size: Dp) {
+enum class IconButtonSize(val size: Dp) {
   Size20(20.dp),
   Size24(24.dp),
   Size32(32.dp),
@@ -27,19 +26,19 @@ enum class EamIconButtonSize(val size: Dp) {
   Size48(48.dp),
 }
 
-enum class EamButtonType {
+enum class ButtonType {
   GHOST,
   SECONDARY,
   PRIMARY,
   OUTLINE,
 }
 
-@Composable fun EamIconButton(
+@Composable fun IconButton(
   @DrawableRes icon: Int,
   contentDescription: String,
   colors: IconButtonColors = IconButtonDefaults.iconButtonColors(),
-  buttonSize: EamIconButtonSize = EamIconButtonSize.Size40,
-  buttonType: EamButtonType = PRIMARY,
+  buttonSize: IconButtonSize = IconButtonSize.Size40,
+  buttonType: ButtonType = PRIMARY,
   badgeCount: String? = null,
   onIconClick: () -> Unit = {},
 
@@ -53,11 +52,11 @@ enum class EamButtonType {
 }
 
 @Preview(showBackground = true)
-@Composable fun EamGhostIconButton(
+@Composable fun GhostIconButton(
   @DrawableRes icon: Int = androidx.core.R.drawable.ic_call_answer,
   contentDescription: String = "Test",
   colors: IconButtonColors = IconButtonDefaults.iconButtonColors(),
-  buttonSize: EamIconButtonSize = EamIconButtonSize.Size40,
+  buttonSize: IconButtonSize = IconButtonSize.Size40,
   badgeCount: String? = null,
   onIconClick: () -> Unit = {},
 ) {
@@ -76,14 +75,14 @@ enum class EamButtonType {
 }
 
 @Preview(showBackground = true)
-@Composable fun EamSecondaryIconButton(
+@Composable fun SecondaryIconButton(
   @DrawableRes icon: Int = androidx.core.R.drawable.ic_call_answer,
   contentDescription: String = "Test",
   colors: IconButtonColors = IconButtonDefaults.iconButtonColors(
     containerColor = Color(0xff4D80B3),
     contentColor = Color.White
   ),
-  buttonSize: EamIconButtonSize = EamIconButtonSize.Size40,
+  buttonSize: IconButtonSize = IconButtonSize.Size40,
   badgeCount: String? = null,
   onIconClick: () -> Unit = {},
 ) {
@@ -102,14 +101,14 @@ enum class EamButtonType {
 }
 
 @Preview(showBackground = true)
-@Composable fun EamPrimaryIconButton(
+@Composable fun PrimaryIconButton(
   @DrawableRes icon: Int = androidx.core.R.drawable.ic_call_answer,
   contentDescription: String = "Test",
   colors: IconButtonColors = IconButtonDefaults.iconButtonColors(
     containerColor = Color(0xff0052D6),
     contentColor = Color.White
   ),
-  buttonSize: EamIconButtonSize = EamIconButtonSize.Size40,
+  buttonSize: IconButtonSize = IconButtonSize.Size40,
   badgeCount: String? = null,
   onIconClick: () -> Unit = {},
 ) {
@@ -128,13 +127,13 @@ enum class EamButtonType {
 }
 
 @Preview(showBackground = true)
-@Composable fun EamOutlineIconButton(
+@Composable fun OutlineIconButton(
   @DrawableRes icon: Int = androidx.core.R.drawable.ic_call_answer,
   contentDescription: String = "Test",
   colors: IconButtonColors = IconButtonDefaults.iconButtonColors(
     containerColor = Color.Transparent,
   ),
-  buttonSize: EamIconButtonSize = EamIconButtonSize.Size40,
+  buttonSize: IconButtonSize = IconButtonSize.Size40,
   badgeCount: String? = null,
   onIconClick: () -> Unit = {},
 ) {
