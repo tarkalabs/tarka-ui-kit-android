@@ -6,7 +6,6 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.ui.graphics.Color
 
 private val DarkColorPalette = darkColorScheme(
   primary = DarkColorPrimary,
@@ -50,15 +49,10 @@ private val LightColorPalette = lightColorScheme(
   onSurface = LightColorOnSurface,
   )
 
-@Composable fun Eam360uiandroidTheme(
-  darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit
+@Composable fun EamTheme(
+  darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit,
 ) {
-  val colors = if (darkTheme) {
-    DarkColorPalette
-  } else {
-    LightColorPalette
-  }
-
+  val colors = if (darkTheme) DarkColorPalette else LightColorPalette
 
   CompositionLocalProvider(
     LocalExtendedTypography provides extendedTypography
@@ -69,25 +63,6 @@ private val LightColorPalette = lightColorScheme(
   }
 }
 
-
-@Composable fun Eam360uiandroidTheme2(
-  darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit
-) {
-  val colors = if (darkTheme) {
-    DarkColorPalette
-  } else {
-    DarkColorPalette
-  }
-
-
-  CompositionLocalProvider(
-    LocalExtendedTypography provides extendedTypography
-  ) {
-    MaterialTheme(
-      typography = Typography, content = content, colorScheme = colors, shapes = Shapes
-    )
-  }
-}
 
 object Eam360Theme {
   val typography: ExtendedTypography
