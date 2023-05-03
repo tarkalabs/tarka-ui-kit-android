@@ -2,18 +2,8 @@ package com.tarkalabs.commonui.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentWidth
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -40,7 +30,7 @@ enum class ButtonHeight(val size: Dp) {
     }
   }
 
-  fun paddingValues(isLeadingIconNull : Boolean, isTrailingIconNull:Boolean) = when (this) {
+  fun paddingValues(isLeadingIconNull: Boolean, isTrailingIconNull: Boolean) = when (this) {
     Large, Regular -> PaddingValues(
       top = 0.dp,
       start = if (isLeadingIconNull) 24.dp else 16.dp,
@@ -72,102 +62,16 @@ enum class ButtonHeight(val size: Dp) {
   }
 }
 
-@Composable fun PrimaryButton(
+@Composable
+internal fun BaseButton(
   label: String,
-  colors: ButtonColors = ButtonDefaults.buttonColors(
-    containerColor = MaterialTheme.colorScheme.primary,
-    contentColor = MaterialTheme.colorScheme.onPrimary
-  ),
+  colors: ButtonColors,
   height: ButtonHeight = Regular,
   @DrawableRes leadingIcon: Int? = null,
   @DrawableRes trailingIcon: Int? = null,
   onClick: () -> Unit,
+  borderStroke: BorderStroke? = null,
 ) {
-
-  Button(
-    onClick = onClick,
-    colors = colors,
-    modifier = Modifier
-      .height(height.size)
-      .wrapContentWidth(),
-    contentPadding = height.paddingValues(leadingIcon == null, trailingIcon == null)
-  ) {
-    Row(
-      verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center
-    ) {
-      leadingIcon?.let {
-        Icon(
-          painter = painterResource(id = leadingIcon),
-          contentDescription = "",
-          modifier = Modifier.size(height.iconSize())
-        )
-      }
-      Text(text = label, style = height.textStyle())
-      trailingIcon?.let {
-        Icon(
-          painter = painterResource(id = trailingIcon),
-          contentDescription = "",
-          modifier = Modifier.size(height.iconSize())
-        )
-      }
-    }
-  }
-}
-
-@Composable fun SecondaryButton(
-  label: String,
-  colors: ButtonColors = ButtonDefaults.buttonColors(
-    containerColor = MaterialTheme.colorScheme.secondary,
-    contentColor = MaterialTheme.colorScheme.onSecondary
-  ),
-  height: ButtonHeight = Regular,
-  @DrawableRes leadingIcon: Int? = null,
-  @DrawableRes trailingIcon: Int? = null,
-  onClick: () -> Unit,
-) {
-
-  Button(
-    onClick = onClick,
-    colors = colors,
-    modifier = Modifier
-      .height(height.size)
-      .wrapContentWidth(),
-    contentPadding = height.paddingValues(leadingIcon == null, trailingIcon == null)
-  ) {
-    Row(
-      verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center
-    ) {
-      leadingIcon?.let {
-        Icon(
-          painter = painterResource(id = leadingIcon),
-          contentDescription = "",
-          modifier = Modifier.size(height.iconSize())
-        )
-      }
-      Text(text = label, style = height.textStyle())
-      trailingIcon?.let {
-        Icon(
-          painter = painterResource(id = trailingIcon),
-          contentDescription = "",
-          modifier = Modifier.size(height.iconSize())
-        )
-      }
-    }
-  }
-}
-
-@Composable fun OutlinedButton(
-  label: String,
-  colors: ButtonColors = ButtonDefaults.buttonColors(
-    containerColor = MaterialTheme.colorScheme.surface,
-    contentColor = MaterialTheme.colorScheme.onSurface
-  ),
-  height: ButtonHeight = Regular,
-  @DrawableRes leadingIcon: Int? = null,
-  @DrawableRes trailingIcon: Int? = null,
-  onClick: () -> Unit,
-) {
-
   Button(
     onClick = onClick,
     colors = colors,
@@ -175,7 +79,7 @@ enum class ButtonHeight(val size: Dp) {
       .height(height.size)
       .wrapContentWidth(),
     contentPadding = height.paddingValues(leadingIcon == null, trailingIcon == null),
-    border = BorderStroke(width = 1.dp, color = MaterialTheme.colorScheme.onSurface)
+    border = borderStroke
   ) {
     Row(
       verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center
@@ -199,93 +103,114 @@ enum class ButtonHeight(val size: Dp) {
   }
 }
 
-
-@Composable fun GhostButton(
+@Composable
+fun PrimaryButton(
   label: String,
-  colors: ButtonColors = ButtonDefaults.buttonColors(
-    containerColor = Color.Transparent,
-    contentColor = MaterialTheme.colorScheme.secondary
-  ),
   height: ButtonHeight = Regular,
   @DrawableRes leadingIcon: Int? = null,
   @DrawableRes trailingIcon: Int? = null,
   onClick: () -> Unit,
 ) {
-
-  Button(
-    onClick = onClick,
-    colors = colors,
-    modifier = Modifier
-      .height(height.size)
-      .wrapContentWidth(),
-    contentPadding = height.paddingValues(leadingIcon == null, trailingIcon == null),
-  ) {
-    Row(
-      verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center
-    ) {
-      leadingIcon?.let {
-        Icon(
-          painter = painterResource(id = leadingIcon),
-          contentDescription = "",
-          modifier = Modifier.size(height.iconSize())
-        )
-      }
-      Text(text = label, style = height.textStyle())
-      trailingIcon?.let {
-        Icon(
-          painter = painterResource(id = trailingIcon),
-          contentDescription = "",
-          modifier = Modifier.size(height.iconSize())
-        )
-      }
-    }
-  }
+  BaseButton(
+    label = label,
+    colors = ButtonDefaults.buttonColors(
+      containerColor = MaterialTheme.colorScheme.primary,
+      contentColor = MaterialTheme.colorScheme.onPrimary
+    ),
+    height = height,
+    leadingIcon = leadingIcon,
+    trailingIcon = trailingIcon,
+    onClick = onClick
+  )
 }
 
-
-@Composable fun ErrorButton(
+@Composable
+fun SecondaryButton(
   label: String,
-  colors: ButtonColors = ButtonDefaults.buttonColors(
-    containerColor = MaterialTheme.colorScheme.error,
-    contentColor = MaterialTheme.colorScheme.onPrimary,
-  ),
   height: ButtonHeight = Regular,
   @DrawableRes leadingIcon: Int? = null,
   @DrawableRes trailingIcon: Int? = null,
   onClick: () -> Unit,
 ) {
-
-  Button(
-    onClick = onClick,
-    colors = colors,
-    modifier = Modifier
-      .height(height.size)
-      .wrapContentWidth(),
-    contentPadding = height.paddingValues(leadingIcon == null, trailingIcon == null),
-  ) {
-    Row(
-      verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center
-    ) {
-      leadingIcon?.let {
-        Icon(
-          painter = painterResource(id = leadingIcon),
-          contentDescription = "",
-          modifier = Modifier.size(height.iconSize())
-        )
-      }
-      Text(text = label, style = height.textStyle())
-      trailingIcon?.let {
-        Icon(
-          painter = painterResource(id = trailingIcon),
-          contentDescription = "",
-          modifier = Modifier.size(height.iconSize())
-        )
-      }
-    }
-  }
+  BaseButton(
+    label = label,
+    colors = ButtonDefaults.buttonColors(
+      containerColor = MaterialTheme.colorScheme.secondary,
+      contentColor = MaterialTheme.colorScheme.onSecondary
+    ),
+    height = height,
+    leadingIcon = leadingIcon,
+    trailingIcon = trailingIcon,
+    onClick = onClick
+  )
 }
 
-@Composable @Preview(showBackground = true)
+@Composable
+fun GhostButton(
+  label: String,
+  height: ButtonHeight = Regular,
+  @DrawableRes leadingIcon: Int? = null,
+  @DrawableRes trailingIcon: Int? = null,
+  onClick: () -> Unit,
+) {
+  BaseButton(
+    label = label,
+    colors = ButtonDefaults.buttonColors(
+      containerColor = Color.Transparent,
+      contentColor = MaterialTheme.colorScheme.secondary
+    ),
+    height = height,
+    leadingIcon = leadingIcon,
+    trailingIcon = trailingIcon,
+    onClick = onClick
+  )
+}
+
+@Composable
+fun ErrorButton(
+  label: String,
+  height: ButtonHeight = Regular,
+  @DrawableRes leadingIcon: Int? = null,
+  @DrawableRes trailingIcon: Int? = null,
+  onClick: () -> Unit,
+) {
+  BaseButton(
+    label = label,
+    colors = ButtonDefaults.buttonColors(
+      containerColor = MaterialTheme.colorScheme.error,
+      contentColor = MaterialTheme.colorScheme.onPrimary,
+    ),
+    height = height,
+    leadingIcon = leadingIcon,
+    trailingIcon = trailingIcon,
+    onClick = onClick
+  )
+}
+
+@Composable
+fun OutlinedButton(
+  label: String,
+  height: ButtonHeight = Regular,
+  @DrawableRes leadingIcon: Int? = null,
+  @DrawableRes trailingIcon: Int? = null,
+  onClick: () -> Unit,
+) {
+  BaseButton(
+    label = label,
+    colors = ButtonDefaults.buttonColors(
+      containerColor = MaterialTheme.colorScheme.surface,
+      contentColor = MaterialTheme.colorScheme.onSurface
+    ),
+    height = height,
+    leadingIcon = leadingIcon,
+    trailingIcon = trailingIcon,
+    onClick = onClick,
+    borderStroke = BorderStroke(width = 1.dp, color = MaterialTheme.colorScheme.onSurface)
+  )
+}
+
+@Composable
+@Preview(showBackground = true)
 fun PreviewPrimaryButton() {
 
 }
