@@ -51,7 +51,7 @@ private val LightColorPalette = lightColorScheme(
   )
 
 @Composable fun EamTheme(
-  darkTheme: Boolean = true, content: @Composable () -> Unit,
+  darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit,
 ) {
   val colors = if (darkTheme) DarkColorPalette else LightColorPalette
 

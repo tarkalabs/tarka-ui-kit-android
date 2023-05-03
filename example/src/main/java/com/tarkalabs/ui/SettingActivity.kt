@@ -67,16 +67,20 @@ class SettingActivity : ComponentActivity() {
             title = "Transaction errors",
             badgeCount = 3,
             showRightArrow = true,
-            leadingIcon = drawable.ic_transaction
+            leadingIcon = drawable.ic_transaction,
+            onClick = {}
           )
           NavigationRow(
-            title = "Sync status", showRightArrow = true, leadingIcon = drawable.checkmark_starburst
+            title = "Sync status", showRightArrow = true, leadingIcon = drawable.checkmark_starburst,
+            onClick = {}
           )
           NavigationRow(
-            title = "Tabs configuration", showRightArrow = true, leadingIcon = drawable.tabs
+            title = "Tabs configuration", showRightArrow = true, leadingIcon = drawable.tabs,
+            onClick = {}
           )
           NavigationRow(
-            title = "Export log", showRightArrow = true, leadingIcon = drawable.arrow_export
+            title = "Export log", showRightArrow = true, leadingIcon = drawable.arrow_export,
+            onClick = {}
           )
         }
         VerticalSpacer(space = 16)
@@ -112,7 +116,7 @@ class SettingActivity : ComponentActivity() {
         color = ColorUtilityOutline)
       }
       Box(modifier = Modifier.align(Alignment.TopEnd)) {
-        GhostIconButton(icon = drawable.ic_refresh)
+        GhostIconButton(icon = drawable.ic_refresh, contentDescription = "", onIconClick = {})
       }
     }
   }
