@@ -1,7 +1,12 @@
 @file:Suppress("UnstableApiUsage")
+
+import java.io.FileInputStream
+import java.util.*
+
 plugins {
   id("com.android.library")
   id("org.jetbrains.kotlin.android")
+  id("maven-publish")
 }
 
 android {
@@ -42,6 +47,39 @@ android {
   }
 }
 
+val githubProperties = Properties()
+githubProperties.load(FileInputStream(rootProject.file("github.properties")))
+
+fun getLibraryArtifactId() = "common-ui"
+
+publishing {
+  publications {
+    create<MavenPublication>("gpr"){
+      run {
+        groupId = "tarkalabs"
+        artifactId = getLibraryArtifactId()
+        version = "0.9-alpha"
+        artifact("$buildDir/outputs/aar/${getLibraryArtifactId()}-release.aar")
+      }
+    }
+  }
+
+  repositories {
+    maven {
+      name = "GitHubPackages"
+      /** Configure path of your package repository on Github
+       *  Replace GITHUB_USERID with your/organisation Github userID and REPOSITORY with the repository name on GitHub
+       */
+      url = uri("https://maven.pkg.github.com/tarkalabs/eam360-ui-android")
+      credentials {
+
+        username = githubProperties["gpr.usr"] as String
+        password = githubProperties["gpr.key"] as String
+      }
+    }
+  }
+}
+
 dependencies {
   val composeUiVersion = "1.4.0"
   implementation("androidx.core:core-ktx:1.10.0")
@@ -59,3 +97,4 @@ dependencies {
   debugImplementation( "androidx.compose.ui:ui-tooling:$composeUiVersion")
   debugImplementation( "androidx.compose.ui:ui-test-manifest:$composeUiVersion")
 }
+
