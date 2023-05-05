@@ -1,6 +1,5 @@
 @file:Suppress("UnstableApiUsage")
 
-import java.io.FileInputStream
 import java.util.*
 
 plugins {
@@ -47,17 +46,13 @@ android {
   }
 }
 
-val githubProperties = Properties().apply {
-  load(FileInputStream(rootProject.file("github.properties")))
-}
-
-fun getLibraryArtifactId() = "common-ui"
+fun getLibraryArtifactId() = "uicomponents"
 
 publishing {
   publications {
     create<MavenPublication>("gpr"){
       run {
-        groupId = "tarkalabs"
+        groupId = "com.tarkalabs"
         artifactId = getLibraryArtifactId()
         version = "0.9-alpha"
         artifact("$buildDir/outputs/aar/${getLibraryArtifactId()}-release.aar")
@@ -70,8 +65,8 @@ publishing {
       name = "GitHubPackages"
       url = uri("https://maven.pkg.github.com/tarkalabs/eam360-ui-android")
       credentials {
-        username = githubProperties["gpr.usr"] as String
-        password = githubProperties["gpr.key"] as String
+        username = System.getenv("GITHUB_USER")
+        password = System.getenv("GITHUB_TOKEN")
       }
     }
   }
