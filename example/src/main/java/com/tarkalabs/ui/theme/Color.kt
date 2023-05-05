@@ -1,4 +1,4 @@
-package com.tarkalabs.commonui.theme
+package com.tarkalabs.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
