@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-  namespace = "com.tarkalabs.common_ui"
+  namespace = "com.tarkalabs.uicomponents"
   compileSdk = 33
 
   defaultConfig {

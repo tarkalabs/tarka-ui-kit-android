@@ -1,4 +1,4 @@
-package com.tarkalabs.commonui.components
+package com.tarkalabs.uicomponents.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.clickable
@@ -22,7 +22,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.R.drawable
-import com.tarkalabs.commonui.theme.Eam360Theme
+import com.tarkalabs.uicomponents.theme.Eam360Theme
 
 @Composable fun TextRowWithDescription(
   title: String,

@@ -1,4 +1,4 @@
-package com.tarkalabs.commonui.theme
+package com.tarkalabs.uicomponents.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.Immutable
@@ -8,7 +8,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.tarkalabs.common_ui.R
+import com.tarkalabs.uicomponents.R
 
 // Set of Material typography styles to start with
 val Typography = Typography(

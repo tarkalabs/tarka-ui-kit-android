@@ -1,4 +1,4 @@
-package com.tarkalabs.commonui.components
+package com.tarkalabs.uicomponents.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.border
@@ -15,7 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.commonui.components.ButtonType.PRIMARY
+import com.tarkalabs.uicomponents.components.ButtonType.PRIMARY
 
 enum class IconButtonSize(val size: Dp) {
   Size20(20.dp),

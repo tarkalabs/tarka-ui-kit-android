@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.tarkalabs.commonui.components
+package com.tarkalabs.uicomponents.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.clickable
@@ -13,8 +13,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.R.drawable
-import com.tarkalabs.common_ui.R
-import com.tarkalabs.commonui.theme.Eam360Theme
+import com.tarkalabs.uicomponents.R
+import com.tarkalabs.uicomponents.theme.Eam360Theme
 
 // TODO: 5/2/2023  add content description
 // TODO: 5/2/2023 use dimensions instead of hard coded things

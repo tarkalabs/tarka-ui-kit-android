@@ -24,10 +24,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.commonui.components.*
-import com.tarkalabs.commonui.theme.ColorUtilityOutline
-import com.tarkalabs.commonui.theme.Eam360Theme
-import com.tarkalabs.commonui.theme.EamTheme
+import com.tarkalabs.uicomponents.components.*
+import com.tarkalabs.uicomponents.theme.ColorUtilityOutline
+import com.tarkalabs.uicomponents.theme.Eam360Theme
+import com.tarkalabs.uicomponents.theme.EamTheme
 import com.tarkalabs.ui.R.drawable
 
 @OptIn(ExperimentalMaterial3Api::class)

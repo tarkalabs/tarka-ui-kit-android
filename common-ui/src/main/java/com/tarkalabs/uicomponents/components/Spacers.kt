@@ -1,4 +1,4 @@
-package com.tarkalabs.commonui.components
+package com.tarkalabs.uicomponents.components
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height

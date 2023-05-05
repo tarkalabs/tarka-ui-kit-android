@@ -1,4 +1,4 @@
-package com.tarkalabs.commonui.components
+package com.tarkalabs.uicomponents.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,7 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import com.tarkalabs.commonui.theme.Eam360Theme
+import com.tarkalabs.uicomponents.theme.Eam360Theme
 
 @OptIn(ExperimentalMaterial3Api::class) @Composable fun TopBar(
   title: String,
