@@ -59,19 +59,19 @@ enum class FloatingActionButtonSize(val size: Dp) {
 
   ) {
     FloatingActionButton(
-      L, com.tarkalabs.uicomponents.R.drawable.keyboard_arrow_right, "atata"
+      L, com.tarkalabs.uicomponents.R.drawable.keyboard_arrow_right, "Large FAB"
     ) {
 
     }
     Spacer(modifier = Modifier.padding(5.dp))
     FloatingActionButton(
-      R, com.tarkalabs.uicomponents.R.drawable.keyboard_arrow_right, "atata"
+      R, com.tarkalabs.uicomponents.R.drawable.keyboard_arrow_right, "Regular FAB"
     ) {
 
     }
     Spacer(modifier = Modifier.padding(5.dp))
     FloatingActionButton(
-      S, com.tarkalabs.uicomponents.R.drawable.keyboard_arrow_right, "atata"
+      S, com.tarkalabs.uicomponents.R.drawable.keyboard_arrow_right, "Small FAB"
     ) {
 
     }
