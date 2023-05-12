@@ -1,4 +1,4 @@
-## Eam360-ui-android
+## Tarka-ui-kit-android
 Android application for building UI components using Jetpack Compose
 
 ## TODO
