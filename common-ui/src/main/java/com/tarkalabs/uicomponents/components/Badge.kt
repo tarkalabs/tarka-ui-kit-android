@@ -30,12 +30,8 @@ enum class BadgeSize(val size: Dp) {
     L -> 8.dp
   }
   val textStyle = when (badgeSize) {
-    S, M -> {
-      Eam360Theme.typography.button8
-    }
-    L -> {
-      Eam360Theme.typography.button7
-    }
+    S, M -> Eam360Theme.typography.button8
+    L -> Eam360Theme.typography.button7
   }
   androidx.compose.material3.Badge(
     containerColor = MaterialTheme.colorScheme.error,
