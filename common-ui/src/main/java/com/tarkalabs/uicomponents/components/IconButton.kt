@@ -15,17 +15,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.components.ButtonType.PRIMARY
+import com.tarkalabs.uicomponents.components.IconButtonStyles.PRIMARY
 
 enum class IconButtonSize(val size: Dp) {
-  Size20(20.dp),
-  Size24(24.dp),
-  Size32(32.dp),
-  Size40(40.dp),
-  Size48(48.dp),
+  XS(20.dp),
+  S(24.dp),
+  M(32.dp),
+  L(40.dp),
+  XL(48.dp),
 }
 
-enum class ButtonType {
+enum class IconButtonStyles {
   GHOST,
   SECONDARY,
   PRIMARY,
@@ -36,24 +36,23 @@ enum class ButtonType {
   @DrawableRes icon: Int,
   contentDescription: String,
   colors: IconButtonColors = IconButtonDefaults.iconButtonColors(),
-  buttonSize: IconButtonSize = IconButtonSize.Size40,
-  buttonType: ButtonType = PRIMARY,
+  buttonSize: IconButtonSize = IconButtonSize.L,
+  iconButtonStyles: IconButtonStyles = PRIMARY,
   badgeCount: String? = null,
   onIconClick: () -> Unit = {},
-  ) {
+) {
   IconButton(
-    onClick = onIconClick, modifier = Modifier.size(buttonSize.size),
-    colors = colors
+    onClick = onIconClick, modifier = Modifier.size(buttonSize.size), colors = colors
   ) {
     Icon(painter = painterResource(id = icon), contentDescription = contentDescription)
   }
 }
 
 @Composable fun GhostIconButton(
-  @DrawableRes icon: Int ,
-  contentDescription: String ,
+  @DrawableRes icon: Int,
+  contentDescription: String,
   colors: IconButtonColors = IconButtonDefaults.iconButtonColors(),
-  buttonSize: IconButtonSize = IconButtonSize.Size40,
+  buttonSize: IconButtonSize = IconButtonSize.L,
   badgeCount: String? = null,
   onIconClick: () -> Unit,
 ) {
@@ -72,10 +71,10 @@ enum class ButtonType {
 }
 
 @Composable fun SecondaryIconButton(
-  @DrawableRes icon: Int ,
-  contentDescription: String ,
+  @DrawableRes icon: Int,
+  contentDescription: String,
   colors: IconButtonColors = IconButtonDefaults.iconButtonColors(),
-  buttonSize: IconButtonSize = IconButtonSize.Size40,
+  buttonSize: IconButtonSize = IconButtonSize.L,
   badgeCount: String? = null,
   onIconClick: () -> Unit,
 ) {
@@ -93,12 +92,11 @@ enum class ButtonType {
   }
 }
 
-
 @Composable fun PrimaryIconButton(
-  @DrawableRes icon: Int ,
-  contentDescription: String ,
+  @DrawableRes icon: Int,
+  contentDescription: String,
   colors: IconButtonColors = IconButtonDefaults.iconButtonColors(),
-  buttonSize: IconButtonSize = IconButtonSize.Size40,
+  buttonSize: IconButtonSize = IconButtonSize.L,
   badgeCount: String? = null,
   onIconClick: () -> Unit,
 ) {
@@ -117,25 +115,19 @@ enum class ButtonType {
 }
 
 @Composable fun OutlineIconButton(
-  @DrawableRes icon: Int ,
+  @DrawableRes icon: Int,
   contentDescription: String,
-  colors: IconButtonColors = IconButtonDefaults.iconButtonColors(
-    containerColor = Color.Transparent,
-  ),
-  buttonSize: IconButtonSize = IconButtonSize.Size40,
+  colors: IconButtonColors = IconButtonDefaults.iconButtonColors(containerColor = Color.Transparent),
+  buttonSize: IconButtonSize = IconButtonSize.L,
   badgeCount: String? = null,
   onIconClick: () -> Unit,
 ) {
   IconButton(
-    onClick = onIconClick,
-    modifier = Modifier
+    onClick = onIconClick, modifier = Modifier
       .border(
-        width = 0.5.dp,
-        color = Color.Black,
-        shape = CircleShape
+        width = 0.5.dp, color = Color.Black, shape = CircleShape
       )
-      .size(buttonSize.size),
-    colors = colors
+      .size(buttonSize.size), colors = colors
   ) {
     Icon(
       painter = painterResource(id = icon),
