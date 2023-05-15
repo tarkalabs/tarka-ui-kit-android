@@ -1,13 +1,10 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.tarkalabs.commonui.components
+package com.tarkalabs.uicomponents.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,9 +13,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.R.drawable
-import com.tarkalabs.common_ui.R
-import com.tarkalabs.commonui.theme.Eam360Theme
+import com.tarkalabs.uicomponents.R
+import com.tarkalabs.uicomponents.theme.Eam360Theme
 
+// TODO: 5/2/2023  add content description
+// TODO: 5/2/2023 use dimensions instead of hard coded things
 @OptIn(ExperimentalMaterial3Api::class) @Composable fun NavigationRow(
   title: String,
   @DrawableRes leadingIcon: Int? = null,
@@ -30,7 +29,7 @@ import com.tarkalabs.commonui.theme.Eam360Theme
   Row(modifier = modifier
     .clickable { onClick() }
     .padding(8.dp)
-    .height(40.dp),
+    .defaultMinSize(minHeight = 40.dp),
     verticalAlignment = Alignment.CenterVertically) {
     if (leadingIcon != null) Icon(
       modifier = Modifier.size(24.dp),

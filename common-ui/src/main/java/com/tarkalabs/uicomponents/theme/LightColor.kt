@@ -1,4 +1,4 @@
-package com.tarkalabs.commonui.theme
+package com.tarkalabs.uicomponents.theme
 
 import androidx.compose.ui.graphics.Color
 
@@ -28,8 +28,8 @@ val LightColorWarning= Color(0xFFFFB938)
 val LightColorOnWarning= Color(0xFF241D0F)
 val LightColorAltWarning= Color(0x1ACD1D32)
 
-val LightColorBackGround= Color(0xFFEAECF0)
-val LightColorOnBackGround= Color(0xFF171B21)
+val LightColorBackground= Color(0xFFEAECF0)
+val LightColorOnBackground= Color(0xFF171B21)
 
 val LightColorSurface = Color(0xFFF9FAFB)
 val LightColorOnSurface = Color(0xFF1A1B1F)

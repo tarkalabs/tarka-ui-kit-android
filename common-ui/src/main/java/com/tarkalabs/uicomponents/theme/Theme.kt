@@ -1,4 +1,4 @@
-package com.tarkalabs.commonui.theme
+package com.tarkalabs.uicomponents.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -6,7 +6,6 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.ui.graphics.Color
 
 private val DarkColorPalette = darkColorScheme(
   primary = DarkColorPrimary,
@@ -23,8 +22,8 @@ private val DarkColorPalette = darkColorScheme(
   tertiaryContainer = DarkColorOnAltTertiary,
   error = DarkColorError,
   onError = DarkColorOnError,
-  background = DarkColorBackGround,
-  onBackground = DarkColorOnBackGround,
+  background = DarkColorBackground,
+  onBackground = DarkColorOnBackground,
   surface = DarkColorSurface,
   onSurface = DarkColorOnSurface,
 )
@@ -44,8 +43,8 @@ private val LightColorPalette = lightColorScheme(
   tertiaryContainer = LightColorOnAltTertiary,
   error = LightColorError,
   onError = LightColorOnError,
-  background = LightColorBackGround,
-  onBackground = LightColorOnBackGround,
+  background = LightColorBackground,
+  onBackground = LightColorOnBackground,
   surface = LightColorSurface,
   onSurface = LightColorOnSurface
   )

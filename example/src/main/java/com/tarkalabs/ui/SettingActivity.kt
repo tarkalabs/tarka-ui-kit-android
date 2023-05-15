@@ -24,10 +24,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.commonui.components.*
-import com.tarkalabs.commonui.theme.ColorUtilityOutline
-import com.tarkalabs.commonui.theme.Eam360Theme
-import com.tarkalabs.commonui.theme.EamTheme
+import com.tarkalabs.uicomponents.components.*
+import com.tarkalabs.uicomponents.theme.ColorUtilityOutline
+import com.tarkalabs.uicomponents.theme.Eam360Theme
+import com.tarkalabs.uicomponents.theme.EamTheme
 import com.tarkalabs.ui.R.drawable
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -67,17 +67,21 @@ class SettingActivity : ComponentActivity() {
             title = "Transaction errors",
             badgeCount = 3,
             showRightArrow = true,
-            leadingIcon = drawable.ic_transaction
-          ){}
+            leadingIcon = drawable.ic_transaction,
+            onClick = {}
+          )
           NavigationRow(
-            title = "Sync status", showRightArrow = true, leadingIcon = drawable.checkmark_starburst
-          ){}
+            title = "Sync status", showRightArrow = true, leadingIcon = drawable.checkmark_starburst,
+            onClick = {}
+          )
           NavigationRow(
-            title = "Tabs configuration", showRightArrow = true, leadingIcon = drawable.tabs
-          ){}
+            title = "Tabs configuration", showRightArrow = true, leadingIcon = drawable.tabs,
+            onClick = {}
+          )
           NavigationRow(
-            title = "Export log", showRightArrow = true, leadingIcon = drawable.arrow_export
-          ){}
+            title = "Export log", showRightArrow = true, leadingIcon = drawable.arrow_export,
+            onClick = {}
+          )
         }
         VerticalSpacer(space = 16)
       }
@@ -112,7 +116,7 @@ class SettingActivity : ComponentActivity() {
         color = ColorUtilityOutline)
       }
       Box(modifier = Modifier.align(Alignment.TopEnd)) {
-        GhostIconButton(icon = drawable.ic_refresh, contentDescription = ""){}
+        GhostIconButton(icon = drawable.ic_refresh, contentDescription = "", onIconClick = {})
       }
     }
   }

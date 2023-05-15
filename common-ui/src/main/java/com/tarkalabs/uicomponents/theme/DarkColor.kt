@@ -1,4 +1,4 @@
-package com.tarkalabs.commonui.theme
+package com.tarkalabs.uicomponents.theme
 
 import androidx.compose.ui.graphics.Color
 
@@ -28,8 +28,8 @@ val DarkColorWarning= Color(0xFFFFB938)
 val DarkColorOnWarning= Color(0xFF241D0F)
 val DarkColorAltWarning= Color(0x1ACD1D32)
 
-val DarkColorBackGround= Color(0xFF0F1115)
-val DarkColorOnBackGround= Color(0xFFF0F2F4)
+val DarkColorBackground= Color(0xFF0F1115)
+val DarkColorOnBackground= Color(0xFFF0F2F4)
 
 val DarkColorSurface = Color(0xFF212731)
 val DarkColorOnSurface = Color(0xFFFCFCFD)
