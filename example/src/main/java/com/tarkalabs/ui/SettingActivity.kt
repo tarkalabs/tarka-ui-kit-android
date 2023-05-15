@@ -26,8 +26,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.commonui.components.*
-import com.tarkalabs.commonui.components.ButtonHeight.Large
-import com.tarkalabs.commonui.components.ButtonHeight.Small
 import com.tarkalabs.commonui.theme.ColorUtilityOutline
 import com.tarkalabs.commonui.theme.Eam360Theme
 import com.tarkalabs.commonui.theme.EamTheme
@@ -58,7 +56,7 @@ class SettingActivity : ComponentActivity() {
            label = "Label",
            leadingIcon = R.drawable.keyboard_arrow_right,
            trailingIcon = R.drawable.keyboard_arrow_right,
-           height = ButtonHeight.Large
+           height = ButtonSize.L
          ) {
 
          }
@@ -66,7 +64,7 @@ class SettingActivity : ComponentActivity() {
            label = "Label",
            leadingIcon = R.drawable.keyboard_arrow_right,
            trailingIcon = R.drawable.keyboard_arrow_right,
-           height = ButtonHeight.Regular
+           height = ButtonSize.M
          ) {
 
          }
@@ -74,7 +72,7 @@ class SettingActivity : ComponentActivity() {
            label = "Label",
            leadingIcon = R.drawable.keyboard_arrow_right,
            trailingIcon = R.drawable.keyboard_arrow_right,
-           height = ButtonHeight.Small
+           height = ButtonSize.S
          ) {
 
          }
@@ -82,7 +80,7 @@ class SettingActivity : ComponentActivity() {
            label = "Label",
            leadingIcon = R.drawable.keyboard_arrow_right,
            trailingIcon = R.drawable.keyboard_arrow_right,
-           height = ButtonHeight.ExtraSmall
+           height = ButtonSize.XS
          ) {
 
          }
@@ -93,7 +91,7 @@ class SettingActivity : ComponentActivity() {
            label = "Label",
            leadingIcon = R.drawable.keyboard_arrow_right,
            trailingIcon = R.drawable.keyboard_arrow_right,
-           height = ButtonHeight.Large
+           height = ButtonSize.L
          ) {
 
          }
@@ -101,7 +99,7 @@ class SettingActivity : ComponentActivity() {
            label = "Label",
            leadingIcon = R.drawable.keyboard_arrow_right,
            trailingIcon = R.drawable.keyboard_arrow_right,
-           height = ButtonHeight.Regular
+           height = ButtonSize.M
          ) {
 
          }
@@ -109,7 +107,7 @@ class SettingActivity : ComponentActivity() {
            label = "Label",
            leadingIcon = R.drawable.keyboard_arrow_right,
            trailingIcon = R.drawable.keyboard_arrow_right,
-           height = ButtonHeight.Small
+           height = ButtonSize.S
          ) {
 
          }
@@ -117,7 +115,7 @@ class SettingActivity : ComponentActivity() {
            label = "Label",
            leadingIcon = R.drawable.keyboard_arrow_right,
            trailingIcon = R.drawable.keyboard_arrow_right,
-           height = ButtonHeight.ExtraSmall
+           height = ButtonSize.XS
          ) {
 
          }
@@ -128,7 +126,7 @@ class SettingActivity : ComponentActivity() {
            label = "Label",
            leadingIcon = R.drawable.keyboard_arrow_right,
            trailingIcon = R.drawable.keyboard_arrow_right,
-           height = ButtonHeight.Large
+           height = ButtonSize.L
          ) {
 
          }
@@ -136,7 +134,7 @@ class SettingActivity : ComponentActivity() {
            label = "Label",
            leadingIcon = R.drawable.keyboard_arrow_right,
            trailingIcon = R.drawable.keyboard_arrow_right,
-           height = ButtonHeight.Regular
+           height = ButtonSize.M
          ) {
 
          }
@@ -144,7 +142,7 @@ class SettingActivity : ComponentActivity() {
            label = "Label",
            leadingIcon = R.drawable.keyboard_arrow_right,
            trailingIcon = R.drawable.keyboard_arrow_right,
-           height = ButtonHeight.Small
+           height = ButtonSize.S
          ) {
 
          }
@@ -152,7 +150,7 @@ class SettingActivity : ComponentActivity() {
            label = "Label",
            leadingIcon = R.drawable.keyboard_arrow_right,
            trailingIcon = R.drawable.keyboard_arrow_right,
-           height = ButtonHeight.ExtraSmall
+           height = ButtonSize.XS
          ) {
 
          }
@@ -163,7 +161,7 @@ class SettingActivity : ComponentActivity() {
            label = "Label",
            leadingIcon = R.drawable.keyboard_arrow_right,
            trailingIcon = R.drawable.keyboard_arrow_right,
-           height = ButtonHeight.Large
+           height = ButtonSize.L
          ) {
 
          }
@@ -171,7 +169,7 @@ class SettingActivity : ComponentActivity() {
            label = "Label",
            leadingIcon = R.drawable.keyboard_arrow_right,
            trailingIcon = R.drawable.keyboard_arrow_right,
-           height = ButtonHeight.Regular
+           height = ButtonSize.M
          ) {
 
          }
@@ -179,7 +177,7 @@ class SettingActivity : ComponentActivity() {
            label = "Label",
            leadingIcon = R.drawable.keyboard_arrow_right,
            trailingIcon = R.drawable.keyboard_arrow_right,
-           height = ButtonHeight.Small
+           height = ButtonSize.S
          ) {
 
          }
@@ -187,7 +185,7 @@ class SettingActivity : ComponentActivity() {
            label = "Label",
            leadingIcon = R.drawable.keyboard_arrow_right,
            trailingIcon = R.drawable.keyboard_arrow_right,
-           height = ButtonHeight.ExtraSmall
+           height = ButtonSize.XS
          ) {
 
          }
@@ -198,7 +196,7 @@ class SettingActivity : ComponentActivity() {
            label = "Label",
            leadingIcon = R.drawable.keyboard_arrow_right,
            trailingIcon = R.drawable.keyboard_arrow_right,
-           height = ButtonHeight.Large
+           height = ButtonSize.L
          ) {
 
          }
@@ -206,7 +204,7 @@ class SettingActivity : ComponentActivity() {
            label = "Label",
            leadingIcon = R.drawable.keyboard_arrow_right,
            trailingIcon = R.drawable.keyboard_arrow_right,
-           height = ButtonHeight.Regular
+           height = ButtonSize.M
          ) {
 
          }
@@ -214,7 +212,7 @@ class SettingActivity : ComponentActivity() {
            label = "Label",
            leadingIcon = R.drawable.keyboard_arrow_right,
            trailingIcon = R.drawable.keyboard_arrow_right,
-           height = ButtonHeight.Small
+           height = ButtonSize.S
          ) {
 
          }
@@ -222,7 +220,7 @@ class SettingActivity : ComponentActivity() {
            label = "Label",
            leadingIcon = R.drawable.keyboard_arrow_right,
            trailingIcon = R.drawable.keyboard_arrow_right,
-           height = ButtonHeight.ExtraSmall
+           height = ButtonSize.XS
          ) {
 
          }
