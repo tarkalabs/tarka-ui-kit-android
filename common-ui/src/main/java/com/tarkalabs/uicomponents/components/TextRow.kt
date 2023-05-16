@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -42,7 +43,7 @@ import com.tarkalabs.uicomponents.theme.Eam360Theme
   Row(
     modifier
       .clickable { onTextRowClick() }
-      .height(40.dp)
+      .defaultMinSize(minHeight = 40.dp)
       .padding(paddingValues),
     verticalAlignment = Alignment.CenterVertically) {
     Column(Modifier.weight(1f)) {
