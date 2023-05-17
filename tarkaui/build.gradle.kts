@@ -5,18 +5,20 @@ import java.util.*
 plugins {
   id("com.android.library")
   id("org.jetbrains.kotlin.android")
+  id("shot")
   id("maven-publish")
 }
 
 android {
-  namespace = "com.tarkalabs.common_ui"
+  namespace = "com.tarkalabs.uicomponents"
   compileSdk = 33
 
   defaultConfig {
     minSdk = 26
     targetSdk = 33
 
-    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunner = "com.karumi.shot.ShotTestRunner"
+    testApplicationId = "com.tarkalabs.uicomponents"
     consumerProguardFiles("consumer-rules.pro")
   }
 
@@ -43,6 +45,13 @@ android {
     resources {
       excludes.add("/META-INF/{AL2.0,LGPL2.1}")
     }
+  }
+  shot {
+    tolerance =  0.1
+    applicationId = "com.tarkalabs.uicomponents"
+  }
+  testOptions {
+    emulatorSnapshots.maxSnapshotsForTestFailures = 10
   }
 }
 
@@ -73,12 +82,12 @@ publishing {
 }
 
 dependencies {
-  val composeUiVersion = "1.4.0"
+  val composeUiVersion = "1.4.1"
   implementation("androidx.core:core-ktx:1.10.0")
   implementation( "androidx.compose.ui:ui:$composeUiVersion")
   implementation( "androidx.compose.ui:ui-tooling-preview:$composeUiVersion")
-  implementation( "androidx.compose.material:material:$composeUiVersion")
-  implementation("com.google.android.material:material:1.8.0")
+  implementation("androidx.compose.material3:material3:1.1.0-rc01")
+  implementation("com.microsoft.design:fluent-system-icons:1.1.201@aar")
 
   testImplementation( "junit:junit:4.13.2")
   androidTestImplementation( "androidx.test.ext:junit:1.1.5")
