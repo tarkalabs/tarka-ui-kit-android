@@ -1,6 +1,5 @@
 package com.tarkalabs.uicomponents.components
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -38,6 +37,7 @@ import com.tarkalabs.uicomponents.components.ButtonStyle.GHOST
 import com.tarkalabs.uicomponents.components.ButtonStyle.OUTLINE
 import com.tarkalabs.uicomponents.components.ButtonStyle.PRIMARY
 import com.tarkalabs.uicomponents.components.ButtonStyle.SECONDARY
+import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.theme.Eam360Theme
 import com.tarkalabs.uicomponents.theme.EamTheme
 
@@ -117,8 +117,8 @@ onClick = {}
   label: String,
   height: ButtonSize = M,
   buttonStyle: ButtonStyle = PRIMARY,
-  @DrawableRes leadingIcon: Int? = null,
-  @DrawableRes trailingIcon: Int? = null,
+  leadingIcon: TarkaIcon? = null,
+  trailingIcon: TarkaIcon? = null,
   onClick: () -> Unit,
 ) {
 
@@ -173,16 +173,16 @@ onClick = {}
     ) {
       leadingIcon?.let {
         Icon(
-          painter = painterResource(id = leadingIcon),
-          contentDescription = "",
+          painter = painterResource(id = leadingIcon.iconRes),
+          contentDescription = leadingIcon.contentDescription,
           modifier = Modifier.size(height.iconSize())
         )
       }
       Text(text = label, style = height.textStyle())
       trailingIcon?.let {
         Icon(
-          painter = painterResource(id = trailingIcon),
-          contentDescription = "",
+          painter = painterResource(id = trailingIcon.iconRes),
+          contentDescription = trailingIcon.contentDescription,
           modifier = Modifier.size(height.iconSize())
         )
       }

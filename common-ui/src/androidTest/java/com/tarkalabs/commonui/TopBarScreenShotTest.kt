@@ -6,9 +6,9 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.ui.test.junit4.createComposeRule
 import com.karumi.shot.ScreenshotTest
 import com.tarkalabs.uicomponents.components.TopBar
+import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Rule
 import org.junit.Test
-import com.tarkalabs.uicomponents.R
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
@@ -18,6 +18,7 @@ class TopBarScreenShotTest : ScreenshotTest {
   @get:Rule
   val composeRule = createComposeRule()
 
+  @OptIn(ExperimentalMaterial3Api::class)
   @Test
   fun renderTopAppBarTextOnly() {
     composeRule.setContent {
@@ -30,7 +31,7 @@ class TopBarScreenShotTest : ScreenshotTest {
   @Test
   fun renderTopAppBarTextWithIcon() {
     composeRule.setContent {
-      TopBar("Screenshot", navigationIcon = R.drawable.keyboard_arrow_right)
+      TopBar("Screenshot", navigationIcon = TarkaIcons.ArrowExport)
     }
 
     compareScreenshot(composeRule)
