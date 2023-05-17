@@ -9,6 +9,8 @@ import com.tarkalabs.uicomponents.components.TopBar
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Rule
 import org.junit.Test
+import com.tarkalabs.uicomponents.R
+import com.tarkalabs.uicomponents.models.TarkaIcon
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
