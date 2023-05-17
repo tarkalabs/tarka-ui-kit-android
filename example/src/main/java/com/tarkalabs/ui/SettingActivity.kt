@@ -29,6 +29,7 @@ import com.tarkalabs.uicomponents.theme.ColorUtilityOutline
 import com.tarkalabs.uicomponents.theme.Eam360Theme
 import com.tarkalabs.uicomponents.theme.EamTheme
 import com.tarkalabs.ui.R.drawable
+import com.tarkalabs.uicomponents.models.TarkaIcon
 
 @OptIn(ExperimentalMaterial3Api::class)
 class SettingActivity : ComponentActivity() {
@@ -44,7 +45,7 @@ class SettingActivity : ComponentActivity() {
   @Composable @Preview(showSystemUi = true) fun SettingScreen() {
     Scaffold(topBar = {
       TopBar(
-        title = "Settings", navigationIcon = drawable.arrow_back
+        title = "Settings", navigationIcon = TarkaIcon(drawable.arrow_back, "Back Arrow")
       )
     }, containerColor = MaterialTheme.colorScheme.surface) { paddingValues ->
       Column(modifier = Modifier.padding(paddingValues)) {
@@ -52,10 +53,10 @@ class SettingActivity : ComponentActivity() {
         VerticalSpacer(space = 24)
         SettingHeader()
         VerticalSpacer(space = 16)
-        TextRowWithDescription(
+        TextRow(
           title = "Role",
           description = "Supervisor",
-          infoIcon = drawable.keyboard_arrow_right,
+          infoIcon = TarkaIcon(drawable.keyboard_arrow_right, "Role Change"),
           modifier = Modifier.fillMaxWidth(),
           paddingValues = PaddingValues(horizontal = 24.dp)
         )
@@ -67,19 +68,25 @@ class SettingActivity : ComponentActivity() {
             title = "Transaction errors",
             badgeCount = 3,
             showRightArrow = true,
-            leadingIcon = drawable.ic_transaction,
+            leadingIcon = TarkaIcon(drawable.ic_transaction, "Transaction Errors"),
             onClick = {}
           )
           NavigationRow(
-            title = "Sync status", showRightArrow = true, leadingIcon = drawable.checkmark_starburst,
+            title = "Sync status",
+            showRightArrow = true,
+            leadingIcon = TarkaIcon(drawable.checkmark_starburst, "Sync Status"),
             onClick = {}
           )
           NavigationRow(
-            title = "Tabs configuration", showRightArrow = true, leadingIcon = drawable.tabs,
+            title = "Tabs configuration",
+            showRightArrow = true,
+            leadingIcon = TarkaIcon(drawable.tabs, "Tabs Configuration"),
             onClick = {}
           )
           NavigationRow(
-            title = "Export log", showRightArrow = true, leadingIcon = drawable.arrow_export,
+            title = "Export log",
+            showRightArrow = true,
+            leadingIcon = TarkaIcon(drawable.arrow_export, "Export Log"),
             onClick = {}
           )
         }
@@ -111,9 +118,11 @@ class SettingActivity : ComponentActivity() {
           style = Eam360Theme.typography.heading6,
           color = MaterialTheme.colorScheme.onSurface
         )
-        Text(text = "BEDFORD",
-        style = Eam360Theme.typography.body7,
-        color = ColorUtilityOutline)
+        Text(
+          text = "BEDFORD",
+          style = Eam360Theme.typography.body7,
+          color = ColorUtilityOutline
+        )
       }
       Box(modifier = Modifier.align(Alignment.TopEnd)) {
         GhostIconButton(icon = drawable.ic_refresh, contentDescription = "", onIconClick = {})
