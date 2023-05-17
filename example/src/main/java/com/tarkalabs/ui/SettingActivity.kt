@@ -24,12 +24,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.components.*
+import com.tarkalabs.uicomponents.components.GhostIconButton
+import com.tarkalabs.uicomponents.components.NavigationRow
+import com.tarkalabs.uicomponents.components.TextRow
+import com.tarkalabs.uicomponents.components.TopBar
+import com.tarkalabs.uicomponents.components.VerticalSpacer
+import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.theme.ColorUtilityOutline
 import com.tarkalabs.uicomponents.theme.Eam360Theme
 import com.tarkalabs.uicomponents.theme.EamTheme
-import com.tarkalabs.ui.R.drawable
-import com.tarkalabs.uicomponents.models.TarkaIcon
 
 @OptIn(ExperimentalMaterial3Api::class)
 class SettingActivity : ComponentActivity() {
@@ -45,7 +48,7 @@ class SettingActivity : ComponentActivity() {
   @Composable @Preview(showSystemUi = true) fun SettingScreen() {
     Scaffold(topBar = {
       TopBar(
-        title = "Settings", navigationIcon = TarkaIcon(drawable.arrow_back, "Back Arrow")
+        title = "Settings", navigationIcon = TarkaIcon(R.drawable.arrow_back, "Back Arrow")
       )
     }, containerColor = MaterialTheme.colorScheme.surface) { paddingValues ->
       Column(modifier = Modifier.padding(paddingValues)) {
@@ -56,7 +59,7 @@ class SettingActivity : ComponentActivity() {
         TextRow(
           title = "Role",
           description = "Supervisor",
-          infoIcon = TarkaIcon(drawable.keyboard_arrow_right, "Role Change"),
+          infoIcon = TarkaIcon(R.drawable.keyboard_arrow_right, "Role Change"),
           modifier = Modifier.fillMaxWidth(),
           paddingValues = PaddingValues(horizontal = 24.dp)
         )
@@ -64,31 +67,23 @@ class SettingActivity : ComponentActivity() {
         Divider()
         VerticalSpacer(space = 16)
         Column(Modifier.padding(horizontal = 16.dp)) {
-          NavigationRow(
-            title = "Transaction errors",
+          NavigationRow(title = "Transaction errors",
             badgeCount = 3,
             showRightArrow = true,
-            leadingIcon = TarkaIcon(drawable.ic_transaction, "Transaction Errors"),
-            onClick = {}
-          )
-          NavigationRow(
-            title = "Sync status",
+            leadingIcon = TarkaIcon(R.drawable.ic_transaction, "Transaction Errors"),
+            onClick = {})
+          NavigationRow(title = "Sync status",
             showRightArrow = true,
-            leadingIcon = TarkaIcon(drawable.checkmark_starburst, "Sync Status"),
-            onClick = {}
-          )
-          NavigationRow(
-            title = "Tabs configuration",
+            leadingIcon = TarkaIcon(R.drawable.checkmark_starburst, "Sync Status"),
+            onClick = {})
+          NavigationRow(title = "Tabs configuration",
             showRightArrow = true,
-            leadingIcon = TarkaIcon(drawable.tabs, "Tabs Configuration"),
-            onClick = {}
-          )
-          NavigationRow(
-            title = "Export log",
+            leadingIcon = TarkaIcon(R.drawable.tabs, "Tabs Configuration"),
+            onClick = {})
+          NavigationRow(title = "Export log",
             showRightArrow = true,
-            leadingIcon = TarkaIcon(drawable.arrow_export, "Export Log"),
-            onClick = {}
-          )
+            leadingIcon = TarkaIcon(R.drawable.arrow_export, "Export Log"),
+            onClick = {})
         }
         VerticalSpacer(space = 16)
       }
@@ -106,7 +101,7 @@ class SettingActivity : ComponentActivity() {
         verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally
       ) {
         Image(
-          painter = painterResource(id = drawable.avatar),
+          painter = painterResource(id = R.drawable.avatar),
           contentDescription = null,
           modifier = Modifier
             .clip(CircleShape)
@@ -119,13 +114,11 @@ class SettingActivity : ComponentActivity() {
           color = MaterialTheme.colorScheme.onSurface
         )
         Text(
-          text = "BEDFORD",
-          style = Eam360Theme.typography.body7,
-          color = ColorUtilityOutline
+          text = "BEDFORD", style = Eam360Theme.typography.body7, color = ColorUtilityOutline
         )
       }
       Box(modifier = Modifier.align(Alignment.TopEnd)) {
-        GhostIconButton(icon = drawable.ic_refresh, contentDescription = "", onIconClick = {})
+        GhostIconButton(icon = R.drawable.ic_refresh, contentDescription = "", onIconClick = {})
       }
     }
   }
