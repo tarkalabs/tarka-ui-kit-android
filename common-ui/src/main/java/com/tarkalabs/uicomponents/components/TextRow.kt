@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -22,16 +23,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.R.drawable
+import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.theme.Eam360Theme
 
-@Composable fun TextRowWithDescription(
+@Composable fun TextRow(
   title: String,
   description: String,
   modifier: Modifier = Modifier.fillMaxWidth(),
-  @DrawableRes iconOne: Int? = null,
-  @DrawableRes iconTwo: Int? = null,
+  iconOne: TarkaIcon? = null,
+  iconTwo: TarkaIcon? = null,
   buttonTitle: String? = null,
-  @DrawableRes infoIcon: Int? = null,
+  infoIcon: TarkaIcon? = null,
   onIconOneClick: () -> Unit = {},
   onIconTwoClick: () -> Unit = {},
   onButtonClick: () -> Unit = {},
@@ -42,7 +44,7 @@ import com.tarkalabs.uicomponents.theme.Eam360Theme
   Row(
     modifier
       .clickable { onTextRowClick() }
-      .height(40.dp)
+      .defaultMinSize(minHeight = 40.dp)
       .padding(paddingValues),
     verticalAlignment = Alignment.CenterVertically) {
     Column(Modifier.weight(1f)) {
@@ -58,8 +60,16 @@ import com.tarkalabs.uicomponents.theme.Eam360Theme
       )
     }
     Row(verticalAlignment = Alignment.CenterVertically) {
-      if (iconOne != null) GhostIconButton(icon = iconOne, onIconClick = onIconOneClick, contentDescription = "")
-      if (iconTwo != null) GhostIconButton(icon = iconTwo, onIconClick = onIconTwoClick, contentDescription = "")
+      if (iconOne != null) GhostIconButton(
+        icon = iconOne.iconRes,
+        onIconClick = onIconOneClick,
+        contentDescription = ""
+      )
+      if (iconTwo != null) GhostIconButton(
+        icon = iconTwo.iconRes,
+        onIconClick = onIconTwoClick,
+        contentDescription = ""
+      )
       if (buttonTitle != null) {
         OutlinedButton(
           modifier = Modifier
@@ -71,7 +81,7 @@ import com.tarkalabs.uicomponents.theme.Eam360Theme
       }
       if (infoIcon != null) {
         IconButton(modifier = Modifier.size(24.dp), onClick = onInfoIconClick) {
-          Icon(painter = painterResource(id = infoIcon), contentDescription = null)
+          Icon(painter = painterResource(id = infoIcon.iconRes), contentDescription = null)
         }
       }
     }
@@ -79,12 +89,12 @@ import com.tarkalabs.uicomponents.theme.Eam360Theme
 }
 
 @Preview(showBackground = true) @Composable fun TextRowWithDescriptionPreview() {
-  TextRowWithDescription(
+  TextRow(
     title = "Title",
     description = "Description",
-    infoIcon = drawable.ic_call_answer,
-    iconOne = drawable.ic_call_answer,
-    iconTwo = drawable.ic_call_answer,
+    infoIcon = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
+    iconOne = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
+    iconTwo = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
     buttonTitle = "Label"
   )
 }

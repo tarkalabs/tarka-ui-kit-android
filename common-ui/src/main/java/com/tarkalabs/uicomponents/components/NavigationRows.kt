@@ -2,7 +2,6 @@
 
 package com.tarkalabs.uicomponents.components
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -12,15 +11,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.R.drawable
 import com.tarkalabs.uicomponents.R
+import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.theme.Eam360Theme
 
-// TODO: 5/2/2023  add content description
 // TODO: 5/2/2023 use dimensions instead of hard coded things
 @OptIn(ExperimentalMaterial3Api::class) @Composable fun NavigationRow(
   title: String,
-  @DrawableRes leadingIcon: Int? = null,
+  leadingIcon: TarkaIcon? = null,
   badgeCount: Int? = null,
   showRightArrow: Boolean = false,
   modifier: Modifier = Modifier,
@@ -33,7 +31,7 @@ import com.tarkalabs.uicomponents.theme.Eam360Theme
     verticalAlignment = Alignment.CenterVertically) {
     if (leadingIcon != null) Icon(
       modifier = Modifier.size(24.dp),
-      painter = painterResource(id = leadingIcon),
+      painter = painterResource(id = leadingIcon.iconRes),
       contentDescription = null,
       tint = MaterialTheme.colorScheme.secondary
     )
@@ -67,7 +65,10 @@ import com.tarkalabs.uicomponents.theme.Eam360Theme
 
 @Preview(showBackground = true) @Composable fun NavigationRowPreview() {
   NavigationRow(
-    title = "Label", leadingIcon = drawable.ic_call_decline, badgeCount = 5, showRightArrow = true
+    title = "Label",
+    leadingIcon = TarkaIcon(androidx.core.R.drawable.ic_call_decline, "Call Decline"),
+    badgeCount = 5,
+    showRightArrow = true
   ) {
 
   }
