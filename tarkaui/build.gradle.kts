@@ -46,7 +46,7 @@ android {
   }
 }
 
-fun getLibraryArtifactId() = "uicomponents"
+fun getLibraryArtifactId() = "tarkaui"
 
 publishing {
   publications {
@@ -54,7 +54,7 @@ publishing {
       run {
         groupId = "com.tarkalabs"
         artifactId = getLibraryArtifactId()
-        version = "0.9-alpha"
+        version = "1.0-alpha"
         artifact("$buildDir/outputs/aar/${getLibraryArtifactId()}-release.aar")
       }
     }
@@ -63,7 +63,7 @@ publishing {
   repositories {
     maven {
       name = "GitHubPackages"
-      url = uri("https://maven.pkg.github.com/tarkalabs/eam360-ui-android")
+      url = uri("https://maven.pkg.github.com/tarkalabs/tarka-ui-kit-android")
       credentials {
         username = System.getenv("GITHUB_USER")
         password = System.getenv("GITHUB_TOKEN")

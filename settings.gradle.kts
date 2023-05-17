@@ -18,4 +18,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "eam360-ui-android"
 include(":example")
-include(":common-ui")
+include(":tarkaui")
