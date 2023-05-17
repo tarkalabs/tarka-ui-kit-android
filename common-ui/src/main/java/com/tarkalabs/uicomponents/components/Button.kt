@@ -1,4 +1,4 @@
-package com.tarkalabs.commonui.components
+package com.tarkalabs.uicomponents.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
@@ -29,17 +29,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.tarkalabs.commonui.components.ButtonSize.L
-import com.tarkalabs.commonui.components.ButtonSize.M
-import com.tarkalabs.commonui.components.ButtonSize.S
-import com.tarkalabs.commonui.components.ButtonSize.XS
-import com.tarkalabs.commonui.components.ButtonStyle.ERROR
-import com.tarkalabs.commonui.components.ButtonStyle.GHOST
-import com.tarkalabs.commonui.components.ButtonStyle.OUTLINE
-import com.tarkalabs.commonui.components.ButtonStyle.PRIMARY
-import com.tarkalabs.commonui.components.ButtonStyle.SECONDARY
-import com.tarkalabs.commonui.theme.Eam360Theme
-import com.tarkalabs.commonui.theme.EamTheme
+import com.tarkalabs.uicomponents.components.ButtonSize.L
+import com.tarkalabs.uicomponents.components.ButtonSize.M
+import com.tarkalabs.uicomponents.components.ButtonSize.S
+import com.tarkalabs.uicomponents.components.ButtonSize.XS
+import com.tarkalabs.uicomponents.components.ButtonStyle.ERROR
+import com.tarkalabs.uicomponents.components.ButtonStyle.GHOST
+import com.tarkalabs.uicomponents.components.ButtonStyle.OUTLINE
+import com.tarkalabs.uicomponents.components.ButtonStyle.PRIMARY
+import com.tarkalabs.uicomponents.components.ButtonStyle.SECONDARY
+import com.tarkalabs.uicomponents.theme.Eam360Theme
+import com.tarkalabs.uicomponents.theme.EamTheme
 
 enum class ButtonStyle {
   PRIMARY,
@@ -59,8 +59,7 @@ enum class ButtonSize(val size: Dp) {
     return when (this) {
       L -> 17.5.dp
       M -> 17.5.dp
-      S -> 11.dp
-      XS -> 11.dp
+      S, XS -> 11.dp
     }
   }
 
@@ -225,7 +224,12 @@ onClick = {}
         }
       }
 
-      Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp)) {
+      Row(
+        horizontalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier
+          .fillMaxWidth()
+          .padding(horizontal = 10.dp)
+      ) {
         Column(horizontalAlignment = Alignment.Start) {
           Text("Ghost Button", fontSize = 24.sp)
           Spacer(modifier = Modifier.height(20.dp))
