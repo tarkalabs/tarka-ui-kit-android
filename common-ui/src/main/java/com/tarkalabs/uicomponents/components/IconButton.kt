@@ -102,7 +102,7 @@ enum class IconButtonStyle {
       .width(12.dp)
     L, XL -> Modifier
       .size(24.dp)
-      .size(23.dp)
+      .size(24.dp)
 
   }
   when (iconButtonStyle) {
