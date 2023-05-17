@@ -2,6 +2,7 @@
 plugins {
   id("com.android.library")
   id("org.jetbrains.kotlin.android")
+  id("shot")
 }
 
 android {
@@ -12,7 +13,8 @@ android {
     minSdk = 26
     targetSdk = 33
 
-    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunner = "com.karumi.shot.ShotTestRunner"
+    testApplicationId = "com.tarkalabs.uicomponents"
     consumerProguardFiles("consumer-rules.pro")
   }
 
@@ -39,6 +41,13 @@ android {
     resources {
       excludes.add("/META-INF/{AL2.0,LGPL2.1}")
     }
+  }
+  shot {
+    tolerance =  0.1
+    applicationId = "com.tarkalabs.uicomponents"
+  }
+  testOptions {
+    emulatorSnapshots.maxSnapshotsForTestFailures = 10
   }
 }
 
