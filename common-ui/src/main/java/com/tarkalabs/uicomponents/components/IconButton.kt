@@ -27,7 +27,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.tarkalabs.uicomponents.R
 import com.tarkalabs.uicomponents.components.IconButtonSize.L
 import com.tarkalabs.uicomponents.components.IconButtonSize.M
 import com.tarkalabs.uicomponents.components.IconButtonSize.S
@@ -37,6 +36,8 @@ import com.tarkalabs.uicomponents.components.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.components.IconButtonStyle.OUTLINE
 import com.tarkalabs.uicomponents.components.IconButtonStyle.PRIMARY
 import com.tarkalabs.uicomponents.components.IconButtonStyle.SECONDARY
+import com.tarkalabs.uicomponents.models.TarkaIcon
+import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.ColorUtilityOutline
 import com.tarkalabs.uicomponents.theme.EamTheme
 
@@ -63,8 +64,7 @@ enum class IconButtonStyle {
 
 /**
  * Below function defines a reusable composable function which can be used to create an IconButton with various styles and sizes which takes several parameters such as
- * @param icon The drawable resource ID of the icon to be displayed inside the button.
- * @param contentDescription The textual description of the icon for accessibility purposes.
+ * @param icon The Tarka Icon resource ID of the icon to be displayed inside the button.
  * @param buttonSize The size of the button, which can be one of the values of the IconButtonSize enum.
  * @param iconButtonStyle The style of the button, which can be one of the values of the IconButtonStyle enum.
  * @param enabled Whether the button is clickable or not.
@@ -75,16 +75,14 @@ enum class IconButtonStyle {
  * How to use IconButton() composable function
  *
      IconButton(
-       icon = R.drawable.keyboard_arrow_right,
-       contentDescription = "",
+       icon = TarkaIcons.ChevronRight,
        buttonSize = IconButtonSize.XS,
        iconButtonStyle = IconButtonStyle.OUTLINE,
       )
  *
  */
 @Composable fun IconButton(
-  @DrawableRes icon: Int,
-  contentDescription: String,
+   icon: TarkaIcon,
   buttonSize: IconButtonSize = L,
   iconButtonStyle: IconButtonStyle = IconButtonStyle.defaultStyle,
   enabled: Boolean = true,
@@ -149,8 +147,8 @@ enum class IconButtonStyle {
   ) {
     Icon(
       modifier = iconModifier,
-      painter = painterResource(id = icon),
-      contentDescription = contentDescription
+      painter = painterResource(id = icon.iconRes),
+      contentDescription = icon.contentDescription
     )
   }
 }
@@ -168,37 +166,32 @@ enum class IconButtonStyle {
         verticalAlignment = Alignment.CenterVertically
       ) {
         IconButton(
-          icon = R.drawable.keyboard_arrow_right,
-          contentDescription = "",
+          icon = TarkaIcons.ChevronRight,
           buttonSize = XS,
           iconButtonStyle = PRIMARY
         )
         Spacer(modifier = Modifier.width(20.dp))
         IconButton(
-          icon = R.drawable.keyboard_arrow_right,
-          contentDescription = "",
+          icon = TarkaIcons.ChevronRight,
           buttonSize = S,
           iconButtonStyle = PRIMARY
         )
         Spacer(modifier = Modifier.width(20.dp))
 
         IconButton(
-          icon = R.drawable.keyboard_arrow_right,
-          contentDescription = "",
+          icon = TarkaIcons.ChevronRight,
           buttonSize = M,
           iconButtonStyle = PRIMARY
         )
         Spacer(modifier = Modifier.width(20.dp))
         IconButton(
-          icon = R.drawable.keyboard_arrow_right,
-          contentDescription = "",
+          icon = TarkaIcons.ChevronRight,
           buttonSize = L,
           iconButtonStyle = PRIMARY
         )
         Spacer(modifier = Modifier.width(20.dp))
         IconButton(
-          icon = R.drawable.keyboard_arrow_right,
-          contentDescription = "",
+          icon = TarkaIcons.ChevronRight,
           buttonSize = XL,
           iconButtonStyle = PRIMARY
         )
@@ -212,37 +205,32 @@ enum class IconButtonStyle {
         verticalAlignment = Alignment.CenterVertically
       ) {
         IconButton(
-          icon = R.drawable.keyboard_arrow_right,
-          contentDescription = "",
+          icon = TarkaIcons.ChevronRight,
           buttonSize = XS,
           iconButtonStyle = SECONDARY
         )
         Spacer(modifier = Modifier.width(20.dp))
         IconButton(
-          icon = R.drawable.keyboard_arrow_right,
-          contentDescription = "",
+          icon = TarkaIcons.ChevronRight,
           buttonSize = S,
           iconButtonStyle = SECONDARY
         )
         Spacer(modifier = Modifier.width(20.dp))
 
         IconButton(
-          icon = R.drawable.keyboard_arrow_right,
-          contentDescription = "",
+          icon = TarkaIcons.ChevronRight,
           buttonSize = M,
           iconButtonStyle = SECONDARY
         )
         Spacer(modifier = Modifier.width(20.dp))
         IconButton(
-          icon = R.drawable.keyboard_arrow_right,
-          contentDescription = "",
+          icon = TarkaIcons.ChevronRight,
           buttonSize = L,
           iconButtonStyle = SECONDARY
         )
         Spacer(modifier = Modifier.width(20.dp))
         IconButton(
-          icon = R.drawable.keyboard_arrow_right,
-          contentDescription = "",
+          icon = TarkaIcons.ChevronRight,
           buttonSize = XL,
           iconButtonStyle = SECONDARY
         )
@@ -257,37 +245,32 @@ enum class IconButtonStyle {
         verticalAlignment = Alignment.CenterVertically
       ) {
         IconButton(
-          icon = R.drawable.keyboard_arrow_right,
-          contentDescription = "",
+          icon = TarkaIcons.ChevronRight,
           buttonSize = XS,
           iconButtonStyle = GHOST
         )
         Spacer(modifier = Modifier.width(20.dp))
         IconButton(
-          icon = R.drawable.keyboard_arrow_right,
-          contentDescription = "",
+          icon = TarkaIcons.ChevronRight,
           buttonSize = S,
           iconButtonStyle = GHOST
         )
         Spacer(modifier = Modifier.width(20.dp))
 
         IconButton(
-          icon = R.drawable.keyboard_arrow_right,
-          contentDescription = "",
+          icon = TarkaIcons.ChevronRight,
           buttonSize = M,
           iconButtonStyle = GHOST
         )
         Spacer(modifier = Modifier.width(20.dp))
         IconButton(
-          icon = R.drawable.keyboard_arrow_right,
-          contentDescription = "",
+          icon = TarkaIcons.ChevronRight,
           buttonSize = L,
           iconButtonStyle = GHOST
         )
         Spacer(modifier = Modifier.width(20.dp))
         IconButton(
-          icon = R.drawable.keyboard_arrow_right,
-          contentDescription = "",
+          icon = TarkaIcons.ChevronRight,
           buttonSize = XL,
           iconButtonStyle = GHOST
         )
@@ -301,37 +284,32 @@ enum class IconButtonStyle {
         verticalAlignment = Alignment.CenterVertically
       ) {
         IconButton(
-          icon = R.drawable.keyboard_arrow_right,
-          contentDescription = "",
+          icon = TarkaIcons.ChevronRight,
           buttonSize = XS,
           iconButtonStyle = OUTLINE
         )
         Spacer(modifier = Modifier.width(20.dp))
         IconButton(
-          icon = R.drawable.keyboard_arrow_right,
-          contentDescription = "",
+          icon = TarkaIcons.ChevronRight,
           buttonSize = S,
           iconButtonStyle = OUTLINE
         )
         Spacer(modifier = Modifier.width(20.dp))
 
         IconButton(
-          icon = R.drawable.keyboard_arrow_right,
-          contentDescription = "",
+          icon = TarkaIcons.ChevronRight,
           buttonSize = M,
           iconButtonStyle = OUTLINE
         )
         Spacer(modifier = Modifier.width(20.dp))
         IconButton(
-          icon = R.drawable.keyboard_arrow_right,
-          contentDescription = "",
+          icon = TarkaIcons.ChevronRight,
           buttonSize = L,
           iconButtonStyle = OUTLINE
         )
         Spacer(modifier = Modifier.width(20.dp))
         IconButton(
-          icon = R.drawable.keyboard_arrow_right,
-          contentDescription = "",
+          icon = TarkaIcons.ChevronRight,
           buttonSize = XL,
           iconButtonStyle = OUTLINE
         )
