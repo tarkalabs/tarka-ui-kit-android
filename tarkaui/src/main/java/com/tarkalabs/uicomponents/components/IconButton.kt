@@ -64,8 +64,7 @@ enum class IconButtonStyles {
     colors = colors
   ) {
     Icon(
-      painter = painterResource(id = icon),
-      contentDescription = contentDescription
+      painter = painterResource(id = icon), contentDescription = contentDescription
     )
   }
 }
@@ -86,8 +85,7 @@ enum class IconButtonStyles {
     colors = colors
   ) {
     Icon(
-      painter = painterResource(id = icon),
-      contentDescription = contentDescription
+      painter = painterResource(id = icon), contentDescription = contentDescription
     )
   }
 }
@@ -108,8 +106,7 @@ enum class IconButtonStyles {
     colors = colors
   ) {
     Icon(
-      painter = painterResource(id = icon),
-      contentDescription = contentDescription
+      painter = painterResource(id = icon), contentDescription = contentDescription
     )
   }
 }
@@ -130,8 +127,7 @@ enum class IconButtonStyles {
       .size(buttonSize.size), colors = colors
   ) {
     Icon(
-      painter = painterResource(id = icon),
-      contentDescription = contentDescription
+      painter = painterResource(id = icon), contentDescription = contentDescription
     )
   }
 }
