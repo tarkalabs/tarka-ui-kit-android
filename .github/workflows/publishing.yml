@@ -39,8 +39,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "New version: ${github.ref_name}"
-          echo "Github username: ${GITHUB_ACTOR}"
+          echo "New version: ${{github.ref_name}}"
+          echo "Github username: ${{GITHUB_ACTOR}}"
           echo "VERSION=${{github.ref_name}}" >> $GITHUB_ENV
 
       - name: Publish to GitHub Package 🚀
