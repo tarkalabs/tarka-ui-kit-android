@@ -2,8 +2,6 @@ name: Package Publishing
 on:
     workflow_dispatch:
     push:
-      tags:
-        -'*'
 
 jobs:
 
@@ -36,14 +34,6 @@ jobs:
 
       - name: Build AAR 🔨
         run: bash ./gradlew :tarkaui:assemble
-
-      - name: Set Environment Variable 🏁
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          echo "New version: ${{github.ref_name}}"
-          echo "Github username: ${{github.actor}}"
-          echo "VERSION=${{github.ref_name}}" >> $GITHUB_ENV
 
       - name: Publish to GitHub Package 🚀
         run: bash ./gradlew :tarkaui:publish

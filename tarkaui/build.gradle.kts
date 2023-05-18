@@ -63,7 +63,7 @@ publishing {
       run {
         groupId = "com.tarkalabs"
         artifactId = getLibraryArtifactId()
-        version = System.getenv("VERSION") ?: "1.0.0"
+        version = "1.1.1-beta"
         artifact("$buildDir/outputs/aar/${getLibraryArtifactId()}-release.aar")
       }
     }
