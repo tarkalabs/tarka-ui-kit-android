@@ -14,6 +14,7 @@ import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_copy_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_delete_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_dismiss_16_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_dismiss_24_regular
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_document_error_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_document_header_arrow_down_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_document_text_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_map_24_regular
@@ -44,6 +45,7 @@ object TarkaIcons {
   val DismissFilled = TarkaIcon(ic_fluent_dismiss_16_filled, "Dismiss")
   val ArrowSyncCircle = TarkaIcon(ic_fluent_arrow_sync_circle_24_regular, "Arrow Sync Circle")
   val DocumentHeaderArrowDown = TarkaIcon(ic_fluent_document_header_arrow_down_24_regular, "Document Header Arrow Down")
+  val DocumentError = TarkaIcon(ic_fluent_document_error_24_regular, "Document Error")
   val Map = TarkaIcon(ic_fluent_map_24_regular, "Map")
   val ReOrderDots = TarkaIcon(ic_fluent_re_order_dots_vertical_24_regular, "Re order dots")
   val CheckMark = TarkaIcon(ic_fluent_checkmark_16_filled, "Check Mark")
