@@ -25,11 +25,12 @@ jobs:
       - name: Screenshot tests
         uses: reactivecircus/android-emulator-runner@v2.24.0
         with:
-          api-level: 31
+          api-level: 32
           arch: x86_64
           profile: pixel_4
           target: google_apis
           sdcard-path-or-size: 512M
+          disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
           script: ./gradlew executeScreenshotTests
       - name: Upload Screenshot Results
