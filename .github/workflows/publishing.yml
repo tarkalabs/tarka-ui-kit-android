@@ -38,10 +38,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          export NEW_VERSION=$(echo "${GITHUB_REF}" | cut -d "/" -f3)
-          echo "New version: ${NEW_VERSION}"
+          echo "New version: ${github.ref_name}"
           echo "Github username: ${GITHUB_ACTOR}"
-          echo "VERSION=${{NEW_VERSION}}" >> $GITHUB_ENV
+          echo "VERSION=${{github.ref_name}}" >> $GITHUB_ENV
 
       - name: Publish to GitHub Package 🚀
         run: bash ./gradlew :tarkaui:publish
