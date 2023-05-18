@@ -1,8 +1,12 @@
 @file:Suppress("UnstableApiUsage")
+
+import java.util.*
+
 plugins {
   id("com.android.library")
   id("org.jetbrains.kotlin.android")
   id("shot")
+  id("maven-publish")
 }
 
 android {
@@ -51,6 +55,32 @@ android {
   }
 }
 
+fun getLibraryArtifactId() = "tarkaui"
+
+publishing {
+  publications {
+    create<MavenPublication>("gpr"){
+      run {
+        groupId = "com.tarkalabs"
+        artifactId = getLibraryArtifactId()
+        version = "1.0-alpha"
+        artifact("$buildDir/outputs/aar/${getLibraryArtifactId()}-release.aar")
+      }
+    }
+  }
+
+  repositories {
+    maven {
+      name = "GitHubPackages"
+      url = uri("https://maven.pkg.github.com/tarkalabs/tarka-ui-kit-android")
+      credentials {
+        username = System.getenv("GITHUB_USER")
+        password = System.getenv("GITHUB_TOKEN")
+      }
+    }
+  }
+}
+
 dependencies {
   val composeUiVersion = "1.4.1"
   implementation("androidx.core:core-ktx:1.10.0")
@@ -68,3 +98,4 @@ dependencies {
   debugImplementation( "androidx.compose.ui:ui-tooling:$composeUiVersion")
   debugImplementation( "androidx.compose.ui:ui-test-manifest:$composeUiVersion")
 }
+
