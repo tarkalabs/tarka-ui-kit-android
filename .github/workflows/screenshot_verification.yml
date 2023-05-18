@@ -26,7 +26,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2.24.0
         with:
           api-level: 32
-          arch: x86_64
+          arch: arm64-v8a
           profile: pixel_4
           target: google_apis
           sdcard-path-or-size: 512M
