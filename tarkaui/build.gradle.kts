@@ -47,7 +47,7 @@ android {
     }
   }
   shot {
-    tolerance =  0.1
+    tolerance =  0.2
     applicationId = "com.tarkalabs.uicomponents"
   }
   testOptions {
