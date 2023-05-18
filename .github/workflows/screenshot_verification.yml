@@ -32,17 +32,10 @@ jobs:
           sdcard-path-or-size: 512M
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
-          script: ./gradlew executeScreenshotTests -Precord
+          script: ./gradlew executeScreenshotTests
       - name: Upload Screenshot Results
         if : always()
         uses: actions/upload-artifact@v2
         with:
           name: screenshots-results
           path: '**/tarkaui/build/reports/shot/debug/'
-
-      - name: Upload New Screenshots
-        if: always()
-        uses: actions/upload-artifact@v2
-        with:
-          name: screenshots
-          path: '**/tarkaui/screenshots/'
