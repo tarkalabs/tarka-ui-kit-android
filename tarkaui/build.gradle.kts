@@ -47,7 +47,7 @@ android {
     }
   }
   shot {
-    tolerance = 0.2
+    tolerance = 0.1
     applicationId = "com.tarkalabs.uicomponents"
   }
   testOptions {
@@ -63,7 +63,7 @@ publishing {
       run {
         groupId = "com.tarkalabs"
         artifactId = getLibraryArtifactId()
-        version = "1.1.1-beta"
+        version = "1.1.2-beta"
         artifact("$buildDir/outputs/aar/${getLibraryArtifactId()}-release.aar")
       }
     }
