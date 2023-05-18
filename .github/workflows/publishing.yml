@@ -2,7 +2,8 @@ name: Package Publishing
 on:
     workflow_dispatch:
     push:
-      - develop
+      branches:
+        - develop
 
 jobs:
 
