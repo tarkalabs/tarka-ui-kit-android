@@ -36,7 +36,7 @@ android {
     jvmTarget = "11"
   }
   buildFeatures {
-    compose = true
+    compose =  true
   }
   composeOptions {
     kotlinCompilerExtensionVersion = "1.4.3"
@@ -47,7 +47,7 @@ android {
     }
   }
   shot {
-    tolerance = 0.1
+    tolerance =  0.1
     applicationId = "com.tarkalabs.uicomponents"
   }
   testOptions {
@@ -59,11 +59,11 @@ fun getLibraryArtifactId() = "tarkaui"
 
 publishing {
   publications {
-    create<MavenPublication>("gpr") {
+    create<MavenPublication>("gpr"){
       run {
         groupId = "com.tarkalabs"
         artifactId = getLibraryArtifactId()
-        version = "1.1.2-beta"
+        version = "1.0-alpha"
         artifact("$buildDir/outputs/aar/${getLibraryArtifactId()}-release.aar")
       }
     }
@@ -84,20 +84,18 @@ publishing {
 dependencies {
   val composeUiVersion = "1.4.1"
   implementation("androidx.core:core-ktx:1.10.0")
-  implementation("androidx.compose.ui:ui:$composeUiVersion")
-  implementation("androidx.compose.ui:ui-tooling-preview:$composeUiVersion")
+  implementation( "androidx.compose.ui:ui:$composeUiVersion")
+  implementation( "androidx.compose.ui:ui-tooling-preview:$composeUiVersion")
   implementation("androidx.compose.material3:material3:1.1.0-rc01")
   implementation("com.microsoft.design:fluent-system-icons:1.1.201@aar")
 
-  testImplementation("junit:junit:4.13.2")
-  androidTestImplementation("androidx.test.ext:junit:1.1.5")
-  androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+  testImplementation( "junit:junit:4.13.2")
+  androidTestImplementation( "androidx.test.ext:junit:1.1.5")
+  androidTestImplementation( "androidx.test.espresso:espresso-core:3.5.1")
   androidTestImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
   androidTestImplementation("org.mockito:mockito-android:4.5.1")
-  androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeUiVersion")
-  debugImplementation("androidx.compose.ui:ui-tooling:$composeUiVersion")
-  debugImplementation("androidx.compose.ui:ui-test-manifest:$composeUiVersion")
+  androidTestImplementation( "androidx.compose.ui:ui-test-junit4:$composeUiVersion")
+  debugImplementation( "androidx.compose.ui:ui-tooling:$composeUiVersion")
+  debugImplementation( "androidx.compose.ui:ui-test-manifest:$composeUiVersion")
 }
 
-
-tasks.getByName("publish").dependsOn(tasks.getByName("assemble"))

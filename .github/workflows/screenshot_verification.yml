@@ -37,5 +37,5 @@ jobs:
         if : always()
         uses: actions/upload-artifact@v2
         with:
-          name: screenshots
+          name: screenshots-results
           path: '**/tarkaui/build/reports/shot/debug/'
