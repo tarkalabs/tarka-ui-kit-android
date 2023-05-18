@@ -1,5 +1,3 @@
-package com.tarkalabs.commonui
-
 import androidx.compose.ui.test.junit4.createComposeRule
 import com.karumi.shot.ScreenshotTest
 import com.tarkalabs.uicomponents.components.Badge
