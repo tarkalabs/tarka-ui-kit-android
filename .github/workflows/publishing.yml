@@ -2,6 +2,8 @@ name: Package Publishing
 on:
     workflow_dispatch:
     push:
+      tags:
+        -'*'
 
 jobs:
 
