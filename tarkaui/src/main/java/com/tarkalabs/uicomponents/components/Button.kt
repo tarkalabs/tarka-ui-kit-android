@@ -111,7 +111,7 @@ onClick = {}
 )
  *
  */
-@Composable fun TKButton(
+@Composable fun Button(
   label: String,
   height: ButtonSize = M,
   buttonStyle: ButtonStyle = PRIMARY,
@@ -200,25 +200,25 @@ onClick = {}
         Column {
           Text("Primary Button", fontSize = 24.sp)
           Spacer(modifier = Modifier.height(20.dp))
-          TKButton(label = "Primary ", height = M, buttonStyle = PRIMARY, onClick = {})
+          Button(label = "Primary ", height = M, buttonStyle = PRIMARY, onClick = {})
           Spacer(modifier = Modifier.height(10.dp))
-          TKButton(label = "Primary ", height = L, buttonStyle = PRIMARY, onClick = {})
+          Button(label = "Primary ", height = L, buttonStyle = PRIMARY, onClick = {})
           Spacer(modifier = Modifier.height(10.dp))
-          TKButton(label = "Primary ", height = S, buttonStyle = PRIMARY, onClick = {})
+          Button(label = "Primary ", height = S, buttonStyle = PRIMARY, onClick = {})
           Spacer(modifier = Modifier.height(10.dp))
-          TKButton(label = "Primary ", height = XS, buttonStyle = PRIMARY, onClick = {})
+          Button(label = "Primary ", height = XS, buttonStyle = PRIMARY, onClick = {})
 
         }
         Column {
           Text("Secondary Button", fontSize = 24.sp)
           Spacer(modifier = Modifier.height(20.dp))
-          TKButton(label = "Secondary ", height = M, buttonStyle = SECONDARY, onClick = {})
+          Button(label = "Secondary ", height = M, buttonStyle = SECONDARY, onClick = {})
           Spacer(modifier = Modifier.height(10.dp))
-          TKButton(label = "Secondary ", height = L, buttonStyle = SECONDARY, onClick = {})
+          Button(label = "Secondary ", height = L, buttonStyle = SECONDARY, onClick = {})
           Spacer(modifier = Modifier.height(10.dp))
-          TKButton(label = "Secondary ", height = S, buttonStyle = SECONDARY, onClick = {})
+          Button(label = "Secondary ", height = S, buttonStyle = SECONDARY, onClick = {})
           Spacer(modifier = Modifier.height(10.dp))
-          TKButton(label = "Secondary ", height = XS, buttonStyle = SECONDARY, onClick = {})
+          Button(label = "Secondary ", height = XS, buttonStyle = SECONDARY, onClick = {})
         }
       }
 
@@ -231,37 +231,37 @@ onClick = {}
         Column(horizontalAlignment = Alignment.Start) {
           Text("Ghost Button", fontSize = 24.sp)
           Spacer(modifier = Modifier.height(20.dp))
-          TKButton(label = "Ghost Button", height = M, buttonStyle = GHOST, onClick = {})
+          Button(label = "Ghost Button", height = M, buttonStyle = GHOST, onClick = {})
           Spacer(modifier = Modifier.height(10.dp))
-          TKButton(label = "Ghost Button", height = L, buttonStyle = GHOST, onClick = {})
+          Button(label = "Ghost Button", height = L, buttonStyle = GHOST, onClick = {})
           Spacer(modifier = Modifier.height(10.dp))
-          TKButton(label = "Ghost Button", height = S, buttonStyle = GHOST, onClick = {})
+          Button(label = "Ghost Button", height = S, buttonStyle = GHOST, onClick = {})
           Spacer(modifier = Modifier.height(10.dp))
-          TKButton(label = "Ghost Button", height = XS, buttonStyle = GHOST, onClick = {})
+          Button(label = "Ghost Button", height = XS, buttonStyle = GHOST, onClick = {})
         }
 
         Column {
           Text("Error Button", fontSize = 24.sp)
           Spacer(modifier = Modifier.height(20.dp))
-          TKButton(label = "Error Button", height = M, buttonStyle = ERROR, onClick = {})
+          Button(label = "Error Button", height = M, buttonStyle = ERROR, onClick = {})
           Spacer(modifier = Modifier.height(10.dp))
-          TKButton(label = "Error Button", height = L, buttonStyle = ERROR, onClick = {})
+          Button(label = "Error Button", height = L, buttonStyle = ERROR, onClick = {})
           Spacer(modifier = Modifier.height(10.dp))
-          TKButton(label = "Error Button", height = S, buttonStyle = ERROR, onClick = {})
+          Button(label = "Error Button", height = S, buttonStyle = ERROR, onClick = {})
           Spacer(modifier = Modifier.height(10.dp))
-          TKButton(label = "Error Button", height = XS, buttonStyle = ERROR, onClick = {})
+          Button(label = "Error Button", height = XS, buttonStyle = ERROR, onClick = {})
 
         }
       }
       Text("Outline Button", fontSize = 30.sp)
       Spacer(modifier = Modifier.height(20.dp))
-      TKButton(label = "Outline Button", height = M, buttonStyle = OUTLINE, onClick = {})
+      Button(label = "Outline Button", height = M, buttonStyle = OUTLINE, onClick = {})
       Spacer(modifier = Modifier.height(10.dp))
-      TKButton(label = "Outline Button", height = L, buttonStyle = OUTLINE, onClick = {})
+      Button(label = "Outline Button", height = L, buttonStyle = OUTLINE, onClick = {})
       Spacer(modifier = Modifier.height(10.dp))
-      TKButton(label = "Outline Button", height = S, buttonStyle = OUTLINE, onClick = {})
+      Button(label = "Outline Button", height = S, buttonStyle = OUTLINE, onClick = {})
       Spacer(modifier = Modifier.height(10.dp))
-      TKButton(label = "Outline Button", height = XS, buttonStyle = OUTLINE, onClick = {})
+      Button(label = "Outline Button", height = XS, buttonStyle = OUTLINE, onClick = {})
     }
   }
 }
