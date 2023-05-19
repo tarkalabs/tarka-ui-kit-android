@@ -1,6 +1,5 @@
 package com.tarkalabs.uicomponents.components
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -60,15 +59,16 @@ import com.tarkalabs.uicomponents.theme.Eam360Theme
       )
     }
     Row(verticalAlignment = Alignment.CenterVertically) {
-      if (iconOne != null) GhostIconButton(
-        icon = iconOne.iconRes,
+      if (iconOne != null) IconButton(
+        icon = iconOne,
         onIconClick = onIconOneClick,
-        contentDescription = ""
+        iconButtonStyle = IconButtonStyle.GHOST,
       )
-      if (iconTwo != null) GhostIconButton(
-        icon = iconTwo.iconRes,
+      if (iconTwo != null) IconButton(
+        icon = iconTwo,
         onIconClick = onIconTwoClick,
-        contentDescription = ""
+        iconButtonStyle = IconButtonStyle.GHOST
+
       )
       if (buttonTitle != null) {
         OutlinedButton(
