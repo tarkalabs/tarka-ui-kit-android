@@ -11,8 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.R
 import com.tarkalabs.uicomponents.models.TarkaIcon
+import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.Eam360Theme
 
 // TODO: 5/2/2023 use dimensions instead of hard coded things
@@ -57,7 +57,8 @@ import com.tarkalabs.uicomponents.theme.Eam360Theme
     }
     if (showRightArrow) {
       Icon(
-        painter = painterResource(id = R.drawable.keyboard_arrow_right), contentDescription = null
+        painter = painterResource(id = TarkaIcons.ChevronRight.iconRes),
+        contentDescription = TarkaIcons.ChevronRight.contentDescription
       )
     }
   }
