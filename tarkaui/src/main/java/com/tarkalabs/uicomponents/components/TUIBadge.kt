@@ -1,15 +1,11 @@
 package com.tarkalabs.uicomponents.components
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -25,7 +21,16 @@ enum class BadgeSize(val size: Dp) {
   L(24.dp)
 }
 
-@OptIn(ExperimentalMaterial3Api::class) @Composable fun Badge(
+/**
+ * Below TUIBadge() defines a reusable composable function which can be used to create an Badge with various sizes which takes couple of  parameters
+ * @param count The Count to be displayed on the badge.
+ * @param badgeSize The height size of the badge. Default is [BadgeSize.M].
+ *
+ * How to use TKButton() composable function
+ *    TUIBadge(count = 3,badgeSize = M)
+ *
+ */
+@OptIn(ExperimentalMaterial3Api::class) @Composable fun TUIBadge(
   count: Int? = null, badgeSize: BadgeSize = M
 ) {
   val padding = when (badgeSize) {
@@ -34,12 +39,8 @@ enum class BadgeSize(val size: Dp) {
     L -> 8.dp
   }
   val textStyle = when (badgeSize) {
-    S, M -> {
-      Eam360Theme.typography.button8
-    }
-    L -> {
-      Eam360Theme.typography.button7
-    }
+    S, M -> Eam360Theme.typography.button8
+    L -> Eam360Theme.typography.button7
   }
   androidx.compose.material3.Badge(
     containerColor = MaterialTheme.colorScheme.error,
@@ -59,16 +60,5 @@ enum class BadgeSize(val size: Dp) {
 }
 
 @Preview(showBackground = true) @Composable fun BadgePreview() {
-  Column(
-    horizontalAlignment = Alignment.CenterHorizontally,
-    verticalArrangement = Arrangement.SpaceEvenly
-
-  ) {
-    Spacer(modifier = Modifier.padding(2.dp))
-    Badge(badgeSize = S)
-    Spacer(modifier = Modifier.padding(2.dp))
-    Badge(count = 4, badgeSize = M)
-    Spacer(modifier = Modifier.padding(2.dp))
-    Badge(count = 444, badgeSize = L)
-  }
+  TUIBadge(count = 4440440, badgeSize = M)
 }

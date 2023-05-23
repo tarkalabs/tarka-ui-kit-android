@@ -1,7 +1,12 @@
 @file:Suppress("UnstableApiUsage")
+
+import java.util.*
+
 plugins {
   id("com.android.library")
   id("org.jetbrains.kotlin.android")
+  id("shot")
+  id("maven-publish")
 }
 
 android {
@@ -12,7 +17,8 @@ android {
     minSdk = 26
     targetSdk = 33
 
-    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunner = "com.karumi.shot.ShotTestRunner"
+    testApplicationId = "com.tarkalabs.uicomponents"
     consumerProguardFiles("consumer-rules.pro")
   }
 
@@ -40,6 +46,39 @@ android {
       excludes.add("/META-INF/{AL2.0,LGPL2.1}")
     }
   }
+  shot {
+    tolerance =  0.1
+    applicationId = "com.tarkalabs.uicomponents"
+  }
+  testOptions {
+    emulatorSnapshots.maxSnapshotsForTestFailures = 10
+  }
+}
+
+fun getLibraryArtifactId() = "tarkaui"
+
+publishing {
+  publications {
+    create<MavenPublication>("gpr"){
+      run {
+        groupId = "com.tarkalabs"
+        artifactId = getLibraryArtifactId()
+        version = "0.1-alpha"
+        artifact("$buildDir/outputs/aar/${getLibraryArtifactId()}-release.aar")
+      }
+    }
+  }
+
+  repositories {
+    maven {
+      name = "GitHubPackages"
+      url = uri("https://maven.pkg.github.com/tarkalabs/tarka-ui-kit-android")
+      credentials {
+        username = System.getenv("GITHUB_USER")
+        password = System.getenv("GITHUB_TOKEN")
+      }
+    }
+  }
 }
 
 dependencies {
@@ -47,7 +86,8 @@ dependencies {
   implementation("androidx.core:core-ktx:1.10.0")
   implementation( "androidx.compose.ui:ui:$composeUiVersion")
   implementation( "androidx.compose.ui:ui-tooling-preview:$composeUiVersion")
-  implementation ("androidx.compose.material3:material3:1.1.0-rc01")
+  implementation("androidx.compose.material3:material3:1.1.0-rc01")
+  api("com.microsoft.design:fluent-system-icons:1.1.201@aar")
 
   testImplementation( "junit:junit:4.13.2")
   androidTestImplementation( "androidx.test.ext:junit:1.1.5")
@@ -58,3 +98,4 @@ dependencies {
   debugImplementation( "androidx.compose.ui:ui-tooling:$composeUiVersion")
   debugImplementation( "androidx.compose.ui:ui-test-manifest:$composeUiVersion")
 }
+

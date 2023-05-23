@@ -16,3 +16,8 @@
 local.properties
 /common-ui/build
 /sample/build
+.idea/.name
+.idea/compiler.xml
+.idea/deploymentTargetDropDown.xml
+.idea/gradle.xml
+.idea/misc.xml

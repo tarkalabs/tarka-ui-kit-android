@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.components.FloatingActionButtonSize.L
 import com.tarkalabs.uicomponents.components.FloatingActionButtonSize.R
 import com.tarkalabs.uicomponents.components.FloatingActionButtonSize.S
+import com.tarkalabs.uicomponents.models.TarkaIcon
 
 enum class FloatingActionButtonSize(val size: Dp) {
   S(40.dp),
@@ -27,10 +28,20 @@ enum class FloatingActionButtonSize(val size: Dp) {
   L(96.dp)
 }
 
-@Composable fun FloatingActionButton(
+/**
+ * Below TUIFloatingActionButton() defines a reusable composable function which can be used to create an FAB with various styles and sizes which takes several parameters such as
+ * @param fabSize The size of the FAB. Default is [FloatingActionButtonSize.M].
+ * @param icon The icon of the button. It should be TarkIcon
+ * @param onClick The callback function to be executed when the button is clicked.
+ *
+ * How to use TUIFloatingActionButton() composable function
+ *
+ * TUIFloatingActionButton(fabSize = S, icon = TarkaIcons.ChevronRight, onClick = {})
+ *
+ */
+@Composable fun TUIFloatingActionButton(
   fabSize: FloatingActionButtonSize = S,
-  @DrawableRes icon: Int,
-  contentDescription: String,
+  icon: TarkaIcon,
   onClick: () -> Unit
 ) {
   val iconSize = when (fabSize) {
@@ -45,8 +56,8 @@ enum class FloatingActionButtonSize(val size: Dp) {
   ) {
     Icon(
       modifier = Modifier.defaultMinSize(iconSize, iconSize),
-      painter = painterResource(id = icon),
-      contentDescription = contentDescription
+      painter = painterResource(id = icon.iconRes),
+      contentDescription = icon.contentDescription
     )
   }
 }
@@ -56,22 +67,21 @@ enum class FloatingActionButtonSize(val size: Dp) {
   Column(
     horizontalAlignment = Alignment.CenterHorizontally,
     verticalArrangement = Arrangement.SpaceEvenly
-
   ) {
-    FloatingActionButton(
-      L, com.tarkalabs.uicomponents.R.drawable.keyboard_arrow_right, "Large FAB"
+    TUIFloatingActionButton(
+      L, TarkaIcon(com.tarkalabs.uicomponents.R.drawable.keyboard_arrow_right, "Large FAB")
     ) {
 
     }
     Spacer(modifier = Modifier.padding(5.dp))
-    FloatingActionButton(
-      R, com.tarkalabs.uicomponents.R.drawable.keyboard_arrow_right, "Regular FAB"
+    TUIFloatingActionButton(
+      R, TarkaIcon(com.tarkalabs.uicomponents.R.drawable.keyboard_arrow_right, "Regular FAB")
     ) {
 
     }
     Spacer(modifier = Modifier.padding(5.dp))
-    FloatingActionButton(
-      S, com.tarkalabs.uicomponents.R.drawable.keyboard_arrow_right, "Small FAB"
+    TUIFloatingActionButton(
+      S, TarkaIcon(com.tarkalabs.uicomponents.R.drawable.keyboard_arrow_right, "Small FAB")
     ) {
 
     }

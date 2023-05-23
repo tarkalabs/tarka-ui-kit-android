@@ -1,4 +1,7 @@
 buildscript {
+  dependencies {
+    classpath("com.karumi:shot:5.13.0")
+  }
 }
 
 plugins {
