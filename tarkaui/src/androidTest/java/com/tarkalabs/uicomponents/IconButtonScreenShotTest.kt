@@ -5,7 +5,7 @@ package com.tarkalabs.commonui
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.ui.test.junit4.createComposeRule
 import com.karumi.shot.ScreenshotTest
-import com.tarkalabs.uicomponents.components.IconButton
+import com.tarkalabs.uicomponents.components.TUIIconButton
 import com.tarkalabs.uicomponents.components.IconButtonSize
 import com.tarkalabs.uicomponents.components.IconButtonStyle
 import com.tarkalabs.uicomponents.models.TarkaIcons
@@ -23,7 +23,7 @@ class IconButtonScreenShotTest : ScreenshotTest {
   @Test
   fun primaryIconButton() {
     composeRule.setContent {
-      IconButton(
+      TUIIconButton(
         icon = TarkaIcons.ChevronRight,
         buttonSize = IconButtonSize.XS,
         iconButtonStyle = IconButtonStyle.PRIMARY,
@@ -36,7 +36,7 @@ class IconButtonScreenShotTest : ScreenshotTest {
   @Test
   fun secondaryIconButton() {
     composeRule.setContent {
-      IconButton(
+      TUIIconButton(
         icon = TarkaIcons.ChevronRight,
         buttonSize = IconButtonSize.XS,
         iconButtonStyle = IconButtonStyle.SECONDARY,
@@ -50,7 +50,7 @@ class IconButtonScreenShotTest : ScreenshotTest {
   @Test
   fun ghostIconButton() {
     composeRule.setContent {
-      IconButton(
+      TUIIconButton(
         icon = TarkaIcons.ChevronRight,
         buttonSize = IconButtonSize.XS,
         iconButtonStyle = IconButtonStyle.GHOST,
@@ -64,7 +64,7 @@ class IconButtonScreenShotTest : ScreenshotTest {
   @Test
   fun outlineIconButton() {
     composeRule.setContent {
-      IconButton(
+      TUIIconButton(
         icon = TarkaIcons.ChevronRight,
         buttonSize = IconButtonSize.XS,
         iconButtonStyle = IconButtonStyle.OUTLINE,

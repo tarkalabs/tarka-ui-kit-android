@@ -1,6 +1,5 @@
 package com.tarkalabs.uicomponents.components
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -26,7 +25,7 @@ import androidx.core.R.drawable
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.theme.Eam360Theme
 
-@Composable fun TextRow(
+@Composable fun TUITextRow(
   title: String,
   description: String,
   modifier: Modifier = Modifier.fillMaxWidth(),
@@ -89,7 +88,7 @@ import com.tarkalabs.uicomponents.theme.Eam360Theme
 }
 
 @Preview(showBackground = true) @Composable fun TextRowWithDescriptionPreview() {
-  TextRow(
+  TUITextRow(
     title = "Title",
     description = "Description",
     infoIcon = TarkaIcon(drawable.ic_call_answer, "Call Answer"),

@@ -1,6 +1,6 @@
 import androidx.compose.ui.test.junit4.createComposeRule
 import com.karumi.shot.ScreenshotTest
-import com.tarkalabs.uicomponents.components.Badge
+import com.tarkalabs.uicomponents.components.TUIBadge
 import com.tarkalabs.uicomponents.components.BadgeSize.M
 import com.tarkalabs.uicomponents.components.BadgeSize.S
 import org.junit.Rule
@@ -15,14 +15,14 @@ class BadgeScreenShotTest : ScreenshotTest {
 
   @Test fun test_badge_with_count() {
     composeRule.setContent {
-      Badge(count = 2, badgeSize = M)
+      TUIBadge(count = 2, badgeSize = M)
     }
     compareScreenshot(composeRule)
   }
 
   @Test fun test_badge_with_out_count() {
     composeRule.setContent {
-      Badge(badgeSize = S)
+      TUIBadge(badgeSize = S)
     }
     compareScreenshot(composeRule)
   }

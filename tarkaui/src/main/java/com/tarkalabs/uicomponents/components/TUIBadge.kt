@@ -21,7 +21,16 @@ enum class BadgeSize(val size: Dp) {
   L(24.dp)
 }
 
-@OptIn(ExperimentalMaterial3Api::class) @Composable fun Badge(
+/**
+ * Below TUIBadge() defines a reusable composable function which can be used to create an Badge with various sizes which takes couple of  parameters
+ * @param count The Count to be displayed on the badge.
+ * @param badgeSize The height size of the badge. Default is [BadgeSize.M].
+ *
+ * How to use TKButton() composable function
+ *    TUIBadge(count = 3,badgeSize = M)
+ *
+ */
+@OptIn(ExperimentalMaterial3Api::class) @Composable fun TUIBadge(
   count: Int? = null, badgeSize: BadgeSize = M
 ) {
   val padding = when (badgeSize) {
@@ -51,5 +60,5 @@ enum class BadgeSize(val size: Dp) {
 }
 
 @Preview(showBackground = true) @Composable fun BadgePreview() {
-  Badge(count = 4440440, badgeSize = M)
+  TUIBadge(count = 4440440, badgeSize = M)
 }

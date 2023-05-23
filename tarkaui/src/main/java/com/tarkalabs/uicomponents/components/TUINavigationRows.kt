@@ -16,7 +16,7 @@ import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.Eam360Theme
 
 // TODO: 5/2/2023 use dimensions instead of hard coded things
-@OptIn(ExperimentalMaterial3Api::class) @Composable fun NavigationRow(
+@OptIn(ExperimentalMaterial3Api::class) @Composable fun TUINavigationRow(
   title: String,
   leadingIcon: TarkaIcon? = null,
   badgeCount: Int? = null,
@@ -65,7 +65,7 @@ import com.tarkalabs.uicomponents.theme.Eam360Theme
 }
 
 @Preview(showBackground = true) @Composable fun NavigationRowPreview() {
-  NavigationRow(
+  TUINavigationRow(
     title = "Label",
     leadingIcon = TarkaIcon(androidx.core.R.drawable.ic_call_decline, "Call Decline"),
     badgeCount = 5,
