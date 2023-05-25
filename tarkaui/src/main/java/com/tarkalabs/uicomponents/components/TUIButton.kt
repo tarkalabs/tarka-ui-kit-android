@@ -102,7 +102,7 @@ enum class ButtonSize(val size: Dp) {
  *
  * How to use TKButton() composable function
  *
-TKButton(
+TUIButton(
 label = "Primary Button",
 height = M,
 buttonStyle = PRIMARY,
