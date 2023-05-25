@@ -13,7 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
-import com.tarkalabs.uicomponents.theme.Eam360Theme
+import com.tarkalabs.uicomponents.theme.TUITheme
 
 // TODO: 5/2/2023 use dimensions instead of hard coded things
 @OptIn(ExperimentalMaterial3Api::class) @Composable fun TUINavigationRow(
@@ -40,7 +40,7 @@ import com.tarkalabs.uicomponents.theme.Eam360Theme
       modifier = Modifier
         .weight(1f)
         .padding(horizontal = 20.dp),
-      style = Eam360Theme.typography.heading7,
+      style = TUITheme.typography.heading7,
       color = MaterialTheme.colorScheme.onSurface
     )
     if (badgeCount != null) Badge(
@@ -51,7 +51,7 @@ import com.tarkalabs.uicomponents.theme.Eam360Theme
     ) {
       Text(
         text = badgeCount.toString(),
-        style = Eam360Theme.typography.button8,
+        style = TUITheme.typography.button8,
         color = MaterialTheme.colorScheme.onTertiary,
       )
     }
@@ -64,7 +64,7 @@ import com.tarkalabs.uicomponents.theme.Eam360Theme
   }
 }
 
-@Preview(showBackground = true) @Composable fun NavigationRowPreview() {
+@Preview(showBackground = true) @Composable fun TUINavigationRowPreview() {
   TUINavigationRow(
     title = "Label",
     leadingIcon = TarkaIcon(androidx.core.R.drawable.ic_call_decline, "Call Decline"),

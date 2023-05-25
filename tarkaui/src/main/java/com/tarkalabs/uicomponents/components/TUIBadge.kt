@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.components.BadgeSize.L
 import com.tarkalabs.uicomponents.components.BadgeSize.M
 import com.tarkalabs.uicomponents.components.BadgeSize.S
-import com.tarkalabs.uicomponents.theme.Eam360Theme
+import com.tarkalabs.uicomponents.theme.TUITheme
 
 enum class BadgeSize(val size: Dp) {
   S(12.dp),
@@ -39,8 +39,8 @@ enum class BadgeSize(val size: Dp) {
     L -> 8.dp
   }
   val textStyle = when (badgeSize) {
-    S, M -> Eam360Theme.typography.button8
-    L -> Eam360Theme.typography.button7
+    S, M -> TUITheme.typography.button8
+    L -> TUITheme.typography.button7
   }
   androidx.compose.material3.Badge(
     containerColor = MaterialTheme.colorScheme.error,

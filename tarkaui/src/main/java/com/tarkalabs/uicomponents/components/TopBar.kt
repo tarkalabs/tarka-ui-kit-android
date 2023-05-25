@@ -18,7 +18,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.theme.Eam360Theme
+import com.tarkalabs.uicomponents.theme.TUITheme
 
 @OptIn(ExperimentalMaterial3Api::class) @Composable fun TopBar(
   title: String,
@@ -46,7 +46,7 @@ import com.tarkalabs.uicomponents.theme.Eam360Theme
     title = {
       Text(
         text = title,
-        style = Eam360Theme.typography.heading5,
+        style = TUITheme.typography.heading5,
         color = MaterialTheme.colorScheme.onSurface
       )
     },

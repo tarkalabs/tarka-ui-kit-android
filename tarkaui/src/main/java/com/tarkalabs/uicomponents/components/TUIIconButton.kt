@@ -38,7 +38,7 @@ import com.tarkalabs.uicomponents.components.IconButtonStyle.SECONDARY
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.ColorUtilityOutline
-import com.tarkalabs.uicomponents.theme.EamTheme
+import com.tarkalabs.uicomponents.theme.TUITheme
 
 //  Created by Nilesh Rathod on 12/05/23.
 
@@ -152,8 +152,8 @@ enum class IconButtonStyle {
   }
 }
 
-@Preview(showSystemUi = true) @Composable fun DefaultIconButtonPreview() {
-  EamTheme {
+@Preview(showSystemUi = true) @Composable fun TUIIconButtonPreview() {
+  TUITheme {
     Column(
       horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center
     ) {

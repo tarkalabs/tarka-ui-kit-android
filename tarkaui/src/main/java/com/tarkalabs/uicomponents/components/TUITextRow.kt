@@ -23,7 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.R.drawable
 import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.theme.Eam360Theme
+import com.tarkalabs.uicomponents.theme.TUITheme
 
 @Composable fun TUITextRow(
   title: String,
@@ -49,22 +49,22 @@ import com.tarkalabs.uicomponents.theme.Eam360Theme
     Column(Modifier.weight(1f)) {
       Text(
         text = title,
-        style = Eam360Theme.typography.body8,
+        style = TUITheme.typography.body8,
         color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
       )
       Text(
         text = description,
-        style = Eam360Theme.typography.body7,
+        style = TUITheme.typography.body7,
         color = MaterialTheme.colorScheme.onSurface
       )
     }
     Row(verticalAlignment = Alignment.CenterVertically) {
-      if (iconOne != null) IconButton(
+      if (iconOne != null) TUIIconButton(
         icon = iconOne,
         onIconClick = onIconOneClick,
         iconButtonStyle = IconButtonStyle.GHOST,
       )
-      if (iconTwo != null) IconButton(
+      if (iconTwo != null) TUIIconButton(
         icon = iconTwo,
         onIconClick = onIconTwoClick,
         iconButtonStyle = IconButtonStyle.GHOST
@@ -88,7 +88,7 @@ import com.tarkalabs.uicomponents.theme.Eam360Theme
   }
 }
 
-@Preview(showBackground = true) @Composable fun TextRowWithDescriptionPreview() {
+@Preview(showBackground = true) @Composable fun TUITextRowPreview() {
   TUITextRow(
     title = "Title",
     description = "Description",

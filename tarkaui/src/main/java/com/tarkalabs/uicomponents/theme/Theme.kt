@@ -49,7 +49,7 @@ private val LightColorPalette = lightColorScheme(
   onSurface = LightColorOnSurface
   )
 
-@Composable fun EamTheme(
+@Composable fun TUITheme(
   darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit,
 ) {
   val colors = if (darkTheme) DarkColorPalette else LightColorPalette
@@ -64,7 +64,7 @@ private val LightColorPalette = lightColorScheme(
 }
 
 
-object Eam360Theme {
+object TUITheme {
   val typography: ExtendedTypography
     @Composable
     get() = LocalExtendedTypography.current

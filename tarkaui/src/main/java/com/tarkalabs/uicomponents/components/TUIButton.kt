@@ -36,8 +36,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.theme.Eam360Theme
-import com.tarkalabs.uicomponents.theme.EamTheme
+import com.tarkalabs.uicomponents.theme.TUITheme
 
 enum class ButtonStyle {
   PRIMARY,
@@ -85,10 +84,10 @@ enum class ButtonSize(val size: Dp) {
   }
 
   @Composable fun textStyle() = when (this) {
-    L -> Eam360Theme.typography.button6
-    M -> Eam360Theme.typography.button6
-    S -> Eam360Theme.typography.button7
-    XS -> Eam360Theme.typography.button8
+    L -> TUITheme.typography.button6
+    M -> TUITheme.typography.button6
+    S -> TUITheme.typography.button7
+    XS -> TUITheme.typography.button8
   }
 }
 
@@ -189,7 +188,7 @@ onClick = {}
 }
 
 @Composable @Preview(showBackground = true, showSystemUi = true) fun PreviewPrimaryButton() {
-  EamTheme {
+  TUITheme {
     Column(
       horizontalAlignment = Alignment.CenterHorizontally,
       modifier = Modifier
