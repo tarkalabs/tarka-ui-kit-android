@@ -18,7 +18,7 @@ class NavigationRowTest {
   private val BADGE_TAG = "BADGE_TAG"
   private val ROW_TAG = "ROW_TAG"
 
-  @Test fun navigationRowVisibilityTest() {
+  @Test fun visibilityTest() {
 
     composable.setContent {
       TUINavigationRow(
@@ -34,7 +34,7 @@ class NavigationRowTest {
     // composable.onNodeWithTag(BADGE_TAG).assertIsDisplayed()
   }
 
-  @Test fun checkClickEvent(){
+  @Test fun clickEventTest(){
     val onClick: () -> Unit = mock()
 
     composable.setContent {

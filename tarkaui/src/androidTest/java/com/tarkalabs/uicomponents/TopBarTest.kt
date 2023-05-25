@@ -22,7 +22,7 @@ class TopBarTest {
   private val MENU_TWO_ICON_TAG = "MENU_TWO_ICON_TAG"
   private val MENU_THREE_ICON_TAG = "MENU_THREE_ICON_TAG"
 
-  @OptIn(ExperimentalMaterial3Api::class) @Test fun topBarTitleDisplayed() {
+  @OptIn(ExperimentalMaterial3Api::class) @Test fun visibilityTest() {
     composeTestRule.setContent {
       TopBar(
         title = "title",
@@ -62,7 +62,7 @@ class TopBarTest {
     composeTestRule.onNodeWithTag(SEARCH_ICON_TAG).assertIsDisplayed()
   }
 
-  @OptIn(ExperimentalMaterial3Api::class) @Test fun topBarClickEventTest() {
+  @OptIn(ExperimentalMaterial3Api::class) @Test fun clickEventTest() {
     val onNavigationIconClick: () -> Unit = mock()
     val onFirstMenuItemClicked: () -> Unit = mock()
     val onSecondMenuItemClicked: () -> Unit = mock()

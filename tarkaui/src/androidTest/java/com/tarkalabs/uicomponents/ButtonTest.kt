@@ -16,14 +16,14 @@ class ButtonTest {
 
   private val BUTTON_TAG = "BUTTON_TAG"
 
-  @Test fun isButtonDisplayed() {
+  @Test fun visibilityTest() {
     composable.setContent {
       TUIButton(label = "Button", onClick = { }, buttonStyle = SECONDARY, testTag = BUTTON_TAG)
     }
     composable.onNodeWithTag(BUTTON_TAG).assertIsDisplayed()
   }
 
-  @Test fun buttonClickTest() {
+  @Test fun clickEventTest() {
     val onClick: () -> Unit = mock()
 
     composable.setContent {
