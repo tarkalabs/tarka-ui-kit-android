@@ -25,6 +25,43 @@ import androidx.core.R.drawable
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.theme.TUITheme
 
+/**
+ * A composable function that represents a text row in a UI.
+ * It displays a title, a description, and optional icons, button, and info icon.
+ *
+ * @param title: The title text to be displayed in the text row.
+ * @param description: The description text to be displayed in the text row.
+ * @param modifier: The modifier to apply to the row.
+ * @param iconOne: The optional first icon to display.
+ * @param iconTwo: The optional second icon to display.
+ * @param buttonTitle: The optional title for the button.
+ * @param infoIcon: The optional info icon to display.
+ * @param onIconOneClick: The callback function when the first icon is clicked.
+ * @param onIconTwoClick: The callback function when the second icon is clicked.
+ * @param onButtonClick: The callback function when the button is clicked.
+ * @param onInfoIconClick: The callback function when the info icon is clicked.
+ * @param onTextRowClick: The callback function when the text row is clicked.
+ * @param paddingValues: The padding values to apply to the row.
+ * @param iconOneTestTag: The test tag for the first icon.
+ *
+ * The TUITextRow composable function creates a row that represents a text item in a UI.
+ * It handles click events and provides callback functions for customization. The row displays
+ * a title and a description. It can also include optional icons, a button, and an info icon.
+ * The appearance and behavior of the row can be modified using the provided modifiers and callbacks.
+ *
+ * Example usage:
+ *
+ * TUITextRow(
+ *   title = "Account",
+ *   description = "Manage your account settings",
+ *   iconOne = TarkaIcons.Settings,
+ *   onIconOneClick = { /* Handle icon one click event */ },
+ *   buttonTitle = "Edit",
+ *   onButtonClick = { /* Handle button click event */ },
+ *   onTextRowClick = { /* Handle text row click event */ }
+ * )
+ *
+ */
 @Composable fun TUITextRow(
   title: String,
   description: String,
@@ -38,7 +75,8 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   onButtonClick: () -> Unit = {},
   onInfoIconClick: () -> Unit = {},
   onTextRowClick: () -> Unit = {},
-  paddingValues: PaddingValues = PaddingValues()
+  paddingValues: PaddingValues = PaddingValues(),
+  iconOneTestTag : String = "",
 ) {
   Row(
     modifier
@@ -63,6 +101,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         icon = iconOne,
         onIconClick = onIconOneClick,
         iconButtonStyle = IconButtonStyle.GHOST,
+        testTag = iconOneTestTag
       )
       if (iconTwo != null) TUIIconButton(
         icon = iconTwo,
