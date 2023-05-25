@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -69,6 +70,7 @@ enum class IconButtonStyle {
  * @param enabled Whether the button is clickable or not.
  * @param badgeCount The count to be displayed as a badge on top of the icon.
  * @param onIconClick A callback function that is invoked when the button is clicked.
+ * @param testTag The test tag for the TUIButton.
  * The function calculates the size of the icon based on the buttonSize parameter and sets the colors of the button
  *
  * How to use IconButton() composable function
@@ -86,6 +88,7 @@ iconButtonStyle = IconButtonStyle.OUTLINE,
   iconButtonStyle: IconButtonStyle = IconButtonStyle.defaultStyle,
   enabled: Boolean = true,
   badgeCount: String? = null,
+  testTag : String = "",
   onIconClick: () -> Unit = {},
 ) {
   var iconButtonColors: IconButtonColors = IconButtonDefaults.iconButtonColors()
@@ -142,7 +145,7 @@ iconButtonStyle = IconButtonStyle.OUTLINE,
   }
 
   IconButton(
-    onClick = onIconClick, modifier = modifier, colors = iconButtonColors, enabled = enabled
+    onClick = onIconClick, modifier = modifier.testTag(testTag), colors = iconButtonColors, enabled = enabled
   ) {
     Icon(
       modifier = iconModifier,
