@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.components.BadgeSize.L
 import com.tarkalabs.uicomponents.components.BadgeSize.M
 import com.tarkalabs.uicomponents.components.BadgeSize.S
-import com.tarkalabs.uicomponents.theme.Eam360Theme
+import com.tarkalabs.uicomponents.theme.TUITheme
 
 enum class BadgeSize(val size: Dp) {
   S(12.dp),
@@ -21,7 +21,16 @@ enum class BadgeSize(val size: Dp) {
   L(24.dp)
 }
 
-@OptIn(ExperimentalMaterial3Api::class) @Composable fun Badge(
+/**
+ * Below TUIBadge() defines a reusable composable function which can be used to create an Badge with various sizes which takes couple of  parameters
+ * @param count The Count to be displayed on the badge.
+ * @param badgeSize The height size of the badge. Default is [BadgeSize.M].
+ *
+ * How to use TKButton() composable function
+ *    TUIBadge(count = 3,badgeSize = M)
+ *
+ */
+@OptIn(ExperimentalMaterial3Api::class) @Composable fun TUIBadge(
   count: Int? = null, badgeSize: BadgeSize = M
 ) {
   val padding = when (badgeSize) {
@@ -30,8 +39,8 @@ enum class BadgeSize(val size: Dp) {
     L -> 8.dp
   }
   val textStyle = when (badgeSize) {
-    S, M -> Eam360Theme.typography.button8
-    L -> Eam360Theme.typography.button7
+    S, M -> TUITheme.typography.button8
+    L -> TUITheme.typography.button7
   }
   androidx.compose.material3.Badge(
     containerColor = MaterialTheme.colorScheme.error,
@@ -51,5 +60,5 @@ enum class BadgeSize(val size: Dp) {
 }
 
 @Preview(showBackground = true) @Composable fun BadgePreview() {
-  Badge(count = 4440440, badgeSize = M)
+  TUIBadge(count = 4440440, badgeSize = M)
 }
