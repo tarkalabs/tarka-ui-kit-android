@@ -97,5 +97,11 @@ dependencies {
   androidTestImplementation( "androidx.compose.ui:ui-test-junit4:$composeUiVersion")
   debugImplementation( "androidx.compose.ui:ui-tooling:$composeUiVersion")
   debugImplementation( "androidx.compose.ui:ui-test-manifest:$composeUiVersion")
+
+  androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.4.3")
+  androidTestImplementation("org.mockito:mockito-android:4.5.1")
+  debugImplementation("androidx.compose.ui:ui-test-manifest:1.4.3")
+  debugImplementation ("androidx.compose.ui:ui-tooling:1.4.3")
+  androidTestImplementation ("androidx.test:core:1.5.0")
 }
 
