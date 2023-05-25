@@ -26,7 +26,7 @@ enum class BadgeSize(val size: Dp) {
  * Below TUIBadge() defines a reusable composable function which can be used to create an Badge with various sizes which takes couple of  parameters
  * @param count The Count to be displayed on the badge.
  * @param badgeSize The height size of the badge. Default is [BadgeSize.M].
- * @param badgeTestTag The test tag for the badge.
+ * @param badgeTestTag The test tag for the TUIBadge.
  *
  * How to use TKButton() composable function
  *    TUIBadge(count = 3,badgeSize = M)
