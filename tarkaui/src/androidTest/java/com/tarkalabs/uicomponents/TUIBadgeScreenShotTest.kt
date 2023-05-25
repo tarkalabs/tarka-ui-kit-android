@@ -1,3 +1,5 @@
+package com.tarkalabs.uicomponents
+
 import androidx.compose.ui.test.junit4.createComposeRule
 import com.karumi.shot.ScreenshotTest
 import com.tarkalabs.uicomponents.components.TUIBadge
@@ -9,7 +11,7 @@ import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
 @RunWith(JUnit4::class)
-class BadgeScreenShotTest : ScreenshotTest {
+open class TUIBadgeScreenShotTest : ScreenshotTest {
 
   @get:Rule val composeRule = createComposeRule()
 
