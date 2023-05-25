@@ -2,6 +2,7 @@
 
 package com.tarkalabs.uicomponents.components
 
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -11,8 +12,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
+import com.tarkalabs.uicomponents.icons.ChevronRight20
+import com.tarkalabs.uicomponents.icons.TarkaIcon
+import com.tarkalabs.uicomponents.icons.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 // TODO: 5/2/2023 use dimensions instead of hard coded things
@@ -55,10 +57,11 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         color = MaterialTheme.colorScheme.onTertiary,
       )
     }
-    if (showRightArrow) {
+    if (showRightArrow){
+
       Icon(
-        painter = painterResource(id = TarkaIcons.ChevronRight.iconRes),
-        contentDescription = TarkaIcons.ChevronRight.contentDescription
+        painter = painterResource(id = TarkaIcons.Regular.ChevronRight20.iconRes),
+        contentDescription = TarkaIcons.Regular.ChevronRight20.contentDescription
       )
     }
   }

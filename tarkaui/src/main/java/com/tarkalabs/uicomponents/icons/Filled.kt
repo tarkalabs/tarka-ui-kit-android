@@ -1,9 +1,9 @@
 package com.tarkalabs.uicomponents.icons
 
 import com.microsoft.fluent.mobile.icons.R
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons.Filled
-import com.tarkalabs.uicomponents.models.TarkaIcons.Regular
+import com.tarkalabs.uicomponents.icons.TarkaIcon
+import com.tarkalabs.uicomponents.icons.TarkaIcons.Filled
+
 
 val Filled.BriefcaseMedical32 : TarkaIcon get() = TarkaIcon(R.drawable.ic_fluent_briefcase_medical_32_filled, "Briefcase medical Icon")
 val Filled.ArrowTurnDownLeft48 : TarkaIcon get() = TarkaIcon(R.drawable.ic_fluent_arrow_turn_down_left_48_filled, "Arrow turn down left Icon")

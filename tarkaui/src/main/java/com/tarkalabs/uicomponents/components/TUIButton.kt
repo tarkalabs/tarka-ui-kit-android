@@ -35,7 +35,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.tarkalabs.uicomponents.models.TarkaIcon
+import com.tarkalabs.uicomponents.icons.TarkaIcon
+import com.tarkalabs.uicomponents.icons.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 enum class ButtonStyle {

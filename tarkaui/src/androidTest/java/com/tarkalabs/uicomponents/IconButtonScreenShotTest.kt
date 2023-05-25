@@ -1,6 +1,4 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
-
-package com.tarkalabs.commonui
+package com.tarkalabs.uicomponents
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -8,7 +6,8 @@ import com.karumi.shot.ScreenshotTest
 import com.tarkalabs.uicomponents.components.TUIIconButton
 import com.tarkalabs.uicomponents.components.IconButtonSize
 import com.tarkalabs.uicomponents.components.IconButtonStyle
-import com.tarkalabs.uicomponents.models.TarkaIcons
+import com.tarkalabs.uicomponents.icons.ChevronRight20
+import com.tarkalabs.uicomponents.icons.TarkaIcons
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -24,7 +23,7 @@ class IconButtonScreenShotTest : ScreenshotTest {
   fun primaryIconButton() {
     composeRule.setContent {
       TUIIconButton(
-        icon = TarkaIcons.ChevronRight,
+        icon = TarkaIcons.Regular.ChevronRight20,
         buttonSize = IconButtonSize.XS,
         iconButtonStyle = IconButtonStyle.PRIMARY,
       )
@@ -37,7 +36,7 @@ class IconButtonScreenShotTest : ScreenshotTest {
   fun secondaryIconButton() {
     composeRule.setContent {
       TUIIconButton(
-        icon = TarkaIcons.ChevronRight,
+        icon = TarkaIcons.Regular.ChevronRight20,
         buttonSize = IconButtonSize.XS,
         iconButtonStyle = IconButtonStyle.SECONDARY,
       )
@@ -51,7 +50,7 @@ class IconButtonScreenShotTest : ScreenshotTest {
   fun ghostIconButton() {
     composeRule.setContent {
       TUIIconButton(
-        icon = TarkaIcons.ChevronRight,
+        icon = TarkaIcons.Regular.ChevronRight20,
         buttonSize = IconButtonSize.XS,
         iconButtonStyle = IconButtonStyle.GHOST,
       )
@@ -65,7 +64,7 @@ class IconButtonScreenShotTest : ScreenshotTest {
   fun outlineIconButton() {
     composeRule.setContent {
       TUIIconButton(
-        icon = TarkaIcons.ChevronRight,
+        icon = TarkaIcons.Regular.ChevronRight20,
         buttonSize = IconButtonSize.XS,
         iconButtonStyle = IconButtonStyle.OUTLINE,
       )

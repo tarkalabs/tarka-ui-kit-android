@@ -1,8 +1,8 @@
 package com.tarkalabs.uicomponents.icons
 
 import com.microsoft.fluent.mobile.icons.R
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons.Regular
+import com.tarkalabs.uicomponents.icons.TarkaIcon
+import com.tarkalabs.uicomponents.icons.TarkaIcons.Regular
 
 val Regular.RotateLeft20 : TarkaIcon get() = TarkaIcon(R.drawable.ic_fluent_rotate_left_20_regular, "Rotate left Icon")
 val Regular.Window24 : TarkaIcon get() = TarkaIcon(R.drawable.ic_fluent_window_24_regular, "Window Icon")

@@ -20,7 +20,8 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.components.FloatingActionButtonSize.L
 import com.tarkalabs.uicomponents.components.FloatingActionButtonSize.R
 import com.tarkalabs.uicomponents.components.FloatingActionButtonSize.S
-import com.tarkalabs.uicomponents.models.TarkaIcon
+import com.tarkalabs.uicomponents.icons.TarkaIcon
+import com.tarkalabs.uicomponents.icons.TarkaIcons
 
 enum class FloatingActionButtonSize(val size: Dp) {
   S(40.dp),

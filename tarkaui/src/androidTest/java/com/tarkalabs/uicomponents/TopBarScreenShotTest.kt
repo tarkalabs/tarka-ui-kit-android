@@ -6,8 +6,8 @@ import com.karumi.shot.ScreenshotTest
 import com.tarkalabs.uicomponents.components.TopBar
 import org.junit.Rule
 import org.junit.Test
-import com.tarkalabs.uicomponents.R
-import com.tarkalabs.uicomponents.models.TarkaIcon
+import com.tarkalabs.uicomponents.icons.ArrowRight48
+import com.tarkalabs.uicomponents.icons.TarkaIcons
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
@@ -28,7 +28,7 @@ class TopBarScreenShotTest : ScreenshotTest {
   @Test fun renderTopAppBarTextWithIcon() {
     composeRule.setContent {
       TopBar(
-        "Screenshot", navigationIcon = TarkaIcon(R.drawable.keyboard_arrow_right, "Arrow Right")
+        "Screenshot", navigationIcon = TarkaIcons.Regular.ArrowRight48
       )
     }
 

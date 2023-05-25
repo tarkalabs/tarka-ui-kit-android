@@ -35,8 +35,9 @@ import com.tarkalabs.uicomponents.components.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.components.IconButtonStyle.OUTLINE
 import com.tarkalabs.uicomponents.components.IconButtonStyle.PRIMARY
 import com.tarkalabs.uicomponents.components.IconButtonStyle.SECONDARY
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
+import com.tarkalabs.uicomponents.icons.ChevronRight20
+import com.tarkalabs.uicomponents.icons.TarkaIcons
+import com.tarkalabs.uicomponents.icons.TarkaIcon
 import com.tarkalabs.uicomponents.theme.ColorUtilityOutline
 import com.tarkalabs.uicomponents.theme.TUITheme
 
@@ -74,7 +75,7 @@ enum class IconButtonStyle {
  * How to use IconButton() composable function
  *
 IconButton(
-icon = TarkaIcons.ChevronRight,
+icon = TarkaIcons.Filled.com.tarkalabs.uicomponents.getChevronRight16,
 buttonSize = IconButtonSize.XS,
 iconButtonStyle = IconButtonStyle.OUTLINE,
 )
@@ -165,32 +166,32 @@ iconButtonStyle = IconButtonStyle.OUTLINE,
         verticalAlignment = Alignment.CenterVertically
       ) {
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight,
+          icon = TarkaIcons.Regular.ChevronRight20,
           buttonSize = XS,
           iconButtonStyle = PRIMARY
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight,
+          icon = TarkaIcons.Regular.ChevronRight20,
           buttonSize = S,
           iconButtonStyle = PRIMARY
         )
         Spacer(modifier = Modifier.width(20.dp))
 
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight,
+          icon = TarkaIcons.Regular.ChevronRight20,
           buttonSize = M,
           iconButtonStyle = PRIMARY
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight,
+          icon = TarkaIcons.Regular.ChevronRight20,
           buttonSize = L,
           iconButtonStyle = PRIMARY
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight,
+          icon = TarkaIcons.Regular.ChevronRight20,
           buttonSize = XL,
           iconButtonStyle = PRIMARY
         )
@@ -204,32 +205,32 @@ iconButtonStyle = IconButtonStyle.OUTLINE,
         verticalAlignment = Alignment.CenterVertically
       ) {
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight,
+          icon = TarkaIcons.Regular.ChevronRight20,
           buttonSize = XS,
           iconButtonStyle = SECONDARY
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight,
+          icon = TarkaIcons.Regular.ChevronRight20,
           buttonSize = S,
           iconButtonStyle = SECONDARY
         )
         Spacer(modifier = Modifier.width(20.dp))
 
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight,
+          icon = TarkaIcons.Regular.ChevronRight20,
           buttonSize = M,
           iconButtonStyle = SECONDARY
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight,
+          icon = TarkaIcons.Regular.ChevronRight20,
           buttonSize = L,
           iconButtonStyle = SECONDARY
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight,
+          icon = TarkaIcons.Regular.ChevronRight20,
           buttonSize = XL,
           iconButtonStyle = SECONDARY
         )
@@ -244,32 +245,32 @@ iconButtonStyle = IconButtonStyle.OUTLINE,
         verticalAlignment = Alignment.CenterVertically
       ) {
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight,
+          icon = TarkaIcons.Regular.ChevronRight20,
           buttonSize = XS,
           iconButtonStyle = GHOST
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight,
+          icon = TarkaIcons.Regular.ChevronRight20,
           buttonSize = S,
           iconButtonStyle = GHOST
         )
         Spacer(modifier = Modifier.width(20.dp))
 
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight,
+          icon = TarkaIcons.Regular.ChevronRight20,
           buttonSize = M,
           iconButtonStyle = GHOST
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight,
+          icon = TarkaIcons.Regular.ChevronRight20,
           buttonSize = L,
           iconButtonStyle = GHOST
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight,
+          icon = TarkaIcons.Regular.ChevronRight20,
           buttonSize = XL,
           iconButtonStyle = GHOST
         )
@@ -283,32 +284,32 @@ iconButtonStyle = IconButtonStyle.OUTLINE,
         verticalAlignment = Alignment.CenterVertically
       ) {
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight,
+          icon = TarkaIcons.Regular.ChevronRight20,
           buttonSize = XS,
           iconButtonStyle = OUTLINE
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight,
+          icon = TarkaIcons.Regular.ChevronRight20,
           buttonSize = S,
           iconButtonStyle = OUTLINE
         )
         Spacer(modifier = Modifier.width(20.dp))
 
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight,
+          icon = TarkaIcons.Regular.ChevronRight20,
           buttonSize = M,
           iconButtonStyle = OUTLINE
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight,
+          icon = TarkaIcons.Regular.ChevronRight20,
           buttonSize = L,
           iconButtonStyle = OUTLINE
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight,
+          icon = TarkaIcons.Regular.ChevronRight20,
           buttonSize = XL,
           iconButtonStyle = OUTLINE
         )
