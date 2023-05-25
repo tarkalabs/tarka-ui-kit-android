@@ -7,6 +7,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -25,13 +26,16 @@ enum class BadgeSize(val size: Dp) {
  * Below TUIBadge() defines a reusable composable function which can be used to create an Badge with various sizes which takes couple of  parameters
  * @param count The Count to be displayed on the badge.
  * @param badgeSize The height size of the badge. Default is [BadgeSize.M].
+ * @param badgeTestTag The test tag for the badge.
  *
  * How to use TKButton() composable function
  *    TUIBadge(count = 3,badgeSize = M)
  *
  */
-@OptIn(ExperimentalMaterial3Api::class) @Composable fun TUIBadge(
-  count: Int? = null, badgeSize: BadgeSize = M
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable fun TUIBadge(count: Int? = null,
+  badgeSize: BadgeSize = M,
+  badgeTestTag : String = "",
 ) {
   val padding = when (badgeSize) {
     S -> 0.dp
@@ -48,7 +52,8 @@ enum class BadgeSize(val size: Dp) {
       .padding(padding)
       .defaultMinSize(
         minWidth = badgeSize.size, minHeight = badgeSize.size
-      )
+      ).
+      testTag(badgeTestTag)
 
   ) {
     if (count != null) Text(
