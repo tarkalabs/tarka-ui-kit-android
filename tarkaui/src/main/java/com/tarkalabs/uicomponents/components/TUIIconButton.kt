@@ -1,6 +1,5 @@
 package com.tarkalabs.uicomponents.components
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -317,26 +316,4 @@ enum class IconButtonStyle {
     }
   }
 }
-
-@Composable fun GhostIconButton(
-  @DrawableRes icon: Int,
-  contentDescription: String,
-  colors: IconButtonColors = IconButtonDefaults.iconButtonColors(),
-  buttonSize: IconButtonSize = L,
-  badgeCount: String? = null,
-  onIconClick: () -> Unit,
-) {
-  IconButton(
-    onClick = onIconClick,
-    modifier = Modifier
-      .size(buttonSize.size)
-      .clip(CircleShape),
-    colors = colors
-  ) {
-    Icon(
-      painter = painterResource(id = icon), contentDescription = contentDescription
-    )
-  }
-}
-
 
