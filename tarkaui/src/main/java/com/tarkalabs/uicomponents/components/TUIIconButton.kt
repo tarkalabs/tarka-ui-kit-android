@@ -73,15 +73,15 @@ enum class IconButtonStyle {
  *
  * How to use IconButton() composable function
  *
-     IconButton(
-       icon = TarkaIcons.ChevronRight,
-       buttonSize = IconButtonSize.XS,
-       iconButtonStyle = IconButtonStyle.OUTLINE,
-      )
+IconButton(
+icon = TarkaIcons.ChevronRight,
+buttonSize = IconButtonSize.XS,
+iconButtonStyle = IconButtonStyle.OUTLINE,
+)
  *
  */
 @Composable fun TUIIconButton(
-   icon: TarkaIcon,
+  icon: TarkaIcon,
   buttonSize: IconButtonSize = L,
   iconButtonStyle: IconButtonStyle = IconButtonStyle.defaultStyle,
   enabled: Boolean = true,
