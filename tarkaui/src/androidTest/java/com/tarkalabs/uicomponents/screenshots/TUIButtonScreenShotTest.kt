@@ -1,4 +1,4 @@
-package com.tarkalabs.uicomponents
+package com.tarkalabs.uicomponents.screenshots
 
 import TUIButton
 import ButtonSize.L

@@ -1,4 +1,4 @@
-package com.tarkalabs.uicomponents
+package com.tarkalabs.uicomponents.screenshots
 
 import androidx.compose.ui.test.junit4.createComposeRule
 import com.karumi.shot.ScreenshotTest
