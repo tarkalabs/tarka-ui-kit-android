@@ -12,11 +12,11 @@ class BadgeTest {
   @get:Rule val composeTestRule = createComposeRule()
   private val TEST_TAG = "TEST_TAG"
 
-  @Test fun visibilityTest() {
+  @Test fun badgeDisplayed() {
     composeTestRule.setContent {
       TUIBadge(
         badgeSize = L,
-        badgeTestTag = TEST_TAG,
+        TestTag = TEST_TAG,
         count = 299
       )
     }

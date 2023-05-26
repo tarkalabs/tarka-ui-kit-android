@@ -30,7 +30,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -100,7 +99,6 @@ enum class ButtonSize(val size: Dp) {
  * @param leadingIcon The drawable resource for the leading icon, if any. Default is null.
  * @param trailingIcon The drawable resource for the trailing icon, if any. Default is null.
  * @param onClick The callback function to be executed when the button is clicked.
- * @param testTag The test tag for the TUIButton.
  * How to use TKButton() composable function
  *
 TUIButton(
@@ -118,7 +116,6 @@ onClick = {}
   leadingIcon: TarkaIcon? = null,
   trailingIcon: TarkaIcon? = null,
   onClick: () -> Unit,
-  testTag : String = ""
 ) {
   val buttonColor = when (buttonStyle) {
     PRIMARY -> {
@@ -161,8 +158,7 @@ onClick = {}
     colors = buttonColor,
     modifier = Modifier
       .height(height.size)
-      .wrapContentWidth()
-      .testTag(testTag),
+      .wrapContentWidth(),
     contentPadding = height.paddingValues(leadingIcon == null, trailingIcon == null),
     border = if (buttonStyle == OUTLINE) BorderStroke(
       width = 1.dp, color = MaterialTheme.colorScheme.onSurface

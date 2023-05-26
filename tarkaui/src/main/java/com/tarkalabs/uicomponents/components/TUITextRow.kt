@@ -8,17 +8,14 @@ import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.R.drawable
@@ -76,13 +73,14 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   onInfoIconClick: () -> Unit = {},
   onTextRowClick: () -> Unit = {},
   paddingValues: PaddingValues = PaddingValues(),
-  iconOneTestTag : String = "",
+  testTag: String = ""
 ) {
   Row(
     modifier
       .clickable { onTextRowClick() }
       .defaultMinSize(minHeight = 40.dp)
-      .padding(paddingValues),
+      .padding(paddingValues)
+      .testTag(testTag),
     verticalAlignment = Alignment.CenterVertically) {
     Column(Modifier.weight(1f)) {
       Text(
@@ -101,12 +99,13 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         icon = iconOne,
         onIconClick = onIconOneClick,
         iconButtonStyle = IconButtonStyle.GHOST,
-        testTag = iconOneTestTag
+        testTag = iconOne.contentDescription
       )
       if (iconTwo != null) TUIIconButton(
         icon = iconTwo,
         onIconClick = onIconTwoClick,
-        iconButtonStyle = IconButtonStyle.GHOST
+        iconButtonStyle = IconButtonStyle.GHOST,
+        testTag = iconTwo.contentDescription
 
       )
       if (buttonTitle != null) {
@@ -119,9 +118,13 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         }
       }
       if (infoIcon != null) {
-        IconButton(modifier = Modifier.size(24.dp), onClick = onInfoIconClick) {
-          Icon(painter = painterResource(id = infoIcon.iconRes), contentDescription = null)
-        }
+        TUIIconButton(
+          icon = infoIcon,
+          onIconClick = onInfoIconClick,
+          iconButtonStyle = IconButtonStyle.GHOST,
+          testTag = infoIcon.contentDescription
+
+        )
       }
     }
   }

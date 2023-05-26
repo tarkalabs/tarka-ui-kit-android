@@ -1,7 +1,11 @@
 package com.tarkalabs.uicomponents
 
+import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onAllNodesWithTag
+import androidx.compose.ui.test.onFirst
+import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
@@ -18,23 +22,30 @@ class NavigationRowTest {
   private val BADGE_TAG = "BADGE_TAG"
   private val ROW_TAG = "ROW_TAG"
 
-  @Test fun visibilityTest() {
+  @Test fun navigationRowDisplayed() {
 
     composable.setContent {
       TUINavigationRow(
         title = "Label",
-        leadingIcon = TarkaIcons.Copy,
+        leadingIcon = TarkaIcons.CheckMark,
         badgeCount = 5,
+        showRightArrow = true,
         onClick = {},
         badgeTestTag = BADGE_TAG,
+        rowTestTag = "rowTestTag"
       )
+
     }
 
     composable.onNodeWithText("Label").assertIsDisplayed()
-    // composable.onNodeWithTag(BADGE_TAG).assertIsDisplayed()
+    composable.onNodeWithTag("rowTestTag").assertIsDisplayed()
+    composable.onAllNodesWithTag(BADGE_TAG, useUnmergedTree = true).onFirst().assertIsDisplayed()
+    composable.onNodeWithContentDescription(TarkaIcons.ChevronRight.contentDescription).assertIsDisplayed()
+    composable.onNodeWithContentDescription(TarkaIcons.CheckMark.contentDescription, useUnmergedTree = true).assertIsDisplayed()
+
   }
 
-  @Test fun clickEventTest(){
+  @Test fun navigationRowClickTriggered() {
     val onClick: () -> Unit = mock()
 
     composable.setContent {
@@ -47,10 +58,13 @@ class NavigationRowTest {
         rowTestTag = ROW_TAG
       )
     }
-
     composable.onNodeWithTag(ROW_TAG).performClick()
 
     verify(onClick).invoke()
+
+    composable.onNodeWithTag(ROW_TAG)
+      .assertHasClickAction()
+      .performClick()
 
   }
 }

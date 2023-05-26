@@ -1,5 +1,6 @@
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import com.tarkalabs.uicomponents.components.TUIIconButton
@@ -14,15 +15,16 @@ class IconButtonTest {
 
   private val ICON_BUTTON = "ICON_BUTTON"
 
-  @Test fun visibilityTest() {
+  @Test fun iconButtonDisplayed() {
     composable.setContent {
       TUIIconButton(icon = TarkaIcons.Delete, testTag = ICON_BUTTON) {
       }
     }
     composable.onNodeWithTag(ICON_BUTTON).assertIsDisplayed()
+    composable.onNodeWithContentDescription(TarkaIcons.Delete.contentDescription).assertIsDisplayed()
   }
 
-  @Test fun clickEventTest() {
+  @Test fun iconButtonClickTriggered() {
     val onClick: () -> Unit = mock()
 
     composable.setContent {

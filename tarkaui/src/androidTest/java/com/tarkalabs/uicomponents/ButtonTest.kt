@@ -4,7 +4,7 @@ import ButtonStyle.SECONDARY
 import TUIButton
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import org.junit.Rule
 import org.junit.Test
@@ -14,24 +14,23 @@ import org.mockito.kotlin.verify
 class ButtonTest {
   @get:Rule val composable = createComposeRule()
 
-  private val BUTTON_TAG = "BUTTON_TAG"
 
-  @Test fun visibilityTest() {
+  @Test fun buttonDisplayed() {
     composable.setContent {
-      TUIButton(label = "Button", onClick = { }, buttonStyle = SECONDARY, testTag = BUTTON_TAG)
+      TUIButton(label = "Button", onClick = { }, buttonStyle = SECONDARY)
     }
-    composable.onNodeWithTag(BUTTON_TAG).assertIsDisplayed()
+    composable.onNodeWithText("Button").assertIsDisplayed()
   }
 
-  @Test fun clickEventTest() {
+  @Test fun buttonClickTriggered() {
     val onClick: () -> Unit = mock()
 
     composable.setContent {
       TUIButton(
-        label = "Button", onClick = onClick, buttonStyle = SECONDARY, testTag = BUTTON_TAG
+        label = "Button", onClick = onClick, buttonStyle = SECONDARY
       )
     }
-    composable.onNodeWithTag(BUTTON_TAG).performClick()
+    composable.onNodeWithText("Button").performClick()
 
     verify(onClick).invoke()
   }

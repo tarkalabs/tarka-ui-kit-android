@@ -67,7 +67,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     if (leadingIcon != null) Icon(
       modifier = Modifier.size(24.dp),
       painter = painterResource(id = leadingIcon.iconRes),
-      contentDescription = null,
+      contentDescription = leadingIcon.contentDescription,
       tint = MaterialTheme.colorScheme.secondary
     )
     Text(
