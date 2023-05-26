@@ -15,56 +15,37 @@ import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
 @RunWith(JUnit4::class)
-class TUIIconButtonScreenShotTest : ScreenshotTest {
+class TUIIconButtonScreenShotTest : ComposeScreenshotComparator() {
 
-  @get:Rule val composeRule = createComposeRule()
-
-  @Test fun primaryIconButton() {
-    composeRule.setContent {
+  @Test fun primaryIconButton() = compareScreenshotFor {
       TUIIconButton(
         icon = TarkaIcons.ChevronRight,
         buttonSize = IconButtonSize.XS,
         iconButtonStyle = IconButtonStyle.PRIMARY,
       )
-    }
-
-    compareScreenshot(composeRule)
   }
 
-  @Test fun secondaryIconButton() {
-    composeRule.setContent {
+  @Test fun secondaryIconButton() = compareScreenshotFor {
       TUIIconButton(
         icon = TarkaIcons.ChevronRight,
         buttonSize = IconButtonSize.XS,
         iconButtonStyle = IconButtonStyle.SECONDARY,
       )
-
-    }
-
-    compareScreenshot(composeRule)
   }
 
-  @Test fun ghostIconButton() {
-    composeRule.setContent {
+  @Test fun ghostIconButton()  = compareScreenshotFor{
       TUIIconButton(
         icon = TarkaIcons.ChevronRight,
         buttonSize = IconButtonSize.XS,
         iconButtonStyle = IconButtonStyle.GHOST,
       )
-
-    }
-
-    compareScreenshot(composeRule)
   }
 
-  @Test fun outlineIconButton() {
-    composeRule.setContent {
+  @Test fun outlineIconButton() = compareScreenshotFor{
       TUIIconButton(
         icon = TarkaIcons.ChevronRight,
         buttonSize = IconButtonSize.XS,
         iconButtonStyle = IconButtonStyle.OUTLINE,
       )
-    }
-    compareScreenshot(composeRule)
   }
 }
