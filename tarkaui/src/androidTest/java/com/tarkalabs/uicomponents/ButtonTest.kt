@@ -15,19 +15,21 @@ class ButtonTest {
   @get:Rule val composable = createComposeRule()
 
 
-  @Test fun buttonDisplayed() {
+  @Test fun button_Displayed() {
     composable.setContent {
       TUIButton(label = "Button", onClick = { }, buttonStyle = SECONDARY)
     }
     composable.onNodeWithText("Button").assertIsDisplayed()
   }
 
-  @Test fun buttonClickTriggered() {
+  @Test fun button_Click_Triggered() {
     val onClick: () -> Unit = mock()
 
     composable.setContent {
       TUIButton(
-        label = "Button", onClick = onClick, buttonStyle = SECONDARY
+        label = "Button",
+        onClick = onClick,
+        buttonStyle = SECONDARY
       )
     }
     composable.onNodeWithText("Button").performClick()

@@ -19,7 +19,7 @@ import org.mockito.kotlin.verify
 class TextRowTest {
   @get:Rule val composable = createComposeRule()
 
-  @Test fun textRowDisplayed() {
+  @Test fun textRow_Elements_Displayed() {
     composable.setContent {
       TUITextRow(
         title = "Title",
@@ -30,6 +30,7 @@ class TextRowTest {
         buttonTitle = "Label",
       )
     }
+
     composable.onNodeWithText("Title").assertIsDisplayed()
     composable.onNodeWithText("Description").assertIsDisplayed()
     composable.onNodeWithText("Label").assertIsDisplayed()
@@ -40,7 +41,7 @@ class TextRowTest {
 
   }
 
-  @Test fun textRowClickTriggered() {
+  @Test fun textRow_Elements_Click_Triggered() {
     val onButtonClick: () -> Unit = mock()
 
     composable.setContent {

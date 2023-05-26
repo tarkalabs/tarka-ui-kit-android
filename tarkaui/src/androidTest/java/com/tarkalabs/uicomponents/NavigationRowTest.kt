@@ -22,7 +22,7 @@ class NavigationRowTest {
   private val BADGE_TAG = "BADGE_TAG"
   private val ROW_TAG = "ROW_TAG"
 
-  @Test fun navigationRowDisplayed() {
+  @Test fun navigationRow_Elements_Displayed() {
 
     composable.setContent {
       TUINavigationRow(
@@ -45,7 +45,7 @@ class NavigationRowTest {
 
   }
 
-  @Test fun navigationRowClickTriggered() {
+  @Test fun navigationRow_Elements_Click_Triggered() {
     val onClick: () -> Unit = mock()
 
     composable.setContent {

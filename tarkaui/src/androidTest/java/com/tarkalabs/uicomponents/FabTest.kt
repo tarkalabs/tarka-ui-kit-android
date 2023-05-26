@@ -15,7 +15,7 @@ class FabTest {
 
   private val FAB_TAG = "FAB_TAG"
 
-  @Test fun fabDisplayed() {
+  @Test fun fab_Displayed() {
     composable.setContent {
       TUIFloatingActionButton(icon = TarkaIcons.Delete, testTag = FAB_TAG) {
       }
@@ -24,7 +24,7 @@ class FabTest {
     composable.onNodeWithContentDescription(TarkaIcons.Delete.contentDescription).assertIsDisplayed()
   }
 
-  @Test fun fabClickTriggered() {
+  @Test fun fab_Click_Triggered() {
     val onClick: () -> Unit = mock()
 
     composable.setContent {
