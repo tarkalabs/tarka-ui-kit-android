@@ -27,7 +27,7 @@ import com.tarkalabs.uicomponents.theme.ColorUtilityDisabledBackground
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
- * Below TUIToggleSwitch() defines a reusable composable function which can be used to create an Button with various styles and sizes which takes several parameters such as
+ * Below TUIToggleSwitch() defines a reusable composable function which can be used to create a Switch which takes several parameters such as
  * @param state Checked status of the ToggleSwitch
  * @param enabled Enable status of the ToggleSwitch
  * @param onToggleChange() A callback function that is invoked when the toggle is clicked.
