@@ -37,7 +37,6 @@ import com.tarkalabs.uicomponents.components.IconButtonStyle.PRIMARY
 import com.tarkalabs.uicomponents.components.IconButtonStyle.SECONDARY
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
-import com.tarkalabs.uicomponents.theme.ColorUtilityOutline
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 //  Created by Nilesh Rathod on 12/05/23.
@@ -135,7 +134,7 @@ iconButtonStyle = IconButtonStyle.OUTLINE,
       )
       modifier = Modifier
         .border(
-          width = 0.5.dp, color = ColorUtilityOutline, shape = CircleShape
+          width = 0.5.dp, color = TUITheme.colors.utilityOutline, shape = CircleShape
         )
         .size(buttonSize.size)
     }

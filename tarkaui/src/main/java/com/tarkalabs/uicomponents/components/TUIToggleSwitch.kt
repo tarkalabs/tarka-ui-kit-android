@@ -21,9 +21,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.models.TarkaIcons
-import com.tarkalabs.uicomponents.theme.ColorInputBackground
-import com.tarkalabs.uicomponents.theme.ColorLight
-import com.tarkalabs.uicomponents.theme.ColorUtilityDisabledBackground
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -53,23 +50,23 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         modifier = Modifier.size(width = 40.dp, height = 24.dp)
       )
     }, colors = SwitchDefaults.colors(
-      checkedThumbColor = ColorLight,
+      checkedThumbColor = TUITheme.colors.constantLight,
       checkedTrackColor = MaterialTheme.colorScheme.primary,
       checkedIconColor = MaterialTheme.colorScheme.primary,
-      checkedBorderColor = ColorLight,
+      checkedBorderColor = TUITheme.colors.constantLight,
       uncheckedThumbColor = MaterialTheme.colorScheme.onSurface,
       uncheckedTrackColor = MaterialTheme.colorScheme.surfaceVariant,
-      uncheckedIconColor = ColorLight,
+      uncheckedIconColor = TUITheme.colors.constantLight,
       uncheckedBorderColor = Color.Transparent,
 
-      disabledCheckedThumbColor = ColorUtilityDisabledBackground.copy(alpha = 0.38f),
-      disabledCheckedTrackColor = ColorUtilityDisabledBackground.copy(alpha = 0.06f),
-      disabledCheckedIconColor = ColorInputBackground.copy(alpha = 0.85f),
+      disabledCheckedThumbColor = TUITheme.colors.utilityDisabledBackground.copy(alpha = 0.38f),
+      disabledCheckedTrackColor = TUITheme.colors.utilityDisabledBackground.copy(alpha = 0.06f),
+      disabledCheckedIconColor = TUITheme.colors.inputBackground.copy(alpha = 0.85f),
       disabledCheckedBorderColor = Color.Transparent,
-      disabledUncheckedThumbColor = ColorUtilityDisabledBackground.copy(alpha = 0.38f),
-      disabledUncheckedTrackColor = ColorUtilityDisabledBackground.copy(alpha = 0.06f),
+      disabledUncheckedThumbColor = TUITheme.colors.utilityDisabledBackground.copy(alpha = 0.38f),
+      disabledUncheckedTrackColor = TUITheme.colors.utilityDisabledBackground.copy(alpha = 0.06f),
       disabledUncheckedBorderColor = Color.Transparent,
-      disabledUncheckedIconColor = ColorInputBackground.copy(alpha = 0.85f)
+      disabledUncheckedIconColor = TUITheme.colors.inputBackground.copy(alpha = 0.85f)
     )
     )
   }
