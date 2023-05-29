@@ -21,6 +21,7 @@ import com.tarkalabs.uicomponents.components.FloatingActionButtonSize.L
 import com.tarkalabs.uicomponents.components.FloatingActionButtonSize.R
 import com.tarkalabs.uicomponents.components.FloatingActionButtonSize.S
 import com.tarkalabs.uicomponents.models.TarkaIcon
+import com.tarkalabs.uicomponents.models.TarkaIcons
 
 enum class FloatingActionButtonSize(val size: Dp) {
   S(40.dp),
@@ -40,9 +41,7 @@ enum class FloatingActionButtonSize(val size: Dp) {
  *
  */
 @Composable fun TUIFloatingActionButton(
-  fabSize: FloatingActionButtonSize = S,
-  icon: TarkaIcon,
-  onClick: () -> Unit
+  fabSize: FloatingActionButtonSize = S, icon: TarkaIcon, onClick: () -> Unit
 ) {
   val iconSize = when (fabSize) {
     S, R -> 18.dp
@@ -62,26 +61,25 @@ enum class FloatingActionButtonSize(val size: Dp) {
   }
 }
 
-@Preview(showBackground = true)
-@Composable fun FloatingActionButtonPreview() {
+@Preview(showBackground = true) @Composable fun FloatingActionButtonPreview() {
   Column(
     horizontalAlignment = Alignment.CenterHorizontally,
     verticalArrangement = Arrangement.SpaceEvenly
   ) {
     TUIFloatingActionButton(
-      L, TarkaIcon(com.tarkalabs.uicomponents.R.drawable.keyboard_arrow_right, "Large FAB")
+      L, TarkaIcons.ChevronRight
     ) {
 
     }
     Spacer(modifier = Modifier.padding(5.dp))
     TUIFloatingActionButton(
-      R, TarkaIcon(com.tarkalabs.uicomponents.R.drawable.keyboard_arrow_right, "Regular FAB")
+      R, TarkaIcons.ChevronRight
     ) {
 
     }
     Spacer(modifier = Modifier.padding(5.dp))
     TUIFloatingActionButton(
-      S, TarkaIcon(com.tarkalabs.uicomponents.R.drawable.keyboard_arrow_right, "Small FAB")
+      S, TarkaIcons.ChevronRight
     ) {
 
     }

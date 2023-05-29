@@ -20,19 +20,21 @@ val LightColorOnAltTertiary = Color(0xFF530953)
 val LightColorSuccess = Color(0xFF148F47)
 val LightColorOnSuccess = Color(0xFFF2FDF6)
 
-val LightColorError= Color(0xFFCD1D32)
-val LightColorOnError= Color(0xFFFEFBFB)
-val LightColorAltError= Color(0x1ACD1D32)
+val LightColorError = Color(0xFFCD1D32)
+val LightColorOnError = Color(0xFFFEFBFB)
+val LightColorAltError = Color(0x1ACD1D32)
 
-val LightColorWarning= Color(0xFFFFB938)
-val LightColorOnWarning= Color(0xFF241D0F)
-val LightColorAltWarning= Color(0x1ACD1D32)
+val LightColorWarning = Color(0xFFFFB938)
+val LightColorOnWarning = Color(0xFF241D0F)
+val LightColorAltWarning = Color(0x1ACD1D32)
 
-val LightColorBackground= Color(0xFFEAECF0)
-val LightColorOnBackground= Color(0xFF171B21)
+val LightColorBackground = Color(0xFFEAECF0)
+val LightColorOnBackground = Color(0xFF171B21)
 
 val LightColorSurface = Color(0xFFF9FAFB)
 val LightColorOnSurface = Color(0xFF1A1B1F)
 
 val ColorUtilityOutline = Color(0xFF878B92)
-
+val ColorLight = Color(0xFFFFFFFF)
+val ColorUtilityDisabledBackground = Color(0XFF1A1C1F)
+val ColorInputBackground = Color(0XFFEAEDF0)
