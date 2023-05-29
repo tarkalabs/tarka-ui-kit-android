@@ -5,7 +5,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
 @Immutable
-data class TarkaColors(
+open class TUIColors(
   val primary: Color,
   val onPrimary: Color,
   val primaryAlt: Color,
@@ -49,7 +49,7 @@ val LocalTUIColors = staticCompositionLocalOf {
   lightColors
 }
 
-val lightColors = TarkaColors(
+val lightColors = TUIColors(
   primary = LightColorPrimary,
   onPrimary = LightColorOnPrimary,
   primaryAlt = LightColorAltPrimary,
@@ -89,7 +89,7 @@ val lightColors = TarkaColors(
   constantDark = ColorDark
 )
 
-val darkColors = TarkaColors(
+val darkColors = TUIColors(
   primary = DarkColorPrimary,
   onPrimary = DarkColorOnPrimary,
   primaryAlt = DarkColorAltPrimary,

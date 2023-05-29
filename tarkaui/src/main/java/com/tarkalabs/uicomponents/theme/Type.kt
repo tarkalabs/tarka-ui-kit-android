@@ -17,7 +17,7 @@ val InterFontFamily = FontFamily(
 )
 
 @Immutable
-data class TarkaTypography(
+data class TUITypography(
   val heading1: TextStyle,
   val heading2: TextStyle,
   val heading3: TextStyle,
@@ -38,7 +38,7 @@ val LocalTUITypography = staticCompositionLocalOf {
   extendedTypography
 }
 
-val extendedTypography = TarkaTypography(
+val extendedTypography = TUITypography(
   heading1 = TextStyle(
     fontFamily = InterFontFamily, fontWeight = FontWeight.Bold, fontSize = 30.sp,
   ),

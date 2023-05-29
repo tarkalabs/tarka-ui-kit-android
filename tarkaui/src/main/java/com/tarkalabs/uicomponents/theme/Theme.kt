@@ -23,10 +23,10 @@ import androidx.compose.runtime.CompositionLocalProvider
 
 
 object TUITheme {
-  val typography: TarkaTypography
+  val typography: TUITypography
     @Composable
     get() = LocalTUITypography.current
-  val colors: TarkaColors
+  val colors: TUIColors
     @Composable
     get() = LocalTUIColors.current
 }
