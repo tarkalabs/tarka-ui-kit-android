@@ -3,7 +3,6 @@ package com.tarkalabs.uicomponents.components
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -43,7 +42,7 @@ enum class BadgeSize(val size: Dp) {
     L -> TUITheme.typography.button7
   }
   androidx.compose.material3.Badge(
-    containerColor = MaterialTheme.colorScheme.error,
+    containerColor = TUITheme.colors.error,
     modifier = Modifier
       .padding(padding)
       .defaultMinSize(
@@ -54,7 +53,7 @@ enum class BadgeSize(val size: Dp) {
     if (count != null) Text(
       text = count.toString(),
       style = textStyle,
-      color = MaterialTheme.colorScheme.onTertiary,
+      color = TUITheme.colors.onTertiary,
     )
   }
 }

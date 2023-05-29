@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.runtime.Composable
@@ -51,11 +50,11 @@ import com.tarkalabs.uicomponents.theme.TUITheme
       )
     }, colors = SwitchDefaults.colors(
       checkedThumbColor = TUITheme.colors.constantLight,
-      checkedTrackColor = MaterialTheme.colorScheme.primary,
-      checkedIconColor = MaterialTheme.colorScheme.primary,
+      checkedTrackColor = TUITheme.colors.primary,
+      checkedIconColor = TUITheme.colors.primary,
       checkedBorderColor = TUITheme.colors.constantLight,
-      uncheckedThumbColor = MaterialTheme.colorScheme.onSurface,
-      uncheckedTrackColor = MaterialTheme.colorScheme.surfaceVariant,
+      uncheckedThumbColor = TUITheme.colors.onSurface,
+      uncheckedTrackColor = TUITheme.colors.surfaceVariant,
       uncheckedIconColor = TUITheme.colors.constantLight,
       uncheckedBorderColor = Color.Transparent,
 

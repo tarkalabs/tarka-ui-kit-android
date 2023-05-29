@@ -9,23 +9,23 @@ import androidx.compose.runtime.CompositionLocalProvider
 @Composable fun TUITheme(
   darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit,
 ) {
-  val colors = if (darkTheme) darkColors() else lightColors()
+  val colors = if (darkTheme) darkColors else lightColors
 
   CompositionLocalProvider(
-    LocalExtendedTypography provides extendedTypography,
+    LocalTUITypography provides extendedTypography,
     LocalTUIColors provides colors
   ) {
     MaterialTheme(
-      typography = Typography, content = content, shapes = Shapes
+      content = content, shapes = Shapes
     )
   }
 }
 
 
 object TUITheme {
-  val typography: ExtendedTypography
+  val typography: TarkaTypography
     @Composable
-    get() = LocalExtendedTypography.current
+    get() = LocalTUITypography.current
   val colors: TarkaColors
     @Composable
     get() = LocalTUIColors.current

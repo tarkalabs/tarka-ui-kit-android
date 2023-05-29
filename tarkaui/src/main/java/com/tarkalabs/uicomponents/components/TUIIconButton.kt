@@ -14,7 +14,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonColors
 import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -107,30 +106,30 @@ iconButtonStyle = IconButtonStyle.OUTLINE,
     GHOST -> {
       iconButtonColors = IconButtonDefaults.iconButtonColors(
         containerColor = Color.Transparent,
-        contentColor = MaterialTheme.colorScheme.onSurface,
-        disabledContentColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f),
+        contentColor = TUITheme.colors.onSurface,
+        disabledContentColor = TUITheme.colors.onSurface.copy(alpha = 0.38f),
       )
     }
 
     SECONDARY -> {
       iconButtonColors = IconButtonDefaults.iconButtonColors(
-        containerColor = MaterialTheme.colorScheme.secondary,
-        contentColor = MaterialTheme.colorScheme.onSecondary,
+        containerColor = TUITheme.colors.secondary,
+        contentColor = TUITheme.colors.onSecondary,
       )
     }
 
     PRIMARY -> {
       iconButtonColors = IconButtonDefaults.iconButtonColors(
-        containerColor = MaterialTheme.colorScheme.primary,
-        contentColor = MaterialTheme.colorScheme.onPrimary,
+        containerColor = TUITheme.colors.primary,
+        contentColor = TUITheme.colors.onPrimary,
       )
     }
 
     OUTLINE -> {
       iconButtonColors = IconButtonDefaults.iconButtonColors(
-        containerColor = MaterialTheme.colorScheme.surface,
-        contentColor = MaterialTheme.colorScheme.onSurface,
-        disabledContentColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f),
+        containerColor = TUITheme.colors.surface,
+        contentColor = TUITheme.colors.onSurface,
+        disabledContentColor = TUITheme.colors.onSurface.copy(alpha = 0.38f),
       )
       modifier = Modifier
         .border(
