@@ -10,7 +10,7 @@ import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 
-class IconButtonTest {
+class TUIIconButtonTest {
   @get:Rule val composable = createComposeRule()
 
   private val ICON_BUTTON = "ICON_BUTTON"

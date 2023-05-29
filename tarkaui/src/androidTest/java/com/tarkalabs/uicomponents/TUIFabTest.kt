@@ -10,7 +10,7 @@ import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 
-class FabTest {
+class TUIFabTest {
   @get:Rule val composable = createComposeRule()
 
   private val FAB_TAG = "FAB_TAG"

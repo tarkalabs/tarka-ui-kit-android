@@ -47,7 +47,7 @@ private val LightColorPalette = lightColorScheme(
   onBackground = LightColorOnBackground,
   surface = LightColorSurface,
   onSurface = LightColorOnSurface
-  )
+)
 
 @Composable fun TUITheme(
   darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit,
@@ -62,7 +62,6 @@ private val LightColorPalette = lightColorScheme(
     )
   }
 }
-
 
 object TUITheme {
   val typography: ExtendedTypography

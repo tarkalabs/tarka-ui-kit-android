@@ -19,6 +19,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.R.drawable
+import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.theme.TUITheme
 
@@ -73,7 +74,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   onInfoIconClick: () -> Unit = {},
   onTextRowClick: () -> Unit = {},
   paddingValues: PaddingValues = PaddingValues(),
-  testTag: String = ""
+  testTag: String = Tags.TAG_TEXT_ROW
 ) {
   Row(
     modifier

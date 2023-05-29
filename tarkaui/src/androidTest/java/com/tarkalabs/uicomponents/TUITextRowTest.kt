@@ -16,7 +16,7 @@ import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 
-class TextRowTest {
+class TUITextRowTest {
   @get:Rule val composable = createComposeRule()
 
   @Test fun textRow_Elements_Displayed() {

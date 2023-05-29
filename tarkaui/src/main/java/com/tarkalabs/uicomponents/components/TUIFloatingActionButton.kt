@@ -17,6 +17,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.components.FloatingActionButtonSize.L
 import com.tarkalabs.uicomponents.components.FloatingActionButtonSize.R
 import com.tarkalabs.uicomponents.components.FloatingActionButtonSize.S
@@ -44,7 +45,7 @@ enum class FloatingActionButtonSize(val size: Dp) {
 @Composable fun TUIFloatingActionButton(
   fabSize: FloatingActionButtonSize = S,
   icon: TarkaIcon,
-  testTag : String = "",
+  testTag: String = Tags.TAG_FAB,
   onClick: () -> Unit,
 ) {
   val iconSize = when (fabSize) {
@@ -55,7 +56,8 @@ enum class FloatingActionButtonSize(val size: Dp) {
     onClick = onClick,
     containerColor = MaterialTheme.colorScheme.primary,
     shape = CircleShape,
-    modifier = Modifier.defaultMinSize(minHeight = fabSize.size, minWidth = fabSize.size)
+    modifier = Modifier
+      .defaultMinSize(minHeight = fabSize.size, minWidth = fabSize.size)
       .testTag(testTag)
   ) {
     Icon(

@@ -30,11 +30,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.theme.TUITheme
 
@@ -115,6 +117,7 @@ onClick = {}
   buttonStyle: ButtonStyle = PRIMARY,
   leadingIcon: TarkaIcon? = null,
   trailingIcon: TarkaIcon? = null,
+  testTag: String = Tags.TAG_BUTTON,
   onClick: () -> Unit,
 ) {
   val buttonColor = when (buttonStyle) {
@@ -158,7 +161,8 @@ onClick = {}
     colors = buttonColor,
     modifier = Modifier
       .height(height.size)
-      .wrapContentWidth(),
+      .wrapContentWidth()
+      .testTag(testTag),
     contentPadding = height.paddingValues(leadingIcon == null, trailingIcon == null),
     border = if (buttonStyle == OUTLINE) BorderStroke(
       width = 1.dp, color = MaterialTheme.colorScheme.onSurface

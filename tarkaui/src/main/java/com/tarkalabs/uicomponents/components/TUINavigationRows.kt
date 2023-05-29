@@ -12,6 +12,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
@@ -54,8 +55,8 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   badgeCount: Int? = null,
   showRightArrow: Boolean = false,
   modifier: Modifier = Modifier,
-  badgeTestTag: String = "",
-  rowTestTag: String = "",
+  badgeTestTag: String = Tags.TAG_NAVIGATION_ROW_BADGE,
+  rowTestTag: String = Tags.TAG_NAVIGATION_ROW,
   onClick: () -> Unit,
 ) {
   Row(modifier = modifier
@@ -78,7 +79,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
       style = TUITheme.typography.heading7,
       color = MaterialTheme.colorScheme.onSurface
     )
-    if (badgeCount != null){
+    if (badgeCount != null) {
       Badge(
         containerColor = MaterialTheme.colorScheme.error,
         modifier = Modifier

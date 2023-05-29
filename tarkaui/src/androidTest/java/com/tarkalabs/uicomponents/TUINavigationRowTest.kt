@@ -16,7 +16,7 @@ import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 
-class NavigationRowTest {
+class TUINavigationRowTest {
   @get:Rule val composable = createComposeRule()
 
   private val BADGE_TAG = "BADGE_TAG"

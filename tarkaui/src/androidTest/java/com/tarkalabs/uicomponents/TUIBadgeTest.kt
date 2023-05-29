@@ -8,7 +8,7 @@ import com.tarkalabs.uicomponents.components.TUIBadge
 import org.junit.Rule
 import org.junit.Test
 
-class BadgeTest {
+class TUIBadgeTest {
   @get:Rule val composeTestRule = createComposeRule()
   private val TEST_TAG = "TEST_TAG"
 
@@ -16,12 +16,11 @@ class BadgeTest {
     composeTestRule.setContent {
       TUIBadge(
         badgeSize = L,
-        TestTag = TEST_TAG,
+        testTag = TEST_TAG,
         count = 299
       )
     }
 
     composeTestRule.onNodeWithTag(TEST_TAG).assertIsDisplayed()
   }
-
 }
