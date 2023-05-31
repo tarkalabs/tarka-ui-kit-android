@@ -16,33 +16,24 @@ import org.mockito.kotlin.verify
 class TopBarTest {
   @get:Rule val composeTestRule = createComposeRule()
 
-  private val SEARCH_ICON_TAG = "SEARCH_ICON_TAG"
-  private val MENU_ONE_ICON_TAG = "MENU_ONE_ICON_TAG"
-  private val MENU_TWO_ICON_TAG = "MENU_TWO_ICON_TAG"
-  private val MENU_THREE_ICON_TAG = "MENU_THREE_ICON_TAG"
-
   @OptIn(ExperimentalMaterial3Api::class) @Test fun visibilityTest() {
     composeTestRule.setContent {
       TopBar(
         title = "title",
         navigationIcon = TarkaIcons.ChevronRight,
         searchIcon = TarkaIcons.Search,
-        menuItemIconOne = TarkaIcons.ChevronRight,
-        menuItemIconTwo = TarkaIcons.ChevronRight,
-        menuItemIconThree = TarkaIcons.ChevronRight,
-        searchIconTestTag = SEARCH_ICON_TAG,
-        menuItemOneTestTag = MENU_ONE_ICON_TAG,
-        menuItemTwoTestTag = MENU_TWO_ICON_TAG,
-        menuItemThreeTestTag = MENU_THREE_ICON_TAG,
+        menuItemIconOne = TarkaIcons.CheckMark,
+        menuItemIconTwo = TarkaIcons.Delete,
+        menuItemIconThree = TarkaIcons.ArrowCounterClockWise,
       )
     }
 
     composeTestRule.onNodeWithText("title").assertIsDisplayed()
     composeTestRule.onNodeWithTag(TarkaIcons.ChevronRight.contentDescription).assertIsDisplayed()
-    composeTestRule.onNodeWithTag(SEARCH_ICON_TAG).assertIsDisplayed()
-    composeTestRule.onNodeWithTag(MENU_ONE_ICON_TAG).assertIsDisplayed()
-    composeTestRule.onNodeWithTag(MENU_TWO_ICON_TAG).assertIsDisplayed()
-    composeTestRule.onNodeWithTag(MENU_THREE_ICON_TAG).assertIsDisplayed()
+    composeTestRule.onNodeWithTag(TarkaIcons.CheckMark.contentDescription).assertIsDisplayed()
+    composeTestRule.onNodeWithTag(TarkaIcons.Delete.contentDescription).assertIsDisplayed()
+    composeTestRule.onNodeWithTag(TarkaIcons.ArrowCounterClockWise.contentDescription).assertIsDisplayed()
+    composeTestRule.onNodeWithTag(TarkaIcons.Search.contentDescription).assertIsDisplayed()
   }
 
   @OptIn(ExperimentalMaterial3Api::class) @Test fun topBarSearchIconDisplayed() {
@@ -50,13 +41,10 @@ class TopBarTest {
       TopBar(
         title = "title",
         navigationIcon = TarkaIcons.ChevronRight,
-        searchIcon = TarkaIcons.Search,
-        searchIconTestTag = SEARCH_ICON_TAG,
-
-        )
+        searchIcon = TarkaIcons.Search,)
     }
 
-    composeTestRule.onNodeWithTag(SEARCH_ICON_TAG).assertIsDisplayed()
+    composeTestRule.onNodeWithTag(TarkaIcons.ChevronRight.contentDescription).assertIsDisplayed()
   }
 
   @OptIn(ExperimentalMaterial3Api::class) @Test fun clickEventTest() {
@@ -70,16 +58,9 @@ class TopBarTest {
         title = "title",
         navigationIcon = TarkaIcons.ChevronRight,
         searchIcon = TarkaIcons.Search,
-
-        menuItemIconOne = TarkaIcons.ChevronRight,
-        menuItemIconTwo = TarkaIcons.ChevronRight,
-        menuItemIconThree = TarkaIcons.ChevronRight,
-
-        searchIconTestTag = SEARCH_ICON_TAG,
-
-        menuItemOneTestTag = MENU_ONE_ICON_TAG,
-        menuItemTwoTestTag = MENU_TWO_ICON_TAG,
-        menuItemThreeTestTag = MENU_THREE_ICON_TAG,
+        menuItemIconOne = TarkaIcons.Copy,
+        menuItemIconTwo = TarkaIcons.Delete,
+        menuItemIconThree = TarkaIcons.ArrowExport,
         onNavigationIconClick = onNavigationIconClick,
         onFirstMenuItemClicked = onFirstMenuItemClicked,
         onSecondMenuItemClicked = onSecondMenuItemClicked,
@@ -88,9 +69,9 @@ class TopBarTest {
     }
 
     composeTestRule.onNodeWithTag(TarkaIcons.ChevronRight.contentDescription).performClick()
-    composeTestRule.onNodeWithTag(MENU_ONE_ICON_TAG).performClick()
-    composeTestRule.onNodeWithTag(MENU_TWO_ICON_TAG).performClick()
-    composeTestRule.onNodeWithTag(MENU_THREE_ICON_TAG).performClick()
+    composeTestRule.onNodeWithTag( TarkaIcons.Copy.contentDescription).performClick()
+    composeTestRule.onNodeWithTag( TarkaIcons.Delete.contentDescription).performClick()
+    composeTestRule.onNodeWithTag(TarkaIcons.ArrowExport.contentDescription).performClick()
 
     verify(onNavigationIconClick).invoke()
     verify(onFirstMenuItemClicked).invoke()

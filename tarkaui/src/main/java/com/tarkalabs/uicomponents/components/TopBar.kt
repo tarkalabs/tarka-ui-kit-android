@@ -2,8 +2,6 @@ package com.tarkalabs.uicomponents.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarColors
@@ -15,8 +13,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.painterResource
 import com.tarkalabs.uicomponents.components.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.theme.TUITheme
@@ -37,10 +33,6 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * @param onSearchQuery The callback function to be called when a search query is entered.
  * @param colors The colors to be applied to the top app bar.
  * @param scrollBehavior The scroll behavior to be applied to the top app bar.
- * @param searchIconTestTag The test tag for the search icon.
- * @param menuItemOneTestTag The test tag for the first menu item icon.
- * @param menuItemTwoTestTag The test tag for the second menu item icon.
- * @param menuItemThreeTestTag The test tag for the third menu item icon.
  * How to use TopBar()
 TopBar(
 title = "My App",
@@ -56,10 +48,6 @@ onThirdMenuItemClicked = { /* Handle third menu item click */ },
 onSearchQuery = { query -> /* Handle search query */ },
 colors = TopAppBarColors(/* Specify custom colors if needed */),
 scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Specify scroll behavior
-searchIconTestTag = "search_icon",  // Optional: pass test tag for android ui test
-menuItemOneTestTag = "menu_item_1", // Optional: pass test tag for android ui test
-menuItemTwoTestTag = "menu_item_2", // Optional: pass test tag for android ui test
-menuItemThreeTestTag = "menu_item_3" // Optional: pass test tag for android ui test
 )
  */
 @OptIn(ExperimentalMaterial3Api::class) @Composable fun TopBar(
@@ -78,10 +66,6 @@ menuItemThreeTestTag = "menu_item_3" // Optional: pass test tag for android ui t
     containerColor = TUITheme.colors.surface
   ),
   scrollBehavior: TopAppBarScrollBehavior? = null,
-  searchIconTestTag: String = "",
-  menuItemOneTestTag: String = "",
-  menuItemTwoTestTag: String = "",
-  menuItemThreeTestTag: String = "",
 ) {
 
   var showSearchBar by remember {
@@ -108,53 +92,41 @@ menuItemThreeTestTag = "menu_item_3" // Optional: pass test tag for android ui t
     },
     actions = {
       if (searchIcon != null) {
-        IconButton(
-          onClick = {
+        TUIIconButton(
+          icon = searchIcon,
+          testTag = searchIcon.contentDescription,
+          iconButtonStyle = GHOST, onIconClick = {
             showSearchBar = true
-          },
-          modifier = Modifier.testTag(searchIconTestTag)
-        ) {
-          Icon(
-            painter = painterResource(id = searchIcon.iconRes),
-            contentDescription = searchIcon.contentDescription
-          )
-        }
+          }
+        )
       }
 
       if (menuItemIconThree != null) {
-        IconButton(
-          onClick = onThirdMenuItemClicked,
-          modifier = Modifier.testTag(menuItemThreeTestTag)
-        ) {
-          Icon(
-            painter = painterResource(id = menuItemIconThree.iconRes),
-            contentDescription = "Menu Item  three"
-          )
-        }
+        TUIIconButton(
+          icon = menuItemIconThree,
+          testTag = menuItemIconThree.contentDescription,
+          iconButtonStyle = GHOST,
+          onIconClick = onThirdMenuItemClicked
+        )
+
       }
 
       if (menuItemIconTwo != null) {
-        IconButton(
-          onClick = onSecondMenuItemClicked,
-          modifier = Modifier.testTag(menuItemTwoTestTag)
-        ) {
-          Icon(
-            painter = painterResource(id = menuItemIconTwo.iconRes),
-            contentDescription = menuItemIconTwo.contentDescription
-          )
-        }
+        TUIIconButton(
+          onIconClick = onSecondMenuItemClicked,
+          icon = menuItemIconTwo,
+          testTag = menuItemIconTwo.contentDescription,
+          iconButtonStyle = GHOST,
+        )
       }
 
       if (menuItemIconOne != null) {
-        IconButton(
-          onClick = onFirstMenuItemClicked,
-          modifier = Modifier.testTag(menuItemOneTestTag)
-        ) {
-          Icon(
-            painter = painterResource(id = menuItemIconOne.iconRes),
-            contentDescription = menuItemIconOne.contentDescription
-          )
-        }
+        TUIIconButton(
+          onIconClick = onFirstMenuItemClicked,
+          testTag = menuItemIconOne.contentDescription,
+          icon = menuItemIconOne,
+          iconButtonStyle = GHOST,
+        )
       }
 
     },
