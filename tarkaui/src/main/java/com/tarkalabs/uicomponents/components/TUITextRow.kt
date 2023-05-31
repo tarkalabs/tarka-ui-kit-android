@@ -9,9 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -42,7 +39,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * @param onInfoIconClick: The callback function when the info icon is clicked.
  * @param onTextRowClick: The callback function when the text row is clicked.
  * @param paddingValues: The padding values to apply to the row.
- * @param iconOneTestTag: The test tag for the first icon.
+ * @param testTag: The test tag for the first icon.
  *
  * The TUITextRow composable function creates a row that represents a text item in a UI.
  * It handles click events and provides callback functions for customization. The row displays

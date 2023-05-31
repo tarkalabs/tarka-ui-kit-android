@@ -28,7 +28,7 @@ enum class BadgeSize(val size: Dp) {
  * @param badgeSize The height size of the badge. Default is [BadgeSize.M].
  * @param testTag The test tag for the TUIBadge.
  *
- * How to use TKButton() composable function
+ * How to use TUIBadge() composable function
  *    TUIBadge(count = 3,badgeSize = M)
  *
  */
@@ -66,5 +66,5 @@ enum class BadgeSize(val size: Dp) {
 }
 
 @Preview(showBackground = true) @Composable fun BadgePreview() {
-  TUIBadge(count = 4440440, badgeSize = M)
+  TUIBadge(count = 40, badgeSize = M)
 }
