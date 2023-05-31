@@ -46,35 +46,37 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     Switch(
       modifier = Modifier.testTag(testTag),
       checked = switchCheckedState, enabled = enabled, onCheckedChange = {
-      switchCheckedState = it
-      onToggleChange()
-    }, thumbContent = {
-      Icon(
-        painter = painterResource(if (switchCheckedState) TarkaIcons.CheckMark.iconRes else TarkaIcons.Dismiss.iconRes),
-        contentDescription = null,
-        modifier = Modifier.size(width = 40.dp, height = 24.dp)
-      )
-    }, colors = SwitchDefaults.colors(
-      checkedThumbColor = TUITheme.colors.constantLight,
-      checkedTrackColor = TUITheme.colors.primary,
-      checkedIconColor = TUITheme.colors.primary,
-      checkedBorderColor = TUITheme.colors.primary,
-      uncheckedThumbColor = TUITheme.colors.onSurface,
-      uncheckedTrackColor = TUITheme.colors.surfaceVariant,
-      uncheckedIconColor = TUITheme.colors.constantLight,
-      uncheckedBorderColor = Color.Transparent,
-      disabledCheckedThumbColor = TUITheme.colors.utilityDisabledContent.copy(alpha = 0.38f),
-      disabledCheckedTrackColor = TUITheme.colors.utilityDisabledBackground.copy(alpha = 0.06f),
-      disabledCheckedIconColor = TUITheme.colors.inputBackground.copy(alpha = 0.85f),
-      disabledCheckedBorderColor = Color.Transparent,
-      disabledUncheckedThumbColor = TUITheme.colors.utilityDisabledContent.copy(alpha = 0.38f),
-      disabledUncheckedTrackColor = TUITheme.colors.utilityDisabledBackground.copy(alpha = 0.06f),
-      disabledUncheckedBorderColor = Color.Transparent,
-      disabledUncheckedIconColor = TUITheme.colors.inputBackground.copy(alpha = 0.85f)
-    )
+        switchCheckedState = it
+        onToggleChange()
+      }, thumbContent = {
+        Icon(
+          painter = painterResource(if (switchCheckedState) TarkaIcons.CheckMark.iconRes else TarkaIcons.Dismiss.iconRes),
+          contentDescription = null,
+          modifier = Modifier.size(width = 40.dp, height = 24.dp)
+        )
+      }, colors = getSwitchDefaultColors()
     )
   }
 }
+
+@Composable private fun getSwitchDefaultColors() = SwitchDefaults.colors(
+  checkedThumbColor = TUITheme.colors.constantLight,
+  checkedTrackColor = TUITheme.colors.primary,
+  checkedIconColor = TUITheme.colors.primary,
+  checkedBorderColor = TUITheme.colors.primary,
+  uncheckedThumbColor = TUITheme.colors.onSurface,
+  uncheckedTrackColor = TUITheme.colors.surfaceVariant,
+  uncheckedIconColor = TUITheme.colors.constantLight,
+  uncheckedBorderColor = Color.Transparent,
+  disabledCheckedThumbColor = TUITheme.colors.utilityDisabledContent.copy(alpha = 0.38f),
+  disabledCheckedTrackColor = TUITheme.colors.utilityDisabledBackground.copy(alpha = 0.06f),
+  disabledCheckedIconColor = TUITheme.colors.inputBackground.copy(alpha = 0.85f),
+  disabledCheckedBorderColor = Color.Transparent,
+  disabledUncheckedThumbColor = TUITheme.colors.utilityDisabledContent.copy(alpha = 0.38f),
+  disabledUncheckedTrackColor = TUITheme.colors.utilityDisabledBackground.copy(alpha = 0.06f),
+  disabledUncheckedBorderColor = Color.Transparent,
+  disabledUncheckedIconColor = TUITheme.colors.inputBackground.copy(alpha = 0.85f)
+)
 
 @Preview(showBackground = true) @Composable fun TUIToggleSwitchPreview() {
   TUITheme {
