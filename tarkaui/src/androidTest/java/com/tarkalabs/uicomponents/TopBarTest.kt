@@ -16,7 +16,6 @@ import org.mockito.kotlin.verify
 class TopBarTest {
   @get:Rule val composeTestRule = createComposeRule()
 
-  private val NAVIGATION_ICON_TAG = "NAVIGATION_ICON_TAG"
   private val SEARCH_ICON_TAG = "SEARCH_ICON_TAG"
   private val MENU_ONE_ICON_TAG = "MENU_ONE_ICON_TAG"
   private val MENU_TWO_ICON_TAG = "MENU_TWO_ICON_TAG"
@@ -31,7 +30,6 @@ class TopBarTest {
         menuItemIconOne = TarkaIcons.ChevronRight,
         menuItemIconTwo = TarkaIcons.ChevronRight,
         menuItemIconThree = TarkaIcons.ChevronRight,
-        navigationIconTestTag = NAVIGATION_ICON_TAG,
         searchIconTestTag = SEARCH_ICON_TAG,
         menuItemOneTestTag = MENU_ONE_ICON_TAG,
         menuItemTwoTestTag = MENU_TWO_ICON_TAG,
@@ -40,7 +38,7 @@ class TopBarTest {
     }
 
     composeTestRule.onNodeWithText("title").assertIsDisplayed()
-    composeTestRule.onNodeWithTag(NAVIGATION_ICON_TAG).assertIsDisplayed()
+    composeTestRule.onNodeWithTag(TarkaIcons.ChevronRight.contentDescription).assertIsDisplayed()
     composeTestRule.onNodeWithTag(SEARCH_ICON_TAG).assertIsDisplayed()
     composeTestRule.onNodeWithTag(MENU_ONE_ICON_TAG).assertIsDisplayed()
     composeTestRule.onNodeWithTag(MENU_TWO_ICON_TAG).assertIsDisplayed()
@@ -53,7 +51,6 @@ class TopBarTest {
         title = "title",
         navigationIcon = TarkaIcons.ChevronRight,
         searchIcon = TarkaIcons.Search,
-        navigationIconTestTag = NAVIGATION_ICON_TAG,
         searchIconTestTag = SEARCH_ICON_TAG,
 
         )
@@ -78,7 +75,6 @@ class TopBarTest {
         menuItemIconTwo = TarkaIcons.ChevronRight,
         menuItemIconThree = TarkaIcons.ChevronRight,
 
-        navigationIconTestTag = NAVIGATION_ICON_TAG,
         searchIconTestTag = SEARCH_ICON_TAG,
 
         menuItemOneTestTag = MENU_ONE_ICON_TAG,
@@ -91,7 +87,7 @@ class TopBarTest {
       )
     }
 
-    composeTestRule.onNodeWithTag(NAVIGATION_ICON_TAG).performClick()
+    composeTestRule.onNodeWithTag(TarkaIcons.ChevronRight.contentDescription).performClick()
     composeTestRule.onNodeWithTag(MENU_ONE_ICON_TAG).performClick()
     composeTestRule.onNodeWithTag(MENU_TWO_ICON_TAG).performClick()
     composeTestRule.onNodeWithTag(MENU_THREE_ICON_TAG).performClick()

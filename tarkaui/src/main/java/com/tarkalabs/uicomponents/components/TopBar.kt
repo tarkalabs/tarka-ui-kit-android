@@ -17,6 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import com.tarkalabs.uicomponents.components.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.theme.TUITheme
 
@@ -36,7 +37,6 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * @param onSearchQuery The callback function to be called when a search query is entered.
  * @param colors The colors to be applied to the top app bar.
  * @param scrollBehavior The scroll behavior to be applied to the top app bar.
- * @param navigationIconTestTag The test tag for the navigation icon.
  * @param searchIconTestTag The test tag for the search icon.
  * @param menuItemOneTestTag The test tag for the first menu item icon.
  * @param menuItemTwoTestTag The test tag for the second menu item icon.
@@ -56,7 +56,6 @@ onThirdMenuItemClicked = { /* Handle third menu item click */ },
 onSearchQuery = { query -> /* Handle search query */ },
 colors = TopAppBarColors(/* Specify custom colors if needed */),
 scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Specify scroll behavior
-navigationIconTestTag = "navigation_icon",
 searchIconTestTag = "search_icon",  // Optional: pass test tag for android ui test
 menuItemOneTestTag = "menu_item_1", // Optional: pass test tag for android ui test
 menuItemTwoTestTag = "menu_item_2", // Optional: pass test tag for android ui test
@@ -79,7 +78,6 @@ menuItemThreeTestTag = "menu_item_3" // Optional: pass test tag for android ui t
     containerColor = TUITheme.colors.surface
   ),
   scrollBehavior: TopAppBarScrollBehavior? = null,
-  navigationIconTestTag: String = "",
   searchIconTestTag: String = "",
   menuItemOneTestTag: String = "",
   menuItemTwoTestTag: String = "",
@@ -100,15 +98,12 @@ menuItemThreeTestTag = "menu_item_3" // Optional: pass test tag for android ui t
     },
     navigationIcon = {
       if (navigationIcon != null) {
-        IconButton(
-          onClick = onNavigationIconClick,
-          modifier = Modifier.testTag(navigationIconTestTag)
-        ) {
-          Icon(
-            painter = painterResource(id = navigationIcon.iconRes),
-            contentDescription = "Back arrow"
-          )
-        }
+        TUIIconButton(
+          onIconClick = onNavigationIconClick,
+          icon = navigationIcon,
+          testTag = navigationIcon.contentDescription,
+          iconButtonStyle = GHOST
+        )
       }
     },
     actions = {
