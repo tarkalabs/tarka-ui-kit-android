@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.runtime.Composable
@@ -23,9 +22,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.models.TarkaIcons
-import com.tarkalabs.uicomponents.theme.ColorInputBackground
-import com.tarkalabs.uicomponents.theme.ColorLight
-import com.tarkalabs.uicomponents.theme.ColorUtilityDisabledBackground
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -49,38 +45,33 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   TUITheme {
     Switch(
       modifier = Modifier.testTag(testTag),
-      checked = switchCheckedState,
-      enabled = enabled,
-      onCheckedChange = {
-        switchCheckedState = it
-        onToggleChange()
-      },
-      thumbContent = {
-        Icon(
-          painter = painterResource(if (switchCheckedState) TarkaIcons.CheckMark.iconRes else TarkaIcons.Dismiss.iconRes),
-          contentDescription = null,
-          modifier = Modifier.size(width = 40.dp, height = 24.dp)
-        )
-      },
-      colors = SwitchDefaults.colors(
-        checkedThumbColor = ColorLight,
-        checkedTrackColor = MaterialTheme.colorScheme.primary,
-        checkedIconColor = MaterialTheme.colorScheme.primary,
-        checkedBorderColor = ColorLight,
-        uncheckedThumbColor = MaterialTheme.colorScheme.onSurface,
-        uncheckedTrackColor = MaterialTheme.colorScheme.surfaceVariant,
-        uncheckedIconColor = ColorLight,
-        uncheckedBorderColor = Color.Transparent,
-
-        disabledCheckedThumbColor = ColorUtilityDisabledBackground.copy(alpha = 0.38f),
-        disabledCheckedTrackColor = ColorUtilityDisabledBackground.copy(alpha = 0.06f),
-        disabledCheckedIconColor = ColorInputBackground.copy(alpha = 0.85f),
-        disabledCheckedBorderColor = Color.Transparent,
-        disabledUncheckedThumbColor = ColorUtilityDisabledBackground.copy(alpha = 0.38f),
-        disabledUncheckedTrackColor = ColorUtilityDisabledBackground.copy(alpha = 0.06f),
-        disabledUncheckedBorderColor = Color.Transparent,
-        disabledUncheckedIconColor = ColorInputBackground.copy(alpha = 0.85f)
+      checked = switchCheckedState, enabled = enabled, onCheckedChange = {
+      switchCheckedState = it
+      onToggleChange()
+    }, thumbContent = {
+      Icon(
+        painter = painterResource(if (switchCheckedState) TarkaIcons.CheckMark.iconRes else TarkaIcons.Dismiss.iconRes),
+        contentDescription = null,
+        modifier = Modifier.size(width = 40.dp, height = 24.dp)
       )
+    }, colors = SwitchDefaults.colors(
+      checkedThumbColor = TUITheme.colors.constantLight,
+      checkedTrackColor = TUITheme.colors.primary,
+      checkedIconColor = TUITheme.colors.primary,
+      checkedBorderColor = TUITheme.colors.primary,
+      uncheckedThumbColor = TUITheme.colors.onSurface,
+      uncheckedTrackColor = TUITheme.colors.surfaceVariant,
+      uncheckedIconColor = TUITheme.colors.constantLight,
+      uncheckedBorderColor = Color.Transparent,
+      disabledCheckedThumbColor = TUITheme.colors.utilityDisabledContent.copy(alpha = 0.38f),
+      disabledCheckedTrackColor = TUITheme.colors.utilityDisabledBackground.copy(alpha = 0.06f),
+      disabledCheckedIconColor = TUITheme.colors.inputBackground.copy(alpha = 0.85f),
+      disabledCheckedBorderColor = Color.Transparent,
+      disabledUncheckedThumbColor = TUITheme.colors.utilityDisabledContent.copy(alpha = 0.38f),
+      disabledUncheckedTrackColor = TUITheme.colors.utilityDisabledBackground.copy(alpha = 0.06f),
+      disabledUncheckedBorderColor = Color.Transparent,
+      disabledUncheckedIconColor = TUITheme.colors.inputBackground.copy(alpha = 0.85f)
+    )
     )
   }
 }

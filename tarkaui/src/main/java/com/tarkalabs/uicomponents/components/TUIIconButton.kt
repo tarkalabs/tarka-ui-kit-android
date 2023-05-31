@@ -14,7 +14,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonColors
 import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -39,7 +38,6 @@ import com.tarkalabs.uicomponents.components.IconButtonStyle.PRIMARY
 import com.tarkalabs.uicomponents.components.IconButtonStyle.SECONDARY
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
-import com.tarkalabs.uicomponents.theme.ColorUtilityOutline
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 //  Created by Nilesh Rathod on 12/05/23.
@@ -110,34 +108,34 @@ iconButtonStyle = IconButtonStyle.OUTLINE,
     GHOST -> {
       iconButtonColors = IconButtonDefaults.iconButtonColors(
         containerColor = Color.Transparent,
-        contentColor = MaterialTheme.colorScheme.onSurface,
-        disabledContentColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f),
+        contentColor = TUITheme.colors.onSurface,
+        disabledContentColor = TUITheme.colors.onSurface.copy(alpha = 0.38f),
       )
     }
 
     SECONDARY -> {
       iconButtonColors = IconButtonDefaults.iconButtonColors(
-        containerColor = MaterialTheme.colorScheme.secondary,
-        contentColor = MaterialTheme.colorScheme.onSecondary,
+        containerColor = TUITheme.colors.secondary,
+        contentColor = TUITheme.colors.onSecondary,
       )
     }
 
     PRIMARY -> {
       iconButtonColors = IconButtonDefaults.iconButtonColors(
-        containerColor = MaterialTheme.colorScheme.primary,
-        contentColor = MaterialTheme.colorScheme.onPrimary,
+        containerColor = TUITheme.colors.primary,
+        contentColor = TUITheme.colors.onPrimary,
       )
     }
 
     OUTLINE -> {
       iconButtonColors = IconButtonDefaults.iconButtonColors(
-        containerColor = MaterialTheme.colorScheme.surface,
-        contentColor = MaterialTheme.colorScheme.onSurface,
-        disabledContentColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f),
+        containerColor = TUITheme.colors.surface,
+        contentColor = TUITheme.colors.onSurface,
+        disabledContentColor = TUITheme.colors.onSurface.copy(alpha = 0.38f),
       )
       modifier = Modifier
         .border(
-          width = 0.5.dp, color = ColorUtilityOutline, shape = CircleShape
+          width = 0.5.dp, color = TUITheme.colors.utilityOutline, shape = CircleShape
         )
         .size(buttonSize.size)
     }

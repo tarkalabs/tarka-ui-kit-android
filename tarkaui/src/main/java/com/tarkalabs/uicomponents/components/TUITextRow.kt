@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -87,12 +89,12 @@ import com.tarkalabs.uicomponents.theme.TUITheme
       Text(
         text = title,
         style = TUITheme.typography.body8,
-        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+        color = TUITheme.colors.onSurface.copy(alpha = 0.7f)
       )
       Text(
         text = description,
         style = TUITheme.typography.body7,
-        color = MaterialTheme.colorScheme.onSurface
+        color = TUITheme.colors.onSurface
       )
     }
     Row(verticalAlignment = Alignment.CenterVertically) {

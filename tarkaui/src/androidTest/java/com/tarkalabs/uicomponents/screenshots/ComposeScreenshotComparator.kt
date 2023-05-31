@@ -9,11 +9,11 @@ open class ComposeScreenshotComparator : ScreenshotTest {
 
   @get:Rule val composeRule = createComposeRule()
 
-  protected fun compareScreenshotFor(composableToTest: @Composable () -> Unit) {
+  protected fun compareScreenshotFor(imageName: String? = null, composableToTest: @Composable () -> Unit) {
     composeRule.setContent {
       composableToTest()
     }
-    compareScreenshot(composeRule)
+    compareScreenshot(composeRule, imageName)
   }
 
 }

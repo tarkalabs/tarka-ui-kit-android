@@ -69,7 +69,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
       modifier = Modifier.size(24.dp),
       painter = painterResource(id = leadingIcon.iconRes),
       contentDescription = leadingIcon.contentDescription,
-      tint = MaterialTheme.colorScheme.secondary
+      tint = TUITheme.colors.secondary
     )
     Text(
       text = title,
@@ -77,22 +77,20 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         .weight(1f)
         .padding(horizontal = 20.dp),
       style = TUITheme.typography.heading7,
-      color = MaterialTheme.colorScheme.onSurface
+      color = TUITheme.colors.onSurface
     )
-    if (badgeCount != null) {
-      Badge(
-        containerColor = MaterialTheme.colorScheme.error,
-        modifier = Modifier
-          .defaultMinSize(minHeight = 18.dp)
-          .align(Alignment.CenterVertically)
-          .testTag(badgeTestTag),
-      ) {
-        Text(
-          text = badgeCount.toString(),
-          style = TUITheme.typography.button8,
-          color = MaterialTheme.colorScheme.onTertiary,
-        )
-      }
+    if (badgeCount != null) Badge(
+      containerColor = TUITheme.colors.error,
+      modifier = Modifier
+        .size(18.dp)
+        .align(Alignment.CenterVertically)
+        .testTag(badgeTestTag),
+    ) {
+      Text(
+        text = badgeCount.toString(),
+        style = TUITheme.typography.button8,
+        color = TUITheme.colors.onTertiary,
+      )
     }
 
     if (showRightArrow) {

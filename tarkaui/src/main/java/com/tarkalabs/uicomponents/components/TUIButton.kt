@@ -24,7 +24,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -123,35 +122,35 @@ onClick = {}
   val buttonColor = when (buttonStyle) {
     PRIMARY -> {
       ButtonDefaults.buttonColors(
-        containerColor = MaterialTheme.colorScheme.primary,
-        contentColor = MaterialTheme.colorScheme.onPrimary
+        containerColor = TUITheme.colors.primary,
+        contentColor = TUITheme.colors.onPrimary
       )
     }
 
     SECONDARY -> {
       ButtonDefaults.buttonColors(
-        containerColor = MaterialTheme.colorScheme.secondary,
-        contentColor = MaterialTheme.colorScheme.onSecondary
+        containerColor = TUITheme.colors.secondary,
+        contentColor = TUITheme.colors.onSecondary
       )
     }
 
     GHOST -> {
       ButtonDefaults.buttonColors(
-        containerColor = Color.Transparent, contentColor = MaterialTheme.colorScheme.secondary
+        containerColor = Color.Transparent, contentColor = TUITheme.colors.secondary
       )
     }
 
     ERROR -> {
       ButtonDefaults.buttonColors(
-        containerColor = MaterialTheme.colorScheme.error,
-        contentColor = MaterialTheme.colorScheme.onPrimary,
+        containerColor = TUITheme.colors.error,
+        contentColor = TUITheme.colors.onPrimary,
       )
     }
 
     OUTLINE -> {
       ButtonDefaults.buttonColors(
-        containerColor = MaterialTheme.colorScheme.surface,
-        contentColor = MaterialTheme.colorScheme.onSurface
+        containerColor = TUITheme.colors.surface,
+        contentColor = TUITheme.colors.onSurface
       )
     }
   }
@@ -165,7 +164,7 @@ onClick = {}
       .testTag(testTag),
     contentPadding = height.paddingValues(leadingIcon == null, trailingIcon == null),
     border = if (buttonStyle == OUTLINE) BorderStroke(
-      width = 1.dp, color = MaterialTheme.colorScheme.onSurface
+      width = 1.dp, color = TUITheme.colors.onSurface
     ) else null
   ) {
     Row(

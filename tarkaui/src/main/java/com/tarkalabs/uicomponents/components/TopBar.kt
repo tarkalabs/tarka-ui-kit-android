@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarColors
@@ -77,7 +76,7 @@ menuItemThreeTestTag = "menu_item_3" // Optional: pass test tag for android ui t
   onThirdMenuItemClicked: () -> Unit = {},
   onSearchQuery: (String) -> Unit = {},
   colors: TopAppBarColors = TopAppBarDefaults.topAppBarColors(
-    containerColor = MaterialTheme.colorScheme.surface
+    containerColor = TUITheme.colors.surface
   ),
   scrollBehavior: TopAppBarScrollBehavior? = null,
   navigationIconTestTag: String = "",
@@ -96,7 +95,7 @@ menuItemThreeTestTag = "menu_item_3" // Optional: pass test tag for android ui t
       Text(
         text = title,
         style = TUITheme.typography.heading5,
-        color = MaterialTheme.colorScheme.onSurface
+        color = TUITheme.colors.onSurface
       )
     },
     navigationIcon = {
