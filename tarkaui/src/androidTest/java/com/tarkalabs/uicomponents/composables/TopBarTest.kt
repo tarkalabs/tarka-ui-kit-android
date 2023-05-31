@@ -1,4 +1,4 @@
-package com.tarkalabs.uicomponents
+package com.tarkalabs.uicomponents.composables
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.ui.test.assertIsDisplayed

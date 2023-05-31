@@ -1,37 +1,39 @@
+package com.tarkalabs.uicomponents.composables
+
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
-import com.tarkalabs.uicomponents.components.TUIIconButton
+import com.tarkalabs.uicomponents.components.TUIFloatingActionButton
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 
-class TUIIconButtonTest {
+class TUIFabTest {
   @get:Rule val composable = createComposeRule()
 
-  private val ICON_BUTTON = "ICON_BUTTON"
+  private val FAB_TAG = "FAB_TAG"
 
-  @Test fun icon_Button_Displayed() {
+  @Test fun fab_Displayed() {
     composable.setContent {
-      TUIIconButton(icon = TarkaIcons.Delete, testTag = ICON_BUTTON) {
+      TUIFloatingActionButton(icon = TarkaIcons.Delete, testTag = FAB_TAG) {
       }
     }
-    composable.onNodeWithTag(ICON_BUTTON).assertIsDisplayed()
+    composable.onNodeWithTag(FAB_TAG).assertIsDisplayed()
     composable.onNodeWithContentDescription(TarkaIcons.Delete.contentDescription).assertIsDisplayed()
   }
 
-  @Test fun icon_Button_Click_Triggered() {
+  @Test fun fab_Click_Triggered() {
     val onClick: () -> Unit = mock()
 
     composable.setContent {
-      TUIIconButton(icon = TarkaIcons.Delete, testTag = ICON_BUTTON, onIconClick = onClick)
+      TUIFloatingActionButton(icon = TarkaIcons.Delete, testTag = FAB_TAG, onClick = onClick)
     }
-    composable.onNodeWithTag(ICON_BUTTON).performClick()
 
+    composable.onNodeWithTag(FAB_TAG).performClick()
     verify(onClick).invoke()
   }
 }

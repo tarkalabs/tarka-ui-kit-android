@@ -1,4 +1,4 @@
-package com.tarkalabs.uicomponents
+package com.tarkalabs.uicomponents.composables
 
 import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertIsDisplayed
@@ -34,7 +34,6 @@ class TUINavigationRowTest {
         badgeTestTag = BADGE_TAG,
         rowTestTag = "rowTestTag"
       )
-
     }
 
     composable.onNodeWithText("Label").assertIsDisplayed()
@@ -58,13 +57,8 @@ class TUINavigationRowTest {
         rowTestTag = ROW_TAG
       )
     }
+
     composable.onNodeWithTag(ROW_TAG).performClick()
-
     verify(onClick).invoke()
-
-    composable.onNodeWithTag(ROW_TAG)
-      .assertHasClickAction()
-      .performClick()
-
   }
 }

@@ -9,9 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -62,7 +59,8 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * )
  *
  */
-@Composable fun TUITextRow(
+@Composable
+fun TUITextRow(
   title: String,
   description: String,
   modifier: Modifier = Modifier.fillMaxWidth(),
@@ -76,16 +74,20 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   onInfoIconClick: () -> Unit = {},
   onTextRowClick: () -> Unit = {},
   paddingValues: PaddingValues = PaddingValues(),
-  testTag: String = Tags.TAG_TEXT_ROW
+  testTag: String = Tags.TAG_TEXT_ROW,
 ) {
   Row(
     modifier
-      .clickable { onTextRowClick() }
       .defaultMinSize(minHeight = 40.dp)
-      .padding(paddingValues)
-      .testTag(testTag),
-    verticalAlignment = Alignment.CenterVertically) {
-    Column(Modifier.weight(1f)) {
+      .padding(paddingValues),
+    verticalAlignment = Alignment.CenterVertically
+  ) {
+    Column(
+      Modifier
+        .weight(1f)
+        .clickable { onTextRowClick() }
+        .testTag(testTag)
+    ) {
       Text(
         text = title,
         style = TUITheme.typography.body8,
@@ -133,7 +135,9 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   }
 }
 
-@Preview(showBackground = true) @Composable fun TUITextRowPreview() {
+@Preview(showBackground = true)
+@Composable
+fun TUITextRowPreview() {
   TUITextRow(
     title = "Title",
     description = "Description",

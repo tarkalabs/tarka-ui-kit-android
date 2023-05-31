@@ -1,4 +1,4 @@
-package com.tarkalabs.uicomponents
+package com.tarkalabs.uicomponents.composables
 
 import ButtonStyle.SECONDARY
 import TUIButton

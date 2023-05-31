@@ -1,4 +1,4 @@
-package com.tarkalabs.uicomponents
+package com.tarkalabs.uicomponents.composables
 
 import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertIsDisplayed
@@ -43,6 +43,7 @@ class TUITextRowTest {
 
   @Test fun textRow_Elements_Click_Triggered() {
     val onButtonClick: () -> Unit = mock()
+    val onTextRowClick: () -> Unit = mock()
 
     composable.setContent {
       TUITextRow(
@@ -54,16 +55,13 @@ class TUITextRowTest {
         buttonTitle = "Label",
         onButtonClick = onButtonClick,
         testTag = "testTag",
-        onTextRowClick = {
-        }
+        onTextRowClick = onTextRowClick
       )
     }
     composable.onNodeWithText("Label").performClick()
     verify(onButtonClick).invoke()
 
-    composable.onNodeWithTag("testTag")
-      .assertHasClickAction()
-      .performClick()
-
+    composable.onNodeWithTag("testTag").performClick()
+    verify(onTextRowClick).invoke()
   }
 }
