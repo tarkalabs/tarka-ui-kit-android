@@ -3,17 +3,26 @@ package com.tarkalabs.ui
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.tarkalabs.uicomponents.components.BadgeSize
-import com.tarkalabs.uicomponents.components.TUIBadge
+import androidx.compose.material3.ExperimentalMaterial3Api
+import com.tarkalabs.uicomponents.components.TopBar
+import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 class UIComponentListActivity : ComponentActivity() {
 
+  @OptIn(ExperimentalMaterial3Api::class)
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContent {
       TUITheme {
-        TUIBadge(count = 2, badgeSize = BadgeSize.M)
+        TopBar(
+          title = "Setting Screen",
+          navigationIcon = TarkaIcons.ChevronRight,
+          onNavigationIconClick = {},
+          menuItemIconOne = TarkaIcons.ChevronRight,
+          menuItemIconTwo = TarkaIcons.Copy,
+          menuItemIconThree = TarkaIcons.Delete
+        )
       }
     }
   }

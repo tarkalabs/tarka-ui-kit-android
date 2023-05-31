@@ -5,7 +5,6 @@ import com.microsoft.fluent.mobile.icons.R
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_counterclockwise_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_export_ltr_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_sync_circle_24_regular
-import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_barcode_scanner_20_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_barcode_scanner_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_checkmark_16_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_checkmark_starburst_24_regular
@@ -19,7 +18,6 @@ import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_dismiss_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_document_error_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_document_header_arrow_down_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_document_text_24_regular
-import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_local_language_16_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_local_language_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_map_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_question_circle_24_regular
