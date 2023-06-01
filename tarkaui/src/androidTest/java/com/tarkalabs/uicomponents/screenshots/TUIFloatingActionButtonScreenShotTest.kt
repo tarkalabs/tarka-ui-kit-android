@@ -24,8 +24,4 @@ class TUIFloatingActionButtonScreenShotTest : ComposeScreenshotComparator() {
   @Test fun test_fab_with_regular_size() = compareScreenshotFor {
       TUIFloatingActionButton(fabSize = R, icon = TarkaIcons.ArrowExport, onClick = {})
   }
-
-  @Test fun test_unchecked_state_with_disabled_status() = compareScreenshotFor {
-      TUIToggleSwitch(state = false, enabled = false, onToggleChange = {})
-  }
 }
