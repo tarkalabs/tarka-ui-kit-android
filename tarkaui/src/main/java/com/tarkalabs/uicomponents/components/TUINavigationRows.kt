@@ -54,6 +54,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   leadingIcon: TarkaIcon? = null,
   badgeCount: Int? = null,
   showRightArrow: Boolean = false,
+  content : (@Composable () -> Unit)? = null,
   modifier: Modifier = Modifier,
   badgeTestTag: String = Tags.TAG_NAVIGATION_ROW_BADGE,
   rowTestTag: String = Tags.TAG_NAVIGATION_ROW,
@@ -99,6 +100,9 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         contentDescription = TarkaIcons.ChevronRight.contentDescription
       )
     }
+    if(content !=null){
+      content()
+    }
   }
 }
 
@@ -106,8 +110,9 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   TUINavigationRow(
     title = "Label",
     leadingIcon = TarkaIcon(androidx.core.R.drawable.ic_call_decline, "Call Decline"),
-    badgeCount = 5,
-    showRightArrow = true
+    content = {
+      Text(text = "NILESH")
+    }
   ) {
 
   }
