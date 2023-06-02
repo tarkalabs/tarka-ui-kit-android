@@ -1,5 +1,8 @@
 package com.tarkalabs.uicomponents
 
+import androidx.compose.material3.Text
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -42,6 +45,26 @@ class TUINavigationRowTest {
     composable.onAllNodesWithTag(BADGE_TAG, useUnmergedTree = true).onFirst().assertIsDisplayed()
     composable.onNodeWithContentDescription(TarkaIcons.ChevronRight.contentDescription).assertIsDisplayed()
     composable.onNodeWithContentDescription(TarkaIcons.CheckMark.contentDescription, useUnmergedTree = true).assertIsDisplayed()
+
+  }
+
+  @Test fun navigationRow2_Elements_Displayed() {
+
+    composable.setContent {
+      TUINavigationRow(
+        title = "Label",
+        leadingIcon = TarkaIcons.CheckMark,
+        onClick = {},
+        rowTestTag = "rowTestTag",
+        statusContent = {
+          Text(text = "BEDFORD", modifier = Modifier.testTag("BEDFORD"))
+        }
+      )
+
+    }
+
+    composable.onNodeWithText("Label").assertIsDisplayed()
+    composable.onNodeWithText("BEDFORD").assertIsDisplayed()
 
   }
 
