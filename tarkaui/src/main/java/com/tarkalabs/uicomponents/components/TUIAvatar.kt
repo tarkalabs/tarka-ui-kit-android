@@ -22,6 +22,9 @@ import com.tarkalabs.uicomponents.components.AvatarSize.S
 import com.tarkalabs.uicomponents.components.AvatarSize.XL
 import com.tarkalabs.uicomponents.components.AvatarSize.XS
 import com.tarkalabs.uicomponents.components.AvatarSize.XXL
+import com.tarkalabs.uicomponents.components.AvatarType.Icon
+import com.tarkalabs.uicomponents.components.AvatarType.Image
+import com.tarkalabs.uicomponents.components.AvatarType.Text
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.theme.TUITheme
 
@@ -34,12 +37,16 @@ enum class AvatarSize(val size: Dp) {
   XXL(96.dp)
 }
 
+sealed class AvatarType{
+  data class Icon(val icon : TarkaIcon) : AvatarType()
+  data class Text(val text : String) : AvatarType()
+  data class Image(val image : ImageBitmap) : AvatarType()
+}
+
 @Composable
 fun TUIAvatar(
   modifier: Modifier = Modifier,
-  imageBitmap: ImageBitmap? = null,
-  icon: TarkaIcon? = null,
-  text: String? = null,
+  avatarType: AvatarType,
   avatarSize: AvatarSize = L,
   showBadge: Boolean = false
 ) {
@@ -54,19 +61,23 @@ fun TUIAvatar(
         .background(TUITheme.colors.tertiary),
       contentAlignment = Alignment.Center
     ) {
-      if (imageBitmap != null) {
-        Image(bitmap = imageBitmap, contentDescription = "Avatar Image")
-      } else if (!text.isNullOrEmpty()) {
-        val typography = typographyFor(avatarSize)
-        Text(text = text.take(2), color = TUITheme.colors.onTertiary, style = typography)
-      } else if (icon != null) {
-        val iconSize = iconSizeFor(avatarSize)
-        Icon(
-          modifier = Modifier.size(iconSize),
-          painter = painterResource(id = icon.iconRes),
-          contentDescription = icon.contentDescription,
-          tint = TUITheme.colors.onTertiary
-        )
+      when(avatarType){
+        is Icon -> {
+          val iconSize = iconSizeFor(avatarSize)
+          Icon(
+            modifier = Modifier.size(iconSize),
+            painter = painterResource(id = avatarType.icon.iconRes),
+            contentDescription = avatarType.icon.contentDescription,
+            tint = TUITheme.colors.onTertiary
+          )
+        }
+        is Image -> {
+          Image(bitmap = avatarType.image, contentDescription = "Avatar Image")
+        }
+        is Text -> {
+          val typography = typographyFor(avatarSize)
+          Text(text = avatarType.text.take(3), color = TUITheme.colors.onTertiary, style = typography)
+        }
       }
     }
     if (showBadge) {

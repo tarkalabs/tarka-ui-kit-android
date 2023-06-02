@@ -3,20 +3,16 @@
 package com.tarkalabs.uicomponents.screenshots
 
 import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
 
 import android.graphics.BitmapFactory
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.ui.graphics.asImageBitmap
-import com.tarkalabs.uicomponents.R.drawable
 import com.tarkalabs.uicomponents.components.AvatarSize
+import com.tarkalabs.uicomponents.components.AvatarType
 import com.tarkalabs.uicomponents.components.TUIAvatar
-import com.tarkalabs.uicomponents.components.TopBar
-import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
 
 @OptIn(ExperimentalMaterial3Api::class)
 @RunWith(Parameterized::class)
@@ -51,23 +47,20 @@ class TUIAvatarScreenshotTest(
 
   @Test fun test_avatar_with_image(){
     val bitmap = BitmapFactory.decodeStream(assetManager.open("avatarTest.webp"))
-
     compareScreenshotFor(darkTheme = darkTheme, imageName = "_testAvatarWithImage_$testName") {
-      TUIAvatar(imageBitmap = bitmap.asImageBitmap(), avatarSize = avatarSize, showBadge = showBadge)
+      TUIAvatar(avatarType = AvatarType.Image(bitmap.asImageBitmap()), avatarSize = avatarSize, showBadge = showBadge)
     }
   }
 
   @Test fun test_avatar_with_text(){
-    val text = "AB"
     compareScreenshotFor(darkTheme = darkTheme, imageName = "_testAvatarWithText_$testName") {
-      TUIAvatar(text = text, avatarSize = avatarSize, showBadge = showBadge)
+      TUIAvatar(avatarType = AvatarType.Text("AB"), avatarSize = avatarSize, showBadge = showBadge)
     }
   }
 
   @Test fun test_avatar_with_icon(){
-    val icon = TarkaIcons.DismissFilled
     compareScreenshotFor(darkTheme = darkTheme, imageName = "_testAvatarWithIcon_$testName") {
-      TUIAvatar(icon = icon, avatarSize = avatarSize, showBadge = showBadge)
+      TUIAvatar(avatarType = AvatarType.Icon(TarkaIcons.DismissFilled), avatarSize = avatarSize, showBadge = showBadge)
     }
   }
 }
