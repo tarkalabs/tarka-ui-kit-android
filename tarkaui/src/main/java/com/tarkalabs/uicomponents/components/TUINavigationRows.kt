@@ -59,25 +59,13 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   rowTestTag: String = Tags.TAG_NAVIGATION_ROW,
   onClick: () -> Unit,
 ) {
-  Row(modifier = modifier
-    .clickable { onClick() }
-    .padding(8.dp)
-    .defaultMinSize(minHeight = 40.dp)
-    .testTag(rowTestTag), verticalAlignment = Alignment.CenterVertically) {
-    if (leadingIcon != null) Icon(
-      modifier = Modifier.size(24.dp),
-      painter = painterResource(id = leadingIcon.iconRes),
-      contentDescription = leadingIcon.contentDescription,
-      tint = TUITheme.colors.secondary
-    )
-    Text(
-      text = title,
-      modifier = Modifier
-        .weight(1f)
-        .padding(horizontal = 20.dp),
-      style = TUITheme.typography.heading7,
-      color = TUITheme.colors.onSurface
-    )
+  TUINavigationRow(
+    title = title,
+    onClick = onClick,
+    leadingIcon = leadingIcon,
+    rowTestTag = rowTestTag,
+    modifier = modifier
+  ) {
     if (badgeCount != null) Badge(
       containerColor = TUITheme.colors.error,
       modifier = Modifier
@@ -130,10 +118,10 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 @Composable fun TUINavigationRow(
   title: String,
   leadingIcon: TarkaIcon? = null,
-  statusContent: @Composable RowScope.() -> Unit,
   modifier: Modifier = Modifier,
   rowTestTag: String = Tags.TAG_NAVIGATION_ROW,
   onClick: () -> Unit,
+  statusContent: @Composable RowScope.() -> Unit,
 ) {
   Row(modifier = modifier
     .clickable { onClick() }
@@ -159,11 +147,14 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 }
 
 @Preview(showBackground = true) @Composable fun TUINavigationRowPreview() {
-  TUINavigationRow(title = "Label",
+  TUINavigationRow(
+    title = "Label",
     leadingIcon = TarkaIcon(androidx.core.R.drawable.ic_call_decline, "Call Decline"),
-    statusContent = {
-      Text(text = "NILESH")
-    }) {
+    onClick = {
 
+    },
+    rowTestTag = "TEST_TAG",
+  ) {
+    Text(text = "NILESH")
   }
 }
