@@ -7,6 +7,7 @@ import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_export_ltr_2
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_sync_circle_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_barcode_scanner_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_checkmark_16_filled
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_checkmark_circle_16_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_checkmark_starburst_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_chevron_down_20_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_chevron_left_20_regular
@@ -25,6 +26,7 @@ import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_re_order_dots_vert
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_search_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_shield_task_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_tabs_24_regular
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_warning_12_regular
 
 data class TarkaIcon(
   @DrawableRes val iconRes: Int,
@@ -32,6 +34,8 @@ data class TarkaIcon(
 )
 
 object TarkaIcons {
+  val Warning12Regular = TarkaIcon(ic_fluent_warning_12_regular, "Warning")
+  val CheckMarkCircle16Regular = TarkaIcon(ic_fluent_checkmark_circle_16_regular, "Check Mark Success")
   val ChevronUp = TarkaIcon(ic_fluent_chevron_up_20_regular, "Chevron Up")
   val ChevronRight = TarkaIcon(R.drawable.ic_fluent_chevron_right_20_regular, "Chevron Right")
   val ChevronLeft = TarkaIcon(ic_fluent_chevron_left_20_regular, "Chevron Left")
