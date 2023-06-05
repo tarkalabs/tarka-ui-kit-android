@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
+import com.tarkalabs.uicomponents.theme.TUIColors
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 // TODO: 5/2/2023 use dimensions instead of hard coded things
@@ -83,7 +84,8 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     if (showRightArrow) {
       Icon(
         painter = painterResource(id = TarkaIcons.ChevronRight.iconRes),
-        contentDescription = TarkaIcons.ChevronRight.contentDescription
+        contentDescription = TarkaIcons.ChevronRight.contentDescription,
+        tint = TUITheme.colors.utilityOutline
       )
     }
   }

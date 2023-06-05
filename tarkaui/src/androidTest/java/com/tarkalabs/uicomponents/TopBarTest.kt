@@ -16,7 +16,7 @@ import org.mockito.kotlin.verify
 class TopBarTest {
   @get:Rule val composeTestRule = createComposeRule()
 
-  @OptIn(ExperimentalMaterial3Api::class) @Test fun visibilityTest() {
+  @OptIn(ExperimentalMaterial3Api::class) @Test fun topBar_Item_Displayed() {
     composeTestRule.setContent {
       TopBar(
         title = "title",
@@ -36,7 +36,7 @@ class TopBarTest {
     composeTestRule.onNodeWithTag(TarkaIcons.Search.contentDescription).assertIsDisplayed()
   }
 
-  @OptIn(ExperimentalMaterial3Api::class) @Test fun topBarSearchIconDisplayed() {
+  @OptIn(ExperimentalMaterial3Api::class) @Test fun topBar_SearchIcon_Displayed() {
     composeTestRule.setContent {
       TopBar(
         title = "title",
@@ -47,7 +47,7 @@ class TopBarTest {
     composeTestRule.onNodeWithTag(TarkaIcons.ChevronRight.contentDescription).assertIsDisplayed()
   }
 
-  @OptIn(ExperimentalMaterial3Api::class) @Test fun clickEventTest() {
+  @OptIn(ExperimentalMaterial3Api::class) @Test fun topBar_All_Icons_Click_Events_Trigged() {
     val onNavigationIconClick: () -> Unit = mock()
     val onFirstMenuItemClicked: () -> Unit = mock()
     val onSecondMenuItemClicked: () -> Unit = mock()

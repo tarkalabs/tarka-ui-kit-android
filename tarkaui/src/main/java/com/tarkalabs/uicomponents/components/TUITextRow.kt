@@ -10,19 +10,19 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.R.drawable
 import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.models.TarkaIcon
+import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -42,7 +42,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * @param onInfoIconClick: The callback function when the info icon is clicked.
  * @param onTextRowClick: The callback function when the text row is clicked.
  * @param paddingValues: The padding values to apply to the row.
- * @param iconOneTestTag: The test tag for the first icon.
+ * @param testTag: The test tag for the first icon.
  *
  * The TUITextRow composable function creates a row that represents a text item in a UI.
  * It handles click events and provides callback functions for customization. The row displays
@@ -78,12 +78,11 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   paddingValues: PaddingValues = PaddingValues(),
   testTag: String = Tags.TAG_TEXT_ROW
 ) {
-  Row(
-    modifier
-      .clickable { onTextRowClick() }
-      .defaultMinSize(minHeight = 40.dp)
-      .padding(paddingValues)
-      .testTag(testTag),
+  Row(modifier
+    .clickable { onTextRowClick() }
+    .defaultMinSize(minHeight = 40.dp)
+    .padding(paddingValues)
+    .testTag(testTag),
     verticalAlignment = Alignment.CenterVertically) {
     Column(Modifier.weight(1f)) {
       Text(
@@ -121,12 +120,11 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         }
       }
       if (infoIcon != null) {
-        TUIIconButton(
-          icon = infoIcon,
-          onIconClick = onInfoIconClick,
-          iconButtonStyle = IconButtonStyle.GHOST,
-          testTag = infoIcon.contentDescription
-
+        Icon(
+          painter = painterResource(id = infoIcon.iconRes),
+          contentDescription = infoIcon.contentDescription,
+          tint = TUITheme.colors.utilityOutline,
+          modifier = Modifier.clickable(onClick = onInfoIconClick)
         )
       }
     }

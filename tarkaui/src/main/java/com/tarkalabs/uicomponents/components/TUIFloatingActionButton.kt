@@ -32,7 +32,7 @@ enum class FloatingActionButtonSize(val size: Dp) {
 
 /**
  * Below TUIFloatingActionButton() defines a reusable composable function which can be used to create an FAB with various styles and sizes which takes several parameters such as
- * @param fabSize The size of the FAB. Default is [FloatingActionButtonSize.M].
+ * @param fabSize The size of the FAB. Default is [FloatingActionButtonSize.S].
  * @param icon The icon of the button. It should be TarkIcon
  * @param onClick The callback function to be executed when the button is clicked.
  * @param testTag The test tag for the TUIFloatingActionButton.
@@ -55,6 +55,7 @@ enum class FloatingActionButtonSize(val size: Dp) {
   FloatingActionButton(
     onClick = onClick,
     containerColor = TUITheme.colors.primary,
+    contentColor = TUITheme.colors.onPrimary,
     shape = CircleShape,
     modifier = Modifier
       .defaultMinSize(minHeight = fabSize.size, minWidth = fabSize.size)

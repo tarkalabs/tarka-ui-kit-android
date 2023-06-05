@@ -68,16 +68,14 @@ enum class IconButtonStyle {
  * @param iconButtonStyle The style of the button, which can be one of the values of the IconButtonStyle enum.
  * @param enabled Whether the button is clickable or not.
  * @param onIconClick A callback function that is invoked when the button is clicked.
- * @param tag The test tag for the TUIButton.
+ * @param testTag The test tag for the TUIButton.
  * The function calculates the size of the icon based on the buttonSize parameter and sets the colors of the button
  *
  * How to use IconButton() composable function
  *
-IconButton(
-icon = TarkaIcons.ChevronRight,
-buttonSize = IconButtonSize.XS,
-iconButtonStyle = IconButtonStyle.OUTLINE,
-)
+ *   IconButton(icon = TarkaIcons.ChevronRight,
+ *              buttonSize = IconButtonSize.XS,
+ *             iconButtonStyle = IconButtonStyle.OUTLINE)
  *
  */
 @Composable fun TUIIconButton(
@@ -99,6 +97,7 @@ iconButtonStyle = IconButtonStyle.OUTLINE,
     XS, S, M -> Modifier
       .height(12.dp)
       .width(12.dp)
+
     L, XL -> Modifier
       .size(24.dp)
       .size(24.dp)
