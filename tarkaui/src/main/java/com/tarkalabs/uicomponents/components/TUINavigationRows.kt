@@ -30,7 +30,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  *
  * @param title: The title text to be displayed in the navigation row.
  * @param leadingIcon: The optional leading icon displayed before the title.
- * @param statusContent: A dynamic Composable to display in row
+ * @param content: A dynamic Composable to display in row
  * @param modifier: The modifier to apply to the row.
  * @param rowTestTag: The test tag for the row.
  * @param onClick: The callback function when the row is clicked.
@@ -53,7 +53,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   modifier: Modifier = Modifier,
   rowTestTag: String = Tags.TAG_NAVIGATION_ROW,
   onClick: () -> Unit,
-  statusContent: @Composable RowScope.() -> Unit,
+  content: @Composable RowScope.() -> Unit,
 ) {
   Row(modifier = modifier
     .clickable { onClick() }
@@ -74,7 +74,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
       style = TUITheme.typography.heading7,
       color = TUITheme.colors.onSurface
     )
-    statusContent()
+    content()
   }
 }
 

@@ -29,7 +29,7 @@ class TUINavigationRowTest {
         leadingIcon = TarkaIcons.CheckMark,
         onClick = {},
         rowTestTag = "rowTestTag",
-        statusContent = {
+        content = {
           Text(text = "BEDFORD", modifier = Modifier.testTag("BEDFORD"))
         }
       )
