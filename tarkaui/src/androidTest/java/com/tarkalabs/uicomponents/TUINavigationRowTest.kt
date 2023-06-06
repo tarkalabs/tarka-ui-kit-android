@@ -10,6 +10,7 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import com.tarkalabs.uicomponents.components.TUINavigationRow
+import com.tarkalabs.uicomponents.components.TUINavigationRowTags
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Rule
 import org.junit.Test
@@ -19,26 +20,23 @@ import org.mockito.kotlin.verify
 class TUINavigationRowTest {
   @get:Rule val composable = createComposeRule()
 
-  private val ROW_TAG = "ROW_TAG"
+  private val TAGS = TUINavigationRowTags(parentTag = "rowTestTag")
 
   @Test fun navigationRow_Elements_Displayed() {
 
     composable.setContent {
-      TUINavigationRow(
-        title = "Label",
+      TUINavigationRow(title = "Label",
         leadingIcon = TarkaIcons.CheckMark,
         onClick = {},
-        rowTestTag = "rowTestTag",
+        tags = TAGS,
         content = {
           Text(text = "BEDFORD", modifier = Modifier.testTag("BEDFORD"))
-        }
-      )
+        })
 
     }
 
     composable.onNodeWithText("Label").assertIsDisplayed()
     composable.onNodeWithText("BEDFORD").assertIsDisplayed()
-
   }
 
   @Test fun navigationRow_Elements_Click_Triggered() {
@@ -49,17 +47,14 @@ class TUINavigationRowTest {
         title = "Label",
         leadingIcon = TarkaIcons.Copy,
         onClick = onClick,
-        rowTestTag = ROW_TAG
-      ){
+        tags = TAGS,
+      ) {
 
       }
     }
-    composable.onNodeWithTag(ROW_TAG).performClick()
+    composable.onNodeWithTag(TAGS.parentTag).performClick()
     verify(onClick).invoke()
 
-    composable.onNodeWithTag(ROW_TAG)
-      .assertHasClickAction()
-      .performClick()
-
+    composable.onNodeWithTag(TAGS.parentTag).assertHasClickAction().performClick()
   }
 }
