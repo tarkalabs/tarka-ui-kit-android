@@ -14,6 +14,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -28,6 +29,7 @@ import com.tarkalabs.uicomponents.components.AvatarType.Icon
 import com.tarkalabs.uicomponents.components.AvatarType.Image
 import com.tarkalabs.uicomponents.components.AvatarType.Text
 import com.tarkalabs.uicomponents.models.TarkaIcon
+import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 enum class AvatarSize(val size: Dp) {
@@ -130,3 +132,20 @@ private fun typographyFor(size: AvatarSize) = when (size) {
   XXL -> TUITheme.typography.heading3
 }
 
+@Composable
+@Preview(showBackground = true)
+fun AvatarIconPreview(){
+  TUIAvatar(
+    avatarType = Icon(TarkaIcons.Search),
+    avatarSize = L
+  )
+}
+
+@Composable
+@Preview(showBackground = true)
+fun AvatarTextPreview(){
+  TUIAvatar(
+    avatarType = Text(text = "TUK"),
+    avatarSize = L,
+  )
+}
