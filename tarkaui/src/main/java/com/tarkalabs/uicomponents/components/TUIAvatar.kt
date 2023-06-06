@@ -41,20 +41,19 @@ enum class AvatarSize(val size: Dp) {
   XXL(96.dp)
 }
 
-sealed class AvatarType{
-  data class Icon(val icon : TarkaIcon) : AvatarType()
-  data class Text(val text : String) : AvatarType()
-  data class Image(val image : ImageBitmap) : AvatarType()
+sealed class AvatarType {
+  data class Icon(val icon: TarkaIcon) : AvatarType()
+  data class Text(val text: String) : AvatarType()
+  data class Image(val image: ImageBitmap) : AvatarType()
 }
 
 /**
-* A composable function that displays an avatar image.
+ * A composable function that displays an avatar image.
  * @param modifier The modifier to be applied to the avatar.
  * @param avatarType The type of avatar to be displayed. It can be an Icon, Image, or Text.
  * @param avatarSize The size of the avatar. It can be AvatarSize.S, AvatarSize.M, or AvatarSize.L. The default value is AvatarSize.L.
  * @param showBadge Determines whether to show a badge on the avatar. The default value is false.
- * @param avatarTag The test tag for the Avatar.
- * @param badgeTag  The test tag for the Avatar Badge.
+ * @param tags Test tags for the TUIAvatar.
  */
 @Composable
 fun TUIAvatar(
@@ -62,7 +61,7 @@ fun TUIAvatar(
   avatarType: AvatarType,
   avatarSize: AvatarSize = L,
   showBadge: Boolean = false,
-  avatarTags : AvatarTags = AvatarTags()
+  tags: TUIAvatarTags = TUIAvatarTags()
 ) {
   Box(
     modifier = modifier.size(avatarSize.size),
@@ -73,10 +72,10 @@ fun TUIAvatar(
         .size(avatarSize.size)
         .clip(CircleShape)
         .background(TUITheme.colors.tertiary)
-        .testTag(avatarTags.avatarTag),
+        .testTag(tags.parentTag),
       contentAlignment = Alignment.Center
     ) {
-      when(avatarType){
+      when (avatarType) {
         is Icon -> {
           val iconSize = iconSizeFor(avatarSize)
           Icon(
@@ -86,12 +85,18 @@ fun TUIAvatar(
             tint = TUITheme.colors.onTertiary
           )
         }
+
         is Image -> {
           Image(bitmap = avatarType.image, contentDescription = "Avatar Image")
         }
+
         is Text -> {
           val typography = typographyFor(avatarSize)
-          Text(text = avatarType.text.take(3), color = TUITheme.colors.onTertiary, style = typography)
+          Text(
+            text = avatarType.text.take(3),
+            color = TUITheme.colors.onTertiary,
+            style = typography
+          )
         }
       }
     }
@@ -100,7 +105,7 @@ fun TUIAvatar(
       TUIBadge(
         modifier = Modifier
           .align(Alignment.BottomEnd)
-          .testTag(avatarTags.badgeTag),
+          .testTag(tags.badgeTag),
         badgeSize = badgeSize,
         color = TUITheme.colors.success
       )
@@ -133,14 +138,14 @@ private fun typographyFor(size: AvatarSize) = when (size) {
   XXL -> TUITheme.typography.heading3
 }
 
-data class AvatarTags(
-   val avatarTag: String = Tags.TAG_AVATAR,
-   val badgeTag: String = Tags.TAG_AVATAR_BADGE,
+data class TUIAvatarTags(
+  val parentTag: String = Tags.TAG_AVATAR,
+  val badgeTag: String = Tags.TAG_AVATAR_BADGE,
 )
 
 @Composable
 @Preview(showBackground = true)
-fun AvatarIconPreview(){
+fun TUIAvatarIconPreview() {
   TUIAvatar(
     avatarType = Icon(TarkaIcons.Search),
     avatarSize = L
@@ -149,7 +154,7 @@ fun AvatarIconPreview(){
 
 @Composable
 @Preview(showBackground = true)
-fun AvatarTextPreview(){
+fun TUIAvatarTextPreview() {
   TUIAvatar(
     avatarType = Text(text = "TUK"),
     avatarSize = L,
