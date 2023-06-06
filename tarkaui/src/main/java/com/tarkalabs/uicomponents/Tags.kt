@@ -10,4 +10,5 @@ object Tags {
   const val TAG_NAVIGATION_ROW = "navigation_row"
   const val TAG_FAB = "floating_action_button_item"
   const val TAG_THEME = "theme"
+  const val TAG_STATUS = "tag_status"
 }
