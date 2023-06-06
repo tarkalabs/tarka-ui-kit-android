@@ -6,6 +6,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -34,11 +35,13 @@ enum class BadgeSize(val size: Dp) {
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable fun TUIBadge(
+  modifier: Modifier = Modifier,
   count: Int? = null,
   badgeSize: BadgeSize = M,
   testTag: String = Tags.TAG_BADGE,
+  color: Color = TUITheme.colors.error
 ) {
-  val padding = when (badgeSize) {
+  when (badgeSize) {
     S -> 0.dp
     M -> 4.dp
     L -> 8.dp
@@ -48,14 +51,10 @@ enum class BadgeSize(val size: Dp) {
     L -> TUITheme.typography.button7
   }
   androidx.compose.material3.Badge(
-    containerColor = TUITheme.colors.error,
-    modifier = Modifier
-      .padding(padding)
-      .defaultMinSize(
-        minWidth = badgeSize.size, minHeight = badgeSize.size
-      )
+    containerColor = color,
+    modifier = modifier
+      .defaultMinSize(minWidth = badgeSize.size, minHeight = badgeSize.size)
       .testTag(testTag)
-
   ) {
     if (count != null) Text(
       text = count.toString(),
