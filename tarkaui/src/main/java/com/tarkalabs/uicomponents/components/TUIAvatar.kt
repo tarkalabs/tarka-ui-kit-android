@@ -62,8 +62,7 @@ fun TUIAvatar(
   avatarType: AvatarType,
   avatarSize: AvatarSize = L,
   showBadge: Boolean = false,
-  avatarTag : String = Tags.TAG_AVATAR,
-  badgeTag : String = Tags.TAG_AVATAR_BADGE,
+  avatarTags : AvatarTags = AvatarTags()
 ) {
   Box(
     modifier = modifier.size(avatarSize.size),
@@ -74,7 +73,7 @@ fun TUIAvatar(
         .size(avatarSize.size)
         .clip(CircleShape)
         .background(TUITheme.colors.tertiary)
-        .testTag(avatarTag),
+        .testTag(avatarTags.avatarTag),
       contentAlignment = Alignment.Center
     ) {
       when(avatarType){
@@ -99,7 +98,9 @@ fun TUIAvatar(
     if (showBadge) {
       val badgeSize = badgeSizeFor(avatarSize)
       TUIBadge(
-        modifier = Modifier.align(Alignment.BottomEnd).testTag(badgeTag),
+        modifier = Modifier
+          .align(Alignment.BottomEnd)
+          .testTag(avatarTags.badgeTag),
         badgeSize = badgeSize,
         color = TUITheme.colors.success
       )
@@ -131,6 +132,11 @@ private fun typographyFor(size: AvatarSize) = when (size) {
   XL -> TUITheme.typography.heading4
   XXL -> TUITheme.typography.heading3
 }
+
+data class AvatarTags(
+   val avatarTag: String = Tags.TAG_AVATAR,
+   val badgeTag: String = Tags.TAG_AVATAR_BADGE,
+)
 
 @Composable
 @Preview(showBackground = true)
