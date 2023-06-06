@@ -1,4 +1,3 @@
-
 package com.tarkalabs.uicomponents.components
 
 import androidx.compose.foundation.clickable
@@ -32,8 +31,9 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * @param leadingIcon: The optional leading icon displayed before the title.
  * @param content: A dynamic Composable to display in row
  * @param modifier: The modifier to apply to the row.
- * @param rowTestTag: The test tag for the row.
+ * @param tags: The test tag for the row.
  * @param onClick: The callback function when the row is clicked.
+ * @param content: The child content of the navigation row(Eg: TUIBadge, Connection Status etc).
  *
  * Example usage:
  *
@@ -51,7 +51,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   title: String,
   leadingIcon: TarkaIcon? = null,
   modifier: Modifier = Modifier,
-  rowTestTag: String = Tags.TAG_NAVIGATION_ROW,
+  tags: TUINavigationRowTags = TUINavigationRowTags(),
   onClick: () -> Unit,
   content: @Composable RowScope.() -> Unit,
 ) {
@@ -59,9 +59,11 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     .clickable { onClick() }
     .padding(8.dp)
     .defaultMinSize(minHeight = 40.dp)
-    .testTag(rowTestTag), verticalAlignment = Alignment.CenterVertically) {
+    .testTag(tags.parentTag), verticalAlignment = Alignment.CenterVertically) {
     if (leadingIcon != null) Icon(
-      modifier = Modifier.size(24.dp),
+      modifier = Modifier
+        .size(24.dp)
+        .testTag(tags.leadingIconTag),
       painter = painterResource(id = leadingIcon.iconRes),
       contentDescription = leadingIcon.contentDescription,
       tint = TUITheme.colors.secondary
@@ -69,6 +71,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     Text(
       text = title,
       modifier = Modifier
+        .testTag(tags.textTag)
         .weight(1f)
         .padding(horizontal = 20.dp),
       style = TUITheme.typography.heading7,
@@ -78,6 +81,12 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   }
 }
 
+data class TUINavigationRowTags(
+  val parentTag: String = Tags.TAG_NAVIGATION_ROW,
+  val leadingIconTag: String = Tags.TAG_NAVIGATION_ROW_LEADING_ICON,
+  val textTag: String = Tags.TAG_NAVIGATION_ROW_TEXT,
+)
+
 @Preview(showBackground = true) @Composable fun TUINavigationRowPreview() {
   TUINavigationRow(
     title = "Label",
@@ -85,7 +94,6 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     onClick = {
 
     },
-    rowTestTag = "TEST_TAG",
   ) {
     Text(text = "NILESH")
   }
