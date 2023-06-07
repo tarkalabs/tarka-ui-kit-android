@@ -8,7 +8,7 @@ import com.tarkalabs.uicomponents.components.TUIStatusIndicatorTags
 import org.junit.Rule
 import org.junit.Test
 
-class TUIStatusTest {
+class TUIStatusIndicatorTest {
   @get:Rule val composable = createComposeRule()
 
   var tags = TUIStatusIndicatorTags(parentTag = "TAGS")
