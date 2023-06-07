@@ -45,7 +45,7 @@ enum class FloatingActionButtonSize(val size: Dp) {
 @Composable fun TUIFloatingActionButton(
   fabSize: FloatingActionButtonSize = S,
   icon: TarkaIcon,
-  testTag: String = Tags.TAG_FAB,
+  tags: TUIFloatingActionButtonTags = TUIFloatingActionButtonTags(),
   onClick: () -> Unit,
 ) {
   val iconSize = when (fabSize) {
@@ -59,7 +59,7 @@ enum class FloatingActionButtonSize(val size: Dp) {
     shape = CircleShape,
     modifier = Modifier
       .defaultMinSize(minHeight = fabSize.size, minWidth = fabSize.size)
-      .testTag(testTag)
+      .testTag(tags.parentTag)
   ) {
     Icon(
       modifier = Modifier.defaultMinSize(iconSize, iconSize),
@@ -68,6 +68,10 @@ enum class FloatingActionButtonSize(val size: Dp) {
     )
   }
 }
+
+data class TUIFloatingActionButtonTags(
+  val parentTag: String = Tags.TAG_FAB,
+)
 
 @Preview(showBackground = true) @Composable fun FloatingActionButtonPreview() {
   Column(
