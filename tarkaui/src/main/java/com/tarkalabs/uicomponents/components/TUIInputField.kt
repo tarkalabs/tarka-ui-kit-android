@@ -1,6 +1,8 @@
 package com.tarkalabs.uicomponents.components
 
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -8,9 +10,15 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.components.TUIInputFieldStatus.Alert
 import com.tarkalabs.uicomponents.components.TUIInputFieldStatus.Disabled
@@ -40,7 +48,8 @@ fun TUIInputField(
   status: TUIInputFieldStatus,
   leadingIcon: TarkaIcon? = null,
   trailingIcon: TarkaIcon? = null,
-  helperMessage: String? = null
+  helperMessage: String? = null,
+  testTags: TUIInputFieldTags = TUIInputFieldTags()
 ) {
 
   val icon = iconFor(status)
@@ -50,23 +59,33 @@ fun TUIInputField(
     if (leadingIcon != null)
       Icon(
         painter = painterResource(id = leadingIcon.iconRes),
-        contentDescription = leadingIcon.contentDescription
+        contentDescription = leadingIcon.contentDescription,
+        modifier = Modifier.testTag(testTags.leadingIconTag)
       )
   }
   val tailingIconLambda: @Composable () -> Unit = {
     if (trailingIcon != null)
       Icon(
         painter = painterResource(id = trailingIcon.iconRes),
-        contentDescription = trailingIcon.contentDescription
+        contentDescription = trailingIcon.contentDescription,
+        modifier = Modifier.testTag(testTags.trailingIconTag)
       )
   }
   val labelLambda: @Composable () -> Unit = {
     if (label != null)
-      Text(text = label, style = TUITheme.typography.body6, color = TUITheme.colors.inputDim)
+      Text(
+        text = label,
+        style = TUITheme.typography.body6,
+        color = TUITheme.colors.inputDim,
+        modifier = Modifier.testTag(testTags.labelTag)
+      )
   }
   TextField(
     shape = RoundedCornerShape(8.dp),
-    modifier = modifier,
+    modifier = modifier
+      .padding(16.dp)
+      .fillMaxWidth()
+      .testTag(testTags.mainInputFieldTag),
     value = value,
     onValueChange = onValueChange,
     enabled = status != Disabled,
@@ -80,13 +99,16 @@ fun TUIInputField(
         Row(verticalAlignment = Alignment.CenterVertically) {
           if (icon != null)
             Icon(
+              tint = indicatorColorFor(status),
               painter = painterResource(id = icon.iconRes),
+              modifier = Modifier.testTag(testTags.helperIconTag),
               contentDescription = icon.contentDescription
             )
           Text(
             text = helperMessage,
             style = TUITheme.typography.heading7,
-            color = TUITheme.colors.inputText
+            color = TUITheme.colors.inputText,
+            modifier = Modifier.testTag(testTags.helperTextTag)
           )
         }
       }
@@ -104,15 +126,8 @@ fun iconFor(status: TUIInputFieldStatus): TarkaIcon? {
 
 @Composable
 fun colorsFor(status: TUIInputFieldStatus): TextFieldColors {
-  val focusedIndicatorColor = when (status) {
-    Inactive -> TUITheme.colors.utilityDisabledBackground
-    Focused -> TUITheme.colors.primary
-    Error -> TUITheme.colors.error
-    Success -> TUITheme.colors.success
-    Alert -> TUITheme.colors.warning
-    Disabled -> TUITheme.colors.utilityDisabledBackground
-  }
-  return TextFieldDefaults.colors()
+  val focusedIndicatorColor = indicatorColorFor(status)
+  //return TextFieldDefaults.colors()
   return TextFieldDefaults.colors(
     focusedIndicatorColor = focusedIndicatorColor,
     unfocusedIndicatorColor = TUITheme.colors.utilityDisabledContent,
@@ -129,3 +144,34 @@ fun colorsFor(status: TUIInputFieldStatus): TextFieldColors {
     errorLabelColor = TUITheme.colors.inputDim,
   )
 }
+
+@Composable
+private fun indicatorColorFor(status: TUIInputFieldStatus) =
+  when (status) {
+    Inactive -> TUITheme.colors.utilityDisabledBackground
+    Focused -> TUITheme.colors.primary
+    Error -> TUITheme.colors.error
+    Success -> TUITheme.colors.success
+    Alert -> TUITheme.colors.warning
+    Disabled -> TUITheme.colors.utilityDisabledBackground
+  }
+
+@Preview
+@Composable
+fun TUIPreview() {
+  TUITheme {
+    var textValue by remember {
+      mutableStateOf("hello world")
+    }
+    TUIInputField(value = textValue, onValueChange = { textValue = it }, status = Success)
+  }
+}
+
+data class TUIInputFieldTags(
+  val trailingIconTag: String = "TUIInputField_trailingIcon",
+  val leadingIconTag: String = "TUIInputField_leadingIcon",
+  val labelTag: String = "TUIInputField_label",
+  val helperTextTag: String = "TUIInputField_helperText",
+  val helperIconTag: String = "TUIInputField_helperIcon",
+  val mainInputFieldTag: String = "TUIInputField_mainInputField",
+)
