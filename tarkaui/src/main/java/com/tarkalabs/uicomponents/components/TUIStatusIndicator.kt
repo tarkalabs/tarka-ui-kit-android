@@ -24,16 +24,29 @@ enum class TUIStatus {
   OFF
 }
 
+/**
+ * A composable function that displays a status indicator with a text and a colored circle representing the status.
+ *
+ * @param text The text to display alongside the status indicator.
+ * @param status The status of the indicator (ON or OFF).
+ * @param modifier The modifier for the status indicator.
+ * @param tags The tags for testing purposes.
+ * Usage example:
+ * TUIStatusIndicator("Connected", TUIStatus.ON)
+ * TUIStatusIndicator("Disconnected", TUIStatus.OFF)
+ */
 @Composable fun TUIStatusIndicator(
-  text: String, status: TUIStatus,
-  modifier: Modifier = Modifier, tags: TUIStatusIndicatorTags = TUIStatusIndicatorTags()
+  text: String,
+  status: TUIStatus,
+  modifier: Modifier = Modifier,
+  tags: TUIStatusIndicatorTags = TUIStatusIndicatorTags()
 ) {
   val statusColor = if (status == ON) TUITheme.colors.success else TUITheme.colors.error
   Row(modifier = modifier.testTag(tags.parentTag), verticalAlignment = Alignment.CenterVertically) {
     Text(
       text = text,
       style = TUITheme.typography.button8,
-      color = TUITheme.colors.utilityDisabledContent.copy(alpha = 0.38f)
+      color = TUITheme.colors.utilityDisabledContent
     )
     HorizontalSpacer(space = 14)
     Box(
