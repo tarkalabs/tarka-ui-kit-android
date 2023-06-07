@@ -116,7 +116,7 @@ onClick = {}
   buttonStyle: ButtonStyle = PRIMARY,
   leadingIcon: TarkaIcon? = null,
   trailingIcon: TarkaIcon? = null,
-  testTag: String = Tags.TAG_BUTTON,
+  tags: TUIButtonTags = TUIButtonTags(),
   onClick: () -> Unit,
 ) {
   val buttonColor = when (buttonStyle) {
@@ -161,7 +161,7 @@ onClick = {}
     modifier = Modifier
       .height(height.size)
       .wrapContentWidth()
-      .testTag(testTag),
+      .testTag(tags.parentTag),
     contentPadding = height.paddingValues(leadingIcon == null, trailingIcon == null),
     border = if (buttonStyle == OUTLINE) BorderStroke(
       width = 1.dp, color = TUITheme.colors.onSurface
@@ -174,7 +174,7 @@ onClick = {}
         Icon(
           painter = painterResource(id = leadingIcon.iconRes),
           contentDescription = leadingIcon.contentDescription,
-          modifier = Modifier.size(height.iconSize())
+          modifier = Modifier.size(height.iconSize()).testTag(tags.leadingIconTag)
         )
       }
       Text(text = label, style = height.textStyle())
@@ -182,12 +182,18 @@ onClick = {}
         Icon(
           painter = painterResource(id = trailingIcon.iconRes),
           contentDescription = trailingIcon.contentDescription,
-          modifier = Modifier.size(height.iconSize())
+          modifier = Modifier.size(height.iconSize()).testTag(tags.trailingIconTag)
         )
       }
     }
   }
 }
+
+data class TUIButtonTags(
+  val parentTag: String = Tags.TAG_BUTTON,
+  val leadingIconTag: String = Tags.TAG_BUTTON_LEADING_ICON,
+  val trailingIconTag: String = Tags.TAG_BUTTON_TRAILING_ICON,
+)
 
 @Composable @Preview(showBackground = true, showSystemUi = true) fun PreviewPrimaryButton() {
   TUITheme {

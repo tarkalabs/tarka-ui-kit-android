@@ -48,9 +48,9 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  *
  */
 @Composable fun TUINavigationRow(
+  modifier: Modifier = Modifier,
   title: String,
   leadingIcon: TarkaIcon? = null,
-  modifier: Modifier = Modifier,
   tags: TUINavigationRowTags = TUINavigationRowTags(),
   onClick: () -> Unit,
   content: @Composable RowScope.() -> Unit,
