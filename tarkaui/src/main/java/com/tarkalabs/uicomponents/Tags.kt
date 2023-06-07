@@ -11,4 +11,6 @@ object Tags {
   const val TAG_FAB = "floating_action_button_item"
   const val TAG_THEME = "theme"
   const val TAG_STATUS = "tag_status"
+  const val TAG_STATUS_INDICATOR = "status_indicator"
+  const val TAG_STATUS_INDICATOR_CIRCLE = "status_indicator_circle"
 }
