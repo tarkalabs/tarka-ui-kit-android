@@ -102,7 +102,6 @@ fun TUIInputField(
     onValueChange = onValueChange,
     enabled = status != Disabled,
     colors = colors,
-    singleLine = true,
     label = if (label != null) labelLambda else null,
     leadingIcon = if (leadingIcon != null) leadingIconLambda else null,
     trailingIcon = if (trailingIcon != null) tailingIconLambda else null,
