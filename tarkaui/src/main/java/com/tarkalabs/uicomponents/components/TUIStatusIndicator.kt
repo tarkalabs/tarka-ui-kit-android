@@ -17,8 +17,10 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.theme.TUITheme
 
-@Composable fun TUIStatus(
-  text: String, status: Boolean, modifier: Modifier = Modifier, testTag: String = Tags.TAG_STATUS
+@Composable fun TUIStatusIndicator(
+  text: String, status: Boolean,
+  modifier: Modifier = Modifier,
+  testTag: String = Tags.TAG_STATUS
 ) {
   Row(modifier = modifier.testTag(testTag), verticalAlignment = Alignment.CenterVertically) {
     Text(
@@ -27,20 +29,22 @@ import com.tarkalabs.uicomponents.theme.TUITheme
       color = TUITheme.colors.utilityDisabledContent.copy(alpha = 0.38f)
     )
     HorizontalSpacer(space = 14)
-    Box(modifier = Modifier
-      .size(8.dp)
-      .clip(CircleShape)
-      .background(if (status) TUITheme.colors.success else TUITheme.colors.error))
+    Box(
+      modifier = Modifier
+        .size(8.dp)
+        .clip(CircleShape)
+        .background(if (status) TUITheme.colors.success else TUITheme.colors.error)
+    )
 
   }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewTUIStatus(){
+fun PreviewTUIStatus() {
   Column {
-    TUIStatus(text = "Connected", status = true)
+    TUIStatusIndicator(text = "Connected", status = true)
     VerticalSpacer(space = 10)
-    TUIStatus(text = "Connected", status = false)
+    TUIStatusIndicator(text = "Connected", status = false)
   }
 }
