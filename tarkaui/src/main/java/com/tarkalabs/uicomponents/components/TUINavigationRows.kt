@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.models.TarkaIcon
+import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 // TODO: 5/2/2023 use dimensions instead of hard coded things
@@ -51,6 +52,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   modifier: Modifier = Modifier,
   title: String,
   leadingIcon: TarkaIcon? = null,
+  showRightArrow: Boolean = false,
   tags: TUINavigationRowTags = TUINavigationRowTags(),
   onClick: () -> Unit,
   content: @Composable RowScope.() -> Unit,
@@ -77,12 +79,21 @@ import com.tarkalabs.uicomponents.theme.TUITheme
       color = TUITheme.colors.onSurface
     )
     content()
+    if (showRightArrow) {
+      Icon(
+        modifier = Modifier.testTag(tags.rightArrowTag),
+        painter = painterResource(id = TarkaIcons.ChevronRight.iconRes),
+        contentDescription = TarkaIcons.ChevronRight.contentDescription,
+        tint = TUITheme.colors.utilityOutline
+      )
+    }
   }
 }
 
 data class TUINavigationRowTags(
   val parentTag: String = Tags.TAG_NAVIGATION_ROW,
   val leadingIconTag: String = Tags.TAG_NAVIGATION_ROW_LEADING_ICON,
+  val rightArrowTag: String = Tags.TAG_NAVIGATION_ROW_RIGHT_ARROW
 )
 
 @Preview(showBackground = true) @Composable fun TUINavigationRowPreview() {
