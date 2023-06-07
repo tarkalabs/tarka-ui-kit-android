@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.R.drawable
 import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.models.TarkaIcon
+import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -105,14 +106,15 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         icon = iconTwo,
         onIconClick = onIconTwoClick,
         iconButtonStyle = IconButtonStyle.GHOST,
-        tags = tags.iconOneTags
+        tags = tags.iconTwoTags
 
       )
       if (buttonTitle != null) {
         OutlinedButton(
           modifier = Modifier
             .height(40.dp)
-            .width(90.dp), onClick = onButtonClick
+            .width(90.dp)
+            .testTag(tags.buttonTag), onClick = onButtonClick
         ) {
           Text(text = buttonTitle)
         }
@@ -133,8 +135,8 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 
 data class TUITextRowTags(
   val parentTag: String = Tags.TAG_TEXT_ROW,
-  val iconOneTags: TUIIconButtonTags = TUIIconButtonTags(),
-  val iconTwoTags: TUIIconButtonTags = TUIIconButtonTags(),
+  val iconOneTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = Tags.TAG_TEXT_ROW_ICON_ONE),
+  val iconTwoTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = Tags.TAG_TEXT_ROW_ICON_TWO),
   val buttonTag: String = Tags.TAG_TEXT_ROW_BUTTON,
   val infoIconTag: String = Tags.TAG_TEXT_ROW_INFO_ICON
 )

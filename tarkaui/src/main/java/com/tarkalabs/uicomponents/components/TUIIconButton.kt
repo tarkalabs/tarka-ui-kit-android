@@ -147,7 +147,7 @@ enum class IconButtonStyle {
     enabled = enabled
   ) {
     Icon(
-      modifier = iconModifier.testTag(tags.iconTag),
+      modifier = iconModifier,
       painter = painterResource(id = icon.iconRes),
       contentDescription = icon.contentDescription
     )
@@ -156,7 +156,6 @@ enum class IconButtonStyle {
 
 data class TUIIconButtonTags(
   val parentTag: String = Tags.TAG_ICON_BUTTON,
-  val iconTag: String = Tags.TAG_ICON_BUTTON_ICON,
 )
 
 @Preview(showSystemUi = true) @Composable fun TUIIconButtonPreview() {

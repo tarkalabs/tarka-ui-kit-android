@@ -13,6 +13,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.components.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.theme.TUITheme
@@ -50,7 +51,7 @@ colors = TopAppBarColors(/* Specify custom colors if needed */),
 scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Specify scroll behavior
 )
  */
-@OptIn(ExperimentalMaterial3Api::class) @Composable fun TopBar(
+@OptIn(ExperimentalMaterial3Api::class) @Composable fun TUITopBar(
   title: String,
   navigationIcon: TarkaIcon? = null,
   searchIcon: TarkaIcon? = null,
@@ -66,6 +67,7 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
     containerColor = TUITheme.colors.surface
   ),
   scrollBehavior: TopAppBarScrollBehavior? = null,
+  tags: TUITopBarTags = TUITopBarTags()
 ) {
 
   var showSearchBar by remember {
@@ -85,7 +87,7 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
         TUIIconButton(
           onIconClick = onNavigationIconClick,
           icon = navigationIcon,
-          testTag = navigationIcon.contentDescription,
+          tags = tags.navigationIconTags,
           iconButtonStyle = GHOST
         )
       }
@@ -94,7 +96,7 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
       if (searchIcon != null) {
         TUIIconButton(
           icon = searchIcon,
-          testTag = searchIcon.contentDescription,
+          tags = tags.searchIconTags,
           iconButtonStyle = GHOST, onIconClick = {
             showSearchBar = true
           }
@@ -104,18 +106,17 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
       if (menuItemIconThree != null) {
         TUIIconButton(
           icon = menuItemIconThree,
-          testTag = menuItemIconThree.contentDescription,
+          tags = tags.menuIconThreeTags,
           iconButtonStyle = GHOST,
           onIconClick = onThirdMenuItemClicked
         )
-
       }
 
       if (menuItemIconTwo != null) {
         TUIIconButton(
           onIconClick = onSecondMenuItemClicked,
           icon = menuItemIconTwo,
-          testTag = menuItemIconTwo.contentDescription,
+          tags = tags.menuIconTwoTags,
           iconButtonStyle = GHOST,
         )
       }
@@ -123,7 +124,7 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
       if (menuItemIconOne != null) {
         TUIIconButton(
           onIconClick = onFirstMenuItemClicked,
-          testTag = menuItemIconOne.contentDescription,
+          tags = tags.menuIconOneTags,
           icon = menuItemIconOne,
           iconButtonStyle = GHOST,
         )
@@ -136,8 +137,17 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
   )
 }
 
+data class TUITopBarTags(
+  val parentTag: String = Tags.TAG_BUTTON,
+  val navigationIconTags: TUIIconButtonTags = TUIIconButtonTags(),
+  val searchIconTags: TUIIconButtonTags = TUIIconButtonTags(),
+  val menuIconOneTags: TUIIconButtonTags = TUIIconButtonTags(),
+  val menuIconTwoTags: TUIIconButtonTags = TUIIconButtonTags(),
+  val menuIconThreeTags: TUIIconButtonTags = TUIIconButtonTags(),
+)
+
 @OptIn(ExperimentalMaterial3Api::class) @Composable fun EamNormalTopBar(
   title: String, navigationIcon: TarkaIcon? = null
 ) {
-  TopBar(title = title, navigationIcon = navigationIcon)
+  TUITopBar(title = title, navigationIcon = navigationIcon)
 }

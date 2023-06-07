@@ -1,8 +1,11 @@
 package com.tarkalabs.uicomponents
 
 object Tags {
+
   const val TAG_TEXT_ROW = "text_row_item"
   const val TAG_TEXT_ROW_INFO_ICON = "text_row_info_icon_item"
+  const val TAG_TEXT_ROW_ICON_ONE = "text_row_icon_one_item"
+  const val TAG_TEXT_ROW_ICON_TWO = "text_row_icon_two_item"
   const val TAG_TEXT_ROW_BUTTON = "text_row_button_item"
   const val TAG_TOGGLE_SWITCH = "toggle_switch_item"
   const val TAG_TOGGLE_SWITCH_ICON = "toggle_switch_icon_item"
@@ -15,7 +18,6 @@ object Tags {
   const val TAG_NAVIGATION_ROW_BADGE = "navigation_row_badge"
   const val TAG_NAVIGATION_ROW = "navigation_row"
   const val TAG_NAVIGATION_ROW_LEADING_ICON = "navigation_row_leading_icon"
-  const val TAG_NAVIGATION_ROW_TEXT = "navigation_row_text"
   const val TAG_FAB = "floating_action_button_item"
   const val TAG_FAB_ICON = "floating_action_button_icon_item"
   const val TAG_THEME = "theme"

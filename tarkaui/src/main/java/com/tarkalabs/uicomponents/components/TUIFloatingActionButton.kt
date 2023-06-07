@@ -62,7 +62,7 @@ enum class FloatingActionButtonSize(val size: Dp) {
       .testTag(tags.parentTag)
   ) {
     Icon(
-      modifier = Modifier.defaultMinSize(iconSize, iconSize).testTag(tags.iconTag),
+      modifier = Modifier.defaultMinSize(iconSize, iconSize),
       painter = painterResource(id = icon.iconRes),
       contentDescription = icon.contentDescription
     )
@@ -71,7 +71,6 @@ enum class FloatingActionButtonSize(val size: Dp) {
 
 data class TUIFloatingActionButtonTags(
   val parentTag: String = Tags.TAG_FAB,
-  val iconTag: String = Tags.TAG_FAB_ICON,
 )
 
 @Preview(showBackground = true) @Composable fun FloatingActionButtonPreview() {
