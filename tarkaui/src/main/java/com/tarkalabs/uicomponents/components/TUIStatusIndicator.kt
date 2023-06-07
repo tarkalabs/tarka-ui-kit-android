@@ -15,14 +15,21 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.Tags
+import com.tarkalabs.uicomponents.components.TUIStatus.OFF
+import com.tarkalabs.uicomponents.components.TUIStatus.ON
 import com.tarkalabs.uicomponents.theme.TUITheme
 
+enum class TUIStatus {
+  ON,
+  OFF
+}
+
 @Composable fun TUIStatusIndicator(
-  text: String, status: Boolean,
-  modifier: Modifier = Modifier,
-  testTag: String = Tags.TAG_STATUS
+  text: String, status: TUIStatus,
+  modifier: Modifier = Modifier, tags: TUIStatusIndicatorTags = TUIStatusIndicatorTags()
 ) {
-  Row(modifier = modifier.testTag(testTag), verticalAlignment = Alignment.CenterVertically) {
+  val statusColor = if (status == ON) TUITheme.colors.success else TUITheme.colors.error
+  Row(modifier = modifier.testTag(tags.parentTag), verticalAlignment = Alignment.CenterVertically) {
     Text(
       text = text,
       style = TUITheme.typography.button8,
@@ -31,20 +38,24 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     HorizontalSpacer(space = 14)
     Box(
       modifier = Modifier
+        .testTag(tags.circleTag)
         .size(8.dp)
         .clip(CircleShape)
-        .background(if (status) TUITheme.colors.success else TUITheme.colors.error)
+        .background(statusColor)
     )
-
   }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewTUIStatus() {
+data class TUIStatusIndicatorTags(
+  val parentTag: String = Tags.TAG_STATUS_INDICATOR,
+  val circleTag: String = Tags.TAG_STATUS_INDICATOR_CIRCLE,
+)
+
+@Preview(showBackground = true) @Composable fun PreviewTUIStatus() {
   Column {
-    TUIStatusIndicator(text = "Connected", status = true)
+    TUIStatusIndicator(text = "Connected", status = ON)
     VerticalSpacer(space = 10)
-    TUIStatusIndicator(text = "Connected", status = false)
+    TUIStatusIndicator(text = "Disconnected", status = OFF)
   }
 }
+
