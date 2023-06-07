@@ -12,6 +12,8 @@ object Tags {
   const val TAG_NAVIGATION_ROW_TEXT = "navigation_row_text"
   const val TAG_FAB = "floating_action_button_item"
   const val TAG_THEME = "theme"
+  const val TAG_STATUS_INDICATOR = "status_indicator"
+  const val TAG_STATUS_INDICATOR_CIRCLE = "status_indicator_circle"
   const val TAG_AVATAR = "tag_avatar"
   const val TAG_AVATAR_BADGE = "tag_avatar_badge"
 }
