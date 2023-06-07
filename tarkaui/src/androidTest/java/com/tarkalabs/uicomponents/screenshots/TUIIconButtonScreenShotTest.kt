@@ -13,11 +13,27 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
+import org.junit.runners.Parameterized
 
-@RunWith(JUnit4::class)
-class TUIIconButtonScreenShotTest : ComposeScreenshotComparator() {
+@RunWith(Parameterized::class)
+class TUIIconButtonScreenShotTest(
+  private val testName: String,
+  private val darkTheme: Boolean
+) : ComposeScreenshotComparator() {
 
-  @Test fun primaryIconButton() = compareScreenshotFor {
+  companion object {
+    @JvmStatic
+    @Parameterized.Parameters
+    fun data(): Collection<Array<Any>> {
+      return mutableListOf<Array<Any>>().apply {
+        for (darkTheme in listOf(true, false)) {
+          val testName = "darkTheme_${darkTheme}"
+          add(arrayOf(testName, darkTheme))
+        }
+      }
+    }
+  }
+  @Test fun primaryIconButton() = compareScreenshotFor(darkTheme, testName){
       TUIIconButton(
         icon = TarkaIcons.ChevronRight,
         buttonSize = IconButtonSize.XS,
@@ -25,7 +41,7 @@ class TUIIconButtonScreenShotTest : ComposeScreenshotComparator() {
       )
   }
 
-  @Test fun secondaryIconButton() = compareScreenshotFor {
+  @Test fun secondaryIconButton() = compareScreenshotFor(darkTheme, testName){
       TUIIconButton(
         icon = TarkaIcons.ChevronRight,
         buttonSize = IconButtonSize.XS,
@@ -33,7 +49,7 @@ class TUIIconButtonScreenShotTest : ComposeScreenshotComparator() {
       )
   }
 
-  @Test fun ghostIconButton()  = compareScreenshotFor{
+  @Test fun ghostIconButton()  = compareScreenshotFor(darkTheme, testName){
       TUIIconButton(
         icon = TarkaIcons.ChevronRight,
         buttonSize = IconButtonSize.XS,
@@ -41,7 +57,7 @@ class TUIIconButtonScreenShotTest : ComposeScreenshotComparator() {
       )
   }
 
-  @Test fun outlineIconButton() = compareScreenshotFor{
+  @Test fun outlineIconButton() = compareScreenshotFor(darkTheme, testName){
       TUIIconButton(
         icon = TarkaIcons.ChevronRight,
         buttonSize = IconButtonSize.XS,

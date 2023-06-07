@@ -1,20 +1,36 @@
 package com.tarkalabs.uicomponents.screenshots
 
-import com.tarkalabs.uicomponents.components.TUIBadge
 import com.tarkalabs.uicomponents.components.BadgeSize.M
 import com.tarkalabs.uicomponents.components.BadgeSize.S
+import com.tarkalabs.uicomponents.components.TUIBadge
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
+import org.junit.runners.Parameterized
 
-@RunWith(JUnit4::class)
-open class TUIBadgeScreenShotTest : ComposeScreenshotComparator() {
+@RunWith(Parameterized::class)
+open class TUIBadgeScreenShotTest(
+  private val testName: String,
+  private val darkTheme: Boolean
+) : ComposeScreenshotComparator() {
 
-  @Test fun test_badge_with_count()  = compareScreenshotFor {
-      TUIBadge(count = 2, badgeSize = M)
+  companion object {
+    @JvmStatic
+    @Parameterized.Parameters
+    fun data(): Collection<Array<Any>> {
+      return mutableListOf<Array<Any>>().apply {
+        for (darkTheme in listOf(true, false)) {
+          val testName = "darkTheme_${darkTheme}"
+          add(arrayOf(testName, darkTheme))
+        }
+      }
+    }
   }
 
-  @Test fun test_badge_with_out_count() = compareScreenshotFor {
-      TUIBadge(badgeSize = S)
+  @Test fun test_badge_with_count() = compareScreenshotFor(darkTheme, testName) {
+    TUIBadge(count = 2, badgeSize = M)
+  }
+
+  @Test fun test_badge_with_out_count() = compareScreenshotFor(darkTheme, testName) {
+    TUIBadge(badgeSize = S)
   }
 }
