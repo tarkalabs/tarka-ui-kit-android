@@ -24,19 +24,19 @@ class TUIToggleSwitchScreenShotTest(
       }
     }
   }
-  @Test fun test_checked_status() = compareScreenshotFor(darkTheme, testName) {
+  @Test fun test_checked_status() = compareScreenshotFor(darkTheme, "_testCheckedStatus_$testName") {
     TUIToggleSwitch(state = true, onToggleChange = {})
   }
 
-  @Test fun test_unchecked_status() = compareScreenshotFor(darkTheme, testName) {
+  @Test fun test_unchecked_status() = compareScreenshotFor(darkTheme, "_testUncheckedStatus_$testName") {
     TUIToggleSwitch(state = false, onToggleChange = {})
   }
 
-  @Test fun test_checked_state_with_disabled_status() = compareScreenshotFor(darkTheme, testName) {
+  @Test fun test_checked_state_with_disabled_status() = compareScreenshotFor(darkTheme, "_testCheckedStateWithDisabledStatus_$testName") {
     TUIToggleSwitch(state = true, enabled = false, onToggleChange = {})
   }
 
-  @Test fun test_unchecked_state_with_disabled_status() = compareScreenshotFor(darkTheme, testName) {
+  @Test fun test_unchecked_state_with_disabled_status() = compareScreenshotFor(darkTheme, "_testUncheckedStateWithDisabledStatus_$testName") {
     TUIToggleSwitch(state = false, enabled = false, onToggleChange = {})
   }
 }

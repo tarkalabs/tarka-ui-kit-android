@@ -31,23 +31,23 @@ class TUIButtonScreenShotTest(
     }
   }
 
-  @Test fun primaryButtonTest() = compareScreenshotFor(darkTheme, testName) {
+  @Test fun primaryButtonTest() = compareScreenshotFor(darkTheme, "_primaryButtonTest_$testName") {
     TUIButton(label = "Primary button", buttonStyle = PRIMARY, height = L, onClick = {})
   }
 
-  @Test fun secondaryButtonTest() = compareScreenshotFor(darkTheme, testName) {
+  @Test fun secondaryButtonTest() = compareScreenshotFor(darkTheme, "_secondaryButtonTest_$testName") {
     TUIButton(label = "Secondary button", buttonStyle = SECONDARY, height = L, onClick = {})
   }
 
-  @Test fun ghostButtonTest() = compareScreenshotFor(darkTheme, testName) {
+  @Test fun ghostButtonTest() = compareScreenshotFor(darkTheme, "_ghostButtonTest_$testName") {
     TUIButton(label = "Ghost button", buttonStyle = GHOST, height = L, onClick = {})
   }
 
-  @Test fun errorButtonTest() = compareScreenshotFor(darkTheme, testName){
+  @Test fun errorButtonTest() = compareScreenshotFor(darkTheme, "_errorButtonTest_$testName"){
     TUIButton(label = "Error button", buttonStyle = ERROR, height = L, onClick = {})
   }
 
-  @Test fun outlineButtonTest() = compareScreenshotFor(darkTheme, testName){
+  @Test fun outlineButtonTest() = compareScreenshotFor(darkTheme, "_outlineButtonTest_$testName"){
     TUIButton(label = "Outline button", buttonStyle = OUTLINE, height = L, onClick = {})
   }
 }

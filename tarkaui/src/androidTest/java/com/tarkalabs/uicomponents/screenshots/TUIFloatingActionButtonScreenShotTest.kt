@@ -30,15 +30,15 @@ class TUIFloatingActionButtonScreenShotTest(
     }
   }
 
-  @Test fun test_fab_with_small_size() = compareScreenshotFor(darkTheme, testName) {
+  @Test fun test_fab_with_small_size() = compareScreenshotFor(darkTheme, "_testFabWithSmallSize_$testName") {
       TUIFloatingActionButton(fabSize = S, icon = TarkaIcons.ArrowExport, onClick = {})
   }
 
-  @Test fun test_fab_with_large_size() = compareScreenshotFor(darkTheme, testName) {
+  @Test fun test_fab_with_large_size() = compareScreenshotFor(darkTheme, "_testFabWithLargeSize_$testName") {
       TUIFloatingActionButton(fabSize = L, icon = TarkaIcons.ArrowExport, onClick = {})
   }
 
-  @Test fun test_fab_with_regular_size() = compareScreenshotFor(darkTheme, testName) {
+  @Test fun test_fab_with_regular_size() = compareScreenshotFor(darkTheme, "_testFabWithRegularSize_$testName") {
       TUIFloatingActionButton(fabSize = R, icon = TarkaIcons.ArrowExport, onClick = {})
   }
 }

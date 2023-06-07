@@ -33,7 +33,7 @@ class TUIIconButtonScreenShotTest(
       }
     }
   }
-  @Test fun primaryIconButton() = compareScreenshotFor(darkTheme, testName){
+  @Test fun primaryIconButton() = compareScreenshotFor(darkTheme, "_primaryIconButton_$testName"){
       TUIIconButton(
         icon = TarkaIcons.ChevronRight,
         buttonSize = IconButtonSize.XS,
@@ -41,7 +41,7 @@ class TUIIconButtonScreenShotTest(
       )
   }
 
-  @Test fun secondaryIconButton() = compareScreenshotFor(darkTheme, testName){
+  @Test fun secondaryIconButton() = compareScreenshotFor(darkTheme, "_secondaryIconButton_$testName"){
       TUIIconButton(
         icon = TarkaIcons.ChevronRight,
         buttonSize = IconButtonSize.XS,
@@ -49,7 +49,7 @@ class TUIIconButtonScreenShotTest(
       )
   }
 
-  @Test fun ghostIconButton()  = compareScreenshotFor(darkTheme, testName){
+  @Test fun ghostIconButton()  = compareScreenshotFor(darkTheme, "_ghostIconButton_$testName"){
       TUIIconButton(
         icon = TarkaIcons.ChevronRight,
         buttonSize = IconButtonSize.XS,
@@ -57,7 +57,7 @@ class TUIIconButtonScreenShotTest(
       )
   }
 
-  @Test fun outlineIconButton() = compareScreenshotFor(darkTheme, testName){
+  @Test fun outlineIconButton() = compareScreenshotFor(darkTheme, "_outlineIconButton_$testName"){
       TUIIconButton(
         icon = TarkaIcons.ChevronRight,
         buttonSize = IconButtonSize.XS,

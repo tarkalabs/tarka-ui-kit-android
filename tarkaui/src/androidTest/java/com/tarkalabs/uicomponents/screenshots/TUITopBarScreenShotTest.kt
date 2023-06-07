@@ -31,11 +31,11 @@ class TUITopBarScreenShotTest(
     }
   }
 
-  @Test fun renderTopAppBarTextOnly() = compareScreenshotFor(darkTheme, testName) {
+  @Test fun renderTopAppBarTextOnly() = compareScreenshotFor(darkTheme, "_renderTopAppBarTextOnly_$testName") {
     TopBar(title = "Screenshot")
   }
 
-  @Test fun renderTopAppBarTextWithIcon() = compareScreenshotFor(darkTheme, testName) {
+  @Test fun renderTopAppBarTextWithIcon() = compareScreenshotFor(darkTheme, "_renderTopAppBarTextWithIcon_$testName") {
     TopBar(
       title = "Screenshot",
       navigationIcon = TarkaIcon(drawable.keyboard_arrow_right, "Arrow Right")
