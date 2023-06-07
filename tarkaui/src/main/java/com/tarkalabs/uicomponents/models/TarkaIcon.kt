@@ -4,8 +4,14 @@ import androidx.annotation.DrawableRes
 import com.microsoft.fluent.mobile.icons.R
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_counterclockwise_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_export_ltr_24_regular
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_sync_20_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_sync_circle_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_barcode_scanner_24_regular
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_calendar_agenda_24_selector
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_calendar_data_bar_28_filled
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_calendar_ltr_24_regular
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_calendar_rtl_24_regular
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_calendar_today_16_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_checkmark_16_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_checkmark_circle_16_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_checkmark_starburst_24_regular
@@ -26,6 +32,9 @@ import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_re_order_dots_vert
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_search_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_shield_task_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_tabs_24_regular
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_timer_10_20_filled
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_timer_20_filled
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_timer_20_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_warning_12_regular
 
 data class TarkaIcon(
@@ -34,6 +43,7 @@ data class TarkaIcon(
 )
 
 object TarkaIcons {
+
   val Warning12Regular = TarkaIcon(ic_fluent_warning_12_regular, "Warning")
   val CheckMarkCircle16Regular = TarkaIcon(ic_fluent_checkmark_circle_16_regular, "Check Mark Success")
   val ChevronUp = TarkaIcon(ic_fluent_chevron_up_20_regular, "Chevron Up")
@@ -44,6 +54,9 @@ object TarkaIcons {
     TarkaIcon(ic_fluent_checkmark_starburst_24_regular, "Checkmark Starburst")
   val Tabs = TarkaIcon(ic_fluent_tabs_24_regular, "Tabs")
   val ArrowExport = TarkaIcon(ic_fluent_arrow_export_ltr_24_regular, "Arrow Export")
+  val Timer20Regular = TarkaIcon(ic_fluent_timer_20_regular, "Arrow Export")
+  val Calendar24Regular = TarkaIcon(ic_fluent_calendar_ltr_24_regular, "Arrow Export")
+  val ArrowSync20Regular = TarkaIcon(ic_fluent_arrow_sync_20_regular, "Arrow Export")
   val ArrowCounterClockWise =
     TarkaIcon(ic_fluent_arrow_counterclockwise_24_regular, "Arrow Counter clockwise")
   val Search = TarkaIcon(ic_fluent_search_24_regular, "Search")
