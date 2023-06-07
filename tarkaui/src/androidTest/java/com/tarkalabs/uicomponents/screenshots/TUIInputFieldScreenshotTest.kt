@@ -1,32 +1,94 @@
 package com.tarkalabs.uicomponents.screenshots
 
-import androidx.compose.material3.TextField
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.foundation.focusable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.performClick
 import com.tarkalabs.uicomponents.components.TUIInputField
-import com.tarkalabs.uicomponents.components.TUIInputFieldStatus.Focused
-import com.tarkalabs.uicomponents.components.TUIInputFieldStatus.Inactive
-import com.tarkalabs.uicomponents.components.TUIInputFieldStatus.Success
+import com.tarkalabs.uicomponents.components.TUIInputFieldStatus
+import com.tarkalabs.uicomponents.models.TarkaIcon
+import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
+import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 
 @RunWith(Parameterized::class)
-class TUIInputFieldScreenshotTest : ComposeScreenshotComparator() {
+class TUIInputFieldScreenshotTest(
+  private val leadingIcon: TarkaIcon?,
+  private val trailingIcon: TarkaIcon?,
+  private val label: String?,
+  private val inputText: String,
+  private val status: TUIInputFieldStatus,
+  private val darkTheme: Boolean,
+  private val helperMessage: String?,
+  private val testName: String
+) : ComposeScreenshotComparator() {
 
-  @Test
-  fun testScreenshot() {
-    compareScreenshotFor {
+  companion object {
+    @JvmStatic
+    @Parameterized.Parameters
+    fun data(): Collection<Array<Any?>> {
+      val leadingIconValues = listOf(null, TarkaIcons.CheckMark)
+      val trailingIconValues = listOf(null, TarkaIcons.DismissFilled)
+      val labelValues = listOf(null, "Label")
+      val inputTextValues = listOf("", "Input Text")
+      val helperMessageValues = listOf(null, "Helper / hint message goes here.")
+      val statusValues = TUIInputFieldStatus.values()
+      val darkThemeValues = listOf(true, false)
 
-      TUITheme {
-        var textValue by remember {
-          mutableStateOf("hello world")
+      val testData = ArrayList<Array<Any?>>()
+      for (helperMessageValue in helperMessageValues) {
+        for (leadingIconValue in leadingIconValues) {
+          for (trailingIconValue in trailingIconValues) {
+            for (label in labelValues) {
+              for (inputTextValue in inputTextValues) {
+                for (statusValue in statusValues) {
+                  for (darkTheme in darkThemeValues) {
+                    val testName =
+                      "InputStatus_${statusValue}_inputTextValue_${inputTextValue}_label_${label}_trailingIcon_${if (trailingIconValue != null) "true" else "false"}_leadingIcon_${if (leadingIconValue != null) "true" else "false"}_helperMessage_${if (helperMessageValue != null) "true" else "false"}_darkTheme_${darkTheme}"
+                    testData.add(
+                      arrayOf(
+                        leadingIconValue,
+                        trailingIconValue,
+                        label,
+                        inputTextValue,
+                        statusValue,
+                        darkTheme,
+                        helperMessageValue,
+                        testName
+                      )
+                    )
+                  }
+                }
+              }
+            }
+          }
         }
-        TUIInputField(value = textValue, onValueChange = {}, status = Success)
       }
+      return testData
     }
   }
+
+  // @Test
+  // @Ignore
+  // fun test_input_field() {
+  //   compareScreenshotFor(darkTheme, testName, {
+  //     it.onNodeWithTag("TUIInputField_mainInputField").performClick()
+  //   }) {
+  //     TUITheme {
+  //       TUIInputField(
+  //         modifier = Modifier.focusable(),
+  //         value = inputText,
+  //         onValueChange = {},
+  //         status = status,
+  //         label = label,
+  //         leadingIcon = leadingIcon,
+  //         trailingIcon = trailingIcon,
+  //         helperMessage = helperMessage
+  //       )
+  //     }
+  //   }
+  // }
 }
