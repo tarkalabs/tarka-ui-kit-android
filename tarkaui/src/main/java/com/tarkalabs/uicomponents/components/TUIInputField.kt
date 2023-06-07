@@ -139,7 +139,6 @@ fun iconFor(status: TUIInputFieldStatus): TarkaIcon? {
 @Composable
 fun colorsFor(status: TUIInputFieldStatus): TextFieldColors {
   val focusedIndicatorColor = indicatorColorFor(status)
-  //return TextFieldDefaults.colors()
   return TextFieldDefaults.colors(
     focusedIndicatorColor = focusedIndicatorColor,
     unfocusedIndicatorColor = TUITheme.colors.utilityDisabledContent,
