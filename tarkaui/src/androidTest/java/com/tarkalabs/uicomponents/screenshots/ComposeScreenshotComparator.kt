@@ -1,19 +1,18 @@
 package com.tarkalabs.uicomponents.screenshots
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.test.junit4.createComposeRule
 import com.karumi.shot.ScreenshotTest
-import org.junit.Rule
+import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.uicomponents.utils.ComposeBaseTest
 
-open class ComposeScreenshotComparator : ScreenshotTest {
+open class ComposeScreenshotComparator : ComposeBaseTest(), ScreenshotTest {
 
-  @get:Rule val composeRule = createComposeRule()
-
-  protected fun compareScreenshotFor(imageName: String? = null, composableToTest: @Composable () -> Unit) {
+  protected fun compareScreenshotFor(darkTheme: Boolean = false, imageName: String? = null, composableToTest: @Composable () -> Unit) {
     composeRule.setContent {
-      composableToTest()
+      TUITheme(darkTheme = darkTheme) {
+        composableToTest()
+      }
     }
     compareScreenshot(composeRule, imageName)
   }
-
 }

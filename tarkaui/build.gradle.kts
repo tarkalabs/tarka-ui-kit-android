@@ -53,6 +53,9 @@ android {
   testOptions {
     emulatorSnapshots.maxSnapshotsForTestFailures = 10
   }
+  sourceSets {
+    getByName("androidTest").assets.srcDir("$projectDir/src/androidTest/java/com/tarkalabs/uicomponents/assets")
+  }
 }
 
 fun getLibraryArtifactId() = "tarkaui"
