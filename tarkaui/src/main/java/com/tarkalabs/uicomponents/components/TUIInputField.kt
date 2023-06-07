@@ -38,7 +38,19 @@ enum class TUIInputFieldStatus {
   Alert,
   Disabled
 }
-
+/**
+ * A  Composable function that renders an text field with various options such as label, icons, status, and helper text.
+ *
+ * @param modifier The modifier for styling or positioning the input field.
+ * @param value The current value of the input field.
+ * @param label The label text to display above the input field.
+ * @param onValueChange A callback function invoked when the value of the input field changes.
+ * @param status The status of the input field, such as Enabled, Disabled, Error, etc.
+ * @param leadingIcon The icon to display on the leading side of the input field.
+ * @param trailingIcon The icon to display on the trailing side of the input field.
+ * @param helperMessage The helper message to display below the input field.
+ * @param testTags Tags for testing purposes to identify specific elements within the input field.
+ */
 @Composable
 fun TUIInputField(
   modifier: Modifier = Modifier,
