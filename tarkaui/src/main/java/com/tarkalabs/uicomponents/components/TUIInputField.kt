@@ -4,6 +4,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -21,22 +23,18 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.components.TUIInputFieldStatus.Alert
-import com.tarkalabs.uicomponents.components.TUIInputFieldStatus.Disabled
 import com.tarkalabs.uicomponents.components.TUIInputFieldStatus.Error
-import com.tarkalabs.uicomponents.components.TUIInputFieldStatus.Focused
-import com.tarkalabs.uicomponents.components.TUIInputFieldStatus.Inactive
+import com.tarkalabs.uicomponents.components.TUIInputFieldStatus.Normal
 import com.tarkalabs.uicomponents.components.TUIInputFieldStatus.Success
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 enum class TUIInputFieldStatus {
-  Inactive,
-  Focused,
+  Normal,
   Error,
   Success,
   Alert,
-  Disabled
 }
 /**
  * A  Composable function that renders an text field with various options such as label, icons, status, and helper text.
@@ -58,10 +56,15 @@ fun TUIInputField(
   label: String? = null,
   onValueChange: (String) -> Unit,
   status: TUIInputFieldStatus,
+  enabled: Boolean = true,
   leadingIcon: TarkaIcon? = null,
   trailingIcon: TarkaIcon? = null,
   helperMessage: String? = null,
-  testTags: TUIInputFieldTags = TUIInputFieldTags()
+  testTags: TUIInputFieldTags = TUIInputFieldTags(),
+  keyboardOption: KeyboardOptions = KeyboardOptions.Default,
+  keyboardAction: KeyboardActions = KeyboardActions.Default,
+  maxLines: Int = 1,
+  minLines: Int = 1
 ) {
 
   val icon = iconFor(status)
@@ -100,11 +103,15 @@ fun TUIInputField(
       .testTag(testTags.mainInputFieldTag),
     value = value,
     onValueChange = onValueChange,
-    enabled = status != Disabled,
+    enabled = enabled,
+
+
     colors = colors,
     label = if (label != null) labelLambda else null,
     leadingIcon = if (leadingIcon != null) leadingIconLambda else null,
     trailingIcon = if (trailingIcon != null) tailingIconLambda else null,
+    keyboardOptions = keyboardOption,
+    keyboardActions = keyboardAction,
     supportingText = {
       if (helperMessage != null) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -123,7 +130,9 @@ fun TUIInputField(
           )
         }
       }
-    }
+    },
+    maxLines = maxLines,
+    minLines = minLines,
   )
 }
 
@@ -140,7 +149,7 @@ fun colorsFor(status: TUIInputFieldStatus): TextFieldColors {
   val focusedIndicatorColor = indicatorColorFor(status)
   return TextFieldDefaults.colors(
     focusedIndicatorColor = focusedIndicatorColor,
-    unfocusedIndicatorColor = TUITheme.colors.utilityDisabledContent,
+    unfocusedIndicatorColor = TUITheme.colors.utilityDisabledBackground,
     focusedTextColor = TUITheme.colors.inputText,
     unfocusedTextColor = TUITheme.colors.inputText,
     disabledTextColor = TUITheme.colors.utilityDisabledContent,
@@ -158,12 +167,10 @@ fun colorsFor(status: TUIInputFieldStatus): TextFieldColors {
 @Composable
 private fun indicatorColorFor(status: TUIInputFieldStatus) =
   when (status) {
-    Inactive -> TUITheme.colors.utilityDisabledBackground
-    Focused -> TUITheme.colors.primary
+    Normal -> TUITheme.colors.primary
     Error -> TUITheme.colors.error
     Success -> TUITheme.colors.success
     Alert -> TUITheme.colors.warning
-    Disabled -> TUITheme.colors.utilityDisabledBackground
   }
 
 @Preview
