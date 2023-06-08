@@ -118,15 +118,18 @@ fun TUIInputField(
       if (helperMessage != null) {
         Row(verticalAlignment = Alignment.CenterVertically) {
           if (icon != null)
+          {
             Icon(
               tint = indicatorColorFor(status),
               painter = painterResource(id = icon.iconRes),
               modifier = Modifier.testTag(testTags.helperIconTag),
               contentDescription = icon.contentDescription
             )
+            HorizontalSpacer(space = 5)
+          }
           Text(
             text = helperMessage,
-            style = TUITheme.typography.heading7,
+            style = TUITheme.typography.body7,
             color = TUITheme.colors.inputText,
             modifier = Modifier.testTag(testTags.helperTextTag)
           )
