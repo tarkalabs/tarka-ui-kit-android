@@ -18,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -65,7 +66,8 @@ fun TUIInputField(
   keyboardAction: KeyboardActions = KeyboardActions.Default,
   maxLines: Int = 1,
   minLines: Int = 1,
-  singleLine: Boolean = false
+  singleLine: Boolean = false,
+  inputShape: Shape = RoundedCornerShape(8.dp)
 ) {
 
   val icon = iconFor(status)
@@ -97,11 +99,11 @@ fun TUIInputField(
       )
   }
   TextField(
-    shape = RoundedCornerShape(8.dp),
+    shape = inputShape,
     modifier = modifier
       .padding(16.dp)
       .fillMaxWidth()
-      .testTag(testTags.mainInputFieldTag),
+      .testTag(testTags.parentTag),
     value = value,
     onValueChange = onValueChange,
     enabled = enabled,
@@ -185,10 +187,10 @@ fun TUIPreview() {
 }
 
 data class TUIInputFieldTags(
+  val parentTag: String = "TUIInputField_mainInputField",
   val trailingIconTag: String = "TUIInputField_trailingIcon",
   val leadingIconTag: String = "TUIInputField_leadingIcon",
   val labelTag: String = "TUIInputField_label",
   val helperTextTag: String = "TUIInputField_helperText",
   val helperIconTag: String = "TUIInputField_helperIcon",
-  val mainInputFieldTag: String = "TUIInputField_mainInputField",
 )
