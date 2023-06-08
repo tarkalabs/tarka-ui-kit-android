@@ -64,7 +64,8 @@ fun TUIInputField(
   keyboardOption: KeyboardOptions = KeyboardOptions.Default,
   keyboardAction: KeyboardActions = KeyboardActions.Default,
   maxLines: Int = 1,
-  minLines: Int = 1
+  minLines: Int = 1,
+  singleLine: Boolean = false
 ) {
 
   val icon = iconFor(status)
@@ -104,8 +105,7 @@ fun TUIInputField(
     value = value,
     onValueChange = onValueChange,
     enabled = enabled,
-
-
+    singleLine = singleLine,
     colors = colors,
     label = if (label != null) labelLambda else null,
     leadingIcon = if (leadingIcon != null) leadingIconLambda else null,
