@@ -32,7 +32,6 @@ class TUINavigationRowTest {
         content = {
           Text(text = "BEDFORD", modifier = Modifier.testTag("BEDFORD"))
         })
-
     }
 
     composable.onNodeWithText("Label").assertIsDisplayed()
@@ -48,9 +47,7 @@ class TUINavigationRowTest {
         leadingIcon = TarkaIcons.Copy,
         onClick = onClick,
         tags = TAGS,
-      ) {
-
-      }
+      )
     }
     composable.onNodeWithTag(TAGS.parentTag).performClick()
     verify(onClick).invoke()

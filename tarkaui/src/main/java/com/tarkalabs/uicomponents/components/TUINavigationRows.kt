@@ -55,7 +55,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   showRightArrow: Boolean = false,
   tags: TUINavigationRowTags = TUINavigationRowTags(),
   onClick: () -> Unit,
-  content: @Composable RowScope.() -> Unit,
+  content: (@Composable RowScope.() -> Unit)? = null,
 ) {
   Row(modifier = modifier
     .clickable { onClick() }
@@ -78,7 +78,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
       style = TUITheme.typography.heading7,
       color = TUITheme.colors.onSurface
     )
-    content()
+    content?.invoke(this)
     if (showRightArrow) {
       Icon(
         modifier = Modifier.testTag(tags.rightArrowTag),
