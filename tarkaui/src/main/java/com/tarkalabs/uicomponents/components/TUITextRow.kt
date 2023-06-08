@@ -76,13 +76,14 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   onInfoIconClick: () -> Unit = {},
   onTextRowClick: () -> Unit = {},
   paddingValues: PaddingValues = PaddingValues(),
-  testTag: String = Tags.TAG_TEXT_ROW
+  tags: TUITextRowTags = TUITextRowTags()
 ) {
-  Row(modifier
-    .clickable { onTextRowClick() }
-    .defaultMinSize(minHeight = 40.dp)
-    .padding(paddingValues)
-    .testTag(testTag),
+  Row(
+    modifier
+      .clickable { onTextRowClick() }
+      .defaultMinSize(minHeight = 40.dp)
+      .padding(paddingValues)
+      .testTag(tags.parentTag),
     verticalAlignment = Alignment.CenterVertically) {
     Column(Modifier.weight(1f)) {
       Text(
@@ -91,9 +92,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         color = TUITheme.colors.onSurface.copy(alpha = 0.7f)
       )
       Text(
-        text = description,
-        style = TUITheme.typography.body7,
-        color = TUITheme.colors.onSurface
+        text = description, style = TUITheme.typography.body7, color = TUITheme.colors.onSurface
       )
     }
     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -101,20 +100,21 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         icon = iconOne,
         onIconClick = onIconOneClick,
         iconButtonStyle = IconButtonStyle.GHOST,
-        testTag = iconOne.contentDescription
+        tags = tags.iconOneTags
       )
       if (iconTwo != null) TUIIconButton(
         icon = iconTwo,
         onIconClick = onIconTwoClick,
         iconButtonStyle = IconButtonStyle.GHOST,
-        testTag = iconTwo.contentDescription
+        tags = tags.iconTwoTags
 
       )
       if (buttonTitle != null) {
         OutlinedButton(
           modifier = Modifier
             .height(40.dp)
-            .width(90.dp), onClick = onButtonClick
+            .width(90.dp)
+            .testTag(tags.buttonTag), onClick = onButtonClick
         ) {
           Text(text = buttonTitle)
         }
@@ -124,12 +124,22 @@ import com.tarkalabs.uicomponents.theme.TUITheme
           painter = painterResource(id = infoIcon.iconRes),
           contentDescription = infoIcon.contentDescription,
           tint = TUITheme.colors.utilityOutline,
-          modifier = Modifier.clickable(onClick = onInfoIconClick)
+          modifier = Modifier
+            .clickable(onClick = onInfoIconClick)
+            .testTag(tags.infoIconTag)
         )
       }
     }
   }
 }
+
+data class TUITextRowTags(
+  val parentTag: String = Tags.TAG_TEXT_ROW,
+  val iconOneTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = Tags.TAG_TEXT_ROW_ICON_ONE),
+  val iconTwoTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = Tags.TAG_TEXT_ROW_ICON_TWO),
+  val buttonTag: String = Tags.TAG_TEXT_ROW_BUTTON,
+  val infoIconTag: String = Tags.TAG_TEXT_ROW_INFO_ICON
+)
 
 @Preview(showBackground = true) @Composable fun TUITextRowPreview() {
   TUITextRow(

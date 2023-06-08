@@ -4,7 +4,7 @@ package com.tarkalabs.uicomponents.screenshots
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import com.tarkalabs.uicomponents.R.drawable
-import com.tarkalabs.uicomponents.components.TopBar
+import com.tarkalabs.uicomponents.components.TUITopBar
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -32,11 +32,11 @@ class TUITopBarScreenShotTest(
   }
 
   @Test fun renderTopAppBarTextOnly() = compareScreenshotFor(darkTheme, "_renderTopAppBarTextOnly_$testName") {
-    TopBar(title = "Screenshot")
+    TUITopBar(title = "Screenshot")
   }
 
   @Test fun renderTopAppBarTextWithIcon() = compareScreenshotFor(darkTheme, "_renderTopAppBarTextWithIcon_$testName") {
-    TopBar(
+    TUITopBar(
       title = "Screenshot",
       navigationIcon = TarkaIcon(drawable.keyboard_arrow_right, "Arrow Right")
     )

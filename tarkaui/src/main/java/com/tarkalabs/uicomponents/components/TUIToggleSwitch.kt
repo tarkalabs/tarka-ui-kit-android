@@ -28,6 +28,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * Below TUIToggleSwitch() defines a reusable composable function which can be used to create a Switch which takes several parameters such as
  * @param state Checked status of the ToggleSwitch
  * @param enabled Enable status of the ToggleSwitch
+ * @param tags Test Tags for the  TUIToggleSwitch
  * @param onToggleChange() A callback function that is invoked when the toggle is clicked.
  *
  * How to use TUIToggleSwitch() composable function
@@ -38,21 +39,23 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 
 @Composable fun TUIToggleSwitch(
   state: Boolean, enabled: Boolean = true,
-  testTag: String = Tags.TAG_TOGGLE_SWITCH,
+  tags: TUIToggleSwitchTags = TUIToggleSwitchTags(),
   onToggleChange: () -> Unit
 ) {
   var switchCheckedState by remember { mutableStateOf(state) }
   TUITheme {
     Switch(
-      modifier = Modifier.testTag(testTag),
+      modifier = Modifier.testTag(tags.parentTag),
       checked = switchCheckedState, enabled = enabled, onCheckedChange = {
         switchCheckedState = it
         onToggleChange()
       }, thumbContent = {
         Icon(
+          modifier = Modifier
+            .size(width = 40.dp, height = 24.dp)
+            .testTag(tags.iconTag),
           painter = painterResource(if (switchCheckedState) TarkaIcons.CheckMark.iconRes else TarkaIcons.Dismiss.iconRes),
           contentDescription = null,
-          modifier = Modifier.size(width = 40.dp, height = 24.dp)
         )
       }, colors = getSwitchDefaultColors()
     )
@@ -76,6 +79,11 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   disabledUncheckedTrackColor = TUITheme.colors.utilityDisabledBackground.copy(alpha = 0.06f),
   disabledUncheckedBorderColor = Color.Transparent,
   disabledUncheckedIconColor = TUITheme.colors.inputBackground.copy(alpha = 0.85f)
+)
+
+data class TUIToggleSwitchTags(
+  val parentTag: String = Tags.TAG_TOGGLE_SWITCH,
+  val iconTag: String = Tags.TAG_TOGGLE_SWITCH_ICON,
 )
 
 @Preview(showBackground = true) @Composable fun TUIToggleSwitchPreview() {

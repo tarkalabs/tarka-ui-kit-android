@@ -2,6 +2,7 @@ package com.tarkalabs.uicomponents
 
 import ButtonStyle.SECONDARY
 import TUIButton
+import TUIButtonTags
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
@@ -12,11 +13,14 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 
 class TUIButtonTest {
+
   @get:Rule val composable = createComposeRule()
+
+  private val tags = TUIButtonTags(parentTag = "button_tag")
 
   @Test fun button_Displayed() {
     composable.setContent {
-      TUIButton(label = "Button", onClick = { }, buttonStyle = SECONDARY)
+      TUIButton(label = "Button", tags = tags, onClick = { }, buttonStyle = SECONDARY)
     }
     composable.onNodeWithText("Button").assertIsDisplayed()
   }

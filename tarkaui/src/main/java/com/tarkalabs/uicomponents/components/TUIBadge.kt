@@ -1,7 +1,6 @@
 package com.tarkalabs.uicomponents.components
 
 import androidx.compose.foundation.layout.defaultMinSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -27,7 +26,7 @@ enum class BadgeSize(val size: Dp) {
  * Below TUIBadge() defines a reusable composable function which can be used to create an Badge with various sizes which takes couple of  parameters
  * @param count The Count to be displayed on the badge.
  * @param badgeSize The height size of the badge. Default is [BadgeSize.M].
- * @param testTag The test tag for the TUIBadge.
+ * @param tags  Test tag for the TUIBadge.
  *
  * How to use TUIBadge() composable function
  *    TUIBadge(count = 3,badgeSize = M)
@@ -38,7 +37,7 @@ enum class BadgeSize(val size: Dp) {
   modifier: Modifier = Modifier,
   count: Int? = null,
   badgeSize: BadgeSize = M,
-  testTag: String = Tags.TAG_BADGE,
+  tags: TUIBadgeTags = TUIBadgeTags(),
   color: Color = TUITheme.colors.error
 ) {
   when (badgeSize) {
@@ -54,7 +53,7 @@ enum class BadgeSize(val size: Dp) {
     containerColor = color,
     modifier = modifier
       .defaultMinSize(minWidth = badgeSize.size, minHeight = badgeSize.size)
-      .testTag(testTag)
+      .testTag(tags.parentTag)
   ) {
     if (count != null) Text(
       text = count.toString(),
@@ -63,6 +62,10 @@ enum class BadgeSize(val size: Dp) {
     )
   }
 }
+
+data class TUIBadgeTags(
+  val parentTag: String = Tags.TAG_BADGE,
+)
 
 @Preview(showBackground = true) @Composable fun BadgePreview() {
   TUIBadge(count = 40, badgeSize = M)

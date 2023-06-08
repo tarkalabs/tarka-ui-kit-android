@@ -83,7 +83,7 @@ enum class IconButtonStyle {
   buttonSize: IconButtonSize = L,
   iconButtonStyle: IconButtonStyle = IconButtonStyle.defaultStyle,
   enabled: Boolean = true,
-  testTag: String = Tags.TAG_ICON_BUTTON,
+  tags: TUIIconButtonTags = TUIIconButtonTags(),
   onIconClick: () -> Unit = {},
 ) {
   var iconButtonColors: IconButtonColors = IconButtonDefaults.iconButtonColors()
@@ -142,7 +142,7 @@ enum class IconButtonStyle {
 
   IconButton(
     onClick = onIconClick,
-    modifier = modifier.testTag(testTag),
+    modifier = modifier.testTag(tags.parentTag),
     colors = iconButtonColors,
     enabled = enabled
   ) {
@@ -153,6 +153,10 @@ enum class IconButtonStyle {
     )
   }
 }
+
+data class TUIIconButtonTags(
+  val parentTag: String = Tags.TAG_ICON_BUTTON,
+)
 
 @Preview(showSystemUi = true) @Composable fun TUIIconButtonPreview() {
   TUITheme {
