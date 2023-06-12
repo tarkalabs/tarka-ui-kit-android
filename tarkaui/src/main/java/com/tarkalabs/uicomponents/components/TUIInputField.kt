@@ -97,23 +97,10 @@ fun TUIInputField(
         modifier = Modifier.testTag(testTags.labelTag)
       )
   }
-  TextField(
-    shape = inputShape,
-    modifier = modifier
-      .fillMaxWidth()
-      .testTag(testTags.parentTag),
-    value = value,
-    onValueChange = onValueChange,
-    enabled = enabled,
-    singleLine = singleLine,
-    colors = colors,
-    label = if (label != null) labelLambda else null,
-    leadingIcon = if (leadingIcon != null) leadingIconLambda else null,
-    trailingIcon = if (trailingIcon != null) tailingIconLambda else null,
-    keyboardOptions = keyboardOption,
-    keyboardActions = keyboardAction,
-    supportingText = {
-      if (helperMessage != null) {
+  val helperMessageLambda: @Composable (() -> Unit)? =
+    if(helperMessage != null)
+    {
+      {
         Row(verticalAlignment = Alignment.CenterVertically) {
           if (icon != null)
           {
@@ -132,8 +119,27 @@ fun TUIInputField(
             modifier = Modifier.testTag(testTags.helperTextTag)
           )
         }
+
       }
-    },
+    } else{
+      null
+    }
+  TextField(
+    shape = inputShape,
+    modifier = modifier
+      .fillMaxWidth()
+      .testTag(testTags.parentTag),
+    value = value,
+    onValueChange = onValueChange,
+    enabled = enabled,
+    singleLine = singleLine,
+    colors = colors,
+    label = if (label != null) labelLambda else null,
+    leadingIcon = if (leadingIcon != null) leadingIconLambda else null,
+    trailingIcon = if (trailingIcon != null) tailingIconLambda else null,
+    keyboardOptions = keyboardOption,
+    keyboardActions = keyboardAction,
+    supportingText = helperMessageLambda,
     maxLines = maxLines,
     minLines = minLines,
   )
