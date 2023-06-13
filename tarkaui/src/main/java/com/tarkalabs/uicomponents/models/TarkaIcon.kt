@@ -7,11 +7,7 @@ import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_export_ltr_2
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_sync_20_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_sync_circle_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_barcode_scanner_24_regular
-import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_calendar_agenda_24_selector
-import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_calendar_data_bar_28_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_calendar_ltr_24_regular
-import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_calendar_rtl_24_regular
-import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_calendar_today_16_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_checkmark_16_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_checkmark_circle_16_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_checkmark_starburst_24_regular
@@ -25,6 +21,7 @@ import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_dismiss_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_document_error_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_document_header_arrow_down_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_document_text_24_regular
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_info_20_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_local_language_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_map_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_question_circle_24_regular
@@ -32,8 +29,6 @@ import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_re_order_dots_vert
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_search_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_shield_task_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_tabs_24_regular
-import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_timer_10_20_filled
-import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_timer_20_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_timer_20_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_warning_12_regular
 
@@ -76,4 +71,5 @@ object TarkaIcons {
   val ShieldTask = TarkaIcon(ic_fluent_shield_task_24_regular, "Document Text")
   val LocalLanguage = TarkaIcon(ic_fluent_local_language_24_regular, "Language")
   val BarCodeScanner = TarkaIcon(ic_fluent_barcode_scanner_24_regular, "BarCode Scanner")
+  val Info20Filled = TarkaIcon(ic_fluent_info_20_filled, "Information")
 }
