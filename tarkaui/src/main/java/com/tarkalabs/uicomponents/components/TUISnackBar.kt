@@ -27,7 +27,6 @@ import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
-
 /**
  * Displays a snack bar with a message and optional action button.
  *
@@ -140,8 +139,38 @@ enum class TUISnackBarType {
   Error;
 }
 
-@Preview @Composable fun TUISnackBarPreview() {
+@Preview @Composable fun TUIInformationSnackBarPreview() {
   TUISnackBar(
-    message = "Hello there", actionLabel = "dgsd", leadingIcon = TarkaIcons.Delete, type = Success
+    message = "Hello there",
+    actionLabel = "dgsd",
+    leadingIcon = TarkaIcons.Delete,
+    type = Information
+  )
+}
+
+@Preview @Composable fun TUISuccessSnackBarPreview() {
+  TUISnackBar(
+    message = "Hello there",
+    actionLabel = "dgsd",
+    leadingIcon = TarkaIcons.Delete,
+    type = Success
+  )
+}
+
+@Preview @Composable fun TUIWarningSnackBarPreview() {
+  TUISnackBar(
+    message = "Hello there",
+    actionLabel = "dgsd",
+    leadingIcon = TarkaIcons.Delete,
+    type = Warning
+  )
+}
+
+@Preview @Composable fun TUIErrorSnackBarPreview() {
+  TUISnackBar(
+    message = "Hello there",
+    actionLabel = "dgsd",
+    leadingIcon = TarkaIcons.Delete,
+    type = Error
   )
 }
