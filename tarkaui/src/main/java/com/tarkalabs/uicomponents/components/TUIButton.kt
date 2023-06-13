@@ -95,6 +95,7 @@ enum class ButtonSize(val size: Dp) {
 /**
  * Below TUIButton() defines a reusable composable function which can be used to create an Button with various styles and sizes which takes several parameters such as
  * @param label The text to be displayed on the button.
+ * @param modifier The modifier to apply to the button.
  * @param height The height size of the button. Default is [ButtonSize.M].
  * @param buttonStyle The style of the button. Default is [ButtonStyle.PRIMARY].
  * @param leadingIcon The drawable resource for the leading icon, if any. Default is null.
@@ -112,6 +113,7 @@ onClick = {}
  */
 @Composable fun TUIButton(
   label: String,
+  modifier: Modifier = Modifier,
   height: ButtonSize = M,
   buttonStyle: ButtonStyle = PRIMARY,
   leadingIcon: TarkaIcon? = null,
@@ -158,7 +160,7 @@ onClick = {}
   Button(
     onClick = onClick,
     colors = buttonColor,
-    modifier = Modifier
+    modifier = modifier
       .height(height.size)
       .wrapContentWidth()
       .testTag(tags.parentTag),
