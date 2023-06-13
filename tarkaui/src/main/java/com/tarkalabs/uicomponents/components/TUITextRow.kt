@@ -22,7 +22,6 @@ import androidx.compose.ui.unit.dp
 import androidx.core.R.drawable
 import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -64,7 +63,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  */
 @Composable fun TUITextRow(
   title: String,
-  description: String,
+  description: String? = null,
   modifier: Modifier = Modifier.fillMaxWidth(),
   iconOne: TarkaIcon? = null,
   iconTwo: TarkaIcon? = null,
@@ -86,14 +85,23 @@ import com.tarkalabs.uicomponents.theme.TUITheme
       .testTag(tags.parentTag),
     verticalAlignment = Alignment.CenterVertically) {
     Column(Modifier.weight(1f)) {
-      Text(
-        text = title,
-        style = TUITheme.typography.body8,
-        color = TUITheme.colors.onSurface.copy(alpha = 0.7f)
-      )
-      Text(
-        text = description, style = TUITheme.typography.body7, color = TUITheme.colors.onSurface
-      )
+      if(description == null){
+        Text(
+          text = title,
+          style = TUITheme.typography.heading7,
+          color = TUITheme.colors.onSurface
+        )
+      } else {
+        Text(
+          text = title,
+          style = TUITheme.typography.body8,
+          color = TUITheme.colors.onSurface.copy(alpha = 0.7f)
+        )
+        Text(
+          text = description, style = TUITheme.typography.body7, color = TUITheme.colors.onSurface
+        )
+      }
+      
     }
     Row(verticalAlignment = Alignment.CenterVertically) {
       if (iconOne != null) TUIIconButton(
@@ -145,6 +153,17 @@ data class TUITextRowTags(
   TUITextRow(
     title = "Title",
     description = "Description",
+    infoIcon = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
+    iconOne = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
+    iconTwo = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
+    buttonTitle = "Label"
+  )
+}
+
+@Preview(showBackground = true) @Composable fun TUITextRowWithTitlePreview() {
+  TUITextRow(
+    title = "Title",
+    description = null,
     infoIcon = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
     iconOne = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
     iconTwo = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
