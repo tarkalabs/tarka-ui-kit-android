@@ -1,6 +1,5 @@
 package com.tarkalabs.uicomponents
 
-import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -58,13 +57,8 @@ class TUISnackBarTest {
                   "This is a success snackbar. ", duration = Short, actionLabel = "Dismiss"
                 )
                 when (result) {
-                  Dismissed -> {
-                    Log.d("SNACK_BAR_ACTION", "SnackBar Dismissed")
-                  }
-
-                  ActionPerformed -> {
-                    Log.d("SNACK_BAR_ACTION", "SnackBar Action Clicked")
-                  }
+                  Dismissed -> {}
+                  ActionPerformed -> {}
                 }
               }
             }) {
@@ -115,13 +109,8 @@ class TUISnackBarTest {
                   "This is a success snackbar. ", duration = Short, actionLabel = "Dismiss"
                 )
                 when (result) {
-                  Dismissed -> {
-                    Log.d("SNACK_BAR_ACTION", "SnackBar Dismissed")
-                  }
-
-                  ActionPerformed -> {
-                    Log.d("SNACK_BAR_ACTION", "SnackBar Action Clicked")
-                  }
+                  Dismissed -> {}
+                  ActionPerformed -> {}
                 }
               }
             }) {
@@ -148,5 +137,4 @@ class TUISnackBarTest {
     composable.onNodeWithTag(tags.dismissActionTag).performClick()
     verify(onDismissClick).invoke()
   }
-
 }
