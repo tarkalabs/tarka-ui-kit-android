@@ -17,11 +17,6 @@ import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.SnackbarVisuals
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -38,15 +33,38 @@ import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
+/**
+ * Represents the state of a TUI Snackbar.
+ *
+ * @param hostState The SnackbarHostState associated with the Snackbar.
+ * @param type The type of the Snackbar.
+ * @param leadingIcon The leading icon of the Snackbar.
+ */
 data class TUISnackBarState(
   val hostState: SnackbarHostState,
   var type: TUISnackBarType = Information,
   var leadingIcon: TarkaIcon? = null,
 ) {
+
+  /**
+   * Shows a Snackbar with the provided visuals.
+   *
+   * @param visuals The SnackbarVisuals to be displayed.
+   * @return The SnackbarResult representing the result of the Snackbar action.
+   */
   suspend fun showSnackBar(visuals: SnackbarVisuals): SnackbarResult {
     return hostState.showSnackbar(visuals)
   }
 
+  /**
+   * Shows a Snackbar with the provided message, action label, and duration.
+   *
+   * @param message The message to be displayed in the Snackbar.
+   * @param actionLabel The label of the action button. (optional)
+   * @param withDismissAction Whether to include a dismiss action. (optional)
+   * @param duration The duration of the Snackbar.
+   * @return The SnackbarResult representing the result of the Snackbar action.
+   */
   suspend fun showSnackBar(
     message: String,
     actionLabel: String? = null,
@@ -57,6 +75,13 @@ data class TUISnackBarState(
   }
 }
 
+/**
+ * A composable function that displays a TUI SnackbarHost.
+ *
+ * @param state The TUISnackBarState representing the state of the Snackbar.
+ * @param modifier The modifier for the SnackbarHost. (optional)
+ * @param tags The TUISnackBarTags to be applied to the TUISnackBar. (optional)
+ */
 @Composable
 fun TUISnackBarHost(
   state: TUISnackBarState,
@@ -92,13 +117,13 @@ fun TUISnackBarHost(
  *  How to use TUISnackBar() composable function
  *
  *   TUISnackBar(
-message = "Task completed successfully!",
-type = Success,
-leadingIcon = TarkaIcon.Success,
-actionLabel = "Dismiss",
-tags = TUISnackBarTags(parentTag = "example_snackbar"),
-action = { /* Perform action on dismiss */ }
-)
+      message = "Task completed successfully!",
+      type = Success,
+      leadingIcon = TarkaIcon.Success,
+      actionLabel = "Dismiss",
+      tags = TUISnackBarTags(parentTag = "example_snackbar"),
+      action = { /* Perform action on dismiss */ }
+    )
  */
 @Composable
 internal fun TUISnackBar(
@@ -186,7 +211,10 @@ data class TUISnackBarTags(
 )
 
 enum class TUISnackBarType {
-  Success, Information, Warning, Error;
+  Success,
+  Information,
+  Warning,
+  Error;
 }
 
 @Preview
