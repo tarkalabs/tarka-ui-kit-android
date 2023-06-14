@@ -10,22 +10,26 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.SnackbarData
 import androidx.compose.material3.SnackbarDuration.Short
-import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.SnackbarResult.ActionPerformed
 import androidx.compose.material3.SnackbarResult.Dismissed
 import androidx.compose.material3.Text
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.components.TUISnackBar
+import com.tarkalabs.uicomponents.components.TUISnackBarHost
+import com.tarkalabs.uicomponents.components.TUISnackBarState
+import com.tarkalabs.uicomponents.components.TUISnackBarType
 import com.tarkalabs.uicomponents.components.TUISnackBarType.Success
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class UIComponentListActivity : ComponentActivity() {
@@ -34,8 +38,11 @@ class UIComponentListActivity : ComponentActivity() {
     super.onCreate(savedInstanceState)
     setContent {
       TUITheme {
-        val snackState = remember { SnackbarHostState() }
+        var snackState by remember {
+          mutableStateOf(TUISnackBarState(SnackbarHostState(), TUISnackBarType.Information, null))
+        }
         val coroutineScope = rememberCoroutineScope()
+
 
         Box(
           modifier = Modifier
@@ -48,35 +55,28 @@ class UIComponentListActivity : ComponentActivity() {
               modifier = Modifier.fillMaxWidth(),
               onClick = {
                 coroutineScope.launch {
-                 val result =  snackState.showSnackbar("This is a success snackbar. ",
+                  val result = snackState.showSnackBar(
+                    "This is a success snackbar. ",
                     duration = Short,
-                  actionLabel = "Dismiss")
-                  when(result){
+                    actionLabel = "Dismiss"
+                  )
+                  when (result) {
                     Dismissed -> {
                       Log.d("SNACK_BAR_ACTION", "SnackBar Dismissed")
                     }
+
                     ActionPerformed -> {
                       Log.d("SNACK_BAR_ACTION", "SnackBar Action Clicked")
                     }
                   }
+                  delay(5000)
+                  snackState = snackState.copy(type = Success, leadingIcon = TarkaIcons.Dismiss)
                 }
               }) {
               Text("Show Snackbar")
             }
           }
-          SnackbarHost(
-            modifier= Modifier.align(Alignment.BottomStart),
-            hostState = snackState,
-          ) { snackbarData: SnackbarData ->
-            TUISnackBar(
-              snackbarData.visuals.message,
-              actionLabel = snackbarData.visuals.actionLabel,
-              leadingIcon = TarkaIcons.Delete,
-              type = Success,
-            ){
-              snackbarData.performAction()
-            }
-          }
+          TUISnackBarHost(modifier = Modifier.align(Alignment.BottomCenter), state = snackState)
         }
       }
     }
