@@ -100,7 +100,7 @@ class TUISnackBarState(
     message: String,
     actionLabel: String? = null,
     withDismissAction: Boolean = false,
-    duration: SnackbarDuration
+    duration: SnackbarDuration = if (actionLabel == null) SnackbarDuration.Short else SnackbarDuration.Indefinite
   ): SnackbarResult {
     return hostState.showSnackbar(message, actionLabel, withDismissAction, duration)
   }
