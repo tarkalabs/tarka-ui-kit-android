@@ -62,7 +62,8 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  *
  */
 @Composable fun TUITextRow(
-  style: TextRowStyle,
+  title: String,
+  style: TextRowStyle = Title,
   modifier: Modifier = Modifier.fillMaxWidth(),
   iconOne: TarkaIcon? = null,
   iconTwo: TarkaIcon? = null,
@@ -86,11 +87,11 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     Column(Modifier.weight(1f)) {
       when (style) {
         is TitleWithDescription -> {
-          TUITextRowTitleWithDescription(style)
+          TUITextRowTitleWithDescription(title, style)
         }
 
         is Title -> {
-          TUITextRowTitle(style)
+          TUITextRowTitle(title)
         }
       }
 
@@ -135,18 +136,18 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 }
 
 @Composable
-private fun TUITextRowTitle(style: Title) {
+private fun TUITextRowTitle(title: String) {
   Text(
-    text = style.title,
+    text = title,
     style = TUITheme.typography.heading7,
     color = TUITheme.colors.onSurface
   )
 }
 
 @Composable
-private fun TUITextRowTitleWithDescription(style: TitleWithDescription) {
+private fun TUITextRowTitleWithDescription(title: String, style: TitleWithDescription) {
   Text(
-    text = style.title,
+    text = title,
     style = TUITheme.typography.body8,
     color = TUITheme.colors.onSurface.copy(alpha = 0.7f)
   )
@@ -158,8 +159,8 @@ private fun TUITextRowTitleWithDescription(style: TitleWithDescription) {
 }
 
 sealed class TextRowStyle {
-  data class TitleWithDescription(val title: String, val description: String) : TextRowStyle()
-  data class Title(val title: String) : TextRowStyle()
+  data class TitleWithDescription(val description: String) : TextRowStyle()
+  object Title : TextRowStyle()
 }
 
 data class TUITextRowTags(
@@ -172,10 +173,12 @@ data class TUITextRowTags(
 
 @Preview(showBackground = true) @Composable fun TUITextRowPreview() {
   TUITextRow(
+    title = "",
+    style = Title,
     infoIcon = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
     iconOne = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
     iconTwo = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
     buttonTitle = "Label",
-    style = Title("dsdsd")
-  )
+
+    )
 }
