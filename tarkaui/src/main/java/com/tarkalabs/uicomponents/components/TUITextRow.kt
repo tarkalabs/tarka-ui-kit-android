@@ -21,8 +21,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.R.drawable
 import com.tarkalabs.uicomponents.Tags
-import com.tarkalabs.uicomponents.components.TextRowStyle.TextRowWithDescription
-import com.tarkalabs.uicomponents.components.TextRowStyle.TextRowWithTitle
+import com.tarkalabs.uicomponents.components.TextRowStyle.Title
+import com.tarkalabs.uicomponents.components.TextRowStyle.TitleWithDescription
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.theme.TUITheme
 
@@ -85,25 +85,12 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     verticalAlignment = Alignment.CenterVertically) {
     Column(Modifier.weight(1f)) {
       when (style) {
-        is TextRowWithDescription -> {
-          Text(
-            text = style.title,
-            style = TUITheme.typography.body8,
-            color = TUITheme.colors.onSurface.copy(alpha = 0.7f)
-          )
-          Text(
-            text = style.description,
-            style = TUITheme.typography.body7,
-            color = TUITheme.colors.onSurface
-          )
+        is TitleWithDescription -> {
+          TUITextRowTitleWithDescription(style)
         }
 
-        is TextRowWithTitle -> {
-          Text(
-            text = style.title,
-            style = TUITheme.typography.heading7,
-            color = TUITheme.colors.onSurface
-          )
+        is Title -> {
+          TUITextRowTitle(style)
         }
       }
 
@@ -147,9 +134,32 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   }
 }
 
+@Composable
+private fun TUITextRowTitle(style: Title) {
+  Text(
+    text = style.title,
+    style = TUITheme.typography.heading7,
+    color = TUITheme.colors.onSurface
+  )
+}
+
+@Composable
+private fun TUITextRowTitleWithDescription(style: TitleWithDescription) {
+  Text(
+    text = style.title,
+    style = TUITheme.typography.body8,
+    color = TUITheme.colors.onSurface.copy(alpha = 0.7f)
+  )
+  Text(
+    text = style.description,
+    style = TUITheme.typography.body7,
+    color = TUITheme.colors.onSurface
+  )
+}
+
 sealed class TextRowStyle {
-  data class TextRowWithDescription(val title: String, val description: String) : TextRowStyle()
-  data class TextRowWithTitle(val title: String) : TextRowStyle()
+  data class TitleWithDescription(val title: String, val description: String) : TextRowStyle()
+  data class Title(val title: String) : TextRowStyle()
 }
 
 data class TUITextRowTags(
@@ -166,6 +176,6 @@ data class TUITextRowTags(
     iconOne = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
     iconTwo = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
     buttonTitle = "Label",
-    style = TextRowWithTitle("dsdsd")
+    style = Title("dsdsd")
   )
 }
