@@ -21,16 +21,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.R.drawable
 import com.tarkalabs.uicomponents.Tags
+import com.tarkalabs.uicomponents.components.TextRowStyle.Title
+import com.tarkalabs.uicomponents.components.TextRowStyle.TitleWithDescription
 import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
  * A composable function that represents a text row in a UI.
  * It displays a title, a description, and optional icons, button, and info icon.
  *
- * @param title: The title text to be displayed in the text row.
- * @param description: The description text to be displayed in the text row.
  * @param modifier: The modifier to apply to the row.
  * @param iconOne: The optional first icon to display.
  * @param iconTwo: The optional second icon to display.
@@ -64,7 +63,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  */
 @Composable fun TUITextRow(
   title: String,
-  description: String,
+  style: TextRowStyle = Title,
   modifier: Modifier = Modifier.fillMaxWidth(),
   iconOne: TarkaIcon? = null,
   iconTwo: TarkaIcon? = null,
@@ -86,14 +85,16 @@ import com.tarkalabs.uicomponents.theme.TUITheme
       .testTag(tags.parentTag),
     verticalAlignment = Alignment.CenterVertically) {
     Column(Modifier.weight(1f)) {
-      Text(
-        text = title,
-        style = TUITheme.typography.body8,
-        color = TUITheme.colors.onSurface.copy(alpha = 0.7f)
-      )
-      Text(
-        text = description, style = TUITheme.typography.body7, color = TUITheme.colors.onSurface
-      )
+      when (style) {
+        is TitleWithDescription -> {
+          TUITextRowTitleWithDescription(title, style)
+        }
+
+        is Title -> {
+          TUITextRowTitle(title)
+        }
+      }
+
     }
     Row(verticalAlignment = Alignment.CenterVertically) {
       if (iconOne != null) TUIIconButton(
@@ -114,7 +115,8 @@ import com.tarkalabs.uicomponents.theme.TUITheme
           modifier = Modifier
             .height(40.dp)
             .width(90.dp)
-            .testTag(tags.buttonTag), onClick = onButtonClick
+            .testTag(tags.buttonTag),
+          onClick = onButtonClick
         ) {
           Text(text = buttonTitle)
         }
@@ -133,6 +135,34 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   }
 }
 
+@Composable
+private fun TUITextRowTitle(title: String) {
+  Text(
+    text = title,
+    style = TUITheme.typography.heading7,
+    color = TUITheme.colors.onSurface
+  )
+}
+
+@Composable
+private fun TUITextRowTitleWithDescription(title: String, style: TitleWithDescription) {
+  Text(
+    text = title,
+    style = TUITheme.typography.body8,
+    color = TUITheme.colors.onSurface.copy(alpha = 0.7f)
+  )
+  Text(
+    text = style.description,
+    style = TUITheme.typography.body7,
+    color = TUITheme.colors.onSurface
+  )
+}
+
+sealed class TextRowStyle {
+  data class TitleWithDescription(val description: String) : TextRowStyle()
+  object Title : TextRowStyle()
+}
+
 data class TUITextRowTags(
   val parentTag: String = Tags.TAG_TEXT_ROW,
   val iconOneTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = Tags.TAG_TEXT_ROW_ICON_ONE),
@@ -143,11 +173,12 @@ data class TUITextRowTags(
 
 @Preview(showBackground = true) @Composable fun TUITextRowPreview() {
   TUITextRow(
-    title = "Title",
-    description = "Description",
+    title = "",
+    style = Title,
     infoIcon = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
     iconOne = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
     iconTwo = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
-    buttonTitle = "Label"
-  )
+    buttonTitle = "Label",
+
+    )
 }

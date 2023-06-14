@@ -9,6 +9,7 @@ import androidx.compose.ui.test.performClick
 import androidx.core.R.drawable
 import com.tarkalabs.uicomponents.components.TUITextRow
 import com.tarkalabs.uicomponents.components.TUITextRowTags
+import com.tarkalabs.uicomponents.components.TextRowStyle
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Rule
@@ -25,7 +26,7 @@ class TUITextRowTest {
     composable.setContent {
       TUITextRow(
         title = "Title",
-        description = "Description",
+        style = TextRowStyle.TitleWithDescription(description = "Description"),
         infoIcon = TarkaIcons.Delete,
         iconOne = TarkaIcons.Copy,
         iconTwo = TarkaIcons.CheckMark,
@@ -49,7 +50,6 @@ class TUITextRowTest {
     composable.setContent {
       TUITextRow(
         title = "Title",
-        description = "Description",
         infoIcon = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
         iconOne = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
         iconTwo = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
