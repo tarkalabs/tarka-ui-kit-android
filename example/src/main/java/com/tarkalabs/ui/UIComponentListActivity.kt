@@ -11,22 +11,17 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.SnackbarDuration.Short
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.SnackbarResult.ActionPerformed
 import androidx.compose.material3.SnackbarResult.Dismissed
 import androidx.compose.material3.Text
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.components.TUISnackBarHost
-import com.tarkalabs.uicomponents.components.TUISnackBarState
-import com.tarkalabs.uicomponents.components.TUISnackBarType
 import com.tarkalabs.uicomponents.components.TUISnackBarType.Success
+import com.tarkalabs.uicomponents.components.rememberTUISnackBarState
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 import kotlinx.coroutines.delay
@@ -38,11 +33,8 @@ class UIComponentListActivity : ComponentActivity() {
     super.onCreate(savedInstanceState)
     setContent {
       TUITheme {
-        var snackState by remember {
-          mutableStateOf(TUISnackBarState(SnackbarHostState(), TUISnackBarType.Information, null))
-        }
+        val snackState = rememberTUISnackBarState()
         val coroutineScope = rememberCoroutineScope()
-
 
         Box(
           modifier = Modifier
@@ -70,7 +62,8 @@ class UIComponentListActivity : ComponentActivity() {
                     }
                   }
                   delay(5000)
-                  snackState = snackState.copy(type = Success, leadingIcon = TarkaIcons.Dismiss)
+                  snackState.type = Success
+                  snackState.leadingIcon = TarkaIcons.Timer20Regular
                 }
               }) {
               Text("Show Snackbar")

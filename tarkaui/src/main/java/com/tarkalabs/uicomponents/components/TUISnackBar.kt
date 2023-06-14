@@ -21,6 +21,8 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.listSaver
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -38,11 +40,36 @@ import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
-data class TUISnackBarState(
-  val hostState: SnackbarHostState,
-  var type: TUISnackBarType = Information,
-  var leadingIcon: TarkaIcon? = null,
+@Composable
+fun rememberTUISnackBarState(
+  key: String? = null,
+  hostState: SnackbarHostState = SnackbarHostState(),
+  type: TUISnackBarType = Information,
+  leadingIcon: TarkaIcon? = null,
+): TUISnackBarState {
+  return rememberSaveable(key = key, saver = TUISnackBarState.Saver) {
+    TUISnackBarState(hostState, type, leadingIcon)
+  }
+}
+
+class TUISnackBarState(
+  hostState: SnackbarHostState = SnackbarHostState(),
+  type: TUISnackBarType = Information,
+  leadingIcon: TarkaIcon? = null,
 ) {
+
+  companion object {
+    val Saver = listSaver(save = {
+      listOf(it.type, it.leadingIcon)
+    }, restore = {
+      TUISnackBarState(it[0] as SnackbarHostState, it[1] as TUISnackBarType, it[2] as TarkaIcon?)
+    })
+  }
+
+  internal val hostState: SnackbarHostState by mutableStateOf(hostState)
+  var type: TUISnackBarType by mutableStateOf(type)
+  var leadingIcon: TarkaIcon? by mutableStateOf(leadingIcon)
+
   suspend fun showSnackBar(visuals: SnackbarVisuals): SnackbarResult {
     return hostState.showSnackbar(visuals)
   }
