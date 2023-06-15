@@ -9,8 +9,21 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Snackbar
+import androidx.compose.material3.SnackbarData
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
+import androidx.compose.material3.SnackbarVisuals
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.listSaver
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -27,6 +40,101 @@ import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
+@Composable
+fun rememberTUISnackBarState(
+  key: String? = null,
+  hostState: SnackbarHostState = SnackbarHostState(),
+  type: TUISnackBarType = Information,
+  leadingIcon: TarkaIcon? = null,
+): TUISnackBarState {
+  return rememberSaveable(key = key, saver = TUISnackBarState.Saver) {
+    TUISnackBarState(hostState, type, leadingIcon)
+  }
+}
+
+/**
+ * Represents the state of a TUI Snackbar.
+ *
+ * @param hostState The SnackbarHostState associated with the Snackbar.
+ * @param type The type of the Snackbar.
+ * @param leadingIcon The leading icon of the Snackbar.
+ */
+class TUISnackBarState(
+  hostState: SnackbarHostState = SnackbarHostState(),
+  type: TUISnackBarType = Information,
+  leadingIcon: TarkaIcon? = null,
+) {
+
+  companion object {
+    val Saver = listSaver(save = {
+      listOf(it.type, it.leadingIcon)
+    }, restore = {
+      TUISnackBarState(it[0] as SnackbarHostState, it[1] as TUISnackBarType, it[2] as TarkaIcon?)
+    })
+  }
+
+  internal val hostState: SnackbarHostState by mutableStateOf(hostState)
+  var type: TUISnackBarType by mutableStateOf(type)
+  var leadingIcon: TarkaIcon? by mutableStateOf(leadingIcon)
+
+  /**
+   * Shows a Snackbar with the provided visuals.
+   *
+   * @param visuals The SnackbarVisuals to be displayed.
+   * @return The SnackbarResult representing the result of the Snackbar action.
+   */
+  suspend fun showSnackBar(visuals: SnackbarVisuals): SnackbarResult {
+    return hostState.showSnackbar(visuals)
+  }
+
+  /**
+   * Shows a Snackbar with the provided message, action label, and duration.
+   *
+   * @param message The message to be displayed in the Snackbar.
+   * @param actionLabel The label of the action button. (optional)
+   * @param withDismissAction Whether to include a dismiss action. (optional)
+   * @param duration The duration of the Snackbar.
+   * @return The SnackbarResult representing the result of the Snackbar action.
+   */
+  suspend fun showSnackBar(
+    message: String,
+    actionLabel: String? = null,
+    withDismissAction: Boolean = false,
+    duration: SnackbarDuration = if (actionLabel == null) SnackbarDuration.Short else SnackbarDuration.Indefinite
+  ): SnackbarResult {
+    return hostState.showSnackbar(message, actionLabel, withDismissAction, duration)
+  }
+}
+
+/**
+ * A composable function that displays a TUI SnackbarHost.
+ *
+ * @param state The TUISnackBarState representing the state of the Snackbar.
+ * @param modifier The modifier for the SnackbarHost. (optional)
+ * @param tags The TUISnackBarTags to be applied to the TUISnackBar. (optional)
+ */
+@Composable
+fun TUISnackBarHost(
+  state: TUISnackBarState,
+  modifier: Modifier = Modifier,
+  tags: TUISnackBarTags = TUISnackBarTags(),
+) {
+  SnackbarHost(
+    modifier = modifier,
+    hostState = state.hostState,
+  ) { snackbarData: SnackbarData ->
+    TUISnackBar(
+      snackbarData.visuals.message,
+      actionLabel = snackbarData.visuals.actionLabel,
+      leadingIcon = state.leadingIcon,
+      type = state.type,
+      tags = tags
+    ) {
+      snackbarData.performAction()
+    }
+  }
+}
+
 /**
  * Displays a snack bar with a message and optional action button.
  *
@@ -40,15 +148,16 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  *  How to use TUISnackBar() composable function
  *
  *   TUISnackBar(
-        message = "Task completed successfully!",
-        type = Success,
-        leadingIcon = TarkaIcon.Success,
-        actionLabel = "Dismiss",
-        tags = TUISnackBarTags(parentTag = "example_snackbar"),
-        action = { /* Perform action on dismiss */ }
+      message = "Task completed successfully!",
+      type = Success,
+      leadingIcon = TarkaIcon.Success,
+      actionLabel = "Dismiss",
+      tags = TUISnackBarTags(parentTag = "example_snackbar"),
+      action = { /* Perform action on dismiss */ }
     )
  */
-@Composable fun TUISnackBar(
+@Composable
+internal fun TUISnackBar(
   message: String,
   type: TUISnackBarType = Information,
   leadingIcon: TarkaIcon? = null,
@@ -139,7 +248,9 @@ enum class TUISnackBarType {
   Error;
 }
 
-@Preview @Composable fun TUIInformationSnackBarPreview() {
+@Preview
+@Composable
+fun TUIInformationSnackBarPreview() {
   TUISnackBar(
     message = "Hello there",
     actionLabel = "dgsd",
@@ -148,29 +259,26 @@ enum class TUISnackBarType {
   )
 }
 
-@Preview @Composable fun TUISuccessSnackBarPreview() {
+@Preview
+@Composable
+fun TUISuccessSnackBarPreview() {
   TUISnackBar(
-    message = "Hello there",
-    actionLabel = "dgsd",
-    leadingIcon = TarkaIcons.Delete,
-    type = Success
+    message = "Hello there", actionLabel = "dgsd", leadingIcon = TarkaIcons.Delete, type = Success
   )
 }
 
-@Preview @Composable fun TUIWarningSnackBarPreview() {
+@Preview
+@Composable
+fun TUIWarningSnackBarPreview() {
   TUISnackBar(
-    message = "Hello there",
-    actionLabel = "dgsd",
-    leadingIcon = TarkaIcons.Delete,
-    type = Warning
+    message = "Hello there", actionLabel = "dgsd", leadingIcon = TarkaIcons.Delete, type = Warning
   )
 }
 
-@Preview @Composable fun TUIErrorSnackBarPreview() {
+@Preview
+@Composable
+fun TUIErrorSnackBarPreview() {
   TUISnackBar(
-    message = "Hello there",
-    actionLabel = "dgsd",
-    leadingIcon = TarkaIcons.Delete,
-    type = Error
+    message = "Hello there", actionLabel = "dgsd", leadingIcon = TarkaIcons.Delete, type = Error
   )
 }
