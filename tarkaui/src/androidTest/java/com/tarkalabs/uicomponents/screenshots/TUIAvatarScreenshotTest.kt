@@ -14,7 +14,6 @@ import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Test
 import org.junit.runner.RunWith
 
-@OptIn(ExperimentalMaterial3Api::class)
 @RunWith(Parameterized::class)
 class TUIAvatarScreenshotTest(
   private val testName: String,

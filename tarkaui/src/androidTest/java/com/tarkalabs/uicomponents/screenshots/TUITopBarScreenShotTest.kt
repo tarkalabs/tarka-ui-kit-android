@@ -9,16 +9,33 @@ import com.tarkalabs.uicomponents.models.TarkaIcon
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
+import org.junit.runners.Parameterized
 
 @OptIn(ExperimentalMaterial3Api::class)
-@RunWith(JUnit4::class)
-class TUITopBarScreenShotTest : ComposeScreenshotComparator() {
+@RunWith(Parameterized::class)
+class TUITopBarScreenShotTest(
+  private val testName: String,
+  private val darkTheme: Boolean
+) : ComposeScreenshotComparator() {
 
-  @Test fun renderTopAppBarTextOnly() = compareScreenshotFor {
+  companion object {
+    @JvmStatic
+    @Parameterized.Parameters
+    fun data(): Collection<Array<Any>> {
+      return mutableListOf<Array<Any>>().apply {
+        for (darkTheme in listOf(true, false)) {
+          val testName = "darkTheme_${darkTheme}"
+          add(arrayOf(testName, darkTheme))
+        }
+      }
+    }
+  }
+
+  @Test fun renderTopAppBarTextOnly() = compareScreenshotFor(darkTheme, "_renderTopAppBarTextOnly_$testName") {
     TUITopBar(title = "Screenshot")
   }
 
-  @Test fun renderTopAppBarTextWithIcon() = compareScreenshotFor {
+  @Test fun renderTopAppBarTextWithIcon() = compareScreenshotFor(darkTheme, "_renderTopAppBarTextWithIcon_$testName") {
     TUITopBar(
       title = "Screenshot",
       navigationIcon = TarkaIcon(drawable.keyboard_arrow_right, "Arrow Right")

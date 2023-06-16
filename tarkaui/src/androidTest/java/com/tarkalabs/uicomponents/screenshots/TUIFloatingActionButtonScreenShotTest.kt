@@ -9,19 +9,36 @@ import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
+import org.junit.runners.Parameterized
 
-@RunWith(JUnit4::class)
-class TUIFloatingActionButtonScreenShotTest : ComposeScreenshotComparator() {
+@RunWith(Parameterized::class)
+class TUIFloatingActionButtonScreenShotTest(
+  private val testName: String,
+  private val darkTheme: Boolean
+) : ComposeScreenshotComparator() {
 
-  @Test fun test_fab_with_small_size() = compareScreenshotFor {
+  companion object {
+    @JvmStatic
+    @Parameterized.Parameters
+    fun data(): Collection<Array<Any>> {
+      return mutableListOf<Array<Any>>().apply {
+        for (darkTheme in listOf(true, false)) {
+          val testName = "darkTheme_${darkTheme}"
+          add(arrayOf(testName, darkTheme))
+        }
+      }
+    }
+  }
+
+  @Test fun test_fab_with_small_size() = compareScreenshotFor(darkTheme, "_testFabWithSmallSize_$testName") {
       TUIFloatingActionButton(fabSize = S, icon = TarkaIcons.ArrowExport, onClick = {})
   }
 
-  @Test fun test_fab_with_large_size() = compareScreenshotFor {
+  @Test fun test_fab_with_large_size() = compareScreenshotFor(darkTheme, "_testFabWithLargeSize_$testName") {
       TUIFloatingActionButton(fabSize = L, icon = TarkaIcons.ArrowExport, onClick = {})
   }
 
-  @Test fun test_fab_with_regular_size() = compareScreenshotFor {
+  @Test fun test_fab_with_regular_size() = compareScreenshotFor(darkTheme, "_testFabWithRegularSize_$testName") {
       TUIFloatingActionButton(fabSize = R, icon = TarkaIcons.ArrowExport, onClick = {})
   }
 }
