@@ -17,10 +17,8 @@ import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.SnackbarVisuals
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -84,6 +82,7 @@ class TUISnackBarState(
    * @return The SnackbarResult representing the result of the Snackbar action.
    */
   suspend fun showSnackBar(visuals: SnackbarVisuals): SnackbarResult {
+    hostState.currentSnackbarData?.dismiss()
     return hostState.showSnackbar(visuals)
   }
 
@@ -102,6 +101,7 @@ class TUISnackBarState(
     withDismissAction: Boolean = false,
     duration: SnackbarDuration = if (actionLabel == null) SnackbarDuration.Short else SnackbarDuration.Indefinite
   ): SnackbarResult {
+    hostState.currentSnackbarData?.dismiss()
     return hostState.showSnackbar(message, actionLabel, withDismissAction, duration)
   }
 }
