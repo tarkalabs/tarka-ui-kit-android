@@ -32,8 +32,6 @@ import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_shield_task_24_reg
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_tabs_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_timer_20_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_warning_12_regular
-import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_warning_24_regular
-import com.tarkalabs.uicomponents.theme.TUITheme
 
 data class TarkaIcon(
   @DrawableRes val iconRes: Int,
