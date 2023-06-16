@@ -46,10 +46,10 @@ open class TUIColors(
 )
 
 val LocalTUIColors = staticCompositionLocalOf {
-  lightColors
+  defaultLightColors
 }
 
-val lightColors = TUIColors(
+val defaultLightColors = TUIColors(
   primary = Color(0xFF0052D6),
   onPrimary = Color(0xFFF5F9FF),
   primaryAlt = Color(0xFFD5E2F6),
@@ -89,7 +89,7 @@ val lightColors = TUIColors(
   constantDark = Color(0xFF000000)
 )
 
-val darkColors = TUIColors(
+val defaultDarkColors = TUIColors(
   primary = Color(0xFF5294FF),
   onPrimary = Color(0xFFFAFCFF),
   primaryAlt = Color(0xFF293B56),
