@@ -37,7 +37,7 @@ data class TarkaIcon(
   @DrawableRes val iconRes: Int,
   val contentDescription: String,
   val tintColor : Color? = null,
-){
+) {
   fun withColor(color: Color): TarkaIcon {
     return this.copy(tintColor = color)
   }
