@@ -9,29 +9,37 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.SnackbarDuration.Short
 import androidx.compose.material3.Text
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.uicomponents.components.TUIInputField
+import com.tarkalabs.uicomponents.components.TUIInputFieldStatus
 import com.tarkalabs.uicomponents.components.TUISnackBarHost
-import com.tarkalabs.uicomponents.components.TUISnackBarType.Information
-import com.tarkalabs.uicomponents.components.TUISnackBarType.Success
+import com.tarkalabs.uicomponents.components.VerticalSpacer
 import com.tarkalabs.uicomponents.components.rememberTUISnackBarState
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
-import kotlinx.coroutines.launch
 
 class UIComponentListActivity : ComponentActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+
     setContent {
       TUITheme {
         val snackState = rememberTUISnackBarState(
         )
         val coroutineScope = rememberCoroutineScope()
+
+        val textData = remember {
+          mutableStateOf("Nilesh")
+        }
+        val hasError = remember {
+          mutableStateOf(false)
+        }
 
         Box(
           modifier = Modifier
@@ -40,36 +48,20 @@ class UIComponentListActivity : ComponentActivity() {
         ) {
 
           Column(modifier = Modifier.fillMaxSize()) {
-            Button(
-              modifier = Modifier.fillMaxWidth(),
-              onClick = {
-                coroutineScope.launch {
-                  snackState.type = Success
-                  snackState.leadingIcon = TarkaIcons.Info20Filled
 
-                  snackState.showSnackBar(
-                    "success snackbar. ",
-                    duration = Short,
-                    actionLabel = "Dismiss"
-                  )
-                }
-              }) {
-              Text("Show Snackbar")
-            }
+            TUIInputField(
+              value = textData.value,
+              onValueChange = {
+                textData.value = it
+              },
+              status = if (hasError.value) TUIInputFieldStatus.Error else TUIInputFieldStatus.Success,
+              maxCharLength = 10
+            )
 
-            Button(
-              modifier = Modifier.fillMaxWidth(),
-              onClick = {
-                coroutineScope.launch {
-                  snackState.type = Information
-                  snackState.leadingIcon = TarkaIcons.Info20Filled
-                  snackState.showSnackBar(
-                    "Information snackbar. ",
-                    duration = Short,
-                    actionLabel = "Dismiss"
-                  )
-                }
-              }) {
+            VerticalSpacer(space = 50)
+            Button(modifier = Modifier.fillMaxWidth(), onClick = {
+              hasError.value = true
+            }) {
               Text("Show Snackbar")
             }
 
