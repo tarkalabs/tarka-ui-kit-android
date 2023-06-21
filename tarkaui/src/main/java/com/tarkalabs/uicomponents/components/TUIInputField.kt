@@ -17,6 +17,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
@@ -36,6 +37,7 @@ enum class TUIInputFieldStatus {
   Success,
   Alert,
 }
+
 /**
  * A  Composable function that renders an text field with various options such as label, icons, status, and helper text.
  *
@@ -65,6 +67,7 @@ fun TUIInputField(
   keyboardAction: KeyboardActions = KeyboardActions.Default,
   maxLines: Int = 1,
   minLines: Int = 1,
+  maxCharLength: Int = Int.MAX_VALUE,
   singleLine: Boolean = false,
   inputShape: Shape = RoundedCornerShape(8.dp)
 ) {
@@ -98,12 +101,10 @@ fun TUIInputField(
       )
   }
   val helperMessageLambda: @Composable (() -> Unit)? =
-    if(helperMessage != null)
-    {
+    if (helperMessage != null) {
       {
         Row(verticalAlignment = Alignment.CenterVertically) {
-          if (icon != null)
-          {
+          if (icon != null) {
             Icon(
               tint = indicatorColorFor(status),
               painter = painterResource(id = icon.iconRes),
@@ -121,16 +122,18 @@ fun TUIInputField(
         }
 
       }
-    } else{
+    } else {
       null
     }
   TextField(
-    shape = inputShape,
     modifier = modifier
       .fillMaxWidth()
-      .testTag(testTags.parentTag),
+      .testTag(testTags.parentTag)
+      .clip(inputShape),
     value = value,
-    onValueChange = onValueChange,
+    onValueChange = {
+      if (it.length <= maxCharLength) onValueChange(it)
+    },
     enabled = enabled,
     singleLine = singleLine,
     colors = colors,
