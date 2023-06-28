@@ -105,31 +105,35 @@ enum class IconButtonStyle {
   }
   when (iconButtonStyle) {
     GHOST -> {
+      val contentColor = icon.tintColor ?: TUITheme.colors.onSurface
       iconButtonColors = IconButtonDefaults.iconButtonColors(
         containerColor = Color.Transparent,
-        contentColor = TUITheme.colors.onSurface,
+        contentColor =  contentColor,
         disabledContentColor = TUITheme.colors.onSurface.copy(alpha = 0.38f),
       )
     }
 
     SECONDARY -> {
+      val contentColor = icon.tintColor ?: TUITheme.colors.onSecondary
       iconButtonColors = IconButtonDefaults.iconButtonColors(
         containerColor = TUITheme.colors.secondary,
-        contentColor = TUITheme.colors.onSecondary,
+        contentColor = contentColor,
       )
     }
 
     PRIMARY -> {
+      val contentColor = icon.tintColor ?: TUITheme.colors.onPrimary
       iconButtonColors = IconButtonDefaults.iconButtonColors(
         containerColor = TUITheme.colors.primary,
-        contentColor = TUITheme.colors.onPrimary,
+        contentColor = contentColor,
       )
     }
 
     OUTLINE -> {
+      val contentColor = icon.tintColor ?: TUITheme.colors.onSurface
       iconButtonColors = IconButtonDefaults.iconButtonColors(
         containerColor = TUITheme.colors.surface,
-        contentColor = TUITheme.colors.onSurface,
+        contentColor = contentColor,
         disabledContentColor = TUITheme.colors.onSurface.copy(alpha = 0.38f),
       )
       modifier = Modifier
