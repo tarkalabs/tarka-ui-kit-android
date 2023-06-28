@@ -73,16 +73,16 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   onIconTwoClick: () -> Unit = {},
   onButtonClick: () -> Unit = {},
   onInfoIconClick: () -> Unit = {},
-  onTextRowClick: () -> Unit = {},
+  onTextRowClick: (() -> Unit)? = null,
   paddingValues: PaddingValues = PaddingValues(),
   tags: TUITextRowTags = TUITextRowTags()
 ) {
   Row(
     modifier
-      .clickable { onTextRowClick() }
       .defaultMinSize(minHeight = 40.dp)
       .padding(paddingValues)
-      .testTag(tags.parentTag),
+      .testTag(tags.parentTag)
+      .then(if(onTextRowClick == null) Modifier else Modifier.clickable { onTextRowClick() }),
     verticalAlignment = Alignment.CenterVertically) {
     Column(Modifier.weight(1f)) {
       when (style) {

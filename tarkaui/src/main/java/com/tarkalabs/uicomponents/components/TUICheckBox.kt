@@ -5,10 +5,8 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -30,7 +28,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   icon: TarkaIcon = TarkaIcons.CheckMark,
   enabled: Boolean = true,
   tags: TUICheckBoxTags = TUICheckBoxTags(),
-  onCheckedChange: (Boolean) -> Unit
+  onCheckedChange: (() -> Unit)? = null
 ) {
   val borderColor = if (checked) Color.Transparent else TUITheme.colors.utilityOutline
   val backgroundColor = if (checked) TUITheme.colors.primary else Color.Transparent
@@ -44,12 +42,16 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         shape = shape
       )
       .border(width = 1.dp, color = borderColor, shape = shape)
-      .toggleable(value = checked, onValueChange = {
-        if (enabled) {
-          onCheckedChange(it)
-        }
-      })
       .testTag(tags.parentTag)
+      .then(
+        if (onCheckedChange == null) Modifier else Modifier.toggleable(
+          value = checked,
+          onValueChange = {
+            if (enabled) {
+              onCheckedChange.invoke()
+            }
+          })
+      )
   ) {
     if (checked) {
       Icon(
@@ -58,8 +60,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         tint = if (enabled) Color.White else TUITheme.colors.utilityDisabledContent,
         modifier = Modifier
           .align(Alignment.Center)
-          .height(11.5.dp)
-          .width(8.5.dp)
+
       )
     }
   }
@@ -78,16 +79,16 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         .fillMaxWidth()
         .padding(20.dp)
     ) {
-      TUICheckBox(true, enabled = true, icon = TarkaIcons.CheckMark) { status ->
+      TUICheckBox(true, enabled = true, icon = TarkaIcons.CheckMark) {
       }
       VerticalSpacer(space = 20)
-      TUICheckBox(true, enabled = false, icon = TarkaIcons.CheckMark) { status ->
+      TUICheckBox(true, enabled = false, icon = TarkaIcons.CheckMark) {
       }
       VerticalSpacer(space = 20)
-      TUICheckBox(false, enabled = true, icon = TarkaIcons.CheckMark) { status ->
+      TUICheckBox(false, enabled = true, icon = TarkaIcons.CheckMark) {
       }
       VerticalSpacer(space = 20)
-      TUICheckBox(false, enabled = false, icon = TarkaIcons.CheckMark) { status ->
+      TUICheckBox(false, enabled = false, icon = TarkaIcons.CheckMark) {
       }
     }
 
