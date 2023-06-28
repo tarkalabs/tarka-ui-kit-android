@@ -175,7 +175,10 @@ data class TUITextRowTags(
   TUITextRow(
     title = "",
     style = Title,
-    infoIcon = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
+    infoIcon = TarkaIcon(
+      drawable.ic_call_answer,
+      "Call Answer"
+    ).withColor(TUITheme.colors.utilityOutline),
     iconOne = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
     iconTwo = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
     buttonTitle = "Label",

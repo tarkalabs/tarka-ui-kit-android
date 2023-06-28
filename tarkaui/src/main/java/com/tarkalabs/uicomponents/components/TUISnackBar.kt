@@ -254,7 +254,7 @@ fun TUIInformationSnackBarPreview() {
   TUISnackBar(
     message = "Hello there",
     actionLabel = "dgsd",
-    leadingIcon = TarkaIcons.Delete,
+    leadingIcon = TarkaIcons.Delete24Regular,
     type = Information
   )
 }
@@ -263,7 +263,7 @@ fun TUIInformationSnackBarPreview() {
 @Composable
 fun TUISuccessSnackBarPreview() {
   TUISnackBar(
-    message = "Hello there", actionLabel = "dgsd", leadingIcon = TarkaIcons.Delete, type = Success
+    message = "Hello there", actionLabel = "dgsd", leadingIcon = TarkaIcons.Delete24Regular, type = Success
   )
 }
 
@@ -271,7 +271,7 @@ fun TUISuccessSnackBarPreview() {
 @Composable
 fun TUIWarningSnackBarPreview() {
   TUISnackBar(
-    message = "Hello there", actionLabel = "dgsd", leadingIcon = TarkaIcons.Delete, type = Warning
+    message = "Hello there", actionLabel = "dgsd", leadingIcon = TarkaIcons.Delete24Regular, type = Warning
   )
 }
 
@@ -279,6 +279,6 @@ fun TUIWarningSnackBarPreview() {
 @Composable
 fun TUIErrorSnackBarPreview() {
   TUISnackBar(
-    message = "Hello there", actionLabel = "dgsd", leadingIcon = TarkaIcons.Delete, type = Error
+    message = "Hello there", actionLabel = "dgsd", leadingIcon = TarkaIcons.Delete24Regular, type = Error
   )
 }

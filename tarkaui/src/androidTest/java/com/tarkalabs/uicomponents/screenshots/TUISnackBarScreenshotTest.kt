@@ -14,7 +14,7 @@ class TUISnackBarScreenshotTest : ComposeScreenshotComparator() {
     TUISnackBar(
       message = "Message",
       actionLabel = "Dismiss",
-      leadingIcon = TarkaIcons.Delete,
+      leadingIcon = TarkaIcons.Delete24Regular,
       type = Information
     )
   }
@@ -23,7 +23,7 @@ class TUISnackBarScreenshotTest : ComposeScreenshotComparator() {
     TUISnackBar(
       message = "Message",
       actionLabel = "Dismiss",
-      leadingIcon = TarkaIcons.Delete,
+      leadingIcon = TarkaIcons.Delete24Regular,
       type = Success
     )
   }
@@ -32,7 +32,7 @@ class TUISnackBarScreenshotTest : ComposeScreenshotComparator() {
     TUISnackBar(
       message = "Message",
       actionLabel = "Dismiss",
-      leadingIcon = TarkaIcons.Delete,
+      leadingIcon = TarkaIcons.Delete24Regular,
       type = Warning
     )
   }
@@ -41,7 +41,7 @@ class TUISnackBarScreenshotTest : ComposeScreenshotComparator() {
     TUISnackBar(
       message = "Message",
       actionLabel = "Dismiss",
-      leadingIcon = TarkaIcons.Delete,
+      leadingIcon = TarkaIcons.Delete24Regular,
       type = Error
     )
   }

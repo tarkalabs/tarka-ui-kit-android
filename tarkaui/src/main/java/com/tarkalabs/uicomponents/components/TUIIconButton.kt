@@ -171,24 +171,24 @@ data class TUIIconButtonTags(
         verticalAlignment = Alignment.CenterVertically
       ) {
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight, buttonSize = XS, iconButtonStyle = PRIMARY
+          icon = TarkaIcons.ChevronRight20Regular, buttonSize = XS, iconButtonStyle = PRIMARY
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight, buttonSize = S, iconButtonStyle = PRIMARY
+          icon = TarkaIcons.ChevronRight20Regular, buttonSize = S, iconButtonStyle = PRIMARY
         )
         Spacer(modifier = Modifier.width(20.dp))
 
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight, buttonSize = M, iconButtonStyle = PRIMARY
+          icon = TarkaIcons.ChevronRight20Regular, buttonSize = M, iconButtonStyle = PRIMARY
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight, buttonSize = L, iconButtonStyle = PRIMARY
+          icon = TarkaIcons.ChevronRight20Regular, buttonSize = L, iconButtonStyle = PRIMARY
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight, buttonSize = XL, iconButtonStyle = PRIMARY
+          icon = TarkaIcons.ChevronRight20Regular, buttonSize = XL, iconButtonStyle = PRIMARY
         )
       }
 
@@ -200,24 +200,24 @@ data class TUIIconButtonTags(
         verticalAlignment = Alignment.CenterVertically
       ) {
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight, buttonSize = XS, iconButtonStyle = SECONDARY
+          icon = TarkaIcons.ChevronRight20Regular, buttonSize = XS, iconButtonStyle = SECONDARY
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight, buttonSize = S, iconButtonStyle = SECONDARY
+          icon = TarkaIcons.ChevronRight20Regular, buttonSize = S, iconButtonStyle = SECONDARY
         )
         Spacer(modifier = Modifier.width(20.dp))
 
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight, buttonSize = M, iconButtonStyle = SECONDARY
+          icon = TarkaIcons.ChevronRight20Regular, buttonSize = M, iconButtonStyle = SECONDARY
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight, buttonSize = L, iconButtonStyle = SECONDARY
+          icon = TarkaIcons.ChevronRight20Regular, buttonSize = L, iconButtonStyle = SECONDARY
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight, buttonSize = XL, iconButtonStyle = SECONDARY
+          icon = TarkaIcons.ChevronRight20Regular, buttonSize = XL, iconButtonStyle = SECONDARY
         )
       }
 
@@ -230,24 +230,24 @@ data class TUIIconButtonTags(
         verticalAlignment = Alignment.CenterVertically
       ) {
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight, buttonSize = XS, iconButtonStyle = GHOST
+          icon = TarkaIcons.ChevronRight20Regular, buttonSize = XS, iconButtonStyle = GHOST
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight, buttonSize = S, iconButtonStyle = GHOST
+          icon = TarkaIcons.ChevronRight20Regular, buttonSize = S, iconButtonStyle = GHOST
         )
         Spacer(modifier = Modifier.width(20.dp))
 
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight, buttonSize = M, iconButtonStyle = GHOST
+          icon = TarkaIcons.ChevronRight20Regular, buttonSize = M, iconButtonStyle = GHOST
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight, buttonSize = L, iconButtonStyle = GHOST
+          icon = TarkaIcons.ChevronRight20Regular, buttonSize = L, iconButtonStyle = GHOST
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight, buttonSize = XL, iconButtonStyle = GHOST
+          icon = TarkaIcons.ChevronRight20Regular, buttonSize = XL, iconButtonStyle = GHOST
         )
       }
 
@@ -259,24 +259,24 @@ data class TUIIconButtonTags(
         verticalAlignment = Alignment.CenterVertically
       ) {
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight, buttonSize = XS, iconButtonStyle = OUTLINE
+          icon = TarkaIcons.ChevronRight20Regular, buttonSize = XS, iconButtonStyle = OUTLINE
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight, buttonSize = S, iconButtonStyle = OUTLINE
+          icon = TarkaIcons.ChevronRight20Regular, buttonSize = S, iconButtonStyle = OUTLINE
         )
         Spacer(modifier = Modifier.width(20.dp))
 
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight, buttonSize = M, iconButtonStyle = OUTLINE
+          icon = TarkaIcons.ChevronRight20Regular, buttonSize = M, iconButtonStyle = OUTLINE
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight, buttonSize = L, iconButtonStyle = OUTLINE
+          icon = TarkaIcons.ChevronRight20Regular, buttonSize = L, iconButtonStyle = OUTLINE
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.ChevronRight, buttonSize = XL, iconButtonStyle = OUTLINE
+          icon = TarkaIcons.ChevronRight20Regular, buttonSize = XL, iconButtonStyle = OUTLINE
         )
       }
     }
