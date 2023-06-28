@@ -54,7 +54,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
           modifier = Modifier
             .size(width = 40.dp, height = 24.dp)
             .testTag(tags.iconTag),
-          painter = painterResource(if (switchCheckedState) TarkaIcons.CheckMark.iconRes else TarkaIcons.Dismiss.iconRes),
+          painter = painterResource(if (switchCheckedState) TarkaIcons.CheckMark16Filled.iconRes else TarkaIcons.Dismiss24Regular.iconRes),
           contentDescription = null,
         )
       }, colors = getSwitchDefaultColors()

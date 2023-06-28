@@ -27,9 +27,9 @@ class TUITextRowTest {
       TUITextRow(
         title = "Title",
         style = TextRowStyle.TitleWithDescription(description = "Description"),
-        infoIcon = TarkaIcons.Delete,
-        iconOne = TarkaIcons.Copy,
-        iconTwo = TarkaIcons.CheckMark,
+        infoIcon = TarkaIcons.Delete24Regular,
+        iconOne = TarkaIcons.Copy24Regular,
+        iconTwo = TarkaIcons.CheckMark16Filled,
         buttonTitle = "Label",
         tags = tags
       )

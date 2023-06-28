@@ -59,7 +59,7 @@ class TUIAvatarScreenshotTest(
 
   @Test fun test_avatar_with_icon(){
     compareScreenshotFor(darkTheme = darkTheme, imageName = "_testAvatarWithIcon_$testName") {
-      TUIAvatar(avatarType = AvatarType.Icon(TarkaIcons.DismissFilled), avatarSize = avatarSize, showBadge = showBadge)
+      TUIAvatar(avatarType = AvatarType.Icon(TarkaIcons.Dismiss16Filled), avatarSize = avatarSize, showBadge = showBadge)
     }
   }
 }

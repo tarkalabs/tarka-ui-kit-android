@@ -147,7 +147,7 @@ data class TUIAvatarTags(
 @Preview(showBackground = true)
 fun TUIAvatarIconPreview() {
   TUIAvatar(
-    avatarType = Icon(TarkaIcons.Search),
+    avatarType = Icon(TarkaIcons.Search24Regular),
     avatarSize = L
   )
 }
