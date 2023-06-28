@@ -11,7 +11,7 @@ import androidx.compose.runtime.CompositionLocalProvider
   darkColors: TUIColors = defaultDarkColors,
   content: @Composable () -> Unit,
 ) {
-  val colors = if (darkTheme) lightColors else darkColors
+  val colors = if (darkTheme) darkColors else lightColors
 
   CompositionLocalProvider(
     LocalTUITypography provides extendedTypography, LocalTUIColors provides colors
