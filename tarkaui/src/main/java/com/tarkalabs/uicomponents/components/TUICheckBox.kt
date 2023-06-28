@@ -23,6 +23,21 @@ import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
+/**
+ * A composable function that displays a checkbox with customizable appearance and behavior.
+ *
+ * @param checked Whether the checkbox is checked.
+ * @param icon The icon to display when the checkbox is checked.
+ * @param enabled Whether the checkbox is enabled and can be interacted with.
+ * @param tags Additional tags to apply to the checkbox.
+ * @param onCheckedChange Callback triggered when the checkbox's checked state changes.
+ *
+ *     TUICheckBox(
+        checked = isChecked,
+        enabled = true,
+        onCheckedChange = { isChecked = !isChecked }
+      )
+ */
 @Composable fun TUICheckBox(
   checked: Boolean,
   icon: TarkaIcon = TarkaIcons.CheckMark,
