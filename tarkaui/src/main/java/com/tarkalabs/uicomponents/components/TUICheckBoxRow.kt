@@ -8,8 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -32,12 +30,12 @@ import com.tarkalabs.uicomponents.models.TarkaIcons
  *
  * How to use TUICheckBoxRow() composable function
  *     TUICheckBoxRow(
-        checked = isChecked,
-        enabled = true,
-        title = "Checkbox Row",
-        style = TextRowStyle.Title,
-        onCheckedChange = { isChecked = !isChecked }
-        )
+checked = isChecked,
+enabled = true,
+title = "Checkbox Row",
+style = TextRowStyle.Title,
+onCheckedChange = { isChecked = !isChecked }
+)
  */
 @Composable fun TUICheckBoxRow(
   checked: Boolean,
@@ -55,10 +53,10 @@ import com.tarkalabs.uicomponents.models.TarkaIcons
     modifier = Modifier
       .toggleable(value = checked,
         onValueChange = {
-        if (enabled) {
-          onCheckedChange.invoke()
-        }
-      })
+          if (enabled) {
+            onCheckedChange.invoke()
+          }
+        })
   ) {
     TUICheckBox(
       checked,
@@ -78,9 +76,6 @@ import com.tarkalabs.uicomponents.models.TarkaIcons
 }
 
 @Preview @Composable fun PreviewTUICheckBoxRow() {
-  val status = remember {
-    mutableStateOf(false)
-  }
   Column(
     modifier = Modifier
       .padding(20.dp)
@@ -94,15 +89,39 @@ import com.tarkalabs.uicomponents.models.TarkaIcons
         .padding(20.dp)
     ) {
       TUICheckBoxRow(
-        checked = status.value,
+        checked = true,
         enabled = true,
         icon = TarkaIcons.CheckMark,
-        title = "TUICheckBoxRow",
+        title = "Title",
         style = TextRowStyle.TitleWithDescription("Description")
       ) {
-        status.value = !status.value
+      }
+      TUICheckBoxRow(
+        checked = false,
+        enabled = true,
+        icon = TarkaIcons.CheckMark,
+        title = "Title",
+        style = TextRowStyle.TitleWithDescription("Description")
+      ) {
       }
 
+      TUICheckBoxRow(
+        checked = true,
+        enabled = false,
+        icon = TarkaIcons.CheckMark,
+        title = "Title",
+        style = TextRowStyle.TitleWithDescription("Description")
+      ) {
+      }
+
+      TUICheckBoxRow(
+        checked = true,
+        enabled = false,
+        icon = TarkaIcons.CheckMark,
+        title = "Title",
+        style = TextRowStyle.Title
+      ) {
+      }
 
     }
 
