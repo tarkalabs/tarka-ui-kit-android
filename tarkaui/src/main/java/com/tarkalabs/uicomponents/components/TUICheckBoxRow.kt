@@ -11,8 +11,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 
@@ -45,6 +47,7 @@ onCheckedChange = { isChecked = !isChecked }
   style: TextRowStyle,
   checkBoxTags: TUICheckBoxTags = TUICheckBoxTags(),
   textRowTags: TUITextRowTags = TUITextRowTags(),
+  tuiCheckBoxRowTag: TUICheckBoxRowTags = TUICheckBoxRowTags(),
   onCheckedChange: () -> Unit,
 ) {
   Row(
@@ -56,7 +59,7 @@ onCheckedChange = { isChecked = !isChecked }
           if (enabled) {
             onCheckedChange.invoke()
           }
-        })
+        }).testTag(tuiCheckBoxRowTag.parentTag)
   ) {
     TUICheckBox(
       checked,
@@ -70,11 +73,13 @@ onCheckedChange = { isChecked = !isChecked }
       title = title,
       style = style,
       tags = textRowTags,
-      onTextRowClick = null
+      onTextRowClick = null,
     )
   }
 }
-
+data class TUICheckBoxRowTags(
+  val parentTag: String = Tags.TAG_CHECK_BOX_ROW,
+)
 @Preview @Composable fun PreviewTUICheckBoxRow() {
   Column(
     modifier = Modifier

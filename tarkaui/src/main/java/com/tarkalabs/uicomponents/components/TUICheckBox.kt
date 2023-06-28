@@ -59,7 +59,6 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         shape = shape
       )
       .border(width = 1.dp, color = borderColor, shape = shape)
-      .testTag(tags.parentTag)
       .then(
         if (onCheckedChange == null) Modifier else Modifier.toggleable(
           value = checked,
@@ -69,6 +68,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
             }
           })
       )
+      .testTag(tags.parentTag)
   ) {
     if (checked) {
       Icon(
