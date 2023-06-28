@@ -20,6 +20,7 @@ import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_chevron_up_20_regu
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_copy_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_delete_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_dismiss_16_filled
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_dismiss_20_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_dismiss_20_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_dismiss_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_document_error_24_regular
@@ -53,6 +54,8 @@ object TarkaIcons {
   val ChevronUp20Regular = TarkaIcon(ic_fluent_chevron_up_20_regular, "Chevron Up")
   val ChevronRight20Regular =
     TarkaIcon(R.drawable.ic_fluent_chevron_right_20_regular, "Chevron Right")
+  val ChevronRight20Filled =
+    TarkaIcon(R.drawable.ic_fluent_chevron_right_20_filled, "Chevron Right")
   val ChevronLeft20Regular = TarkaIcon(ic_fluent_chevron_left_20_regular, "Chevron Left")
   val ChevronDown20Regular = TarkaIcon(ic_fluent_chevron_down_20_regular, "Chevron Down")
   val CheckmarkStarburst24Regular =
@@ -70,6 +73,7 @@ object TarkaIcons {
   val Dismiss20Regular = TarkaIcon(ic_fluent_dismiss_20_regular, "Dismiss")
   val Dismiss24Regular = TarkaIcon(ic_fluent_dismiss_24_regular, "Dismiss")
   val Dismiss16Filled = TarkaIcon(ic_fluent_dismiss_16_filled, "Dismiss")
+  val Dismiss20Filled = TarkaIcon(ic_fluent_dismiss_20_filled, "Dismiss")
   val ArrowSyncCircle24Regular =
     TarkaIcon(ic_fluent_arrow_sync_circle_24_regular, "Arrow Sync Circle")
   val DocumentHeaderArrowDown24Regular =
