@@ -18,6 +18,27 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 
+/**
+ * A composable function that displays a checkbox and a text row in a horizontal layout.
+ *
+ * @param checked Whether the checkbox is checked.
+ * @param icon The icon to display when the checkbox is checked.
+ * @param enabled Whether the checkbox is enabled and can be interacted with.
+ * @param title The text to display in the text row.
+ * @param style The style to apply to the text row.
+ * @param checkBoxTags Additional tags to apply to the checkbox.
+ * @param textRowTags Additional tags to apply to the text row.
+ * @param onCheckedChange Callback triggered when the checkbox's checked state changes.
+ *
+ * How to use TUICheckBoxRow() composable function
+ *     TUICheckBoxRow(
+        checked = isChecked,
+        enabled = true,
+        title = "Checkbox Row",
+        style = TextRowStyle.Title,
+        onCheckedChange = { isChecked = !isChecked }
+        )
+ */
 @Composable fun TUICheckBoxRow(
   checked: Boolean,
   icon: TarkaIcon = TarkaIcons.CheckMark,

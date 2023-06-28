@@ -32,6 +32,8 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * @param tags Additional tags to apply to the checkbox.
  * @param onCheckedChange Callback triggered when the checkbox's checked state changes.
  *
+ * How to use TUICheckBox() composable function
+ *
  *     TUICheckBox(
         checked = isChecked,
         enabled = true,
