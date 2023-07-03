@@ -40,6 +40,7 @@ onCheckedChange = { isChecked = !isChecked }
 )
  */
 @Composable fun TUICheckBoxRow(
+  modifier: Modifier = Modifier,
   checked: Boolean,
   icon: TarkaIcon = TarkaIcons.CheckMark,
   enabled: Boolean = true,
@@ -53,16 +54,17 @@ onCheckedChange = { isChecked = !isChecked }
   Row(
     horizontalArrangement = Arrangement.Center,
     verticalAlignment = Alignment.CenterVertically,
-    modifier = Modifier
+    modifier = modifier
       .toggleable(value = checked,
         onValueChange = {
           if (enabled) {
             onCheckedChange.invoke()
           }
-        }).testTag(tuiCheckBoxRowTag.parentTag)
+        })
+      .testTag(tuiCheckBoxRowTag.parentTag)
   ) {
     TUICheckBox(
-      checked,
+      checked = checked,
       onCheckedChange = null,
       enabled = enabled,
       icon = icon,
@@ -77,9 +79,11 @@ onCheckedChange = { isChecked = !isChecked }
     )
   }
 }
+
 data class TUICheckBoxRowTags(
   val parentTag: String = Tags.TAG_CHECK_BOX_ROW,
 )
+
 @Preview @Composable fun PreviewTUICheckBoxRow() {
   Column(
     modifier = Modifier

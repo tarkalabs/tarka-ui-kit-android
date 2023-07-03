@@ -41,6 +41,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
       )
  */
 @Composable fun TUICheckBox(
+  modifier: Modifier = Modifier,
   checked: Boolean,
   icon: TarkaIcon = TarkaIcons.CheckMark,
   enabled: Boolean = true,
@@ -52,7 +53,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   val shape = RoundedCornerShape(6.dp)
 
   Box(
-    modifier = Modifier
+    modifier = modifier
       .size(24.dp)
       .background(
         color = if (enabled) backgroundColor else TUITheme.colors.utilityDisabledBackground,
@@ -96,16 +97,16 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         .fillMaxWidth()
         .padding(20.dp)
     ) {
-      TUICheckBox(true, enabled = true, icon = TarkaIcons.CheckMark) {
+      TUICheckBox(checked = true, enabled = true, icon = TarkaIcons.CheckMark) {
       }
       VerticalSpacer(space = 20)
-      TUICheckBox(true, enabled = false, icon = TarkaIcons.CheckMark) {
+      TUICheckBox(checked = true, enabled = false, icon = TarkaIcons.CheckMark) {
       }
       VerticalSpacer(space = 20)
-      TUICheckBox(false, enabled = true, icon = TarkaIcons.CheckMark) {
+      TUICheckBox(checked = false, enabled = true, icon = TarkaIcons.CheckMark) {
       }
       VerticalSpacer(space = 20)
-      TUICheckBox(false, enabled = false, icon = TarkaIcons.CheckMark) {
+      TUICheckBox(checked = false, enabled = false, icon = TarkaIcons.CheckMark) {
       }
     }
 
