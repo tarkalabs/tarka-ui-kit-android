@@ -79,19 +79,19 @@ data class TUIFloatingActionButtonTags(
     verticalArrangement = Arrangement.SpaceEvenly
   ) {
     TUIFloatingActionButton(
-      L, TarkaIcons.ChevronRight
+      L, TarkaIcons.ChevronRight20Regular
     ) {
 
     }
     Spacer(modifier = Modifier.padding(5.dp))
     TUIFloatingActionButton(
-      R, TarkaIcons.ChevronRight
+      R, TarkaIcons.ChevronRight20Regular
     ) {
 
     }
     Spacer(modifier = Modifier.padding(5.dp))
     TUIFloatingActionButton(
-      S, TarkaIcons.ChevronRight
+      S, TarkaIcons.ChevronRight20Regular
     ) {
 
     }

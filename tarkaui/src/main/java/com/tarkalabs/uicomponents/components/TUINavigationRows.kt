@@ -82,8 +82,8 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     if (showRightArrow) {
       Icon(
         modifier = Modifier.testTag(tags.rightArrowTag),
-        painter = painterResource(id = TarkaIcons.ChevronRight.iconRes),
-        contentDescription = TarkaIcons.ChevronRight.contentDescription,
+        painter = painterResource(id = TarkaIcons.ChevronRight20Regular.iconRes),
+        contentDescription = TarkaIcons.ChevronRight20Regular.contentDescription,
         tint = TUITheme.colors.utilityOutline
       )
     }

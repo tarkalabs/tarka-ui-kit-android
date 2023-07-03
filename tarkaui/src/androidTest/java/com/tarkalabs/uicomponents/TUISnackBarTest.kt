@@ -72,7 +72,7 @@ class TUISnackBarTest {
             TUISnackBar(
               snackbarData.visuals.message,
               actionLabel = snackbarData.visuals.actionLabel,
-              leadingIcon = TarkaIcons.Delete,
+              leadingIcon = TarkaIcons.Delete24Regular,
               type = Success,
             ) {
               snackbarData.performAction()
@@ -124,7 +124,7 @@ class TUISnackBarTest {
             TUISnackBar(
               snackbarData.visuals.message,
               actionLabel = snackbarData.visuals.actionLabel,
-              leadingIcon = TarkaIcons.Delete,
+              leadingIcon = TarkaIcons.Delete24Regular,
               type = Success,
               action = onDismissClick
             )

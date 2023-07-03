@@ -4,11 +4,9 @@ import com.tarkalabs.uicomponents.components.FloatingActionButtonSize.L
 import com.tarkalabs.uicomponents.components.FloatingActionButtonSize.R
 import com.tarkalabs.uicomponents.components.FloatingActionButtonSize.S
 import com.tarkalabs.uicomponents.components.TUIFloatingActionButton
-import com.tarkalabs.uicomponents.components.TUIToggleSwitch
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
 import org.junit.runners.Parameterized
 
 @RunWith(Parameterized::class)
@@ -31,14 +29,14 @@ class TUIFloatingActionButtonScreenShotTest(
   }
 
   @Test fun test_fab_with_small_size() = compareScreenshotFor(darkTheme, "_testFabWithSmallSize_$testName") {
-      TUIFloatingActionButton(fabSize = S, icon = TarkaIcons.ArrowExport, onClick = {})
+      TUIFloatingActionButton(fabSize = S, icon = TarkaIcons.ArrowExportLtr24Regular, onClick = {})
   }
 
   @Test fun test_fab_with_large_size() = compareScreenshotFor(darkTheme, "_testFabWithLargeSize_$testName") {
-      TUIFloatingActionButton(fabSize = L, icon = TarkaIcons.ArrowExport, onClick = {})
+      TUIFloatingActionButton(fabSize = L, icon = TarkaIcons.ArrowExportLtr24Regular, onClick = {})
   }
 
   @Test fun test_fab_with_regular_size() = compareScreenshotFor(darkTheme, "_testFabWithRegularSize_$testName") {
-      TUIFloatingActionButton(fabSize = R, icon = TarkaIcons.ArrowExport, onClick = {})
+      TUIFloatingActionButton(fabSize = R, icon = TarkaIcons.ArrowExportLtr24Regular, onClick = {})
   }
 }

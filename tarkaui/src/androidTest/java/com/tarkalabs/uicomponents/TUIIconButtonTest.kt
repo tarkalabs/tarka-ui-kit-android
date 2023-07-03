@@ -17,7 +17,7 @@ class TUIIconButtonTest {
 
   @Test fun icon_Button_Displayed() {
     composable.setContent {
-      TUIIconButton(icon = TarkaIcons.Delete, tags = tags) {}
+      TUIIconButton(icon = TarkaIcons.Delete24Regular, tags = tags) {}
     }
     composable.onNodeWithTag(tags.parentTag).assertIsDisplayed()
   }
@@ -26,7 +26,7 @@ class TUIIconButtonTest {
     val onClick: () -> Unit = mock()
 
     composable.setContent {
-      TUIIconButton(icon = TarkaIcons.Delete, tags = tags, onIconClick = onClick)
+      TUIIconButton(icon = TarkaIcons.Delete24Regular, tags = tags, onIconClick = onClick)
     }
     composable.onNodeWithTag(tags.parentTag).performClick()
 

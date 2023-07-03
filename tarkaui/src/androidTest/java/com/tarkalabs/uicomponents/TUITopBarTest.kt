@@ -36,10 +36,10 @@ class TUITopBarTest {
     composeTestRule.setContent {
       TUITopBar(
         title = "title",
-        navigationIcon = TarkaIcons.ChevronRight,
-        menuItemIconOne = TarkaIcons.CheckMark,
-        menuItemIconTwo = TarkaIcons.Delete,
-        menuItemIconThree = TarkaIcons.ArrowCounterClockWise,
+        navigationIcon = TarkaIcons.ChevronRight20Regular,
+        menuItemIconOne = TarkaIcons.CheckMark16Filled,
+        menuItemIconTwo = TarkaIcons.Delete24Regular,
+        menuItemIconThree = TarkaIcons.ArrowCounterClockWise24Regular,
         tags = tags
       )
     }
@@ -55,8 +55,8 @@ class TUITopBarTest {
     composeTestRule.setContent {
       TUITopBar(
         title = "title",
-        navigationIcon = TarkaIcons.ChevronRight,
-        searchIcon = TarkaIcons.Search,
+        navigationIcon = TarkaIcons.ChevronRight20Regular,
+        searchIcon = TarkaIcons.Search24Regular,
         tags = TUITopBarTags(searchIconTags = searchIconTags)
       )
     }
@@ -73,11 +73,11 @@ class TUITopBarTest {
     composeTestRule.setContent {
       TUITopBar(
         title = "title",
-        navigationIcon = TarkaIcons.ChevronRight,
-        searchIcon = TarkaIcons.Search,
-        menuItemIconOne = TarkaIcons.Copy,
-        menuItemIconTwo = TarkaIcons.Delete,
-        menuItemIconThree = TarkaIcons.ArrowExport,
+        navigationIcon = TarkaIcons.ChevronRight20Regular,
+        searchIcon = TarkaIcons.Search24Regular,
+        menuItemIconOne = TarkaIcons.Copy24Regular,
+        menuItemIconTwo = TarkaIcons.Delete24Regular,
+        menuItemIconThree = TarkaIcons.ArrowExportLtr24Regular,
         onNavigationIconClick = onNavigationIconClick,
         onFirstMenuItemClicked = onFirstMenuItemClicked,
         onSecondMenuItemClicked = onSecondMenuItemClicked,
