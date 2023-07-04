@@ -42,7 +42,7 @@ onCheckedChange = { isChecked = !isChecked }
 @Composable fun TUICheckBoxRow(
   modifier: Modifier = Modifier,
   checked: Boolean,
-  icon: TarkaIcon = TarkaIcons.CheckMark,
+  icon: TarkaIcon = TarkaIcons.CheckMark16Filled,
   enabled: Boolean = true,
   title: String,
   style: TextRowStyle,
@@ -100,7 +100,7 @@ data class TUICheckBoxRowTags(
       TUICheckBoxRow(
         checked = true,
         enabled = true,
-        icon = TarkaIcons.CheckMark,
+        icon = TarkaIcons.CheckMark16Filled,
         title = "Title",
         style = TextRowStyle.TitleWithDescription("Description")
       ) {
@@ -108,7 +108,7 @@ data class TUICheckBoxRowTags(
       TUICheckBoxRow(
         checked = false,
         enabled = true,
-        icon = TarkaIcons.CheckMark,
+        icon = TarkaIcons.CheckMark16Filled,
         title = "Title",
         style = TextRowStyle.TitleWithDescription("Description")
       ) {
@@ -117,7 +117,7 @@ data class TUICheckBoxRowTags(
       TUICheckBoxRow(
         checked = true,
         enabled = false,
-        icon = TarkaIcons.CheckMark,
+        icon = TarkaIcons.CheckMark16Filled,
         title = "Title",
         style = TextRowStyle.TitleWithDescription("Description")
       ) {
@@ -126,7 +126,7 @@ data class TUICheckBoxRowTags(
       TUICheckBoxRow(
         checked = true,
         enabled = false,
-        icon = TarkaIcons.CheckMark,
+        icon = TarkaIcons.CheckMark16Filled,
         title = "Title",
         style = TextRowStyle.Title
       ) {
