@@ -43,7 +43,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 @Composable fun TUICheckBox(
   modifier: Modifier = Modifier,
   checked: Boolean,
-  icon: TarkaIcon = TarkaIcons.CheckMark,
+  icon: TarkaIcon = TarkaIcons.CheckMark16Filled,
   enabled: Boolean = true,
   tags: TUICheckBoxTags = TUICheckBoxTags(),
   onCheckedChange: (() -> Unit)? = null
@@ -97,16 +97,16 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         .fillMaxWidth()
         .padding(20.dp)
     ) {
-      TUICheckBox(checked = true, enabled = true, icon = TarkaIcons.CheckMark) {
+      TUICheckBox(checked = true, enabled = true, icon = TarkaIcons.CheckMark16Filled) {
       }
       VerticalSpacer(space = 20)
-      TUICheckBox(checked = true, enabled = false, icon = TarkaIcons.CheckMark) {
+      TUICheckBox(checked = true, enabled = false, icon = TarkaIcons.CheckMark16Filled) {
       }
       VerticalSpacer(space = 20)
-      TUICheckBox(checked = false, enabled = true, icon = TarkaIcons.CheckMark) {
+      TUICheckBox(checked = false, enabled = true, icon = TarkaIcons.CheckMark16Filled) {
       }
       VerticalSpacer(space = 20)
-      TUICheckBox(checked = false, enabled = false, icon = TarkaIcons.CheckMark) {
+      TUICheckBox(checked = false, enabled = false, icon = TarkaIcons.CheckMark16Filled) {
       }
     }
 
