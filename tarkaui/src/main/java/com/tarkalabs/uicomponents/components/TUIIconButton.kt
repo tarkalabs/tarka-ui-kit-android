@@ -84,7 +84,7 @@ enum class IconButtonStyle {
   iconButtonStyle: IconButtonStyle = IconButtonStyle.defaultStyle,
   enabled: Boolean = true,
   tags: TUIIconButtonTags = TUIIconButtonTags(),
-  onIconClick: () -> Unit = {},
+  onIconClick: (() -> Unit)? = null,
 ) {
   var iconButtonColors: IconButtonColors = IconButtonDefaults.iconButtonColors()
 
@@ -145,7 +145,7 @@ enum class IconButtonStyle {
   }
 
   IconButton(
-    onClick = onIconClick,
+    onClick = { onIconClick?.invoke() },
     modifier = modifier.testTag(tags.parentTag),
     colors = iconButtonColors,
     enabled = enabled

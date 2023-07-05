@@ -1,74 +1,126 @@
 package com.tarkalabs.uicomponents.components
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.SearchBar
+import androidx.compose.material3.SearchBarDefaults
+import androidx.compose.material3.SearchBarDefaults.inputFieldColors
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.components.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TUISearchBar(
   modifier: Modifier = Modifier,
-  value: String,
-  label: String,
-  onValueChange: (String) -> Unit,
+  query: String,
+  placeholder: String,
+  trailingIcon: TarkaIcon,
+  onQueryTextChange: (String) -> Unit,
   leadingIcon: TarkaIcon? = null,
-  trailingIcon: TarkaIcon? = null,
-  onTrailingIconClick: (() -> Unit)? = null,
   onLeadingIconClick: (() -> Unit)? = null,
+  leadingIconTags: TUIIconButtonTags = TUIIconButtonTags(),
+  trailingIconTags: TUIIconButtonTags = TUIIconButtonTags(),
+  searchBarTags: TUISearchBarTags = TUISearchBarTags(),
 ) {
-  TextField(
-    colors = TextFieldDefaults.colors(
-      focusedContainerColor = TUITheme.colors.inputBackground,
-      focusedIndicatorColor = Color.Transparent,
-      disabledIndicatorColor = Color.Transparent,
-      errorIndicatorColor = Color.Transparent,
-      unfocusedIndicatorColor = Color.Transparent,
-    ),
-    label = { Text(text = label) },
-    shape = RoundedCornerShape(75.dp),
-    modifier = modifier,
-    value = value,
-    onValueChange = onValueChange,
-    leadingIcon = {
-      if (leadingIcon != null)
+  val text = remember {
+    mutableStateOf(query)
+  }
+
+  val leadingIconLambda: @Composable (() -> Unit)? =
+    if (leadingIcon != null) {
+      {
         TUIIconButton(
           icon = leadingIcon,
           buttonSize = IconButtonSize.L,
           iconButtonStyle = GHOST,
-          onIconClick = onLeadingIconClick!!
+          onIconClick = onLeadingIconClick,
+          tags = leadingIconTags
         )
-    },
-    trailingIcon = {
-      if (trailingIcon != null)
+      }
+    } else null
+  val trailingIconLambda: @Composable (() -> Unit)? =
+    if (text.value.isNotEmpty()) {
+      {
         TUIIconButton(
           icon = trailingIcon,
           buttonSize = IconButtonSize.L,
           iconButtonStyle = GHOST,
-          onIconClick = onTrailingIconClick!!
+          onIconClick = {
+            text.value = ""
+            onQueryTextChange.invoke("")
+          },
+          tags = trailingIconTags
         )
+      }
+    } else null
+
+  SearchBar(
+    modifier = modifier.testTag(searchBarTags.parentTag),
+    query = text.value,
+    onQueryChange = {
+      text.value = it
+      onQueryTextChange.invoke(it)
+    },
+    onSearch = {
+      onQueryTextChange.invoke(it)
+    },
+    active = false,
+    onActiveChange = {},
+    shape = RoundedCornerShape(75.dp),
+    leadingIcon = leadingIconLambda,
+    trailingIcon = trailingIconLambda,
+    placeholder = { Text(text = placeholder) },
+    colors = SearchBarDefaults.colors(
+      containerColor = TUITheme.colors.inputBackground,
+      dividerColor = Color.Transparent,
+      inputFieldColors = inputFieldColors(
+        cursorColor = TUITheme.colors.inputText,
+        focusedTextColor = TUITheme.colors.inputText
+      ),
+    ),
+  ) {
+
+  }
+}
+
+data class TUISearchBarTags(
+  val parentTag: String = Tags.TAG_SEARCH_BAR,
+)
+
+@Preview(showBackground = true, showSystemUi = true) @Composable fun Preview() {
+  TUITheme {
+    Box(
+      modifier = Modifier
+        .defaultMinSize(minHeight = 48.dp)
+        .padding(
+          20.dp
+        )
+    ) {
+      TUISearchBar(
+        query = "",
+        placeholder = "Search",
+        onQueryTextChange = {},
+        trailingIcon = TarkaIcons.Dismiss16Filled,
+        leadingIcon = TarkaIcons.BarCodeScanner24Regular,
+        onLeadingIconClick = {},
+      )
+
     }
-  )
+  }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun Preview() {
-  TUISearchBar(
-    value = "",
-    label = "Search",
-    onValueChange = {},
-    leadingIcon = TarkaIcons.Dismiss16Filled
-  )
-}
-
-// todo how to deal with the bottom indicator? currently I am changing its color
