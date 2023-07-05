@@ -20,7 +20,10 @@ class TUISearchBarTest {
   private val leadingIconTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "LEADING_ICON_TAG")
   private val trailingIconTags: TUIIconButtonTags =
     TUIIconButtonTags(parentTag = "TRAILING_ICON_TAG")
-  private val searchBarTags: TUISearchBarTags = TUISearchBarTags(parentTag = "SEARCH_BAR_TAG")
+  private val searchBarTags: TUISearchBarTags = TUISearchBarTags(parentTag = "SEARCH_BAR_TAG",
+    leadingIconTags = leadingIconTags,
+    trailingIconTags = trailingIconTags
+  )
 
   @Test fun search_bar_is_displayed() {
     composable.setContent {
@@ -30,8 +33,6 @@ class TUISearchBarTest {
         onQueryTextChange = {},
         onLeadingIconClick = {},
         searchBarTags = searchBarTags,
-        trailingIconTags = trailingIconTags,
-        leadingIconTags = leadingIconTags,
         trailingIcon = TarkaIcons.Dismiss24Regular
       )
     }
@@ -46,8 +47,6 @@ class TUISearchBarTest {
         onQueryTextChange = {},
         onLeadingIconClick = {},
         searchBarTags = searchBarTags,
-        trailingIconTags = trailingIconTags,
-        leadingIconTags = leadingIconTags,
         trailingIcon = TarkaIcons.Dismiss24Regular,
         leadingIcon = TarkaIcons.ArrowExportLtr24Regular
       )
@@ -63,7 +62,6 @@ class TUISearchBarTest {
         onQueryTextChange = {},
         onLeadingIconClick = {},
         searchBarTags = searchBarTags,
-        trailingIconTags = trailingIconTags,
         trailingIcon = TarkaIcons.Dismiss24Regular
       )
     }
@@ -80,9 +78,7 @@ class TUISearchBarTest {
         onQueryTextChange = { },
         onLeadingIconClick = leadingIconClick,
         searchBarTags = searchBarTags,
-        trailingIconTags = trailingIconTags,
         trailingIcon = TarkaIcons.Dismiss24Regular,
-        leadingIconTags = leadingIconTags,
         leadingIcon = TarkaIcons.Search24Regular
       )
     }
@@ -99,7 +95,6 @@ class TUISearchBarTest {
         onQueryTextChange = { },
         onLeadingIconClick = {},
         searchBarTags = searchBarTags,
-        trailingIconTags = trailingIconTags,
         trailingIcon = TarkaIcons.Dismiss24Regular,
       )
     }

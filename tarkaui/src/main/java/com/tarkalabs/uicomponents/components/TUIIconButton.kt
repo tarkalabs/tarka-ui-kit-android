@@ -84,7 +84,7 @@ enum class IconButtonStyle {
   iconButtonStyle: IconButtonStyle = IconButtonStyle.defaultStyle,
   enabled: Boolean = true,
   tags: TUIIconButtonTags = TUIIconButtonTags(),
-  onIconClick: (() -> Unit)? = null,
+  onIconClick: () -> Unit = {  },
 ) {
   var iconButtonColors: IconButtonColors = IconButtonDefaults.iconButtonColors()
 

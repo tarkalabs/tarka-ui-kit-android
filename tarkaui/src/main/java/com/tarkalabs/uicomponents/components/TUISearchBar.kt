@@ -22,51 +22,43 @@ import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun TUISearchBar(
+@OptIn(ExperimentalMaterial3Api::class) @Composable fun TUISearchBar(
   modifier: Modifier = Modifier,
   query: String,
   placeholder: String,
-  trailingIcon: TarkaIcon,
+  trailingIcon: TarkaIcon = TarkaIcons.Dismiss24Regular,
   onQueryTextChange: (String) -> Unit,
   leadingIcon: TarkaIcon? = null,
   onLeadingIconClick: (() -> Unit)? = null,
-  leadingIconTags: TUIIconButtonTags = TUIIconButtonTags(),
-  trailingIconTags: TUIIconButtonTags = TUIIconButtonTags(),
   searchBarTags: TUISearchBarTags = TUISearchBarTags(),
 ) {
   val text = remember {
     mutableStateOf(query)
   }
 
-  val leadingIconLambda: @Composable (() -> Unit)? =
-    if (leadingIcon != null) {
-      {
-        TUIIconButton(
-          icon = leadingIcon,
-          buttonSize = IconButtonSize.L,
-          iconButtonStyle = GHOST,
-          onIconClick = onLeadingIconClick,
-          tags = leadingIconTags
-        )
-      }
-    } else null
-  val trailingIconLambda: @Composable (() -> Unit)? =
-    if (text.value.isNotEmpty()) {
-      {
-        TUIIconButton(
-          icon = trailingIcon,
-          buttonSize = IconButtonSize.L,
-          iconButtonStyle = GHOST,
-          onIconClick = {
-            text.value = ""
-            onQueryTextChange.invoke("")
-          },
-          tags = trailingIconTags
-        )
-      }
-    } else null
+  val leadingIconLambda: @Composable (() -> Unit)? = if (leadingIcon != null) {
+    {
+      TUIIconButton(
+        icon = leadingIcon,
+        buttonSize = IconButtonSize.L,
+        iconButtonStyle = GHOST,
+        onIconClick = {
+          onLeadingIconClick?.invoke()
+        },
+        tags = searchBarTags.leadingIconTags
+      )
+    }
+  } else null
+  val trailingIconLambda: @Composable (() -> Unit)? = if (text.value.isNotEmpty()) {
+    {
+      TUIIconButton(
+        icon = trailingIcon, buttonSize = IconButtonSize.L, iconButtonStyle = GHOST, onIconClick = {
+          text.value = ""
+          onQueryTextChange.invoke("")
+        }, tags = searchBarTags.trailingIconTags
+      )
+    }
+  } else null
 
   SearchBar(
     modifier = modifier.testTag(searchBarTags.parentTag),
@@ -88,8 +80,7 @@ fun TUISearchBar(
       containerColor = TUITheme.colors.inputBackground,
       dividerColor = Color.Transparent,
       inputFieldColors = inputFieldColors(
-        cursorColor = TUITheme.colors.inputText,
-        focusedTextColor = TUITheme.colors.inputText
+        cursorColor = TUITheme.colors.inputText, focusedTextColor = TUITheme.colors.inputText
       ),
     ),
   ) {
@@ -99,14 +90,14 @@ fun TUISearchBar(
 
 data class TUISearchBarTags(
   val parentTag: String = Tags.TAG_SEARCH_BAR,
+  val leadingIconTags: TUIIconButtonTags = TUIIconButtonTags(),
+  val trailingIconTags: TUIIconButtonTags = TUIIconButtonTags(),
 )
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable fun Preview() {
+@Preview(showBackground = true, showSystemUi = true) @Composable fun Preview() {
   TUITheme {
     Column(
-      modifier = Modifier
-        .padding(20.dp)
+      modifier = Modifier.padding(20.dp)
     ) {
       TUISearchBar(
         query = "",
