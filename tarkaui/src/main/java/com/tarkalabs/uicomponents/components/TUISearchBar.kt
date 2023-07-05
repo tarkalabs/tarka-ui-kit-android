@@ -1,7 +1,6 @@
 package com.tarkalabs.uicomponents.components
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -102,14 +101,12 @@ data class TUISearchBarTags(
   val parentTag: String = Tags.TAG_SEARCH_BAR,
 )
 
-@Preview(showBackground = true, showSystemUi = true) @Composable fun Preview() {
+@Preview(showBackground = true, showSystemUi = true)
+@Composable fun Preview() {
   TUITheme {
-    Box(
+    Column(
       modifier = Modifier
-        .defaultMinSize(minHeight = 48.dp)
-        .padding(
-          20.dp
-        )
+        .padding(20.dp)
     ) {
       TUISearchBar(
         query = "",
@@ -118,6 +115,17 @@ data class TUISearchBarTags(
         trailingIcon = TarkaIcons.Dismiss16Filled,
         leadingIcon = TarkaIcons.BarCodeScanner24Regular,
         onLeadingIconClick = {},
+        modifier = Modifier.padding(10.dp)
+      )
+
+      TUISearchBar(
+        query = "My Search",
+        placeholder = "Search",
+        onQueryTextChange = {},
+        trailingIcon = TarkaIcons.Dismiss16Filled,
+        leadingIcon = TarkaIcons.BarCodeScanner24Regular,
+        onLeadingIconClick = {},
+        modifier = Modifier.padding(10.dp)
       )
 
     }
