@@ -27,5 +27,6 @@ object Tags {
   const val TAG_SNACK_BAR_DISMISS_ACTION = "snack_bar_dismiss_action"
   const val TAG_CHECK_BOX = "check_box"
   const val TAG_CHECK_BOX_ROW = "check_box_row"
+  const val TAG_CHIP_TAG = "tui_chip"
 
 }
