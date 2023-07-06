@@ -86,7 +86,7 @@ class TUIChipTest {
     val bitmap = BitmapFactory.decodeStream(assetManager.open("avatarTest.webp"))
     composable.setContent {
       TUIChip(
-        type = ChipType.Input(),
+        type = ChipType.Input(showTrailingDismiss = true),
         label = "Input chip",
         onClick = { },
         leadingContent = ChipLeadingContent.Image(bitmap.asImageBitmap()),
