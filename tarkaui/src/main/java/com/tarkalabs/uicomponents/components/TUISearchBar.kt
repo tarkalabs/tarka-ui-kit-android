@@ -83,9 +83,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         cursorColor = TUITheme.colors.inputText, focusedTextColor = TUITheme.colors.inputText
       ),
     ),
-  ) {
-
-  }
+  ) {}
 }
 
 data class TUISearchBarTags(

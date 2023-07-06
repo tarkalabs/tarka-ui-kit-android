@@ -145,7 +145,7 @@ enum class IconButtonStyle {
   }
 
   IconButton(
-    onClick = { onIconClick?.invoke() },
+    onClick = onIconClick,
     modifier = modifier.testTag(tags.parentTag),
     colors = iconButtonColors,
     enabled = enabled

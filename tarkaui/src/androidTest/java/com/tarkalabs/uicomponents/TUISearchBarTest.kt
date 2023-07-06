@@ -33,25 +33,13 @@ class TUISearchBarTest {
         onQueryTextChange = {},
         onLeadingIconClick = {},
         searchBarTags = searchBarTags,
-        trailingIcon = TarkaIcons.Dismiss24Regular
+        trailingIcon = TarkaIcons.Dismiss24Regular,
+        leadingIcon = TarkaIcons.Search24Regular
       )
     }
     composable.onNodeWithTag(searchBarTags.parentTag).assertIsDisplayed()
-  }
-
-  @Test fun leading_icon_is_displayed() {
-    composable.setContent {
-      TUISearchBar(
-        query = "",
-        placeholder = "Search",
-        onQueryTextChange = {},
-        onLeadingIconClick = {},
-        searchBarTags = searchBarTags,
-        trailingIcon = TarkaIcons.Dismiss24Regular,
-        leadingIcon = TarkaIcons.ArrowExportLtr24Regular
-      )
-    }
     composable.onNodeWithTag(leadingIconTags.parentTag, useUnmergedTree = true).assertIsDisplayed()
+
   }
 
   @Test fun trailing_icon_is_displayed() {
