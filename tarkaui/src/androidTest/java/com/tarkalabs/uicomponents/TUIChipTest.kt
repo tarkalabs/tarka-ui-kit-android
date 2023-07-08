@@ -34,9 +34,8 @@ class TUIChipTest {
     val bitmap = BitmapFactory.decodeStream(assetManager.open("avatarTest.webp"))
     composable.setContent {
       TUIChip(
-        type = ChipType.Assist,
+        type = ChipType.Assist(ChipLeadingContent.Image(bitmap.asImageBitmap())),
         label = "Assist chip",
-        leadingContent = ChipLeadingContent.Image(bitmap.asImageBitmap()),
         onClick = onClick,
         tags = chipTags.copy(parentTag = "Assist")
       )
@@ -52,9 +51,8 @@ class TUIChipTest {
   @Test
   fun display_assist_chip_icon() {
     composable.setContent {
-      TUIChip(type = ChipType.Assist,
+      TUIChip(type = ChipType.Assist(ChipLeadingContent.Icon(TarkaIcons.Calendar24Regular)),
         label = "Assist chip",
-        leadingContent = ChipLeadingContent.Icon(TarkaIcons.Calendar24Regular),
         onClick = {})
     }
 
@@ -68,7 +66,7 @@ class TUIChipTest {
     val onClick: () -> Unit = mock()
     composable.setContent {
       TUIChip(
-        type = ChipType.Input(true),
+        type = ChipType.Input(null, true),
         label = "Input chip",
         onClick = onClick,
         tags = chipTags.copy(parentTag = "Input"),
@@ -86,10 +84,9 @@ class TUIChipTest {
     val bitmap = BitmapFactory.decodeStream(assetManager.open("avatarTest.webp"))
     composable.setContent {
       TUIChip(
-        type = ChipType.Input(showTrailingDismiss = true),
+        type = ChipType.Input(content = ChipLeadingContent.Image(bitmap.asImageBitmap()), showTrailingDismiss = true),
         label = "Input chip",
         onClick = { },
-        leadingContent = ChipLeadingContent.Image(bitmap.asImageBitmap()),
         )
     }
 

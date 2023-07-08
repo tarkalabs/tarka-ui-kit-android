@@ -1,8 +1,10 @@
 package com.tarkalabs.uicomponents.components
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
@@ -16,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.Tags
@@ -24,9 +27,9 @@ import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 sealed class ChipType {
-  object Assist : ChipType()
+  data class Assist(val content: ChipLeadingContent? = null) : ChipType()
   data class Input(
-    val showTrailingDismiss: Boolean = false
+    val content: ChipLeadingContent? = null, val showTrailingDismiss: Boolean = false
   ) : ChipType()
 
   data class Suggestion(val image: TarkaIcon? = null) : ChipType()
@@ -54,7 +57,6 @@ fun TUIChip(
   modifier: Modifier = Modifier,
   type: ChipType,
   label: String,
-  leadingContent: ChipLeadingContent? = null,
   onClick: () -> Unit,
   chipSize: ChipSize = ChipSize.SMALL,
   tags: TUIChipTags = TUIChipTags()
@@ -62,22 +64,22 @@ fun TUIChip(
 
   val commonModifier = modifier
     .testTag(tags.parentTag)
-    .width(chipSize.size)
+    .height(chipSize.size)
   val commonLabel = @Composable {
     Text(
       text = label, style = TUITheme.typography.button7, color = TUITheme.colors.onSurface
     )
   }
-  val leadingIcon = @Composable {
-    when (leadingContent) {
+  val leadingIcon: @Composable (ChipLeadingContent?) -> Unit = @Composable {
+    when (it) {
       is ChipLeadingContent.Icon -> Icon(
-        painter = painterResource(id = leadingContent.icon.iconRes),
-        contentDescription = leadingContent.icon.contentDescription,
+        painter = painterResource(id = it.icon.iconRes),
+        contentDescription = it.icon.contentDescription,
         tint = TUITheme.colors.onSurface
       )
 
       is ChipLeadingContent.Image -> TUIAvatar(
-        avatarType = AvatarType.Image(leadingContent.imageBitmap), avatarSize = AvatarSize.XS
+        avatarType = AvatarType.Image(it.imageBitmap), avatarSize = AvatarSize.XS
       )
 
       null -> {}
@@ -86,9 +88,12 @@ fun TUIChip(
 
 
   when (type) {
-    ChipType.Assist -> {
+    is ChipType.Assist -> {
       AssistChip(
-        modifier = commonModifier, label = commonLabel, onClick = onClick, leadingIcon = leadingIcon
+        modifier = commonModifier,
+        label = commonLabel,
+        onClick = onClick,
+        leadingIcon = { leadingIcon(type.content) }
       )
     }
 
@@ -96,7 +101,7 @@ fun TUIChip(
       selected = false,
       onClick = onClick,
       label = commonLabel,
-      leadingIcon = leadingIcon,
+      leadingIcon = { leadingIcon(type.content) },
       trailingIcon = if (type.showTrailingDismiss) {
         {
           TUIIconButton(icon = TarkaIcons.Dismiss20Filled)
@@ -104,7 +109,7 @@ fun TUIChip(
       } else null)
 
     is ChipType.Filter -> {
-      Box(modifier = Modifier.wrapContentSize()) {
+      Box(modifier = Modifier.wrapContentWidth()) {
         FilterChip(selected = type.selected,
           onClick = onClick,
           label = commonLabel,
@@ -134,8 +139,7 @@ fun TUIChip(
     }
 
     is ChipType.Suggestion -> {
-      SuggestionChip(
-        onClick = onClick,
+      SuggestionChip(onClick = onClick,
         label = commonLabel,
         modifier = commonModifier,
         icon = if (type.image != null) {
@@ -145,8 +149,7 @@ fun TUIChip(
               contentDescription = type.image.contentDescription
             )
           }
-        } else null
-      )
+        } else null)
     }
   }
 
@@ -155,3 +158,9 @@ fun TUIChip(
 data class TUIChipTags(
   val parentTag: String = Tags.TAG_CHIP_TAG
 )
+
+@Preview
+@Composable
+fun TUIChipPreview() {
+  TUIChip(type = ChipType.Assist(), label = "Something", onClick = { /*TODO*/ })
+}
