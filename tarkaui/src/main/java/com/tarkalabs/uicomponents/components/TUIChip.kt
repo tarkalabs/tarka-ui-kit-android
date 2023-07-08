@@ -104,7 +104,7 @@ fun TUIChip(
       leadingIcon = { leadingIcon(type.content) },
       trailingIcon = if (type.showTrailingDismiss) {
         {
-          TUIIconButton(icon = TarkaIcons.Dismiss20Filled)
+          TUIIconButton(icon = TarkaIcons.Dismiss20Filled, iconButtonStyle = IconButtonStyle.GHOST)
         }
       } else null)
 
@@ -123,7 +123,7 @@ fun TUIChip(
             }
           } else null,
           trailingIcon = if (type.showTrailingDismiss) {
-            { TUIIconButton(icon = TarkaIcons.Dismiss20Filled) }
+            { TUIIconButton(icon = TarkaIcons.Dismiss20Filled, iconButtonStyle = IconButtonStyle.GHOST) }
           } else if (type.showTrailingCaret) {
             {
               Icon(
