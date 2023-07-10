@@ -14,6 +14,7 @@ import com.tarkalabs.uicomponents.components.ChipType
 import com.tarkalabs.uicomponents.components.TUIChip
 import com.tarkalabs.uicomponents.components.TUIChipTags
 import com.tarkalabs.uicomponents.models.TarkaIcons
+import com.tarkalabs.uicomponents.theme.TUITheme
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock
@@ -66,7 +67,7 @@ class TUIChipTest {
     val onClick: () -> Unit = mock()
     composable.setContent {
       TUIChip(
-        type = ChipType.Input(null, true),
+        type = ChipType.Input(null, true, TUITheme.colors.surface),
         label = "Input chip",
         onClick = onClick,
         tags = chipTags.copy(parentTag = "Input"),
@@ -84,7 +85,7 @@ class TUIChipTest {
     val bitmap = BitmapFactory.decodeStream(assetManager.open("avatarTest.webp"))
     composable.setContent {
       TUIChip(
-        type = ChipType.Input(content = ChipLeadingContent.Image(bitmap.asImageBitmap()), showTrailingDismiss = true),
+        type = ChipType.Input(content = ChipLeadingContent.Image(bitmap.asImageBitmap()), showTrailingDismiss = true, containerColor = TUITheme.colors.surface),
         label = "Input chip",
         onClick = { },
         )

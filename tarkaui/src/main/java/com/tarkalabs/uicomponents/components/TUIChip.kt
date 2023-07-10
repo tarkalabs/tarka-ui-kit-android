@@ -9,11 +9,13 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.InputChip
+import androidx.compose.material3.InputChipDefaults
 import androidx.compose.material3.SuggestionChip
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
@@ -25,6 +27,7 @@ import com.tarkalabs.uicomponents.components.AvatarSize.XS
 import com.tarkalabs.uicomponents.components.ChipLeadingContent.Icon
 import com.tarkalabs.uicomponents.components.ChipLeadingContent.Image
 import com.tarkalabs.uicomponents.components.ChipType.Filter
+import com.tarkalabs.uicomponents.components.IconButtonSize.M
 import com.tarkalabs.uicomponents.components.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
@@ -33,7 +36,9 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 sealed class ChipType {
   data class Assist(val content: ChipLeadingContent? = null) : ChipType()
   data class Input(
-    val content: ChipLeadingContent? = null, val showTrailingDismiss: Boolean = false
+    val content: ChipLeadingContent? = null,
+    val showTrailingDismiss: Boolean = false,
+    val containerColor : Color? = null
   ) : ChipType()
 
   data class Suggestion(val image: TarkaIcon? = null) : ChipType()
@@ -95,12 +100,19 @@ enum class ChipSize(val size: Dp) {
       selected = false,
       onClick = onClick,
       label = commonLabel,
+      colors = InputChipDefaults.inputChipColors(
+        containerColor = type.containerColor ?: TUITheme.colors.onSurface
+      ),
       leadingIcon = { leadingIcon(type.content) },
       trailingIcon = if (type.showTrailingDismiss) {
         {
-          TUIIconButton(icon = TarkaIcons.Dismiss20Filled, iconButtonStyle = GHOST, onIconClick = {
+          TUIIconButton(icon = TarkaIcons.Dismiss20Filled,
+            iconButtonStyle = GHOST,
+            onIconClick = {
             onDismissClick?.invoke()
-          })
+          },
+          buttonSize = M
+          )
         }
       } else null)
 
@@ -190,7 +202,8 @@ data class TUIChipTags(
 )
 
 @Preview @Composable fun TUIChipPreview() {
-  TUIChip(type = ChipType.Input(showTrailingDismiss = true),
+  TUIChip(type = ChipType.Input(showTrailingDismiss = true,
+    containerColor = TUITheme.colors.surfaceVariant),
     label = "Something",
     onClick = { Log.e("TAG_CHIP", "TUIChipPreview: TAG_CLICKED") })
 }
