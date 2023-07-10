@@ -37,7 +37,7 @@ class UIComponentListActivity : ComponentActivity() {
           TUICheckBoxRow(
             checked = status.value,
             enabled = true,
-            icon = TarkaIcons.CheckMark,
+            icon = TarkaIcons.CheckMark20Filled,
             title = "TUICheckBoxRow",
             style = TitleWithDescription("Description")
           ) {

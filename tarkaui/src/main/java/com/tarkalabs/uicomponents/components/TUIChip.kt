@@ -2,6 +2,7 @@ package com.tarkalabs.uicomponents.components
 
 import android.util.Log
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.AssistChip
@@ -33,15 +34,47 @@ import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
+
+/**
+ * Represents a generic chip type. The ChipType superclass serves as a generic base for the different chip types in the sealed class hierarchy.
+ */
 sealed class ChipType {
+  /**
+   * Represents an assist chip type for TUIChip.
+   *
+   * @param content The optional leading content for the chip.
+   */
   data class Assist(val content: ChipLeadingContent? = null) : ChipType()
+
+  /**
+   * Represents an input chip type for TUIChip.
+   *
+   * @param content The optional leading content for the chip.
+   * @param showTrailingDismiss Whether to show a dismiss icon as a trailing icon.
+   * @param containerColor The color of the chip's container. If null, the default color from the theme will be used.
+   */
   data class Input(
     val content: ChipLeadingContent? = null,
     val showTrailingDismiss: Boolean = false,
     val containerColor : Color? = null
   ) : ChipType()
 
+  /**
+   * Represents a suggestion chip type for TUIChip.
+   *
+   * @param image The optional image for the chip.
+   */
   data class Suggestion(val image: TarkaIcon? = null) : ChipType()
+
+  /**
+   * Represents a filter chip type for TUIChip.
+   *
+   * @param selected Whether the filter is selected.
+   * @param showLeadingCheck Whether to show a check icon as a leading icon.
+   * @param showTrailingDismiss Whether to show a dismiss icon as a trailing icon.
+   * @param showTrailingCaret Whether to show a caret icon as a trailing icon.
+   * @param badgeCount The badge count to display on the chip.
+   */
   data class Filter(
     val selected: Boolean = false,
     val showLeadingCheck: Boolean = false,
@@ -202,8 +235,19 @@ data class TUIChipTags(
 )
 
 @Preview @Composable fun TUIChipPreview() {
-  TUIChip(type = ChipType.Input(showTrailingDismiss = true,
-    containerColor = TUITheme.colors.surfaceVariant),
-    label = "Something",
-    onClick = { Log.e("TAG_CHIP", "TUIChipPreview: TAG_CLICKED") })
+
+  Column {
+    TUIChip(
+      type = ChipType.Input(showTrailingDismiss = true, containerColor = TUITheme.colors.surfaceVariant),
+      label = "Something",
+      onClick = { Log.e("TAG_CHIP", "TUIChipPreview: TAG_CLICKED") }
+    )
+
+    TUIChip(
+      type = ChipType.Assist(),
+      label = "Something",
+      onClick = { Log.e("TAG_CHIP", "TUIChipPreview: TAG_CLICKED") }
+    )
+  }
+
 }
