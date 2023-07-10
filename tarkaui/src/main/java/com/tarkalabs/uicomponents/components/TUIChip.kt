@@ -1,5 +1,6 @@
 package com.tarkalabs.uicomponents.components
 
+import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.wrapContentWidth
@@ -70,6 +71,7 @@ enum class ChipSize(val size: Dp) {
   type: ChipType,
   label: String,
   onClick: () -> Unit,
+  onDismissClick: (() -> Unit)? = null,
   chipSize: ChipSize = ChipSize.SMALL,
   tags: TUIChipTags = TUIChipTags()
 ) {
@@ -96,7 +98,9 @@ enum class ChipSize(val size: Dp) {
       leadingIcon = { leadingIcon(type.content) },
       trailingIcon = if (type.showTrailingDismiss) {
         {
-          TUIIconButton(icon = TarkaIcons.Dismiss20Filled, iconButtonStyle = GHOST)
+          TUIIconButton(icon = TarkaIcons.Dismiss20Filled, iconButtonStyle = GHOST, onIconClick = {
+            onDismissClick?.invoke()
+          })
         }
       } else null)
 
@@ -186,5 +190,7 @@ data class TUIChipTags(
 )
 
 @Preview @Composable fun TUIChipPreview() {
-  TUIChip(type = ChipType.Assist(), label = "Something", onClick = { /*TODO*/ })
+  TUIChip(type = ChipType.Input(showTrailingDismiss = true),
+    label = "Something",
+    onClick = { Log.e("TAG_CHIP", "TUIChipPreview: TAG_CLICKED") })
 }
