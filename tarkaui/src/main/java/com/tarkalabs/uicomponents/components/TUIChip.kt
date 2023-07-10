@@ -2,8 +2,6 @@ package com.tarkalabs.uicomponents.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -51,6 +49,16 @@ enum class ChipSize(val size: Dp) {
   SMALL(32.dp), BIG(40.dp),
 }
 
+/**
+ * A customizable chip composable that can be used to represent different types of chips.
+ *
+ * @param modifier The modifier to be applied to the chip.
+ * @param type The type of chip to be rendered (Assist, Input, Filter, Suggestion).
+ * @param label The label text to be displayed on the chip.
+ * @param onClick The callback function to be invoked when the chip is clicked.
+ * @param chipSize The size of the chip (default is ChipSize.SMALL).
+ * @param tags The tags to be applied to the chip for testing purposes.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TUIChip(
