@@ -8,7 +8,6 @@ import com.tarkalabs.uicomponents.components.ChipSize
 import com.tarkalabs.uicomponents.components.ChipType
 import com.tarkalabs.uicomponents.components.TUIChip
 import com.tarkalabs.uicomponents.models.TarkaIcons
-import com.tarkalabs.uicomponents.theme.TUITheme
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
@@ -44,7 +43,6 @@ class TUIChipScreenshotTest(
           ChipType.Suggestion(TarkaIcons.Calendar24Regular),
         )
 
-
       val chipSizes = ChipSize.values()
       val darkThemeValues = listOf(true, false)
       val testData = ArrayList<Array<Any?>>()
@@ -72,12 +70,12 @@ class TUIChipScreenshotTest(
   @Test
   fun test_tui_chip() {
     compareScreenshotFor(darkTheme, testName) {
-        TUIChip(
-          type = type,
-          label = type.javaClass.simpleName,
-          chipSize = size,
-          onClick = { },
-        )
+      TUIChip(
+        type = type,
+        label = type.javaClass.simpleName,
+        chipSize = size,
+        onClick = { },
+      )
     }
   }
 }
