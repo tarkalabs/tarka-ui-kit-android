@@ -1,6 +1,7 @@
 package com.tarkalabs.uicomponents.components
 
 import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
@@ -115,6 +116,7 @@ enum class ChipSize(val size: Dp) {
 ) {
 
   val commonModifier = modifier
+    .background(TUITheme.colors.surface)
     .testTag(tags.parentTag)
     .height(chipSize.size)
   val commonLabel = getCommonLabel(label)
