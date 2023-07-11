@@ -24,7 +24,7 @@ class TUIAvatarScreenshotTest(
 
   companion object {
     @JvmStatic
-    @Parameterized.Parameters()
+    @Parameterized.Parameters
     fun data(): Collection<Array<Any>> {
       val showBadgesValues = listOf(true, false)
       val avatarSizes = AvatarSize.values()

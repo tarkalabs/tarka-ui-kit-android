@@ -13,9 +13,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.components.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.models.TarkaIcon
+import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -79,7 +82,9 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
       Text(
         text = title,
         style = TUITheme.typography.heading5,
-        color = TUITheme.colors.onSurface
+        color = TUITheme.colors.onSurface,
+        maxLines = 1,
+        overflow = TextOverflow.Ellipsis
       )
     },
     navigationIcon = {
@@ -146,8 +151,10 @@ data class TUITopBarTags(
   val menuIconThreeTags: TUIIconButtonTags = TUIIconButtonTags(),
 )
 
-@OptIn(ExperimentalMaterial3Api::class) @Composable fun EamNormalTopBar(
-  title: String, navigationIcon: TarkaIcon? = null
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview
+@Composable fun EamNormalTopBar(
 ) {
-  TUITopBar(title = title, navigationIcon = navigationIcon)
+  TUITopBar(title = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    navigationIcon = TarkaIcons.ChevronRight20Regular)
 }
