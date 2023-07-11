@@ -29,4 +29,7 @@ object Tags {
   const val TAG_CHECK_BOX_ROW = "check_box_row"
   const val TAG_SEARCH_BAR = "search_bar"
   const val TAG_CHIP_TAG = "tui_chip"
+  const val TAG_RADIO_BUTTON = "radio_button"
+  const val TAG_RADIO_BUTTON_ROW = "radio_button_row"
+
 }
