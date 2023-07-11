@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
@@ -22,11 +21,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.R.drawable
 import com.tarkalabs.uicomponents.Tags
-import com.tarkalabs.uicomponents.components.IconButtonSize.S
 import com.tarkalabs.uicomponents.components.TextRowStyle.Title
 import com.tarkalabs.uicomponents.components.TextRowStyle.TitleWithDescription
+import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
+import com.tarkalabs.uicomponents.components.base.TUIIconButton
+import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
 import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -103,13 +103,13 @@ import com.tarkalabs.uicomponents.theme.TUITheme
       if (iconOne != null) TUIIconButton(
         icon = iconOne,
         onIconClick = onIconOneClick,
-        iconButtonStyle = IconButtonStyle.GHOST,
+        iconButtonStyle = GHOST,
         tags = tags.iconOneTags
       )
       if (iconTwo != null) TUIIconButton(
         icon = iconTwo,
         onIconClick = onIconTwoClick,
-        iconButtonStyle = IconButtonStyle.GHOST,
+        iconButtonStyle = GHOST,
         tags = tags.iconTwoTags
 
       )

@@ -16,7 +16,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.tarkalabs.uicomponents.Tags
-import com.tarkalabs.uicomponents.components.IconButtonStyle.GHOST
+import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
+import com.tarkalabs.uicomponents.components.base.TUIIconButton
+import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme

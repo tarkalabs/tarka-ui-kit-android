@@ -1,4 +1,4 @@
-package com.tarkalabs.uicomponents.components
+package com.tarkalabs.uicomponents.components.base
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -27,15 +27,15 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tarkalabs.uicomponents.Tags
-import com.tarkalabs.uicomponents.components.IconButtonSize.L
-import com.tarkalabs.uicomponents.components.IconButtonSize.M
-import com.tarkalabs.uicomponents.components.IconButtonSize.S
-import com.tarkalabs.uicomponents.components.IconButtonSize.XL
-import com.tarkalabs.uicomponents.components.IconButtonSize.XS
-import com.tarkalabs.uicomponents.components.IconButtonStyle.GHOST
-import com.tarkalabs.uicomponents.components.IconButtonStyle.OUTLINE
-import com.tarkalabs.uicomponents.components.IconButtonStyle.PRIMARY
-import com.tarkalabs.uicomponents.components.IconButtonStyle.SECONDARY
+import com.tarkalabs.uicomponents.components.base.IconButtonSize.L
+import com.tarkalabs.uicomponents.components.base.IconButtonSize.M
+import com.tarkalabs.uicomponents.components.base.IconButtonSize.S
+import com.tarkalabs.uicomponents.components.base.IconButtonSize.XL
+import com.tarkalabs.uicomponents.components.base.IconButtonSize.XS
+import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
+import com.tarkalabs.uicomponents.components.base.IconButtonStyle.OUTLINE
+import com.tarkalabs.uicomponents.components.base.IconButtonStyle.PRIMARY
+import com.tarkalabs.uicomponents.components.base.IconButtonStyle.SECONDARY
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme

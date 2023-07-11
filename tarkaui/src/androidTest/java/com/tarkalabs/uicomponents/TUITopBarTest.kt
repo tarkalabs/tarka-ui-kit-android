@@ -6,7 +6,7 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
-import com.tarkalabs.uicomponents.components.TUIIconButtonTags
+import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
 import com.tarkalabs.uicomponents.components.TUITopBar
 import com.tarkalabs.uicomponents.components.TUITopBarTags
 import com.tarkalabs.uicomponents.models.TarkaIcons
