@@ -41,7 +41,8 @@ import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
-@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class) @Composable fun TUIEmailField(
+@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
+@Composable fun TUIEmailField(
   title: String,
   emailAddressList: List<String>,
   trailingIcon: TarkaIcon,
@@ -59,7 +60,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     horizontalAlignment = Alignment.CenterHorizontally
   ) {
     Row(
-      modifier = Modifier.fillMaxWidth(),
+      modifier = Modifier.fillMaxWidth().testTag(tags.parentTag),
       verticalAlignment = Alignment.CenterVertically,
     ) {
       Text(
@@ -87,10 +88,10 @@ import com.tarkalabs.uicomponents.theme.TUITheme
             onClick = {
               onItemRemoved.invoke(index)
             },
-
             )
         }
       }
+
       TUIIconButton(
         icon = trailingIcon,
         onIconClick = trailingIconClick,
@@ -157,6 +158,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 }
 
 data class TUIEmailFieldTags(
+  val parentTag: String = Tags.EMAIL_FIELD_TAG,
   val textFieldTag: String = Tags.TEXT_FIELD_TAG,
   val flowRowTag: String = Tags.FLOW_ROW_TAG,
   val iconButtonTag: TUIIconButtonTags = TUIIconButtonTags(),
@@ -166,7 +168,7 @@ data class TUIEmailFieldTags(
 @Preview @Composable fun PreviewTUIEmailField() {
   TUITheme {
     val emailList = remember {
-      mutableStateListOf<String>(
+      mutableStateListOf(
         "mike32@soft.com",
         "mike.smith@corp.co",
         "mike32@soft.com",

@@ -31,4 +31,5 @@ object Tags {
   const val TAG_CHIP_TAG = "tui_chip"
   const val TEXT_FIELD_TAG = "text_field"
   const val FLOW_ROW_TAG = "flow_row"
+  const val EMAIL_FIELD_TAG = "email_field"
 }
