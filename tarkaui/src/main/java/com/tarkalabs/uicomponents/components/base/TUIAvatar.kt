@@ -18,7 +18,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.components.base.AvatarSize.L
 import com.tarkalabs.uicomponents.components.base.AvatarSize.M
 import com.tarkalabs.uicomponents.components.base.AvatarSize.S
@@ -139,8 +138,8 @@ private fun typographyFor(size: AvatarSize) = when (size) {
 }
 
 data class TUIAvatarTags(
-  val parentTag: String = Tags.TAG_AVATAR,
-  val badgeTag: String = Tags.TAG_AVATAR_BADGE,
+  val parentTag: String = "TUIAvatar",
+  val badgeTag: String = "TUIAvatar_Badge",
 )
 
 @Composable

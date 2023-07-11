@@ -16,7 +16,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.components.base.IconButtonSize.L
 import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.components.base.TUIIconButton
@@ -90,9 +89,9 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 }
 
 data class TUISearchBarTags(
-  val parentTag: String = Tags.TAG_SEARCH_BAR,
-  val leadingIconTags: TUIIconButtonTags = TUIIconButtonTags(),
-  val trailingIconTags: TUIIconButtonTags = TUIIconButtonTags(),
+  val parentTag: String = "TUISearchBar",
+  val leadingIconTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUISearchBar_LeadingIcon"),
+  val trailingIconTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUISearchBar_TrailingIcon")
 )
 
 @Preview(showBackground = true, showSystemUi = true) @Composable fun Preview() {

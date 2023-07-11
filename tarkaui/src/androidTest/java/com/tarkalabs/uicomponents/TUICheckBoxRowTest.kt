@@ -21,7 +21,8 @@ class TUICheckBoxRowTest {
 
   private val checkBoxTag: TUICheckBoxTags = TUICheckBoxTags(parentTag = "check_box_parent_tag")
   private val textRowTag: TUITextRowTags = TUITextRowTags()
-  private val tuiCheckBoxRowTag: TUICheckBoxRowTags = TUICheckBoxRowTags()
+  private val tuiCheckBoxRowTags: TUICheckBoxRowTags =
+    TUICheckBoxRowTags(checkBoxTags = checkBoxTag, textRowTags = textRowTag)
 
   @Test fun check_box_row_displayed() {
 
@@ -34,19 +35,17 @@ class TUICheckBoxRowTest {
         checked = checkedState,
         title = title,
         style = TextRowStyle.Title,
-        checkBoxTags = checkBoxTag,
-        textRowTags = textRowTag,
         onCheckedChange = onCheckedChange,
-        tuiCheckBoxRowTag = tuiCheckBoxRowTag
+        tags = tuiCheckBoxRowTags
       )
     }
 
-    composeTestRule.onNodeWithTag(tuiCheckBoxRowTag.parentTag).assertIsDisplayed()
+    composeTestRule.onNodeWithTag(tuiCheckBoxRowTags.parentTag).assertIsDisplayed()
 
     composeTestRule.onNode(hasTestTag(checkBoxTag.parentTag), useUnmergedTree = true)
       .assertIsDisplayed()
 
-    composeTestRule.onNode(hasTestTag(tuiCheckBoxRowTag.parentTag), useUnmergedTree = true)
+    composeTestRule.onNode(hasTestTag(tuiCheckBoxRowTags.parentTag), useUnmergedTree = true)
       .assertIsDisplayed()
 
     composeTestRule.onNodeWithText(title, useUnmergedTree = true).assertIsDisplayed()
@@ -62,14 +61,12 @@ class TUICheckBoxRowTest {
         checked = checkedState,
         title = title,
         style = TextRowStyle.Title,
-        checkBoxTags = checkBoxTag,
-        textRowTags = textRowTag,
         onCheckedChange = onCheckedChange,
-        tuiCheckBoxRowTag = tuiCheckBoxRowTag
+        tags = tuiCheckBoxRowTags
       )
     }
 
-    composeTestRule.onNodeWithTag(tuiCheckBoxRowTag.parentTag, useUnmergedTree = true)
+    composeTestRule.onNodeWithTag(tuiCheckBoxRowTags.parentTag, useUnmergedTree = true)
       .assertIsToggleable()
       .assertIsOn()
   }

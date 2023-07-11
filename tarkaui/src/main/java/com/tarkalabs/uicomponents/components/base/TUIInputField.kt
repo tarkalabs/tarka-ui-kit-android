@@ -214,10 +214,10 @@ fun TUIPreviewDark() {
 }
 
 data class TUIInputFieldTags(
-  val parentTag: String = "TUIInputField_mainInputField",
-  val trailingIconTag: String = "TUIInputField_trailingIcon",
-  val leadingIconTag: String = "TUIInputField_leadingIcon",
-  val labelTag: String = "TUIInputField_label",
-  val helperTextTag: String = "TUIInputField_helperText",
-  val helperIconTag: String = "TUIInputField_helperIcon",
+  val parentTag: String = "TUIInputField_InputField",
+  val trailingIconTag: String = "TUIInputField_TrailingIcon",
+  val leadingIconTag: String = "TUIInputField_LeadingIcon",
+  val labelTag: String = "TUIInputField_Label",
+  val helperTextTag: String = "TUIInputField_HelperText",
+  val helperIconTag: String = "TUIInputField_HelperIcon",
 )

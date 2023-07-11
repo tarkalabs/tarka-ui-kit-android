@@ -20,7 +20,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.R.drawable
-import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.components.TextRowStyle.Title
 import com.tarkalabs.uicomponents.components.TextRowStyle.TitleWithDescription
 import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
@@ -85,7 +84,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
       .defaultMinSize(minHeight = 40.dp)
       .padding(paddingValues)
       .testTag(tags.parentTag)
-      .then(if(onTextRowClick == null) Modifier else Modifier.clickable { onTextRowClick() }),
+      .then(if (onTextRowClick == null) Modifier else Modifier.clickable { onTextRowClick() }),
     verticalAlignment = Alignment.CenterVertically) {
     Column(Modifier.weight(1f)) {
       when (style) {
@@ -131,7 +130,8 @@ import com.tarkalabs.uicomponents.theme.TUITheme
           tint = TUITheme.colors.utilityOutline,
           modifier = Modifier
             .clickable(onClick = onInfoIconClick)
-            .height(40.dp).width(24.dp)
+            .height(40.dp)
+            .width(24.dp)
             .testTag(tags.infoIconTag)
         )
       }
@@ -168,11 +168,11 @@ sealed class TextRowStyle {
 }
 
 data class TUITextRowTags(
-  val parentTag: String = Tags.TAG_TEXT_ROW,
-  val iconOneTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = Tags.TAG_TEXT_ROW_ICON_ONE),
-  val iconTwoTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = Tags.TAG_TEXT_ROW_ICON_TWO),
-  val buttonTag: String = Tags.TAG_TEXT_ROW_BUTTON,
-  val infoIconTag: String = Tags.TAG_TEXT_ROW_INFO_ICON
+  val parentTag: String = "TUITextRow",
+  val iconOneTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUITextRow_IconOne"),
+  val iconTwoTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUITextRow_IconTwo"),
+  val buttonTag: String = "TUITextRow_Button",
+  val infoIconTag: String = "TUITextRow_InfoIcon"
 )
 
 @Preview(showBackground = true) @Composable fun TUITextRowPreview() {

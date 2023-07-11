@@ -23,21 +23,19 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.Tags
-import com.tarkalabs.uicomponents.components.base.AvatarSize.XS
 import com.tarkalabs.uicomponents.components.ChipLeadingContent.Icon
 import com.tarkalabs.uicomponents.components.ChipLeadingContent.Image
 import com.tarkalabs.uicomponents.components.ChipType.Filter
+import com.tarkalabs.uicomponents.components.base.AvatarSize.XS
+import com.tarkalabs.uicomponents.components.base.AvatarType
 import com.tarkalabs.uicomponents.components.base.IconButtonSize.M
 import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
-import com.tarkalabs.uicomponents.components.base.AvatarType
 import com.tarkalabs.uicomponents.components.base.TUIAvatar
 import com.tarkalabs.uicomponents.components.base.TUIBadge
 import com.tarkalabs.uicomponents.components.base.TUIIconButton
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
-
 
 /**
  * Represents a generic chip type. The ChipType superclass serves as a generic base for the different chip types in the sealed class hierarchy.
@@ -235,7 +233,7 @@ enum class ChipSize(val size: Dp) {
 }
 
 data class TUIChipTags(
-  val parentTag: String = Tags.TAG_CHIP_TAG
+  val parentTag: String = "TUIChip"
 )
 
 @Preview @Composable fun TUIChipPreview() {

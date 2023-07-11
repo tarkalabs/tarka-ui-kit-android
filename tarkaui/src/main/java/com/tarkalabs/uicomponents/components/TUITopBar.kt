@@ -15,7 +15,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.components.base.TUIIconButton
 import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
@@ -145,12 +144,12 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
 }
 
 data class TUITopBarTags(
-  val parentTag: String = Tags.TAG_BUTTON,
-  val navigationIconTags: TUIIconButtonTags = TUIIconButtonTags(),
-  val searchIconTags: TUIIconButtonTags = TUIIconButtonTags(),
-  val menuIconOneTags: TUIIconButtonTags = TUIIconButtonTags(),
-  val menuIconTwoTags: TUIIconButtonTags = TUIIconButtonTags(),
-  val menuIconThreeTags: TUIIconButtonTags = TUIIconButtonTags(),
+  val parentTag: String = "TUITopBar",
+  val navigationIconTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUITopBar_NavigationIcon"),
+  val searchIconTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUITopBar_SearchIcon"),
+  val menuIconOneTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUITopBar_MenuIconOne"),
+  val menuIconTwoTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUITopBar_MenuIconTwo"),
+  val menuIconThreeTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUITopBar_MenuIconThree"),
 )
 
 @OptIn(ExperimentalMaterial3Api::class)

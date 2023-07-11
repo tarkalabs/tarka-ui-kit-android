@@ -10,7 +10,6 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.components.base.BadgeSize.L
 import com.tarkalabs.uicomponents.components.base.BadgeSize.M
 import com.tarkalabs.uicomponents.components.base.BadgeSize.S
@@ -64,7 +63,7 @@ enum class BadgeSize(val size: Dp) {
 }
 
 data class TUIBadgeTags(
-  val parentTag: String = Tags.TAG_BADGE,
+  val parentTag: String = "TUIBadge",
 )
 
 @Preview(showBackground = true) @Composable fun BadgePreview() {

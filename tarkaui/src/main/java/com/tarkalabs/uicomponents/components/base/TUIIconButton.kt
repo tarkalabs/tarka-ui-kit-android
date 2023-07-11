@@ -26,7 +26,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.components.base.IconButtonSize.L
 import com.tarkalabs.uicomponents.components.base.IconButtonSize.M
 import com.tarkalabs.uicomponents.components.base.IconButtonSize.S
@@ -159,7 +158,7 @@ enum class IconButtonStyle {
 }
 
 data class TUIIconButtonTags(
-  val parentTag: String = Tags.TAG_ICON_BUTTON,
+  val parentTag: String = "TUIIconButton",
 )
 
 @Preview(showSystemUi = true) @Composable fun TUIIconButtonPreview() {
