@@ -1,4 +1,4 @@
-package com.tarkalabs.uicomponents.components
+package com.tarkalabs.uicomponents.components.base
 
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -10,10 +10,9 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.Tags
-import com.tarkalabs.uicomponents.components.BadgeSize.L
-import com.tarkalabs.uicomponents.components.BadgeSize.M
-import com.tarkalabs.uicomponents.components.BadgeSize.S
+import com.tarkalabs.uicomponents.components.base.BadgeSize.L
+import com.tarkalabs.uicomponents.components.base.BadgeSize.M
+import com.tarkalabs.uicomponents.components.base.BadgeSize.S
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 enum class BadgeSize(val size: Dp) {
@@ -64,7 +63,7 @@ enum class BadgeSize(val size: Dp) {
 }
 
 data class TUIBadgeTags(
-  val parentTag: String = Tags.TAG_BADGE,
+  val parentTag: String = "TUIBadge",
 )
 
 @Preview(showBackground = true) @Composable fun BadgePreview() {

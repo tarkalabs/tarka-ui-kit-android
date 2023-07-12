@@ -1,8 +1,8 @@
 package com.tarkalabs.uicomponents.screenshots
 
-import com.tarkalabs.uicomponents.components.BadgeSize.M
-import com.tarkalabs.uicomponents.components.BadgeSize.S
-import com.tarkalabs.uicomponents.components.TUIBadge
+import com.tarkalabs.uicomponents.components.base.BadgeSize.M
+import com.tarkalabs.uicomponents.components.base.BadgeSize.S
+import com.tarkalabs.uicomponents.components.base.TUIBadge
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized

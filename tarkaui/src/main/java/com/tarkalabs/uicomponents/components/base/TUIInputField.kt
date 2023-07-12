@@ -1,6 +1,5 @@
-package com.tarkalabs.uicomponents.components
+package com.tarkalabs.uicomponents.components.base
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -24,10 +23,11 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.components.TUIInputFieldStatus.Alert
-import com.tarkalabs.uicomponents.components.TUIInputFieldStatus.Error
-import com.tarkalabs.uicomponents.components.TUIInputFieldStatus.Normal
-import com.tarkalabs.uicomponents.components.TUIInputFieldStatus.Success
+import com.tarkalabs.uicomponents.components.HorizontalSpacer
+import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Alert
+import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Error
+import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Normal
+import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Success
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
@@ -214,10 +214,10 @@ fun TUIPreviewDark() {
 }
 
 data class TUIInputFieldTags(
-  val parentTag: String = "TUIInputField_mainInputField",
-  val trailingIconTag: String = "TUIInputField_trailingIcon",
-  val leadingIconTag: String = "TUIInputField_leadingIcon",
-  val labelTag: String = "TUIInputField_label",
-  val helperTextTag: String = "TUIInputField_helperText",
-  val helperIconTag: String = "TUIInputField_helperIcon",
+  val parentTag: String = "TUIInputField_InputField",
+  val trailingIconTag: String = "TUIInputField_TrailingIcon",
+  val leadingIconTag: String = "TUIInputField_LeadingIcon",
+  val labelTag: String = "TUIInputField_Label",
+  val helperTextTag: String = "TUIInputField_HelperText",
+  val helperIconTag: String = "TUIInputField_HelperIcon",
 )

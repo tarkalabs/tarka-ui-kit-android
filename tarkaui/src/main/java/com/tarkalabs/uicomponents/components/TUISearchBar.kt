@@ -16,8 +16,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.Tags
-import com.tarkalabs.uicomponents.components.IconButtonStyle.GHOST
+import com.tarkalabs.uicomponents.components.base.IconButtonSize.L
+import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
+import com.tarkalabs.uicomponents.components.base.TUIIconButton
+import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
@@ -40,7 +42,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     {
       TUIIconButton(
         icon = leadingIcon,
-        buttonSize = IconButtonSize.L,
+        buttonSize = L,
         iconButtonStyle = GHOST,
         onIconClick = {
           onLeadingIconClick?.invoke()
@@ -52,7 +54,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   val trailingIconLambda: @Composable (() -> Unit)? = if (text.value.isNotEmpty()) {
     {
       TUIIconButton(
-        icon = trailingIcon, buttonSize = IconButtonSize.L, iconButtonStyle = GHOST, onIconClick = {
+        icon = trailingIcon, buttonSize = L, iconButtonStyle = GHOST, onIconClick = {
           text.value = ""
           onQueryTextChange.invoke("")
         }, tags = searchBarTags.trailingIconTags
@@ -87,9 +89,9 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 }
 
 data class TUISearchBarTags(
-  val parentTag: String = Tags.TAG_SEARCH_BAR,
-  val leadingIconTags: TUIIconButtonTags = TUIIconButtonTags(),
-  val trailingIconTags: TUIIconButtonTags = TUIIconButtonTags(),
+  val parentTag: String = "TUISearchBar",
+  val leadingIconTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUISearchBar_LeadingIcon"),
+  val trailingIconTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUISearchBar_TrailingIcon")
 )
 
 @Preview(showBackground = true, showSystemUi = true) @Composable fun Preview() {

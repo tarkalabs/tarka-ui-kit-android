@@ -34,7 +34,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.theme.TUITheme
 
@@ -174,7 +173,9 @@ onClick = {}
         Icon(
           painter = painterResource(id = leadingIcon.iconRes),
           contentDescription = leadingIcon.contentDescription,
-          modifier = Modifier.size(height.iconSize()).testTag(tags.leadingIconTag)
+          modifier = Modifier
+            .size(height.iconSize())
+            .testTag(tags.leadingIconTag)
         )
       }
       Text(text = label, style = height.textStyle())
@@ -182,7 +183,9 @@ onClick = {}
         Icon(
           painter = painterResource(id = trailingIcon.iconRes),
           contentDescription = trailingIcon.contentDescription,
-          modifier = Modifier.size(height.iconSize()).testTag(tags.trailingIconTag)
+          modifier = Modifier
+            .size(height.iconSize())
+            .testTag(tags.trailingIconTag)
         )
       }
     }
@@ -190,9 +193,9 @@ onClick = {}
 }
 
 data class TUIButtonTags(
-  val parentTag: String = Tags.TAG_BUTTON,
-  val leadingIconTag: String = Tags.TAG_BUTTON_LEADING_ICON,
-  val trailingIconTag: String = Tags.TAG_BUTTON_TRAILING_ICON,
+  val parentTag: String = "TUIButton",
+  val leadingIconTag: String = "TUIButton_LeadingIcon",
+  val trailingIconTag: String = "TUIButton_TrailingIcon",
 )
 
 @Composable @Preview(showBackground = true, showSystemUi = true) fun PreviewPrimaryButton() {

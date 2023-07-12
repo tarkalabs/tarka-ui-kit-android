@@ -20,7 +20,6 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
@@ -82,8 +81,8 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 )
 
 data class TUIToggleSwitchTags(
-  val parentTag: String = Tags.TAG_TOGGLE_SWITCH,
-  val iconTag: String = Tags.TAG_TOGGLE_SWITCH_ICON,
+  val parentTag: String = "TUIToggleSwitch",
+  val iconTag: String = "TUIToggleSwitch_Icon",
 )
 
 @Preview(showBackground = true) @Composable fun TUIToggleSwitchPreview() {
