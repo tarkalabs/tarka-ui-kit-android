@@ -1,14 +1,15 @@
 package com.tarkalabs.uicomponents.components
 
 import android.util.Log
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.AssistChip
+import androidx.compose.material3.AssistChipDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
+import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.InputChip
 import androidx.compose.material3.InputChipDefaults
@@ -35,7 +36,6 @@ import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
-
 /**
  * Represents a generic chip type. The ChipType superclass serves as a generic base for the different chip types in the sealed class hierarchy.
  */
@@ -57,7 +57,7 @@ sealed class ChipType {
   data class Input(
     val content: ChipLeadingContent? = null,
     val showTrailingDismiss: Boolean = false,
-    val containerColor : Color? = null
+    val containerColor: Color? = null
   ) : ChipType()
 
   /**
@@ -116,11 +116,10 @@ enum class ChipSize(val size: Dp) {
 ) {
 
   val commonModifier = modifier
-    .background(TUITheme.colors.surface)
     .testTag(tags.parentTag)
     .height(chipSize.size)
   val commonLabel = getCommonLabel(label)
-  val leadingIcon = getLeadingIcon()
+  val leadingIcon = leadingIcon()
 
 
   when (type) {
@@ -128,6 +127,7 @@ enum class ChipSize(val size: Dp) {
       AssistChip(modifier = commonModifier,
         label = commonLabel,
         onClick = onClick,
+        colors = AssistChipDefaults.assistChipColors(containerColor = TUITheme.colors.surface),
         leadingIcon = { leadingIcon(type.content) })
     }
 
@@ -135,35 +135,41 @@ enum class ChipSize(val size: Dp) {
       selected = false,
       onClick = onClick,
       label = commonLabel,
-      colors = InputChipDefaults.inputChipColors(
-        containerColor = type.containerColor ?: TUITheme.colors.onSurface
-      ),
+      colors = InputChipDefaults.inputChipColors(containerColor = TUITheme.colors.surface),
       leadingIcon = { leadingIcon(type.content) },
       trailingIcon = if (type.showTrailingDismiss) {
         {
-          TUIIconButton(icon = TarkaIcons.Dismiss20Filled,
+          TUIIconButton(
+            icon = TarkaIcons.Dismiss20Filled,
             iconButtonStyle = GHOST,
             onIconClick = {
-            onDismissClick?.invoke()
-          },
-          buttonSize = M
+              onDismissClick?.invoke()
+            },
+            buttonSize = M
           )
         }
       } else null)
 
     is Filter -> {
-      FilterChip(type, onClick, commonLabel, commonModifier)
+      FilterChip(
+        type = type,
+        onClick = onClick,
+        commonLabel = commonLabel,
+        modifier = commonModifier
+      )
     }
 
     is ChipType.Suggestion -> {
-      SuggestionChip(onClick = onClick,
+      SuggestionChip(
+        onClick = onClick,
         label = commonLabel,
         modifier = commonModifier,
         icon = if (type.image != null) {
           {
             Icon(
               painter = painterResource(id = type.image.iconRes),
-              contentDescription = type.image.contentDescription
+              contentDescription = type.image.contentDescription,
+              tint = TUITheme.colors.onSecondary
             )
           }
         } else null)
@@ -179,11 +185,17 @@ enum class ChipSize(val size: Dp) {
       onClick = onClick,
       label = commonLabel,
       modifier = modifier,
+      colors = FilterChipDefaults.filterChipColors(
+        containerColor = TUITheme.colors.surface,
+        selectedContainerColor = TUITheme.colors.secondary,
+        labelColor = TUITheme.colors.onSurface
+      ),
       leadingIcon = if (type.showLeadingCheck) {
         {
           Icon(
             painter = painterResource(id = TarkaIcons.CheckMark20Filled.iconRes),
-            contentDescription = TarkaIcons.CheckMark20Filled.contentDescription
+            contentDescription = TarkaIcons.CheckMark20Filled.contentDescription,
+            tint = TUITheme.colors.onSecondary
           )
         }
       } else null,
@@ -197,7 +209,8 @@ enum class ChipSize(val size: Dp) {
         {
           Icon(
             painter = painterResource(id = TarkaIcons.CaretDown20Filled.iconRes),
-            contentDescription = TarkaIcons.CaretDown20Filled.contentDescription
+            contentDescription = TarkaIcons.CaretDown20Filled.contentDescription,
+            tint = TUITheme.colors.onSurface
           )
         }
       } else null)
@@ -213,7 +226,7 @@ enum class ChipSize(val size: Dp) {
   )
 })
 
-@Composable private fun getLeadingIcon(): @Composable (ChipLeadingContent?) -> Unit {
+@Composable private fun leadingIcon(): @Composable (ChipLeadingContent?) -> Unit {
   val leadingIcon: @Composable (ChipLeadingContent?) -> Unit = @Composable {
     when (it) {
       is Icon -> Icon(
@@ -240,7 +253,10 @@ data class TUIChipTags(
 
   Column {
     TUIChip(
-      type = ChipType.Input(showTrailingDismiss = true, containerColor = TUITheme.colors.surfaceVariant),
+      type = ChipType.Input(
+        showTrailingDismiss = true,
+        containerColor = TUITheme.colors.surfaceVariant
+      ),
       label = "Something",
       onClick = { Log.e("TAG_CHIP", "TUIChipPreview: TAG_CLICKED") }
     )
@@ -251,5 +267,4 @@ data class TUIChipTags(
       onClick = { Log.e("TAG_CHIP", "TUIChipPreview: TAG_CLICKED") }
     )
   }
-
 }
