@@ -1,4 +1,4 @@
-package com.tarkalabs.uicomponents.components
+package com.tarkalabs.uicomponents.components.base
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,10 +16,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.Tags
-import com.tarkalabs.uicomponents.components.FloatingActionButtonSize.L
-import com.tarkalabs.uicomponents.components.FloatingActionButtonSize.R
-import com.tarkalabs.uicomponents.components.FloatingActionButtonSize.S
+import com.tarkalabs.uicomponents.components.base.FloatingActionButtonSize.L
+import com.tarkalabs.uicomponents.components.base.FloatingActionButtonSize.R
+import com.tarkalabs.uicomponents.components.base.FloatingActionButtonSize.S
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
@@ -70,7 +69,7 @@ enum class FloatingActionButtonSize(val size: Dp) {
 }
 
 data class TUIFloatingActionButtonTags(
-  val parentTag: String = Tags.TAG_FAB,
+  val parentTag: String = "TUIFloatingActionButton",
 )
 
 @Preview(showBackground = true) @Composable fun FloatingActionButtonPreview() {

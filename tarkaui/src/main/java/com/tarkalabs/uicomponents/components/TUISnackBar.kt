@@ -29,7 +29,6 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.components.TUISnackBarType.Error
 import com.tarkalabs.uicomponents.components.TUISnackBarType.Information
 import com.tarkalabs.uicomponents.components.TUISnackBarType.Success
@@ -236,9 +235,9 @@ internal fun TUISnackBar(
 }
 
 data class TUISnackBarTags(
-  val parentTag: String = Tags.TAG_SNACK_BAR,
-  val leadingIconTag: String = Tags.TAG_SNACK_BAR_LEADING_ICON,
-  val dismissActionTag: String = Tags.TAG_SNACK_BAR_DISMISS_ACTION,
+  val parentTag: String = "TUISnackBar",
+  val leadingIconTag: String = "TUISnackBar_LeadingIcon",
+  val dismissActionTag: String = "TUISnackBar_DismissAction",
 )
 
 enum class TUISnackBarType {

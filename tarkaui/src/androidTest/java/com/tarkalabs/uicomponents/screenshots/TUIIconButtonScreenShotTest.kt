@@ -3,9 +3,12 @@
 package com.tarkalabs.uicomponents.screenshots
 
 import androidx.compose.material3.ExperimentalMaterial3Api
-import com.tarkalabs.uicomponents.components.TUIIconButton
-import com.tarkalabs.uicomponents.components.IconButtonSize
-import com.tarkalabs.uicomponents.components.IconButtonStyle
+import com.tarkalabs.uicomponents.components.base.TUIIconButton
+import com.tarkalabs.uicomponents.components.base.IconButtonSize.XS
+import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
+import com.tarkalabs.uicomponents.components.base.IconButtonStyle.OUTLINE
+import com.tarkalabs.uicomponents.components.base.IconButtonStyle.PRIMARY
+import com.tarkalabs.uicomponents.components.base.IconButtonStyle.SECONDARY
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -32,32 +35,32 @@ class TUIIconButtonScreenShotTest(
   @Test fun primaryIconButton() = compareScreenshotFor(darkTheme, "_primaryIconButton_$testName"){
       TUIIconButton(
         icon = TarkaIcons.ChevronRight20Regular,
-        buttonSize = IconButtonSize.XS,
-        iconButtonStyle = IconButtonStyle.PRIMARY,
+        buttonSize = XS,
+        iconButtonStyle = PRIMARY,
       )
   }
 
   @Test fun secondaryIconButton() = compareScreenshotFor(darkTheme, "_secondaryIconButton_$testName"){
       TUIIconButton(
         icon = TarkaIcons.ChevronRight20Regular,
-        buttonSize = IconButtonSize.XS,
-        iconButtonStyle = IconButtonStyle.SECONDARY,
+        buttonSize = XS,
+        iconButtonStyle = SECONDARY,
       )
   }
 
   @Test fun ghostIconButton()  = compareScreenshotFor(darkTheme, "_ghostIconButton_$testName"){
       TUIIconButton(
         icon = TarkaIcons.ChevronRight20Regular,
-        buttonSize = IconButtonSize.XS,
-        iconButtonStyle = IconButtonStyle.GHOST,
+        buttonSize = XS,
+        iconButtonStyle = GHOST,
       )
   }
 
   @Test fun outlineIconButton() = compareScreenshotFor(darkTheme, "_outlineIconButton_$testName"){
       TUIIconButton(
         icon = TarkaIcons.ChevronRight20Regular,
-        buttonSize = IconButtonSize.XS,
-        iconButtonStyle = IconButtonStyle.OUTLINE,
+        buttonSize = XS,
+        iconButtonStyle = OUTLINE,
       )
   }
 }

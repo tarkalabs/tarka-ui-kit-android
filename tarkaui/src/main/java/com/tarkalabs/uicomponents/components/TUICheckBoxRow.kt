@@ -14,7 +14,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 
@@ -26,8 +25,6 @@ import com.tarkalabs.uicomponents.models.TarkaIcons
  * @param enabled Whether the checkbox is enabled and can be interacted with.
  * @param title The text to display in the text row.
  * @param style The style to apply to the text row.
- * @param checkBoxTags Additional tags to apply to the checkbox.
- * @param textRowTags Additional tags to apply to the text row.
  * @param onCheckedChange Callback triggered when the checkbox's checked state changes.
  *
  * How to use TUICheckBoxRow() composable function
@@ -46,9 +43,7 @@ onCheckedChange = { isChecked = !isChecked }
   enabled: Boolean = true,
   title: String,
   style: TextRowStyle,
-  checkBoxTags: TUICheckBoxTags = TUICheckBoxTags(),
-  textRowTags: TUITextRowTags = TUITextRowTags(),
-  tuiCheckBoxRowTag: TUICheckBoxRowTags = TUICheckBoxRowTags(),
+  tags: TUICheckBoxRowTags = TUICheckBoxRowTags(),
   onCheckedChange: () -> Unit,
 ) {
   Row(
@@ -61,27 +56,29 @@ onCheckedChange = { isChecked = !isChecked }
             onCheckedChange.invoke()
           }
         })
-      .testTag(tuiCheckBoxRowTag.parentTag)
+      .testTag(tags.parentTag)
   ) {
     TUICheckBox(
       checked = checked,
       onCheckedChange = null,
       enabled = enabled,
       icon = icon,
-      tags = checkBoxTags
+      tags = tags.checkBoxTags
     )
     HorizontalSpacer(space = 16)
     TUITextRow(
       title = title,
       style = style,
-      tags = textRowTags,
+      tags = tags.textRowTags,
       onTextRowClick = null,
     )
   }
 }
 
 data class TUICheckBoxRowTags(
-  val parentTag: String = Tags.TAG_CHECK_BOX_ROW,
+  val parentTag: String = "TUICheckBoxRow",
+  val checkBoxTags: TUICheckBoxTags = TUICheckBoxTags(parentTag = "TUICheckBoxRow_CheckBox"),
+  val textRowTags: TUITextRowTags = TUITextRowTags(parentTag = "TUICheckBoxRow_TextRow"),
 )
 
 @Preview @Composable fun PreviewTUICheckBoxRow() {
