@@ -16,10 +16,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.components.TagSize.L
 import com.tarkalabs.uicomponents.components.TagSize.M
 import com.tarkalabs.uicomponents.components.TagSize.S
@@ -30,26 +32,52 @@ import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
-enum class TagSize(val size: Dp) {
-  S(24.dp),
-  M(32.dp),
-  L(40.dp),
-}
-
-sealed class TagType {
-  object HIGH : TagType()
-  object LOW : TagType()
-  data class CUSTOM(
-    val bgContentColor: Color,
-    val titleColor: Color,
-    val iconTint: Color?,
-  ) : TagType()
-
-  companion object {
-    val defaultStyle: TagType = HIGH
-  }
-}
-
+/**
+ * A composable function that displays a text with leading or trailing icon at a time.
+ *
+ * @param modifier modifier used to modify properties of this composable function.
+ * @param title what to be shown as text.
+ * @param leadingIcon The icon to display before the title.
+ * @param trailingIcon The icon to display after the title.
+ * @param tags tags used to test this component.
+ * @param tagSize specifies the size of the component
+ * S- SMALL, M- MEDIUM, L- LARGE.
+ * @param tagType specifies the style of the component
+ * LOW, HIGH (without any custom colors)
+ * CUSTOM (without custom colors for bgColor, titleText, IconTint)
+ *
+ * How to use TUITag() composable function
+ *
+ * TYPE 1 (SMALL):
+ *  TUITag(
+title = "Label",
+tagType = HIGH,
+tagSize = S,
+trailingIcon = TarkaIcons.Circle16Regular,
+)
+ *
+ * TYPE 2 (MEDIUM):
+ *  TUITag(
+title = "Label",
+tagType = HIGH,
+tagSize = M,
+leadingIcon = TarkaIcons.Circle16Regular,
+)
+ *
+ * TYPE 3 (LARGE):
+ * TUITag(
+title = "Warning",
+tagType = CUSTOM(
+bgContentColor = TUITheme.colors.warning,
+titleColor = TUITheme.colors.inputText,
+iconTint = TUITheme.colors.constantDark
+),
+tagSize = L,
+trailingIcon = TarkaIcons.Warning12Regular,
+)
+ *
+ *
+ */
 @Composable
 fun TUITag(
   modifier: Modifier = Modifier,
@@ -58,6 +86,7 @@ fun TUITag(
   leadingIcon: TarkaIcon? = null,
   title: String,
   trailingIcon: TarkaIcon? = null,
+  tags: TUITagTestTags = TUITagTestTags(),
 ) {
 
   val iconModifier = when (tagSize) {
@@ -103,7 +132,8 @@ fun TUITag(
 
   Surface(
     modifier = modifier
-      .clip(RoundedCornerShape(size = 4.dp)),
+      .clip(RoundedCornerShape(size = 4.dp))
+      .testTag(tags.parentTag),
     color = backgroundColor
   ) {
     Box(modifier = Modifier.padding(contentPadding)) {
@@ -146,6 +176,30 @@ fun TUITag(
     }
   }
 }
+
+enum class TagSize(val size: Dp) {
+  S(24.dp),
+  M(32.dp),
+  L(40.dp),
+}
+
+sealed class TagType {
+  object HIGH : TagType()
+  object LOW : TagType()
+  data class CUSTOM(
+    val bgContentColor: Color,
+    val titleColor: Color,
+    val iconTint: Color?,
+  ) : TagType()
+
+  companion object {
+    val defaultStyle: TagType = HIGH
+  }
+}
+
+data class TUITagTestTags(
+  val parentTag: String = Tags.TAG_FOR_TUI_TAG,
+)
 
 @Composable
 @Preview(showBackground = true)
