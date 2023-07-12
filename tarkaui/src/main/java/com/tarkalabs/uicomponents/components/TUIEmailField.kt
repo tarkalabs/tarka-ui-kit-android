@@ -1,6 +1,6 @@
 package com.tarkalabs.uicomponents.components
 
-import androidx.compose.foundation.background
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
@@ -24,9 +25,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.ImeAction
@@ -37,12 +42,16 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.components.ChipType.Input
 import com.tarkalabs.uicomponents.components.IconButtonStyle.GHOST
+import com.tarkalabs.uicomponents.extentions.clickableWithoutRipple
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
-@Composable fun TUIEmailField(
+@OptIn(
+  ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class
+) @Composable fun TUIEmailField(
   title: String,
   emailAddressList: List<String>,
   trailingIcon: TarkaIcon,
@@ -55,12 +64,29 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   var textData by remember {
     mutableStateOf("")
   }
-  Column(
-    verticalArrangement = Arrangement.Top,
-    horizontalAlignment = Alignment.CenterHorizontally
+  var showTextField by remember {
+    mutableStateOf(false)
+  }
+
+  val focusRequester = remember { FocusRequester() }
+  val scope = rememberCoroutineScope()
+  Column(verticalArrangement = Arrangement.Top,
+    horizontalAlignment = Alignment.CenterHorizontally,
+    modifier = Modifier.clickableWithoutRipple {
+
+      scope.launch {
+        showTextField = !showTextField
+        delay(100)
+        focusRequester.requestFocus()
+      }
+
+    }
+
   ) {
     Row(
-      modifier = Modifier.fillMaxWidth().testTag(tags.parentTag),
+      modifier = Modifier
+        .fillMaxWidth()
+        .testTag(tags.parentTag),
       verticalAlignment = Alignment.CenterVertically,
     ) {
       Text(
@@ -69,26 +95,85 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         color = TUITheme.colors.utilityOutline,
         modifier = Modifier.padding(15.dp)
       )
-      FlowRow(
-        modifier = Modifier
-          .weight(1f)
-          .testTag(tags.flowRowTag),
-        horizontalArrangement = Arrangement.Start,
-        verticalAlignment = Alignment.CenterVertically,
-        maxItemsInEachRow = 3
+      Column(
+        modifier = Modifier.weight(1f)
       ) {
-        emailAddressList.forEachIndexed { index, email ->
-          TUIChip(
-            modifier = Modifier
+        FlowRow(
+          modifier = Modifier.testTag(tags.flowRowTag),
+          horizontalArrangement = Arrangement.Start,
+          verticalAlignment = Alignment.CenterVertically,
+          maxItemsInEachRow = 3
+        ) {
+          emailAddressList.forEachIndexed { index, email ->
+            TUIChip(modifier = Modifier
               .padding(2.dp)
-              .testTag(email),
-            type = Input(showTrailingDismiss = true),
-            label = email,
-            tags = tags.chipTags,
-            onClick = {
+              .testTag(email), type = Input(
+              showTrailingDismiss = true, containerColor = TUITheme.colors.surfaceVariant
+            ), label = email, tags = tags.chipTags, onClick = {
+
+            }, onDismissClick = {
               onItemRemoved.invoke(index)
+            })
+          }
+        }
+
+        val colors = TextFieldDefaults.colors(
+          focusedContainerColor = Color.Transparent,
+          unfocusedContainerColor = Color.Transparent,
+          focusedIndicatorColor = Color.Transparent,
+          unfocusedIndicatorColor = Color.Transparent,
+          disabledIndicatorColor = Color.Transparent,
+          errorIndicatorColor = Color.Transparent,
+          focusedTextColor = TUITheme.colors.inputText
+        )
+        val interactionSource = remember { MutableInteractionSource() }
+
+        AnimatedVisibility(visible = showTextField) {
+          BasicTextField(
+            value = textData,
+            onValueChange = {
+              textData = it
             },
+            keyboardActions = KeyboardActions(onDone = {
+              onItemAdd.invoke(textData)
+              textData = ""
+
+            }),
+            keyboardOptions = KeyboardOptions(
+              keyboardType = KeyboardType.Email, imeAction = ImeAction.Done
+            ),
+            modifier = Modifier
+              .fillMaxWidth()
+              .focusRequester(focusRequester)
+              .testTag(tags.textFieldTag)
+              .indicatorLine(
+                enabled = true,
+                isError = false,
+                colors = colors,
+                interactionSource = interactionSource,
+                focusedIndicatorLineThickness = 1.dp,
+                unfocusedIndicatorLineThickness = 1.dp,
+              )
+              .height(45.dp),
+            enabled = true,
+            singleLine = true,
+            interactionSource = interactionSource,
+            textStyle = TUITheme.typography.body7,
+          ) {
+            DecorationBox(
+              value = textData,
+              innerTextField = it,
+              singleLine = true,
+              enabled = true,
+              visualTransformation = VisualTransformation.None,
+              contentPadding = TextFieldDefaults.contentPaddingWithLabel(
+                top = 0.dp, bottom = 0.dp, start = 0.dp, end = 0.dp
+              ),
+              interactionSource = interactionSource,
+              colors = colors,
             )
+          }
+
         }
       }
 
@@ -99,61 +184,14 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         tags = tags.iconButtonTag
       )
     }
-    val colors = TextFieldDefaults.colors(
-      focusedContainerColor = Color.Transparent,
-      unfocusedContainerColor = Color.Transparent,
-      focusedIndicatorColor = TUITheme.colors.primary,
-      unfocusedIndicatorColor = TUITheme.colors.surfaceVariant,
-      disabledIndicatorColor = TUITheme.colors.primary,
-      errorIndicatorColor = TUITheme.colors.primary,
-      focusedTextColor = TUITheme.colors.inputText
+
+    Divider(
+      color = if(showTextField) TUITheme.colors.primary else TUITheme.colors.surfaceVariant,
+      thickness = 2.dp,
+      modifier = Modifier.padding(top = 10.dp)
     )
-    val interactionSource = remember { MutableInteractionSource() }
 
-    BasicTextField(
-      value = textData,
-      onValueChange = {
-        textData = it
-      },
-      keyboardActions = KeyboardActions(onDone = {
-        onItemAdd.invoke(textData)
-        textData = ""
 
-      }),
-      keyboardOptions = KeyboardOptions(
-        keyboardType = KeyboardType.Email, imeAction = ImeAction.Done
-      ),
-      modifier = Modifier
-        .fillMaxWidth()
-        .testTag(tags.textFieldTag)
-        .indicatorLine(
-          enabled = true,
-          isError = false,
-          colors = colors,
-          interactionSource = interactionSource,
-          focusedIndicatorLineThickness = 1.dp,
-          unfocusedIndicatorLineThickness = 1.dp,
-        )
-        .height(45.dp),
-      enabled = true,
-      singleLine = true,
-      interactionSource = interactionSource,
-      textStyle = TUITheme.typography.body7,
-    ) {
-      DecorationBox(
-        value = textData,
-        innerTextField = it,
-        singleLine = true,
-        enabled = true,
-        visualTransformation = VisualTransformation.None,
-        contentPadding = TextFieldDefaults.contentPaddingWithoutLabel(
-          top = 0.dp,
-          bottom = 0.dp,
-        ),
-        interactionSource = interactionSource,
-        colors = colors,
-      )
-    }
   }
 }
 
@@ -174,7 +212,7 @@ data class TUIEmailFieldTags(
         "mike32@soft.com",
       )
     }
-    Box(modifier = Modifier.background(color = TUITheme.colors.surface)) {
+    Box(modifier = Modifier.fillMaxWidth()) {
       TUIEmailField(title = "To",
         emailAddressList = emailList,
         trailingIcon = TarkaIcons.AddCircle24Regular,
