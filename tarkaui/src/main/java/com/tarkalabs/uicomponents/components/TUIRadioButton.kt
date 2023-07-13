@@ -21,7 +21,6 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -127,5 +126,5 @@ fun Circle(
 }
 
 data class TUIRadioButtonTags(
-  val parentTag: String = Tags.TAG_RADIO_BUTTON,
+  val parentTag: String = "TUIRadioButton",
 )

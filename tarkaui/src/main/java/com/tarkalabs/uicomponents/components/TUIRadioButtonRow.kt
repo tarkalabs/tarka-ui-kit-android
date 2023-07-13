@@ -15,7 +15,6 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.Tags
 
 /**
  * A composable function that displays a RadioButton and a text row in a horizontal layout.
@@ -26,8 +25,6 @@ import com.tarkalabs.uicomponents.Tags
  * visually disabled and disabled to accessibility services.
  * @param title The text to display in the text row.
  * @param style The style to apply to the text row.
- * @param radioButtonTags Additional tags to apply to the RadioButton.
- * @param textRowTags Additional tags to apply to the text row.
  * @param onOptionSelected Callback triggered when the RadioButton is selected/clicked.
  *
  * How to use TUIRadioButtonRow() composable function
@@ -45,9 +42,7 @@ onOptionSelected = { selected = !isSelected }
   enabled: Boolean = true,
   title: String,
   style: TextRowStyle,
-  radioButtonTags: TUIRadioButtonTags = TUIRadioButtonTags(),
-  textRowTags: TUITextRowTags = TUITextRowTags(),
-  radioButRowTags: TUIRadioButtonRowTags = TUIRadioButtonRowTags(),
+  tags: TUIRadioButtonRowTags = TUIRadioButtonRowTags(),
   onOptionSelected: () -> Unit,
 ) {
   Row(
@@ -60,26 +55,28 @@ onOptionSelected = { selected = !isSelected }
         onClick = { if (enabled) onOptionSelected.invoke() },
         enabled = enabled
       )
-      .testTag(radioButRowTags.parentTag)
+      .testTag(tags.parentTag)
   ) {
     TUIRadioButton(
       selected = selected,
       onOptionSelected = null,
       enabled = enabled,
-      tags = radioButtonTags
+      tags = tags.radioButtonTags
     )
     HorizontalSpacer(space = 16)
     TUITextRow(
       title = title,
       style = style,
-      tags = textRowTags,
+      tags = tags.textRowTags,
       onTextRowClick = null,
     )
   }
 }
 
 data class TUIRadioButtonRowTags(
-  val parentTag: String = Tags.TAG_RADIO_BUTTON_ROW,
+  val parentTag: String = "TUIRadioButtonRow",
+  val radioButtonTags: TUIRadioButtonTags = TUIRadioButtonTags(parentTag = "TUIRadioButtonRow_RadioButton"),
+  val textRowTags: TUITextRowTags = TUITextRowTags(parentTag = "TUIRadioButtonRow_TextRow"),
 )
 
 @Preview @Composable fun PreviewTUIRadioButtonRow() {
