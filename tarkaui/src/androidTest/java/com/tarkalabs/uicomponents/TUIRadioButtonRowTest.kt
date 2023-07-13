@@ -9,7 +9,6 @@ import androidx.compose.ui.test.onNodeWithText
 import com.tarkalabs.uicomponents.components.TUIRadioButtonRow
 import com.tarkalabs.uicomponents.components.TUIRadioButtonRowTags
 import com.tarkalabs.uicomponents.components.TUIRadioButtonTags
-import com.tarkalabs.uicomponents.components.TUITextRowTags
 import com.tarkalabs.uicomponents.components.TextRowStyle
 import org.junit.Rule
 import org.junit.Test
@@ -19,7 +18,6 @@ class TUIRadioButtonRowTest {
   @get:Rule val composeTestRule = createComposeRule()
 
   private val radioButtonTags: TUIRadioButtonTags = TUIRadioButtonTags(parentTag = "radio_button_parent_tag")
-  private val textRowTag: TUITextRowTags = TUITextRowTags()
   private val radioButtonRowTag: TUIRadioButtonRowTags = TUIRadioButtonRowTags()
 
   @Test fun radioButtonRowDisplayed() {
@@ -33,10 +31,8 @@ class TUIRadioButtonRowTest {
         selected = selectedState,
         title = title,
         style = TextRowStyle.Title,
-        radioButtonTags = radioButtonTags,
-        textRowTags = textRowTag,
         onOptionSelected = onOptionSelected,
-        radioButRowTags = radioButtonRowTag
+        tags = radioButtonRowTag
       )
     }
 
@@ -61,10 +57,8 @@ class TUIRadioButtonRowTest {
         selected = selectedState,
         title = title,
         style = TextRowStyle.Title,
-        radioButtonTags = radioButtonTags,
-        textRowTags = textRowTag,
         onOptionSelected = onOptionSelected,
-        radioButRowTags = radioButtonRowTag
+        tags = radioButtonRowTag
       )
     }
 
