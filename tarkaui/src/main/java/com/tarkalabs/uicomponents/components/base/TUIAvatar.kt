@@ -1,4 +1,4 @@
-package com.tarkalabs.uicomponents.components
+package com.tarkalabs.uicomponents.components.base
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -18,16 +18,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.tarkalabs.uicomponents.Tags
-import com.tarkalabs.uicomponents.components.AvatarSize.L
-import com.tarkalabs.uicomponents.components.AvatarSize.M
-import com.tarkalabs.uicomponents.components.AvatarSize.S
-import com.tarkalabs.uicomponents.components.AvatarSize.XL
-import com.tarkalabs.uicomponents.components.AvatarSize.XS
-import com.tarkalabs.uicomponents.components.AvatarSize.XXL
-import com.tarkalabs.uicomponents.components.AvatarType.Icon
-import com.tarkalabs.uicomponents.components.AvatarType.Image
-import com.tarkalabs.uicomponents.components.AvatarType.Text
+import com.tarkalabs.uicomponents.components.base.AvatarSize.L
+import com.tarkalabs.uicomponents.components.base.AvatarSize.M
+import com.tarkalabs.uicomponents.components.base.AvatarSize.S
+import com.tarkalabs.uicomponents.components.base.AvatarSize.XL
+import com.tarkalabs.uicomponents.components.base.AvatarSize.XS
+import com.tarkalabs.uicomponents.components.base.AvatarSize.XXL
+import com.tarkalabs.uicomponents.components.base.AvatarType.Icon
+import com.tarkalabs.uicomponents.components.base.AvatarType.Image
+import com.tarkalabs.uicomponents.components.base.AvatarType.Text
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
@@ -139,8 +138,8 @@ private fun typographyFor(size: AvatarSize) = when (size) {
 }
 
 data class TUIAvatarTags(
-  val parentTag: String = Tags.TAG_AVATAR,
-  val badgeTag: String = Tags.TAG_AVATAR_BADGE,
+  val parentTag: String = "TUIAvatar",
+  val badgeTag: String = "TUIAvatar_Badge",
 )
 
 @Composable

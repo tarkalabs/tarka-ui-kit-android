@@ -22,7 +22,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.components.TagSize.L
 import com.tarkalabs.uicomponents.components.TagSize.M
 import com.tarkalabs.uicomponents.components.TagSize.S
@@ -201,7 +200,7 @@ sealed class TagType {
 }
 
 data class TUITagTestTags(
-  val parentTag: String = Tags.TAG_FOR_TUI_TAG,
+  val parentTag: String = "Tag",
 )
 
 @Composable

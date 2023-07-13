@@ -15,7 +15,6 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
@@ -91,9 +90,9 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 }
 
 data class TUINavigationRowTags(
-  val parentTag: String = Tags.TAG_NAVIGATION_ROW,
-  val leadingIconTag: String = Tags.TAG_NAVIGATION_ROW_LEADING_ICON,
-  val rightArrowTag: String = Tags.TAG_NAVIGATION_ROW_RIGHT_ARROW
+  val parentTag: String = "TUINavigationRow",
+  val leadingIconTag: String = "TUINavigationRow_LeadingIcon",
+  val rightArrowTag: String = "TUINavigationRow_TrailingIcon"
 )
 
 @Preview(showBackground = true) @Composable fun TUINavigationRowPreview() {
