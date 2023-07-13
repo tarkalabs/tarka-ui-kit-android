@@ -39,7 +39,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.components.ChipType.Input
 import com.tarkalabs.uicomponents.components.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.extentions.clickableWithoutRipple
@@ -49,9 +48,22 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+
+/**
+ * A composable function that represents an email field style.
+ * @param modifier The modifier to be applied to the composable.
+ * @param title The title text to be displayed above the email field.
+ * @param emailAddressList The list of email addresses to be displayed as chips.
+ * @param trailingIcon The icon to be displayed at the end of the email field.
+ * @param tags The tags to be used for testing.
+ * @param trailingIconClick The callback function to be invoked when the trailing icon is clicked.
+ * @param onItemRemoved The callback function to be invoked when a chip is removed.
+ * @param onItemAdd The callback function to be invoked when a new email is added.
+ */
 @OptIn(
   ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class
 ) @Composable fun TUIEmailField(
+  modifier: Modifier = Modifier,
   title: String,
   emailAddressList: List<String>,
   trailingIcon: TarkaIcon,
@@ -72,8 +84,9 @@ import kotlinx.coroutines.launch
   val scope = rememberCoroutineScope()
   Column(verticalArrangement = Arrangement.Top,
     horizontalAlignment = Alignment.CenterHorizontally,
-    modifier = Modifier.clickableWithoutRipple {
-
+    modifier = modifier
+      .testTag(tags.parentTag)
+      .clickableWithoutRipple {
       scope.launch {
         showTextField = !showTextField
         delay(100)
@@ -85,8 +98,7 @@ import kotlinx.coroutines.launch
   ) {
     Row(
       modifier = Modifier
-        .fillMaxWidth()
-        .testTag(tags.parentTag),
+        .fillMaxWidth(),
       verticalAlignment = Alignment.CenterVertically,
     ) {
       Text(
@@ -186,19 +198,18 @@ import kotlinx.coroutines.launch
     }
 
     Divider(
-      color = if(showTextField) TUITheme.colors.primary else TUITheme.colors.surfaceVariant,
+      color = if (showTextField) TUITheme.colors.primary else TUITheme.colors.surfaceVariant,
       thickness = 2.dp,
       modifier = Modifier.padding(top = 10.dp)
     )
-
 
   }
 }
 
 data class TUIEmailFieldTags(
-  val parentTag: String = Tags.EMAIL_FIELD_TAG,
-  val textFieldTag: String = Tags.TEXT_FIELD_TAG,
-  val flowRowTag: String = Tags.FLOW_ROW_TAG,
+  val parentTag: String = "email_field",
+  val textFieldTag: String = "text_field",
+  val flowRowTag: String = "flow_row",
   val iconButtonTag: TUIIconButtonTags = TUIIconButtonTags(),
   val chipTags: TUIChipTags = TUIChipTags()
 )

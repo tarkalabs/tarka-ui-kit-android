@@ -20,10 +20,13 @@ import org.mockito.kotlin.verify
 
 class TUIEmailFieldTest {
   @get:Rule val composable = createComposeRule()
-  private val tags: TUIEmailFieldTags = TUIEmailFieldTags(iconButtonTag = TUIIconButtonTags(parentTag = "TRAILING_ICON"))
-  private val emailList = listOf(  "mike32@soft.com",
+  private val tags: TUIEmailFieldTags =
+    TUIEmailFieldTags(iconButtonTag = TUIIconButtonTags(parentTag = "TRAILING_ICON"))
+  private val emailList = listOf(
+    "mike32@soft.com",
     "mike.smith@corp.co",
-    "mike32@soft.com",)
+    "mike32@soft.com",
+  )
 
   @Test fun email_field_is_displayed() {
     composable.setContent {
@@ -56,14 +59,14 @@ class TUIEmailFieldTest {
     composable.onNodeWithTag(tags.textFieldTag, useUnmergedTree = true).assertIsDisplayed()
     composable.onNodeWithTag(tags.flowRowTag, useUnmergedTree = true).assertIsDisplayed()
     composable.onNodeWithText("To", useUnmergedTree = true).assertIsDisplayed()
-    composable.onNodeWithTag(tags.iconButtonTag.parentTag, useUnmergedTree = true).assertIsDisplayed()
+    composable.onNodeWithTag(tags.iconButtonTag.parentTag, useUnmergedTree = true)
+      .assertIsDisplayed()
     emailList.forEach { email ->
       composable.onNodeWithText(email, useUnmergedTree = true).assertIsDisplayed()
     }
   }
 
-  @Test
-  fun click_event_is_Triggered(){
+  @Test fun click_event_is_Triggered() {
     val trailingIconClick: () -> Unit = mock()
 
     composable.setContent {
@@ -94,11 +97,9 @@ class TUIEmailFieldTest {
 
     val inputText = "android@gmail.com"
     val textField = composable.onNodeWithTag(tags.textFieldTag, useUnmergedTree = true)
-    textField .performTextInput(inputText)
+    textField.performTextInput(inputText)
     textField.performImeAction()
 
     composable.onNodeWithText(inputText, useUnmergedTree = true).assertIsDisplayed()
-
   }
-
 }
