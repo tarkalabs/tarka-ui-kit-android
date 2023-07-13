@@ -97,5 +97,5 @@ object TarkaIcons {
   val Info20Filled = TarkaIcon(ic_fluent_chat_help_20_filled, "Information")
   val ChatBubblesQuestion24Regular = TarkaIcon(ic_fluent_chat_bubbles_question_24_regular, "FAQ")
   val CaretDown20Filled = TarkaIcon(ic_fluent_caret_down_20_filled, "Caret Down")
-  val Circle16Regular = TarkaIcon(ic_fluent_circle_12_regular, "Circle")
+  val Circle12Regular = TarkaIcon(ic_fluent_circle_12_regular, "Circle")
 }

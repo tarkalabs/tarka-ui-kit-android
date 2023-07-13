@@ -160,6 +160,7 @@ fun TUITag(
           text = title,
           color = titleColor,
           style = titleStyle,
+          maxLines = 1,
         )
 
         trailingIcon?.let {
@@ -326,7 +327,7 @@ fun TUITagPreview() {
           title = "Label",
           tagType = HIGH,
           tagSize = S,
-          leadingIcon = TarkaIcons.Circle16Regular,
+          leadingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 
@@ -336,7 +337,7 @@ fun TUITagPreview() {
           title = "Label",
           tagType = HIGH,
           tagSize = M,
-          leadingIcon = TarkaIcons.Circle16Regular,
+          leadingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 
@@ -346,7 +347,7 @@ fun TUITagPreview() {
           title = "Label",
           tagType = HIGH,
           tagSize = L,
-          leadingIcon = TarkaIcons.Circle16Regular,
+          leadingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 
@@ -356,7 +357,7 @@ fun TUITagPreview() {
           title = "Label",
           tagType = LOW,
           tagSize = S,
-          leadingIcon = TarkaIcons.Circle16Regular,
+          leadingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 
@@ -366,7 +367,7 @@ fun TUITagPreview() {
           title = "Label",
           tagType = LOW,
           tagSize = M,
-          leadingIcon = TarkaIcons.Circle16Regular,
+          leadingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 
@@ -376,7 +377,7 @@ fun TUITagPreview() {
           title = "Label",
           tagType = LOW,
           tagSize = L,
-          leadingIcon = TarkaIcons.Circle16Regular,
+          leadingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 
@@ -435,7 +436,7 @@ fun TUITagPreview() {
           title = "Label",
           tagType = HIGH,
           tagSize = S,
-          trailingIcon = TarkaIcons.Circle16Regular,
+          trailingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 
@@ -445,7 +446,7 @@ fun TUITagPreview() {
           title = "Label",
           tagType = HIGH,
           tagSize = M,
-          trailingIcon = TarkaIcons.Circle16Regular,
+          trailingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 
@@ -455,7 +456,7 @@ fun TUITagPreview() {
           title = "Label",
           tagType = HIGH,
           tagSize = L,
-          trailingIcon = TarkaIcons.Circle16Regular,
+          trailingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 
@@ -465,7 +466,7 @@ fun TUITagPreview() {
           title = "Label",
           tagType = LOW,
           tagSize = S,
-          trailingIcon = TarkaIcons.Circle16Regular,
+          trailingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 
@@ -475,7 +476,7 @@ fun TUITagPreview() {
           title = "Label",
           tagType = LOW,
           tagSize = M,
-          trailingIcon = TarkaIcons.Circle16Regular,
+          trailingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 
@@ -485,7 +486,7 @@ fun TUITagPreview() {
           title = "Label",
           tagType = LOW,
           tagSize = L,
-          trailingIcon = TarkaIcons.Circle16Regular,
+          trailingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 

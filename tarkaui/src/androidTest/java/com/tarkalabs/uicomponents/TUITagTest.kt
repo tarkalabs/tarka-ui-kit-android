@@ -7,6 +7,7 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import com.tarkalabs.uicomponents.components.TUITag
+import com.tarkalabs.uicomponents.components.TUITagTestTags
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Rule
 import org.junit.Test
@@ -19,50 +20,34 @@ class TUITagTest {
   val composable = createComposeRule()
 
   @Test
-  fun is_passed_title_is_shown() {
+  fun is_passed_things_is_shown() {
     val title = "test title"
+    val leadingIcon = TarkaIcons.Circle12Regular
+    val trailingIcon = TarkaIcons.Circle12Regular
     composable.setContent {
       TUITag(
         title = title,
-        onClick = {})
-    }
-    composable.onNodeWithText(title).assertIsDisplayed()
-  }
-
-  @Test
-  fun is_passed_leading_icon_is_shown() {
-    val leadingIcon = TarkaIcons.Circle16Regular
-    composable.setContent {
-      TUITag(
-        title = "Test",
         leadingIcon = leadingIcon,
-        onClick = {})
-    }
-    composable.onNodeWithContentDescription(leadingIcon.contentDescription).assertIsDisplayed()
-  }
-
-  @Test
-  fun is_passed_trailing_icon_is_shown() {
-    val trailingIcon = TarkaIcons.Circle16Regular
-    composable.setContent {
-      TUITag(
-        title = "Test",
         trailingIcon = trailingIcon,
         onClick = {})
     }
+    composable.onNodeWithText(title).assertIsDisplayed()
+    composable.onNodeWithContentDescription(leadingIcon.contentDescription).assertIsDisplayed()
     composable.onNodeWithContentDescription(trailingIcon.contentDescription).assertIsDisplayed()
   }
 
   @Test
   fun is_click_event_invoked() {
     val clickLambda: () -> Unit = mock()
+    val testTag = TUITagTestTags(parentTag = "Test Tag")
     composable.setContent {
       TUITag(
         title = "Test",
-        onClick = clickLambda
+        onClick = clickLambda,
+        tags = testTag
       )
     }
-    composable.onNodeWithTag(Tags.TAG_FOR_TUI_TAG).performClick()
+    composable.onNodeWithTag(testTag.parentTag).performClick()
     verify(clickLambda).invoke()
   }
 }
