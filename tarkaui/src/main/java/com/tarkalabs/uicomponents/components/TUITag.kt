@@ -227,6 +227,7 @@ fun TUITagPreview() {
           title = "Label",
           tagType = HIGH,
           tagSize = S,
+          trailingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 
@@ -236,6 +237,7 @@ fun TUITagPreview() {
           title = "Label",
           tagType = HIGH,
           tagSize = M,
+          trailingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 
@@ -245,6 +247,7 @@ fun TUITagPreview() {
           title = "Label",
           tagType = HIGH,
           tagSize = L,
+          trailingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 
@@ -254,6 +257,7 @@ fun TUITagPreview() {
           title = "Label",
           tagType = LOW,
           tagSize = S,
+          trailingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 
@@ -263,6 +267,7 @@ fun TUITagPreview() {
           title = "Label",
           tagType = LOW,
           tagSize = M,
+          trailingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 
@@ -272,6 +277,7 @@ fun TUITagPreview() {
           title = "Label",
           tagType = LOW,
           tagSize = L,
+          trailingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 
@@ -282,9 +288,10 @@ fun TUITagPreview() {
           tagType = CUSTOM(
             bgContentColor = TUITheme.colors.onWarning,
             titleColor = TUITheme.colors.inputText,
-            iconTint = null
+            iconTint = TUITheme.colors.onBackground
           ),
           tagSize = S,
+          trailingIcon = TarkaIcons.Warning12Regular,
           onClick = {},
         )
 
@@ -295,9 +302,10 @@ fun TUITagPreview() {
           tagType = CUSTOM(
             bgContentColor = TUITheme.colors.onWarning,
             titleColor = TUITheme.colors.inputText,
-            iconTint = null
+            iconTint = TUITheme.colors.onBackground
           ),
           tagSize = M,
+          trailingIcon = TarkaIcons.Warning12Regular,
           onClick = {},
         )
 
@@ -308,9 +316,10 @@ fun TUITagPreview() {
           tagType = CUSTOM(
             bgContentColor = TUITheme.colors.onWarning,
             titleColor = TUITheme.colors.inputText,
-            iconTint = null
+            iconTint = TUITheme.colors.onBackground
           ),
           tagSize = L,
+          trailingIcon = TarkaIcons.Warning12Regular,
           onClick = {},
         )
 
@@ -436,7 +445,6 @@ fun TUITagPreview() {
           title = "Label",
           tagType = HIGH,
           tagSize = S,
-          trailingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 
@@ -446,7 +454,6 @@ fun TUITagPreview() {
           title = "Label",
           tagType = HIGH,
           tagSize = M,
-          trailingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 
@@ -456,7 +463,6 @@ fun TUITagPreview() {
           title = "Label",
           tagType = HIGH,
           tagSize = L,
-          trailingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 
@@ -466,7 +472,6 @@ fun TUITagPreview() {
           title = "Label",
           tagType = LOW,
           tagSize = S,
-          trailingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 
@@ -476,7 +481,6 @@ fun TUITagPreview() {
           title = "Label",
           tagType = LOW,
           tagSize = M,
-          trailingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 
@@ -486,7 +490,6 @@ fun TUITagPreview() {
           title = "Label",
           tagType = LOW,
           tagSize = L,
-          trailingIcon = TarkaIcons.Circle12Regular,
           onClick = {},
         )
 
@@ -497,10 +500,9 @@ fun TUITagPreview() {
           tagType = CUSTOM(
             bgContentColor = TUITheme.colors.onWarning,
             titleColor = TUITheme.colors.inputText,
-            iconTint = TUITheme.colors.onBackground
+            iconTint = null
           ),
           tagSize = S,
-          trailingIcon = TarkaIcons.Warning12Regular,
           onClick = {},
         )
 
@@ -511,10 +513,9 @@ fun TUITagPreview() {
           tagType = CUSTOM(
             bgContentColor = TUITheme.colors.onWarning,
             titleColor = TUITheme.colors.inputText,
-            iconTint = TUITheme.colors.onBackground
+            iconTint = null
           ),
           tagSize = M,
-          trailingIcon = TarkaIcons.Warning12Regular,
           onClick = {},
         )
 
@@ -525,10 +526,9 @@ fun TUITagPreview() {
           tagType = CUSTOM(
             bgContentColor = TUITheme.colors.onWarning,
             titleColor = TUITheme.colors.inputText,
-            iconTint = TUITheme.colors.onBackground
+            iconTint = null
           ),
           tagSize = L,
-          trailingIcon = TarkaIcons.Warning12Regular,
           onClick = {},
         )
 
