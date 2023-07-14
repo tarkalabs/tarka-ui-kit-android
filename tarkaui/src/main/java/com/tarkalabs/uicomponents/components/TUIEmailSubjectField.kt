@@ -19,6 +19,27 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import com.tarkalabs.uicomponents.theme.TUITheme
 
+/**
+ * A composable function for rendering an email subject field.
+ * @param modifier The modifier to be applied to the composable.
+ * @param placeHolder The placeholder text to be displayed when the field is empty.
+ * @param text The current text value of the field.
+ * @param keyboardOption The keyboard options for the field.
+ * @param keyboardAction The keyboard actions for the field.
+ * @param maxLines The maximum number of lines for the field.
+ * @param minLines The minimum number of lines for the field.
+ * @param singleLine Whether the field should be limited to a single line or not.
+ * @param onTextChanged The callback function to be invoked when the text changes. It takes the new text value as a parameter.
+ * @param testTags The test tags for testing purposes.
+ *
+ * TUIEmailSubjectField(
+    modifier = Modifier,
+    placeHolder = "Enter subject",
+    text = emailSubject,
+    onTextChanged = { text -> },
+    testTags = TUIEmailSubjectFieldTags()
+    )
+ */
 @Composable fun TUIEmailSubjectField(
   modifier: Modifier = Modifier,
   placeHolder: String,
