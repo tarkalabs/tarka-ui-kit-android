@@ -3,6 +3,7 @@ package com.tarkalabs.uicomponents.models
 import androidx.annotation.DrawableRes
 import androidx.compose.ui.graphics.Color
 import com.microsoft.fluent.mobile.icons.R
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_add_circle_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_counterclockwise_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_export_ltr_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_sync_20_regular
@@ -98,4 +99,7 @@ object TarkaIcons {
   val ChatBubblesQuestion24Regular = TarkaIcon(ic_fluent_chat_bubbles_question_24_regular, "FAQ")
   val CaretDown20Filled = TarkaIcon(ic_fluent_caret_down_20_filled, "Caret Down")
   val Circle12Regular = TarkaIcon(ic_fluent_circle_12_regular, "Circle")
+  val AddCircle24Regular =
+    TarkaIcon(ic_fluent_add_circle_24_regular, "Add")
+
 }
