@@ -207,7 +207,7 @@ import kotlinx.coroutines.launch
 }
 
 data class TUIEmailFieldTags(
-  val parentTag: String = "email_field",
+  val parentTag: String = "TUIEmailField",
   val textFieldTag: String = "text_field",
   val flowRowTag: String = "flow_row",
   val iconButtonTag: TUIIconButtonTags = TUIIconButtonTags(),
