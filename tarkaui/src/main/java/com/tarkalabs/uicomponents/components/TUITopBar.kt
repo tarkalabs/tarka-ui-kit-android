@@ -1,6 +1,8 @@
 package com.tarkalabs.uicomponents.components
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -78,69 +80,71 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
     mutableStateOf(false)
   }
 
-  TopAppBar(
-    title = {
-      Text(
-        text = title,
-        style = TUITheme.typography.heading5,
-        color = TUITheme.colors.onSurface,
-        maxLines = 1,
-        overflow = TextOverflow.Ellipsis
-      )
-    },
-    navigationIcon = {
-      if (navigationIcon != null) {
-        TUIIconButton(
-          onIconClick = onNavigationIconClick,
-          icon = navigationIcon,
-          tags = tags.navigationIconTags,
-          iconButtonStyle = GHOST
+  Column {
+    TopAppBar(
+      title = {
+        Text(
+          text = title,
+          style = TUITheme.typography.heading5,
+          color = TUITheme.colors.onSurface,
+          maxLines = 1,
+          overflow = TextOverflow.Ellipsis
         )
-      }
-    },
-    actions = {
-      if (searchIcon != null) {
-        TUIIconButton(
-          icon = searchIcon,
-          tags = tags.searchIconTags,
-          iconButtonStyle = GHOST, onIconClick = {
-            showSearchBar = true
-          }
-        )
-      }
+      },
+      navigationIcon = {
+        if (navigationIcon != null) {
+          TUIIconButton(
+            onIconClick = onNavigationIconClick,
+            icon = navigationIcon,
+            tags = tags.navigationIconTags,
+            iconButtonStyle = GHOST
+          )
+        }
+      },
+      actions = {
+        if (searchIcon != null) {
+          TUIIconButton(icon = searchIcon,
+            tags = tags.searchIconTags,
+            iconButtonStyle = GHOST,
+            onIconClick = {
+              showSearchBar = true
+            })
+        }
 
-      if (menuItemIconThree != null) {
-        TUIIconButton(
-          icon = menuItemIconThree,
-          tags = tags.menuIconThreeTags,
-          iconButtonStyle = GHOST,
-          onIconClick = onThirdMenuItemClicked
-        )
-      }
+        if (menuItemIconThree != null) {
+          TUIIconButton(
+            icon = menuItemIconThree,
+            tags = tags.menuIconThreeTags,
+            iconButtonStyle = GHOST,
+            onIconClick = onThirdMenuItemClicked
+          )
+        }
 
-      if (menuItemIconTwo != null) {
-        TUIIconButton(
-          onIconClick = onSecondMenuItemClicked,
-          icon = menuItemIconTwo,
-          tags = tags.menuIconTwoTags,
-          iconButtonStyle = GHOST,
-        )
-      }
+        if (menuItemIconTwo != null) {
+          TUIIconButton(
+            onIconClick = onSecondMenuItemClicked,
+            icon = menuItemIconTwo,
+            tags = tags.menuIconTwoTags,
+            iconButtonStyle = GHOST,
+          )
+        }
 
-      if (menuItemIconOne != null) {
-        TUIIconButton(
-          onIconClick = onFirstMenuItemClicked,
-          tags = tags.menuIconOneTags,
-          icon = menuItemIconOne,
-          iconButtonStyle = GHOST,
-        )
-      }
+        if (menuItemIconOne != null) {
+          TUIIconButton(
+            onIconClick = onFirstMenuItemClicked,
+            tags = tags.menuIconOneTags,
+            icon = menuItemIconOne,
+            iconButtonStyle = GHOST,
+          )
+        }
 
-    },
-    colors = colors,
-    modifier = Modifier.fillMaxWidth(),
-    scrollBehavior = scrollBehavior,
-  )
+      },
+      colors = colors,
+      modifier = Modifier.fillMaxWidth(),
+      scrollBehavior = scrollBehavior,
+    )
+    Divider(color = TUITheme.colors.surfaceVariant)
+  }
 }
 
 data class TUITopBarTags(
@@ -152,10 +156,10 @@ data class TUITopBarTags(
   val menuIconThreeTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUITopBar_MenuIconThree"),
 )
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Preview
-@Composable fun EamNormalTopBar(
+@OptIn(ExperimentalMaterial3Api::class) @Preview @Composable fun EamNormalTopBar(
 ) {
-  TUITopBar(title = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-    navigationIcon = TarkaIcons.ChevronRight20Regular)
+  TUITopBar(
+    title = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    navigationIcon = TarkaIcons.ChevronRight20Regular
+  )
 }
