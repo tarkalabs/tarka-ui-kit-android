@@ -86,7 +86,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 }
 
 data class TUIEmailSubjectFieldTags(
-  val parentTag: String = "TUIEmailSubjectFieldTag", val placeHolderTag: String = "PlaceHolderTag"
+  val parentTag: String = "TUIEmailSubjectField", val placeHolderTag: String = "TUIEmailSubjectField_PlaceHolder"
 )
 
 @Preview @Composable fun TUIEmailSubjectFieldPreview() {
