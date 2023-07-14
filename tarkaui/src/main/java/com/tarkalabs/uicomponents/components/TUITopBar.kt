@@ -17,6 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import com.tarkalabs.uicomponents.components.base.IconButtonSize.XL
 import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.components.base.TUIIconButton
 import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
@@ -97,7 +98,8 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
             onIconClick = onNavigationIconClick,
             icon = navigationIcon,
             tags = tags.navigationIconTags,
-            iconButtonStyle = GHOST
+            iconButtonStyle = GHOST,
+            buttonSize = XL
           )
         }
       },
@@ -108,7 +110,8 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
             iconButtonStyle = GHOST,
             onIconClick = {
               showSearchBar = true
-            })
+            },
+            buttonSize = XL)
         }
 
         if (menuItemIconThree != null) {
@@ -116,7 +119,8 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
             icon = menuItemIconThree,
             tags = tags.menuIconThreeTags,
             iconButtonStyle = GHOST,
-            onIconClick = onThirdMenuItemClicked
+            onIconClick = onThirdMenuItemClicked,
+            buttonSize = XL
           )
         }
 
@@ -126,6 +130,7 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
             icon = menuItemIconTwo,
             tags = tags.menuIconTwoTags,
             iconButtonStyle = GHOST,
+            buttonSize = XL
           )
         }
 
@@ -135,6 +140,7 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
             tags = tags.menuIconOneTags,
             icon = menuItemIconOne,
             iconButtonStyle = GHOST,
+            buttonSize = XL
           )
         }
 
@@ -159,7 +165,10 @@ data class TUITopBarTags(
 @OptIn(ExperimentalMaterial3Api::class) @Preview @Composable fun EamNormalTopBar(
 ) {
   TUITopBar(
-    title = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-    navigationIcon = TarkaIcons.ChevronRight20Regular
+    title = "Lorem Ipsum",
+    navigationIcon = TarkaIcons.ChevronRight20Regular,
+    menuItemIconOne = TarkaIcons.ChevronRight20Regular,
+    menuItemIconTwo = TarkaIcons.ChevronRight20Regular,
+    menuItemIconThree = TarkaIcons.ChevronRight20Regular
   )
 }
