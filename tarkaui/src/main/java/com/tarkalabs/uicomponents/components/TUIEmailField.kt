@@ -43,7 +43,6 @@ import com.tarkalabs.uicomponents.components.ChipType.Input
 import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.components.base.TUIIconButton
 import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
-
 import com.tarkalabs.uicomponents.extentions.clickableWithoutRipple
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
@@ -211,8 +210,8 @@ import kotlinx.coroutines.launch
 
 data class TUIEmailFieldTags(
   val parentTag: String = "TUIEmailField",
-  val textFieldTag: String = "text_field",
-  val flowRowTag: String = "flow_row",
+  val textFieldTag: String = "TUIEmailField_TextField",
+  val flowRowTag: String = "TUIEmailField_Flowrow",
   val iconButtonTag: TUIIconButtonTags = TUIIconButtonTags(),
   val chipTags: TUIChipTags = TUIChipTags()
 )
