@@ -1,12 +1,16 @@
 package com.tarkalabs.uicomponents.components
 
+import ButtonSize.XL
 import ButtonStyle.OUTLINE
 import ButtonStyle.PRIMARY
 import TUIButton
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.material3.Divider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,24 +37,34 @@ fun TUIMobileButtonBlock(
   outlineButtonOnClick: (() -> Unit)?,
   primaryButtonWeight: Float? = null
 ) {
-  Row(
-    modifier
-      .background(TUITheme.colors.surface50)
-      .padding(horizontal = 24.dp, vertical = 16.dp)
-  ) {
-    if (outlineButtonLabel != null){
+
+  Column(modifier.fillMaxWidth()) {
+    Divider(color = TUITheme.colors.surfaceVariantHover, thickness = 1.dp)
+    Row(
+      modifier
+        .background(TUITheme.colors.surface50)
+        .padding(start = 24.dp, end = 24.dp, top = 15.dp, bottom = 16.dp)
+    ) {
+      if (outlineButtonLabel != null) {
+        TUIButton(
+          height = XL,
+          label = outlineButtonLabel,
+          onClick = { outlineButtonOnClick?.invoke() },
+          buttonStyle = OUTLINE,
+          modifier = if (primaryButtonWeight == null) Modifier.weight(1f) else Modifier.wrapContentWidth()
+        )
+        HorizontalSpacer(space = 8)
+      }
       TUIButton(
-        label = outlineButtonLabel,
-        onClick = { outlineButtonOnClick?.invoke() },
-        buttonStyle = OUTLINE,
-        modifier = if (primaryButtonWeight == null) Modifier.weight(1f) else Modifier.wrapContentWidth()
+        height = XL,
+        label = primaryButtonLabel,
+        onClick = primaryButtonOnClick,
+        buttonStyle = PRIMARY,
+        modifier = Modifier.weight(
+          if (outlineButtonLabel == null) 1f else primaryButtonWeight ?: 1f
+        )
       )
-      HorizontalSpacer(space = 8)
     }
-    TUIButton(
-      label = primaryButtonLabel, onClick = primaryButtonOnClick, buttonStyle = PRIMARY,
-      modifier = Modifier.weight(if (outlineButtonLabel == null) 1f else primaryButtonWeight ?: 1f)
-    )
   }
 }
 
