@@ -20,7 +20,7 @@ class TUIRadioButtonRowTest {
   private val radioButtonTags: TUIRadioButtonTags = TUIRadioButtonTags(parentTag = "radio_button_parent_tag")
   private val radioButtonRowTag: TUIRadioButtonRowTags = TUIRadioButtonRowTags()
 
-  @Test fun radioButtonRowDisplayed() {
+  @Test fun radioButton_Row_IsDisplayed() {
 
     var selectedState = false
     val onOptionSelected: () -> Unit = { selectedState = !selectedState }
@@ -47,7 +47,7 @@ class TUIRadioButtonRowTest {
     composeTestRule.onNodeWithText(title, useUnmergedTree = true).assertIsDisplayed()
   }
 
-  @Test fun radioRowClickTriggered() {
+  @Test fun radioButton_Row_Click_Triggered() {
     var selectedState = true
     val onOptionSelected: () -> Unit = { selectedState = !selectedState }
     val title = "Radio Button"
