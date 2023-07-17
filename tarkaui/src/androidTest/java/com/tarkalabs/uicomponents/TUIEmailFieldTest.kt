@@ -11,7 +11,7 @@ import androidx.compose.ui.test.performImeAction
 import androidx.compose.ui.test.performTextInput
 import com.tarkalabs.uicomponents.components.TUIEmailField
 import com.tarkalabs.uicomponents.components.TUIEmailFieldTags
-import com.tarkalabs.uicomponents.components.TUIIconButtonTags
+import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Rule
 import org.junit.Test
