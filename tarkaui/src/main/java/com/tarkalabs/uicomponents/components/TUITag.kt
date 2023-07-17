@@ -69,8 +69,8 @@ leadingIcon = TarkaIcons.Circle16Regular,
 title = "Warning",
 tagType = CUSTOM(
 bgContentColor = TUITheme.colors.warning,
-titleColor = TUITheme.colors.inputText,
-iconTint = TUITheme.colors.constantDark
+titleColor = TUITheme.colors.onWarning,
+iconTint = TUITheme.colors.onWarning
 ),
 tagSize = L,
 trailingIcon = TarkaIcons.Warning12Regular,
@@ -132,7 +132,7 @@ fun TUITag(
   }
 
   Surface(
-    modifier = modifier
+    modifier = modifier.padding(4.dp)
       .clip(RoundedCornerShape(size = 4.dp))
       .testTag(tags.parentTag)
       .clickable { onClick.invoke() },
@@ -286,9 +286,9 @@ fun TUITagPreview() {
         TUITag(
           title = "Warning",
           tagType = CUSTOM(
-            bgContentColor = TUITheme.colors.onWarning,
-            titleColor = TUITheme.colors.inputText,
-            iconTint = TUITheme.colors.onBackground
+            bgContentColor = TUITheme.colors.warning,
+            titleColor = TUITheme.colors.onWarning,
+            iconTint = TUITheme.colors.onWarning
           ),
           tagSize = S,
           trailingIcon = TarkaIcons.Warning12Regular,
@@ -300,9 +300,9 @@ fun TUITagPreview() {
         TUITag(
           title = "Warning",
           tagType = CUSTOM(
-            bgContentColor = TUITheme.colors.onWarning,
-            titleColor = TUITheme.colors.inputText,
-            iconTint = TUITheme.colors.onBackground
+            bgContentColor = TUITheme.colors.warning,
+            titleColor = TUITheme.colors.onWarning,
+            iconTint = TUITheme.colors.onWarning
           ),
           tagSize = M,
           trailingIcon = TarkaIcons.Warning12Regular,
@@ -314,9 +314,9 @@ fun TUITagPreview() {
         TUITag(
           title = "Warning",
           tagType = CUSTOM(
-            bgContentColor = TUITheme.colors.onWarning,
-            titleColor = TUITheme.colors.inputText,
-            iconTint = TUITheme.colors.onBackground
+            bgContentColor = TUITheme.colors.warning,
+            titleColor = TUITheme.colors.onWarning,
+            iconTint = TUITheme.colors.onWarning
           ),
           tagSize = L,
           trailingIcon = TarkaIcons.Warning12Regular,
@@ -396,9 +396,9 @@ fun TUITagPreview() {
           title = "Warning",
           tagSize = S,
           tagType = CUSTOM(
-            bgContentColor = TUITheme.colors.onWarning,
-            titleColor = TUITheme.colors.inputText,
-            iconTint = TUITheme.colors.onBackground
+            bgContentColor = TUITheme.colors.warning,
+            titleColor = TUITheme.colors.onWarning,
+            iconTint = TUITheme.colors.onWarning
           ),
           leadingIcon = TarkaIcons.Warning12Regular,
           onClick = {},
@@ -410,9 +410,9 @@ fun TUITagPreview() {
           title = "Warning",
           tagSize = M,
           tagType = CUSTOM(
-            bgContentColor = TUITheme.colors.onWarning,
-            titleColor = TUITheme.colors.inputText,
-            iconTint = TUITheme.colors.onBackground
+            bgContentColor = TUITheme.colors.warning,
+            titleColor = TUITheme.colors.onWarning,
+            iconTint = TUITheme.colors.onWarning
           ),
           leadingIcon = TarkaIcons.Warning12Regular,
           onClick = {},
@@ -424,9 +424,9 @@ fun TUITagPreview() {
           title = "Warning",
           tagSize = L,
           tagType = CUSTOM(
-            bgContentColor = TUITheme.colors.onWarning,
-            titleColor = TUITheme.colors.inputText,
-            iconTint = TUITheme.colors.onBackground
+            bgContentColor = TUITheme.colors.warning,
+            titleColor = TUITheme.colors.onWarning,
+            iconTint = TUITheme.colors.onWarning
           ),
           leadingIcon = TarkaIcons.Warning12Regular,
           onClick = {},
@@ -498,8 +498,8 @@ fun TUITagPreview() {
         TUITag(
           title = "Warning",
           tagType = CUSTOM(
-            bgContentColor = TUITheme.colors.onWarning,
-            titleColor = TUITheme.colors.inputText,
+            bgContentColor = TUITheme.colors.warning,
+            titleColor = TUITheme.colors.onWarning,
             iconTint = null
           ),
           tagSize = S,
@@ -511,8 +511,8 @@ fun TUITagPreview() {
         TUITag(
           title = "Warning",
           tagType = CUSTOM(
-            bgContentColor = TUITheme.colors.onWarning,
-            titleColor = TUITheme.colors.inputText,
+            bgContentColor = TUITheme.colors.warning,
+            titleColor = TUITheme.colors.onWarning,
             iconTint = null
           ),
           tagSize = M,
@@ -524,8 +524,8 @@ fun TUITagPreview() {
         TUITag(
           title = "Warning",
           tagType = CUSTOM(
-            bgContentColor = TUITheme.colors.onWarning,
-            titleColor = TUITheme.colors.inputText,
+            bgContentColor = TUITheme.colors.warning,
+            titleColor = TUITheme.colors.onWarning,
             iconTint = null
           ),
           tagSize = L,
