@@ -151,9 +151,8 @@ fun TUITag(
             contentDescription = leadingIcon.contentDescription,
             tint = iconTint ?: Color.Transparent
           )
+          HorizontalSpacer(horizontalSpace)
         }
-
-        HorizontalSpacer(horizontalSpace)
 
         Text(
           modifier = Modifier.wrapContentSize(),
