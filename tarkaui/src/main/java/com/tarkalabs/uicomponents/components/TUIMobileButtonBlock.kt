@@ -39,7 +39,7 @@ fun TUIMobileButtonBlock(
 ) {
 
   Column(modifier.fillMaxWidth()) {
-    Divider(color = TUITheme.colors.surfaceVariantHover, thickness = 1.dp)
+    Divider(color = TUITheme.colors.surfaceVariant, thickness = 1.dp)
     Row(
       modifier
         .background(TUITheme.colors.surface50)

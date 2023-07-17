@@ -13,7 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.components.TUICheckBoxRow
+import com.tarkalabs.uicomponents.components.TUIRadioButtonRow
+import com.tarkalabs.uicomponents.components.TextRowStyle.Title
 import com.tarkalabs.uicomponents.components.TextRowStyle.TitleWithDescription
+import com.tarkalabs.uicomponents.components.VerticalSpacer
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
@@ -43,6 +46,17 @@ class UIComponentListActivity : ComponentActivity() {
           ) {
             status.value = !status.value
           }
+          VerticalSpacer(space = 20)
+
+          TUIRadioButtonRow(
+            selected = status.value,
+            enabled = true,
+            title = "TUIRadioButtonRowRow",
+            style = Title
+          ) {
+            status.value = !status.value
+          }
+
         }
       }
     }
