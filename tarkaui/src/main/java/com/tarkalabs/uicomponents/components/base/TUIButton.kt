@@ -46,6 +46,7 @@ enum class ButtonStyle {
 }
 
 enum class ButtonSize(val size: Dp) {
+  XL(56.dp),
   L(48.dp),
   M(40.dp),
   S(32.dp),
@@ -53,14 +54,14 @@ enum class ButtonSize(val size: Dp) {
 
   fun iconSize(): Dp {
     return when (this) {
-      L -> 17.5.dp
+      XL, L -> 17.5.dp
       M -> 17.5.dp
       S, XS -> 11.dp
     }
   }
 
   fun paddingValues(isLeadingIconNull: Boolean, isTrailingIconNull: Boolean) = when (this) {
-    L, M -> PaddingValues(
+    XL, L, M -> PaddingValues(
       top = 0.dp,
       start = if (isLeadingIconNull) 24.dp else 16.dp,
       bottom = 0.dp,
@@ -83,7 +84,7 @@ enum class ButtonSize(val size: Dp) {
   }
 
   @Composable fun textStyle() = when (this) {
-    L -> TUITheme.typography.button6
+    XL, L -> TUITheme.typography.button6
     M -> TUITheme.typography.button6
     S -> TUITheme.typography.button7
     XS -> TUITheme.typography.button8

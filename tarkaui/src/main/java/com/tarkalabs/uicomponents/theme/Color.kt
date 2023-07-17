@@ -41,6 +41,7 @@ open class TUIColors(
   val surface50: Color,
   val onSurface: Color,
   val surfaceVariant: Color,
+  val surfaceVariantHover: Color,
   val constantLight: Color,
   val constantDark: Color,
 )
@@ -86,7 +87,8 @@ val defaultLightColors = TUIColors(
   onSurface = Color(0xFF1A1B1F),
   surfaceVariant = Color(0xFFEBEFF4),
   constantLight = Color(0xFFFFFFFF),
-  constantDark = Color(0xFF000000)
+  constantDark = Color(0xFF000000),
+  surfaceVariantHover = Color(0xFFE1E7EF)
 )
 
 val defaultDarkColors = TUIColors(
@@ -126,6 +128,7 @@ val defaultDarkColors = TUIColors(
   onSurface = Color(0xFFFCFCFD),
   surfaceVariant = Color(0xFF2D3543),
   constantLight = Color(0xFFFFFFFF),
-  constantDark = Color(0xFF000000)
+  constantDark = Color(0xFF000000),
+  surfaceVariantHover = Color(0xFFE1E7EF)
 )
 

@@ -1,5 +1,6 @@
 package com.tarkalabs.uicomponents.components
 
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -19,13 +20,13 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.R.drawable
 import com.tarkalabs.uicomponents.components.TextRowStyle.Title
 import com.tarkalabs.uicomponents.components.TextRowStyle.TitleWithDescription
 import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.components.base.TUIIconButton
 import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
 import com.tarkalabs.uicomponents.models.TarkaIcon
+import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -74,7 +75,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   onIconOneClick: () -> Unit = {},
   onIconTwoClick: () -> Unit = {},
   onButtonClick: () -> Unit = {},
-  onInfoIconClick: () -> Unit = {},
+  onInfoIconClick: (() -> Unit)? = {},
   onTextRowClick: (() -> Unit)? = null,
   paddingValues: PaddingValues = PaddingValues(),
   tags: TUITextRowTags = TUITextRowTags()
@@ -129,7 +130,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
           contentDescription = infoIcon.contentDescription,
           tint = TUITheme.colors.utilityOutline,
           modifier = Modifier
-            .clickable(onClick = onInfoIconClick)
+            .then(if(onInfoIconClick == null) Modifier else Modifier.clickable(onClick = onInfoIconClick))
             .height(40.dp)
             .width(24.dp)
             .testTag(tags.infoIconTag)
@@ -175,17 +176,13 @@ data class TUITextRowTags(
   val infoIconTag: String = "TUITextRow_InfoIcon"
 )
 
-@Preview(showBackground = true) @Composable fun TUITextRowPreview() {
-  TUITextRow(
-    title = "",
+@Preview(showBackground = true)
+@Composable
+fun TUITextRowPreview() {
+  TUITextRow(title = "Title",
     style = Title,
-    infoIcon = TarkaIcon(
-      drawable.ic_call_answer,
-      "Call Answer"
-    ).withColor(TUITheme.colors.utilityOutline),
-    iconOne = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
-    iconTwo = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
-    buttonTitle = "Label",
-
-    )
+    infoIcon = TarkaIcons.ChevronRight20Regular,
+    onTextRowClick = {
+      Log.d("TAG", "TUITextRowPreview: ")
+    }, onInfoIconClick = null)
 }
