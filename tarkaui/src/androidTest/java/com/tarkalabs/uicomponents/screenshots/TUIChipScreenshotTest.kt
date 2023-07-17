@@ -50,10 +50,10 @@ class TUIChipScreenshotTest(
         for (chipSize in chipSizes) {
           for (darkTheme in darkThemeValues) {
             val testName = when (type) {
-              is ChipType.Assist -> "ChipSize_${chipSize}_chipType_${type.javaClass.simpleName}_chipType_${type.content?.javaClass?.simpleName.toString()}_darkTheme_${darkTheme}"
-              is ChipType.Filter -> "ChipSize_${chipSize}_chipType_${type.javaClass.simpleName}_chipType_${type.showLeadingCheck}_chipType_${type.showTrailingCaret}_chipType_${type.showTrailingDismiss}_chipType_${type.selected}_darkTheme_${darkTheme}"
-              is ChipType.Input -> "ChipSize_${chipSize}_chipType_${type.javaClass.simpleName}_chipType_${type.showTrailingDismiss}_chipType_${type.content?.javaClass?.simpleName}_darkTheme_${darkTheme}"
-              is ChipType.Suggestion -> "ChipSize_${chipSize}_chipType_${type.javaClass.simpleName}_chipType_${type.image.toString()}_darkTheme_${darkTheme}"
+              is ChipType.Assist -> "ChipSize_${chipSize}_chipType_${type.javaClass.simpleName}_chipTypeContent_${type.content?.javaClass?.simpleName.toString()}_darkTheme_${darkTheme}"
+              is ChipType.Filter -> "ChipSize_${chipSize}_chipType_${type.javaClass.simpleName}_chipTypeShowLeadingCheck_${type.showLeadingCheck}_chipTypeShowTrailingCaret_${type.showTrailingCaret}_chipTypeShowTrailingDismiss_${type.showTrailingDismiss}_chipTypeSelected_${type.selected}_darkTheme_${darkTheme}"
+              is ChipType.Input -> "ChipSize_${chipSize}_chipType_${type.javaClass.simpleName}_chipTypeShowTrailingDismiss_${type.showTrailingDismiss}_chipTypeContent_${type.content?.javaClass?.simpleName}_darkTheme_${darkTheme}"
+              is ChipType.Suggestion -> "ChipSize_${chipSize}_chipType_${type.javaClass.simpleName}_chipTypeImage_${type.image.toString()}_darkTheme_${darkTheme}"
             }
             testData.add(
               arrayOf(
