@@ -29,7 +29,7 @@ class TUITabTest {
   val composeTestRule = createComposeRule()
 
   private val testTags =
-    TUITabTags(parentId = "testParent", tabId = "testTab", pagerId = "testPager")
+    TUITabTags(parentId = "testParent", tabId = "testTab", contentId = "testContent")
 
   @Test
   fun is_passed_tabs_shown() {
@@ -53,7 +53,6 @@ class TUITabTest {
     composeTestRule.onNodeWithTag("Tab 1 ${testTags.tabId}").assertIsDisplayed()
     composeTestRule.onNodeWithTag("Tab 2 ${testTags.tabId}").assertIsDisplayed()
     composeTestRule.onNodeWithTag("Tab 2 ${testTags.tabId}").assertIsDisplayed()
-
   }
 
   @Test
@@ -178,16 +177,15 @@ class TUITabTest {
         onTabChanged = {},
       )
     }
-    composeTestRule.onNodeWithTag(testTags.pagerId).assertDoesNotExist()
-
+    composeTestRule.onNodeWithTag(testTags.contentId + 1).assertDoesNotExist()
   }
 
   @Test
   fun is_pager_enabled_properly_based_on_param() {
     val tabItems = listOf(
-      TabItem(name = "Tab 1", content = { Text(text = "Hola 1") }),
-      TabItem(name = "Tab 2", content = { Text(text = "Hola 1") }),
-      TabItem(name = "Tab 3", content = { Text(text = "Hola 1") }),
+      TabItem(name = "Tab 1", content = { Text(text = "Content 1") }),
+      TabItem(name = "Tab 2", content = { Text(text = "Content 2") }),
+      TabItem(name = "Tab 3", content = { Text(text = "Content 3") }),
     )
 
     composeTestRule.setContent {
@@ -200,7 +198,7 @@ class TUITabTest {
         onTabChanged = {},
       )
     }
-    composeTestRule.onNodeWithTag(testTags.pagerId).assertIsDisplayed()
+    composeTestRule.onNodeWithTag(testTags.contentId + 1).assertIsDisplayed()
   }
 
   @Test
@@ -239,6 +237,51 @@ class TUITabTest {
   }
 
   @Test
+  fun is_proper_tab_shown_when_switching_tab_by_scrolling_pager() {
+    val tabItems = listOf(
+      TabItem(name = "Tab 1", content = { Text(text = "Content 1") }),
+      TabItem(name = "Tab 2", content = { Text(text = "Content 2") }),
+      TabItem(name = "Tab 3", content = { Text(text = "Content 3") }),
+    )
+
+    composeTestRule.setContent {
+      TUITab(
+        isPagerEnabled = true,
+        isUserScrollEnabledOnContent = true,
+        tabItems = tabItems,
+        selectedTabIndex = 0,
+        tags = testTags,
+        onTabChanged = {},
+      )
+    }
+
+    //state before scroll
+    composeTestRule.onNodeWithText("Content 1").assertIsDisplayed()
+    composeTestRule.onNodeWithText("Content 2").assertDoesNotExist()
+    composeTestRule.onNodeWithText("Content 3").assertDoesNotExist()
+
+    //if the scrolling was disabled the page content couldn't change
+    //First Tab Content
+    composeTestRule.onNodeWithTag(testTags.contentId + 0)
+      .performTouchInput { swipeLeft(startX = 450f, endX = 150f) }
+
+    //state after first scroll
+    composeTestRule.onNodeWithText("Content 2").assertIsDisplayed()
+    composeTestRule.onNodeWithText("Content 3").assertIsNotDisplayed()
+    composeTestRule.onNodeWithText("Content 1").assertIsNotDisplayed()
+
+    //Second Scroll to right
+    //Second Tab Content
+    composeTestRule.onNodeWithTag(testTags.contentId + 1)
+      .performTouchInput { swipeRight(startX = 150f, endX = 450f) }
+
+    //state after second scroll
+    composeTestRule.onNodeWithText("Content 1").assertIsDisplayed()
+    composeTestRule.onNodeWithText("Content 2").assertIsNotDisplayed()
+    composeTestRule.onNodeWithText("Content 3").assertIsNotDisplayed()
+  }
+
+  @Test
   fun is_onTabChange_invoked_and_proper_index_passed_while_clicking_tabRow() {
 
     val onTabChange: (Int) -> Unit = mock()
@@ -267,55 +310,6 @@ class TUITabTest {
     clickedTabIndex = 2
     composeTestRule.onNodeWithTag("Tab 3 ${testTags.tabId}").performClick()
     verify(onTabChange).invoke(clickedTabIndex)
-
-  }
-
-  @Test
-  fun is_scrolling_disabled_in_pager_based_on_the_param() {
-
-    val tabItems = listOf(
-      TabItem(name = "Tab 1", content = { Text(text = "Content 1") }),
-      TabItem(name = "Tab 2", content = { Text(text = "Content 2") }),
-      TabItem(name = "Tab 3", content = { Text(text = "Content 3") }),
-    )
-
-    composeTestRule.setContent {
-      TUITab(
-        isPagerEnabled = true,
-        isUserScrollEnabledOnContent = false,
-        tabItems = tabItems,
-        selectedTabIndex = 0,
-        tags = testTags,
-        onTabChanged = {},
-      )
-    }
-
-    //state before scroll
-    composeTestRule.onNodeWithText("Content 1").assertIsDisplayed()
-    composeTestRule.onNodeWithText("Content 2").assertDoesNotExist()
-    composeTestRule.onNodeWithText("Content 3").assertDoesNotExist()
-
-    //if the scrolling was disabled the page content couldn't change
-    composeTestRule.onNodeWithTag(testTags.pagerId).performTouchInput { swipeLeft() }
-
-    //state after scroll
-    composeTestRule.onNodeWithText("Content 1").assertIsDisplayed()
-    composeTestRule.onNodeWithText("Content 2").assertDoesNotExist()
-    composeTestRule.onNodeWithText("Content 3").assertDoesNotExist()
-
-    //second scroll to right
-    composeTestRule.onNodeWithTag(testTags.pagerId).performTouchInput { swipeRight() }
-
-    //state after second scroll
-    composeTestRule.onNodeWithText("Content 1").assertIsDisplayed()
-    composeTestRule.onNodeWithText("Content 2").assertDoesNotExist()
-    composeTestRule.onNodeWithText("Content 3").assertDoesNotExist()
-
-  }
-
-  @Test
-  fun is_proper_tab_shown_when_switching_tab_by_scrolling_pager() {
-
   }
 
   @Test
@@ -323,9 +317,9 @@ class TUITabTest {
     val onTabChange: (Int) -> Unit = mock()
 
     val tabItems = listOf(
-      TabItem(name = "Tab 1", content = {Text(text = "Hola 1")}),
-      TabItem(name = "Tab 2", content = {Text(text = "Hola 1")}),
-      TabItem(name = "Tab 3", content = {Text(text = "Hola 1")}),
+      TabItem(name = "Tab 1", content = { Text(text = "Content 1") }),
+      TabItem(name = "Tab 2", content = { Text(text = "Content 2") }),
+      TabItem(name = "Tab 3", content = { Text(text = "Content 3") }),
     )
 
     composeTestRule.setContent {
@@ -339,8 +333,8 @@ class TUITabTest {
       )
     }
 
-    composeTestRule.onNodeWithTag(testTags.pagerId)
-      .performTouchInput { swipeLeft(startX = 600f, endX = 160f) }
+    composeTestRule.onNodeWithTag(testTags.contentId + 0)
+      .performTouchInput { swipeLeft(startX = 450f, endX = 150f) }
     composeTestRule.waitForIdle()
     verify(onTabChange).invoke(1)
   }
@@ -370,15 +364,61 @@ class TUITabTest {
     composeTestRule.onNodeWithText("Content 2").assertDoesNotExist()
     composeTestRule.onNodeWithText("Content 3").assertDoesNotExist()
 
-    composeTestRule.onNodeWithTag(testTags.pagerId)
-      .performTouchInput { swipeLeft(startX = 600f, endX = 160f) }
+    composeTestRule.onNodeWithTag(testTags.contentId + 0)
+      .performTouchInput { swipeLeft(startX = 450f, endX = 150f) }
 
     composeTestRule.waitForIdle()
     //if the scrolling was enabled the page content will change
 
     //state after scroll
     composeTestRule.onNodeWithText("Content 2").assertIsDisplayed()
-
+    composeTestRule.onNodeWithText("Content 1").assertIsNotDisplayed()
+    // here when content 2 is displayed then sequence tab - content 3 wil initialized but not shown
+    // that's why we used assertIsNotDisplayed instead of assertDoesNotExist
+    composeTestRule.onNodeWithText("Content 3").assertIsNotDisplayed()
   }
 
+  @Test
+  fun is_scrolling_disabled_in_pager_based_on_the_param() {
+
+    val tabItems = listOf(
+      TabItem(name = "Tab 1", content = { Text(text = "Content 1") }),
+      TabItem(name = "Tab 2", content = { Text(text = "Content 2") }),
+      TabItem(name = "Tab 3", content = { Text(text = "Content 3") }),
+    )
+
+    composeTestRule.setContent {
+      TUITab(
+        isPagerEnabled = true,
+        isUserScrollEnabledOnContent = false,
+        tabItems = tabItems,
+        selectedTabIndex = 0,
+        tags = testTags,
+        onTabChanged = {},
+      )
+    }
+
+    //state before scroll
+    composeTestRule.onNodeWithText("Content 1").assertIsDisplayed()
+    composeTestRule.onNodeWithText("Content 2").assertDoesNotExist()
+    composeTestRule.onNodeWithText("Content 3").assertDoesNotExist()
+
+    //if the scrolling was disabled the page content couldn't change
+    composeTestRule.onNodeWithTag(testTags.contentId + 0)
+      .performTouchInput { swipeLeft(startX = 450f, endX = 150f) }
+
+    //state after scroll
+    composeTestRule.onNodeWithText("Content 1").assertIsDisplayed()
+    composeTestRule.onNodeWithText("Content 2").assertDoesNotExist()
+    composeTestRule.onNodeWithText("Content 3").assertDoesNotExist()
+
+    //second scroll to right
+    composeTestRule.onNodeWithTag(testTags.contentId + 0)
+      .performTouchInput { swipeRight(startX = 150f, endX = 450f) }
+
+    //state after second scroll
+    composeTestRule.onNodeWithText("Content 1").assertIsDisplayed()
+    composeTestRule.onNodeWithText("Content 2").assertDoesNotExist()
+    composeTestRule.onNodeWithText("Content 3").assertDoesNotExist()
+  }
 }

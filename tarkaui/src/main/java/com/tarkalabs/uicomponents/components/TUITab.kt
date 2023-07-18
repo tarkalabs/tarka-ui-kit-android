@@ -185,7 +185,7 @@ onTabChanged = {}
           verticalArrangement = Arrangement.Center,
           horizontalAlignment = Alignment.CenterHorizontally,
           modifier = Modifier
-            .testTag(tags.pagerId)
+            .testTag("${tags.contentId}$tabIndex")
         ) {
           tabItems[tabIndex].content.invoke()
         }
@@ -210,7 +210,7 @@ data class TabItem(
 data class TUITabTags(
   val parentId: String = "ScrollableTab",
   val tabId: String = "Tab",
-  val pagerId: String = "HorizontalPager",
+  val contentId: String = "PagerContent",
 )
 
 @Composable @Preview(showBackground = true) fun PreviewTUITabRow() {
