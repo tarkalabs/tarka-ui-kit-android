@@ -16,8 +16,8 @@ import org.junit.runners.Parameterized
 @RunWith(Parameterized::class)
 class TUITabScreenshotTest(
   val testName: String,
-  val darkTheme: Boolean
-  ): ComposeScreenshotComparator() {
+  val darkTheme: Boolean,
+) : ComposeScreenshotComparator() {
 
   companion object {
     @JvmStatic
@@ -170,51 +170,53 @@ class TUITabScreenshotTest(
         )
       },
     )
-
   }
 
+  @Test fun test_without_icon_and_content() =
+    compareScreenshotFor(darkTheme = darkTheme, imageName = "WithoutIcon_$testName") {
+      TUITab(
+        modifier = Modifier.padding(10.dp),
+        isUserScrollEnabledOnContent = false,
+        isPagerEnabled = false,
+        tabItems = tabItems,
+        selectedTabIndex = 0,
+        onTabChanged = {}
+      )
+    }
 
-  @Test fun test_without_icon_and_content() = compareScreenshotFor(darkTheme = darkTheme, imageName = "WithoutIcon_$testName") {
-    TUITab(
-      modifier = Modifier.padding(10.dp),
-      isUserScrollEnabledOnContent = false,
-      isPagerEnabled = false,
-      tabItems = tabItems,
-      selectedTabIndex = 0,
-      onTabChanged = {}
-    )
-  }
+  @Test fun test_with_icon() =
+    compareScreenshotFor(darkTheme = darkTheme, imageName = "WithIcon_$testName") {
+      TUITab(
+        modifier = Modifier.padding(10.dp),
+        isUserScrollEnabledOnContent = false,
+        isPagerEnabled = false,
+        tabItems = tabItemsWithIcons,
+        selectedTabIndex = 1,
+        onTabChanged = {}
+      )
+    }
 
-  @Test fun test_with_icon() = compareScreenshotFor(darkTheme = darkTheme, imageName = "WithIcon_$testName") {
-    TUITab(
-      modifier = Modifier.padding(10.dp),
-      isUserScrollEnabledOnContent = false,
-      isPagerEnabled = false,
-      tabItems = tabItemsWithIcons,
-      selectedTabIndex = 1,
-      onTabChanged = {}
-    )
-  }
+  @Test fun test_with_content() =
+    compareScreenshotFor(darkTheme = darkTheme, imageName = "WithContent_$testName") {
+      TUITab(
+        modifier = Modifier.padding(10.dp),
+        isUserScrollEnabledOnContent = true,
+        isPagerEnabled = true,
+        tabItems = tabItemsWithContent,
+        selectedTabIndex = 2,
+        onTabChanged = {}
+      )
+    }
 
-  @Test fun test_with_content() = compareScreenshotFor(darkTheme = darkTheme, imageName = "WithContent_$testName") {
-    TUITab(
-      modifier = Modifier.padding(10.dp),
-      isUserScrollEnabledOnContent = true,
-      isPagerEnabled = true,
-      tabItems = tabItemsWithContent,
-      selectedTabIndex = 2,
-      onTabChanged = {}
-    )
-  }
-
-  @Test fun test_with_icon_and_content() = compareScreenshotFor(darkTheme = darkTheme, imageName = "WithIconAndContent_$testName") {
-    TUITab(
-      modifier = Modifier.padding(10.dp),
-      isUserScrollEnabledOnContent = true,
-      isPagerEnabled = true,
-      tabItems = tabItemsWithIconAndContent,
-      selectedTabIndex = 2,
-      onTabChanged = {}
-    )
-  }
+  @Test fun test_with_icon_and_content() =
+    compareScreenshotFor(darkTheme = darkTheme, imageName = "WithIconAndContent_$testName") {
+      TUITab(
+        modifier = Modifier.padding(10.dp),
+        isUserScrollEnabledOnContent = true,
+        isPagerEnabled = true,
+        tabItems = tabItemsWithIconAndContent,
+        selectedTabIndex = 2,
+        onTabChanged = {}
+      )
+    }
 }
