@@ -31,6 +31,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * @param singleLine Whether the field should be limited to a single line or not.
  * @param onTextChanged The callback function to be invoked when the text changes. It takes the new text value as a parameter.
  * @param testTags The test tags for testing purposes.
+ * @param maxCharLength the maximum numbers of text allowed in email subject field
  *
  * TUIEmailSubjectField(
     modifier = Modifier,
@@ -48,6 +49,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   keyboardAction: KeyboardActions = KeyboardActions.Default,
   maxLines: Int = 5,
   minLines: Int = 1,
+  maxCharLength: Int = Int.MAX_VALUE,
   singleLine: Boolean = false,
   onTextChanged: (String) -> Unit,
   testTags: TUIEmailSubjectFieldTags = TUIEmailSubjectFieldTags()
@@ -65,7 +67,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     modifier = modifier,
     value = text,
     onValueChange = {
-      onTextChanged(it)
+      if (it.length <= maxCharLength) onTextChanged(it)
     },
     singleLine = singleLine,
     keyboardOptions = keyboardOption,
