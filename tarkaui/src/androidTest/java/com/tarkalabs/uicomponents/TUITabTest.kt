@@ -25,11 +25,14 @@ import org.mockito.kotlin.verify
 
 class TUITabTest {
 
-  @get:Rule val composeTestRule = createComposeRule()
+  @get:Rule
+  val composeTestRule = createComposeRule()
 
-  private val testTags = TUITabTags(parentId = "testParent", tabId = "testTab", pagerId = "testPager")
+  private val testTags =
+    TUITabTags(parentId = "testParent", tabId = "testTab", pagerId = "testPager")
 
-  @Test fun is_passed_tabs_shown() {
+  @Test
+  fun is_passed_tabs_shown() {
     val tabItems = listOf(
       TabItem(name = "Tab 1", content = {}),
       TabItem(name = "Tab 2", content = {}),
@@ -53,7 +56,8 @@ class TUITabTest {
 
   }
 
-  @Test fun is_pass_tabs_shown_with_icon() {
+  @Test
+  fun is_pass_tabs_shown_with_icon() {
 
     val leadingIcon = TarkaIcons.Tabs24Regular
 
@@ -74,14 +78,16 @@ class TUITabTest {
       )
     }
 
-    composeTestRule.onAllNodesWithContentDescription(leadingIcon.contentDescription).assertCountEquals(3)
+    composeTestRule.onAllNodesWithContentDescription(leadingIcon.contentDescription)
+      .assertCountEquals(3)
   }
 
-  @Test fun is_passed_content_shown() {
+  @Test
+  fun is_passed_content_shown() {
     val tabItems = listOf(
-      TabItem(name = "Tab 1", content = { Text(text = "Content 1")}),
-      TabItem(name = "Tab 2", content = { Text(text = "Content 2")}),
-      TabItem(name = "Tab 3", content = { Text(text = "Content 3")}),
+      TabItem(name = "Tab 1", content = { Text(text = "Content 1") }),
+      TabItem(name = "Tab 2", content = { Text(text = "Content 2") }),
+      TabItem(name = "Tab 3", content = { Text(text = "Content 3") }),
     )
 
     composeTestRule.setContent {
@@ -102,11 +108,12 @@ class TUITabTest {
     composeTestRule.onNodeWithText("Content 3").assertDoesNotExist()
   }
 
-  @Test fun is_passed_content_not_shown_when_pager_disabled() {
+  @Test
+  fun is_passed_content_not_shown_when_pager_disabled() {
     val tabItems = listOf(
-      TabItem(name = "Tab 1", content = { Text(text = "Content 1")}),
-      TabItem(name = "Tab 2", content = { Text(text = "Content 2")}),
-      TabItem(name = "Tab 3", content = { Text(text = "Content 3")}),
+      TabItem(name = "Tab 1", content = { Text(text = "Content 1") }),
+      TabItem(name = "Tab 2", content = { Text(text = "Content 2") }),
+      TabItem(name = "Tab 3", content = { Text(text = "Content 3") }),
     )
 
     composeTestRule.setContent {
@@ -126,7 +133,8 @@ class TUITabTest {
     composeTestRule.onNodeWithText("Content 3").assertDoesNotExist()
   }
 
-  @Test fun is_correct_tab_selected_based_on_selected_index_value() {
+  @Test
+  fun is_correct_tab_selected_based_on_selected_index_value() {
     val tabItems = listOf(
       TabItem(name = "Tab 1", content = {}),
       TabItem(name = "Tab 2", content = {}),
@@ -151,7 +159,8 @@ class TUITabTest {
     composeTestRule.onNodeWithTag("Tab 2 ${testTags.tabId}").assertIsNotSelected()
   }
 
-  @Test fun is_pager_disabled_properly_based_on_param() {
+  @Test
+  fun is_pager_disabled_properly_based_on_param() {
 
     val tabItems = listOf(
       TabItem(name = "Tab 1", content = {}),
@@ -173,11 +182,12 @@ class TUITabTest {
 
   }
 
-  @Test fun is_pager_enabled_properly_based_on_param() {
+  @Test
+  fun is_pager_enabled_properly_based_on_param() {
     val tabItems = listOf(
-      TabItem(name = "Tab 1", content = {}),
-      TabItem(name = "Tab 2", content = {}),
-      TabItem(name = "Tab 3", content = {}),
+      TabItem(name = "Tab 1", content = { Text(text = "Hola 1") }),
+      TabItem(name = "Tab 2", content = { Text(text = "Hola 1") }),
+      TabItem(name = "Tab 3", content = { Text(text = "Hola 1") }),
     )
 
     composeTestRule.setContent {
@@ -193,11 +203,12 @@ class TUITabTest {
     composeTestRule.onNodeWithTag(testTags.pagerId).assertIsDisplayed()
   }
 
-  @Test fun is_proper_content_shown_when_switching_tab_by_click_tabRow() {
+  @Test
+  fun is_proper_content_shown_when_switching_tab_by_click_tabRow() {
     val tabItems = listOf(
-      TabItem(name = "Tab 1", content = { Text(text = "Content 1")}),
-      TabItem(name = "Tab 2", content = { Text(text = "Content 2")}),
-      TabItem(name = "Tab 3", content = { Text(text = "Content 3")}),
+      TabItem(name = "Tab 1", content = { Text(text = "Content 1") }),
+      TabItem(name = "Tab 2", content = { Text(text = "Content 2") }),
+      TabItem(name = "Tab 3", content = { Text(text = "Content 3") }),
     )
 
     composeTestRule.setContent {
@@ -227,7 +238,8 @@ class TUITabTest {
     composeTestRule.onNodeWithText("Content 3").assertIsNotDisplayed()
   }
 
-  @Test fun is_onTabChange_invoked_and_proper_index_passed_while_clicking_tabRow() {
+  @Test
+  fun is_onTabChange_invoked_and_proper_index_passed_while_clicking_tabRow() {
 
     val onTabChange: (Int) -> Unit = mock()
 
@@ -258,7 +270,8 @@ class TUITabTest {
 
   }
 
-  @Test fun is_scrolling_disabled_in_pager_based_on_the_param() {
+  @Test
+  fun is_scrolling_disabled_in_pager_based_on_the_param() {
 
     val tabItems = listOf(
       TabItem(name = "Tab 1", content = { Text(text = "Content 1") }),
@@ -300,17 +313,19 @@ class TUITabTest {
 
   }
 
-  @Test fun is_proper_tab_shown_when_switching_tab_by_scrolling_pager() {
+  @Test
+  fun is_proper_tab_shown_when_switching_tab_by_scrolling_pager() {
 
   }
 
-  @Test fun is_onTabChange_invoked_while_scrolling_tabContent() {
+  @Test
+  fun is_onTabChange_invoked_while_scrolling_tabContent() {
     val onTabChange: (Int) -> Unit = mock()
 
     val tabItems = listOf(
-      TabItem(name = "Tab 1", content = {}),
-      TabItem(name = "Tab 2", content = {}),
-      TabItem(name = "Tab 3", content = {}),
+      TabItem(name = "Tab 1", content = {Text(text = "Hola 1")}),
+      TabItem(name = "Tab 2", content = {Text(text = "Hola 1")}),
+      TabItem(name = "Tab 3", content = {Text(text = "Hola 1")}),
     )
 
     composeTestRule.setContent {
@@ -324,13 +339,14 @@ class TUITabTest {
       )
     }
 
-    composeTestRule.onNodeWithTag(testTags.pagerId).performTouchInput{ swipeLeft()  }
+    composeTestRule.onNodeWithTag(testTags.pagerId)
+      .performTouchInput { swipeLeft(startX = 600f, endX = 160f) }
     composeTestRule.waitForIdle()
-    verify(onTabChange.invoke(1))
-
+    verify(onTabChange).invoke(1)
   }
 
-  @Test fun is_scrolling_enabled_in_pager_based_on_the_param() {
+  @Test
+  fun is_scrolling_enabled_in_pager_based_on_the_param() {
 
     val tabItems = listOf(
       TabItem(name = "Tab 1", content = { Text(text = "Content 1") }),
@@ -354,7 +370,8 @@ class TUITabTest {
     composeTestRule.onNodeWithText("Content 2").assertDoesNotExist()
     composeTestRule.onNodeWithText("Content 3").assertDoesNotExist()
 
-    composeTestRule.onNodeWithTag(testTags.pagerId).performTouchInput { swipeLeft() }
+    composeTestRule.onNodeWithTag(testTags.pagerId)
+      .performTouchInput { swipeLeft(startX = 600f, endX = 160f) }
 
     composeTestRule.waitForIdle()
     //if the scrolling was enabled the page content will change

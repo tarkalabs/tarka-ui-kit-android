@@ -144,7 +144,6 @@ onTabChanged = {}
               }
             }
           }) {
-
           Row(
             modifier = Modifier.padding(start = 5.dp),
             horizontalArrangement = Arrangement.Center,
@@ -177,7 +176,6 @@ onTabChanged = {}
     if (isPagerEnabled) {
       HorizontalPager(
         modifier = Modifier
-          .testTag(tags.pagerId)
           .fillMaxHeight(),
         pageCount = tabItems.count(),
         state = pagerState,
@@ -185,7 +183,9 @@ onTabChanged = {}
       ) { tabIndex ->
         Column(
           verticalArrangement = Arrangement.Center,
-          horizontalAlignment = Alignment.CenterHorizontally
+          horizontalAlignment = Alignment.CenterHorizontally,
+          modifier = Modifier
+            .testTag(tags.pagerId)
         ) {
           tabItems[tabIndex].content.invoke()
         }
