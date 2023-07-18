@@ -1,6 +1,5 @@
 package com.tarkalabs.uicomponents.components
 
-import android.widget.Toast
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
@@ -9,8 +8,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
@@ -28,12 +29,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextAlign.Companion
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.models.TarkaIcon
+import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -79,7 +82,7 @@ onTabChanged = {}
   val pagerState = rememberPagerState(selectedTabIndex)
 
   Column(
-    modifier = modifier.fillMaxSize(),
+    modifier = modifier.wrapContentSize(),
     horizontalAlignment = Alignment.CenterHorizontally,
     verticalArrangement = Arrangement.Top,
   ) {
@@ -92,43 +95,21 @@ onTabChanged = {}
       currentTab.value
     }
 
-    /*ScrollableTabRow(
-      modifier = Modifier
-        .testTag(tags.parentId)
-        .wrapContentWidth()
-        .fillMaxWidth()
-        .padding(15.dp)
-        .clip(RoundedCornerShape(30.dp)),
-      selectedTabIndex = currentTabIndex,
-      containerColor = TUITheme.colors.secondaryAlt,
-      indicator = {
-        TabRowDefaults.Indicator(
-          modifier = Modifier
-            .background(Color.Transparent)
-            .height(0.dp),
-          color = Color.Transparent,
-          height = 0.dp,
-        )
-      },
-      divider = {},
-      edgePadding = 0.dp,
-    )*/ 
     Row(
       horizontalArrangement = Arrangement.SpaceAround,
       modifier = Modifier
-        .fillMaxWidth()
-        .padding(15.dp)
+        .wrapContentWidth()
         .horizontalScroll(rememberScrollState())
         .clip(RoundedCornerShape(30.dp))
         .background(TUITheme.colors.secondaryAlt)
-      )
+    )
     {
 
       tabItems.forEachIndexed { index, item ->
 
         Tab(modifier = Modifier
           .testTag("${item.name} ${tags.tabId}")
-          .padding(5.dp)
+          .padding(4.dp)
           .clip(RoundedCornerShape(30.dp))
           .background(if (currentTabIndex == index) TUITheme.colors.secondary else Color.Transparent),
           selected = currentTabIndex == index,
@@ -145,23 +126,27 @@ onTabChanged = {}
             }
           }) {
           Row(
-            modifier = Modifier.padding(start = 5.dp),
+            modifier = Modifier.padding(start = 6.dp),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
           ) {
 
             item.leadingTabIcon?.let {
               Icon(
+                modifier = Modifier.size(20.dp),
                 painter = painterResource(id = it.iconRes),
                 contentDescription = it.contentDescription,
                 tint = if (currentTabIndex == index) TUITheme.colors.onSecondary else TUITheme.colors.onSurface,
               )
             }
 
-            HorizontalSpacer(space = 4)
-
             Text(
-              modifier = Modifier.padding(10.dp),
+              modifier = Modifier.padding(
+                start = if (item.leadingTabIcon == null) 16.dp else 4.dp,
+                end = 16.dp,
+                top = 6.dp,
+                bottom = 6.dp
+              ),
               text = item.name,
               style = TUITheme.typography.button6,
               color = if (currentTabIndex == index) TUITheme.colors.onSecondary else TUITheme.colors.onSurface,
@@ -172,6 +157,8 @@ onTabChanged = {}
       }
 
     }
+
+    VerticalSpacer(space = 5)
 
     if (isPagerEnabled) {
       HorizontalPager(
@@ -215,22 +202,121 @@ data class TUITabTags(
 
 @Composable @Preview(showBackground = true) fun PreviewTUITabRow() {
 
-  val contentModifier = Modifier.fillMaxHeight()
-  val tabItems = listOf(TabItem("Tab 1") { Text(modifier = contentModifier, text = "Content 1") },
-    TabItem("Tab 2") { Text(modifier = contentModifier, text = "Content 2") },
+  val tabItems = listOf(
+    TabItem("Tab") {},
+    TabItem("Tab") {},
+    TabItem("Tab") {},
+    TabItem("Tab") {},
+    TabItem("Tab") {},
+    TabItem("Tab") {},
+    TabItem("Tab") {},
+    TabItem("Tab") {},
+  )
+  val tabItemsWithIcons = listOf(
+    TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
+    TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
+    TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
+    TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
+    TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
+    TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
+    TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
+    TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
+  )
+  val tabItemsWithContent = listOf(
+    TabItem("Tab") {
+      Text(
+        modifier = Modifier.fillMaxSize(),
+        text = "Content 1",
+        textAlign = TextAlign.Center
+      )
+    },
+    TabItem("Tab") {
+      Text(
+        modifier = Modifier.fillMaxSize(),
+        text = "Content 2",
+        textAlign = Companion.Center
+      )
+    },
+    TabItem("Tab") {
+      Text(
+        modifier = Modifier.fillMaxSize(),
+        text = "Content 3",
+        textAlign = Companion.Center
+      )
+    },
+    TabItem("Tab") {
+      Text(
+        modifier = Modifier.fillMaxSize(),
+        text = "Content 4",
+        textAlign = Companion.Center
+      )
+    },
+    TabItem("Tab") {
+      Text(
+        modifier = Modifier.fillMaxSize(),
+        text = "Content 5",
+        textAlign = Companion.Center
+      )
+    },
+    TabItem("Tab") {
+      Text(
+        modifier = Modifier.fillMaxSize(),
+        text = "Content 6",
+        textAlign = Companion.Center
+      )
+    },
+    TabItem("Tab") {
+      Text(
+        modifier = Modifier.fillMaxSize(),
+        text = "Content 7",
+        textAlign = Companion.Center
+      )
+    },
+    TabItem("Tab") {
+      Text(
+        modifier = Modifier.fillMaxSize(),
+        text = "Content 8",
+        textAlign = Companion.Center
+      )
+    },
   )
 
-  val context = LocalContext.current
+  Column(
+    modifier = Modifier.fillMaxSize(),
+    verticalArrangement = Arrangement.Top,
+    horizontalAlignment = Alignment.CenterHorizontally,
+  ) {
 
-  val scope = rememberCoroutineScope()
+    TUITab(
+      modifier = Modifier.padding(10.dp),
+      isUserScrollEnabledOnContent = false,
+      isPagerEnabled = false,
+      tabItems = tabItems,
+      selectedTabIndex = 1,
+      onTabChanged = {}
+    )
 
-  TUITab(isUserScrollEnabledOnContent = true,
-    isPagerEnabled = true,
-    tabItems = tabItems,
-    selectedTabIndex = 1,
-    onTabChanged = {
-      scope.launch {
-        Toast.makeText(context, "Tab : ${it + 1} Changed", Toast.LENGTH_SHORT).show()
-      }
-    })
+    VerticalSpacer(space = 10)
+
+    TUITab(
+      modifier = Modifier.padding(10.dp),
+      isUserScrollEnabledOnContent = false,
+      isPagerEnabled = false,
+      tabItems = tabItemsWithIcons,
+      selectedTabIndex = 1,
+      onTabChanged = {}
+    )
+
+    VerticalSpacer(space = 10)
+
+    TUITab(
+      modifier = Modifier.padding(10.dp),
+      isUserScrollEnabledOnContent = true,
+      isPagerEnabled = true,
+      tabItems = tabItemsWithContent,
+      selectedTabIndex = 1,
+      onTabChanged = {}
+    )
+
+  }
 }
