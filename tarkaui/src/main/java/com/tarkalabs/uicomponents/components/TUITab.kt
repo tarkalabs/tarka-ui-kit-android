@@ -200,7 +200,9 @@ data class TUITabTags(
   val contentId: String = "PagerContent",
 )
 
-@Composable @Preview(showBackground = true) fun PreviewTUITabRow() {
+@Composable
+@Preview(showBackground = true)
+fun PreviewTUITabRow() {
 
   val tabItems = listOf(
     TabItem("Tab") {},
@@ -281,6 +283,7 @@ data class TUITabTags(
     },
   )
 
+  TUITheme() {
   Column(
     modifier = Modifier.fillMaxSize(),
     verticalArrangement = Arrangement.Top,
@@ -318,5 +321,6 @@ data class TUITabTags(
       onTabChanged = {}
     )
 
+  }
   }
 }
