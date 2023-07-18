@@ -1,6 +1,6 @@
 package com.tarkalabs.uicomponents.screenshots
 
-import com.tarkalabs.uicomponents.components.TUIInputFieldStatus
+import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.runner.RunWith

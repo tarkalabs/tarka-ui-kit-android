@@ -44,7 +44,7 @@ class TUIChipTest {
 
     composable.onNodeWithTag("Assist").assertIsDisplayed()
     composable.onNodeWithText("Assist chip").assertIsDisplayed()
-    composable.onNodeWithTag(Tags.TAG_AVATAR, useUnmergedTree = true).assertIsDisplayed()
+    composable.onNodeWithTag("TUIAvatar", useUnmergedTree = true).assertIsDisplayed()
     composable.onNodeWithText("Assist chip").performClick()
     verify(onClick).invoke()
   }
@@ -91,6 +91,6 @@ class TUIChipTest {
         )
     }
 
-    composable.onNodeWithTag(Tags.TAG_AVATAR, useUnmergedTree = true).assertIsDisplayed()
+    composable.onNodeWithTag("TUIAvatar", useUnmergedTree = true).assertIsDisplayed()
   }
 }
