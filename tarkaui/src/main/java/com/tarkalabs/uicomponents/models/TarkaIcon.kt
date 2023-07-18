@@ -21,6 +21,7 @@ import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_chevron_down_20_re
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_chevron_left_20_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_chevron_left_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_chevron_up_20_regular
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_circle_12_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_copy_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_delete_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_dismiss_16_filled
@@ -99,7 +100,8 @@ object TarkaIcons {
   val Info20Filled = TarkaIcon(ic_fluent_chat_help_20_filled, "Information")
   val ChatBubblesQuestion24Regular = TarkaIcon(ic_fluent_chat_bubbles_question_24_regular, "FAQ")
   val CaretDown20Filled = TarkaIcon(ic_fluent_caret_down_20_filled, "Caret Down")
-
+  val Circle12Regular = TarkaIcon(ic_fluent_circle_12_regular, "Circle")
   val AddCircle24Regular =
     TarkaIcon(ic_fluent_add_circle_24_regular, "Add")
+
 }
