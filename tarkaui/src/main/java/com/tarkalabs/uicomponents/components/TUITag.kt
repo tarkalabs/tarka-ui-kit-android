@@ -110,7 +110,7 @@ fun TUITag(
   val horizontalSpace = when (tagSize) {
     S -> 4
     M -> 6
-    L -> 10
+    L -> 8
   }
 
   val backgroundColor = when (tagType) {
@@ -132,7 +132,7 @@ fun TUITag(
   }
 
   Surface(
-    modifier = modifier.padding(4.dp)
+     modifier = modifier
       .clip(RoundedCornerShape(size = 4.dp))
       .testTag(tags.parentTag)
       .clickable { onClick.invoke() },
@@ -150,6 +150,7 @@ fun TUITag(
             painter = painterResource(id = leadingIcon.iconRes),
             contentDescription = leadingIcon.contentDescription,
             tint = iconTint ?: Color.Transparent
+
           )
           HorizontalSpacer(horizontalSpace)
         }
