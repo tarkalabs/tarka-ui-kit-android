@@ -14,7 +14,7 @@ import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTouchInput
 import androidx.compose.ui.test.swipeLeft
 import androidx.compose.ui.test.swipeRight
-import com.tarkalabs.uicomponents.components.TUITab
+import com.tarkalabs.uicomponents.components.TUITabBar
 import com.tarkalabs.uicomponents.components.TUITabTags
 import com.tarkalabs.uicomponents.components.TabItem
 import com.tarkalabs.uicomponents.models.TarkaIcons
@@ -40,7 +40,7 @@ class TUITabTest {
     )
 
     composeTestRule.setContent {
-      TUITab(
+      TUITabBar(
         isPagerEnabled = false,
         isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
@@ -67,7 +67,7 @@ class TUITabTest {
     )
 
     composeTestRule.setContent {
-      TUITab(
+      TUITabBar(
         isPagerEnabled = false,
         isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
@@ -90,7 +90,7 @@ class TUITabTest {
     )
 
     composeTestRule.setContent {
-      TUITab(
+      TUITabBar(
         isPagerEnabled = true,
         isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
@@ -116,7 +116,7 @@ class TUITabTest {
     )
 
     composeTestRule.setContent {
-      TUITab(
+      TUITabBar(
         isPagerEnabled = false,
         isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
@@ -141,7 +141,7 @@ class TUITabTest {
     )
 
     composeTestRule.setContent {
-      TUITab(
+      TUITabBar(
         isPagerEnabled = false,
         isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
@@ -168,7 +168,7 @@ class TUITabTest {
     )
 
     composeTestRule.setContent {
-      TUITab(
+      TUITabBar(
         isPagerEnabled = false,
         isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
@@ -189,7 +189,7 @@ class TUITabTest {
     )
 
     composeTestRule.setContent {
-      TUITab(
+      TUITabBar(
         isPagerEnabled = true,
         isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
@@ -210,7 +210,7 @@ class TUITabTest {
     )
 
     composeTestRule.setContent {
-      TUITab(
+      TUITabBar(
         isPagerEnabled = true,
         isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
@@ -245,7 +245,7 @@ class TUITabTest {
     )
 
     composeTestRule.setContent {
-      TUITab(
+      TUITabBar(
         isPagerEnabled = true,
         isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
@@ -293,7 +293,7 @@ class TUITabTest {
     )
 
     composeTestRule.setContent {
-      TUITab(
+      TUITabBar(
         isPagerEnabled = true,
         isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
@@ -323,7 +323,7 @@ class TUITabTest {
     )
 
     composeTestRule.setContent {
-      TUITab(
+      TUITabBar(
         isPagerEnabled = true,
         isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
@@ -349,7 +349,7 @@ class TUITabTest {
     )
 
     composeTestRule.setContent {
-      TUITab(
+      TUITabBar(
         isPagerEnabled = true,
         isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
@@ -388,7 +388,7 @@ class TUITabTest {
     )
 
     composeTestRule.setContent {
-      TUITab(
+      TUITabBar(
         isPagerEnabled = true,
         isUserScrollEnabledOnContent = false,
         tabItems = tabItems,

@@ -6,7 +6,7 @@ import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.components.TUITab
+import com.tarkalabs.uicomponents.components.TUITabBar
 import com.tarkalabs.uicomponents.components.TabItem
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Test
@@ -174,7 +174,7 @@ class TUITabScreenshotTest(
 
   @Test fun test_without_icon_and_content() =
     compareScreenshotFor(darkTheme = darkTheme, imageName = "WithoutIcon_$testName") {
-      TUITab(
+      TUITabBar(
         modifier = Modifier.padding(10.dp),
         isUserScrollEnabledOnContent = false,
         isPagerEnabled = false,
@@ -186,7 +186,7 @@ class TUITabScreenshotTest(
 
   @Test fun test_with_icon() =
     compareScreenshotFor(darkTheme = darkTheme, imageName = "WithIcon_$testName") {
-      TUITab(
+      TUITabBar(
         modifier = Modifier.padding(10.dp),
         isUserScrollEnabledOnContent = false,
         isPagerEnabled = false,
@@ -198,7 +198,7 @@ class TUITabScreenshotTest(
 
   @Test fun test_with_content() =
     compareScreenshotFor(darkTheme = darkTheme, imageName = "WithContent_$testName") {
-      TUITab(
+      TUITabBar(
         modifier = Modifier.padding(10.dp),
         isUserScrollEnabledOnContent = true,
         isPagerEnabled = true,
@@ -210,7 +210,7 @@ class TUITabScreenshotTest(
 
   @Test fun test_with_icon_and_content() =
     compareScreenshotFor(darkTheme = darkTheme, imageName = "WithIconAndContent_$testName") {
-      TUITab(
+      TUITabBar(
         modifier = Modifier.padding(10.dp),
         isUserScrollEnabledOnContent = true,
         isPagerEnabled = true,

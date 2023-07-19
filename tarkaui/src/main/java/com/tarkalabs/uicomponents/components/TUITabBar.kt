@@ -64,7 +64,7 @@ onTabChanged = {}
 )
  */
 
-@OptIn(ExperimentalFoundationApi::class) @Composable fun TUITab(
+@OptIn(ExperimentalFoundationApi::class) @Composable fun TUITabBar(
   modifier: Modifier = Modifier,
   isPagerEnabled: Boolean,
   isUserScrollEnabledOnContent: Boolean,
@@ -100,17 +100,13 @@ onTabChanged = {}
       modifier = Modifier
         .wrapContentWidth()
         .horizontalScroll(rememberScrollState())
-        .clip(RoundedCornerShape(30.dp))
-        .background(TUITheme.colors.secondaryAlt)
-    )
-    {
-
+        .background(color = TUITheme.colors.secondaryAlt, shape = RoundedCornerShape(32.dp))
+    ) {
       tabItems.forEachIndexed { index, item ->
-
         Tab(modifier = Modifier
           .testTag("${item.name} ${tags.tabId}")
           .padding(4.dp)
-          .clip(RoundedCornerShape(30.dp))
+          .clip(RoundedCornerShape(32.dp))
           .background(if (currentTabIndex == index) TUITheme.colors.secondary else Color.Transparent),
           selected = currentTabIndex == index,
           selectedContentColor = TUITheme.colors.secondary,
@@ -290,7 +286,7 @@ fun PreviewTUITabRow() {
     horizontalAlignment = Alignment.CenterHorizontally,
   ) {
 
-    TUITab(
+    TUITabBar(
       modifier = Modifier.padding(10.dp),
       isUserScrollEnabledOnContent = false,
       isPagerEnabled = false,
@@ -301,7 +297,7 @@ fun PreviewTUITabRow() {
 
     VerticalSpacer(space = 10)
 
-    TUITab(
+    TUITabBar(
       modifier = Modifier.padding(10.dp),
       isUserScrollEnabledOnContent = false,
       isPagerEnabled = false,
@@ -312,7 +308,7 @@ fun PreviewTUITabRow() {
 
     VerticalSpacer(space = 10)
 
-    TUITab(
+    TUITabBar(
       modifier = Modifier.padding(10.dp),
       isUserScrollEnabledOnContent = true,
       isPagerEnabled = true,
