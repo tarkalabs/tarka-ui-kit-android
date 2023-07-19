@@ -2,12 +2,10 @@ package com.tarkalabs.uicomponents.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
@@ -94,6 +92,106 @@ fun TUITag(
     S -> Modifier.size(16.dp)
     M, L -> Modifier.size(20.dp)
   }
+  val titleTextModifier = when(tagSize) {
+    S -> when {
+      leadingIcon == null && trailingIcon == null -> {
+        //without icon variant
+        Modifier.padding(start = 8.dp, end = 8.dp, top = 3.dp, bottom = 3.dp)
+      }
+
+      leadingIcon != null -> {
+        //leading icon variant
+        Modifier.padding(start = 4.dp, end = 10.dp, top = 3.dp, bottom = 3.dp)
+      }
+
+      else -> {
+        //trailing icon variant
+        Modifier.padding(start = 10.dp, end = 4.dp, top = 3.dp, bottom = 3.dp)
+      }
+    }
+    M -> when {
+      leadingIcon == null && trailingIcon == null -> {
+        //without icon variant
+        Modifier.padding(start = 12.dp, end = 12.dp, top = 6.dp, bottom = 6.dp)
+      }
+
+      leadingIcon != null -> {
+        //leading icon variant
+        Modifier.padding(start = 6.dp, end = 12.dp, top = 6.dp, bottom = 6.dp)
+      }
+
+      else -> {
+        //trailing icon variant
+        Modifier.padding(start = 12.dp, end = 6.dp, top = 6.dp, bottom = 6.dp)
+      }
+    }
+    L -> when {
+      leadingIcon == null && trailingIcon == null -> {
+        //without icon variant
+        Modifier.padding(start = 16.dp, end = 16.dp, top = 9.dp, bottom = 9.dp)
+      }
+
+      leadingIcon != null -> {
+        //leading icon variant
+        Modifier.padding(start = 8.dp, end = 16.dp, top = 9.dp, bottom = 9.dp)
+      }
+
+      else -> {
+        //trailing icon variant
+        Modifier.padding(start = 16.dp, end = 8.dp, top = 9.dp, bottom = 9.dp)
+      }
+    }
+  }
+  val rowModifier = when(tagSize) {
+    S -> when {
+      leadingIcon == null && trailingIcon == null -> {
+        //without icon variant
+        Modifier
+      }
+
+      leadingIcon != null -> {
+        //leading icon variant
+        Modifier.padding(start = 6.dp)
+      }
+
+      else -> {
+        //trailing icon variant
+        Modifier.padding(end = 6.dp)
+      }
+    }
+    M -> when {
+      leadingIcon == null && trailingIcon == null -> {
+        //without icon variant
+        Modifier
+      }
+
+      leadingIcon != null -> {
+        //leading icon variant
+        Modifier.padding(start = 8.dp)
+      }
+
+      else -> {
+        //trailing icon variant
+        Modifier.padding(end = 8.dp)
+      }
+    }
+    L -> when {
+      leadingIcon == null && trailingIcon == null -> {
+        //without icon variant
+        Modifier
+      }
+
+      leadingIcon != null -> {
+        //leading icon variant
+        Modifier.padding(start = 12.dp)
+      }
+
+      else -> {
+        //trailing icon variant
+        Modifier.padding(end = 12.dp)
+      }
+    }
+  }
 
   val titleStyle = when (tagSize) {
     S -> TUITheme.typography.button8
@@ -101,30 +199,16 @@ fun TUITag(
     L -> TUITheme.typography.button6
   }
 
-  val contentPadding = when (tagSize) {
-    S -> 6.dp
-    M -> 8.dp
-    L -> 10.dp
-  }
-
-  val horizontalSpace = when (tagSize) {
-    S -> 4
-    M -> 6
-    L -> 8
-  }
-
   val backgroundColor = when (tagType) {
     LOW -> TUITheme.colors.secondaryAlt
     HIGH -> TUITheme.colors.secondary
     is CUSTOM -> tagType.bgContentColor
   }
-
   val titleColor = when (tagType) {
     LOW -> TUITheme.colors.onSecondaryAlt
     HIGH -> TUITheme.colors.onSecondary
     is CUSTOM -> tagType.titleColor
   }
-
   val iconTint = when (tagType) {
     LOW -> TUITheme.colors.onSecondaryAlt
     HIGH -> TUITheme.colors.onSecondary
@@ -138,9 +222,8 @@ fun TUITag(
       .clickable { onClick.invoke() },
     color = backgroundColor
   ) {
-    Box(modifier = Modifier.padding(contentPadding)) {
       Row(
-        horizontalArrangement = Arrangement.SpaceBetween,
+        modifier = rowModifier,
         verticalAlignment = Alignment.CenterVertically
       ) {
 
@@ -150,13 +233,11 @@ fun TUITag(
             painter = painterResource(id = leadingIcon.iconRes),
             contentDescription = leadingIcon.contentDescription,
             tint = iconTint ?: Color.Transparent
-
           )
-          HorizontalSpacer(horizontalSpace)
         }
 
         Text(
-          modifier = Modifier.wrapContentSize(),
+          modifier = titleTextModifier,
           text = title,
           color = titleColor,
           style = titleStyle,
@@ -164,9 +245,6 @@ fun TUITag(
         )
 
         trailingIcon?.let {
-
-          HorizontalSpacer(horizontalSpace)
-
           Icon(
             modifier = iconModifier,
             painter = painterResource(id = trailingIcon.iconRes),
@@ -176,7 +254,6 @@ fun TUITag(
         }
 
       }
-    }
   }
 }
 
