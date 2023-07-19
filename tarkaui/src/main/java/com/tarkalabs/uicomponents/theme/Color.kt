@@ -41,15 +41,16 @@ open class TUIColors(
   val surface50: Color,
   val onSurface: Color,
   val surfaceVariant: Color,
+  val surfaceVariantHover: Color,
   val constantLight: Color,
   val constantDark: Color,
 )
 
 val LocalTUIColors = staticCompositionLocalOf {
-  lightColors
+  defaultLightColors
 }
 
-val lightColors = TUIColors(
+val defaultLightColors = TUIColors(
   primary = Color(0xFF0052D6),
   onPrimary = Color(0xFFF5F9FF),
   primaryAlt = Color(0xFFD5E2F6),
@@ -86,10 +87,11 @@ val lightColors = TUIColors(
   onSurface = Color(0xFF1A1B1F),
   surfaceVariant = Color(0xFFEBEFF4),
   constantLight = Color(0xFFFFFFFF),
-  constantDark = Color(0xFF000000)
+  constantDark = Color(0xFF000000),
+  surfaceVariantHover = Color(0xFFE1E7EF)
 )
 
-val darkColors = TUIColors(
+val defaultDarkColors = TUIColors(
   primary = Color(0xFF5294FF),
   onPrimary = Color(0xFFFAFCFF),
   primaryAlt = Color(0xFF293B56),
@@ -126,6 +128,7 @@ val darkColors = TUIColors(
   onSurface = Color(0xFFFCFCFD),
   surfaceVariant = Color(0xFF2D3543),
   constantLight = Color(0xFFFFFFFF),
-  constantDark = Color(0xFF000000)
+  constantDark = Color(0xFF000000),
+  surfaceVariantHover = Color(0xFFE1E7EF)
 )
 

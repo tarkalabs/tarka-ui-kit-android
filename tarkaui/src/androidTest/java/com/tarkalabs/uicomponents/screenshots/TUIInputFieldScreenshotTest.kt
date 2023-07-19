@@ -1,16 +1,8 @@
 package com.tarkalabs.uicomponents.screenshots
 
-import androidx.compose.foundation.focusable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.test.onNodeWithTag
-import androidx.compose.ui.test.performClick
-import com.tarkalabs.uicomponents.components.TUIInputField
-import com.tarkalabs.uicomponents.components.TUIInputFieldStatus
+import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
-import com.tarkalabs.uicomponents.theme.TUITheme
-import org.junit.Ignore
-import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 
@@ -30,8 +22,8 @@ class TUIInputFieldScreenshotTest(
     @JvmStatic
     @Parameterized.Parameters
     fun data(): Collection<Array<Any?>> {
-      val leadingIconValues = listOf(null, TarkaIcons.CheckMark)
-      val trailingIconValues = listOf(null, TarkaIcons.DismissFilled)
+      val leadingIconValues = listOf(null, TarkaIcons.CheckMark16Filled)
+      val trailingIconValues = listOf(null, TarkaIcons.Dismiss16Filled)
       val labelValues = listOf(null, "Label")
       val inputTextValues = listOf("", "Input Text")
       val helperMessageValues = listOf(null, "Helper / hint message goes here.")

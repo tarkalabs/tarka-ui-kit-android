@@ -26,7 +26,7 @@ class TUINavigationRowTest {
 
     composable.setContent {
       TUINavigationRow(title = "Label",
-        leadingIcon = TarkaIcons.CheckMark,
+        leadingIcon = TarkaIcons.CheckMark16Filled,
         onClick = {},
         tags = TAGS,
         content = {
@@ -44,7 +44,7 @@ class TUINavigationRowTest {
     composable.setContent {
       TUINavigationRow(
         title = "Label",
-        leadingIcon = TarkaIcons.Copy,
+        leadingIcon = TarkaIcons.Copy24Regular,
         onClick = onClick,
         tags = TAGS,
       )

@@ -14,7 +14,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.Tags
 import com.tarkalabs.uicomponents.components.TUIStatus.OFF
 import com.tarkalabs.uicomponents.components.TUIStatus.ON
 import com.tarkalabs.uicomponents.theme.TUITheme
@@ -60,8 +59,8 @@ enum class TUIStatus {
 }
 
 data class TUIStatusIndicatorTags(
-  val parentTag: String = Tags.TAG_STATUS_INDICATOR,
-  val circleTag: String = Tags.TAG_STATUS_INDICATOR_CIRCLE,
+  val parentTag: String = "TUIStatusIndicator",
+  val circleTag: String = "TUIStatusIndicator_Cirlce",
 )
 
 @Preview(showBackground = true) @Composable fun PreviewTUIStatus() {
