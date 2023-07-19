@@ -24,6 +24,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.components.HorizontalSpacer
+import com.tarkalabs.uicomponents.components.base.TUIInputFieldIconContentType.Icon
+import com.tarkalabs.uicomponents.components.base.TUIInputFieldIconContentType.Text
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Alert
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Error
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Normal
@@ -36,6 +38,10 @@ enum class TUIInputFieldStatus {
   Normal, Error, Success, Alert,
 }
 
+sealed class TUIInputFieldIconContentType {
+  data class Icon(val icon: TarkaIcon) : TUIInputFieldIconContentType()
+  data class Text(val text: String) : TUIInputFieldIconContentType()
+}
 /**
  * A  Composable function that renders an text field with various options such as label, icons, status, and helper text.
  *
@@ -57,8 +63,8 @@ fun TUIInputField(
   onValueChange: (String) -> Unit,
   status: TUIInputFieldStatus,
   enabled: Boolean = true,
-  leadingIcon: TarkaIcon? = null,
-  trailingIcon: TarkaIcon? = null,
+  leadingIcon: TUIInputFieldIconContentType? = null,
+  trailingIcon: TUIInputFieldIconContentType? = null,
   helperMessage: String? = null,
   testTags: TUIInputFieldTags = TUIInputFieldTags(),
   keyboardOption: KeyboardOptions = KeyboardOptions.Default,
@@ -74,26 +80,44 @@ fun TUIInputField(
   val colors = colorsFor(status)
 
   val leadingIconLambda: @Composable () -> Unit = {
-    if (leadingIcon != null) Icon(
-      painter = painterResource(id = leadingIcon.iconRes),
-      contentDescription = leadingIcon.contentDescription,
-      modifier = Modifier.testTag(testTags.leadingIconTag),
-      tint = TUITheme.colors.inputText
-    )
+    if (leadingIcon != null)
+      when(leadingIcon){
+        is Icon -> Icon(
+          painter = painterResource(id = leadingIcon.icon.iconRes),
+          contentDescription = leadingIcon.icon.contentDescription,
+          modifier = Modifier.testTag(testTags.leadingIconTag),
+          tint = TUITheme.colors.inputText
+        )
+        is Text ->  Text(
+          text = leadingIcon.text.take(1),
+          style = TUITheme.typography.body5,
+          color = TUITheme.colors.inputDim
+        )
+      }
+
   }
   val tailingIconLambda: @Composable () -> Unit = {
-    if (trailingIcon != null) Icon(
-      painter = painterResource(id = trailingIcon.iconRes),
-      contentDescription = trailingIcon.contentDescription,
-      modifier = Modifier.testTag(testTags.trailingIconTag),
-      tint = TUITheme.colors.inputText
-    )
+    if (trailingIcon != null)
+      when(trailingIcon){
+        is Icon -> Icon(
+          painter = painterResource(id = trailingIcon.icon.iconRes),
+          contentDescription = trailingIcon.icon.contentDescription,
+          modifier = Modifier.testTag(testTags.trailingIconTag),
+          tint = TUITheme.colors.inputText
+        )
+        is Text ->  Text(
+          text = trailingIcon.text.take(1),
+          style = TUITheme.typography.body5,
+          color = TUITheme.colors.inputTextDim
+        )
+      }
+
   }
   val labelLambda: @Composable () -> Unit = {
     if (label != null) Text(
       text = label,
-      style = TUITheme.typography.body6,
-      color = TUITheme.colors.inputDim,
+      style = TUITheme.typography.body8,
+      color = TUITheme.colors.inputTextDim,
       modifier = Modifier.testTag(testTags.labelTag)
     )
   }
@@ -187,8 +211,8 @@ fun TUIPreview() {
       mutableStateOf("hello world")
     }
     TUIInputField(
-      leadingIcon = TarkaIcons.Timer20Regular,
-      trailingIcon = TarkaIcons.Timer20Regular,
+      leadingIcon = TUIInputFieldIconContentType.Text("$"),
+      trailingIcon = TUIInputFieldIconContentType.Icon(TarkaIcons.Timer20Regular),
       value = textValue,
       onValueChange = { textValue = it },
       status = Success
@@ -204,8 +228,8 @@ fun TUIPreviewDark() {
       mutableStateOf("hello world")
     }
     TUIInputField(
-      leadingIcon = TarkaIcons.Timer20Regular,
-      trailingIcon = TarkaIcons.Timer20Regular,
+      leadingIcon = TUIInputFieldIconContentType.Text("$"),
+      trailingIcon = TUIInputFieldIconContentType.Icon(TarkaIcons.Timer20Regular),
       value = textValue,
       onValueChange = { textValue = it },
       status = Success

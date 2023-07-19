@@ -7,8 +7,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -92,16 +94,6 @@ enum class IconButtonStyle {
     .width(buttonSize.size)
     .clip(CircleShape)
 
-  val iconModifier = when (buttonSize) {
-    XS, S, M -> Modifier
-      .height(12.dp)
-      .width(12.dp)
-
-    L, XL -> Modifier
-      .size(24.dp)
-      .size(24.dp)
-
-  }
   when (iconButtonStyle) {
     GHOST -> {
       val contentColor = icon.tintColor ?: TUITheme.colors.onSurface
@@ -150,7 +142,7 @@ enum class IconButtonStyle {
     enabled = enabled
   ) {
     Icon(
-      modifier = iconModifier,
+      modifier = Modifier.heightIn(max = 24.dp).widthIn(max = 24.dp),
       painter = painterResource(id = icon.iconRes),
       contentDescription = icon.contentDescription
     )
