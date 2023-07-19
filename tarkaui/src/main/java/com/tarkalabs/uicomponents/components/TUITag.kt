@@ -91,8 +91,8 @@ fun TUITag(
 ) {
 
   val iconModifier = when (tagSize) {
-    S -> Modifier.size(12.dp)
-    M, L -> Modifier.size(16.dp)
+    S -> Modifier.size(16.dp)
+    M, L -> Modifier.size(20.dp)
   }
 
   val titleStyle = when (tagSize) {
