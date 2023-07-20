@@ -11,8 +11,8 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.components.base.TUIInputField
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldIconContentType.Icon
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldIconContentType.Text
+import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Icon
+import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Text
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Normal
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldTags
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldType.LookupInputField

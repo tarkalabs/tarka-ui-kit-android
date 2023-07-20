@@ -28,8 +28,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.components.HorizontalSpacer
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldIconContentType.Icon
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldIconContentType.Text
+import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Icon
+import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Text
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Alert
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Error
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Normal
@@ -53,9 +53,9 @@ enum class TUIInputFieldType {
   InputField, LookupInputField
 }
 
-sealed class TUIInputFieldIconContentType {
-  data class Icon(val icon: TarkaIcon) : TUIInputFieldIconContentType()
-  data class Text(val text: String) : TUIInputFieldIconContentType()
+sealed class TUIInputFieldContentType {
+  data class Icon(val icon: TarkaIcon) : TUIInputFieldContentType()
+  data class Text(val text: String) : TUIInputFieldContentType()
 }
 /**
  * A  Composable function that renders an text field with various options such as label, icons, status, and helper text.
@@ -79,8 +79,8 @@ fun TUIInputField(
   onValueChange: (String) -> Unit,
   status: TUIInputFieldStatus,
   enabled: Boolean = true,
-  leadingContent: TUIInputFieldIconContentType? = null,
-  trailingContent: TUIInputFieldIconContentType? = null,
+  leadingContent: TUIInputFieldContentType? = null,
+  trailingContent: TUIInputFieldContentType? = null,
   helperMessage: String? = null,
   testTags: TUIInputFieldTags = TUIInputFieldTags(),
   keyboardOption: KeyboardOptions = KeyboardOptions.Default,
