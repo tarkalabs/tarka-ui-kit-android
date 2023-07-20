@@ -65,8 +65,8 @@ sealed class TUIInputFieldIconContentType {
  * @param label The label text to display above the input field.
  * @param onValueChange A callback function invoked when the value of the input field changes.
  * @param status The status of the input field, such as Enabled, Disabled, Error, etc.
- * @param leadingIcon The icon to display on the leading side of the input field.
- * @param trailingIcon The icon to display on the trailing side of the input field.
+ * @param leadingContent The icon to display on the leading side of the input field.
+ * @param trailingContent The icon to display on the trailing side of the input field.
  * @param helperMessage The helper message to display below the input field.
  * @param testTags Tags for testing purposes to identify specific elements within the input field.
  * @param inputFieldTye Set the type of InputField either NormalInputField or LookupInputField
@@ -79,8 +79,8 @@ fun TUIInputField(
   onValueChange: (String) -> Unit,
   status: TUIInputFieldStatus,
   enabled: Boolean = true,
-  leadingIcon: TUIInputFieldIconContentType? = null,
-  trailingIcon: TUIInputFieldIconContentType? = null,
+  leadingContent: TUIInputFieldIconContentType? = null,
+  trailingContent: TUIInputFieldIconContentType? = null,
   helperMessage: String? = null,
   testTags: TUIInputFieldTags = TUIInputFieldTags(),
   keyboardOption: KeyboardOptions = KeyboardOptions.Default,
@@ -97,36 +97,38 @@ fun TUIInputField(
   val colors = colorsFor(status,inputFieldTye)
 
   val leadingIconLambda: @Composable () -> Unit = {
-    if (leadingIcon != null)
-      when(leadingIcon){
+    if (leadingContent != null)
+      when(leadingContent){
         is Icon -> Icon(
-          painter = painterResource(id = leadingIcon.icon.iconRes),
-          contentDescription = leadingIcon.icon.contentDescription,
-          modifier = Modifier.testTag(testTags.leadingIconTag),
+          painter = painterResource(id = leadingContent.icon.iconRes),
+          contentDescription = leadingContent.icon.contentDescription,
+          modifier = Modifier.testTag(testTags.leadingContentTag),
           tint = TUITheme.colors.inputText
         )
         is Text ->  Text(
-          text = leadingIcon.text.take(1),
+          text = leadingContent.text.take(1),
           style = TUITheme.typography.body5,
-          color = TUITheme.colors.inputDim
+          color = TUITheme.colors.inputDim,
+          modifier = Modifier.testTag(testTags.leadingContentTag),
         )
       }
 
   }
   val tailingIconLambda: @Composable () -> Unit = {
-    if (trailingIcon != null)
-      when(trailingIcon){
+    if (trailingContent != null)
+      when(trailingContent){
         is Icon -> Icon(
-          painter = painterResource(id = trailingIcon.icon.iconRes),
-          contentDescription = trailingIcon.icon.contentDescription,
-          modifier = Modifier.testTag(testTags.trailingIconTag),
+          painter = painterResource(id = trailingContent.icon.iconRes),
+          contentDescription = trailingContent.icon.contentDescription,
+          modifier = Modifier.testTag(testTags.trailingContentTag),
           tint = TUITheme.colors.inputText
         )
         is Text ->  Text(
-          text = trailingIcon.text.take(1),
+          text = trailingContent.text.take(1),
           style = TUITheme.typography.body5,
-          color = TUITheme.colors.inputTextDim
-        )
+          color = TUITheme.colors.inputTextDim,
+          modifier = Modifier.testTag(testTags.trailingContentTag),
+          )
       }
 
   }
@@ -174,8 +176,8 @@ fun TUIInputField(
     singleLine = singleLine,
     colors = colors,
     label = if (label != null) labelLambda else null,
-    leadingIcon = if (leadingIcon != null) leadingIconLambda else null,
-    trailingIcon = if (trailingIcon != null) tailingIconLambda else null,
+    leadingIcon = if (leadingContent != null) leadingIconLambda else null,
+    trailingIcon = if (trailingContent != null) tailingIconLambda else null,
     keyboardOptions = keyboardOption,
     keyboardActions = keyboardAction,
     supportingText = helperMessageLambda,
@@ -251,8 +253,8 @@ fun TUIPreview() {
     }
     Box(modifier = Modifier.padding(10.dp)){
       TUIInputField(
-        leadingIcon = Text("$"),
-        trailingIcon = Icon(TarkaIcons.Timer20Regular),
+        leadingContent = Text("$"),
+        trailingContent = Icon(TarkaIcons.Timer20Regular),
         value = textValue,
         onValueChange = { textValue = it },
         status = Success,
@@ -275,8 +277,8 @@ fun TUIPreviewDark() {
       mutableStateOf("hello world")
     }
     TUIInputField(
-      leadingIcon = Text("$"),
-      trailingIcon = Icon(TarkaIcons.Timer20Regular),
+      leadingContent = Text("$"),
+      trailingContent = Icon(TarkaIcons.Timer20Regular),
       value = textValue,
       onValueChange = { textValue = it },
       status = Success
@@ -286,8 +288,8 @@ fun TUIPreviewDark() {
 
 data class TUIInputFieldTags(
   val parentTag: String = "TUIInputField_InputField",
-  val trailingIconTag: String = "TUIInputField_TrailingIcon",
-  val leadingIconTag: String = "TUIInputField_LeadingIcon",
+  val trailingContentTag: String = "TUIInputField_TrailingContent",
+  val leadingContentTag: String = "TUIInputField_LeadingContent",
   val labelTag: String = "TUIInputField_Label",
   val helperTextTag: String = "TUIInputField_HelperText",
   val helperIconTag: String = "TUIInputField_HelperIcon",
