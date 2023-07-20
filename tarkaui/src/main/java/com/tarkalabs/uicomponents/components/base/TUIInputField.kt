@@ -1,7 +1,10 @@
 package com.tarkalabs.uicomponents.components.base
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -18,6 +21,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
@@ -30,7 +34,7 @@ import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Alert
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Error
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Normal
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Success
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldType.LookupField
+import com.tarkalabs.uicomponents.components.base.TUIInputFieldType.LookupInputField
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldType.NormalInputField
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
@@ -40,8 +44,13 @@ enum class TUIInputFieldStatus {
   Normal, Error, Success, Alert,
 }
 
+/**
+ * this enum defines the type of TUIInputField
+ * NormalInputField -> it will allow user to input via keyboard in TUIInputField
+ * LookupInputField -> it will restrict user's to input via keyboard and allow user's to get click event and set different color style of TUIInputField
+ */
 enum class TUIInputFieldType {
-  NormalInputField, LookupField
+  NormalInputField, LookupInputField
 }
 
 sealed class TUIInputFieldIconContentType {
@@ -60,6 +69,7 @@ sealed class TUIInputFieldIconContentType {
  * @param trailingIcon The icon to display on the trailing side of the input field.
  * @param helperMessage The helper message to display below the input field.
  * @param testTags Tags for testing purposes to identify specific elements within the input field.
+ * @param inputFieldTye Set the type of InputField either NormalInputField or LookupInputField
  */
 @Composable
 fun TUIInputField(
@@ -80,7 +90,7 @@ fun TUIInputField(
   maxCharLength: Int = Int.MAX_VALUE,
   singleLine: Boolean = false,
   inputShape: Shape = RoundedCornerShape(8.dp),
-  inputFieldTye: TUIInputFieldType = TUIInputFieldType.NormalInputField
+  inputFieldTye: TUIInputFieldType = NormalInputField
 ) {
 
   val icon = iconFor(status)
@@ -160,7 +170,7 @@ fun TUIInputField(
     onValueChange = {
       if (it.length <= maxCharLength) onValueChange(it)
     },
-    enabled = enabled,
+    enabled = enabled && inputFieldTye == NormalInputField,
     singleLine = singleLine,
     colors = colors,
     label = if (label != null) labelLambda else null,
@@ -171,6 +181,7 @@ fun TUIInputField(
     supportingText = helperMessageLambda,
     maxLines = maxLines,
     minLines = minLines,
+    textStyle = TUITheme.typography.body6
   )
 }
 
@@ -187,34 +198,38 @@ fun colorsFor(status: TUIInputFieldStatus, inputFieldTye: TUIInputFieldType): Te
   val focusedIndicatorColor = indicatorColorFor(status)
   return when(inputFieldTye){
     NormalInputField -> TextFieldDefaults.colors(
-      focusedIndicatorColor = focusedIndicatorColor,
-      unfocusedIndicatorColor = TUITheme.colors.utilityDisabledBackground,
-      focusedTextColor = TUITheme.colors.inputText,
-      unfocusedTextColor = TUITheme.colors.inputText,
-      disabledTextColor = TUITheme.colors.utilityDisabledContent,
-      focusedContainerColor = TUITheme.colors.inputBackground,
-      unfocusedContainerColor = TUITheme.colors.inputBackground,
-      disabledContainerColor = TUITheme.colors.inputBackground,
-      errorContainerColor = TUITheme.colors.inputBackground,
       focusedLabelColor = TUITheme.colors.inputDim,
+      focusedTextColor = TUITheme.colors.inputText,
+      focusedIndicatorColor = focusedIndicatorColor,
+      focusedContainerColor = TUITheme.colors.inputBackground,
       unfocusedLabelColor = TUITheme.colors.inputDim,
+      unfocusedTextColor = TUITheme.colors.inputText,
+      unfocusedIndicatorColor = TUITheme.colors.utilityDisabledBackground,
+      unfocusedContainerColor = TUITheme.colors.inputBackground,
       disabledLabelColor = TUITheme.colors.inputDim,
+      disabledTextColor = TUITheme.colors.utilityDisabledContent,
+      disabledContainerColor = TUITheme.colors.inputBackground,
       errorLabelColor = TUITheme.colors.inputDim,
+      errorContainerColor = TUITheme.colors.inputBackground,
     )
-    LookupField -> TextFieldDefaults.colors(
-      focusedIndicatorColor = focusedIndicatorColor,
-      unfocusedIndicatorColor = TUITheme.colors.utilityDisabledBackground,
-      focusedTextColor = TUITheme.colors.inputText,
-      unfocusedTextColor = TUITheme.colors.inputText,
-      disabledTextColor = TUITheme.colors.utilityDisabledContent,
-      focusedContainerColor = TUITheme.colors.inputBackground,
-      unfocusedContainerColor = TUITheme.colors.inputBackground,
-      disabledContainerColor = TUITheme.colors.inputBackground,
-      errorContainerColor = TUITheme.colors.inputBackground,
+    LookupInputField -> TextFieldDefaults.colors(
       focusedLabelColor = TUITheme.colors.inputDim,
+      focusedTextColor = TUITheme.colors.inputText,
+      focusedIndicatorColor = focusedIndicatorColor,
+      focusedContainerColor = TUITheme.colors.inputBackground,
+
       unfocusedLabelColor = TUITheme.colors.inputDim,
-      disabledLabelColor = TUITheme.colors.inputDim,
+      unfocusedTextColor = TUITheme.colors.inputText,
+      unfocusedIndicatorColor = TUITheme.colors.utilityDisabledBackground,
+      unfocusedContainerColor = TUITheme.colors.inputBackground,
+
+      errorContainerColor = TUITheme.colors.inputBackground,
       errorLabelColor = TUITheme.colors.inputDim,
+
+      disabledLabelColor = TUITheme.colors.inputDim,
+      disabledTextColor = TUITheme.colors.inputText,
+      disabledIndicatorColor = Color.Transparent,
+      disabledContainerColor = TUITheme.colors.inputBackground
     )
   }
 }
@@ -230,17 +245,25 @@ private fun indicatorColorFor(status: TUIInputFieldStatus) = when (status) {
 @Preview(showBackground = true)
 @Composable
 fun TUIPreview() {
-  TUITheme(false) {
+  TUITheme() {
     var textValue by remember {
-      mutableStateOf("hello world")
+      mutableStateOf("")
     }
-    TUIInputField(
-      leadingIcon = TUIInputFieldIconContentType.Text("$"),
-      trailingIcon = TUIInputFieldIconContentType.Icon(TarkaIcons.Timer20Regular),
-      value = textValue,
-      onValueChange = { textValue = it },
-      status = Success
-    )
+    Box(modifier = Modifier.padding(10.dp)){
+      TUIInputField(
+        leadingIcon = Text("$"),
+        trailingIcon = Icon(TarkaIcons.Timer20Regular),
+        value = textValue,
+        onValueChange = { textValue = it },
+        status = Success,
+        inputFieldTye = NormalInputField,
+        label = "Label",
+        modifier = Modifier.clickable{
+          textValue = "Hello World"
+        }
+      )
+
+    }
   }
 }
 
@@ -252,8 +275,8 @@ fun TUIPreviewDark() {
       mutableStateOf("hello world")
     }
     TUIInputField(
-      leadingIcon = TUIInputFieldIconContentType.Text("$"),
-      trailingIcon = TUIInputFieldIconContentType.Icon(TarkaIcons.Timer20Regular),
+      leadingIcon = Text("$"),
+      trailingIcon = Icon(TarkaIcons.Timer20Regular),
       value = textValue,
       onValueChange = { textValue = it },
       status = Success
