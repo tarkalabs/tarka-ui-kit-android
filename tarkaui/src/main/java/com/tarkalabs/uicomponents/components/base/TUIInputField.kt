@@ -30,12 +30,18 @@ import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Alert
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Error
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Normal
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Success
+import com.tarkalabs.uicomponents.components.base.TUIInputFieldType.LookupField
+import com.tarkalabs.uicomponents.components.base.TUIInputFieldType.NormalInputField
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 enum class TUIInputFieldStatus {
   Normal, Error, Success, Alert,
+}
+
+enum class TUIInputFieldType {
+  NormalInputField, LookupField
 }
 
 sealed class TUIInputFieldIconContentType {
@@ -73,11 +79,12 @@ fun TUIInputField(
   minLines: Int = 1,
   maxCharLength: Int = Int.MAX_VALUE,
   singleLine: Boolean = false,
-  inputShape: Shape = RoundedCornerShape(8.dp)
+  inputShape: Shape = RoundedCornerShape(8.dp),
+  inputFieldTye: TUIInputFieldType = TUIInputFieldType.NormalInputField
 ) {
 
   val icon = iconFor(status)
-  val colors = colorsFor(status)
+  val colors = colorsFor(status,inputFieldTye)
 
   val leadingIconLambda: @Composable () -> Unit = {
     if (leadingIcon != null)
@@ -176,23 +183,40 @@ fun iconFor(status: TUIInputFieldStatus): TarkaIcon? {
 }
 
 @Composable
-fun colorsFor(status: TUIInputFieldStatus): TextFieldColors {
+fun colorsFor(status: TUIInputFieldStatus, inputFieldTye: TUIInputFieldType): TextFieldColors {
   val focusedIndicatorColor = indicatorColorFor(status)
-  return TextFieldDefaults.colors(
-    focusedIndicatorColor = focusedIndicatorColor,
-    unfocusedIndicatorColor = TUITheme.colors.utilityDisabledBackground,
-    focusedTextColor = TUITheme.colors.inputText,
-    unfocusedTextColor = TUITheme.colors.inputText,
-    disabledTextColor = TUITheme.colors.utilityDisabledContent,
-    focusedContainerColor = TUITheme.colors.inputBackground,
-    unfocusedContainerColor = TUITheme.colors.inputBackground,
-    disabledContainerColor = TUITheme.colors.inputBackground,
-    errorContainerColor = TUITheme.colors.inputBackground,
-    focusedLabelColor = TUITheme.colors.inputDim,
-    unfocusedLabelColor = TUITheme.colors.inputDim,
-    disabledLabelColor = TUITheme.colors.inputDim,
-    errorLabelColor = TUITheme.colors.inputDim,
-  )
+  return when(inputFieldTye){
+    NormalInputField -> TextFieldDefaults.colors(
+      focusedIndicatorColor = focusedIndicatorColor,
+      unfocusedIndicatorColor = TUITheme.colors.utilityDisabledBackground,
+      focusedTextColor = TUITheme.colors.inputText,
+      unfocusedTextColor = TUITheme.colors.inputText,
+      disabledTextColor = TUITheme.colors.utilityDisabledContent,
+      focusedContainerColor = TUITheme.colors.inputBackground,
+      unfocusedContainerColor = TUITheme.colors.inputBackground,
+      disabledContainerColor = TUITheme.colors.inputBackground,
+      errorContainerColor = TUITheme.colors.inputBackground,
+      focusedLabelColor = TUITheme.colors.inputDim,
+      unfocusedLabelColor = TUITheme.colors.inputDim,
+      disabledLabelColor = TUITheme.colors.inputDim,
+      errorLabelColor = TUITheme.colors.inputDim,
+    )
+    LookupField -> TextFieldDefaults.colors(
+      focusedIndicatorColor = focusedIndicatorColor,
+      unfocusedIndicatorColor = TUITheme.colors.utilityDisabledBackground,
+      focusedTextColor = TUITheme.colors.inputText,
+      unfocusedTextColor = TUITheme.colors.inputText,
+      disabledTextColor = TUITheme.colors.utilityDisabledContent,
+      focusedContainerColor = TUITheme.colors.inputBackground,
+      unfocusedContainerColor = TUITheme.colors.inputBackground,
+      disabledContainerColor = TUITheme.colors.inputBackground,
+      errorContainerColor = TUITheme.colors.inputBackground,
+      focusedLabelColor = TUITheme.colors.inputDim,
+      unfocusedLabelColor = TUITheme.colors.inputDim,
+      disabledLabelColor = TUITheme.colors.inputDim,
+      errorLabelColor = TUITheme.colors.inputDim,
+    )
+  }
 }
 
 @Composable
