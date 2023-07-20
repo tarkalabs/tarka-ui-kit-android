@@ -34,8 +34,8 @@ import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Alert
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Error
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Normal
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Success
+import com.tarkalabs.uicomponents.components.base.TUIInputFieldType.InputField
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldType.LookupInputField
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldType.NormalInputField
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
@@ -50,7 +50,7 @@ enum class TUIInputFieldStatus {
  * LookupInputField -> it will restrict user's to input via keyboard and allow user's to get click event and set different color style of TUIInputField
  */
 enum class TUIInputFieldType {
-  NormalInputField, LookupInputField
+  InputField, LookupInputField
 }
 
 sealed class TUIInputFieldIconContentType {
@@ -90,7 +90,7 @@ fun TUIInputField(
   maxCharLength: Int = Int.MAX_VALUE,
   singleLine: Boolean = false,
   inputShape: Shape = RoundedCornerShape(8.dp),
-  inputFieldTye: TUIInputFieldType = NormalInputField
+  inputFieldTye: TUIInputFieldType = InputField
 ) {
 
   val icon = iconFor(status)
@@ -172,7 +172,7 @@ fun TUIInputField(
     onValueChange = {
       if (it.length <= maxCharLength) onValueChange(it)
     },
-    enabled = enabled && inputFieldTye == NormalInputField,
+    enabled = enabled && inputFieldTye == InputField,
     singleLine = singleLine,
     colors = colors,
     label = if (label != null) labelLambda else null,
@@ -199,7 +199,7 @@ fun iconFor(status: TUIInputFieldStatus): TarkaIcon? {
 fun colorsFor(status: TUIInputFieldStatus, inputFieldTye: TUIInputFieldType): TextFieldColors {
   val focusedIndicatorColor = indicatorColorFor(status)
   return when(inputFieldTye){
-    NormalInputField -> TextFieldDefaults.colors(
+    InputField -> TextFieldDefaults.colors(
       focusedLabelColor = TUITheme.colors.inputDim,
       focusedTextColor = TUITheme.colors.inputText,
       focusedIndicatorColor = focusedIndicatorColor,
@@ -258,7 +258,7 @@ fun TUIPreview() {
         value = textValue,
         onValueChange = { textValue = it },
         status = Success,
-        inputFieldTye = NormalInputField,
+        inputFieldTye = InputField,
         label = "Label",
         modifier = Modifier.clickable{
           textValue = "Hello World"
