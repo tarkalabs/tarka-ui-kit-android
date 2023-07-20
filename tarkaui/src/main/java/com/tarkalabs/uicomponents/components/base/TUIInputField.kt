@@ -41,7 +41,10 @@ import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 enum class TUIInputFieldStatus {
-  Normal, Error, Success, Alert,
+  Normal,
+  Error,
+  Success,
+  Alert,
 }
 
 /**
@@ -50,13 +53,15 @@ enum class TUIInputFieldStatus {
  * LookupInputField -> it will restrict user's to input via keyboard and allow user's to get click event and set different color style of TUIInputField
  */
 enum class TUIInputFieldType {
-  InputField, LookupInputField
+  InputField,
+  LookupInputField
 }
 
 sealed class TUIInputFieldContentType {
   data class Icon(val icon: TarkaIcon) : TUIInputFieldContentType()
   data class Text(val text: String) : TUIInputFieldContentType()
 }
+
 /**
  * A  Composable function that renders an text field with various options such as label, icons, status, and helper text.
  *
@@ -71,8 +76,7 @@ sealed class TUIInputFieldContentType {
  * @param testTags Tags for testing purposes to identify specific elements within the input field.
  * @param inputFieldTye Set the type of InputField either NormalInputField or LookupInputField
  */
-@Composable
-fun TUIInputField(
+@Composable fun TUIInputField(
   modifier: Modifier = Modifier,
   value: String,
   label: String? = null,
@@ -94,42 +98,42 @@ fun TUIInputField(
 ) {
 
   val icon = iconFor(status)
-  val colors = colorsFor(status,inputFieldTye)
+  val colors = colorsFor(status, inputFieldTye)
 
   val leadingIconLambda: @Composable () -> Unit = {
-    if (leadingContent != null)
-      when(leadingContent){
-        is Icon -> Icon(
-          painter = painterResource(id = leadingContent.icon.iconRes),
-          contentDescription = leadingContent.icon.contentDescription,
-          modifier = Modifier.testTag(testTags.leadingContentTag),
-          tint = TUITheme.colors.inputText
-        )
-        is Text ->  Text(
-          text = leadingContent.text.take(1),
-          style = TUITheme.typography.body5,
-          color = TUITheme.colors.inputDim,
-          modifier = Modifier.testTag(testTags.leadingContentTag),
-        )
-      }
+    if (leadingContent != null) when (leadingContent) {
+      is Icon -> Icon(
+        painter = painterResource(id = leadingContent.icon.iconRes),
+        contentDescription = leadingContent.icon.contentDescription,
+        modifier = Modifier.testTag(testTags.leadingContentTag),
+        tint = TUITheme.colors.inputText
+      )
+
+      is Text -> Text(
+        text = leadingContent.text.take(1),
+        style = TUITheme.typography.body5,
+        color = TUITheme.colors.inputDim,
+        modifier = Modifier.testTag(testTags.leadingContentTag),
+      )
+    }
 
   }
   val tailingIconLambda: @Composable () -> Unit = {
-    if (trailingContent != null)
-      when(trailingContent){
-        is Icon -> Icon(
-          painter = painterResource(id = trailingContent.icon.iconRes),
-          contentDescription = trailingContent.icon.contentDescription,
-          modifier = Modifier.testTag(testTags.trailingContentTag),
-          tint = TUITheme.colors.inputText
-        )
-        is Text ->  Text(
-          text = trailingContent.text.take(1),
-          style = TUITheme.typography.body5,
-          color = TUITheme.colors.inputTextDim,
-          modifier = Modifier.testTag(testTags.trailingContentTag),
-          )
-      }
+    if (trailingContent != null) when (trailingContent) {
+      is Icon -> Icon(
+        painter = painterResource(id = trailingContent.icon.iconRes),
+        contentDescription = trailingContent.icon.contentDescription,
+        modifier = Modifier.testTag(testTags.trailingContentTag),
+        tint = TUITheme.colors.inputText
+      )
+
+      is Text -> Text(
+        text = trailingContent.text.take(1),
+        style = TUITheme.typography.body5,
+        color = TUITheme.colors.inputTextDim,
+        modifier = Modifier.testTag(testTags.trailingContentTag),
+      )
+    }
 
   }
   val labelLambda: @Composable () -> Unit = {
@@ -195,83 +199,73 @@ fun iconFor(status: TUIInputFieldStatus): TarkaIcon? {
   }
 }
 
-@Composable
-fun colorsFor(status: TUIInputFieldStatus, inputFieldTye: TUIInputFieldType): TextFieldColors {
+@Composable fun colorsFor(
+  status: TUIInputFieldStatus,
+  inputFieldTye: TUIInputFieldType
+): TextFieldColors {
   val focusedIndicatorColor = indicatorColorFor(status)
-  return when(inputFieldTye){
-    InputField -> TextFieldDefaults.colors(
-      focusedLabelColor = TUITheme.colors.inputDim,
-      focusedTextColor = TUITheme.colors.inputText,
-      focusedIndicatorColor = focusedIndicatorColor,
-      focusedContainerColor = TUITheme.colors.inputBackground,
-      unfocusedLabelColor = TUITheme.colors.inputDim,
-      unfocusedTextColor = TUITheme.colors.inputText,
-      unfocusedIndicatorColor = TUITheme.colors.utilityDisabledBackground,
-      unfocusedContainerColor = TUITheme.colors.inputBackground,
-      disabledLabelColor = TUITheme.colors.inputDim,
-      disabledTextColor = TUITheme.colors.utilityDisabledContent,
-      disabledContainerColor = TUITheme.colors.inputBackground,
-      errorLabelColor = TUITheme.colors.inputDim,
-      errorContainerColor = TUITheme.colors.inputBackground,
-    )
-    LookupInputField -> TextFieldDefaults.colors(
-      focusedLabelColor = TUITheme.colors.inputDim,
-      focusedTextColor = TUITheme.colors.inputText,
-      focusedIndicatorColor = focusedIndicatorColor,
-      focusedContainerColor = TUITheme.colors.inputBackground,
 
-      unfocusedLabelColor = TUITheme.colors.inputDim,
-      unfocusedTextColor = TUITheme.colors.inputText,
-      unfocusedIndicatorColor = TUITheme.colors.utilityDisabledBackground,
-      unfocusedContainerColor = TUITheme.colors.inputBackground,
+  var disabledLabelColor = TUITheme.colors.inputDim
+  var disabledTextColor = TUITheme.colors.utilityDisabledContent
 
-      errorContainerColor = TUITheme.colors.inputBackground,
-      errorLabelColor = TUITheme.colors.inputDim,
-
-      disabledLabelColor = TUITheme.colors.inputDim,
-      disabledTextColor = TUITheme.colors.inputText,
-      disabledIndicatorColor = Color.Transparent,
-      disabledContainerColor = TUITheme.colors.inputBackground
-    )
+  when (inputFieldTye) {
+    InputField -> {
+      disabledTextColor = TUITheme.colors.utilityDisabledContent
+      disabledLabelColor = TUITheme.colors.inputDim
+    }
+    LookupInputField -> {
+      disabledLabelColor = TUITheme.colors.inputDim
+      disabledTextColor = TUITheme.colors.inputText
+    }
   }
+
+  return TextFieldDefaults.colors(
+    focusedLabelColor = TUITheme.colors.inputDim,
+    focusedTextColor = TUITheme.colors.inputText,
+    focusedIndicatorColor = focusedIndicatorColor,
+    focusedContainerColor = TUITheme.colors.inputBackground,
+    unfocusedLabelColor = TUITheme.colors.inputDim,
+    unfocusedTextColor = TUITheme.colors.inputText,
+    unfocusedIndicatorColor = TUITheme.colors.utilityDisabledBackground,
+    unfocusedContainerColor = TUITheme.colors.inputBackground,
+    disabledLabelColor = disabledLabelColor,
+    disabledTextColor = disabledTextColor,
+    disabledContainerColor = TUITheme.colors.inputBackground,
+    disabledIndicatorColor =  Color.Transparent,
+    errorLabelColor = TUITheme.colors.inputDim,
+    errorContainerColor = TUITheme.colors.inputBackground,
+  )
 }
 
-@Composable
-private fun indicatorColorFor(status: TUIInputFieldStatus) = when (status) {
+@Composable private fun indicatorColorFor(status: TUIInputFieldStatus) = when (status) {
   Normal -> TUITheme.colors.primary
   Error -> TUITheme.colors.error
   Success -> TUITheme.colors.success
   Alert -> TUITheme.colors.warning
 }
 
-@Preview(showBackground = true)
-@Composable
-fun TUIPreview() {
-  TUITheme() {
+@Preview(showBackground = true) @Composable fun TUIPreview() {
+  TUITheme {
     var textValue by remember {
       mutableStateOf("")
     }
-    Box(modifier = Modifier.padding(10.dp)){
-      TUIInputField(
-        leadingContent = Text("$"),
+    Box(modifier = Modifier.padding(10.dp)) {
+      TUIInputField(leadingContent = Text("$"),
         trailingContent = Icon(TarkaIcons.Timer20Regular),
         value = textValue,
         onValueChange = { textValue = it },
         status = Success,
-        inputFieldTye = InputField,
+        inputFieldTye = LookupInputField,
         label = "Label",
-        modifier = Modifier.clickable{
+        modifier = Modifier.clickable {
           textValue = "Hello World"
-        }
-      )
+        })
 
     }
   }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun TUIPreviewDark() {
+@Preview(showBackground = true) @Composable fun TUIPreviewDark() {
   TUITheme(true) {
     var textValue by remember {
       mutableStateOf("hello world")
