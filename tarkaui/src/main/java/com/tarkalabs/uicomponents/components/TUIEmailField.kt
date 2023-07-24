@@ -152,10 +152,10 @@ import kotlinx.coroutines.launch
               textData = it
             },
             keyboardActions = KeyboardActions(onDone = {
-              if(Patterns.EMAIL_ADDRESS.matcher(textData).matches()){
+              if (Patterns.EMAIL_ADDRESS.matcher(textData).matches()) {
                 onItemAdd.invoke(textData)
                 textData = ""
-              } else{
+              } else {
                 onInvalidEmail()
               }
             }),
