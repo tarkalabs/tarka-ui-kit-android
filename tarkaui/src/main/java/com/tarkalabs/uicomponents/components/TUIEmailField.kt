@@ -1,5 +1,6 @@
 package com.tarkalabs.uicomponents.components
 
+import android.util.Patterns
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -61,6 +62,7 @@ import kotlinx.coroutines.launch
  * @param trailingIconClick The callback function to be invoked when the trailing icon is clicked.
  * @param onItemRemoved The callback function to be invoked when a chip is removed.
  * @param onItemAdd The callback function to be invoked when a new email is added.
+ * @param onInvalidEmail The callback function to be invoked when user enter a invalid email address.
  */
 @OptIn(
   ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class
@@ -73,6 +75,7 @@ import kotlinx.coroutines.launch
   trailingIconClick: () -> Unit,
   onItemRemoved: (Int) -> Unit,
   onItemAdd: (String) -> Unit,
+  onInvalidEmail: () -> Unit,
 ) {
 
   var textData by remember {
@@ -89,13 +92,13 @@ import kotlinx.coroutines.launch
     modifier = modifier
       .testTag(tags.parentTag)
       .clickableWithoutRipple {
-      scope.launch {
-        showTextField = !showTextField
-        delay(100)
-        focusRequester.requestFocus()
-      }
+        scope.launch {
+          showTextField = !showTextField
+          delay(100)
+          focusRequester.requestFocus()
+        }
 
-    }
+      }
 
   ) {
     Row(
@@ -149,9 +152,12 @@ import kotlinx.coroutines.launch
               textData = it
             },
             keyboardActions = KeyboardActions(onDone = {
-              onItemAdd.invoke(textData)
-              textData = ""
-
+              if(Patterns.EMAIL_ADDRESS.matcher(textData).matches()){
+                onItemAdd.invoke(textData)
+                textData = ""
+              } else{
+                onInvalidEmail()
+              }
             }),
             keyboardOptions = KeyboardOptions(
               keyboardType = KeyboardType.Email, imeAction = ImeAction.Done
@@ -237,6 +243,9 @@ data class TUIEmailFieldTags(
         },
         onItemAdd = {
           emailList.add(it)
+        },
+        onInvalidEmail = {
+
         })
 
     }

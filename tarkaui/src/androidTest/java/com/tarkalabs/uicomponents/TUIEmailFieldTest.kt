@@ -50,7 +50,8 @@ class TUIEmailFieldTest {
         onItemAdd = {
 
         },
-        tags = tags
+        tags = tags,
+        onInvalidEmail = {}
       )
 
     }
@@ -88,7 +89,7 @@ class TUIEmailFieldTest {
         onItemAdd = {
           emailList.add(it)
         },
-        tags = tags
+        tags = tags, onInvalidEmail = {}
       )
     }
 
