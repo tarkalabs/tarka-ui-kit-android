@@ -9,12 +9,19 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.components.TUIEmailAreaField
 import com.tarkalabs.uicomponents.components.TUIEmailSubjectField
+import com.tarkalabs.uicomponents.components.base.TUIInputField
+import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Icon
+import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Text
+import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Normal
+import com.tarkalabs.uicomponents.components.base.TUIInputFieldType.LookupInputField
+import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 class UIComponentListActivity : ComponentActivity() {
@@ -37,6 +44,28 @@ class UIComponentListActivity : ComponentActivity() {
             .padding(10.dp)
             .background(color = TUITheme.colors.surface)
         ) {
+
+          var textValue by remember {
+            mutableStateOf("hello world")
+          }
+          TUIInputField(
+            leadingContent = Text("$"),
+            trailingContent = Icon(TarkaIcons.Timer20Regular),
+            value = textValue,
+            onValueChange = { textValue = it },
+            status = Normal,
+            label = "Label",
+            inputFieldTye = LookupInputField,
+            enabled = false
+          )
+          TUIInputField(
+            leadingContent = Text("$"),
+            trailingContent = Icon(TarkaIcons.Timer20Regular),
+            value = textValue,
+            onValueChange = { textValue = it },
+            status = Normal,
+            label = "Label",
+          )
           TUIEmailSubjectField(
             placeHolder = "Subject", text = data, onTextChanged = {
               data = it
