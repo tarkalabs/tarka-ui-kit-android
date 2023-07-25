@@ -27,6 +27,7 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -78,10 +79,10 @@ import kotlinx.coroutines.launch
   onInvalidEmail: () -> Unit,
 ) {
 
-  var textData by remember {
+  var textData by rememberSaveable {
     mutableStateOf("")
   }
-  var showTextField by remember {
+  var showTextField by rememberSaveable {
     mutableStateOf(false)
   }
 
@@ -141,7 +142,8 @@ import kotlinx.coroutines.launch
           unfocusedIndicatorColor = Color.Transparent,
           disabledIndicatorColor = Color.Transparent,
           errorIndicatorColor = Color.Transparent,
-          focusedTextColor = TUITheme.colors.inputText
+          focusedTextColor = TUITheme.colors.inputText,
+          unfocusedTextColor =  TUITheme.colors.inputText,
         )
         val interactionSource = remember { MutableInteractionSource() }
 
@@ -178,7 +180,7 @@ import kotlinx.coroutines.launch
             enabled = true,
             singleLine = true,
             interactionSource = interactionSource,
-            textStyle = TUITheme.typography.body7,
+            textStyle = TUITheme.typography.body7.copy(color = TUITheme.colors.inputText ),
           ) {
             DecorationBox(
               value = textData,
