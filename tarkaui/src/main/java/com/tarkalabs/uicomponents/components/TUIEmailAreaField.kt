@@ -58,6 +58,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     unfocusedIndicatorColor =  Color.Transparent,
     focusedIndicatorColor = Color.Transparent,
     focusedTextColor = TUITheme.colors.inputText,
+    unfocusedTextColor = TUITheme.colors.inputText,
     unfocusedContainerColor = Color.Transparent,
     focusedContainerColor = Color.Transparent,
 
