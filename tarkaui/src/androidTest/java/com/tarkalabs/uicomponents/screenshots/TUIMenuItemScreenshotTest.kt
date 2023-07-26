@@ -29,17 +29,17 @@ class TUIMenuItemScreenshotTest(
     @JvmStatic
     @Parameterized.Parameters
     fun data(): Collection<Array<Any?>> {
-      val styles = listOf(MenuItemStyle.Title, MenuItemStyle.TitleWithDescription("Label"))
+      val styles = listOf(Title, TitleWithDescription("Label"))
       val testData = ArrayList<Array<Any?>>()
       val leadingContentTypes = listOf(
         null,
-        MenuItemLeadingContentType.Icon(TarkaIcons.AddCircle24Regular),
-        MenuItemLeadingContentType.StatusIndicator
+        Icon(TarkaIcons.AddCircle24Regular),
+        StatusIndicator
       )
       val trailingContentTypes = listOf(
         null,
         MenuItemTrailingContentType.Icon(TarkaIcons.AddCircle24Regular),
-        MenuItemTrailingContentType.SubMenu
+        SubMenu
       )
       val isSelectedValues = listOf(true, false)
       val darkThemeValues = listOf(true, false)

@@ -68,7 +68,7 @@ sealed class MenuItemStyle {
 
   val interactionSource = remember { MutableInteractionSource() }
 
-  val leadingIconLambda: @Composable () -> Unit = if (leadingContent != null) {
+  val leadingIconLambda: @Composable () -> Unit = if (leadingContent != null && style is Title) {
     {
       val leadingContentModifier = Modifier.padding(start = 16.dp, end = 8.dp)
       when (leadingContent) {
@@ -97,7 +97,7 @@ sealed class MenuItemStyle {
     }
   }
 
-  val trailingContentLambda: (@Composable () -> Unit)? = if (trailingContent != null) {
+  val trailingContentLambda: (@Composable () -> Unit)? = if (trailingContent != null && style is Title) {
     {
       val trailingContentModifier = Modifier
         .padding(start = 8.dp, end = 8.dp)
@@ -122,7 +122,6 @@ sealed class MenuItemStyle {
           )
         }
       }
-
     }
   } else null
 
