@@ -140,7 +140,6 @@ sealed class TUIInputFieldContentType {
     if (label != null) Text(
       text = label,
       style = TUITheme.typography.body8,
-      color = TUITheme.colors.inputTextDim,
       modifier = Modifier.testTag(testTags.labelTag)
     )
   }
@@ -214,7 +213,7 @@ fun iconFor(status: TUIInputFieldStatus): TarkaIcon? {
       disabledLabelColor = TUITheme.colors.inputDim
     }
     LookupInputField -> {
-      disabledLabelColor = TUITheme.colors.inputDim
+      disabledLabelColor = TUITheme.colors.inputText
       disabledTextColor = TUITheme.colors.inputText
     }
   }
