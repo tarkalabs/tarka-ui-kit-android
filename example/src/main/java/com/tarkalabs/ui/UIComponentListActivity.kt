@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.components.TUIEmailAreaField
 import com.tarkalabs.uicomponents.components.TUIEmailSubjectField
+import com.tarkalabs.uicomponents.components.VerticalSpacer
 import com.tarkalabs.uicomponents.components.base.TUIInputField
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Icon
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Text
@@ -58,6 +59,7 @@ class UIComponentListActivity : ComponentActivity() {
             inputFieldTye = LookupInputField,
             enabled = false
           )
+          VerticalSpacer(space = 20)
           TUIInputField(
             leadingContent = Text("$"),
             trailingContent = Icon(TarkaIcons.Timer20Regular),
@@ -66,12 +68,16 @@ class UIComponentListActivity : ComponentActivity() {
             status = Normal,
             label = "Label",
           )
+          VerticalSpacer(space = 20)
+
           TUIEmailSubjectField(
             placeHolder = "Subject", text = data, onTextChanged = {
               data = it
 
             }, modifier = Modifier.fillMaxWidth()
           )
+          VerticalSpacer(space = 20)
+
           TUIEmailAreaField(
             placeHolder = "Subject", text = data2, onTextChanged = {
               data2 = it
