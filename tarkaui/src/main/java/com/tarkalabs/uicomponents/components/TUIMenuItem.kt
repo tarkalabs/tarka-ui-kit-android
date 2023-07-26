@@ -130,10 +130,11 @@ sealed class MenuItemStyle {
     if (isSelected) 40 else 38
   } else if (trailingContent != null) {
     36
-  } else if (leadingContent == StatusIndicator) {
+  } else if (leadingContent is StatusIndicator) {
     if (isSelected) 40 else 34
-  } else {
-    62
+  } else if (style is TitleWithDescription) 62
+  else {
+    40
   }
 
   Row(
@@ -151,10 +152,12 @@ sealed class MenuItemStyle {
     horizontalArrangement = Arrangement.SpaceBetween,
   ) {
     leadingIconLambda()
-    Column(modifier = Modifier.weight(1f).padding(vertical = 8.dp)) {
+    Column(modifier = Modifier
+      .weight(1f)
+      .padding(vertical = 8.dp)) {
       when (style) {
         Title -> TUIMenuItemTitle(title)
-        is MenuItemStyle.TitleWithDescription -> TUIMenuItemTitleWithDescription(
+        is TitleWithDescription -> TUIMenuItemTitleWithDescription(
           title = title, description = style.description
         )
       }
@@ -188,7 +191,11 @@ data class TUIMenuItemTags(
 
 @Preview @Composable fun PreviewTUIMenuItem() {
   TUITheme {
-    Column(modifier = Modifier.background(color = TUITheme.colors.surface).padding(vertical = 10.dp)) {
+    Column(
+      modifier = Modifier
+        .background(color = TUITheme.colors.surface)
+        .padding(vertical = 10.dp)
+    ) {
       TUIMenuItem(
         title = "Label",
         style = Title,
