@@ -70,7 +70,7 @@ sealed class MenuItemStyle {
 
   val leadingIconLambda: @Composable () -> Unit = if (leadingContent != null && style is Title) {
     {
-      val leadingContentModifier = Modifier.padding(start = 16.dp, end = 8.dp)
+      val leadingContentModifier = Modifier.padding(start = 16.dp, end = 8.dp).testTag(tags.leadingContentTag)
       when (leadingContent) {
         is MenuItemLeadingContentType.Icon -> Icon(
           painter = painterResource(id = leadingContent.icon.iconRes),
@@ -79,7 +79,6 @@ sealed class MenuItemStyle {
           modifier = leadingContentModifier
             .maxHeight(24)
             .maxWidth(24)
-            .testTag(tags.leadingContentTag)
         )
 
         StatusIndicator -> Box(
