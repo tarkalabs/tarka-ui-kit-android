@@ -133,8 +133,8 @@ val defaultDarkColors = TUIColors(
   surfaceVariant = Color(0xFF2D3543),
   constantLight = Color(0xFFFFFFFF),
   constantDark = Color(0xFF000000),
-  surfaceVariantHover = Color(0xFFE1E7EF),
+  surfaceVariantHover = Color(0xFF353F50),
   inputTextDim = Color(0xFF1A1C1F).copy(0.70f),
-  surfaceHover = Color(0xFFF0F2F5),
+  surfaceHover = Color(0xFF29313D),
   )
 
