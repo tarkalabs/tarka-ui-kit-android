@@ -94,7 +94,6 @@ class TUIMenuItemScreenshotTest(
 
   @Test
   fun testTuiMenuItem() {
-    println(testName)
     compareScreenshotFor(darkTheme, testName) {
       TUIMenuItem(
         title = "Label",
