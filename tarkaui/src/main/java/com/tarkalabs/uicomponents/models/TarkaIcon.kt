@@ -34,6 +34,8 @@ import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_error_circle_16_re
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_info_20_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_local_language_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_map_24_regular
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_pause_12_filled
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_play_12_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_question_circle_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_re_order_dots_vertical_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_search_24_regular
@@ -106,4 +108,6 @@ object TarkaIcons {
     TarkaIcon(ic_fluent_add_circle_24_regular, "Add")
   val ErrorCircle16Regular =
     TarkaIcon(ic_fluent_error_circle_16_regular, "Add")
+  val PlayIcon12Filled = TarkaIcon(ic_fluent_play_12_filled, "Play")
+  val PauseIcon12Filled = TarkaIcon(ic_fluent_pause_12_filled, "Pause")
 }
