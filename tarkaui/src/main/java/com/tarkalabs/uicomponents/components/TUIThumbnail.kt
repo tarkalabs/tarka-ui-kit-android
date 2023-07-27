@@ -168,12 +168,12 @@ enum class TUIThumbnailSize {
 data class TUIThumbnailTags(
   val parentTag: String = "TUIThumbnailParentTag",
   val centerIconTag: String = "TUIThumbnailCenterIconTag",
-  val trailingIconTag: String = "TUIThumbnailTrailingIconTag"
+  val trailingIconTag: String = "TUIThumbnailTrailingIconTag",
+  val thumbImageTag: String = "TUIThumbnailThumbImageTag"
 )
 
 @Preview @Composable fun PreviewTUIThumbnail() {
   TUITheme {
-
     val option = BitmapFactory.Options()
     option.inPreferredConfig = Bitmap.Config.ARGB_8888
     val bitmap = BitmapFactory.decodeResource(
