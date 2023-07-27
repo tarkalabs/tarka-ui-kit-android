@@ -65,20 +65,10 @@ enum class TUIThumbnailSize {
   onTrailingIconClick: (() -> Unit)? = null,
   tags: TUIThumbnailTags = TUIThumbnailTags(),
 ) {
-  var height = 60.dp
-  var width = 80.dp
-  when (size) {
-    Large -> {
-      height = 60.dp
-      width = 80.dp
-    }
-
-    Medium -> {
-      height = 40.dp
-      width = 52.dp
-    }
+  val (height, width) = when (size) {
+    Large -> 60.dp to 80.dp
+    Medium -> 40.dp to 52.dp
   }
-
   Box(
     modifier = modifier
       .height(height)
