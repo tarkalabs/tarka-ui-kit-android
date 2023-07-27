@@ -183,7 +183,7 @@ sealed class MenuItemStyle {
 
 data class TUIMenuItemTags(
   val parentTag: String = "TUIMenuItemParentTag",
-  val leadingContentTag: String = "TUIMenuItemLeadingTag",
+  val leadingContentTag: String = "TUIMenuItem_LeadingContent",
   val trailingContentTag: String = "TUIMenuItem_TrailingContent"
 )
 
