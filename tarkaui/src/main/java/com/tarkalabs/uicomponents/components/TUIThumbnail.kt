@@ -32,6 +32,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.R
@@ -102,22 +103,20 @@ enum class TUIThumbnailSize {
       }
 
       is Image -> {
-        Image(
-          bitmap = type.image,
-          contentDescription = "",
+        Image(bitmap = type.image,
+          contentDescription = stringResource(id = R.string.image_thumbnail),
           modifier = Modifier
             .then(if (onThumbnailClick != null) Modifier.clickable { onThumbnailClick.invoke() } else Modifier)
             .fillMaxSize()
             .clip(RoundedCornerShape(8.dp)),
-          contentScale = ContentScale.Crop
-        )
+          contentScale = ContentScale.Crop)
       }
 
       is Video -> {
         Box(contentAlignment = Alignment.Center) {
           Image(
             bitmap = type.image,
-            contentDescription = "",
+            contentDescription = stringResource(id = R.string.video_thumbnail),
             modifier = Modifier
               .fillMaxSize()
               .clip(RoundedCornerShape(8.dp)),
@@ -156,10 +155,10 @@ enum class TUIThumbnailSize {
 }
 
 data class TUIThumbnailTags(
-  val parentTag: String = "TUIThumbnailParentTag",
-  val centerIconTag: String = "TUIThumbnailCenterIconTag",
-  val trailingIconTag: String = "TUIThumbnailTrailingIconTag",
-  val thumbImageTag: String = "TUIThumbnailThumbImageTag"
+  val parentTag: String = "TUIThumbnail",
+  val centerIconTag: String = "TUIThumbnail_CenterIcon",
+  val trailingIconTag: String = "TUIThumbnail_TrailingIcon",
+  val thumbImageTag: String = "TUIThumbnail_ThumbImage"
 )
 
 @Preview @Composable fun PreviewTUIThumbnail() {
