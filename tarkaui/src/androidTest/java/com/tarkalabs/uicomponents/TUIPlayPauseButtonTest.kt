@@ -7,7 +7,7 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import com.tarkalabs.uicomponents.components.PlayPauseButtonState.Pause
 import com.tarkalabs.uicomponents.components.PlayPauseButtonState.Play
-import com.tarkalabs.uicomponents.components.TUIPlayPauseButtons
+import com.tarkalabs.uicomponents.components.TUIPlayPauseButton
 import com.tarkalabs.uicomponents.components.TUIPlayPauseButtonsTestTags
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Rule
@@ -15,7 +15,7 @@ import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 
-class TUIPlayPauseButtonsTest {
+class TUIPlayPauseButtonTest {
 
   @get:Rule
   val composable = createComposeRule()
@@ -25,7 +25,7 @@ class TUIPlayPauseButtonsTest {
     val clickLambda: () -> Unit = mock()
     val testTag = TUIPlayPauseButtonsTestTags(parentId = "Test Tag")
     composable.setContent {
-      TUIPlayPauseButtons(
+      TUIPlayPauseButton(
         onClick = clickLambda,
         tags = testTag
       )
@@ -37,10 +37,10 @@ class TUIPlayPauseButtonsTest {
   @Test
   fun based_on_state_play_icon_shown_or_not() {
     //This icon is used for play state inside the component
-    val playIcon = TarkaIcons.PlayIcon12Filled
+    val playIcon = TarkaIcons.Play12Filled
 
     composable.setContent {
-      TUIPlayPauseButtons(
+      TUIPlayPauseButton(
         state = Play
       ) {}
     }
@@ -50,10 +50,10 @@ class TUIPlayPauseButtonsTest {
   @Test
   fun based_on_state_pause_icon_shown_or_not() {
     //This icon is used for pause state inside the component
-    val pauseIcon = TarkaIcons.PauseIcon12Filled
+    val pauseIcon = TarkaIcons.Pause12Filled
 
     composable.setContent {
-      TUIPlayPauseButtons(
+      TUIPlayPauseButton(
         state = Pause
       ) {}
     }
