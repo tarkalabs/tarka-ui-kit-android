@@ -37,7 +37,7 @@ class TUIPlayPauseButtonTest {
   @Test
   fun based_on_state_play_icon_shown_or_not() {
     //This icon is used for play state inside the component
-    val playIcon = TarkaIcons.PlayIcon12Filled
+    val playIcon = TarkaIcons.Play12Filled
 
     composable.setContent {
       TUIPlayPauseButton(
@@ -50,7 +50,7 @@ class TUIPlayPauseButtonTest {
   @Test
   fun based_on_state_pause_icon_shown_or_not() {
     //This icon is used for pause state inside the component
-    val pauseIcon = TarkaIcons.PauseIcon12Filled
+    val pauseIcon = TarkaIcons.Pause12Filled
 
     composable.setContent {
       TUIPlayPauseButton(

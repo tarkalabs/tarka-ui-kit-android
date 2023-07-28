@@ -82,8 +82,8 @@ buttonType = HOVER, buttonSize = M, state = Pause
   ) {
 
     val icon = when (state) {
-      Play -> TarkaIcons.PlayIcon12Filled
-      Pause -> TarkaIcons.PauseIcon12Filled
+      Play -> TarkaIcons.Play12Filled
+      Pause -> TarkaIcons.Pause12Filled
     }
 
     Icon(
