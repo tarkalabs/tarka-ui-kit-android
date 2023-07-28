@@ -7,7 +7,7 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import com.tarkalabs.uicomponents.components.PlayPauseButtonState.Pause
 import com.tarkalabs.uicomponents.components.PlayPauseButtonState.Play
-import com.tarkalabs.uicomponents.components.TUIPlayPauseButtons
+import com.tarkalabs.uicomponents.components.TUIPlayPauseButton
 import com.tarkalabs.uicomponents.components.TUIPlayPauseButtonsTestTags
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Rule
@@ -15,7 +15,7 @@ import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 
-class TUIPlayPauseButtonsTest {
+class TUIPlayPauseButtonTest {
 
   @get:Rule
   val composable = createComposeRule()
@@ -25,7 +25,7 @@ class TUIPlayPauseButtonsTest {
     val clickLambda: () -> Unit = mock()
     val testTag = TUIPlayPauseButtonsTestTags(parentId = "Test Tag")
     composable.setContent {
-      TUIPlayPauseButtons(
+      TUIPlayPauseButton(
         onClick = clickLambda,
         tags = testTag
       )
@@ -40,7 +40,7 @@ class TUIPlayPauseButtonsTest {
     val playIcon = TarkaIcons.PlayIcon12Filled
 
     composable.setContent {
-      TUIPlayPauseButtons(
+      TUIPlayPauseButton(
         state = Play
       ) {}
     }
@@ -53,7 +53,7 @@ class TUIPlayPauseButtonsTest {
     val pauseIcon = TarkaIcons.PauseIcon12Filled
 
     composable.setContent {
-      TUIPlayPauseButtons(
+      TUIPlayPauseButton(
         state = Pause
       ) {}
     }

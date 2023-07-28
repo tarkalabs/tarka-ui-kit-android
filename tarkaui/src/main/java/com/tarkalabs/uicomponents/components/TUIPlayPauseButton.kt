@@ -53,7 +53,7 @@ buttonType = HOVER, buttonSize = M, state = Pause
 ) {}
  *
  */
-@Composable fun TUIPlayPauseButtons(
+@Composable fun TUIPlayPauseButton(
   modifier: Modifier = Modifier,
   buttonType: PlayPauseButtonType = NON_HOVER,
   buttonSize: PlayPauseButtonSize = M,
@@ -140,13 +140,13 @@ data class TUIPlayPauseButtonsTestTags(
       horizontalAlignment = Alignment.Start
     ) {
 
-      TUIPlayPauseButtons(
+      TUIPlayPauseButton(
         modifier = Modifier.padding(top = 16.dp),
         buttonType = HOVER, buttonSize = L, state = Play
       ) {}
 
 
-      TUIPlayPauseButtons(
+      TUIPlayPauseButton(
         modifier = Modifier.padding(top = 16.dp),
         buttonType = HOVER, buttonSize = M, state = Play
       ) {}
@@ -159,12 +159,12 @@ data class TUIPlayPauseButtonsTestTags(
       horizontalAlignment = Alignment.Start
     ) {
 
-      TUIPlayPauseButtons(
+      TUIPlayPauseButton(
         modifier = Modifier.padding(top = 16.dp),
         buttonType = NON_HOVER, buttonSize = L, state = Play
       ) {}
 
-      TUIPlayPauseButtons(
+      TUIPlayPauseButton(
         modifier = Modifier.padding(top = 16.dp),
         buttonType = NON_HOVER, buttonSize = M, state = Play
       ) {}
@@ -177,13 +177,13 @@ data class TUIPlayPauseButtonsTestTags(
       horizontalAlignment = Alignment.Start
     ) {
 
-      TUIPlayPauseButtons(
+      TUIPlayPauseButton(
         modifier = Modifier.padding(top = 16.dp),
         buttonType = HOVER, buttonSize = L, state = Pause
       ) {}
 
 
-      TUIPlayPauseButtons(
+      TUIPlayPauseButton(
         modifier = Modifier.padding(top = 16.dp),
         buttonType = HOVER, buttonSize = M, state = Pause
       ) {}
@@ -196,12 +196,12 @@ data class TUIPlayPauseButtonsTestTags(
       horizontalAlignment = Alignment.Start
     ) {
 
-      TUIPlayPauseButtons(
+      TUIPlayPauseButton(
         modifier = Modifier.padding(top = 16.dp),
         buttonType = NON_HOVER, buttonSize = L, state = Pause
       ) {}
 
-      TUIPlayPauseButtons(
+      TUIPlayPauseButton(
         modifier = Modifier.padding(top = 16.dp),
         buttonType = NON_HOVER, buttonSize = M, state = Pause
       ) {}

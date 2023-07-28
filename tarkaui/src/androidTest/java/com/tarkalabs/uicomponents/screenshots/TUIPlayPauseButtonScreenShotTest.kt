@@ -6,13 +6,13 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.components.PlayPauseButtonSize
 import com.tarkalabs.uicomponents.components.PlayPauseButtonState
 import com.tarkalabs.uicomponents.components.PlayPauseButtonType
-import com.tarkalabs.uicomponents.components.TUIPlayPauseButtons
+import com.tarkalabs.uicomponents.components.TUIPlayPauseButton
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 
 @RunWith(Parameterized::class)
-class TUIPlayPauseButtonsScreenShotTest(
+class TUIPlayPauseButtonScreenShotTest(
   private val buttonType: PlayPauseButtonType,
   private val buttonState: PlayPauseButtonState,
   private val buttonSize: PlayPauseButtonSize,
@@ -64,7 +64,7 @@ class TUIPlayPauseButtonsScreenShotTest(
 
   @Test fun test_play_pause_buttons() {
     compareScreenshotFor(darkTheme = darkTheme, imageName = "PlayPauseButton_$testName") {
-      TUIPlayPauseButtons(
+      TUIPlayPauseButton(
         modifier = Modifier.padding(5.dp),
         buttonType = buttonType,
         buttonSize = buttonSize,
