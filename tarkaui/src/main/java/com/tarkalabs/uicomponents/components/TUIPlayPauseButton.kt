@@ -23,8 +23,6 @@ import com.tarkalabs.uicomponents.components.PlayPauseButtonSize.L
 import com.tarkalabs.uicomponents.components.PlayPauseButtonSize.M
 import com.tarkalabs.uicomponents.components.PlayPauseButtonState.Pause
 import com.tarkalabs.uicomponents.components.PlayPauseButtonState.Play
-import com.tarkalabs.uicomponents.components.PlayPauseButtonType.HOVER
-import com.tarkalabs.uicomponents.components.PlayPauseButtonType.NON_HOVER
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
@@ -32,7 +30,6 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * A composable function that displays a button with Play & Pause.
  *
  * @param modifier modifier used to modify properties of this composable function.
- * @param buttonType Specifies a Type - whether it is Hover or Non-Hover.
  * @param buttonSize Specifies a Size - whether it is Large or Medium.
  * @param state Specifies a State -whether it is Play or Pause.
  * @param tags tags used to test this component.
@@ -55,17 +52,11 @@ buttonType = HOVER, buttonSize = M, state = Pause
  */
 @Composable fun TUIPlayPauseButton(
   modifier: Modifier = Modifier,
-  buttonType: PlayPauseButtonType = NON_HOVER,
   buttonSize: PlayPauseButtonSize = M,
   state: PlayPauseButtonState = Play,
   tags: TUIPlayPauseButtonsTestTags = TUIPlayPauseButtonsTestTags(),
   onClick: () -> Unit,
 ) {
-
-  val color = when (buttonType) {
-    HOVER -> TUITheme.colors.constantDark.copy(alpha = 0.6f)
-    NON_HOVER -> TUITheme.colors.constantDark.copy(alpha = 0.75f)
-  }
 
   val iconModifier = when (buttonSize) {
     L -> Modifier
@@ -86,7 +77,7 @@ buttonType = HOVER, buttonSize = M, state = Pause
   Box(
     modifier = modifier
       .testTag(tags.parentId)
-      .background(color = color, shape = RoundedCornerShape(size = 44.dp))
+      .background(color = TUITheme.colors.constantDark.copy(alpha = 0.75f), shape = RoundedCornerShape(size = 44.dp))
       .clickable { onClick.invoke() }, contentAlignment = Alignment.Center
   ) {
 
@@ -103,11 +94,6 @@ buttonType = HOVER, buttonSize = M, state = Pause
     )
 
   }
-}
-
-enum class PlayPauseButtonType {
-  HOVER,
-  NON_HOVER
 }
 
 enum class PlayPauseButtonSize(val size: Dp) {
@@ -142,31 +128,12 @@ data class TUIPlayPauseButtonsTestTags(
 
       TUIPlayPauseButton(
         modifier = Modifier.padding(top = 16.dp),
-        buttonType = HOVER, buttonSize = L, state = Play
-      ) {}
-
-
-      TUIPlayPauseButton(
-        modifier = Modifier.padding(top = 16.dp),
-        buttonType = HOVER, buttonSize = M, state = Play
-      ) {}
-
-    }
-
-    Column(
-      modifier = Modifier.padding(start = 16.dp),
-      verticalArrangement = Arrangement.Center,
-      horizontalAlignment = Alignment.Start
-    ) {
-
-      TUIPlayPauseButton(
-        modifier = Modifier.padding(top = 16.dp),
-        buttonType = NON_HOVER, buttonSize = L, state = Play
+        buttonSize = L, state = Play
       ) {}
 
       TUIPlayPauseButton(
         modifier = Modifier.padding(top = 16.dp),
-        buttonType = NON_HOVER, buttonSize = M, state = Play
+        buttonSize = M, state = Play
       ) {}
 
     }
@@ -179,31 +146,12 @@ data class TUIPlayPauseButtonsTestTags(
 
       TUIPlayPauseButton(
         modifier = Modifier.padding(top = 16.dp),
-        buttonType = HOVER, buttonSize = L, state = Pause
-      ) {}
-
-
-      TUIPlayPauseButton(
-        modifier = Modifier.padding(top = 16.dp),
-        buttonType = HOVER, buttonSize = M, state = Pause
-      ) {}
-
-    }
-
-    Column(
-      modifier = Modifier.padding(start = 16.dp),
-      verticalArrangement = Arrangement.Center,
-      horizontalAlignment = Alignment.Start
-    ) {
-
-      TUIPlayPauseButton(
-        modifier = Modifier.padding(top = 16.dp),
-        buttonType = NON_HOVER, buttonSize = L, state = Pause
+        buttonSize = L, state = Pause
       ) {}
 
       TUIPlayPauseButton(
         modifier = Modifier.padding(top = 16.dp),
-        buttonType = NON_HOVER, buttonSize = M, state = Pause
+        buttonSize = M, state = Pause
       ) {}
 
     }
