@@ -15,7 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.tarkalabs.uicomponents.components.TUIAttachmentUpload
-import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState.OnUpLoadSuccessful
+import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState.UpLoadSuccessful
 import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState.UpLoading
 import com.tarkalabs.uicomponents.components.TUIThumbnailType.Document
 import com.tarkalabs.uicomponents.components.VerticalSpacer
@@ -48,7 +48,7 @@ class UIComponentListActivity : ComponentActivity() {
                 attachmentName = "13djksafhjdkshfsdbfjkshdgfugsdf.jpg4",
                 onMenuClick = {},
                 onAttachmentClick = { },
-                state = OnUpLoadSuccessful
+                state = UpLoadSuccessful
               )
               VerticalSpacer(space = 8)
               TUIAttachmentUpload(
@@ -56,7 +56,7 @@ class UIComponentListActivity : ComponentActivity() {
                 attachmentName = "13djksafhjdkshfsdbfjkshdgfugsdf.jpg4",
                 onMenuClick = {},
                 onAttachmentClick = { },
-                state = OnUpLoadSuccessful
+                state = UpLoadSuccessful
               )
 
             }
