@@ -12,6 +12,7 @@ import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_barcode_scanner_24
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_calendar_ltr_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_caret_down_20_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_chat_bubbles_question_24_regular
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_checkmark_12_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_checkmark_16_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_checkmark_20_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_checkmark_circle_16_regular
@@ -37,6 +38,7 @@ import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_eye_12_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_info_20_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_local_language_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_map_24_regular
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_more_horizontal_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_play_16_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_question_circle_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_re_order_dots_vertical_24_regular
@@ -114,4 +116,7 @@ object TarkaIcons {
   val Play16Filled = TarkaIcon(ic_fluent_play_16_filled, "Play")
   val Document24Regular = TarkaIcon(ic_fluent_document_24_regular, "Document")
   val Wave24Regular = TarkaIcon(ic_fluent_device_eq_24_regular, "Audio")
+  val ReOrder24Regular = TarkaIcon(ic_fluent_re_order_dots_vertical_24_regular, "ReOrder")
+  val MoreHorizontal24Regular = TarkaIcon(ic_fluent_more_horizontal_24_regular, "ReOrder")
+  val checkmark12Regular = TarkaIcon(ic_fluent_checkmark_12_regular, "Check")
 }

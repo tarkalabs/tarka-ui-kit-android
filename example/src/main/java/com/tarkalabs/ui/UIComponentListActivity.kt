@@ -5,24 +5,20 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.components.TUIEmailAreaField
-import com.tarkalabs.uicomponents.components.TUIEmailSubjectField
+import com.tarkalabs.uicomponents.components.TUIAttachmentUpload
+import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState.OnUpLoadSuccessful
+import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState.UpLoading
+import com.tarkalabs.uicomponents.components.TUIThumbnailType.Document
 import com.tarkalabs.uicomponents.components.VerticalSpacer
-import com.tarkalabs.uicomponents.components.base.TUIInputField
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Icon
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Text
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Normal
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldType.LookupInputField
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 class UIComponentListActivity : ComponentActivity() {
@@ -32,59 +28,105 @@ class UIComponentListActivity : ComponentActivity() {
 
     setContent {
       TUITheme {
-        var data by rememberSaveable  {
-          mutableStateOf("")
-        }
-        var data2 by rememberSaveable {
-          mutableStateOf("")
+        val listState: LazyListState = rememberLazyListState()
+
+        var progress by remember {
+          mutableStateOf(78)
         }
         Column(
           modifier = Modifier
-            .padding(20.dp)
-            .fillMaxWidth()
-            .padding(10.dp)
+            .fillMaxSize()
             .background(color = TUITheme.colors.surface)
         ) {
 
-          var textValue by remember {
-            mutableStateOf("hello world")
+          LazyColumn(
+            state = listState, modifier = Modifier.fillMaxSize()
+          ) {
+            item {
+              TUIAttachmentUpload(
+                type = Document,
+                attachmentName = "13djksafhjdkshfsdbfjkshdgfugsdf.jpg4",
+                onMenuClick = {},
+                onAttachmentClick = { },
+                state = OnUpLoadSuccessful
+              )
+              VerticalSpacer(space = 8)
+              TUIAttachmentUpload(
+                type = Document,
+                attachmentName = "13djksafhjdkshfsdbfjkshdgfugsdf.jpg4",
+                onMenuClick = {},
+                onAttachmentClick = { },
+                state = OnUpLoadSuccessful
+              )
+
+            }
+            item {
+              VerticalSpacer(space = 8)
+              TUIAttachmentUpload(
+                type = Document,
+                attachmentName = "13djksafhjdkshfsdbfjkshdgfugsdf.jpg4",
+                onMenuClick = {
+                  progress += 10
+                },
+                onAttachmentClick = { progress += 10 },
+                state = UpLoading(progress)
+              )
+              VerticalSpacer(space = 8)
+              TUIAttachmentUpload(
+                type = Document,
+                attachmentName = "13djksafhjdkshfsdbfjkshdgfugsdf.jpg4",
+                onMenuClick = {
+                  progress += 10
+                },
+                onAttachmentClick = { progress += 10 },
+                state = UpLoading(progress)
+              )
+
+            }
+            item {
+              VerticalSpacer(space = 8)
+              TUIAttachmentUpload(
+                type = Document,
+                attachmentName = "13djksafhjdkshfsdbfjkshdgfugsdf.jpg4",
+                onMenuClick = {
+                  progress += 10
+                },
+                onAttachmentClick = { progress += 10 },
+              )
+              VerticalSpacer(space = 8)
+              TUIAttachmentUpload(
+                type = Document,
+                attachmentName = "13djksafhjdkshfsdbfjkshdgfugsdf.jpg4",
+                onMenuClick = {
+                  progress += 10
+                },
+                onAttachmentClick = { progress += 10 },
+              )
+
+            }
+            item {
+              VerticalSpacer(space = 8)
+              TUIAttachmentUpload(
+                type = Document,
+                attachmentName = "13djksafhjdkshfsdbfjkshdgfugsdf.jpg4",
+                onMenuClick = {
+                  progress += 10
+                },
+                onAttachmentClick = { progress += 10 },
+                showLeadingIcon = true
+              )
+              VerticalSpacer(space = 8)
+              TUIAttachmentUpload(
+                type = Document,
+                attachmentName = "13djksafhjdkshfsdbfjkshdgfugsdf.jpg4",
+                onMenuClick = {
+                  progress += 10
+                },
+                onAttachmentClick = { progress += 10 },
+                showLeadingIcon = true
+              )
+            }
           }
-          TUIInputField(
-            leadingContent = Text("$"),
-            trailingContent = Icon(TarkaIcons.Timer20Regular),
-            value = textValue,
-            onValueChange = { textValue = it },
-            status = Normal,
-            label = "Label",
-            inputFieldTye = LookupInputField,
-            enabled = false
-          )
-          VerticalSpacer(space = 20)
-          TUIInputField(
-            leadingContent = Text("$"),
-            trailingContent = Icon(TarkaIcons.Timer20Regular),
-            value = textValue,
-            onValueChange = { textValue = it },
-            status = Normal,
-            label = "Label",
-          )
-          VerticalSpacer(space = 20)
-
-          TUIEmailSubjectField(
-            placeHolder = "Subject", text = data, onTextChanged = {
-              data = it
-
-            }, modifier = Modifier.fillMaxWidth()
-          )
-          VerticalSpacer(space = 20)
-
-          TUIEmailAreaField(
-            placeHolder = "Subject", text = data2, onTextChanged = {
-              data2 = it
-
-            }, modifier = Modifier.fillMaxWidth()
-          )
-
         }
       }
     }
