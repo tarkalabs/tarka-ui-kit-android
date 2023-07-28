@@ -121,7 +121,7 @@ enum class PlayPauseButtonState {
 }
 
 data class TUIPlayPauseButtonsTestTags(
-  val parentId: String = "playPauseButtonTag",
+  val parentId: String = "TUIPlayPauseButtons",
 )
 
 @Preview @Composable fun TUIPlayPauseButtonPreview() {
