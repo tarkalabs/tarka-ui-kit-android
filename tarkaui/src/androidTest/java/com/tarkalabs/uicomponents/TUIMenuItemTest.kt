@@ -46,7 +46,7 @@ class TUIMenuItemTest {
     composeTestRule.onNodeWithText("Label",useUnmergedTree = true).assertIsDisplayed()
   }
 
-  @Test fun menuItemWithDescription_Displayed() {
+  @Test fun menuItem_WithDescription_Displayed() {
     composeTestRule.setContent {
       TUIMenuItem(
         title = "Label",

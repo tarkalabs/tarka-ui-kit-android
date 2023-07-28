@@ -52,6 +52,18 @@ sealed class MenuItemStyle {
   data class TitleWithDescription(val description: String) : MenuItemStyle()
 }
 
+/**
+ * A composable function that creates a Menu Item.
+ *
+ * @param modifier The optional [Modifier] to customize the appearance and layout of the menu item.
+ * @param title The main title text to be displayed in the menu item.
+ * @param isSelected A boolean flag indicating whether the menu item is selected or not.
+ * @param style The style of the menu item title. It can be either [MenuItemStyle.Title] or [MenuItemStyle.TitleWithDescription].
+ * @param leadingContent The optional leading content to be displayed before the title. It can be an icon or a status indicator.
+ * @param trailingContent The optional trailing content to be displayed after the title. It can be an icon or a submenu indicator.
+ * @param onMenuItemClick A callback function to handle the click event on the menu item.
+ * @param tags Tags for testing purposes to be applied to the various components of the menu item.
+ */
 @Composable fun TUIMenuItem(
   modifier: Modifier = Modifier,
   title: String,
@@ -124,15 +136,12 @@ sealed class MenuItemStyle {
     }
   } else null
 
-  val height = if (leadingContent != null && trailingContent != null) {
-    if (isSelected) 40 else 38
-  } else if (trailingContent != null) {
-    36
-  } else if (leadingContent is StatusIndicator) {
-    if (isSelected) 40 else 34
-  } else if (style is TitleWithDescription) 62
-  else {
-    40
+  val height = when {
+    leadingContent != null && trailingContent != null -> if (isSelected) 40 else 38
+    trailingContent != null -> 36
+    leadingContent is StatusIndicator -> if (isSelected) 40 else 34
+    style is TitleWithDescription -> 62
+    else -> 40
   }
 
   Row(

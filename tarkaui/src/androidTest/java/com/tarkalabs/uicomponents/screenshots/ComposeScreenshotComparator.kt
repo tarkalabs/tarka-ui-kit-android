@@ -10,10 +10,14 @@ import com.tarkalabs.uicomponents.utils.ComposeBaseTest
 
 open class ComposeScreenshotComparator : ComposeBaseTest(), ScreenshotTest {
 
-  protected fun compareScreenshotFor(darkTheme: Boolean = false, imageName: String? = null, composableToTest: @Composable () -> Unit) {
+  protected fun compareScreenshotFor(
+    darkTheme: Boolean = false,
+    imageName: String? = null,
+    composableToTest: @Composable () -> Unit
+  ) {
     composeRule.setContent {
       TUITheme(darkTheme = darkTheme) {
-        Box(modifier = Modifier.background(TUITheme.colors.surface)){
+        Box(modifier = Modifier.background(TUITheme.colors.surface)) {
           composableToTest()
         }
       }
