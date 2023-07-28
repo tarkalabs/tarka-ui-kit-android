@@ -74,7 +74,7 @@ object TUIAttachmentUpload {
     onAttachmentClick: () -> Unit,
     onMenuClick: () -> Unit,
     state: AttachmentState? = null,
-    showLeadingIcon: Boolean = false,
+    showLeadingIcon: Boolean,
     tags: TUIAttachmentUploadTags = TUIAttachmentUploadTags()
   ) {
 
