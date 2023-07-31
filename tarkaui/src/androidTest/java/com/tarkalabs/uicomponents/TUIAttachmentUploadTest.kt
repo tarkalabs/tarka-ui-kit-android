@@ -29,7 +29,8 @@ private val attachmentName = "document.jpg"
         onMenuClick = {
         },
         onAttachmentClick = { },
-        tags = tags
+        tags = tags,
+        showLeadingIcon = true
       )
     }
     composable.onNodeWithTag(tags.parentTag,useUnmergedTree = true).assertIsDisplayed()
@@ -47,7 +48,8 @@ private val attachmentName = "document.jpg"
         },
         onAttachmentClick = { },
         tags = tags,
-        state = UpLoading(progress = 50)
+        state = UpLoading(progress = 50),
+        showLeadingIcon = true
       )
     }
     composable.onNodeWithTag(tags.parentTag,useUnmergedTree = true).assertIsDisplayed()
@@ -89,7 +91,8 @@ private val attachmentName = "document.jpg"
         attachmentName = attachmentName,
         onMenuClick = onMenuClick,
         onAttachmentClick = onAttachmentClick,
-        tags = tags
+        tags = tags,
+        showLeadingIcon = true
       )
     }
 

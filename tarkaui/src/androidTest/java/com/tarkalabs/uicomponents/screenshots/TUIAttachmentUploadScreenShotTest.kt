@@ -26,7 +26,7 @@ class TUIAttachmentUploadScreenShotTest(
       for (showLeadingIcon in leadingIconsValues) {
         for (darkThemeValue in darkThemeValues) {
           val testName = "Style_showLeadingIcon${showLeadingIcon}_darkTheme_${darkThemeValue}"
-          testData.add(arrayOf(testName))
+          testData.add(arrayOf(darkThemeValue, showLeadingIcon, testName))
         }
       }
       return testData
