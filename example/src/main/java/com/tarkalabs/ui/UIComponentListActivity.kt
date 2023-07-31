@@ -1,5 +1,6 @@
 package com.tarkalabs.ui
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -14,10 +15,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.asImageBitmap
 import com.tarkalabs.uicomponents.components.TUIAttachmentUpload
 import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState.UpLoadSuccessful
 import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState.UpLoading
+import com.tarkalabs.uicomponents.components.TUIThumbnailType
 import com.tarkalabs.uicomponents.components.TUIThumbnailType.Document
+import com.tarkalabs.uicomponents.components.TUIThumbnailType.Image
 import com.tarkalabs.uicomponents.components.VerticalSpacer
 import com.tarkalabs.uicomponents.theme.TUITheme
 
@@ -29,7 +33,7 @@ class UIComponentListActivity : ComponentActivity() {
     setContent {
       TUITheme {
         val listState: LazyListState = rememberLazyListState()
-
+        val bitmap = BitmapFactory.decodeResource(resources, com.tarkalabs.uicomponents.R.drawable.tarka)
         var progress by remember {
           mutableStateOf(78)
         }
@@ -44,71 +48,54 @@ class UIComponentListActivity : ComponentActivity() {
           ) {
             item {
               TUIAttachmentUpload(
-                type = Document,
-                attachmentName = "13djksafhjdkshfsdbfjkshdgfugsdf.jpg4",
+                type = TUIThumbnailType.Audio,
+                attachmentName = "bone.jpg4",
                 onMenuClick = {},
                 onAttachmentClick = { },
-                state = UpLoadSuccessful
+                state = UpLoadSuccessful,
+                showLeadingIcon = false
               )
               VerticalSpacer(space = 8)
               TUIAttachmentUpload(
                 type = Document,
-                attachmentName = "13djksafhjdkshfsdbfjkshdgfugsdf.jpg4",
+                attachmentName = "whisper.jpg4",
                 onMenuClick = {},
                 onAttachmentClick = { },
-                state = UpLoadSuccessful
+                state = UpLoadSuccessful,
+                showLeadingIcon = false
               )
 
             }
             item {
               VerticalSpacer(space = 8)
               TUIAttachmentUpload(
-                type = Document,
-                attachmentName = "13djksafhjdkshfsdbfjkshdgfugsdf.jpg4",
+                type = Image(bitmap.asImageBitmap()),
+                attachmentName = "store.jpg4",
                 onMenuClick = {
                   progress += 10
                 },
                 onAttachmentClick = { progress += 10 },
-                state = UpLoading(progress)
+                state = UpLoading(progress),
+                showLeadingIcon = false
               )
               VerticalSpacer(space = 8)
               TUIAttachmentUpload(
-                type = Document,
-                attachmentName = "13djksafhjdkshfsdbfjkshdgfugsdf.jpg4",
+                type = TUIThumbnailType.Video(bitmap.asImageBitmap()),
+                attachmentName = "remedy.jpg4",
                 onMenuClick = {
                   progress += 10
                 },
                 onAttachmentClick = { progress += 10 },
-                state = UpLoading(progress)
-              )
-
-            }
-            item {
-              VerticalSpacer(space = 8)
-              TUIAttachmentUpload(
-                type = Document,
-                attachmentName = "13djksafhjdkshfsdbfjkshdgfugsdf.jpg4",
-                onMenuClick = {
-                  progress += 10
-                },
-                onAttachmentClick = { progress += 10 },
-              )
-              VerticalSpacer(space = 8)
-              TUIAttachmentUpload(
-                type = Document,
-                attachmentName = "13djksafhjdkshfsdbfjkshdgfugsdf.jpg4",
-                onMenuClick = {
-                  progress += 10
-                },
-                onAttachmentClick = { progress += 10 },
+                state = UpLoading(progress),
+                showLeadingIcon = false
               )
 
             }
             item {
               VerticalSpacer(space = 8)
               TUIAttachmentUpload(
-                type = Document,
-                attachmentName = "13djksafhjdkshfsdbfjkshdgfugsdf.jpg4",
+                type = TUIThumbnailType.Audio,
+                attachmentName = "touch.mp3",
                 onMenuClick = {
                   progress += 10
                 },
@@ -117,8 +104,30 @@ class UIComponentListActivity : ComponentActivity() {
               )
               VerticalSpacer(space = 8)
               TUIAttachmentUpload(
+                type = Image(bitmap.asImageBitmap()),
+                attachmentName = "cart.jpg4",
+                onMenuClick = {
+                  progress += 10
+                },
+                onAttachmentClick = { progress += 10 },
+                showLeadingIcon = true
+              )
+            }
+            item {
+              VerticalSpacer(space = 8)
+              TUIAttachmentUpload(
                 type = Document,
-                attachmentName = "13djksafhjdkshfsdbfjkshdgfugsdf.jpg4",
+                attachmentName = "draw.jpg4",
+                onMenuClick = {
+                  progress += 10
+                },
+                onAttachmentClick = { progress += 10 },
+                showLeadingIcon = true
+              )
+              VerticalSpacer(space = 8)
+              TUIAttachmentUpload(
+                type = TUIThumbnailType.Video(bitmap.asImageBitmap()),
+                attachmentName = "motherly.jpg4",
                 onMenuClick = {
                   progress += 10
                 },
