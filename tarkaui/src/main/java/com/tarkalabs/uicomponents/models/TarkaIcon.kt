@@ -117,6 +117,6 @@ object TarkaIcons {
   val Document24Regular = TarkaIcon(ic_fluent_document_24_regular, "Document")
   val Wave24Regular = TarkaIcon(ic_fluent_device_eq_24_regular, "Audio")
   val ReOrder24Regular = TarkaIcon(ic_fluent_re_order_dots_vertical_24_regular, "ReOrder")
-  val MoreHorizontal24Regular = TarkaIcon(ic_fluent_more_horizontal_24_regular, "ReOrder")
+  val MoreHorizontal24Regular = TarkaIcon(ic_fluent_more_horizontal_24_regular, "More")
   val checkmark12Regular = TarkaIcon(ic_fluent_checkmark_12_regular, "Check")
 }
