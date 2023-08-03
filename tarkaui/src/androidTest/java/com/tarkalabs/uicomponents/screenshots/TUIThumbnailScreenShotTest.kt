@@ -63,7 +63,7 @@ class TUIThumbnailScreenShotTest(
   }
 
   @Test fun test_thumbnails_case_audio() {
-    compareScreenshotFor(darkTheme = darkTheme, imageName = "TUIThumbnail_$testName") {
+    compareScreenshotFor(darkTheme = darkTheme, imageName = "TUIThumbnail_Type_Audio_$testName") {
       TUIThumbnail(
         type = Audio,
         showTrailingIcon = showTrailingIcon,
@@ -73,7 +73,7 @@ class TUIThumbnailScreenShotTest(
   }
 
   @Test fun test_thumbnails_case_document() {
-    compareScreenshotFor(darkTheme = darkTheme, imageName = "TUIThumbnail_$testName") {
+    compareScreenshotFor(darkTheme = darkTheme, imageName = "TUIThumbnail_Type_Document_$testName") {
       TUIThumbnail(
         type = Document,
         showTrailingIcon = showTrailingIcon,
@@ -83,7 +83,7 @@ class TUIThumbnailScreenShotTest(
   }
 
   @Test fun test_thumbnails_case_image() {
-    compareScreenshotFor(darkTheme = darkTheme, imageName = "TUIThumbnail_$testName") {
+    compareScreenshotFor(darkTheme = darkTheme, imageName = "TUIThumbnail_Type_Image_$testName") {
       TUIThumbnail(
         type = Image(bitmap),
         showTrailingIcon = showTrailingIcon,
@@ -93,7 +93,7 @@ class TUIThumbnailScreenShotTest(
   }
 
   @Test fun test_thumbnails_case_video() {
-    compareScreenshotFor(darkTheme = darkTheme, imageName = "TUIThumbnail_$testName") {
+    compareScreenshotFor(darkTheme = darkTheme, imageName = "TUIThumbnail_Type_Video_$testName") {
       TUIThumbnail(
         type = Video(bitmap),
         showTrailingIcon = showTrailingIcon,
