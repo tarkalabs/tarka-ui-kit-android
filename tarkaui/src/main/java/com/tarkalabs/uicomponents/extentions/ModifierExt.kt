@@ -2,11 +2,14 @@ package com.tarkalabs.uicomponents.extentions
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.unit.dp
 
 /**
  * Removes the ripple effect from the modifier.
@@ -42,4 +45,26 @@ fun Modifier.toggleableWithoutRipple(
     onValueChange = onValueChange,
     role = role
   )
+}
+
+/**
+ * set maximum height to given composable.
+ * @param height The current value of the Toggleable.
+ * @return A Modifier instance after setting max height.
+ */
+fun Modifier.maxHeight(
+  height: Int,
+): Modifier = composed {
+  heightIn(max = height.dp)
+}
+
+/**
+ * set maximum width to given composable.
+ * @param width The current value of the Toggleable.
+ * @return A Modifier instance after setting maximum width.
+ */
+fun Modifier.maxWidth(
+  width: Int,
+): Modifier = composed {
+  widthIn(max = width.dp)
 }

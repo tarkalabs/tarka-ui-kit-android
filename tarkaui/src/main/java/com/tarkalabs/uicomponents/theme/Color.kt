@@ -45,6 +45,7 @@ open class TUIColors(
   val constantLight: Color,
   val constantDark: Color,
   val inputTextDim: Color,
+  val surfaceHover: Color,
 )
 
 val LocalTUIColors = staticCompositionLocalOf {
@@ -66,8 +67,8 @@ val defaultLightColors = TUIColors(
   onTertiaryAlt = Color(0xFF530953),
   success = Color(0xFF148F47),
   onSuccess = Color(0xFFF2FDF6),
-  success10 = Color(0xFFF2FDF6).copy(alpha = 0.10f),
-  success20 = Color(0xFFF2FDF6).copy(alpha = 0.20f),
+  success10 = Color(0xFF148F47).copy(alpha = 0.10f),
+  success20 = Color(0xFF148F47).copy(alpha = 0.20f),
   error = Color(0xFFCD1D32),
   onError = Color(0xFFFEFBFB),
   error10 = Color(0xFFFEFBFB).copy(alpha = 0.10f),
@@ -90,7 +91,8 @@ val defaultLightColors = TUIColors(
   constantLight = Color(0xFFFFFFFF),
   constantDark = Color(0xFF000000),
   surfaceVariantHover = Color(0xFFE1E7EF),
-  inputTextDim = Color(0xFF1A1C1F).copy(0.70f)
+  inputTextDim = Color(0xFF1A1C1F).copy(0.70f),
+  surfaceHover = Color(0xFFF0F2F5),
 )
 
 val defaultDarkColors = TUIColors(
@@ -108,8 +110,8 @@ val defaultDarkColors = TUIColors(
   onTertiaryAlt = Color(0xFFFFD6FF),
   success = Color(0xFF55E792),
   onSuccess = Color(0xFF003817),
-  success10 = Color(0xFF003817).copy(alpha = 0.10f),
-  success20 = Color(0xFF003817).copy(alpha = 0.20f),
+  success10 = Color(0xFF55E792).copy(alpha = 0.10f),
+  success20 = Color(0xFF55E792).copy(alpha = 0.20f),
   error = Color(0xFFD42136),
   onError = Color(0xFFFFFAFA),
   error10 = Color(0xFFFFFAFA).copy(alpha = 0.10f),
@@ -131,7 +133,8 @@ val defaultDarkColors = TUIColors(
   surfaceVariant = Color(0xFF2D3543),
   constantLight = Color(0xFFFFFFFF),
   constantDark = Color(0xFF000000),
-  surfaceVariantHover = Color(0xFFE1E7EF),
-  inputTextDim = Color(0xFF1A1C1F).copy(0.70f)
-)
+  surfaceVariantHover = Color(0xFF353F50),
+  inputTextDim = Color(0xFF1A1C1F).copy(0.70f),
+  surfaceHover = Color(0xFF29313D),
+  )
 
