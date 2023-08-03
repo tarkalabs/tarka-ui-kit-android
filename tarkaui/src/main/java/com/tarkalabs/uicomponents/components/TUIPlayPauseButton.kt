@@ -59,13 +59,8 @@ buttonType = HOVER, buttonSize = M, state = Pause
 ) {
 
   val iconModifier = when (buttonSize) {
-    L -> Modifier
-      .size(56.dp)
-      .padding(16.dp)
-
-    M -> Modifier
-      .size(24.dp)
-      .padding(4.dp)
+    L -> Modifier.size(24.dp)
+    M -> Modifier.size(16.dp)
   }
 
   when (buttonSize) {
@@ -73,26 +68,40 @@ buttonType = HOVER, buttonSize = M, state = Pause
     M -> modifier.size(M.size)
   }
 
+  val contentModifier = when (buttonSize) {
+    L -> Modifier.padding(16.dp)
+    M -> Modifier.padding(4.dp)
+  }
 
+// This box is used to draw the round shape
   Box(
     modifier = modifier
       .testTag(tags.parentId)
-      .background(color = TUITheme.colors.constantDark.copy(alpha = 0.75f), shape = RoundedCornerShape(size = 44.dp))
+      .background(
+        color = TUITheme.colors.constantDark.copy(alpha = 0.75f),
+        shape = RoundedCornerShape(size = 44.dp)
+      )
       .clickable { onClick.invoke() }, contentAlignment = Alignment.Center
   ) {
 
-    val icon = when (state) {
-      Play -> TarkaIcons.Play12Filled
-      Pause -> TarkaIcons.Pause12Filled
+    //This box is used to give the padding for the icon content.
+    // if we give padding in above parent box the won't affect children padding rather than affects it's own size.
+    // so, that's why we are using two boxes here 1 - parent 2- child (icon) content
+    Box(
+      modifier = contentModifier,
+    ) {
+      val icon = when (state) {
+        Play -> TarkaIcons.Play12Filled
+        Pause -> TarkaIcons.Pause12Filled
+      }
+
+      Icon(
+        modifier = iconModifier,
+        painter = painterResource(id = icon.iconRes),
+        contentDescription = icon.contentDescription,
+        tint = TUITheme.colors.constantLight
+      )
     }
-
-    Icon(
-      modifier = iconModifier,
-      painter = painterResource(id = icon.iconRes),
-      contentDescription = icon.contentDescription,
-      tint = TUITheme.colors.constantLight
-    )
-
   }
 }
 
@@ -127,13 +136,11 @@ data class TUIPlayPauseButtonsTestTags(
     ) {
 
       TUIPlayPauseButton(
-        modifier = Modifier.padding(top = 16.dp),
-        buttonSize = L, state = Play
+        modifier = Modifier.padding(top = 16.dp), buttonSize = L, state = Play
       ) {}
 
       TUIPlayPauseButton(
-        modifier = Modifier.padding(top = 16.dp),
-        buttonSize = M, state = Play
+        modifier = Modifier.padding(top = 16.dp), buttonSize = M, state = Play
       ) {}
 
     }
@@ -145,13 +152,11 @@ data class TUIPlayPauseButtonsTestTags(
     ) {
 
       TUIPlayPauseButton(
-        modifier = Modifier.padding(top = 16.dp),
-        buttonSize = L, state = Pause
+        modifier = Modifier.padding(top = 16.dp), buttonSize = L, state = Pause
       ) {}
 
       TUIPlayPauseButton(
-        modifier = Modifier.padding(top = 16.dp),
-        buttonSize = M, state = Pause
+        modifier = Modifier.padding(top = 16.dp), buttonSize = M, state = Pause
       ) {}
 
     }
