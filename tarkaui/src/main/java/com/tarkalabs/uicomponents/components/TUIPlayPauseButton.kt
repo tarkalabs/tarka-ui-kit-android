@@ -14,6 +14,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -23,6 +24,8 @@ import com.tarkalabs.uicomponents.components.PlayPauseButtonSize.L
 import com.tarkalabs.uicomponents.components.PlayPauseButtonSize.M
 import com.tarkalabs.uicomponents.components.PlayPauseButtonState.Pause
 import com.tarkalabs.uicomponents.components.PlayPauseButtonState.Play
+import com.tarkalabs.uicomponents.extentions.maxHeight
+import com.tarkalabs.uicomponents.extentions.maxWidth
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
@@ -38,16 +41,16 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * How to use TUIPlayPauseButtons() composable function
  *
  * TYPE 1 (LARGE):
- *   TUIPlayPauseButtons(
-modifier = Modifier.padding(top = 16.dp),
-buttonType = NON_HOVER, buttonSize = L, state = Play
-) {}
+     TUIPlayPauseButtons(
+      modifier = Modifier.padding(top = 16.dp),
+      buttonType = NON_HOVER, buttonSize = L, state = Play
+    )
  *
  * TYPE 2 (MEDIUM):
- *   TUIPlayPauseButtons(
-modifier = Modifier.padding(top = 16.dp),
-buttonType = HOVER, buttonSize = M, state = Pause
-) {}
+     TUIPlayPauseButtons(
+      modifier = Modifier.padding(top = 16.dp),
+      buttonType = HOVER, buttonSize = M, state = Pause
+    )
  *
  */
 @Composable fun TUIPlayPauseButton(
@@ -59,8 +62,12 @@ buttonType = HOVER, buttonSize = M, state = Pause
 ) {
 
   val iconModifier = when (buttonSize) {
-    L -> Modifier.size(24.dp)
-    M -> Modifier.size(16.dp)
+    L -> Modifier
+      .maxWidth(24)
+      .maxHeight(24)
+    M -> Modifier
+      .maxWidth(16)
+      .maxHeight(16)
   }
 
   when (buttonSize) {
@@ -73,28 +80,21 @@ buttonType = HOVER, buttonSize = M, state = Pause
     M -> Modifier.padding(4.dp)
   }
 
-// This box is used to draw the round shape
+  val icon = when (state) {
+    Play -> if (buttonSize == M) TarkaIcons.Play12Filled else TarkaIcons.Play24Filled
+    Pause -> if (buttonSize == M) TarkaIcons.Pause12Filled else TarkaIcons.Pause24Filled
+  }
+
   Box(
     modifier = modifier
       .testTag(tags.parentId)
-      .background(
-        color = TUITheme.colors.constantDark.copy(alpha = 0.75f),
-        shape = RoundedCornerShape(size = 44.dp)
-      )
+      .clip(RoundedCornerShape(size = 44.dp))
+      .background(color = TUITheme.colors.constantDark.copy(alpha = 0.75f))
       .clickable { onClick.invoke() }, contentAlignment = Alignment.Center
   ) {
-
-    //This box is used to give the padding for the icon content.
-    // if we give padding in above parent box the won't affect children padding rather than affects it's own size.
-    // so, that's why we are using two boxes here 1 - parent 2- child (icon) content
     Box(
       modifier = contentModifier,
     ) {
-      val icon = when (state) {
-        Play -> TarkaIcons.Play12Filled
-        Pause -> TarkaIcons.Pause12Filled
-      }
-
       Icon(
         modifier = iconModifier,
         painter = painterResource(id = icon.iconRes),
@@ -120,7 +120,6 @@ data class TUIPlayPauseButtonsTestTags(
 )
 
 @Preview @Composable fun TUIPlayPauseButtonPreview() {
-
   Row(
     modifier = Modifier
       .padding(15.dp)
@@ -128,21 +127,17 @@ data class TUIPlayPauseButtonsTestTags(
     verticalAlignment = Alignment.CenterVertically,
     horizontalArrangement = Arrangement.Center
   ) {
-
     Column(
       modifier = Modifier.padding(start = 16.dp),
       verticalArrangement = Arrangement.Center,
       horizontalAlignment = Alignment.Start
     ) {
-
       TUIPlayPauseButton(
         modifier = Modifier.padding(top = 16.dp), buttonSize = L, state = Play
       ) {}
-
       TUIPlayPauseButton(
         modifier = Modifier.padding(top = 16.dp), buttonSize = M, state = Play
       ) {}
-
     }
 
     Column(
@@ -150,16 +145,12 @@ data class TUIPlayPauseButtonsTestTags(
       verticalArrangement = Arrangement.Center,
       horizontalAlignment = Alignment.Start
     ) {
-
       TUIPlayPauseButton(
         modifier = Modifier.padding(top = 16.dp), buttonSize = L, state = Pause
       ) {}
-
       TUIPlayPauseButton(
         modifier = Modifier.padding(top = 16.dp), buttonSize = M, state = Pause
       ) {}
-
     }
-
   }
 }
