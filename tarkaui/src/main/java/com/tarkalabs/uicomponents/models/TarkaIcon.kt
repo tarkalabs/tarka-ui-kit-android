@@ -20,6 +20,7 @@ import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_checkmark_starburs
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_chevron_down_20_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_chevron_left_20_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_chevron_left_24_regular
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_chevron_right_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_chevron_up_20_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_circle_12_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_copy_24_regular
@@ -75,6 +76,7 @@ object TarkaIcons {
     TarkaIcon(R.drawable.ic_fluent_chevron_right_20_filled, "Chevron Right")
   val ChevronLeft20Regular = TarkaIcon(ic_fluent_chevron_left_20_regular, "Chevron Left")
   val ChevronLeft24Regular = TarkaIcon(ic_fluent_chevron_left_24_regular, "Chevron Left")
+  val ChevronRight24Regular = TarkaIcon(ic_fluent_chevron_right_24_regular, "Chevron Left")
   val ChevronDown20Regular = TarkaIcon(ic_fluent_chevron_down_20_regular, "Chevron Down")
   val CheckmarkStarburst24Regular =
     TarkaIcon(ic_fluent_checkmark_starburst_24_regular, "Checkmark Starburst")
