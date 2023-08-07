@@ -43,13 +43,11 @@ sealed class TUIMobileOverlayHeaderStyle {
 
 @Composable fun TUIMobileOverlayHeader(
   modifier: Modifier = Modifier,
-  showBackButton: Boolean,
   style: TUIMobileOverlayHeaderStyle,
-  title: String? = null,
 ) {
 
   val height = when {
-    !showBackButton && title == null -> 24.dp
+    style is None-> 24.dp
     else -> 64.dp
   }
 
@@ -119,7 +117,8 @@ sealed class TUIMobileOverlayHeaderStyle {
     text = title,
     modifier = modifier,
     textAlign = textAlign,
-    style = TUITheme.typography.heading5
+    style = TUITheme.typography.heading5,
+    color = TUITheme.colors.onSurface
   )
 }
 
@@ -132,22 +131,16 @@ sealed class TUIMobileOverlayHeaderStyle {
     ) {
       TUIMobileOverlayHeader(
         modifier = Modifier.fillMaxWidth(),
-        showBackButton = false,
-        title = null,
         style = None
       )
       VerticalSpacer(space = 10)
       TUIMobileOverlayHeader(
         modifier = Modifier.fillMaxWidth(),
-        showBackButton = false,
-        title = "Select Asset",
         style = HeaderWithTitle("Select Asset")
       )
       VerticalSpacer(space = 10)
       TUIMobileOverlayHeader(
         modifier = Modifier.fillMaxWidth(),
-        showBackButton = false,
-        title = "Title",
         style = HeaderWithTrailingIcon(title = "Select Asset",
           trailingIcon = TarkaIcons.Dismiss24Regular,
           onTrailingIconClick = {
@@ -157,10 +150,7 @@ sealed class TUIMobileOverlayHeaderStyle {
       VerticalSpacer(space = 10)
       TUIMobileOverlayHeader(
         modifier = Modifier.fillMaxWidth(),
-        showBackButton = true,
-        title = "Title",
         style = HeaderWithBackIcon(title = "Select Asset", onBackIconClick = {
-
         })
       )
       VerticalSpacer(space = 10)
