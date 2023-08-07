@@ -38,8 +38,12 @@ import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_eye_12_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_info_20_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_local_language_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_map_24_regular
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_pause_12_filled
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_pause_24_filled
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_play_12_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_more_horizontal_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_play_16_filled
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_play_24_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_question_circle_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_re_order_dots_vertical_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_search_24_regular
@@ -116,6 +120,10 @@ object TarkaIcons {
   val Play16Filled = TarkaIcon(ic_fluent_play_16_filled, "Play")
   val Document24Regular = TarkaIcon(ic_fluent_document_24_regular, "Document")
   val Wave24Regular = TarkaIcon(ic_fluent_device_eq_24_regular, "Audio")
+  val Play12Filled = TarkaIcon(ic_fluent_play_12_filled, "Play")
+  val Play24Filled = TarkaIcon(ic_fluent_play_24_filled, "Play")
+  val Pause12Filled = TarkaIcon(ic_fluent_pause_12_filled, "Pause")
+  val Pause24Filled = TarkaIcon(ic_fluent_pause_24_filled, "Pause")
   val ReOrder24Regular = TarkaIcon(ic_fluent_re_order_dots_vertical_24_regular, "ReOrder")
   val MoreHorizontal24Regular = TarkaIcon(ic_fluent_more_horizontal_24_regular, "More")
   val checkmark12Regular = TarkaIcon(ic_fluent_checkmark_12_regular, "Check")
