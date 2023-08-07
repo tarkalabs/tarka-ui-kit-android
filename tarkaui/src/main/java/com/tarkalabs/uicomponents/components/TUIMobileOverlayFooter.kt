@@ -15,16 +15,28 @@ import com.tarkalabs.uicomponents.models.TarkaIcons
 
 @Composable
 fun TUIMobileOverlayFooter(
-  modifier: Modifier = Modifier
+  modifier: Modifier = Modifier,
+  showRightArrow: Boolean = true,
+  showLeftArrow: Boolean = true,
+  showMiddleDismiss: Boolean = true,
 ) {
   Row(
     modifier.height(64.dp),
     verticalAlignment = Alignment.CenterVertically,
     horizontalArrangement = Arrangement.SpaceEvenly
   ) {
-    TUIIconButton(icon = TarkaIcons.ChevronLeft24Regular, iconButtonStyle = IconButtonStyle.GHOST)
-    TUIIconButton(icon = TarkaIcons.Dismiss24Regular, iconButtonStyle = IconButtonStyle.GHOST)
-    TUIIconButton(icon = TarkaIcons.ChevronRight24Regular, iconButtonStyle = IconButtonStyle.GHOST)
+    if (showLeftArrow) TUIIconButton(
+      icon = TarkaIcons.ChevronLeft24Regular,
+      iconButtonStyle = IconButtonStyle.GHOST
+    )
+    if (showMiddleDismiss) TUIIconButton(
+      icon = TarkaIcons.Dismiss24Regular,
+      iconButtonStyle = IconButtonStyle.GHOST
+    )
+    if (showRightArrow) TUIIconButton(
+      icon = TarkaIcons.ChevronRight24Regular,
+      iconButtonStyle = IconButtonStyle.GHOST
+    )
   }
 }
 
