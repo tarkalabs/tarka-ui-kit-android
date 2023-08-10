@@ -1,6 +1,7 @@
 package com.tarkalabs.uicomponents.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -57,9 +58,10 @@ fun TUIMobileOverlayHeader(
       .height(height)
       .fillMaxWidth()
   ) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.Center) {
       Box(
         modifier = Modifier
+          .padding(vertical = 8.dp)
           .height(4.dp)
           .width(68.dp)
           .background(TUITheme.colors.surfaceVariant)
@@ -90,7 +92,7 @@ fun TUIMobileOverlayHeader(
 
           is HeaderWithTrailingIcon -> {
             HeaderText(
-              title = style.title, textAlign = TextAlign.Start, modifier = Modifier.weight(1f)
+              title = style.title, textAlign = TextAlign.Start, modifier = Modifier.weight(1f).padding(start = 16.dp)
 
             )
             TUIIconButton(
