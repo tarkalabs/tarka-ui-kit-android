@@ -30,18 +30,54 @@ import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
+/**
+ * Represents different styles for a mobile overlay header.
+ */
 sealed class TUIMobileOverlayHeaderStyle {
+
+  /**
+   * No additional header content.
+   */
   object None : TUIMobileOverlayHeaderStyle()
+
+  /**
+   * Header style with a title.
+   *
+   * @property title The title text to be displayed.
+   */
   data class HeaderWithTitle(val title: String) : TUIMobileOverlayHeaderStyle()
+
+  /**
+   * Header style with a title, a trailing icon, and a click listener for the icon.
+   *
+   * @property title The title text to be displayed.
+   * @property trailingIcon The icon to be displayed at the trailing edge.
+   * @property onTrailingIconClick The click listener for the trailing icon.
+   */
   data class HeaderWithTrailingIcon(
-    val title: String, val trailingIcon: TarkaIcon, val onTrailingIconClick: () -> Unit
+    val title: String,
+    val trailingIcon: TarkaIcon,
+    val onTrailingIconClick: () -> Unit
   ) : TUIMobileOverlayHeaderStyle()
 
+  /**
+   * Header style with a title and a click listener for a back icon.
+   *
+   * @property title The title text to be displayed.
+   * @property onBackIconClick The click listener for the back icon.
+   */
   data class HeaderWithBackIcon(
-    val title: String, val onBackIconClick: () -> Unit
+    val title: String,
+    val onBackIconClick: () -> Unit
   ) : TUIMobileOverlayHeaderStyle()
 }
 
+/**
+ * Composable function to create a mobile overlay header.
+ *
+ * @param modifier The modifier for styling and layout customization.
+ * @param style The style of the header based on TUIMobileOverlayHeaderStyle.
+ */
 @Composable
 fun TUIMobileOverlayHeader(
   modifier: Modifier = Modifier,
