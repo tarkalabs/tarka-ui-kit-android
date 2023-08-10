@@ -41,13 +41,14 @@ sealed class TUIMobileOverlayHeaderStyle {
   ) : TUIMobileOverlayHeaderStyle()
 }
 
-@Composable fun TUIMobileOverlayHeader(
+@Composable
+fun TUIMobileOverlayHeader(
   modifier: Modifier = Modifier,
   style: TUIMobileOverlayHeaderStyle,
 ) {
 
-  val height = when {
-    style is None-> 24.dp
+  val height = when (style) {
+    is None -> 24.dp
     else -> 64.dp
   }
 
@@ -56,7 +57,7 @@ sealed class TUIMobileOverlayHeaderStyle {
       .height(height)
       .fillMaxWidth()
   ) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
       Box(
         modifier = Modifier
           .height(4.dp)
@@ -89,10 +90,7 @@ sealed class TUIMobileOverlayHeaderStyle {
 
           is HeaderWithTrailingIcon -> {
             HeaderText(
-              title = style.title,
-              textAlign = TextAlign.Start,
-              modifier = Modifier
-                .weight(1f)
+              title = style.title, textAlign = TextAlign.Start, modifier = Modifier.weight(1f)
 
             )
             TUIIconButton(
@@ -106,13 +104,13 @@ sealed class TUIMobileOverlayHeaderStyle {
           None -> {
           }
         }
-
       }
     }
   }
 }
 
-@Composable private fun HeaderText(title: String, textAlign: TextAlign, modifier: Modifier) {
+@Composable
+private fun HeaderText(title: String, textAlign: TextAlign, modifier: Modifier) {
   Text(
     text = title,
     modifier = modifier,
@@ -122,7 +120,9 @@ sealed class TUIMobileOverlayHeaderStyle {
   )
 }
 
-@Preview(showBackground = true) @Composable fun TUIMobileOverlayHeaderPreview() {
+@Preview(showBackground = true)
+@Composable
+fun TUIMobileOverlayHeaderPreview() {
   TUITheme {
     Column(
       Modifier
@@ -130,18 +130,15 @@ sealed class TUIMobileOverlayHeaderStyle {
         .background(TUITheme.colors.surface)
     ) {
       TUIMobileOverlayHeader(
-        modifier = Modifier.fillMaxWidth(),
-        style = None
+        modifier = Modifier.fillMaxWidth(), style = None
       )
       VerticalSpacer(space = 10)
       TUIMobileOverlayHeader(
-        modifier = Modifier.fillMaxWidth(),
-        style = HeaderWithTitle("Select Asset")
+        modifier = Modifier.fillMaxWidth(), style = HeaderWithTitle("Select Asset")
       )
       VerticalSpacer(space = 10)
       TUIMobileOverlayHeader(
-        modifier = Modifier.fillMaxWidth(),
-        style = HeaderWithTrailingIcon(title = "Select Asset",
+        modifier = Modifier.fillMaxWidth(), style = HeaderWithTrailingIcon(title = "Select Asset",
           trailingIcon = TarkaIcons.Dismiss24Regular,
           onTrailingIconClick = {
 
@@ -150,8 +147,7 @@ sealed class TUIMobileOverlayHeaderStyle {
       VerticalSpacer(space = 10)
       TUIMobileOverlayHeader(
         modifier = Modifier.fillMaxWidth(),
-        style = HeaderWithBackIcon(title = "Select Asset", onBackIconClick = {
-        })
+        style = HeaderWithBackIcon(title = "Select Asset", onBackIconClick = {})
       )
       VerticalSpacer(space = 10)
     }
