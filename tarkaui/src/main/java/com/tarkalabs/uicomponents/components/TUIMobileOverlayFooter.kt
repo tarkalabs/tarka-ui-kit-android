@@ -19,6 +19,9 @@ fun TUIMobileOverlayFooter(
   showRightArrow: Boolean = true,
   showLeftArrow: Boolean = true,
   showMiddleDismiss: Boolean = true,
+  onRightArrowClick: (() -> Unit)? = null,
+  onLeftArrowClick: (() -> Unit)? = null,
+  onMiddleDismissClick: (() -> Unit)? = null,
 ) {
   Row(
     modifier.height(64.dp),
@@ -27,15 +30,18 @@ fun TUIMobileOverlayFooter(
   ) {
     if (showLeftArrow) TUIIconButton(
       icon = TarkaIcons.ChevronLeft24Regular,
-      iconButtonStyle = IconButtonStyle.GHOST
+      iconButtonStyle = IconButtonStyle.GHOST,
+      onIconClick = {onLeftArrowClick?.invoke()}
     )
     if (showMiddleDismiss) TUIIconButton(
       icon = TarkaIcons.Dismiss24Regular,
-      iconButtonStyle = IconButtonStyle.GHOST
+      iconButtonStyle = IconButtonStyle.GHOST,
+      onIconClick = {onMiddleDismissClick?.invoke()}
     )
     if (showRightArrow) TUIIconButton(
       icon = TarkaIcons.ChevronRight24Regular,
-      iconButtonStyle = IconButtonStyle.GHOST
+      iconButtonStyle = IconButtonStyle.GHOST,
+      onIconClick = {onRightArrowClick?.invoke()}
     )
   }
 }
