@@ -10,6 +10,7 @@ import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_sync_20_regu
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_sync_circle_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_barcode_scanner_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_calendar_ltr_24_regular
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_camera_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_caret_down_20_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_chat_bubbles_question_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_checkmark_12_regular
@@ -36,6 +37,7 @@ import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_document_header_ar
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_document_text_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_error_circle_16_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_eye_12_regular
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_image_multiple_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_info_20_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_local_language_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_map_24_regular
@@ -52,6 +54,7 @@ import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_shield_task_24_reg
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_tabs_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_timer_20_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_timer_24_regular
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_video_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_warning_12_regular
 
 data class TarkaIcon(
@@ -129,4 +132,8 @@ object TarkaIcons {
   val ReOrder24Regular = TarkaIcon(ic_fluent_re_order_dots_vertical_24_regular, "ReOrder")
   val MoreHorizontal24Regular = TarkaIcon(ic_fluent_more_horizontal_24_regular, "More")
   val checkmark12Regular = TarkaIcon(ic_fluent_checkmark_12_regular, "Check")
+  val Camera24Regular = TarkaIcon(ic_fluent_camera_24_regular, "Camera")
+  val Video24Regular = TarkaIcon(ic_fluent_video_24_regular, "Video")
+  val ImageMultiple24Regular = TarkaIcon(ic_fluent_image_multiple_24_regular, "Image Multiples")
+  val DeviceEQ24Regular = TarkaIcon(ic_fluent_device_eq_24_regular, "Audio")
 }
