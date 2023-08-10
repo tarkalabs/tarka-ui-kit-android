@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -26,6 +27,7 @@ import com.tarkalabs.uicomponents.components.TUIMobileOverlayHeaderStyle.None
 import com.tarkalabs.uicomponents.components.base.IconButtonSize
 import com.tarkalabs.uicomponents.components.base.IconButtonStyle
 import com.tarkalabs.uicomponents.components.base.TUIIconButton
+import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
 import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
@@ -77,11 +79,13 @@ sealed class TUIMobileOverlayHeaderStyle {
  *
  * @param modifier The modifier for styling and layout customization.
  * @param style The style of the header based on TUIMobileOverlayHeaderStyle.
+ * @param tags The tags to be applied to the chip for testing purposes.
  */
 @Composable
 fun TUIMobileOverlayHeader(
   modifier: Modifier = Modifier,
   style: TUIMobileOverlayHeaderStyle,
+  tags : TUIMobileOverlayHeaderTags = TUIMobileOverlayHeaderTags()
 ) {
 
   val height = when (style) {
@@ -93,6 +97,7 @@ fun TUIMobileOverlayHeader(
     modifier = modifier
       .height(height)
       .fillMaxWidth()
+      .testTag(tags.parentTag)
   ) {
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.Center) {
       Box(
@@ -103,6 +108,7 @@ fun TUIMobileOverlayHeader(
           .background(TUITheme.colors.surfaceVariant)
           .clip(RoundedCornerShape(45.dp))
           .align(Alignment.CenterHorizontally)
+          .testTag(tags.dividerTag)
       )
       Row(verticalAlignment = Alignment.CenterVertically) {
         when (style) {
@@ -111,7 +117,8 @@ fun TUIMobileOverlayHeader(
               icon = TarkaIcons.ChevronLeft24Regular,
               buttonSize = IconButtonSize.XL,
               iconButtonStyle = IconButtonStyle.GHOST,
-              onIconClick = style.onBackIconClick
+              onIconClick = style.onBackIconClick,
+              tags = tags.leadingIconButtonTag
             )
             HeaderText(
               title = style.title,
@@ -135,7 +142,8 @@ fun TUIMobileOverlayHeader(
               icon = style.trailingIcon,
               buttonSize = IconButtonSize.L,
               iconButtonStyle = IconButtonStyle.GHOST,
-              onIconClick = style.onTrailingIconClick
+              onIconClick = style.onTrailingIconClick,
+              tags = tags.trailingIconButtonTag
             )
           }
 
@@ -146,6 +154,13 @@ fun TUIMobileOverlayHeader(
     }
   }
 }
+
+data class TUIMobileOverlayHeaderTags(
+  val parentTag : String = "TUIMobileOverlayHeader_Parent",
+  val dividerTag : String = "TUIMobileOverlayHeader_Divider",
+  val leadingIconButtonTag : TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUIMobileOverlayHeader_LeadingIcon"),
+  val trailingIconButtonTag : TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUIMobileOverlayHeader_TrailingIcon"),
+)
 
 @Composable
 private fun HeaderText(title: String, textAlign: TextAlign, modifier: Modifier) {
