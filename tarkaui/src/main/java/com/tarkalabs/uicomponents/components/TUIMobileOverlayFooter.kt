@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,9 +36,9 @@ fun TUIMobileOverlayFooter(
   onMiddleDismissClick: (() -> Unit)? = null,
 ) {
   Row(
-    modifier.height(64.dp),
+    modifier.height(64.dp).padding(vertical = 8.dp, horizontal = 24.dp),
     verticalAlignment = Alignment.CenterVertically,
-    horizontalArrangement = Arrangement.SpaceAround
+    horizontalArrangement = Arrangement.SpaceBetween
   ) {
     if (showLeftArrow) TUIIconButton(
       icon = TarkaIcons.ChevronLeft24Regular,
