@@ -13,6 +13,17 @@ import com.tarkalabs.uicomponents.components.base.IconButtonStyle
 import com.tarkalabs.uicomponents.components.base.TUIIconButton
 import com.tarkalabs.uicomponents.models.TarkaIcons
 
+/**
+ * Composable function to create a mobile overlay footer.
+ *
+ * @param modifier The modifier for styling and layout customization.
+ * @param showRightArrow Determines whether the right arrow icon is shown.
+ * @param showLeftArrow Determines whether the left arrow icon is shown.
+ * @param showMiddleDismiss Determines whether the middle dismiss icon is shown.
+ * @param onRightArrowClick The click listener for the right arrow icon.
+ * @param onLeftArrowClick The click listener for the left arrow icon.
+ * @param onMiddleDismissClick The click listener for the middle dismiss icon.
+ */
 @Composable
 fun TUIMobileOverlayFooter(
   modifier: Modifier = Modifier,
@@ -26,7 +37,7 @@ fun TUIMobileOverlayFooter(
   Row(
     modifier.height(64.dp),
     verticalAlignment = Alignment.CenterVertically,
-    horizontalArrangement = Arrangement.SpaceEvenly
+    horizontalArrangement = Arrangement.SpaceAround
   ) {
     if (showLeftArrow) TUIIconButton(
       icon = TarkaIcons.ChevronLeft24Regular,
