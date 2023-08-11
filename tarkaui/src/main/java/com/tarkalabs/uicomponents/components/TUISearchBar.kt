@@ -34,9 +34,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   onLeadingIconClick: (() -> Unit)? = null,
   searchBarTags: TUISearchBarTags = TUISearchBarTags(),
 ) {
-  val text = remember {
-    mutableStateOf(query)
-  }
+  val text = mutableStateOf(query)
 
   val leadingIconLambda: @Composable (() -> Unit)? = if (leadingIcon != null) {
     {
