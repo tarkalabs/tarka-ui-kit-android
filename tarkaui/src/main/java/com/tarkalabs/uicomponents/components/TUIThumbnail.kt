@@ -36,6 +36,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.R
+import com.tarkalabs.uicomponents.components.PlayPauseButtonSize.L
+import com.tarkalabs.uicomponents.components.PlayPauseButtonSize.M
 import com.tarkalabs.uicomponents.components.TUIThumbnailSize.Large
 import com.tarkalabs.uicomponents.components.TUIThumbnailSize.Medium
 import com.tarkalabs.uicomponents.components.TUIThumbnailType.Audio
@@ -122,14 +124,7 @@ enum class TUIThumbnailSize {
               .clip(RoundedCornerShape(8.dp)),
             contentScale = ContentScale.Crop
           )
-          Icon(
-            painter = painterResource(id = TarkaIcons.Play16Filled.iconRes),
-            modifier = iconModifier
-              .background(color = Color(0xFF000000).copy(alpha = 0.5f))
-              .clip(CircleShape),
-            contentDescription = TarkaIcons.Play16Filled.contentDescription,
-            tint = Color.White
-          )
+          TUIPlayPauseButton(buttonSize = M, onClick = {onThumbnailClick?.invoke()})
         }
       }
     }
