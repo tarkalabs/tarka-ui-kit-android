@@ -49,6 +49,8 @@ import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_play_16_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_play_24_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_question_circle_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_re_order_dots_vertical_24_regular
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_ruler_16_filled
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_ruler_20_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_search_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_shield_task_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_tabs_24_regular
@@ -136,4 +138,5 @@ object TarkaIcons {
   val Video24Regular = TarkaIcon(ic_fluent_video_24_regular, "Video")
   val ImageMultiple24Regular = TarkaIcon(ic_fluent_image_multiple_24_regular, "Image Multiples")
   val DeviceEQ24Regular = TarkaIcon(ic_fluent_device_eq_24_regular, "Audio")
+  val Ruler20Regular = TarkaIcon(ic_fluent_ruler_20_regular, "Ruler")
 }
