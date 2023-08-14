@@ -7,6 +7,7 @@ import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_add_circle_24_regu
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_counterclockwise_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_export_ltr_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_sync_20_regular
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_sync_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_sync_circle_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_barcode_scanner_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_calendar_ltr_24_regular
@@ -82,8 +83,9 @@ object TarkaIcons {
   val ArrowExportLtr24Regular = TarkaIcon(ic_fluent_arrow_export_ltr_24_regular, "Arrow Export")
   val Timer20Regular = TarkaIcon(ic_fluent_timer_20_regular, "Arrow Export")
   val Timer24Regular = TarkaIcon(ic_fluent_timer_24_regular, "Timer")
-  val Calendar24Regular = TarkaIcon(ic_fluent_calendar_ltr_24_regular, "Arrow Export")
+  val Calendar24Regular = TarkaIcon(ic_fluent_calendar_ltr_24_regular, "Calendar")
   val ArrowSync20Regular = TarkaIcon(ic_fluent_arrow_sync_20_regular, "Arrow Export")
+  val ArrowSync24Regular = TarkaIcon(ic_fluent_arrow_sync_24_regular, "Arrow Sync")
   val ArrowCounterClockWise24Regular =
     TarkaIcon(ic_fluent_arrow_counterclockwise_24_regular, "Arrow Counter clockwise")
   val Search24Regular = TarkaIcon(ic_fluent_search_24_regular, "Search")
