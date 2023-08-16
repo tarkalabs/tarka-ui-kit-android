@@ -66,7 +66,7 @@ publishing {
       run {
         groupId = "com.tarkalabs"
         artifactId = getLibraryArtifactId()
-        version = "0.34-alpha"
+        version = "0.35-alpha"
         artifact("$buildDir/outputs/aar/${getLibraryArtifactId()}-release.aar")
       }
     }
