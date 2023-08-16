@@ -56,11 +56,13 @@ sealed class ChipType {
    * @param content The optional leading content for the chip.
    * @param showTrailingDismiss Whether to show a dismiss icon as a trailing icon.
    * @param containerColor The color of the chip's container. If null, the default color from the theme will be used.
+   * @param trailingIcon The optional Icons which comes at last for the chip.
    */
   data class Input(
     val content: ChipLeadingContent? = null,
     val showTrailingDismiss: Boolean = false,
-    val containerColor: Color? = null
+    val containerColor: Color? = null,
+    val trailingIcon: TarkaIcon? = null
   ) : ChipType()
 
   /**
@@ -140,10 +142,10 @@ enum class ChipSize(val size: Dp) {
       label = commonLabel,
       colors = InputChipDefaults.inputChipColors(containerColor = TUITheme.colors.surface),
       leadingIcon = { leadingIcon(type.content) },
-      trailingIcon = if (type.showTrailingDismiss) {
-        {
+      trailingIcon = {
+        if (type.showTrailingDismiss || type.trailingIcon != null) {
           TUIIconButton(
-            icon = TarkaIcons.Dismiss20Filled,
+            icon = if (type.showTrailingDismiss) TarkaIcons.Dismiss20Filled else type.trailingIcon!!,
             iconButtonStyle = GHOST,
             onIconClick = {
               onDismissClick?.invoke()
@@ -151,7 +153,7 @@ enum class ChipSize(val size: Dp) {
             buttonSize = M
           )
         }
-      } else null)
+      })
 
     is Filter -> {
       FilterChip(
