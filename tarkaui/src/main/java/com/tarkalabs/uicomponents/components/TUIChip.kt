@@ -60,7 +60,7 @@ sealed class ChipType {
   data class Input(
     val content: ChipLeadingContent? = null,
     val showTrailingDismiss: Boolean = false,
-    val containerColor: Color? = null,
+    val containerColor: Color? = null
   ) : ChipType()
 
   /**
