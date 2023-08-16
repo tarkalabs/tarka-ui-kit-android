@@ -41,13 +41,14 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.AddCircle24
+import com.tarkalabs.tarkaicons.TarkaIcon
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.ChipType.Input
 import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.components.base.TUIIconButton
 import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
 import com.tarkalabs.uicomponents.extentions.clickableWithoutRipple
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -236,7 +237,7 @@ data class TUIEmailFieldTags(
     Box(modifier = Modifier.fillMaxWidth()) {
       TUIEmailField(title = "To",
         emailAddressList = emailList,
-        trailingIcon = TarkaIcons.AddCircle24Regular,
+        trailingIcon = TarkaIcons.Regular.AddCircle24,
         onItemRemoved = { position ->
           emailList.removeAt(position)
         },

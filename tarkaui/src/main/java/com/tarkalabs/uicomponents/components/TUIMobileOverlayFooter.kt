@@ -10,9 +10,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.ChevronLeft24
+import com.tarkalabs.tarkaicons.ChevronRight24
+import com.tarkalabs.tarkaicons.Dismiss24
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.base.IconButtonStyle
 import com.tarkalabs.uicomponents.components.base.TUIIconButton
-import com.tarkalabs.uicomponents.models.TarkaIcons
 
 /**
  * Composable function to create a mobile overlay footer.
@@ -41,17 +44,17 @@ fun TUIMobileOverlayFooter(
     horizontalArrangement = Arrangement.SpaceBetween
   ) {
     if (showLeftArrow) TUIIconButton(
-      icon = TarkaIcons.ChevronLeft24Regular,
+      icon = TarkaIcons.Regular.ChevronLeft24,
       iconButtonStyle = IconButtonStyle.GHOST,
       onIconClick = {onLeftArrowClick?.invoke()}
     )
     if (showMiddleDismiss) TUIIconButton(
-      icon = TarkaIcons.Dismiss24Regular,
+      icon = TarkaIcons.Regular.Dismiss24,
       iconButtonStyle = IconButtonStyle.GHOST,
       onIconClick = {onMiddleDismissClick?.invoke()}
     )
     if (showRightArrow) TUIIconButton(
-      icon = TarkaIcons.ChevronRight24Regular,
+      icon = TarkaIcons.Regular.ChevronRight24,
       iconButtonStyle = IconButtonStyle.GHOST,
       onIconClick = {onRightArrowClick?.invoke()}
     )

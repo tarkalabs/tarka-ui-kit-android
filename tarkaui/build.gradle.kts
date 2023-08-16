@@ -91,7 +91,7 @@ dependencies {
   implementation("androidx.compose.ui:ui-tooling-preview:$composeUiVersion")
   implementation("androidx.compose.material3:material3:1.1.0-rc01")
   implementation("androidx.compose.foundation:foundation:$composeUiVersion")
-  api("com.microsoft.design:fluent-system-icons:1.1.201@aar")
+  implementation(project(":tarkaicons"))
 
   testImplementation("junit:junit:4.13.2")
   androidTestImplementation("androidx.test.ext:junit:1.1.5")

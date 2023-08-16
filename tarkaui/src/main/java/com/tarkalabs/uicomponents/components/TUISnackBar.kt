@@ -29,12 +29,13 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.Delete24
+import com.tarkalabs.tarkaicons.TarkaIcon
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUISnackBarType.Error
 import com.tarkalabs.uicomponents.components.TUISnackBarType.Information
 import com.tarkalabs.uicomponents.components.TUISnackBarType.Success
 import com.tarkalabs.uicomponents.components.TUISnackBarType.Warning
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 @Composable
@@ -253,7 +254,7 @@ fun TUIInformationSnackBarPreview() {
   TUISnackBar(
     message = "Hello there",
     actionLabel = "dgsd",
-    leadingIcon = TarkaIcons.Delete24Regular,
+    leadingIcon = TarkaIcons.Regular.Delete24,
     type = Information
   )
 }
@@ -262,7 +263,7 @@ fun TUIInformationSnackBarPreview() {
 @Composable
 fun TUISuccessSnackBarPreview() {
   TUISnackBar(
-    message = "Hello there", actionLabel = "dgsd", leadingIcon = TarkaIcons.Delete24Regular, type = Success
+    message = "Hello there", actionLabel = "dgsd", leadingIcon = TarkaIcons.Regular.Delete24, type = Success
   )
 }
 
@@ -270,7 +271,7 @@ fun TUISuccessSnackBarPreview() {
 @Composable
 fun TUIWarningSnackBarPreview() {
   TUISnackBar(
-    message = "Hello there", actionLabel = "dgsd", leadingIcon = TarkaIcons.Delete24Regular, type = Warning
+    message = "Hello there", actionLabel = "dgsd", leadingIcon = TarkaIcons.Regular.Delete24, type = Warning
   )
 }
 
@@ -278,6 +279,6 @@ fun TUIWarningSnackBarPreview() {
 @Composable
 fun TUIErrorSnackBarPreview() {
   TUISnackBar(
-    message = "Hello there", actionLabel = "dgsd", leadingIcon = TarkaIcons.Delete24Regular, type = Error
+    message = "Hello there", actionLabel = "dgsd", leadingIcon = TarkaIcons.Regular.Delete24, type = Error
   )
 }

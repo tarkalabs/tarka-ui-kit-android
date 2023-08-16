@@ -27,6 +27,11 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.CheckmarkCircle16
+import com.tarkalabs.tarkaicons.TarkaIcon
+import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaicons.Timer20
+import com.tarkalabs.tarkaicons.Warning12
 import com.tarkalabs.uicomponents.components.HorizontalSpacer
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Icon
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Text
@@ -36,8 +41,6 @@ import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Normal
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Success
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldType.InputField
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldType.LookupInputField
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 enum class TUIInputFieldStatus {
@@ -192,8 +195,8 @@ sealed class TUIInputFieldContentType {
 
 fun iconFor(status: TUIInputFieldStatus): TarkaIcon? {
   return when (status) {
-    Success -> TarkaIcons.CheckMarkCircle16Regular
-    Alert -> TarkaIcons.Warning12Regular
+    Success -> TarkaIcons.Regular.CheckmarkCircle16
+    Alert -> TarkaIcons.Regular.Warning12
     else -> null
   }
 }
@@ -250,7 +253,7 @@ fun iconFor(status: TUIInputFieldStatus): TarkaIcon? {
     }
     Box(modifier = Modifier.padding(10.dp)) {
       TUIInputField(leadingContent = Text("$"),
-        trailingContent = Icon(TarkaIcons.Timer20Regular),
+        trailingContent = Icon(TarkaIcons.Regular.Timer20),
         value = textValue,
         onValueChange = { textValue = it },
         status = Success,
@@ -271,7 +274,7 @@ fun iconFor(status: TUIInputFieldStatus): TarkaIcon? {
     }
     TUIInputField(
       leadingContent = Text("$"),
-      trailingContent = Icon(TarkaIcons.Timer20Regular),
+      trailingContent = Icon(TarkaIcons.Regular.Timer20),
       value = textValue,
       onValueChange = { textValue = it },
       status = Success
