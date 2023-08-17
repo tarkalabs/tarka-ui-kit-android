@@ -4,6 +4,7 @@ import ButtonSize.XL
 import ButtonStyle.OUTLINE
 import ButtonStyle.PRIMARY
 import TUIButton
+import TUIButtonTags
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -35,7 +36,8 @@ fun TUIMobileButtonBlock(
   primaryButtonOnClick: () -> Unit,
   outlineButtonLabel: String?,
   outlineButtonOnClick: (() -> Unit)?,
-  primaryButtonWeight: Float? = null
+  primaryButtonWeight: Float? = null,
+  tags: TUIMobileButtonBlockTags = TUIMobileButtonBlockTags()
 ) {
 
   Column(modifier.fillMaxWidth()) {
@@ -51,7 +53,8 @@ fun TUIMobileButtonBlock(
           label = outlineButtonLabel,
           onClick = { outlineButtonOnClick?.invoke() },
           buttonStyle = OUTLINE,
-          modifier = if (primaryButtonWeight == null) Modifier.weight(1f) else Modifier.wrapContentWidth()
+          modifier = if (primaryButtonWeight == null) Modifier.weight(1f) else Modifier.wrapContentWidth(),
+          tags = TUIButtonTags(parentTag = tags.outlineButtonTag)
         )
         HorizontalSpacer(space = 8)
       }
@@ -62,15 +65,19 @@ fun TUIMobileButtonBlock(
         buttonStyle = PRIMARY,
         modifier = Modifier.weight(
           if (outlineButtonLabel == null) 1f else primaryButtonWeight ?: 1f
-        )
+        ),
+        tags = TUIButtonTags(parentTag = tags.primaryButtonTag)
       )
     }
   }
 }
 
-@Preview
-@Composable
-fun TUIMobileButtonPreview() {
+data class TUIMobileButtonBlockTags(
+  val primaryButtonTag: String = "TUIMobileButtonBlock_Primary",
+  val outlineButtonTag: String = "TUIMobileButtonBlock_Outline",
+)
+
+@Preview @Composable fun TUIMobileButtonPreview() {
   TUIMobileButtonBlock(
     primaryButtonLabel = "Label",
     primaryButtonOnClick = { /*TODO*/ },
