@@ -2,6 +2,8 @@ package com.tarkalabs.uicomponents.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
@@ -14,9 +16,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.components.base.IconButtonSize.XL
 import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.components.base.TUIIconButton
@@ -59,6 +63,7 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
 )
  */
 @OptIn(ExperimentalMaterial3Api::class) @Composable fun TUITopBar(
+  modifier: Modifier = Modifier,
   title: String,
   navigationIcon: TarkaIcon? = null,
   searchIcon: TarkaIcon? = null,
@@ -70,86 +75,123 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
   onSecondMenuItemClicked: () -> Unit = {},
   onThirdMenuItemClicked: () -> Unit = {},
   onSearchQuery: (String) -> Unit = {},
+  disableSearchIcon: Boolean = false,
+  clearQueryAndHideSearchBar: Boolean = false,
   colors: TopAppBarColors = TopAppBarDefaults.topAppBarColors(
     containerColor = TUITheme.colors.surface
   ),
   scrollBehavior: TopAppBarScrollBehavior? = null,
-  tags: TUITopBarTags = TUITopBarTags()
+  tags: TUITopBarTags = TUITopBarTags(),
 ) {
 
   var showSearchBar by remember {
     mutableStateOf(false)
   }
 
-  Column {
+  var query by remember {
+    mutableStateOf("")
+  }
+
+  if (clearQueryAndHideSearchBar && showSearchBar) {
+    query = ""
+    showSearchBar = false
+  }
+
+  Column(
+    modifier = modifier.wrapContentSize(),
+    horizontalAlignment = Alignment.CenterHorizontally
+  ) {
     TopAppBar(
       title = {
-        Text(
-          text = title,
-          style = TUITheme.typography.heading5,
-          color = TUITheme.colors.onSurface,
-          maxLines = 1,
-          overflow = TextOverflow.Ellipsis
-        )
+        if (showSearchBar) {
+          TUISearchBar(
+            modifier = modifier.padding(vertical = 8.dp, horizontal = 16.dp),
+            query = query,
+            placeholder = "",
+            leadingIcon = TarkaIcons.ChevronLeft24Regular,
+            onLeadingIconClick = {
+              query = ""
+              showSearchBar = false
+            },
+            onQueryTextChange = {
+              query = it
+              onSearchQuery(it)
+            })
+        } else {
+          Text(
+            text = title,
+            style = TUITheme.typography.heading5,
+            color = TUITheme.colors.onSurface,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+          )
+        }
       },
       navigationIcon = {
         if (navigationIcon != null) {
-          TUIIconButton(
-            onIconClick = onNavigationIconClick,
-            icon = navigationIcon,
-            tags = tags.navigationIconTags,
-            iconButtonStyle = GHOST,
-            buttonSize = XL
-          )
+          if (!showSearchBar) {
+            TUIIconButton(
+              onIconClick = onNavigationIconClick,
+              icon = navigationIcon,
+              tags = tags.navigationIconTags,
+              iconButtonStyle = GHOST,
+              buttonSize = XL
+            )
+          }
         }
       },
       actions = {
-        if (searchIcon != null) {
-          TUIIconButton(icon = searchIcon,
-            tags = tags.searchIconTags,
-            iconButtonStyle = GHOST,
-            onIconClick = {
-              showSearchBar = true
-            },
-            buttonSize = XL)
-        }
+        if (!showSearchBar) {
+          if (searchIcon != null) {
+            TUIIconButton(
+              icon = searchIcon,
+              tags = tags.searchIconTags,
+              iconButtonStyle = GHOST,
+              onIconClick = {
+                if (!disableSearchIcon) {
+                  showSearchBar = true
+                }
+              },
+              buttonSize = XL
+            )
+          }
 
-        if (menuItemIconThree != null) {
-          TUIIconButton(
-            icon = menuItemIconThree,
-            tags = tags.menuIconThreeTags,
-            iconButtonStyle = GHOST,
-            onIconClick = onThirdMenuItemClicked,
-            buttonSize = XL
-          )
-        }
+          if (menuItemIconThree != null) {
+            TUIIconButton(
+              icon = menuItemIconThree,
+              tags = tags.menuIconThreeTags,
+              iconButtonStyle = GHOST,
+              onIconClick = onThirdMenuItemClicked,
+              buttonSize = XL
+            )
+          }
 
-        if (menuItemIconTwo != null) {
-          TUIIconButton(
-            onIconClick = onSecondMenuItemClicked,
-            icon = menuItemIconTwo,
-            tags = tags.menuIconTwoTags,
-            iconButtonStyle = GHOST,
-            buttonSize = XL
-          )
-        }
+          if (menuItemIconTwo != null) {
+            TUIIconButton(
+              onIconClick = onSecondMenuItemClicked,
+              icon = menuItemIconTwo,
+              tags = tags.menuIconTwoTags,
+              iconButtonStyle = GHOST,
+              buttonSize = XL
+            )
+          }
 
-        if (menuItemIconOne != null) {
-          TUIIconButton(
-            onIconClick = onFirstMenuItemClicked,
-            tags = tags.menuIconOneTags,
-            icon = menuItemIconOne,
-            iconButtonStyle = GHOST,
-            buttonSize = XL
-          )
+          if (menuItemIconOne != null) {
+            TUIIconButton(
+              onIconClick = onFirstMenuItemClicked,
+              tags = tags.menuIconOneTags,
+              icon = menuItemIconOne,
+              iconButtonStyle = GHOST,
+              buttonSize = XL
+            )
+          }
         }
-
       },
       colors = colors,
       modifier = Modifier.fillMaxWidth(),
       scrollBehavior = scrollBehavior,
     )
-    Divider(color = TUITheme.colors.surfaceVariant)
+    Divider(modifier = Modifier.padding(top = 8.dp), color = TUITheme.colors.surfaceVariant)
   }
 }
 
