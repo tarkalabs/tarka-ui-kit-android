@@ -70,7 +70,7 @@ class TUISnackBarTest {
             hostState = snackState,
           ) { snackbarData: SnackbarData ->
             TUISnackBar(
-              snackbarData.visuals.message,
+              message = snackbarData.visuals.message,
               actionLabel = snackbarData.visuals.actionLabel,
               leadingIcon = TarkaIcons.Delete24Regular,
               type = Success,
@@ -122,7 +122,7 @@ class TUISnackBarTest {
             hostState = snackState,
           ) { snackbarData: SnackbarData ->
             TUISnackBar(
-              snackbarData.visuals.message,
+              message = snackbarData.visuals.message,
               actionLabel = snackbarData.visuals.actionLabel,
               leadingIcon = TarkaIcons.Delete24Regular,
               type = Success,
