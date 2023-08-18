@@ -52,6 +52,7 @@ fun TUISelectionCard(
 
   Row(
     modifier = modifier.testTag(tags.parentTag)
+      //used to consider testTags as resourceId to improve testability and accessibility
       .semantics {  testTagsAsResourceId = true }
       .clickable {
         onCardClicked.invoke()
