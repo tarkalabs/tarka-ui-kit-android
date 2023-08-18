@@ -3,6 +3,7 @@ package com.tarkalabs.uicomponents.models
 import androidx.annotation.DrawableRes
 import androidx.compose.ui.graphics.Color
 import com.microsoft.fluent.mobile.icons.R
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_add_24_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_add_circle_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_counterclockwise_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_arrow_export_ltr_24_regular
@@ -18,6 +19,7 @@ import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_chat_bubbles_quest
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_checkmark_12_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_checkmark_16_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_checkmark_20_filled
+import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_checkmark_24_filled
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_checkmark_circle_16_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_checkmark_starburst_24_regular
 import com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_chevron_down_20_regular
@@ -112,6 +114,7 @@ object TarkaIcons {
     TarkaIcon(ic_fluent_re_order_dots_vertical_24_regular, "Re order dots")
   val CheckMark16Filled = TarkaIcon(ic_fluent_checkmark_16_filled, "Check Mark")
   val CheckMark20Filled = TarkaIcon(ic_fluent_checkmark_20_filled, "Check Mark")
+  val CheckMark24Filled = TarkaIcon(ic_fluent_checkmark_24_filled, "Check Mark")
   val QuestionCircle24Regular = TarkaIcon(ic_fluent_question_circle_24_regular, "Question Circle")
   val DocumentText24Regular = TarkaIcon(ic_fluent_document_text_24_regular, "Document Text")
   val ShieldTask24Regular = TarkaIcon(ic_fluent_shield_task_24_regular, "Document Text")
@@ -142,5 +145,5 @@ object TarkaIcons {
   val DeviceEQ24Regular = TarkaIcon(ic_fluent_device_eq_24_regular, "Audio")
   val Ruler20Regular = TarkaIcon(ic_fluent_ruler_20_regular, "Ruler")
   val Attach24Regular = TarkaIcon(ic_fluent_attach_24_regular, "Attach")
-
+  val Add24Filled = TarkaIcon(ic_fluent_add_24_filled, "Add")
 }
