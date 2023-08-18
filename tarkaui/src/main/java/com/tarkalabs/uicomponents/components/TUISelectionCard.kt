@@ -3,7 +3,6 @@ package com.tarkalabs.uicomponents.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,8 +12,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -29,6 +26,23 @@ import com.tarkalabs.uicomponents.models.TarkaIcon
 import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
+/**
+ * This Composable function is used to Show the Cards in a list to pick the particular from User.
+ *
+ * @param modifier - used to modify the properties, behaviours of composes.
+ * @param leadingIcon - Optional Leading Icon in the card.
+ * @param label - title of the Card.
+ * @param description - description of the Card.
+ * @param description2 - Optional additional description of the card.
+ * @param details - Optional details of the card.
+ * @param details2 - Optional second details of the card.
+ * @param badgeCount - Optional Count Details which is shown in Badge style.
+ * @param showTrailingIcon - boolean indicated to shown the frontArrow at the end of the card.
+ * @param isSelected - a boolean which indicates current clicked state of the card.
+ * @param tags - data class consists of string values which are used to find the nodes inside this component while testing.
+ * @param onCardClicked - lambda block which will be invoked while clicking this selection card.
+ *
+ * */
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun TUISelectionCard(
@@ -40,40 +54,37 @@ fun TUISelectionCard(
   details: String? = null,
   details2: String? = null,
   badgeCount: Int? = null,
-  isTrailingBackArrowEnabled: Boolean = false,
+  showTrailingIcon: Boolean = false,
   isSelected: Boolean = false,
   tags: TUISelectionCardTags = TUISelectionCardTags(),
   onCardClicked: () -> Unit,
 ) {
 
-  val isCardTapped = remember {
-    mutableStateOf(isSelected)
-  }
-
   Row(
-    modifier = modifier.testTag(tags.parentTag)
-      //used to consider testTags as resourceId to improve testability and accessibility
-      .semantics {  testTagsAsResourceId = true }
+    modifier = modifier
+      .testTag(tags.parentTag)
+      .semantics { testTagsAsResourceId = true }
       .clickable {
         onCardClicked.invoke()
-        isCardTapped.value = !isCardTapped.value
       }
       .background(
-        if (isCardTapped.value) TUITheme.colors.primaryAlt else TUITheme.colors.surface,
+        if (isSelected) TUITheme.colors.primaryAlt else TUITheme.colors.surface,
         shape = RoundedCornerShape(16.dp)
       )
       .padding(horizontal = 16.dp, vertical = 12.dp),
   ) {
 
     leadingIcon?.let {
-      Box(modifier = modifier, contentAlignment = Alignment.TopStart) {
-        Icon(
-          modifier = Modifier.size(24.dp).testTag(tags.leadingIconTag),
-          painter = painterResource(id = it.iconRes),
-          contentDescription = it.contentDescription,
-          tint = TUITheme.colors.secondary
-        )
-      }
+      //Box(contentAlignment = Alignment.TopStart) {
+      Icon(
+        modifier = Modifier
+          .size(24.dp)
+          .testTag(tags.leadingIconTag),
+        painter = painterResource(id = it.iconRes),
+        contentDescription = it.contentDescription,
+        tint = TUITheme.colors.secondary
+      )
+      //}
     }
 
     Row(
@@ -132,15 +143,19 @@ fun TUISelectionCard(
 
       badgeCount?.let {
         TUIBadge(
-          modifier = Modifier.padding(start = 16.dp).testTag(tags.badgeTag),
+          modifier = Modifier
+            .padding(start = 16.dp)
+            .testTag(tags.badgeTag),
           count = badgeCount,
           color = TUITheme.colors.tertiary
         )
       }
 
-      if (isTrailingBackArrowEnabled) {
+      if (showTrailingIcon) {
         Icon(
-          modifier = Modifier.size(24.dp).testTag(tags.trailingFrontArrowIconTag),
+          modifier = Modifier
+            .size(24.dp)
+            .testTag(tags.trailingFrontArrowIconTag),
           painter = painterResource(id = TarkaIcons.ChevronRight24Regular.iconRes),
           contentDescription = TarkaIcons.ChevronRight24Regular.contentDescription
         )
@@ -151,15 +166,15 @@ fun TUISelectionCard(
 }
 
 data class TUISelectionCardTags(
-  val parentTag: String ="ParentTag",
-  val leadingIconTag: String ="LeadingIconTag",
-  val labelTag: String ="LabelTag",
-  val descriptionTag: String ="DescriptionTag",
-  val description2Tag: String ="Description2Tag",
-  val detailsTag: String ="DetailsTag",
-  val details2Tag: String ="Details2Tag",
-  val badgeTag: String ="BadgeTag",
-  val trailingFrontArrowIconTag: String ="TrailingFrontArrowIconTag",
+  val parentTag: String = "ParentTag",
+  val leadingIconTag: String = "LeadingIconTag",
+  val labelTag: String = "LabelTag",
+  val descriptionTag: String = "DescriptionTag",
+  val description2Tag: String = "Description2Tag",
+  val detailsTag: String = "DetailsTag",
+  val details2Tag: String = "Details2Tag",
+  val badgeTag: String = "BadgeTag",
+  val trailingFrontArrowIconTag: String = "TrailingFrontArrowIconTag",
 )
 
 @Preview
@@ -182,7 +197,7 @@ fun TUISelectionCardPreview() {
       details = "Details",
       details2 = "Details2",
       badgeCount = 4,
-      isTrailingBackArrowEnabled = true
+      showTrailingIcon = true
     ) {}
     VerticalSpacer(space = 14)
     TUISelectionCard(
@@ -193,7 +208,7 @@ fun TUISelectionCardPreview() {
       details = "Details",
       details2 = "Details2",
       badgeCount = 4,
-      isTrailingBackArrowEnabled = true
+      showTrailingIcon = true
     ) {}
 
     VerticalSpacer(space = 14)
@@ -206,7 +221,7 @@ fun TUISelectionCardPreview() {
       details = "Details",
       details2 = "Details2",
       badgeCount = 4,
-      isTrailingBackArrowEnabled = true,
+      showTrailingIcon = true,
       isSelected = true
     ) {}
     VerticalSpacer(space = 14)
@@ -218,7 +233,7 @@ fun TUISelectionCardPreview() {
       details = "Details",
       details2 = "Details2",
       badgeCount = 4,
-      isTrailingBackArrowEnabled = true,
+      showTrailingIcon = true,
       isSelected = true
     ) {}
 

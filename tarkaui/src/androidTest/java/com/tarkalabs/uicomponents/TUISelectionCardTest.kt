@@ -44,7 +44,7 @@ class TUISelectionCardTest {
         details2 = detail2,
         badgeCount = badgeCount,
         leadingIcon = leadingIcon,
-        isTrailingBackArrowEnabled = true,
+        showTrailingIcon = true,
         tags = tags,
       ) {
 

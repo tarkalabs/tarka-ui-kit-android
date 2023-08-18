@@ -93,7 +93,7 @@ class TUISelectionCardScreenShotTest(
         details = detail,
         details2 = detail2,
         badgeCount = badgeCount,
-        isTrailingBackArrowEnabled = trailingIconEnabled
+        showTrailingIcon = trailingIconEnabled
       ) {}
     }
   }
