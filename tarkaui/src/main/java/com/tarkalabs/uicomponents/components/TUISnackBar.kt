@@ -1,14 +1,18 @@
 package com.tarkalabs.uicomponents.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Snackbar
 import androidx.compose.material3.SnackbarData
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
@@ -24,7 +28,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -123,7 +126,8 @@ fun TUISnackBarHost(
     hostState = state.hostState,
   ) { snackbarData: SnackbarData ->
     TUISnackBar(
-      snackbarData.visuals.message,
+      modifier = Modifier.padding(5.dp),
+      message = snackbarData.visuals.message,
       actionLabel = snackbarData.visuals.actionLabel,
       leadingIcon = state.leadingIcon,
       type = state.type,
@@ -157,6 +161,7 @@ fun TUISnackBarHost(
  */
 @Composable
 internal fun TUISnackBar(
+  modifier: Modifier = Modifier,
   message: String,
   type: TUISnackBarType = Information,
   leadingIcon: TarkaIcon? = null,
@@ -189,12 +194,12 @@ internal fun TUISnackBar(
     }
   }
 
-  Snackbar(
-    containerColor = containerColor,
-    modifier = Modifier
+  Box(
+    modifier = modifier
       .fillMaxWidth()
       .defaultMinSize(minHeight = 56.dp)
-      .clip(RoundedCornerShape(32.dp)),
+      .background(containerColor, shape = RoundedCornerShape(32.dp))
+      .padding(16.dp)
   ) {
     Row(
       modifier = Modifier
@@ -205,30 +210,36 @@ internal fun TUISnackBar(
     ) {
       if (leadingIcon != null) {
         Icon(
-          painterResource(id = leadingIcon.iconRes),
+          modifier = Modifier.testTag(tags.leadingIconTag),
+          painter = painterResource(id = leadingIcon.iconRes),
           contentDescription = leadingIcon.contentDescription,
-          modifier = Modifier.testTag(tags.leadingIconTag)
         )
-        HorizontalSpacer(space = 10)
       }
       Text(
-        message,
+        modifier = Modifier
+          .weight(1f)
+          .padding(start = 8.dp),
+        text = message,
         color = textColor,
         style = TUITheme.typography.body6,
-        modifier = Modifier.weight(1f)
       )
       if (actionLabel != null) {
-        HorizontalSpacer(space = 24)
-
         Button(
-          onClick = action, colors = ButtonDefaults.buttonColors(
+          modifier = Modifier
+            .testTag(tags.dismissActionTag)
+            .height(32.dp)
+            .padding(start = 24.dp),
+          onClick = action,
+          colors = ButtonDefaults.buttonColors(
             contentColor = containerColor, containerColor = textColor
-          ), modifier = Modifier.testTag(tags.dismissActionTag)
+          ),
+          contentPadding = PaddingValues(1.dp)
         ) {
-          Text(text = actionLabel, style = TUITheme.typography.body7)
+          Text(
+            modifier = Modifier.padding(horizontal = 17.dp),
+            text = actionLabel, style = TUITheme.typography.body7)
         }
       }
-      HorizontalSpacer(space = 16)
     }
 
   }
