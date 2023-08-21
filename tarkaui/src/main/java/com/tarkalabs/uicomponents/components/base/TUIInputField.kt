@@ -41,6 +41,9 @@ import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Normal
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Success
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldType.InputField
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldType.LookupInputField
+import com.tarkalabs.uicomponents.extentions.clickableWithoutRipple
+import com.tarkalabs.uicomponents.models.TarkaIcon
+import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 enum class TUIInputFieldStatus {
@@ -61,7 +64,7 @@ enum class TUIInputFieldType {
 }
 
 sealed class TUIInputFieldContentType {
-  data class Icon(val icon: TarkaIcon) : TUIInputFieldContentType()
+  data class Icon(val icon: TarkaIcon, val onIconClick: (() -> Unit)? = null,) : TUIInputFieldContentType()
   data class Text(val text: String) : TUIInputFieldContentType()
 }
 
@@ -123,12 +126,14 @@ sealed class TUIInputFieldContentType {
   }
   val tailingIconLambda: @Composable () -> Unit = {
     if (trailingContent != null) when (trailingContent) {
-      is Icon -> Icon(
-        painter = painterResource(id = trailingContent.icon.iconRes),
+      is Icon -> Icon(painter = painterResource(id = trailingContent.icon.iconRes),
         contentDescription = trailingContent.icon.contentDescription,
-        modifier = Modifier.testTag(testTags.trailingContentTag),
-        tint = TUITheme.colors.inputText
-      )
+        modifier = Modifier
+          .testTag(testTags.trailingContentTag)
+          .then(if (trailingContent.onIconClick == null) Modifier else Modifier.clickableWithoutRipple {
+            trailingContent.onIconClick.invoke()
+          }),
+        tint = TUITheme.colors.inputText)
 
       is Text -> Text(
         text = trailingContent.text.take(1),
