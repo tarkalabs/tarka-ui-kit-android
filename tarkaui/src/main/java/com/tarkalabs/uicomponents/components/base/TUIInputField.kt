@@ -27,6 +27,11 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.CheckmarkCircle16
+import com.tarkalabs.tarkaicons.TarkaIcon
+import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaicons.Timer20
+import com.tarkalabs.tarkaicons.Warning12
 import com.tarkalabs.uicomponents.components.HorizontalSpacer
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Icon
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Text
@@ -195,8 +200,8 @@ sealed class TUIInputFieldContentType {
 
 fun iconFor(status: TUIInputFieldStatus): TarkaIcon? {
   return when (status) {
-    Success -> TarkaIcons.CheckMarkCircle16Regular
-    Alert -> TarkaIcons.Warning12Regular
+    Success -> TarkaIcons.Regular.CheckmarkCircle16
+    Alert -> TarkaIcons.Regular.Warning12
     else -> null
   }
 }
@@ -253,7 +258,7 @@ fun iconFor(status: TUIInputFieldStatus): TarkaIcon? {
     }
     Box(modifier = Modifier.padding(10.dp)) {
       TUIInputField(leadingContent = Text("$"),
-        trailingContent = Icon(TarkaIcons.Timer20Regular),
+        trailingContent = Icon(TarkaIcons.Regular.Timer20),
         value = textValue,
         onValueChange = { textValue = it },
         status = Success,
@@ -274,7 +279,7 @@ fun iconFor(status: TUIInputFieldStatus): TarkaIcon? {
     }
     TUIInputField(
       leadingContent = Text("$"),
-      trailingContent = Icon(TarkaIcons.Timer20Regular),
+      trailingContent = Icon(TarkaIcons.Regular.Timer20),
       value = textValue,
       onValueChange = { textValue = it },
       status = Success

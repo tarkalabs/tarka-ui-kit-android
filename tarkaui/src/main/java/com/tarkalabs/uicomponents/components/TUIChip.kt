@@ -25,6 +25,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.CaretDown20
+import com.tarkalabs.tarkaicons.Checkmark20
+import com.tarkalabs.tarkaicons.Dismiss20
+import com.tarkalabs.tarkaicons.TarkaIcon
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.ChipLeadingContent.Icon
 import com.tarkalabs.uicomponents.components.ChipLeadingContent.Image
 import com.tarkalabs.uicomponents.components.ChipType.Filter
@@ -35,8 +40,6 @@ import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.components.base.TUIAvatar
 import com.tarkalabs.uicomponents.components.base.TUIBadge
 import com.tarkalabs.uicomponents.components.base.TUIIconButton
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -143,7 +146,7 @@ enum class ChipSize(val size: Dp) {
       trailingIcon = if (type.showTrailingDismiss) {
         {
           TUIIconButton(
-            icon = TarkaIcons.Dismiss20Filled,
+            icon = TarkaIcons.Filled.Dismiss20,
             iconButtonStyle = GHOST,
             onIconClick = {
               onDismissClick?.invoke()
@@ -196,8 +199,8 @@ enum class ChipSize(val size: Dp) {
       leadingIcon = if (type.showLeadingCheck) {
         {
           Icon(
-            painter = painterResource(id = TarkaIcons.CheckMark20Filled.iconRes),
-            contentDescription = TarkaIcons.CheckMark20Filled.contentDescription,
+            painter = painterResource(id = TarkaIcons.Filled.Checkmark20.iconRes),
+            contentDescription = TarkaIcons.Filled.Checkmark20.contentDescription,
             tint = TUITheme.colors.onSecondary
           )
         }
@@ -205,14 +208,14 @@ enum class ChipSize(val size: Dp) {
       trailingIcon = if (type.showTrailingDismiss) {
         {
           TUIIconButton(
-            icon = TarkaIcons.Dismiss20Filled, iconButtonStyle = GHOST
+            icon = TarkaIcons.Filled.Dismiss20, iconButtonStyle = GHOST
           )
         }
       } else if (type.showTrailingCaret) {
         {
           Icon(
-            painter = painterResource(id = TarkaIcons.CaretDown20Filled.iconRes),
-            contentDescription = TarkaIcons.CaretDown20Filled.contentDescription,
+            painter = painterResource(id = TarkaIcons.Filled.CaretDown20.iconRes),
+            contentDescription = TarkaIcons.Filled.CaretDown20.contentDescription,
             tint = TUITheme.colors.onSurface
           )
         }

@@ -15,8 +15,11 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
+import androidx.core.R.drawable
+import com.tarkalabs.tarkaicons.Call20
+import com.tarkalabs.tarkaicons.ChevronRight20
+import com.tarkalabs.tarkaicons.TarkaIcon
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 // TODO: 5/2/2023 use dimensions instead of hard coded things
@@ -81,8 +84,8 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     if (showRightArrow) {
       Icon(
         modifier = Modifier.testTag(tags.rightArrowTag),
-        painter = painterResource(id = TarkaIcons.ChevronRight20Regular.iconRes),
-        contentDescription = TarkaIcons.ChevronRight20Regular.contentDescription,
+        painter = painterResource(id = TarkaIcons.Regular.ChevronRight20.iconRes),
+        contentDescription = TarkaIcons.Regular.ChevronRight20.contentDescription,
         tint = TUITheme.colors.utilityOutline
       )
     }
@@ -98,7 +101,7 @@ data class TUINavigationRowTags(
 @Preview(showBackground = true) @Composable fun TUINavigationRowPreview() {
   TUINavigationRow(
     title = "Label",
-    leadingIcon = TarkaIcon(androidx.core.R.drawable.ic_call_decline, "Call Decline"),
+    leadingIcon = TarkaIcons.Regular.Call20,
     onClick = {
 
     },
