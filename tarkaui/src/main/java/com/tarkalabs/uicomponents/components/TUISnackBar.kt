@@ -233,12 +233,7 @@ internal fun TUISnackBar(
           colors = ButtonDefaults.buttonColors(
             contentColor = containerColor, containerColor = textColor
           ),
-          contentPadding = PaddingValues(
-            start = 1.dp,
-            top = 1.dp,
-            end = 1.dp,
-            bottom = 1.dp
-          )
+          contentPadding = PaddingValues(1.dp)
         ) {
           Text(
             modifier = Modifier.padding(horizontal = 17.dp),
