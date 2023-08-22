@@ -2,9 +2,10 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
+import com.tarkalabs.tarkaicons.Delete24
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.base.TUIIconButton
 import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock
@@ -17,7 +18,7 @@ class TUIIconButtonTest {
 
   @Test fun icon_Button_Displayed() {
     composable.setContent {
-      TUIIconButton(icon = TarkaIcons.Delete24Regular, tags = tags) {}
+      TUIIconButton(icon = TarkaIcons.Regular.Delete24, tags = tags) {}
     }
     composable.onNodeWithTag(tags.parentTag).assertIsDisplayed()
   }
@@ -26,7 +27,7 @@ class TUIIconButtonTest {
     val onClick: () -> Unit = mock()
 
     composable.setContent {
-      TUIIconButton(icon = TarkaIcons.Delete24Regular, tags = tags, onIconClick = onClick)
+      TUIIconButton(icon = TarkaIcons.Regular.Delete24, tags = tags, onIconClick = onClick)
     }
     composable.onNodeWithTag(tags.parentTag).performClick()
 

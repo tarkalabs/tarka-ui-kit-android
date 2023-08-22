@@ -42,8 +42,6 @@ import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Success
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldType.InputField
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldType.LookupInputField
 import com.tarkalabs.uicomponents.extentions.clickableWithoutRipple
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 enum class TUIInputFieldStatus {

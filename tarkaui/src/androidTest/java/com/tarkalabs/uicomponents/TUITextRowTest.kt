@@ -7,11 +7,14 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.core.R.drawable
+import com.tarkalabs.tarkaicons.Call16
+import com.tarkalabs.tarkaicons.Checkmark16
+import com.tarkalabs.tarkaicons.Copy24
+import com.tarkalabs.tarkaicons.Delete24
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUITextRow
 import com.tarkalabs.uicomponents.components.TUITextRowTags
 import com.tarkalabs.uicomponents.components.TextRowStyle
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock
@@ -27,9 +30,9 @@ class TUITextRowTest {
       TUITextRow(
         title = "Title",
         style = TextRowStyle.TitleWithDescription(description = "Description"),
-        infoIcon = TarkaIcons.Delete24Regular,
-        iconOne = TarkaIcons.Copy24Regular,
-        iconTwo = TarkaIcons.CheckMark16Filled,
+        infoIcon = TarkaIcons.Regular.Delete24,
+        iconOne = TarkaIcons.Regular.Copy24,
+        iconTwo = TarkaIcons.Filled.Checkmark16,
         buttonTitle = "Label",
         tags = tags
       )
@@ -50,9 +53,9 @@ class TUITextRowTest {
     composable.setContent {
       TUITextRow(
         title = "Title",
-        infoIcon = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
-        iconOne = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
-        iconTwo = TarkaIcon(drawable.ic_call_answer, "Call Answer"),
+        infoIcon = TarkaIcons.Regular.Call16,
+        iconOne = TarkaIcons.Regular.Call16,
+        iconTwo = TarkaIcons.Regular.Call16,
         buttonTitle = "Label",
         onButtonClick = onButtonClick,
         tags = tags,

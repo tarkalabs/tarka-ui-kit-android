@@ -10,13 +10,14 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaicons.Timer20
 import com.tarkalabs.uicomponents.components.base.TUIInputField
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Icon
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Text
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Normal
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldTags
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldType.LookupInputField
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 import org.junit.Rule
 import org.junit.Test
@@ -38,7 +39,7 @@ class TUIInputFieldTest {
         ) {
           TUIInputField(
             leadingContent = Text("$"),
-            trailingContent = Icon(TarkaIcons.Timer20Regular),
+            trailingContent = Icon(TarkaIcons.Regular.Timer20),
             value = "",
             onValueChange = { },
             status = Normal,
@@ -71,7 +72,7 @@ class TUIInputFieldTest {
         ) {
           TUIInputField(
             leadingContent = Text("$"),
-            trailingContent = Icon(TarkaIcons.Timer20Regular),
+            trailingContent = Icon(TarkaIcons.Regular.Timer20),
             value = "",
             onValueChange = { },
             status = Normal,

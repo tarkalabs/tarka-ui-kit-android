@@ -3,13 +3,9 @@
 package com.tarkalabs.uicomponents.screenshots
 
 import androidx.compose.material3.ExperimentalMaterial3Api
-import com.tarkalabs.uicomponents.R.drawable
 import com.tarkalabs.uicomponents.components.TUIMobileButtonBlock
-import com.tarkalabs.uicomponents.components.TUITopBar
-import com.tarkalabs.uicomponents.models.TarkaIcon
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
 import org.junit.runners.Parameterized
 
 
