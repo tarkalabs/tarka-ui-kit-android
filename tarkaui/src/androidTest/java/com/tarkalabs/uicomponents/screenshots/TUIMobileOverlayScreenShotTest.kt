@@ -3,15 +3,13 @@
 package com.tarkalabs.uicomponents.screenshots
 
 import androidx.compose.material3.ExperimentalMaterial3Api
-import com.tarkalabs.uicomponents.R.drawable
+import com.tarkalabs.tarkaicons.Dismiss16
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUIMobileOverlayHeader
 import com.tarkalabs.uicomponents.components.TUIMobileOverlayHeaderStyle.HeaderWithBackIcon
 import com.tarkalabs.uicomponents.components.TUIMobileOverlayHeaderStyle.HeaderWithTitle
 import com.tarkalabs.uicomponents.components.TUIMobileOverlayHeaderStyle.HeaderWithTrailingIcon
 import com.tarkalabs.uicomponents.components.TUIMobileOverlayHeaderStyle.None
-import com.tarkalabs.uicomponents.components.TUITopBar
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
@@ -48,6 +46,6 @@ class TUIMobileOverlayScreenShotTest(
   }
 
   @Test fun tuiMobileHeaderOverlayWithTrailing() = compareScreenshotFor(darkTheme, "_tuiMobileHeaderOverlayWithTrailing_$testName") {
-    TUIMobileOverlayHeader(style = HeaderWithTrailingIcon("Title", TarkaIcons.Dismiss16Filled, {}))
+    TUIMobileOverlayHeader(style = HeaderWithTrailingIcon("Title", TarkaIcons.Filled.Dismiss16, {}))
   }
 }

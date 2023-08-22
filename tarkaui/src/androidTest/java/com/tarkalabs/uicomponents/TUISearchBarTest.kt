@@ -5,10 +5,12 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
+import com.tarkalabs.tarkaicons.Dismiss24
+import com.tarkalabs.tarkaicons.Search24
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
 import com.tarkalabs.uicomponents.components.TUISearchBar
 import com.tarkalabs.uicomponents.components.TUISearchBarTags
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock
@@ -33,8 +35,8 @@ class TUISearchBarTest {
         onQueryTextChange = {},
         onLeadingIconClick = {},
         searchBarTags = searchBarTags,
-        trailingIcon = TarkaIcons.Dismiss24Regular,
-        leadingIcon = TarkaIcons.Search24Regular
+        trailingIcon = TarkaIcons.Regular.Dismiss24,
+        leadingIcon = TarkaIcons.Regular.Search24
       )
     }
     composable.onNodeWithTag(searchBarTags.parentTag).assertIsDisplayed()
@@ -50,7 +52,7 @@ class TUISearchBarTest {
         onQueryTextChange = {},
         onLeadingIconClick = {},
         searchBarTags = searchBarTags,
-        trailingIcon = TarkaIcons.Dismiss24Regular
+        trailingIcon = TarkaIcons.Regular.Dismiss24
       )
     }
     composable.onNodeWithTag(trailingIconTags.parentTag, useUnmergedTree = true).assertIsDisplayed()
@@ -66,8 +68,8 @@ class TUISearchBarTest {
         onQueryTextChange = { },
         onLeadingIconClick = leadingIconClick,
         searchBarTags = searchBarTags,
-        trailingIcon = TarkaIcons.Dismiss24Regular,
-        leadingIcon = TarkaIcons.Search24Regular
+        trailingIcon = TarkaIcons.Regular.Dismiss24,
+        leadingIcon = TarkaIcons.Regular.Search24
       )
     }
     composable.onNodeWithTag(leadingIconTags.parentTag, useUnmergedTree = true)
@@ -83,7 +85,7 @@ class TUISearchBarTest {
         onQueryTextChange = { },
         onLeadingIconClick = {},
         searchBarTags = searchBarTags,
-        trailingIcon = TarkaIcons.Dismiss24Regular,
+        trailingIcon = TarkaIcons.Regular.Dismiss24,
       )
     }
     composable.onNodeWithTag(trailingIconTags.parentTag, useUnmergedTree = true)

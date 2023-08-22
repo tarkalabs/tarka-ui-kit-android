@@ -23,10 +23,11 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.Delete24
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUISnackBar
 import com.tarkalabs.uicomponents.components.TUISnackBarTags
 import com.tarkalabs.uicomponents.components.TUISnackBarType.Success
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 import kotlinx.coroutines.launch
 import org.junit.Rule
@@ -72,7 +73,7 @@ class TUISnackBarTest {
             TUISnackBar(
               message = snackbarData.visuals.message,
               actionLabel = snackbarData.visuals.actionLabel,
-              leadingIcon = TarkaIcons.Delete24Regular,
+              leadingIcon = TarkaIcons.Regular.Delete24,
               type = Success,
             ) {
               snackbarData.performAction()
@@ -124,7 +125,7 @@ class TUISnackBarTest {
             TUISnackBar(
               message = snackbarData.visuals.message,
               actionLabel = snackbarData.visuals.actionLabel,
-              leadingIcon = TarkaIcons.Delete24Regular,
+              leadingIcon = TarkaIcons.Regular.Delete24,
               type = Success,
               action = onDismissClick
             )
