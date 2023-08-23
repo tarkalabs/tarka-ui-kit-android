@@ -1,5 +1,6 @@
 package com.tarkalabs.uicomponents.components
 
+import androidx.annotation.DrawableRes
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode.Restart
 import androidx.compose.animation.core.animateFloat
@@ -63,6 +64,10 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 fun TUILoadingSpinnerAnimation(
   modifier: Modifier = Modifier,
   tags: TUILoadingSpinnerAnimationTags = TUILoadingSpinnerAnimationTags(),
+  progressImageDetail: ProgressImageDetail = ProgressImageDetail(
+    imageResId = R.drawable.loader_spin_image,
+    "EamLoader"
+  ),
 ) {
   Box(modifier = modifier.testTag(tags.parentTag), contentAlignment = Alignment.Center) {
     CustomProgressIndicator(modifier = Modifier
@@ -73,13 +78,13 @@ fun TUILoadingSpinnerAnimation(
         .testTag(tags.loaderImageTag)
         .width(60.dp)
         .height(11.dp),
-      painter = painterResource(id = R.drawable.loader_spin_image),
-      contentDescription = "EAM360Loader"
+      painter = painterResource(id = progressImageDetail.imageResId),
+      contentDescription = progressImageDetail.contentDescription
     )
   }
 }
 
-@Composable fun CustomProgressIndicator(
+@Composable private fun CustomProgressIndicator(
   modifier: Modifier,
 ) {
 
@@ -133,6 +138,11 @@ data class TUILoadingSpinnerAnimationTags(
   val parentTag: String = "TUILoadingSpinnerAnimationTag",
   val progressBarTag: String = "progressBarTag",
   val loaderImageTag: String = "EamImageTag",
+)
+
+data class ProgressImageDetail(
+  @DrawableRes val imageResId: Int,
+  val contentDescription: String,
 )
 
 @Preview
