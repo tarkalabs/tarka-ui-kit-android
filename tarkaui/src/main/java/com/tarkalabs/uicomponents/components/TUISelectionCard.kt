@@ -21,9 +21,11 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.ChevronRight24
+import com.tarkalabs.tarkaicons.Person24
+import com.tarkalabs.tarkaicons.TarkaIcon
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.base.TUIBadge
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -75,7 +77,6 @@ fun TUISelectionCard(
   ) {
 
     leadingIcon?.let {
-      //Box(contentAlignment = Alignment.TopStart) {
       Icon(
         modifier = Modifier
           .size(24.dp)
@@ -84,82 +85,75 @@ fun TUISelectionCard(
         contentDescription = it.contentDescription,
         tint = TUITheme.colors.secondary
       )
-      //}
     }
 
-    Row(
-      horizontalArrangement = Arrangement.Start,
-      verticalAlignment = Alignment.CenterVertically
+    Column(
+      modifier = Modifier
+        .padding(start = 16.dp)
+        .weight(1f)
     ) {
 
-      Column(
-        modifier = Modifier
-          .padding(start = 16.dp)
-          .weight(1f)
-      ) {
+      Text(
+        modifier = Modifier.testTag(tags.labelTag),
+        text = label,
+        color = TUITheme.colors.inputTextDim.copy(alpha = 0.7f),
+        style = TUITheme.typography.body7
+      )
 
-        Text(
-          modifier = Modifier.testTag(tags.labelTag),
-          text = label,
-          color = TUITheme.colors.inputTextDim.copy(alpha = 0.7f),
-          style = TUITheme.typography.body7
-        )
+      Text(
+        modifier = Modifier.testTag(tags.descriptionTag),
+        text = description,
+        color = TUITheme.colors.inputText,
+        style = TUITheme.typography.heading6
+      )
 
+      description2?.let {
         Text(
-          modifier = Modifier.testTag(tags.descriptionTag),
-          text = description,
+          modifier = Modifier.testTag(tags.description2Tag),
+          text = it,
           color = TUITheme.colors.inputText,
           style = TUITheme.typography.heading6
         )
-
-        description2?.let {
-          Text(
-            modifier = Modifier.testTag(tags.description2Tag),
-            text = it,
-            color = TUITheme.colors.inputText,
-            style = TUITheme.typography.heading6
-          )
-        }
-
-        details?.let {
-          Text(
-            modifier = Modifier.testTag(tags.detailsTag),
-            text = it,
-            color = TUITheme.colors.inputText,
-            style = TUITheme.typography.heading6
-          )
-        }
-
-        details2?.let {
-          Text(
-            modifier = Modifier.testTag(tags.details2Tag),
-            text = it,
-            color = TUITheme.colors.inputText,
-            style = TUITheme.typography.heading6
-          )
-        }
-
       }
 
-      badgeCount?.let {
-        TUIBadge(
-          modifier = Modifier
-            .padding(start = 16.dp)
-            .testTag(tags.badgeTag),
-          count = badgeCount,
-          color = TUITheme.colors.tertiary
+      details?.let {
+        Text(
+          modifier = Modifier.testTag(tags.detailsTag),
+          text = it,
+          color = TUITheme.colors.inputText,
+          style = TUITheme.typography.heading6
         )
       }
 
-      if (showTrailingIcon) {
-        Icon(
-          modifier = Modifier
-            .size(24.dp)
-            .testTag(tags.trailingFrontArrowIconTag),
-          painter = painterResource(id = TarkaIcons.ChevronRight24Regular.iconRes),
-          contentDescription = TarkaIcons.ChevronRight24Regular.contentDescription
+      details2?.let {
+        Text(
+          modifier = Modifier.testTag(tags.details2Tag),
+          text = it,
+          color = TUITheme.colors.inputText,
+          style = TUITheme.typography.heading6
         )
       }
+
+    }
+
+    badgeCount?.let {
+      TUIBadge(
+        modifier = Modifier.align(Alignment.CenterVertically)
+          .padding(start = 16.dp)
+          .testTag(tags.badgeTag),
+        count = badgeCount,
+        color = TUITheme.colors.tertiary
+      )
+    }
+
+    if (showTrailingIcon) {
+      Icon(
+        modifier = Modifier.align(Alignment.CenterVertically)
+          .size(24.dp)
+          .testTag(tags.trailingFrontArrowIconTag),
+        painter = painterResource(id = TarkaIcons.Regular.ChevronRight24.iconRes),
+        contentDescription = TarkaIcons.Regular.ChevronRight24.contentDescription
+      )
     }
 
   }
@@ -190,7 +184,7 @@ fun TUISelectionCardPreview() {
   ) {
 
     TUISelectionCard(
-      leadingIcon = TarkaIcons.Person24Regular,
+      leadingIcon = TarkaIcons.Regular.Person24,
       label = "Label",
       description = "Description",
       description2 = "Description2",
@@ -201,7 +195,7 @@ fun TUISelectionCardPreview() {
     ) {}
     VerticalSpacer(space = 14)
     TUISelectionCard(
-      leadingIcon = TarkaIcons.Person24Regular,
+      leadingIcon = TarkaIcons.Regular.Person24,
       label = "Label",
       description = "Description",
       description2 = "Description2",
@@ -214,7 +208,7 @@ fun TUISelectionCardPreview() {
     VerticalSpacer(space = 14)
 
     TUISelectionCard(
-      leadingIcon = TarkaIcons.Person24Regular,
+      leadingIcon = TarkaIcons.Regular.Person24,
       label = "Label",
       description = "Description",
       description2 = "Description2",
@@ -226,7 +220,7 @@ fun TUISelectionCardPreview() {
     ) {}
     VerticalSpacer(space = 14)
     TUISelectionCard(
-      leadingIcon = TarkaIcons.Person24Regular,
+      leadingIcon = TarkaIcons.Regular.Person24,
       label = "Label",
       description = "Description",
       description2 = "Description2",

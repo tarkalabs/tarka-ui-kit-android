@@ -19,3 +19,4 @@ dependencyResolutionManagement {
 rootProject.name = "tarka-ui-kit-android"
 include(":example")
 include(":tarkaui")
+include(":tarkaicons")

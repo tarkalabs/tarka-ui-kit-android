@@ -6,10 +6,17 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import com.tarkalabs.tarkaicons.ArrowCounterclockwise24
+import com.tarkalabs.tarkaicons.ArrowExportLtr24
+import com.tarkalabs.tarkaicons.Checkmark16
+import com.tarkalabs.tarkaicons.ChevronRight20
+import com.tarkalabs.tarkaicons.Copy24
+import com.tarkalabs.tarkaicons.Delete24
+import com.tarkalabs.tarkaicons.Search24
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
 import com.tarkalabs.uicomponents.components.TUITopBar
 import com.tarkalabs.uicomponents.components.TUITopBarTags
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock
@@ -36,10 +43,10 @@ class TUITopBarTest {
     composeTestRule.setContent {
       TUITopBar(
         title = "title",
-        navigationIcon = TarkaIcons.ChevronRight20Regular,
-        menuItemIconOne = TarkaIcons.CheckMark16Filled,
-        menuItemIconTwo = TarkaIcons.Delete24Regular,
-        menuItemIconThree = TarkaIcons.ArrowCounterClockWise24Regular,
+        navigationIcon = TarkaIcons.Regular.ChevronRight20,
+        menuItemIconOne = TarkaIcons.Filled.Checkmark16,
+        menuItemIconTwo = TarkaIcons.Regular.Delete24,
+        menuItemIconThree = TarkaIcons.Regular.ArrowCounterclockwise24,
         tags = tags
       )
     }
@@ -55,8 +62,8 @@ class TUITopBarTest {
     composeTestRule.setContent {
       TUITopBar(
         title = "title",
-        navigationIcon = TarkaIcons.ChevronRight20Regular,
-        searchIcon = TarkaIcons.Search24Regular,
+        navigationIcon = TarkaIcons.Regular.ChevronRight20,
+        searchIcon = TarkaIcons.Regular.Search24,
         tags = TUITopBarTags(searchIconTags = searchIconTags)
       )
     }
@@ -73,11 +80,11 @@ class TUITopBarTest {
     composeTestRule.setContent {
       TUITopBar(
         title = "title",
-        navigationIcon = TarkaIcons.ChevronRight20Regular,
-        searchIcon = TarkaIcons.Search24Regular,
-        menuItemIconOne = TarkaIcons.Copy24Regular,
-        menuItemIconTwo = TarkaIcons.Delete24Regular,
-        menuItemIconThree = TarkaIcons.ArrowExportLtr24Regular,
+        navigationIcon = TarkaIcons.Regular.ChevronRight20,
+        searchIcon = TarkaIcons.Regular.Search24,
+        menuItemIconOne = TarkaIcons.Regular.Copy24,
+        menuItemIconTwo = TarkaIcons.Regular.Delete24,
+        menuItemIconThree = TarkaIcons.Regular.ArrowExportLtr24,
         onNavigationIconClick = onNavigationIconClick,
         onFirstMenuItemClicked = onFirstMenuItemClicked,
         onSecondMenuItemClicked = onSecondMenuItemClicked,

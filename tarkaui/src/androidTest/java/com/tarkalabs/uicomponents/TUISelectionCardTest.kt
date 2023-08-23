@@ -5,9 +5,11 @@ import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
+import com.tarkalabs.tarkaicons.ChevronRight24
+import com.tarkalabs.tarkaicons.Person24
 import com.tarkalabs.uicomponents.components.TUISelectionCard
 import com.tarkalabs.uicomponents.components.TUISelectionCardTags
-import com.tarkalabs.uicomponents.models.TarkaIcons
+import com.tarkalabs.tarkaicons.TarkaIcons
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock
@@ -27,11 +29,11 @@ class TUISelectionCardTest {
     val detail2 = "Detail2Test"
     val badgeCount = 5
 
-    val leadingIcon = TarkaIcons.Person24Regular
+    val leadingIcon = TarkaIcons.Regular.Person24
 
     //This is default icon when
     // isTrailingBackArrowEnabled = true
-    val trailingIcon = TarkaIcons.ChevronRight24Regular
+    val trailingIcon = TarkaIcons.Regular.ChevronRight24
 
     val tags = TUISelectionCardTags()
 

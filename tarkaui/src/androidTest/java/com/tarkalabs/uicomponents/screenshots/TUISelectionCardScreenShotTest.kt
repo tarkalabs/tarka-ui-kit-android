@@ -3,9 +3,10 @@ package com.tarkalabs.uicomponents.screenshots
 import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.Person24
+import com.tarkalabs.tarkaicons.TarkaIcon
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUISelectionCard
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
@@ -30,7 +31,7 @@ class TUISelectionCardScreenShotTest(
 
       val darkThemeValues = listOf(true, false)
       val isSelectedValues = listOf(false, true)
-      val leadingIconValues = listOf(TarkaIcons.Person24Regular, null)
+      val leadingIconValues = listOf(TarkaIcons.Regular.Person24, null)
       val description2Values = listOf(null, "Description2")
       val detailValues = listOf(null, "Detail")
       val detail2Values = listOf(null, "Detail2")

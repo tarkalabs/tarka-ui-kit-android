@@ -20,13 +20,14 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.ChevronRight20
+import com.tarkalabs.tarkaicons.TarkaIcon
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TextRowStyle.Title
 import com.tarkalabs.uicomponents.components.TextRowStyle.TitleWithDescription
 import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.components.base.TUIIconButton
 import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -181,7 +182,7 @@ data class TUITextRowTags(
 fun TUITextRowPreview() {
   TUITextRow(title = "Title",
     style = Title,
-    infoIcon = TarkaIcons.ChevronRight20Regular,
+    infoIcon = TarkaIcons.Regular.ChevronRight20,
     onTextRowClick = {
       Log.d("TAG", "TUITextRowPreview: ")
     }, onInfoIconClick = null)
