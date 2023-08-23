@@ -9,11 +9,12 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.test.platform.app.InstrumentationRegistry
+import com.tarkalabs.tarkaicons.CalendarLtr24
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.ChipLeadingContent
 import com.tarkalabs.uicomponents.components.ChipType
 import com.tarkalabs.uicomponents.components.TUIChip
 import com.tarkalabs.uicomponents.components.TUIChipTags
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 import org.junit.Rule
 import org.junit.Test
@@ -52,13 +53,13 @@ class TUIChipTest {
   @Test
   fun display_assist_chip_icon() {
     composable.setContent {
-      TUIChip(type = ChipType.Assist(ChipLeadingContent.Icon(TarkaIcons.Calendar24Regular)),
+      TUIChip(type = ChipType.Assist(ChipLeadingContent.Icon(TarkaIcons.Regular.CalendarLtr24)),
         label = "Assist chip",
         onClick = {})
     }
 
     composable.onNodeWithContentDescription(
-      TarkaIcons.Calendar24Regular.contentDescription, useUnmergedTree = true
+      TarkaIcons.Regular.CalendarLtr24.contentDescription, useUnmergedTree = true
     ).assertIsDisplayed()
   }
 

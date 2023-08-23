@@ -16,19 +16,22 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.BarcodeScanner24
+import com.tarkalabs.tarkaicons.Dismiss16
+import com.tarkalabs.tarkaicons.Dismiss24
+import com.tarkalabs.tarkaicons.TarkaIcon
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.base.IconButtonSize.L
 import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.components.base.TUIIconButton
 import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 @OptIn(ExperimentalMaterial3Api::class) @Composable fun TUISearchBar(
   modifier: Modifier = Modifier,
   query: String,
   placeholder: String,
-  trailingIcon: TarkaIcon = TarkaIcons.Dismiss24Regular,
+  trailingIcon: TarkaIcon = TarkaIcons.Regular.Dismiss24,
   onQueryTextChange: (String) -> Unit,
   leadingIcon: TarkaIcon? = null,
   onLeadingIconClick: (() -> Unit)? = null,
@@ -101,8 +104,8 @@ data class TUISearchBarTags(
         query = "",
         placeholder = "Search",
         onQueryTextChange = {},
-        trailingIcon = TarkaIcons.Dismiss16Filled,
-        leadingIcon = TarkaIcons.BarCodeScanner24Regular,
+        trailingIcon = TarkaIcons.Filled.Dismiss16,
+        leadingIcon = TarkaIcons.Regular.BarcodeScanner24,
         onLeadingIconClick = {},
         modifier = Modifier.padding(10.dp)
       )
@@ -111,8 +114,8 @@ data class TUISearchBarTags(
         query = "My Search",
         placeholder = "Search",
         onQueryTextChange = {},
-        trailingIcon = TarkaIcons.Dismiss16Filled,
-        leadingIcon = TarkaIcons.BarCodeScanner24Regular,
+        trailingIcon = TarkaIcons.Filled.Dismiss16,
+        leadingIcon = TarkaIcons.Regular.BarcodeScanner24,
         onLeadingIconClick = {},
         modifier = Modifier.padding(10.dp)
       )

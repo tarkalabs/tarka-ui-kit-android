@@ -35,6 +35,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.DeviceEq24
+import com.tarkalabs.tarkaicons.Document24
+import com.tarkalabs.tarkaicons.Eye12
+import com.tarkalabs.tarkaicons.HandWave24
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.R
 import com.tarkalabs.uicomponents.components.PlayPauseButtonSize.L
 import com.tarkalabs.uicomponents.components.PlayPauseButtonSize.M
@@ -44,7 +49,6 @@ import com.tarkalabs.uicomponents.components.TUIThumbnailType.Audio
 import com.tarkalabs.uicomponents.components.TUIThumbnailType.Document
 import com.tarkalabs.uicomponents.components.TUIThumbnailType.Image
 import com.tarkalabs.uicomponents.components.TUIThumbnailType.Video
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 sealed class TUIThumbnailType {
@@ -88,8 +92,8 @@ enum class TUIThumbnailSize {
     when (type) {
       Audio -> {
         Icon(
-          painter = painterResource(id = TarkaIcons.Wave24Regular.iconRes),
-          contentDescription = TarkaIcons.Wave24Regular.contentDescription,
+          painter = painterResource(id = TarkaIcons.Regular.DeviceEq24.iconRes),
+          contentDescription = TarkaIcons.Regular.DeviceEq24.contentDescription,
           modifier = iconModifier,
           tint = TUITheme.colors.onSurface
         )
@@ -97,8 +101,8 @@ enum class TUIThumbnailSize {
 
       Document -> {
         Icon(
-          painter = painterResource(id = TarkaIcons.Document24Regular.iconRes),
-          contentDescription = TarkaIcons.Document24Regular.contentDescription,
+          painter = painterResource(id = TarkaIcons.Regular.Document24.iconRes),
+          contentDescription = TarkaIcons.Regular.Document24.contentDescription,
           modifier = iconModifier,
           tint = TUITheme.colors.onSurface
         )
@@ -132,8 +136,8 @@ enum class TUIThumbnailSize {
 
     if (showTrailingIcon) {
       Icon(
-        painter = painterResource(id = TarkaIcons.Eye12Regular.iconRes),
-        contentDescription = TarkaIcons.Eye12Regular.contentDescription,
+        painter = painterResource(id = TarkaIcons.Regular.Eye12.iconRes),
+        contentDescription = TarkaIcons.Regular.Eye12.contentDescription,
         tint = Color.White,
         modifier = Modifier
           .align(Alignment.TopEnd)

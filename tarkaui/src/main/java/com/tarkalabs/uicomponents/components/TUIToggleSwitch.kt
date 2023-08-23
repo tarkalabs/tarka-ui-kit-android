@@ -20,7 +20,9 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.models.TarkaIcons
+import com.tarkalabs.tarkaicons.Checkmark16
+import com.tarkalabs.tarkaicons.Dismiss24
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -53,7 +55,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
           modifier = Modifier
             .size(width = 40.dp, height = 24.dp)
             .testTag(tags.iconTag),
-          painter = painterResource(if (switchCheckedState) TarkaIcons.CheckMark16Filled.iconRes else TarkaIcons.Dismiss24Regular.iconRes),
+          painter = painterResource(if (switchCheckedState) TarkaIcons.Filled.Checkmark16.iconRes else TarkaIcons.Regular.Dismiss24.iconRes),
           contentDescription = null,
         )
       }, colors = getSwitchDefaultColors()
