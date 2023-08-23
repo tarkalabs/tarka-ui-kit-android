@@ -26,6 +26,10 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.AddCircle24
+import com.tarkalabs.tarkaicons.ChevronRight20
+import com.tarkalabs.tarkaicons.TarkaIcon
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.MenuItemLeadingContentType.StatusIndicator
 import com.tarkalabs.uicomponents.components.MenuItemStyle.Title
 import com.tarkalabs.uicomponents.components.MenuItemStyle.TitleWithDescription
@@ -33,8 +37,6 @@ import com.tarkalabs.uicomponents.components.MenuItemTrailingContentType.Icon
 import com.tarkalabs.uicomponents.components.MenuItemTrailingContentType.SubMenu
 import com.tarkalabs.uicomponents.extentions.maxHeight
 import com.tarkalabs.uicomponents.extentions.maxWidth
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 sealed class MenuItemLeadingContentType {
@@ -126,8 +128,8 @@ sealed class MenuItemStyle {
 
         SubMenu -> {
           Icon(
-            painter = painterResource(id = TarkaIcons.ChevronRight20Regular.iconRes),
-            contentDescription = TarkaIcons.ChevronRight20Regular.contentDescription,
+            painter = painterResource(id = TarkaIcons.Regular.ChevronRight20.iconRes),
+            contentDescription = TarkaIcons.Regular.ChevronRight20.contentDescription,
             tint = TUITheme.colors.onSurface,
             modifier = trailingContentModifier
           )
@@ -218,7 +220,7 @@ data class TUIMenuItemTags(
         isSelected = true,
         modifier = Modifier.fillMaxWidth(),
         leadingContent = MenuItemLeadingContentType.Icon(
-          TarkaIcons.AddCircle24Regular.copy(tintColor = TUITheme.colors.success)
+          TarkaIcons.Regular.AddCircle24.copy(tintColor = TUITheme.colors.success)
         )
       )
       VerticalSpacer(space = 10)
@@ -229,7 +231,7 @@ data class TUIMenuItemTags(
         isSelected = true,
         modifier = Modifier.fillMaxWidth(),
         trailingContent = Icon(
-          TarkaIcons.AddCircle24Regular.copy(tintColor = TUITheme.colors.success)
+          TarkaIcons.Regular.AddCircle24.copy(tintColor = TUITheme.colors.success)
         )
       )
       VerticalSpacer(space = 10)
@@ -249,10 +251,10 @@ data class TUIMenuItemTags(
         isSelected = true,
         modifier = Modifier.fillMaxWidth(),
         leadingContent = MenuItemLeadingContentType.Icon(
-          TarkaIcons.AddCircle24Regular.copy(tintColor = TUITheme.colors.success)
+          TarkaIcons.Regular.AddCircle24.copy(tintColor = TUITheme.colors.success)
         ),
         trailingContent = Icon(
-          TarkaIcons.AddCircle24Regular.copy(tintColor = TUITheme.colors.success)
+          TarkaIcons.Regular.AddCircle24.copy(tintColor = TUITheme.colors.success)
         )
       )
       VerticalSpacer(space = 10)
@@ -264,7 +266,7 @@ data class TUIMenuItemTags(
         modifier = Modifier.fillMaxWidth(),
         leadingContent = StatusIndicator,
         trailingContent = Icon(
-          TarkaIcons.AddCircle24Regular.copy(tintColor = TUITheme.colors.success)
+          TarkaIcons.Regular.AddCircle24.copy(tintColor = TUITheme.colors.success)
         )
       )
 

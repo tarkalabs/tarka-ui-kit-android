@@ -7,12 +7,13 @@ import org.junit.runners.Parameterized;
 import android.graphics.BitmapFactory
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.ui.graphics.asImageBitmap
+import com.tarkalabs.tarkaicons.Dismiss16
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.base.AvatarSize
 import com.tarkalabs.uicomponents.components.base.AvatarType.Icon
 import com.tarkalabs.uicomponents.components.base.AvatarType.Image
 import com.tarkalabs.uicomponents.components.base.AvatarType.Text
 import com.tarkalabs.uicomponents.components.base.TUIAvatar
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -61,7 +62,7 @@ class TUIAvatarScreenshotTest(
 
   @Test fun test_avatar_with_icon(){
     compareScreenshotFor(darkTheme = darkTheme, imageName = "_testAvatarWithIcon_$testName") {
-      TUIAvatar(avatarType = Icon(TarkaIcons.Dismiss16Filled), avatarSize = avatarSize, showBadge = showBadge)
+      TUIAvatar(avatarType = Icon(TarkaIcons.Filled.Dismiss16), avatarSize = avatarSize, showBadge = showBadge)
     }
   }
 }
