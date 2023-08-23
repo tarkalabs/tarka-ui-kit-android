@@ -31,6 +31,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.Checkmark12
+import com.tarkalabs.tarkaicons.MoreHorizontal24
+import com.tarkalabs.tarkaicons.ReOrder24
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState.UpLoadSuccessful
 import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState.UpLoading
 import com.tarkalabs.uicomponents.components.TUIThumbnailType.Document
@@ -38,7 +42,6 @@ import com.tarkalabs.uicomponents.components.base.IconButtonSize
 import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.components.base.TUIIconButton
 import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 object TUIAttachmentUpload {
@@ -99,8 +102,8 @@ object TUIAttachmentUpload {
             modifier = Modifier
               .heightIn(max = 24.dp)
               .widthIn(max = 24.dp),
-            painter = painterResource(id = TarkaIcons.ReOrder24Regular.iconRes),
-            contentDescription = TarkaIcons.ReOrder24Regular.contentDescription,
+            painter = painterResource(id = TarkaIcons.Regular.ReOrder24.iconRes),
+            contentDescription = TarkaIcons.Regular.ReOrder24.contentDescription,
             tint = TUITheme.colors.onSurface
           )
 
@@ -117,8 +120,8 @@ object TUIAttachmentUpload {
         UpLoadSuccessful -> {
           Row(modifier = attachmentModifier, verticalAlignment = Alignment.CenterVertically) {
             Icon(
-              painter = painterResource(id = TarkaIcons.checkmark12Regular.iconRes),
-              contentDescription = TarkaIcons.checkmark12Regular.contentDescription,
+              painter = painterResource(id = TarkaIcons.Regular.Checkmark12.iconRes),
+              contentDescription = TarkaIcons.Regular.Checkmark12.contentDescription,
               tint = TUITheme.colors.success,
               modifier = Modifier.testTag(tags.successIconTag)
             )
@@ -153,7 +156,7 @@ object TUIAttachmentUpload {
       }
 
       TUIIconButton(
-        icon = TarkaIcons.MoreHorizontal24Regular.copy(tintColor = TUITheme.colors.secondary),
+        icon = TarkaIcons.Regular.MoreHorizontal24.copy(tintColor = TUITheme.colors.secondary),
         iconButtonStyle = GHOST,
         buttonSize = IconButtonSize.XL,
         tags = tags.menuItemTag,

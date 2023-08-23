@@ -1,5 +1,7 @@
 package com.tarkalabs.uicomponents.screenshots
 
+import com.tarkalabs.tarkaicons.AddCircle24
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.MenuItemLeadingContentType
 import com.tarkalabs.uicomponents.components.MenuItemLeadingContentType.Icon
 import com.tarkalabs.uicomponents.components.MenuItemLeadingContentType.StatusIndicator
@@ -9,7 +11,6 @@ import com.tarkalabs.uicomponents.components.MenuItemStyle.TitleWithDescription
 import com.tarkalabs.uicomponents.components.MenuItemTrailingContentType
 import com.tarkalabs.uicomponents.components.MenuItemTrailingContentType.SubMenu
 import com.tarkalabs.uicomponents.components.TUIMenuItem
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
@@ -33,12 +34,12 @@ class TUIMenuItemScreenshotTest(
       val testData = ArrayList<Array<Any?>>()
       val leadingContentTypes = listOf(
         null,
-        Icon(TarkaIcons.AddCircle24Regular),
+        Icon(TarkaIcons.Regular.AddCircle24),
         StatusIndicator
       )
       val trailingContentTypes = listOf(
         null,
-        MenuItemTrailingContentType.Icon(TarkaIcons.AddCircle24Regular),
+        MenuItemTrailingContentType.Icon(TarkaIcons.Regular.AddCircle24),
         SubMenu
       )
       val isSelectedValues = listOf(true, false)

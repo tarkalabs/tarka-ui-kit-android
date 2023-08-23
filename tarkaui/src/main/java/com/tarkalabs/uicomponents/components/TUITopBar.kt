@@ -21,12 +21,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.ChevronLeft24
+import com.tarkalabs.tarkaicons.ChevronRight20
+import com.tarkalabs.tarkaicons.TarkaIcon
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.base.IconButtonSize.XL
 import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.components.base.TUIIconButton
 import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -108,7 +110,7 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
             modifier = modifier.padding(vertical = 8.dp, horizontal = 16.dp),
             query = query,
             placeholder = "",
-            leadingIcon = TarkaIcons.ChevronLeft24Regular,
+            leadingIcon = TarkaIcons.Regular.ChevronLeft24,
             onLeadingIconClick = {
               query = ""
               showSearchBar = false
@@ -208,9 +210,9 @@ data class TUITopBarTags(
 ) {
   TUITopBar(
     title = "Lorem Ipsum",
-    navigationIcon = TarkaIcons.ChevronRight20Regular,
-    menuItemIconOne = TarkaIcons.ChevronRight20Regular,
-    menuItemIconTwo = TarkaIcons.ChevronRight20Regular,
-    menuItemIconThree = TarkaIcons.ChevronRight20Regular
+    navigationIcon = TarkaIcons.Regular.ChevronRight20,
+    menuItemIconOne = TarkaIcons.Regular.ChevronRight20,
+    menuItemIconTwo = TarkaIcons.Regular.ChevronRight20,
+    menuItemIconThree = TarkaIcons.Regular.ChevronRight20
   )
 }

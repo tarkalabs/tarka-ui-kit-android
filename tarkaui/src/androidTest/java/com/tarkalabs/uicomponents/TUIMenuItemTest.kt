@@ -7,13 +7,14 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import com.tarkalabs.tarkaicons.AddCircle24
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.MenuItemLeadingContentType.StatusIndicator
 import com.tarkalabs.uicomponents.components.MenuItemStyle.Title
 import com.tarkalabs.uicomponents.components.MenuItemStyle.TitleWithDescription
 import com.tarkalabs.uicomponents.components.MenuItemTrailingContentType.Icon
 import com.tarkalabs.uicomponents.components.TUIMenuItem
 import com.tarkalabs.uicomponents.components.TUIMenuItemTags
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 import org.junit.Rule
 import org.junit.Test
@@ -35,7 +36,7 @@ class TUIMenuItemTest {
         modifier = Modifier.fillMaxWidth(),
         leadingContent = StatusIndicator,
         trailingContent = Icon(
-          TarkaIcons.AddCircle24Regular.copy(tintColor = TUITheme.colors.success)
+          TarkaIcons.Regular.AddCircle24.copy(tintColor = TUITheme.colors.success)
         ),
         tags = tags
       )
@@ -74,7 +75,7 @@ class TUIMenuItemTest {
         modifier = Modifier.fillMaxWidth(),
         leadingContent = StatusIndicator,
         trailingContent = Icon(
-          TarkaIcons.AddCircle24Regular.copy(tintColor = TUITheme.colors.success)
+          TarkaIcons.Regular.AddCircle24.copy(tintColor = TUITheme.colors.success)
         ),
         tags = tags
       )
