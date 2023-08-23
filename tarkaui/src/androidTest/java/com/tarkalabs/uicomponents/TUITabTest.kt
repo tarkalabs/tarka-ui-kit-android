@@ -14,10 +14,11 @@ import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTouchInput
 import androidx.compose.ui.test.swipeLeft
 import androidx.compose.ui.test.swipeRight
+import com.tarkalabs.tarkaicons.Tabs24
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUITabBar
 import com.tarkalabs.uicomponents.components.TUITabTags
 import com.tarkalabs.uicomponents.components.TabItem
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock
@@ -58,7 +59,7 @@ class TUITabTest {
   @Test
   fun is_pass_tabs_shown_with_icon() {
 
-    val leadingIcon = TarkaIcons.Tabs24Regular
+    val leadingIcon = TarkaIcons.Regular.Tabs24
 
     val tabItems = listOf(
       TabItem(name = "Tab 1", leadingTabIcon = leadingIcon, content = {}),

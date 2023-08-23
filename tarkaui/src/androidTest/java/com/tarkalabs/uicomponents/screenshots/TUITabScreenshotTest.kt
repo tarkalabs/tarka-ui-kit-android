@@ -6,9 +6,10 @@ import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.Circle12
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUITabBar
 import com.tarkalabs.uicomponents.components.TabItem
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
@@ -43,14 +44,14 @@ class TUITabScreenshotTest(
     )
 
     val tabItemsWithIcons = listOf(
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
     )
 
     val tabItemsWithContent = listOf(
@@ -113,56 +114,56 @@ class TUITabScreenshotTest(
     )
 
     val tabItemsWithIconAndContent = listOf(
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {
         Text(
           modifier = Modifier.fillMaxSize(),
           text = "Content 1",
           textAlign = TextAlign.Center
         )
       },
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {
         Text(
           modifier = Modifier.fillMaxSize(),
           text = "Content 2",
           textAlign = TextAlign.Center
         )
       },
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {
         Text(
           modifier = Modifier.fillMaxSize(),
           text = "Content 3",
           textAlign = TextAlign.Center
         )
       },
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {
         Text(
           modifier = Modifier.fillMaxSize(),
           text = "Content 4",
           textAlign = TextAlign.Center
         )
       },
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {
         Text(
           modifier = Modifier.fillMaxSize(),
           text = "Content 5",
           textAlign = TextAlign.Center
         )
       },
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {
         Text(
           modifier = Modifier.fillMaxSize(),
           text = "Content 6",
           textAlign = TextAlign.Center
         )
       },
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {
         Text(
           modifier = Modifier.fillMaxSize(),
           text = "Content 7",
           textAlign = TextAlign.Center
         )
       },
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {
         Text(
           modifier = Modifier.fillMaxSize(),
           text = "Content 8",

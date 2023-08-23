@@ -35,8 +35,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextAlign.Companion
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
+import com.tarkalabs.tarkaicons.Circle12
+import com.tarkalabs.tarkaicons.TarkaIcon
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -211,14 +212,14 @@ fun PreviewTUITabRow() {
     TabItem("Tab") {},
   )
   val tabItemsWithIcons = listOf(
-    TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
-    TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
-    TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
-    TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
-    TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
-    TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
-    TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
-    TabItem("Tab", leadingTabIcon = TarkaIcons.Circle12Regular) {},
+    TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
+    TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
+    TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
+    TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
+    TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
+    TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
+    TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
+    TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
   )
   val tabItemsWithContent = listOf(
     TabItem("Tab") {

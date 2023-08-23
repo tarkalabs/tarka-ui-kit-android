@@ -3,11 +3,14 @@ package com.tarkalabs.uicomponents.screenshots
 import android.graphics.BitmapFactory
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.test.platform.app.InstrumentationRegistry
+import com.tarkalabs.tarkaicons.CalendarAdd24
+import com.tarkalabs.tarkaicons.CalendarLtr24
+import com.tarkalabs.tarkaicons.Checkmark16
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.ChipLeadingContent
 import com.tarkalabs.uicomponents.components.ChipSize
 import com.tarkalabs.uicomponents.components.ChipType
 import com.tarkalabs.uicomponents.components.TUIChip
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
@@ -30,7 +33,7 @@ class TUIChipScreenshotTest(
       val leadingContent = listOf(
         null,
         ChipLeadingContent.Image(bitmap.asImageBitmap()),
-        ChipLeadingContent.Icon(TarkaIcons.CheckMark16Filled)
+        ChipLeadingContent.Icon(TarkaIcons.Filled.Checkmark16)
       )
 
       val types =
@@ -40,7 +43,7 @@ class TUIChipScreenshotTest(
           )
         } + leadingContent.map { ChipType.Input(it, true) } + listOf(
           ChipType.Suggestion(null),
-          ChipType.Suggestion(TarkaIcons.Calendar24Regular),
+          ChipType.Suggestion(TarkaIcons.Regular.CalendarLtr24),
         )
 
       val chipSizes = ChipSize.values()

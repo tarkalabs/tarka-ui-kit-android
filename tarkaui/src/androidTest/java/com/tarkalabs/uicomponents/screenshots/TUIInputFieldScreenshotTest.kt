@@ -1,8 +1,10 @@
 package com.tarkalabs.uicomponents.screenshots
 
+import com.tarkalabs.tarkaicons.Checkmark16
+import com.tarkalabs.tarkaicons.Dismiss16
+import com.tarkalabs.tarkaicons.TarkaIcon
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 
@@ -22,8 +24,8 @@ class TUIInputFieldScreenshotTest(
     @JvmStatic
     @Parameterized.Parameters
     fun data(): Collection<Array<Any?>> {
-      val leadingIconValues = listOf(null, TarkaIcons.CheckMark16Filled)
-      val trailingIconValues = listOf(null, TarkaIcons.Dismiss16Filled)
+      val leadingIconValues = listOf(null, TarkaIcons.Filled.Checkmark16)
+      val trailingIconValues = listOf(null, TarkaIcons.Filled.Dismiss16)
       val labelValues = listOf(null, "Label")
       val inputTextValues = listOf("", "Input Text")
       val helperMessageValues = listOf(null, "Helper / hint message goes here.")
