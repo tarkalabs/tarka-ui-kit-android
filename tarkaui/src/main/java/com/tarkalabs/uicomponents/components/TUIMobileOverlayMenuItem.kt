@@ -24,6 +24,10 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.Add24
+import com.tarkalabs.tarkaicons.Checkmark24
+import com.tarkalabs.tarkaicons.ChevronRight20
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemBgColor.GREEN
 import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemBgColor.GREY
 import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemBgColor.TRANSPARENT
@@ -35,7 +39,6 @@ import com.tarkalabs.uicomponents.components.MobileOverlayMenuLeadingContent.STA
 import com.tarkalabs.uicomponents.components.MobileOverlayMenuTrailingContent.FRONT_ARROW
 import com.tarkalabs.uicomponents.extentions.maxHeight
 import com.tarkalabs.uicomponents.extentions.maxWidth
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -83,8 +86,8 @@ fun TUIMobileOverlayMenuItem(
             .maxHeight(24)
             .maxWidth(24),
           //.padding(top = 6.dp, bottom = 5.dp, start = 3.dp, end = 4.dp),
-          painter = painterResource(id = TarkaIcons.CheckMark24Filled.iconRes),
-          contentDescription = TarkaIcons.CheckMark24Filled.contentDescription,
+          painter = painterResource(id = TarkaIcons.Filled.Checkmark24.iconRes),
+          contentDescription = TarkaIcons.Filled.Checkmark24.contentDescription,
           tint = TUITheme.colors.success
         )
         HorizontalSpacer(space = 8)
@@ -99,8 +102,8 @@ fun TUIMobileOverlayMenuItem(
             .maxHeight(24)
             .maxWidth(24),
           //.padding(3.dp),
-          painter = painterResource(id = TarkaIcons.Add24Filled.iconRes),
-          contentDescription = TarkaIcons.Add24Filled.contentDescription,
+          painter = painterResource(id = TarkaIcons.Filled.Add24.iconRes),
+          contentDescription = TarkaIcons.Filled.Add24.contentDescription,
           tint = TUITheme.colors.onSurface
         )
         HorizontalSpacer(space = 8)
@@ -142,8 +145,8 @@ fun TUIMobileOverlayMenuItem(
             .maxHeight(24)
             .maxWidth(24),
           //.padding(top = 6.dp, bottom = 5.dp, start = 3.dp, end = 4.dp),
-          painter = painterResource(id = TarkaIcons.CheckMark24Filled.iconRes),
-          contentDescription = TarkaIcons.CheckMark24Filled.contentDescription,
+          painter = painterResource(id = TarkaIcons.Filled.Checkmark24.iconRes),
+          contentDescription = TarkaIcons.Filled.Checkmark24.contentDescription,
           tint = TUITheme.colors.success
         )
         HorizontalSpacer(space = 8)
@@ -158,8 +161,8 @@ fun TUIMobileOverlayMenuItem(
             .maxHeight(20)
             .maxWidth(20),
           //.padding(start = 8.dp, top = 4.dp, bottom = 4.dp, end = 6.dp),
-          painter = painterResource(id = TarkaIcons.ChevronRight20Filled.iconRes),
-          contentDescription = TarkaIcons.ChevronRight20Filled.contentDescription,
+          painter = painterResource(id = TarkaIcons.Filled.ChevronRight20.iconRes),
+          contentDescription = TarkaIcons.Filled.ChevronRight20.contentDescription,
           tint = TUITheme.colors.utilityOutline
         )
         HorizontalSpacer(space = 8)

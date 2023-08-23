@@ -20,13 +20,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.Pause12
+import com.tarkalabs.tarkaicons.Pause24
+import com.tarkalabs.tarkaicons.Play12
+import com.tarkalabs.tarkaicons.Play24
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.PlayPauseButtonSize.L
 import com.tarkalabs.uicomponents.components.PlayPauseButtonSize.M
 import com.tarkalabs.uicomponents.components.PlayPauseButtonState.Pause
 import com.tarkalabs.uicomponents.components.PlayPauseButtonState.Play
 import com.tarkalabs.uicomponents.extentions.maxHeight
 import com.tarkalabs.uicomponents.extentions.maxWidth
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -81,8 +85,8 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   }
 
   val icon = when (state) {
-    Play -> if (buttonSize == M) TarkaIcons.Play12Filled else TarkaIcons.Play24Filled
-    Pause -> if (buttonSize == M) TarkaIcons.Pause12Filled else TarkaIcons.Pause24Filled
+    Play -> if (buttonSize == M) TarkaIcons.Filled.Play12 else TarkaIcons.Filled.Play24
+    Pause -> if (buttonSize == M) TarkaIcons.Filled.Pause12 else TarkaIcons.Filled.Pause24
   }
 
   Box(

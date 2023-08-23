@@ -20,6 +20,10 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.ChevronLeft24
+import com.tarkalabs.tarkaicons.Dismiss24
+import com.tarkalabs.tarkaicons.TarkaIcon
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUIMobileOverlayHeaderStyle.HeaderWithBackIcon
 import com.tarkalabs.uicomponents.components.TUIMobileOverlayHeaderStyle.HeaderWithTitle
 import com.tarkalabs.uicomponents.components.TUIMobileOverlayHeaderStyle.HeaderWithTrailingIcon
@@ -28,8 +32,6 @@ import com.tarkalabs.uicomponents.components.base.IconButtonSize
 import com.tarkalabs.uicomponents.components.base.IconButtonStyle
 import com.tarkalabs.uicomponents.components.base.TUIIconButton
 import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -114,7 +116,7 @@ fun TUIMobileOverlayHeader(
         when (style) {
           is HeaderWithBackIcon -> {
             TUIIconButton(
-              icon = TarkaIcons.ChevronLeft24Regular,
+              icon = TarkaIcons.Regular.ChevronLeft24,
               buttonSize = IconButtonSize.XL,
               iconButtonStyle = IconButtonStyle.GHOST,
               onIconClick = style.onBackIconClick,
@@ -192,7 +194,7 @@ fun TUIMobileOverlayHeaderPreview() {
       VerticalSpacer(space = 10)
       TUIMobileOverlayHeader(
         modifier = Modifier.fillMaxWidth(), style = HeaderWithTrailingIcon(title = "Select Asset",
-          trailingIcon = TarkaIcons.Dismiss24Regular,
+          trailingIcon = TarkaIcons.Regular.Dismiss24,
           onTrailingIconClick = {
 
           })

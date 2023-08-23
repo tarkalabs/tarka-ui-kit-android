@@ -3,13 +3,14 @@
 package com.tarkalabs.uicomponents.screenshots
 
 import androidx.compose.material3.ExperimentalMaterial3Api
+import com.tarkalabs.tarkaicons.ChevronRight20
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.base.TUIIconButton
 import com.tarkalabs.uicomponents.components.base.IconButtonSize.XS
 import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.components.base.IconButtonStyle.OUTLINE
 import com.tarkalabs.uicomponents.components.base.IconButtonStyle.PRIMARY
 import com.tarkalabs.uicomponents.components.base.IconButtonStyle.SECONDARY
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
@@ -34,7 +35,7 @@ class TUIIconButtonScreenShotTest(
   }
   @Test fun primaryIconButton() = compareScreenshotFor(darkTheme, "_primaryIconButton_$testName"){
       TUIIconButton(
-        icon = TarkaIcons.ChevronRight20Regular,
+        icon = TarkaIcons.Regular.ChevronRight20,
         buttonSize = XS,
         iconButtonStyle = PRIMARY,
       )
@@ -42,7 +43,7 @@ class TUIIconButtonScreenShotTest(
 
   @Test fun secondaryIconButton() = compareScreenshotFor(darkTheme, "_secondaryIconButton_$testName"){
       TUIIconButton(
-        icon = TarkaIcons.ChevronRight20Regular,
+        icon = TarkaIcons.Regular.ChevronRight20,
         buttonSize = XS,
         iconButtonStyle = SECONDARY,
       )
@@ -50,7 +51,7 @@ class TUIIconButtonScreenShotTest(
 
   @Test fun ghostIconButton()  = compareScreenshotFor(darkTheme, "_ghostIconButton_$testName"){
       TUIIconButton(
-        icon = TarkaIcons.ChevronRight20Regular,
+        icon = TarkaIcons.Regular.ChevronRight20,
         buttonSize = XS,
         iconButtonStyle = GHOST,
       )
@@ -58,7 +59,7 @@ class TUIIconButtonScreenShotTest(
 
   @Test fun outlineIconButton() = compareScreenshotFor(darkTheme, "_outlineIconButton_$testName"){
       TUIIconButton(
-        icon = TarkaIcons.ChevronRight20Regular,
+        icon = TarkaIcons.Regular.ChevronRight20,
         buttonSize = XS,
         iconButtonStyle = OUTLINE,
       )

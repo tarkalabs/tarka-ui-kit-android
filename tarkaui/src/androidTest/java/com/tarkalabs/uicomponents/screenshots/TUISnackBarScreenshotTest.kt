@@ -1,8 +1,9 @@
 package com.tarkalabs.uicomponents.screenshots
 
+import com.tarkalabs.tarkaicons.Delete24
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUISnackBar
 import com.tarkalabs.uicomponents.components.TUISnackBarType.*
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
@@ -14,7 +15,7 @@ class TUISnackBarScreenshotTest : ComposeScreenshotComparator() {
     TUISnackBar(
       message = "Message",
       actionLabel = "Dismiss",
-      leadingIcon = TarkaIcons.Delete24Regular,
+      leadingIcon = TarkaIcons.Regular.Delete24,
       type = Information
     )
   }
@@ -23,7 +24,7 @@ class TUISnackBarScreenshotTest : ComposeScreenshotComparator() {
     TUISnackBar(
       message = "Message",
       actionLabel = "Dismiss",
-      leadingIcon = TarkaIcons.Delete24Regular,
+      leadingIcon = TarkaIcons.Regular.Delete24,
       type = Success
     )
   }
@@ -32,7 +33,7 @@ class TUISnackBarScreenshotTest : ComposeScreenshotComparator() {
     TUISnackBar(
       message = "Message",
       actionLabel = "Dismiss",
-      leadingIcon = TarkaIcons.Delete24Regular,
+      leadingIcon = TarkaIcons.Regular.Delete24,
       type = Warning
     )
   }
@@ -41,7 +42,7 @@ class TUISnackBarScreenshotTest : ComposeScreenshotComparator() {
     TUISnackBar(
       message = "Message",
       actionLabel = "Dismiss",
-      leadingIcon = TarkaIcons.Delete24Regular,
+      leadingIcon = TarkaIcons.Regular.Delete24,
       type = Error
     )
   }

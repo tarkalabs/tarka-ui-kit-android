@@ -18,8 +18,9 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
+import com.tarkalabs.tarkaicons.Checkmark16
+import com.tarkalabs.tarkaicons.TarkaIcon
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -42,7 +43,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 @Composable fun TUICheckBox(
   modifier: Modifier = Modifier,
   checked: Boolean,
-  icon: TarkaIcon = TarkaIcons.CheckMark16Filled,
+  icon: TarkaIcon = TarkaIcons.Filled.Checkmark16,
   enabled: Boolean = true,
   tags: TUICheckBoxTags = TUICheckBoxTags(),
   onCheckedChange: (() -> Unit)? = null
@@ -96,16 +97,16 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         .fillMaxWidth()
         .padding(20.dp)
     ) {
-      TUICheckBox(checked = true, enabled = true, icon = TarkaIcons.CheckMark16Filled) {
+      TUICheckBox(checked = true, enabled = true, icon = TarkaIcons.Filled.Checkmark16) {
       }
       VerticalSpacer(space = 20)
-      TUICheckBox(checked = true, enabled = false, icon = TarkaIcons.CheckMark16Filled) {
+      TUICheckBox(checked = true, enabled = false, icon = TarkaIcons.Filled.Checkmark16) {
       }
       VerticalSpacer(space = 20)
-      TUICheckBox(checked = false, enabled = true, icon = TarkaIcons.CheckMark16Filled) {
+      TUICheckBox(checked = false, enabled = true, icon = TarkaIcons.Filled.Checkmark16) {
       }
       VerticalSpacer(space = 20)
-      TUICheckBox(checked = false, enabled = false, icon = TarkaIcons.CheckMark16Filled) {
+      TUICheckBox(checked = false, enabled = false, icon = TarkaIcons.Filled.Checkmark16) {
       }
     }
 

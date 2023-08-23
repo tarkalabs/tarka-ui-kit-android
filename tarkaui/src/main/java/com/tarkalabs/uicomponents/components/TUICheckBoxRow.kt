@@ -14,8 +14,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
+import com.tarkalabs.tarkaicons.Checkmark16
+import com.tarkalabs.tarkaicons.TarkaIcon
+import com.tarkalabs.tarkaicons.TarkaIcons
 
 /**
  * A composable function that displays a checkbox and a text row in a horizontal layout.
@@ -39,7 +40,7 @@ onCheckedChange = { isChecked = !isChecked }
 @Composable fun TUICheckBoxRow(
   modifier: Modifier = Modifier,
   checked: Boolean,
-  icon: TarkaIcon = TarkaIcons.CheckMark16Filled,
+  icon: TarkaIcon = TarkaIcons.Filled.Checkmark16,
   enabled: Boolean = true,
   title: String,
   style: TextRowStyle,
@@ -97,7 +98,7 @@ data class TUICheckBoxRowTags(
       TUICheckBoxRow(
         checked = true,
         enabled = true,
-        icon = TarkaIcons.CheckMark16Filled,
+        icon = TarkaIcons.Filled.Checkmark16,
         title = "Title",
         style = TextRowStyle.TitleWithDescription("Description")
       ) {
@@ -105,7 +106,7 @@ data class TUICheckBoxRowTags(
       TUICheckBoxRow(
         checked = false,
         enabled = true,
-        icon = TarkaIcons.CheckMark16Filled,
+        icon = TarkaIcons.Filled.Checkmark16,
         title = "Title",
         style = TextRowStyle.TitleWithDescription("Description")
       ) {
@@ -114,7 +115,7 @@ data class TUICheckBoxRowTags(
       TUICheckBoxRow(
         checked = true,
         enabled = false,
-        icon = TarkaIcons.CheckMark16Filled,
+        icon = TarkaIcons.Filled.Checkmark16,
         title = "Title",
         style = TextRowStyle.TitleWithDescription("Description")
       ) {
@@ -123,7 +124,7 @@ data class TUICheckBoxRowTags(
       TUICheckBoxRow(
         checked = true,
         enabled = false,
-        icon = TarkaIcons.CheckMark16Filled,
+        icon = TarkaIcons.Filled.Checkmark16,
         title = "Title",
         style = TextRowStyle.Title
       ) {

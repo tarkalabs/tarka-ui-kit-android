@@ -8,12 +8,14 @@ import androidx.compose.ui.test.captureToImage
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
+import com.tarkalabs.tarkaicons.Add24
+import com.tarkalabs.tarkaicons.Checkmark24
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemBgColor.GREEN
 import com.tarkalabs.uicomponents.components.MobileOverlayMenuLeadingContent.ADD
 import com.tarkalabs.uicomponents.components.MobileOverlayMenuTrailingContent
 import com.tarkalabs.uicomponents.components.TUIMobileOverlayMenuItem
 import com.tarkalabs.uicomponents.components.TUIMobileOverlayMenuItemTags
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
@@ -31,10 +33,10 @@ class TUIMobileOverlayMenuItemTest {
     val desc = "descriptionTest"
 
     //icon used while MobileOverlayMenuLeadingContent.CHECKMARK passed
-    val leadingIconConRes = TarkaIcons.Add24Filled.contentDescription
+    val leadingIconConRes = TarkaIcons.Filled.Add24.contentDescription
 
     //icon used while MobileOverlayMenuLeadingContent.CHECKMARK passed
-    val trailingIconConRes = TarkaIcons.CheckMark24Filled.contentDescription
+    val trailingIconConRes = TarkaIcons.Filled.Checkmark24.contentDescription
 
     // used color while passing backgroundColor = GREEN
     val greenBgColor = Color(0xFF148F47).copy(alpha = 0.10f)
