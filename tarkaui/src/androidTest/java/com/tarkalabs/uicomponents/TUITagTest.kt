@@ -6,9 +6,10 @@ import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import com.tarkalabs.tarkaicons.Circle12
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUITag
 import com.tarkalabs.uicomponents.components.TUITagTestTags
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock
@@ -22,8 +23,8 @@ class TUITagTest {
   @Test
   fun is_passed_things_is_shown() {
     val title = "test title"
-    val leadingIcon = TarkaIcons.Circle12Regular
-    val trailingIcon = TarkaIcons.Circle12Regular
+    val leadingIcon = TarkaIcons.Regular.Circle12
+    val trailingIcon = TarkaIcons.Regular.Circle12
     composable.setContent {
       TUITag(
         title = title,

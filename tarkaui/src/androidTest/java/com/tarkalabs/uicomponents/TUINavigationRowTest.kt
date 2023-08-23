@@ -9,9 +9,11 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import com.tarkalabs.tarkaicons.Checkmark16
+import com.tarkalabs.tarkaicons.Copy24
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUINavigationRow
 import com.tarkalabs.uicomponents.components.TUINavigationRowTags
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock
@@ -26,7 +28,7 @@ class TUINavigationRowTest {
 
     composable.setContent {
       TUINavigationRow(title = "Label",
-        leadingIcon = TarkaIcons.CheckMark16Filled,
+        leadingIcon = TarkaIcons.Filled.Checkmark16,
         onClick = {},
         tags = TAGS,
         content = {
@@ -44,7 +46,7 @@ class TUINavigationRowTest {
     composable.setContent {
       TUINavigationRow(
         title = "Label",
-        leadingIcon = TarkaIcons.Copy24Regular,
+        leadingIcon = TarkaIcons.Regular.Copy24,
         onClick = onClick,
         tags = TAGS,
       )

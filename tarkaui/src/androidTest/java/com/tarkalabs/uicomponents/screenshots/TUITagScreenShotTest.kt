@@ -1,13 +1,14 @@
 package com.tarkalabs.uicomponents.screenshots
 
 import androidx.compose.ui.graphics.Color
+import com.tarkalabs.tarkaicons.Circle12
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUITag
 import com.tarkalabs.uicomponents.components.TagSize
 import com.tarkalabs.uicomponents.components.TagType
 import com.tarkalabs.uicomponents.components.TagType.CUSTOM
 import com.tarkalabs.uicomponents.components.TagType.HIGH
 import com.tarkalabs.uicomponents.components.TagType.LOW
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
@@ -63,14 +64,14 @@ class TUITagScreenShotTest(
   }
 
   @Test fun test_tag_with_leading_icon() {
-    val leadingIcon = TarkaIcons.Circle12Regular
+    val leadingIcon = TarkaIcons.Regular.Circle12
     compareScreenshotFor(darkTheme = darkTheme, imageName = "TagWithLeadingIcon_$testName") {
       TUITag(title = "Title", tagType = tagType, tagSize = tagSize, leadingIcon = leadingIcon) {}
     }
   }
 
   @Test fun test_tag_with_trailing_icon() {
-    val trailingIcon = TarkaIcons.Circle12Regular
+    val trailingIcon = TarkaIcons.Regular.Circle12
     compareScreenshotFor(darkTheme = darkTheme, imageName = "TagWithTrailingIcon_$testName") {
       TUITag(title = "Title", tagType = tagType, tagSize = tagSize, trailingIcon = trailingIcon) {}
     }

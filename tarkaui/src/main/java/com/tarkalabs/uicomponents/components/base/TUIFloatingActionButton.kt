@@ -16,11 +16,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.ChevronRight20
+import com.tarkalabs.tarkaicons.TarkaIcon
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.base.FloatingActionButtonSize.L
 import com.tarkalabs.uicomponents.components.base.FloatingActionButtonSize.R
 import com.tarkalabs.uicomponents.components.base.FloatingActionButtonSize.S
-import com.tarkalabs.uicomponents.models.TarkaIcon
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 enum class FloatingActionButtonSize(val size: Dp) {
@@ -78,19 +79,19 @@ data class TUIFloatingActionButtonTags(
     verticalArrangement = Arrangement.SpaceEvenly
   ) {
     TUIFloatingActionButton(
-      L, TarkaIcons.ChevronRight20Regular
+      L, TarkaIcons.Regular.ChevronRight20
     ) {
 
     }
     Spacer(modifier = Modifier.padding(5.dp))
     TUIFloatingActionButton(
-      R, TarkaIcons.ChevronRight20Regular
+      R, TarkaIcons.Regular.ChevronRight20
     ) {
 
     }
     Spacer(modifier = Modifier.padding(5.dp))
     TUIFloatingActionButton(
-      S, TarkaIcons.ChevronRight20Regular
+      S, TarkaIcons.Regular.ChevronRight20
     ) {
 
     }
