@@ -9,10 +9,11 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performImeAction
 import androidx.compose.ui.test.performTextInput
+import com.tarkalabs.tarkaicons.AddCircle24
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUIEmailField
 import com.tarkalabs.uicomponents.components.TUIEmailFieldTags
 import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock
@@ -40,7 +41,7 @@ class TUIEmailFieldTest {
       TUIEmailField(
         title = "To",
         emailAddressList = emailList,
-        trailingIcon = TarkaIcons.AddCircle24Regular,
+        trailingIcon = TarkaIcons.Regular.AddCircle24,
         onItemRemoved = { position ->
 
         },
@@ -50,7 +51,8 @@ class TUIEmailFieldTest {
         onItemAdd = {
 
         },
-        tags = tags
+        tags = tags,
+        onInvalidEmail = {}
       )
 
     }
@@ -80,7 +82,7 @@ class TUIEmailFieldTest {
       TUIEmailField(
         title = "To",
         emailAddressList = emailList,
-        trailingIcon = TarkaIcons.AddCircle24Regular,
+        trailingIcon = TarkaIcons.Regular.AddCircle24,
         onItemRemoved = { position ->
 
         },
@@ -88,7 +90,7 @@ class TUIEmailFieldTest {
         onItemAdd = {
           emailList.add(it)
         },
-        tags = tags
+        tags = tags, onInvalidEmail = {}
       )
     }
 

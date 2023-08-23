@@ -59,9 +59,10 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     unfocusedIndicatorColor = TUITheme.colors.surfaceVariant,
     focusedIndicatorColor = TUITheme.colors.primary,
     focusedTextColor = TUITheme.colors.inputText,
+    unfocusedTextColor = TUITheme.colors.inputText,
     unfocusedContainerColor = Color.Transparent,
     focusedContainerColor = Color.Transparent,
-
+    cursorColor = TUITheme.colors.inputText
     )
   TextField(
     modifier = modifier,
