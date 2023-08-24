@@ -1,42 +1,51 @@
 package com.tarkalabs.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import com.tarkalabs.uicomponents.components.base.TUIInputField
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Icon
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Text
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Success
-import com.tarkalabs.uicomponents.models.TarkaIcons
+import com.tarkalabs.tarkaicons.Search24
+import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.uicomponents.components.TUITopBar
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 class UIComponentListActivity : ComponentActivity() {
 
-  override fun onCreate(savedInstanceState: Bundle?) {
+  @OptIn(ExperimentalMaterial3Api::class) override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
     setContent {
+      var searchIcon by remember {
+        mutableStateOf(true)
+      }
       TUITheme {
-
-        Column(
-          modifier = Modifier
-            .fillMaxSize()
-            .background(color = TUITheme.colors.surface)
-        ) {
-          TUIInputField(
-            leadingContent = Text("$"),
-            trailingContent = Icon(TarkaIcons.Timer20Regular, onIconClick = {
-              Log.e("ICON_CLICK_TAG","Hello There")
-            }),
-            value = "Hello There",
-            onValueChange = { },
-            status = Success
+        Scaffold(topBar = {
+          TUITopBar(
+            title = "Android Dev",
+            modifier = Modifier.fillMaxWidth(),
+            searchIcon = if(searchIcon) TarkaIcons.Regular.Search24 else null,
+            onSearchQuery = {
+            },
           )
+        }) { paddingValues ->
+          Column(
+            modifier = Modifier
+              .fillMaxSize()
+              .background(color = TUITheme.colors.surface)
+              .padding(paddingValues)
+          ) {
+          }
 
         }
       }

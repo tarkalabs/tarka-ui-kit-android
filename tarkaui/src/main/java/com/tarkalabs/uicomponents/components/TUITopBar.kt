@@ -100,26 +100,26 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
   }
 
   Column(
-    modifier = modifier.wrapContentSize(),
+    modifier = modifier.fillMaxWidth().wrapContentSize(),
     horizontalAlignment = Alignment.CenterHorizontally
   ) {
-    TopAppBar(
-      title = {
-        if (showSearchBar) {
-          TUISearchBar(
-            modifier = modifier.padding(vertical = 8.dp, horizontal = 16.dp),
-            query = query,
-            placeholder = "",
-            leadingIcon = TarkaIcons.Regular.ChevronLeft24,
-            onLeadingIconClick = {
-              query = ""
-              showSearchBar = false
-            },
-            onQueryTextChange = {
-              query = it
-              onSearchQuery(it)
-            })
-        } else {
+    if (showSearchBar) {
+      TUISearchBar(
+        modifier = Modifier,
+        query = query,
+        placeholder = "",
+        leadingIcon = TarkaIcons.Regular.ChevronLeft24,
+        onLeadingIconClick = {
+          query = ""
+          showSearchBar = false
+        },
+        onQueryTextChange = {
+          query = it
+          onSearchQuery(it)
+        })
+    } else{
+      TopAppBar(
+        title = {
           Text(
             text = title,
             style = TUITheme.typography.heading5,
@@ -127,72 +127,74 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
           )
-        }
-      },
-      navigationIcon = {
-        if (navigationIcon != null) {
+        },
+        navigationIcon = {
+          if (navigationIcon != null) {
+            if (!showSearchBar) {
+              TUIIconButton(
+                onIconClick = onNavigationIconClick,
+                icon = navigationIcon,
+                tags = tags.navigationIconTags,
+                iconButtonStyle = GHOST,
+                buttonSize = XL
+              )
+            }
+          }
+        },
+        actions = {
           if (!showSearchBar) {
-            TUIIconButton(
-              onIconClick = onNavigationIconClick,
-              icon = navigationIcon,
-              tags = tags.navigationIconTags,
-              iconButtonStyle = GHOST,
-              buttonSize = XL
-            )
-          }
-        }
-      },
-      actions = {
-        if (!showSearchBar) {
-          if (searchIcon != null) {
-            TUIIconButton(
-              icon = searchIcon,
-              tags = tags.searchIconTags,
-              iconButtonStyle = GHOST,
-              onIconClick = {
-                if (!disableSearchIcon) {
-                  showSearchBar = true
-                }
-              },
-              buttonSize = XL
-            )
-          }
+            if (searchIcon != null) {
+              TUIIconButton(
+                icon = searchIcon,
+                tags = tags.searchIconTags,
+                iconButtonStyle = GHOST,
+                onIconClick = {
+                  if (!disableSearchIcon) {
+                    showSearchBar = true
+                  }
+                },
+                buttonSize = XL
+              )
+            }
 
-          if (menuItemIconThree != null) {
-            TUIIconButton(
-              icon = menuItemIconThree,
-              tags = tags.menuIconThreeTags,
-              iconButtonStyle = GHOST,
-              onIconClick = onThirdMenuItemClicked,
-              buttonSize = XL
-            )
-          }
+            if (menuItemIconThree != null) {
+              TUIIconButton(
+                icon = menuItemIconThree,
+                tags = tags.menuIconThreeTags,
+                iconButtonStyle = GHOST,
+                onIconClick = onThirdMenuItemClicked,
+                buttonSize = XL
+              )
+            }
 
-          if (menuItemIconTwo != null) {
-            TUIIconButton(
-              onIconClick = onSecondMenuItemClicked,
-              icon = menuItemIconTwo,
-              tags = tags.menuIconTwoTags,
-              iconButtonStyle = GHOST,
-              buttonSize = XL
-            )
-          }
+            if (menuItemIconTwo != null) {
+              TUIIconButton(
+                onIconClick = onSecondMenuItemClicked,
+                icon = menuItemIconTwo,
+                tags = tags.menuIconTwoTags,
+                iconButtonStyle = GHOST,
+                buttonSize = XL
+              )
+            }
 
-          if (menuItemIconOne != null) {
-            TUIIconButton(
-              onIconClick = onFirstMenuItemClicked,
-              tags = tags.menuIconOneTags,
-              icon = menuItemIconOne,
-              iconButtonStyle = GHOST,
-              buttonSize = XL
-            )
+            if (menuItemIconOne != null) {
+              TUIIconButton(
+                onIconClick = onFirstMenuItemClicked,
+                tags = tags.menuIconOneTags,
+                icon = menuItemIconOne,
+                iconButtonStyle = GHOST,
+                buttonSize = XL
+              )
+            }
           }
-        }
-      },
-      colors = colors,
-      modifier = Modifier.fillMaxWidth(),
-      scrollBehavior = scrollBehavior,
-    )
+        },
+        colors = colors,
+        modifier = Modifier.fillMaxWidth(),
+        scrollBehavior = scrollBehavior,
+      )
+
+    }
+
     Divider(modifier = Modifier.padding(top = 8.dp), color = TUITheme.colors.surfaceVariant)
   }
 }
