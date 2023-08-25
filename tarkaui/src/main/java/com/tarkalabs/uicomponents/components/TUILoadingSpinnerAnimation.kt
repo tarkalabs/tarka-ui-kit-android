@@ -66,7 +66,7 @@ fun TUILoadingSpinnerAnimation(
   tags: TUILoadingSpinnerAnimationTags = TUILoadingSpinnerAnimationTags(),
   progressImageDetail: ProgressImageDetail = ProgressImageDetail(
     imageResId = R.drawable.loader_spin_image,
-    "EamLoader"
+    "Loader"
   ),
 ) {
   Box(modifier = modifier.testTag(tags.parentTag), contentAlignment = Alignment.Center) {
