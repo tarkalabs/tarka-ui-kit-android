@@ -8,11 +8,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
+import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaicons.Timer20
 import com.tarkalabs.uicomponents.components.base.TUIInputField
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Icon
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Text
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Success
-import com.tarkalabs.uicomponents.models.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 class UIComponentListActivity : ComponentActivity() {
@@ -30,7 +31,7 @@ class UIComponentListActivity : ComponentActivity() {
         ) {
           TUIInputField(
             leadingContent = Text("$"),
-            trailingContent = Icon(TarkaIcons.Timer20Regular, onIconClick = {
+            trailingContent = Icon(TarkaIcons.Regular.Timer20, onIconClick = {
               Log.e("ICON_CLICK_TAG","Hello There")
             }),
             value = "Hello There",
