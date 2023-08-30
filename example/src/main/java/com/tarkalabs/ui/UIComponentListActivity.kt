@@ -1,18 +1,16 @@
 package com.tarkalabs.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
-import com.tarkalabs.uicomponents.components.base.TUIInputField
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Icon
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Text
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Success
-import com.tarkalabs.uicomponents.models.TarkaIcons
+import com.tarkalabs.tarkaicons.Delete24
+import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.uicomponents.components.TUIAttachmentUpload
+import com.tarkalabs.uicomponents.components.TUIThumbnailType.Document
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 class UIComponentListActivity : ComponentActivity() {
@@ -28,14 +26,14 @@ class UIComponentListActivity : ComponentActivity() {
             .fillMaxSize()
             .background(color = TUITheme.colors.surface)
         ) {
-          TUIInputField(
-            leadingContent = Text("$"),
-            trailingContent = Icon(TarkaIcons.Timer20Regular, onIconClick = {
-              Log.e("ICON_CLICK_TAG","Hello There")
-            }),
-            value = "Hello There",
-            onValueChange = { },
-            status = Success
+          TUIAttachmentUpload(
+            type = Document,
+            attachmentName = "abc.png",
+            onTrailingIconClick = {
+            },
+            onAttachmentClick = { },
+            showLeadingIcon = false,
+            trailingIcon = TarkaIcons.Regular.Delete24
           )
 
         }
