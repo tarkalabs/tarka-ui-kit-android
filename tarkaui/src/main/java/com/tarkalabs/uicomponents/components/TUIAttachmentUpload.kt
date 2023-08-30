@@ -54,10 +54,11 @@ object TUIAttachmentUpload {
    * @param type The type of the thumbnail to display (e.g., image, video, etc.).
    * @param attachmentName The name of the attachment to display.
    * @param onAttachmentClick A callback function to handle attachment click events.
-   * @param onTrailingIconClick A callback function to handle menu (three-dot) icon click events.
+   * @param onTrailingIconClick A callback function to handle trailing icon click events.
    * @param state The state of the attachment (Uploading, Uploaded, etc.).
    * @param showLeadingIcon Whether to show a leading icon (e.g., reorder icon) before the thumbnail.
    * @param tags Tags for customizing test accessibility.
+   * @param trailingIcon The drawable resource for the trailing icon
    *
    * How to use TUIAttachmentUpload()
    *
