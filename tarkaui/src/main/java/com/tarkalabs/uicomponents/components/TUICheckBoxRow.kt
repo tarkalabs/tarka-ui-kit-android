@@ -3,6 +3,7 @@ package com.tarkalabs.uicomponents.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -45,6 +46,7 @@ onCheckedChange = { isChecked = !isChecked }
   title: String,
   style: TextRowStyle,
   tags: TUICheckBoxRowTags = TUICheckBoxRowTags(),
+  paddingValues: PaddingValues = PaddingValues(),
   onCheckedChange: () -> Unit,
 ) {
   Row(
@@ -57,6 +59,7 @@ onCheckedChange = { isChecked = !isChecked }
             onCheckedChange.invoke()
           }
         })
+      .padding(paddingValues)
       .testTag(tags.parentTag)
   ) {
     TUICheckBox(
