@@ -62,7 +62,7 @@ enum class TUIInputFieldType {
 }
 
 sealed class TUIInputFieldContentType {
-  data class Icon(val icon: TarkaIcon, val onIconClick: (() -> Unit)? = null,) : TUIInputFieldContentType()
+  data class Icon(val icon: TarkaIcon, val onIconClick: (() -> Unit)? = null) : TUIInputFieldContentType()
   data class Text(val text: String) : TUIInputFieldContentType()
 }
 
@@ -116,7 +116,7 @@ sealed class TUIInputFieldContentType {
       is Text -> Text(
         text = leadingContent.text.take(1),
         style = TUITheme.typography.body5,
-        color = TUITheme.colors.inputDim,
+        color = TUITheme.colors.inputText,
         modifier = Modifier.testTag(testTags.leadingContentTag),
       )
     }
@@ -136,7 +136,7 @@ sealed class TUIInputFieldContentType {
       is Text -> Text(
         text = trailingContent.text.take(1),
         style = TUITheme.typography.body5,
-        color = TUITheme.colors.inputTextDim,
+        color = TUITheme.colors.inputText,
         modifier = Modifier.testTag(testTags.trailingContentTag),
       )
     }
