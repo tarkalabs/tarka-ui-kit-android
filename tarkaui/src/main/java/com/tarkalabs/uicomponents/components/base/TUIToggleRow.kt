@@ -66,7 +66,7 @@ sealed class ToggleRowStyle {
   Text(
     text = style.description,
     style = TUITheme.typography.body7,
-    color = TUITheme.colors.onSurface
+    color = TUITheme.colors.inputTextDim.copy(alpha = 0.7f)
   )
 }
 
