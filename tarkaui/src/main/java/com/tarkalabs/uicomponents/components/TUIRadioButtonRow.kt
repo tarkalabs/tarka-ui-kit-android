@@ -3,6 +3,7 @@ package com.tarkalabs.uicomponents.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -15,6 +16,8 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.uicomponents.components.base.TUIToggleRow
+import com.tarkalabs.uicomponents.components.base.ToggleRowStyle
 
 /**
  * A composable function that displays a RadioButton and a text row in a horizontal layout.
@@ -29,20 +32,21 @@ import androidx.compose.ui.unit.dp
  *
  * How to use TUIRadioButtonRow() composable function
  * TUIRadioButtonRow(
-selected = isSelected,
-enabled = true,
-title = "RadioButton Row",
-style = TextRowStyle.Title,
-onOptionSelected = { selected = !isSelected }
-)
+      selected = isSelected,
+      enabled = true,
+      title = "RadioButton Row",
+      style = ToggleRowStyle.Title,
+      onOptionSelected = { selected = !isSelected }
+    )
  */
 @Composable fun TUIRadioButtonRow(
   modifier: Modifier = Modifier,
   selected: Boolean,
   enabled: Boolean = true,
   title: String,
-  style: TextRowStyle,
+  style: ToggleRowStyle,
   tags: TUIRadioButtonRowTags = TUIRadioButtonRowTags(),
+  paddingValues: PaddingValues = PaddingValues(),
   onOptionSelected: () -> Unit,
 ) {
   Row(
@@ -55,6 +59,7 @@ onOptionSelected = { selected = !isSelected }
         onClick = { if (enabled) onOptionSelected.invoke() },
         enabled = enabled
       )
+      .padding(paddingValues)
       .testTag(tags.parentTag)
   ) {
     TUIRadioButton(
@@ -64,11 +69,9 @@ onOptionSelected = { selected = !isSelected }
       tags = tags.radioButtonTags
     )
     HorizontalSpacer(space = 16)
-    TUITextRow(
+    TUIToggleRow(
       title = title,
       style = style,
-      tags = tags.textRowTags,
-      onTextRowClick = null,
     )
   }
 }
@@ -96,28 +99,28 @@ data class TUIRadioButtonRowTags(
         selected = true,
         enabled = true,
         title = "Title",
-        style = TextRowStyle.TitleWithDescription("Description")
+        style = ToggleRowStyle.TitleWithDescription("Description")
       ) {
       }
       TUIRadioButtonRow(
         selected = false,
         enabled = true,
         title = "Title",
-        style = TextRowStyle.TitleWithDescription("Description")
+        style = ToggleRowStyle.TitleWithDescription("Description")
       ) {
       }
       TUIRadioButtonRow(
         selected = true,
         enabled = true,
         title = "Title",
-        style = TextRowStyle.Title
+        style = ToggleRowStyle.Title
       ) {
       }
       TUIRadioButtonRow(
         selected = false,
         enabled = true,
         title = "Title",
-        style = TextRowStyle.Title
+        style = ToggleRowStyle.Title
       ) {
       }
     }
