@@ -5,6 +5,8 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import com.tarkalabs.tarkaicons.Delete24
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUIAttachmentUpload
 import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState.UpLoadSuccessful
 import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState.UpLoading
@@ -26,11 +28,12 @@ private val attachmentName = "document.jpg"
       TUIAttachmentUpload(
         type = Document,
         attachmentName = attachmentName,
-        onMenuClick = {
+        onTrailingIconClick = {
         },
         onAttachmentClick = { },
         tags = tags,
-        showLeadingIcon = true
+        showLeadingIcon = true,
+        trailingIcon = TarkaIcons.Regular.Delete24
       )
     }
     composable.onNodeWithTag(tags.parentTag,useUnmergedTree = true).assertIsDisplayed()
@@ -44,12 +47,13 @@ private val attachmentName = "document.jpg"
       TUIAttachmentUpload(
         type = Document,
         attachmentName = attachmentName,
-        onMenuClick = {
+        onTrailingIconClick = {
         },
         onAttachmentClick = { },
         tags = tags,
         state = UpLoading(progress = 50),
-        showLeadingIcon = true
+        showLeadingIcon = true,
+        trailingIcon = TarkaIcons.Regular.Delete24
       )
     }
     composable.onNodeWithTag(tags.parentTag,useUnmergedTree = true).assertIsDisplayed()
@@ -64,12 +68,13 @@ private val attachmentName = "document.jpg"
       TUIAttachmentUpload(
         type = Document,
         attachmentName = attachmentName,
-        onMenuClick = {
+        onTrailingIconClick = {
         },
         onAttachmentClick = { },
         tags = tags,
         state = UpLoadSuccessful,
-        showLeadingIcon = true
+        showLeadingIcon = true,
+        trailingIcon = TarkaIcons.Regular.Delete24
       )
     }
     composable.onNodeWithTag(tags.parentTag,useUnmergedTree = true).assertIsDisplayed()
@@ -89,10 +94,11 @@ private val attachmentName = "document.jpg"
       TUIAttachmentUpload(
         type = Document,
         attachmentName = attachmentName,
-        onMenuClick = onMenuClick,
+        onTrailingIconClick = onMenuClick,
         onAttachmentClick = onAttachmentClick,
         tags = tags,
-        showLeadingIcon = true
+        showLeadingIcon = true,
+        trailingIcon = TarkaIcons.Regular.Delete24
       )
     }
 
