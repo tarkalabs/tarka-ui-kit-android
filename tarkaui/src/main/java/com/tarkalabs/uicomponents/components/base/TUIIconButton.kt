@@ -81,6 +81,7 @@ enum class IconButtonStyle {
  *
  */
 @Composable fun TUIIconButton(
+  modifier: Modifier = Modifier,
   icon: TarkaIcon,
   buttonSize: IconButtonSize = L,
   iconButtonStyle: IconButtonStyle = IconButtonStyle.defaultStyle,
@@ -90,7 +91,7 @@ enum class IconButtonStyle {
 ) {
   var iconButtonColors: IconButtonColors = IconButtonDefaults.iconButtonColors()
 
-  var modifier = Modifier
+  var parentModifier = modifier
     .height(buttonSize.size)
     .width(buttonSize.size)
     .clip(CircleShape)
@@ -128,7 +129,7 @@ enum class IconButtonStyle {
         contentColor = contentColor,
         disabledContentColor = TUITheme.colors.onSurface.copy(alpha = 0.38f),
       )
-      modifier = Modifier
+      parentModifier = Modifier
         .border(
           width = 0.5.dp, color = TUITheme.colors.utilityOutline, shape = CircleShape
         )
@@ -138,7 +139,7 @@ enum class IconButtonStyle {
 
   IconButton(
     onClick = onIconClick,
-    modifier = modifier.testTag(tags.parentTag),
+    modifier = parentModifier.testTag(tags.parentTag),
     colors = iconButtonColors,
     enabled = enabled
   ) {
