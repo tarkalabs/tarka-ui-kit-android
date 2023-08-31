@@ -164,7 +164,7 @@ sealed class TUIInputFieldContentType {
         Text(
           text = helperMessage,
           style = TUITheme.typography.body7,
-          color = TUITheme.colors.error,
+          color = TUITheme.colors.inputText,
           modifier = Modifier.testTag(testTags.helperTextTag)
         )
       }
