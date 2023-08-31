@@ -32,8 +32,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaicons.Checkmark12
-import com.tarkalabs.tarkaicons.MoreHorizontal24
+import com.tarkalabs.tarkaicons.Delete24
 import com.tarkalabs.tarkaicons.ReOrder24
+import com.tarkalabs.tarkaicons.TarkaIcon
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState.UpLoadSuccessful
 import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState.UpLoading
@@ -53,10 +54,11 @@ object TUIAttachmentUpload {
    * @param type The type of the thumbnail to display (e.g., image, video, etc.).
    * @param attachmentName The name of the attachment to display.
    * @param onAttachmentClick A callback function to handle attachment click events.
-   * @param onMenuClick A callback function to handle menu (three-dot) icon click events.
+   * @param onTrailingIconClick A callback function to handle trailing icon click events.
    * @param state The state of the attachment (Uploading, Uploaded, etc.).
    * @param showLeadingIcon Whether to show a leading icon (e.g., reorder icon) before the thumbnail.
    * @param tags Tags for customizing test accessibility.
+   * @param trailingIcon The drawable resource for the trailing icon
    *
    * How to use TUIAttachmentUpload()
    *
@@ -75,7 +77,8 @@ object TUIAttachmentUpload {
     type: TUIThumbnailType,
     attachmentName: String,
     onAttachmentClick: () -> Unit,
-    onMenuClick: () -> Unit,
+    onTrailingIconClick: () -> Unit,
+    trailingIcon: TarkaIcon,
     state: AttachmentState? = null,
     showLeadingIcon: Boolean,
     tags: TUIAttachmentUploadTags = TUIAttachmentUploadTags()
@@ -156,11 +159,11 @@ object TUIAttachmentUpload {
       }
 
       TUIIconButton(
-        icon = TarkaIcons.Regular.MoreHorizontal24.copy(tintColor = TUITheme.colors.secondary),
+        icon = trailingIcon,
         iconButtonStyle = GHOST,
         buttonSize = IconButtonSize.XL,
         tags = tags.menuItemTag,
-        onIconClick = onMenuClick
+        onIconClick = onTrailingIconClick
       )
 
     }
@@ -235,12 +238,13 @@ object TUIAttachmentUpload {
       TUIAttachmentUpload(
         type = Document,
         attachmentName = "document.jpg",
-        onMenuClick = {
+        onTrailingIconClick = {
 
         },
         onAttachmentClick = { },
         state = UpLoading(50),
         showLeadingIcon = true,
+        trailingIcon = TarkaIcons.Regular.Delete24
       )
 
     }

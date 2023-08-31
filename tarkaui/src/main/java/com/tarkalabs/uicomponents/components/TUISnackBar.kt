@@ -214,6 +214,7 @@ internal fun TUISnackBar(
           modifier = Modifier.testTag(tags.leadingIconTag),
           painter = painterResource(id = leadingIcon.iconRes),
           contentDescription = leadingIcon.contentDescription,
+          tint = textColor
         )
       }
       Text(
