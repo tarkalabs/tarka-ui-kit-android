@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.AssistChipDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -131,6 +132,7 @@ enum class ChipSize(val size: Dp) {
   when (type) {
     is ChipType.Assist -> {
       AssistChip(modifier = commonModifier,
+        shape = RoundedCornerShape(8.dp),
         label = commonLabel,
         onClick = onClick,
         colors = AssistChipDefaults.assistChipColors(containerColor = TUITheme.colors.surface),
@@ -138,6 +140,7 @@ enum class ChipSize(val size: Dp) {
     }
 
     is ChipType.Input -> InputChip(modifier = commonModifier,
+      shape = RoundedCornerShape(8.dp),
       selected = false,
       onClick = onClick,
       label = commonLabel,
@@ -169,6 +172,7 @@ enum class ChipSize(val size: Dp) {
       SuggestionChip(
         onClick = onClick,
         label = commonLabel,
+        shape = RoundedCornerShape(8.dp),
         modifier = commonModifier,
         icon = if (type.image != null) {
           {
@@ -188,6 +192,7 @@ enum class ChipSize(val size: Dp) {
 ) {
   Box(modifier = Modifier.wrapContentWidth()) {
     FilterChip(selected = type.selected,
+      shape = RoundedCornerShape(8.dp),
       onClick = onClick,
       label = commonLabel,
       modifier = modifier,
