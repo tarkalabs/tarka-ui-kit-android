@@ -136,7 +136,7 @@ sealed class TUIInputFieldContentType {
       is Text -> Text(
         text = trailingContent.text.take(1),
         style = TUITheme.typography.body5,
-        color = TUITheme.colors.inputTextDim,
+        color = TUITheme.colors.inputTextDim.copy(alpha = 0.7f),
         modifier = Modifier.testTag(testTags.trailingContentTag),
       )
     }

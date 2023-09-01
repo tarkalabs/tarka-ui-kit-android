@@ -11,7 +11,7 @@ import com.tarkalabs.uicomponents.components.TUICheckBoxRow
 import com.tarkalabs.uicomponents.components.TUICheckBoxRowTags
 import com.tarkalabs.uicomponents.components.TUICheckBoxTags
 import com.tarkalabs.uicomponents.components.TUITextRowTags
-import com.tarkalabs.uicomponents.components.TextRowStyle
+import com.tarkalabs.uicomponents.components.base.ToggleRowStyle
 import org.junit.Rule
 import org.junit.Test
 
@@ -34,7 +34,7 @@ class TUICheckBoxRowTest {
       TUICheckBoxRow(
         checked = checkedState,
         title = title,
-        style = TextRowStyle.Title,
+        style = ToggleRowStyle.Title,
         onCheckedChange = onCheckedChange,
         tags = tuiCheckBoxRowTags
       )
@@ -60,7 +60,7 @@ class TUICheckBoxRowTest {
       TUICheckBoxRow(
         checked = checkedState,
         title = title,
-        style = TextRowStyle.Title,
+        style = ToggleRowStyle.Title,
         onCheckedChange = onCheckedChange,
         tags = tuiCheckBoxRowTags
       )

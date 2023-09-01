@@ -2,6 +2,8 @@ package com.tarkalabs.uicomponents.screenshots
 
 import android.graphics.BitmapFactory
 import androidx.compose.ui.graphics.asImageBitmap
+import com.tarkalabs.tarkaicons.Delete24
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUIAttachmentUpload
 import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState
 import com.tarkalabs.uicomponents.components.TUIThumbnailType.Document
@@ -41,9 +43,10 @@ class TUIAttachmentUploadScreenShotTest(
     ) {
       TUIAttachmentUpload(type = Image(bitmap.asImageBitmap()),
         attachmentName = "document.jpg",
-        onMenuClick = {},
+        onTrailingIconClick = {},
         onAttachmentClick = { },
-        showLeadingIcon = showLeadingIcon
+        showLeadingIcon = showLeadingIcon,
+        trailingIcon = TarkaIcons.Regular.Delete24
       )
     }
   }
@@ -56,10 +59,11 @@ class TUIAttachmentUploadScreenShotTest(
     ) {
       TUIAttachmentUpload(type = Image(bitmap.asImageBitmap()),
         attachmentName = "document.jpg",
-        onMenuClick = {},
+        onTrailingIconClick = {},
         onAttachmentClick = { },
         showLeadingIcon = showLeadingIcon,
-        state = AttachmentState.UpLoading(51)
+        state = AttachmentState.UpLoading(51),
+        trailingIcon = TarkaIcons.Regular.Delete24
       )
     }
   }
@@ -72,10 +76,11 @@ class TUIAttachmentUploadScreenShotTest(
     ) {
       TUIAttachmentUpload(type = Image(bitmap.asImageBitmap()),
         attachmentName = "document.jpg",
-        onMenuClick = {},
+        onTrailingIconClick = {},
         onAttachmentClick = { },
         showLeadingIcon = showLeadingIcon,
-        state = AttachmentState.UpLoadSuccessful
+        state = AttachmentState.UpLoadSuccessful,
+        trailingIcon = TarkaIcons.Regular.Delete24
       )
     }
   }
@@ -87,9 +92,10 @@ class TUIAttachmentUploadScreenShotTest(
     ) {
       TUIAttachmentUpload(type = Document,
         attachmentName = "document.jpg",
-        onMenuClick = {},
+        onTrailingIconClick = {},
         onAttachmentClick = { },
-        showLeadingIcon = showLeadingIcon
+        showLeadingIcon = showLeadingIcon,
+        trailingIcon = TarkaIcons.Regular.Delete24
       )
     }
   }
