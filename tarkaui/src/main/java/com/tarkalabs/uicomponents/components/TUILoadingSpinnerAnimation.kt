@@ -136,8 +136,8 @@ fun TUILoadingSpinnerAnimation(
 
 data class TUILoadingSpinnerAnimationTags(
   val parentTag: String = "TUILoadingSpinnerAnimationTag",
-  val progressBarTag: String = "progressBarTag",
-  val loaderImageTag: String = "EamImageTag",
+  val progressBarTag: String = "TUILoadingSpinnerAnimationTag_progressBarTag",
+  val loaderImageTag: String = "TUILoadingSpinnerAnimationTag_EamImageTag",
 )
 
 data class ProgressImageDetail(
