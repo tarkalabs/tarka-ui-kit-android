@@ -192,9 +192,9 @@ data class TabItem(
 )
 
 data class TUITabTags(
-  val parentId: String = "ScrollableTab",
-  val tabId: String = "Tab",
-  val contentId: String = "PagerContent",
+  val parentId: String = "TUITabBar",
+  val tabId: String = "TUITabBar_TabTag",
+  val contentId: String = "TUITabBar_PagerContentTag",
 )
 
 @Composable
