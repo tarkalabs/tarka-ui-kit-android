@@ -1,6 +1,5 @@
 package com.tarkalabs.uicomponents.components
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -92,10 +91,10 @@ fun TUICardHeader(
 }
 
 data class TUICardHeaderTags(
-  val parentTag: String = "parentTag",
-  val tagTitleTag: String = "tagTitleTag",
-  val titleTag: String = "titleTag",
-  val trailingIconTag: String = "trailingIconTag",
+  val parentTag: String = "TUICardHeader",
+  val tagTitleTag: String = "TUICardHeader_tagTitleTag",
+  val titleTag: String = "TUICardHeader_titleTag",
+  val trailingIconTag: String = "TUICardHeader_trailingIconTag",
 )
 
 @Preview
