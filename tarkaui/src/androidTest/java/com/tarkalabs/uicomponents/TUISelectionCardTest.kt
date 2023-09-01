@@ -40,10 +40,10 @@ class TUISelectionCardTest {
     composeRule.setContent {
       TUISelectionCard(
         label = label,
-        description = desc,
-        description2 = desc2,
-        details = detail,
-        details2 = detail2,
+        primaryDescription = desc,
+        secondaryDescription = desc2,
+        primaryDetails = detail,
+        secondaryDetails = detail2,
         badgeCount = badgeCount,
         leadingIcon = leadingIcon,
         showTrailingIcon = true,
@@ -80,7 +80,7 @@ class TUISelectionCardTest {
     composeRule.setContent {
       TUISelectionCard(
         label = "",
-        description = "",
+        primaryDescription = "",
         onCardClicked = onCLickLambda,
         tags = TUISelectionCardTags().copy(parentTag = parentTestTag)
       )

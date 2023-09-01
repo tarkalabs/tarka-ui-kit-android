@@ -34,10 +34,10 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * @param modifier - used to modify the properties, behaviours of composes.
  * @param leadingIcon - Optional Leading Icon in the card.
  * @param label - title of the Card.
- * @param description - description of the Card.
- * @param description2 - Optional additional description of the card.
- * @param details - Optional details of the card.
- * @param details2 - Optional second details of the card.
+ * @param primaryDescription - description of the Card.
+ * @param secondaryDescription - Optional additional description of the card.
+ * @param primaryDetails - Optional details of the card.
+ * @param secondaryDetails - Optional second details of the card.
  * @param badgeCount - Optional Count Details which is shown in Badge style.
  * @param showTrailingIcon - boolean indicated to shown the frontArrow at the end of the card.
  * @param isSelected - a boolean which indicates current clicked state of the card.
@@ -51,10 +51,10 @@ fun TUISelectionCard(
   modifier: Modifier = Modifier,
   leadingIcon: TarkaIcon? = null,
   label: String,
-  description: String,
-  description2: String? = null,
-  details: String? = null,
-  details2: String? = null,
+  primaryDescription: String,
+  secondaryDescription: String? = null,
+  primaryDetails: String? = null,
+  secondaryDetails: String? = null,
   badgeCount: Int? = null,
   showTrailingIcon: Boolean = false,
   isSelected: Boolean = false,
@@ -102,12 +102,12 @@ fun TUISelectionCard(
 
       Text(
         modifier = Modifier.testTag(tags.descriptionTag),
-        text = description,
+        text = primaryDescription,
         color = TUITheme.colors.inputText,
         style = TUITheme.typography.heading6
       )
 
-      description2?.let {
+      secondaryDescription?.let {
         Text(
           modifier = Modifier.testTag(tags.description2Tag),
           text = it,
@@ -116,7 +116,7 @@ fun TUISelectionCard(
         )
       }
 
-      details?.let {
+      primaryDetails?.let {
         Text(
           modifier = Modifier.testTag(tags.detailsTag),
           text = it,
@@ -125,7 +125,7 @@ fun TUISelectionCard(
         )
       }
 
-      details2?.let {
+      secondaryDetails?.let {
         Text(
           modifier = Modifier.testTag(tags.details2Tag),
           text = it,
@@ -160,15 +160,15 @@ fun TUISelectionCard(
 }
 
 data class TUISelectionCardTags(
-  val parentTag: String = "ParentTag",
-  val leadingIconTag: String = "LeadingIconTag",
-  val labelTag: String = "LabelTag",
-  val descriptionTag: String = "DescriptionTag",
-  val description2Tag: String = "Description2Tag",
-  val detailsTag: String = "DetailsTag",
-  val details2Tag: String = "Details2Tag",
-  val badgeTag: String = "BadgeTag",
-  val trailingFrontArrowIconTag: String = "TrailingFrontArrowIconTag",
+  val parentTag: String = "TUISelectionCard",
+  val leadingIconTag: String = "TUISelectionCard_LeadingIconTag",
+  val labelTag: String = "TUISelectionCard_LabelTag",
+  val descriptionTag: String = "TUISelectionCard_PrimaryDescriptionTag",
+  val description2Tag: String = "TUISelectionCard_SecondaryDescriptionTag",
+  val detailsTag: String = "TUISelectionCard_PrimaryDetailsTag",
+  val details2Tag: String = "TUISelectionCard_SecondaryDetailsTag",
+  val badgeTag: String = "TUISelectionCard_BadgeTag",
+  val trailingFrontArrowIconTag: String = "TUISelectionCard_TrailingFrontArrowIconTag",
 )
 
 @Preview
@@ -186,10 +186,10 @@ fun TUISelectionCardPreview() {
     TUISelectionCard(
       leadingIcon = TarkaIcons.Regular.Person24,
       label = "Label",
-      description = "Description",
-      description2 = "Description2",
-      details = "Details",
-      details2 = "Details2",
+      primaryDescription = "Description",
+      secondaryDescription = "Description2",
+      primaryDetails = "Details",
+      secondaryDetails = "Details2",
       badgeCount = 4,
       showTrailingIcon = true
     ) {}
@@ -197,10 +197,10 @@ fun TUISelectionCardPreview() {
     TUISelectionCard(
       leadingIcon = TarkaIcons.Regular.Person24,
       label = "Label",
-      description = "Description",
-      description2 = "Description2",
-      details = "Details",
-      details2 = "Details2",
+      primaryDescription = "Description",
+      secondaryDescription = "Description2",
+      primaryDetails = "Details",
+      secondaryDetails = "Details2",
       badgeCount = 4,
       showTrailingIcon = true
     ) {}
@@ -210,10 +210,10 @@ fun TUISelectionCardPreview() {
     TUISelectionCard(
       leadingIcon = TarkaIcons.Regular.Person24,
       label = "Label",
-      description = "Description",
-      description2 = "Description2",
-      details = "Details",
-      details2 = "Details2",
+      primaryDescription = "Description",
+      secondaryDescription = "Description2",
+      primaryDetails = "Details",
+      secondaryDetails = "Details2",
       badgeCount = 4,
       showTrailingIcon = true,
       isSelected = true
@@ -222,10 +222,10 @@ fun TUISelectionCardPreview() {
     TUISelectionCard(
       leadingIcon = TarkaIcons.Regular.Person24,
       label = "Label",
-      description = "Description",
-      description2 = "Description2",
-      details = "Details",
-      details2 = "Details2",
+      primaryDescription = "Description",
+      secondaryDescription = "Description2",
+      primaryDetails = "Details",
+      secondaryDetails = "Details2",
       badgeCount = 4,
       showTrailingIcon = true,
       isSelected = true

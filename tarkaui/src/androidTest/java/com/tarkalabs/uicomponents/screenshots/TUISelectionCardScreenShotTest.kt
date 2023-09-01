@@ -87,12 +87,12 @@ class TUISelectionCardScreenShotTest(
       TUISelectionCard(
         modifier = Modifier.padding(14.dp),
         label = "Label",
-        description = "Description",
+        primaryDescription = "Description",
         isSelected = isSelected,
         leadingIcon = leadingIcon,
-        description2 = description2,
-        details = detail,
-        details2 = detail2,
+        secondaryDescription = description2,
+        primaryDetails = detail,
+        secondaryDetails = detail2,
         badgeCount = badgeCount,
         showTrailingIcon = trailingIconEnabled
       ) {}
