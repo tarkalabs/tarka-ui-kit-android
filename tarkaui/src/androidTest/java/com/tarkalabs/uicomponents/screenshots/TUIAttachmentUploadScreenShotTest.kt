@@ -2,7 +2,7 @@ package com.tarkalabs.uicomponents.screenshots
 
 import android.graphics.BitmapFactory
 import androidx.compose.ui.graphics.asImageBitmap
-import com.tarkalabs.tarkaicons.MoreHorizontal24
+import com.tarkalabs.tarkaicons.Delete24
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUIAttachmentUpload
 import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState
@@ -46,7 +46,7 @@ class TUIAttachmentUploadScreenShotTest(
         onTrailingIconClick = {},
         onAttachmentClick = { },
         showLeadingIcon = showLeadingIcon,
-        trailingIcon = TarkaIcons.Filled.MoreHorizontal24
+        trailingIcon = TarkaIcons.Regular.Delete24
       )
     }
   }
@@ -63,7 +63,7 @@ class TUIAttachmentUploadScreenShotTest(
         onAttachmentClick = { },
         showLeadingIcon = showLeadingIcon,
         state = AttachmentState.UpLoading(51),
-        trailingIcon = TarkaIcons.Filled.MoreHorizontal24
+        trailingIcon = TarkaIcons.Regular.Delete24
       )
     }
   }
@@ -80,7 +80,7 @@ class TUIAttachmentUploadScreenShotTest(
         onAttachmentClick = { },
         showLeadingIcon = showLeadingIcon,
         state = AttachmentState.UpLoadSuccessful,
-        trailingIcon = TarkaIcons.Filled.MoreHorizontal24
+        trailingIcon = TarkaIcons.Regular.Delete24
       )
     }
   }
@@ -95,7 +95,7 @@ class TUIAttachmentUploadScreenShotTest(
         onTrailingIconClick = {},
         onAttachmentClick = { },
         showLeadingIcon = showLeadingIcon,
-        trailingIcon = TarkaIcons.Filled.MoreHorizontal24
+        trailingIcon = TarkaIcons.Regular.Delete24
       )
     }
   }

@@ -3,6 +3,7 @@ package com.tarkalabs.uicomponents.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -17,6 +18,8 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaicons.Checkmark16
 import com.tarkalabs.tarkaicons.TarkaIcon
 import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.uicomponents.components.base.TUIToggleRow
+import com.tarkalabs.uicomponents.components.base.ToggleRowStyle
 
 /**
  * A composable function that displays a checkbox and a text row in a horizontal layout.
@@ -30,12 +33,12 @@ import com.tarkalabs.tarkaicons.TarkaIcons
  *
  * How to use TUICheckBoxRow() composable function
  *     TUICheckBoxRow(
-checked = isChecked,
-enabled = true,
-title = "Checkbox Row",
-style = TextRowStyle.Title,
-onCheckedChange = { isChecked = !isChecked }
-)
+          checked = isChecked,
+          enabled = true,
+          title = "Checkbox Row",
+          style = ToggleRowStyle.Title,
+          onCheckedChange = { isChecked = !isChecked }
+        )
  */
 @Composable fun TUICheckBoxRow(
   modifier: Modifier = Modifier,
@@ -43,8 +46,9 @@ onCheckedChange = { isChecked = !isChecked }
   icon: TarkaIcon = TarkaIcons.Filled.Checkmark16,
   enabled: Boolean = true,
   title: String,
-  style: TextRowStyle,
+  style: ToggleRowStyle,
   tags: TUICheckBoxRowTags = TUICheckBoxRowTags(),
+  paddingValues: PaddingValues = PaddingValues(),
   onCheckedChange: () -> Unit,
 ) {
   Row(
@@ -57,6 +61,7 @@ onCheckedChange = { isChecked = !isChecked }
             onCheckedChange.invoke()
           }
         })
+      .padding(paddingValues)
       .testTag(tags.parentTag)
   ) {
     TUICheckBox(
@@ -67,11 +72,9 @@ onCheckedChange = { isChecked = !isChecked }
       tags = tags.checkBoxTags
     )
     HorizontalSpacer(space = 16)
-    TUITextRow(
+    TUIToggleRow(
       title = title,
       style = style,
-      tags = tags.textRowTags,
-      onTextRowClick = null,
     )
   }
 }
@@ -100,7 +103,7 @@ data class TUICheckBoxRowTags(
         enabled = true,
         icon = TarkaIcons.Filled.Checkmark16,
         title = "Title",
-        style = TextRowStyle.TitleWithDescription("Description")
+        style = ToggleRowStyle.TitleWithDescription("Description")
       ) {
       }
       TUICheckBoxRow(
@@ -108,7 +111,7 @@ data class TUICheckBoxRowTags(
         enabled = true,
         icon = TarkaIcons.Filled.Checkmark16,
         title = "Title",
-        style = TextRowStyle.TitleWithDescription("Description")
+        style = ToggleRowStyle.TitleWithDescription("Description")
       ) {
       }
 
@@ -117,7 +120,7 @@ data class TUICheckBoxRowTags(
         enabled = false,
         icon = TarkaIcons.Filled.Checkmark16,
         title = "Title",
-        style = TextRowStyle.TitleWithDescription("Description")
+        style = ToggleRowStyle.TitleWithDescription("Description")
       ) {
       }
 
@@ -126,7 +129,7 @@ data class TUICheckBoxRowTags(
         enabled = false,
         icon = TarkaIcons.Filled.Checkmark16,
         title = "Title",
-        style = TextRowStyle.Title
+        style = ToggleRowStyle.Title
       ) {
       }
 
