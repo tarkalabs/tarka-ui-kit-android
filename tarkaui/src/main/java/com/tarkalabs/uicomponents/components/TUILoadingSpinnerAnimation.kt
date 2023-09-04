@@ -28,7 +28,6 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.R
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -64,23 +63,24 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 fun TUILoadingSpinnerAnimation(
   modifier: Modifier = Modifier,
   tags: TUILoadingSpinnerAnimationTags = TUILoadingSpinnerAnimationTags(),
-  progressImageDetail: ProgressImageDetail = ProgressImageDetail(
-    imageResId = R.drawable.loader_spin_image,
-    "Loader"
-  ),
+  progressImageDetail: ProgressImageDetail? = null,
 ) {
   Box(modifier = modifier.testTag(tags.parentTag), contentAlignment = Alignment.Center) {
-    CustomProgressIndicator(modifier = Modifier
-      .size(76.dp)
-      .testTag(tags.progressBarTag))
-    Image(
+    CustomProgressIndicator(
       modifier = Modifier
-        .testTag(tags.loaderImageTag)
-        .width(60.dp)
-        .height(11.dp),
-      painter = painterResource(id = progressImageDetail.imageResId),
-      contentDescription = progressImageDetail.contentDescription
+        .size(76.dp)
+        .testTag(tags.progressBarTag)
     )
+    progressImageDetail?.let {
+      Image(
+        modifier = Modifier
+          .testTag(tags.loaderImageTag)
+          .width(60.dp)
+          .height(11.dp),
+        painter = painterResource(id = progressImageDetail.imageResId),
+        contentDescription = progressImageDetail.contentDescription
+      )
+    }
   }
 }
 
