@@ -74,7 +74,6 @@ fun TUICardHeader(
     HorizontalSpacer(space = 8)
 
     trailingIcon?.let {
-      //used to put the trailing icon to end of the row
       Spacer(modifier = Modifier.weight(1f))
       TUIIconButton(
         modifier = Modifier
