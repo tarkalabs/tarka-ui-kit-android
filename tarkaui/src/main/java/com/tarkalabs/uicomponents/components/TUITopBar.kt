@@ -100,7 +100,9 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
   }
 
   Column(
-    modifier = modifier.fillMaxWidth().wrapContentSize(),
+    modifier = modifier
+      .fillMaxWidth()
+      .wrapContentSize(),
     horizontalAlignment = Alignment.CenterHorizontally
   ) {
     if (showSearchBar) {
@@ -117,7 +119,7 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
           query = it
           onSearchQuery(it)
         })
-    } else{
+    } else {
       TopAppBar(
         title = {
           Text(
@@ -192,7 +194,6 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
         modifier = Modifier.fillMaxWidth(),
         scrollBehavior = scrollBehavior,
       )
-
     }
 
     Divider(modifier = Modifier.padding(top = 8.dp), color = TUITheme.colors.surfaceVariant)
