@@ -10,6 +10,7 @@ import com.tarkalabs.uicomponents.components.TUIRadioButtonRow
 import com.tarkalabs.uicomponents.components.TUIRadioButtonRowTags
 import com.tarkalabs.uicomponents.components.TUIRadioButtonTags
 import com.tarkalabs.uicomponents.components.TextRowStyle
+import com.tarkalabs.uicomponents.components.base.ToggleRowStyle
 import org.junit.Rule
 import org.junit.Test
 
@@ -30,7 +31,7 @@ class TUIRadioButtonRowTest {
       TUIRadioButtonRow(
         selected = selectedState,
         title = title,
-        style = TextRowStyle.Title,
+        style = ToggleRowStyle.Title,
         onOptionSelected = onOptionSelected,
         tags = radioButtonRowTag
       )
@@ -56,7 +57,7 @@ class TUIRadioButtonRowTest {
       TUIRadioButtonRow(
         selected = selectedState,
         title = title,
-        style = TextRowStyle.Title,
+        style = ToggleRowStyle.Title,
         onOptionSelected = onOptionSelected,
         tags = radioButtonRowTag
       )
