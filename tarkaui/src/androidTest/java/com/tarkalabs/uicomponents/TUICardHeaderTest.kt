@@ -1,9 +1,11 @@
 package com.tarkalabs.uicomponents
 
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import com.tarkalabs.tarkaicons.MoreHorizontal24
 import com.tarkalabs.tarkaicons.TarkaIcons
@@ -38,7 +40,8 @@ class TUICardHeaderTest {
       )
     }
 
-    composeTestRule.onNodeWithTag(testTags.titleTag).assertTextEquals(title)
+    composeTestRule.onNodeWithText(title).assertExists()
+    composeTestRule.onNodeWithText(title).assertIsDisplayed()
     composeTestRule.onNodeWithTag(testTags.tagTitleTag).assertTextEquals(tagTitle)
 
     composeTestRule.onNodeWithContentDescription(trailingIcon.contentDescription).assertExists()

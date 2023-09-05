@@ -63,7 +63,6 @@ fun TUICardHeader(
       }
 
       Text(
-        modifier = Modifier.testTag(tags.titleTag),
         text = title,
         color = TUITheme.colors.onSurface,
         style = TUITheme.typography.heading6
@@ -92,7 +91,6 @@ fun TUICardHeader(
 data class TUICardHeaderTags(
   val parentTag: String = "TUICardHeader",
   val tagTitleTag: String = "TUICardHeader_tagTitleTag",
-  val titleTag: String = "TUICardHeader_titleTag",
   val trailingIconTag: String = "TUICardHeader_trailingIconTag",
 )
 
