@@ -42,8 +42,6 @@ class TUITabTest {
 
     composeTestRule.setContent {
       TUITabBar(
-        isPagerEnabled = false,
-        isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
         selectedTabIndex = 1,
         tags = testTags,
@@ -69,8 +67,6 @@ class TUITabTest {
 
     composeTestRule.setContent {
       TUITabBar(
-        isPagerEnabled = false,
-        isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
         selectedTabIndex = 1,
         tags = testTags,
@@ -92,8 +88,6 @@ class TUITabTest {
 
     composeTestRule.setContent {
       TUITabBar(
-        isPagerEnabled = true,
-        isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
         selectedTabIndex = 0,
         tags = testTags,
@@ -118,8 +112,6 @@ class TUITabTest {
 
     composeTestRule.setContent {
       TUITabBar(
-        isPagerEnabled = false,
-        isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
         selectedTabIndex = 0,
         tags = testTags,
@@ -143,8 +135,6 @@ class TUITabTest {
 
     composeTestRule.setContent {
       TUITabBar(
-        isPagerEnabled = false,
-        isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
         selectedTabIndex = 2,
         tags = testTags,
@@ -170,8 +160,6 @@ class TUITabTest {
 
     composeTestRule.setContent {
       TUITabBar(
-        isPagerEnabled = false,
-        isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
         selectedTabIndex = 1,
         tags = testTags,
@@ -191,8 +179,6 @@ class TUITabTest {
 
     composeTestRule.setContent {
       TUITabBar(
-        isPagerEnabled = true,
-        isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
         selectedTabIndex = 1,
         tags = testTags,
@@ -212,8 +198,6 @@ class TUITabTest {
 
     composeTestRule.setContent {
       TUITabBar(
-        isPagerEnabled = true,
-        isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
         selectedTabIndex = 0,
         tags = testTags,
@@ -247,8 +231,6 @@ class TUITabTest {
 
     composeTestRule.setContent {
       TUITabBar(
-        isPagerEnabled = true,
-        isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
         selectedTabIndex = 0,
         tags = testTags,
@@ -295,8 +277,6 @@ class TUITabTest {
 
     composeTestRule.setContent {
       TUITabBar(
-        isPagerEnabled = true,
-        isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
         selectedTabIndex = 0,
         tags = testTags,
@@ -325,8 +305,6 @@ class TUITabTest {
 
     composeTestRule.setContent {
       TUITabBar(
-        isPagerEnabled = true,
-        isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
         selectedTabIndex = 0,
         tags = testTags,
@@ -351,8 +329,6 @@ class TUITabTest {
 
     composeTestRule.setContent {
       TUITabBar(
-        isPagerEnabled = true,
-        isUserScrollEnabledOnContent = true,
         tabItems = tabItems,
         selectedTabIndex = 0,
         tags = testTags,
@@ -390,8 +366,6 @@ class TUITabTest {
 
     composeTestRule.setContent {
       TUITabBar(
-        isPagerEnabled = true,
-        isUserScrollEnabledOnContent = false,
         tabItems = tabItems,
         selectedTabIndex = 0,
         tags = testTags,

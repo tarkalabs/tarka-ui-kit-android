@@ -177,8 +177,6 @@ class TUITabScreenshotTest(
     compareScreenshotFor(darkTheme = darkTheme, imageName = "WithoutIcon_$testName") {
       TUITabBar(
         modifier = Modifier.padding(10.dp),
-        isUserScrollEnabledOnContent = false,
-        isPagerEnabled = false,
         tabItems = tabItems,
         selectedTabIndex = 0,
         onTabChanged = {}
@@ -189,8 +187,6 @@ class TUITabScreenshotTest(
     compareScreenshotFor(darkTheme = darkTheme, imageName = "WithIcon_$testName") {
       TUITabBar(
         modifier = Modifier.padding(10.dp),
-        isUserScrollEnabledOnContent = false,
-        isPagerEnabled = false,
         tabItems = tabItemsWithIcons,
         selectedTabIndex = 1,
         onTabChanged = {}
@@ -201,8 +197,6 @@ class TUITabScreenshotTest(
     compareScreenshotFor(darkTheme = darkTheme, imageName = "WithContent_$testName") {
       TUITabBar(
         modifier = Modifier.padding(10.dp),
-        isUserScrollEnabledOnContent = true,
-        isPagerEnabled = true,
         tabItems = tabItemsWithContent,
         selectedTabIndex = 2,
         onTabChanged = {}
@@ -213,8 +207,6 @@ class TUITabScreenshotTest(
     compareScreenshotFor(darkTheme = darkTheme, imageName = "WithIconAndContent_$testName") {
       TUITabBar(
         modifier = Modifier.padding(10.dp),
-        isUserScrollEnabledOnContent = true,
-        isPagerEnabled = true,
         tabItems = tabItemsWithIconAndContent,
         selectedTabIndex = 2,
         onTabChanged = {}
