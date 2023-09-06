@@ -107,18 +107,18 @@ fun TUISelectionCard(
         style = TUITheme.typography.heading6
       )
 
-      secondaryDescription?.let {
-        Text(
-          modifier = Modifier.testTag(tags.description2Tag),
-          text = it,
-          color = TUITheme.colors.inputText,
-          style = TUITheme.typography.heading6
-        )
-      }
-
       primaryDetails?.let {
         Text(
           modifier = Modifier.testTag(tags.detailsTag),
+          text = it,
+          color = TUITheme.colors.inputTextDim.copy(alpha = 0.7f),
+          style = TUITheme.typography.body7
+        )
+      }
+
+      secondaryDescription?.let {
+        Text(
+          modifier = Modifier.testTag(tags.description2Tag),
           text = it,
           color = TUITheme.colors.inputText,
           style = TUITheme.typography.heading6
@@ -129,8 +129,8 @@ fun TUISelectionCard(
         Text(
           modifier = Modifier.testTag(tags.details2Tag),
           text = it,
-          color = TUITheme.colors.inputText,
-          style = TUITheme.typography.heading6
+          color = TUITheme.colors.inputTextDim.copy(alpha = 0.7f),
+          style = TUITheme.typography.body7
         )
       }
 
