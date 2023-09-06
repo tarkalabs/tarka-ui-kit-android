@@ -24,7 +24,7 @@ import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 
-class TUITabTest {
+class TUITabBarTest {
 
   @get:Rule
   val composeTestRule = createComposeRule()

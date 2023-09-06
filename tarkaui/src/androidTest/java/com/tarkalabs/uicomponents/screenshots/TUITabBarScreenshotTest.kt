@@ -15,7 +15,7 @@ import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 
 @RunWith(Parameterized::class)
-class TUITabScreenshotTest(
+class TUITabBarScreenshotTest(
   val testName: String,
   val darkTheme: Boolean,
 ) : ComposeScreenshotComparator() {
