@@ -30,6 +30,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextAlign.Companion
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaicons.Delete24
@@ -224,6 +226,7 @@ internal fun TUISnackBar(
         text = message,
         color = textColor,
         style = TUITheme.typography.body6,
+        textAlign = if (leadingIcon == null) TextAlign.Center else Companion.Start
       )
       if (actionLabel != null) {
         Button(
@@ -291,6 +294,6 @@ fun TUIWarningSnackBarPreview() {
 @Composable
 fun TUIErrorSnackBarPreview() {
   TUISnackBar(
-    message = "Hello there", actionLabel = "dgsd", leadingIcon = TarkaIcons.Regular.Delete24, type = Error
+    message = "Hello there", type = Error
   )
 }
