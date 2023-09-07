@@ -152,7 +152,8 @@ fun TUISelectionCard(
           .size(24.dp)
           .testTag(tags.trailingFrontArrowIconTag),
         painter = painterResource(id = TarkaIcons.Regular.ChevronRight24.iconRes),
-        contentDescription = TarkaIcons.Regular.ChevronRight24.contentDescription
+        contentDescription = TarkaIcons.Regular.ChevronRight24.contentDescription,
+        tint = if (isSelected) TUITheme.colors.onSecondaryAlt else TUITheme.colors.utilityOutline
       )
     }
 
