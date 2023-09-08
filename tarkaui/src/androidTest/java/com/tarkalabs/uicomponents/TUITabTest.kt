@@ -21,15 +21,15 @@ class TUITabTest {
 
   @Test
   fun is_passed_things_is_shown() {
-    val testTitle = "test"
+    val tabTitle = "test"
     val leadIcon = TarkaIcons.Regular.Circle20
     composeTestRule.setContent {
       TUITab(
-        title = testTitle,
+        title = tabTitle,
         leadingIcon = leadIcon
       ) {}
     }
-    composeTestRule.onNodeWithText(testTitle).assertExists()
+    composeTestRule.onNodeWithText(tabTitle).assertExists()
     composeTestRule.onNodeWithContentDescription(leadIcon.contentDescription).assertExists()
   }
 

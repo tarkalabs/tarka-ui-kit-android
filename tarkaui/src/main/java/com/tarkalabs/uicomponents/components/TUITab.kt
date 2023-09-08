@@ -25,7 +25,25 @@ import com.tarkalabs.tarkaicons.Circle20
 import com.tarkalabs.tarkaicons.TarkaIcon
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
-
+/**
+ * This composable function gives the Tab used in TabRow.
+ *
+ * @param modifier - Usual thing used in compose to modify the composable properties & behaviour.
+ * @param title - Title Text of the tab
+ * @param isSelected - Boolean which denotes the selected state of the Tab,
+ * @param leadingIcon - LeadingIcon of the tab.
+ * @param tags - data class consist of tags used in testing
+ * @param onTabClicked -  lambda invokes when we click the Tab
+ *
+ * Sample:
+ *  TUITab(
+ *    modifier = Modifier.width(105.dp),
+ *    title = "Tab",
+ *    leadingIcon = TarkaIcons.Regular.Circle20,
+ *    isSelected = true
+ *  ) {}
+ *
+* */
 @Composable
 fun TUITab(
   modifier: Modifier = Modifier,
@@ -89,10 +107,6 @@ data class TUITabTags(
 fun TUITabPreview() {
 
   Column {
-
-    //as Default Tab using fillMaxWidth in Modifier
-    //so for the proper preview we are giving manual width.
-    // it will fine if we use it in TabBar without static width
 
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
       TUITab(modifier = Modifier.width(105.dp), title = "Tab") {}
