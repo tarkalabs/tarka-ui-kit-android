@@ -40,7 +40,6 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         is TitleWithDescription ->  TUIToggleRowTitleWithDescription(title, style)
         is Title ->  TUIToggleRowTitle(title)
       }
-
     }
   }
 }
