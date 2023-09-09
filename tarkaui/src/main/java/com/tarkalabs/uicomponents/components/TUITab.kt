@@ -25,6 +25,7 @@ import com.tarkalabs.tarkaicons.Circle20
 import com.tarkalabs.tarkaicons.TarkaIcon
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
+
 /**
  * This composable function gives the Tab used in TabRow.
  *
@@ -43,7 +44,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  *    isSelected = true
  *  ) {}
  *
-* */
+ * */
 @Composable
 fun TUITab(
   modifier: Modifier = Modifier,
@@ -105,16 +106,12 @@ data class TUITabTags(
 @Preview(showBackground = true)
 @Composable
 fun TUITabPreview() {
-
   Column {
 
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
       TUITab(modifier = Modifier.width(105.dp), title = "Tab") {}
-
       HorizontalSpacer(space = 5)
-
       TUITab(modifier = Modifier.width(105.dp), title = "Tab", isSelected = true) {}
-
     }
 
     VerticalSpacer(space = 15)
@@ -125,9 +122,7 @@ fun TUITabPreview() {
         title = "Tab",
         leadingIcon = TarkaIcons.Regular.Circle20
       ) {}
-
       HorizontalSpacer(space = 5)
-
       TUITab(
         modifier = Modifier.width(105.dp),
         title = "Tab",
@@ -138,5 +133,3 @@ fun TUITabPreview() {
 
   }
 }
-
-

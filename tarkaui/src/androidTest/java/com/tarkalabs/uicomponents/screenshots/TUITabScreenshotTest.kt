@@ -18,19 +18,10 @@ class TUITabScreenshotTest(
 
   companion object {
     @JvmStatic @Parameterized.Parameters fun data(): Collection<Array<Any?>> {
-
-      val isSelectedValues = listOf(true, false)
-
-      val darkThemeValues = listOf(true, false)
-
-      val leadingContentValues = listOf(
-        null, TarkaIcons.Regular.Circle20
-      )
-
       val testData = ArrayList<Array<Any?>>()
-      for (darkTheme in darkThemeValues) {
-        for (leadIc in leadingContentValues) {
-          for (isSelected in isSelectedValues) {
+      for (darkTheme in listOf(true, false)) {
+        for (leadIc in listOf(null, TarkaIcons.Regular.Circle20)) {
+          for (isSelected in listOf(true, false)) {
             val testName =
               "TUITab_darkTheme_${darkTheme}_leadIc_exists_${if (leadIc == null) "false" else "true"}_isSelected_${isSelected}"
             testData.add(
