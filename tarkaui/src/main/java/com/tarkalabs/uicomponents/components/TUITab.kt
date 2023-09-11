@@ -55,7 +55,7 @@ fun TUITab(
   onTabClicked: () -> Unit,
 ) {
   Tab(modifier = modifier
-    .testTag(tags.parentTag)
+    .testTag("$title ${tags.parentTag}")
     .padding(4.dp)
     .clip(RoundedCornerShape(32.dp))
     .background(if (isSelected) TUITheme.colors.secondary else Color.Transparent),
