@@ -17,7 +17,7 @@ import androidx.compose.ui.test.swipeRight
 import com.tarkalabs.tarkaicons.Tabs24
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUITabBar
-import com.tarkalabs.uicomponents.components.TUITabTags
+import com.tarkalabs.uicomponents.components.TUITabBarTags
 import com.tarkalabs.uicomponents.components.TabItem
 import org.junit.Rule
 import org.junit.Test
@@ -29,8 +29,7 @@ class TUITabBarTest {
   @get:Rule
   val composeTestRule = createComposeRule()
 
-  private val testTags =
-    TUITabTags(parentId = "testParent", tabId = "testTab", contentId = "testContent")
+  private val testTags = TUITabBarTags()
 
   @Test
   fun is_passed_tabs_shown() {

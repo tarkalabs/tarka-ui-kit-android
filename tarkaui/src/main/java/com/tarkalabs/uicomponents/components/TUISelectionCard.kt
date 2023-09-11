@@ -89,7 +89,7 @@ fun TUISelectionCard(
 
     Column(
       modifier = Modifier
-        .padding(start = 16.dp)
+        .padding(start = if(leadingIcon != null) 16.dp else 0.dp)
         .weight(1f)
     ) {
 
@@ -182,6 +182,20 @@ fun TUISelectionCardPreview() {
     horizontalAlignment = Alignment.CenterHorizontally,
     verticalArrangement = Arrangement.Center
   ) {
+
+    TUISelectionCard(
+      leadingIcon = TarkaIcons.Regular.Person24,
+      label = "Label",
+      primaryDescription = "Description",
+      isSelected = true
+    ) {}
+    VerticalSpacer(space = 14)
+    TUISelectionCard(
+      label = "Label",
+      primaryDescription = "Description",
+      isSelected = true
+    ) {}
+    VerticalSpacer(space = 14)
 
     TUISelectionCard(
       leadingIcon = TarkaIcons.Regular.Person24,
