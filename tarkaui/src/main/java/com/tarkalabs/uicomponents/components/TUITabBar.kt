@@ -57,7 +57,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   modifier: Modifier = Modifier,
   tabItems: List<TabItem>,
   selectedTabIndex: Int,
-  tags: TUITabTags = TUITabTags(),
+  tags: TUITabBarTags = TUITabBarTags(),
   onTabChanged: (Int) -> Unit,
 ) {
   Row(
@@ -119,7 +119,7 @@ data class TabItem(
   val content: @Composable () -> Unit,
 )
 
-data class TUITabTags(
+data class TUITabBarTags(
   val parentId: String = "TUITabBar",
   val tabId: String = "TUITabBar_TabTag",
   val contentId: String = "TUITabBar_PagerContentTag",
