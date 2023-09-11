@@ -35,7 +35,7 @@ enum class FloatingActionButtonSize(val size: Dp) {
  * @param fabSize The size of the FAB. Default is [FloatingActionButtonSize.S].
  * @param icon The icon of the button. It should be TarkIcon
  * @param onClick The callback function to be executed when the button is clicked.
- * @param testTag The test tag for the TUIFloatingActionButton.
+ * @param tags The test tag for the TUIFloatingActionButton.
 
  * How to use TUIFloatingActionButton() composable function
  *
