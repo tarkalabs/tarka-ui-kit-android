@@ -42,8 +42,6 @@ import com.tarkalabs.uicomponents.components.base.IconButtonStyle.PRIMARY
 import com.tarkalabs.uicomponents.components.base.IconButtonStyle.SECONDARY
 import com.tarkalabs.uicomponents.theme.TUITheme
 
-//  Created by Nilesh Rathod on 12/05/23.
-
 enum class IconButtonSize(val size: Dp) {
   XS(20.dp),
   S(24.dp),

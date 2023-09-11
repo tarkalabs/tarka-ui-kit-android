@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.semantics
@@ -50,7 +51,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 fun TUISelectionCard(
   modifier: Modifier = Modifier,
   leadingIcon: TarkaIcon? = null,
-  label: String,
+  label: String? = null,
   primaryDescription: String,
   secondaryDescription: String? = null,
   primaryDetails: String? = null,
@@ -66,13 +67,13 @@ fun TUISelectionCard(
     modifier = modifier
       .testTag(tags.parentTag)
       .semantics { testTagsAsResourceId = true }
+      .clip(RoundedCornerShape(16.dp))
+      .background(
+        if (isSelected) TUITheme.colors.primaryAlt else TUITheme.colors.surface,
+      )
       .clickable {
         onCardClicked.invoke()
       }
-      .background(
-        if (isSelected) TUITheme.colors.primaryAlt else TUITheme.colors.surface,
-        shape = RoundedCornerShape(16.dp)
-      )
       .padding(horizontal = 16.dp, vertical = 12.dp),
   ) {
 
@@ -89,16 +90,18 @@ fun TUISelectionCard(
 
     Column(
       modifier = Modifier
-        .padding(start = 16.dp)
+        .padding(start = if(leadingIcon != null) 16.dp else 0.dp)
         .weight(1f)
     ) {
 
-      Text(
-        modifier = Modifier.testTag(tags.labelTag),
-        text = label,
-        color = TUITheme.colors.inputTextDim.copy(alpha = 0.7f),
-        style = TUITheme.typography.body7
-      )
+      label?.let {
+        Text(
+          modifier = Modifier.testTag(tags.labelTag),
+          text = it,
+          color = TUITheme.colors.inputTextDim.copy(alpha = 0.7f),
+          style = TUITheme.typography.body7
+        )
+      }
 
       Text(
         modifier = Modifier.testTag(tags.descriptionTag),
@@ -183,6 +186,25 @@ fun TUISelectionCardPreview() {
     horizontalAlignment = Alignment.CenterHorizontally,
     verticalArrangement = Arrangement.Center
   ) {
+    TUISelectionCard(
+      label = null,
+      primaryDescription = "Description",
+      isSelected = false
+    ) {}
+    VerticalSpacer(space = 14)
+    TUISelectionCard(
+      leadingIcon = TarkaIcons.Regular.Person24,
+      label = "Label",
+      primaryDescription = "Description",
+      isSelected = true
+    ) {}
+    VerticalSpacer(space = 14)
+    TUISelectionCard(
+      label = "Label",
+      primaryDescription = "Description",
+      isSelected = true
+    ) {}
+    VerticalSpacer(space = 14)
 
     TUISelectionCard(
       leadingIcon = TarkaIcons.Regular.Person24,

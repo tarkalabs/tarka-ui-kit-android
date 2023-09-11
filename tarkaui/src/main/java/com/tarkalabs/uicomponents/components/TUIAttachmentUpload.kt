@@ -226,9 +226,6 @@ object TUIAttachmentUpload {
 
 @Preview @Composable fun PreviewTUIAttachmentUpload() {
   TUITheme {
-    var progress by remember {
-      mutableStateOf(10)
-    }
     Box(
       modifier = Modifier
         .background(color = TUITheme.colors.surface)

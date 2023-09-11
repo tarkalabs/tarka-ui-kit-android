@@ -21,7 +21,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * @param style The style of the toggle row. Can be [ToggleRowStyle.Title] or [ToggleRowStyle.TitleWithDescription].
  * @param modifier A [Modifier] to apply custom styling and layout modifications to the toggle row.
  *
- * @sample TUIToggleRowSample
+ * @sample TUIToggleRow
  *
  *  TUIToggleRow(title = "Title", style = Title)
  *  TUIToggleRow(title = "Title", style = TitleWithDescription("Description"))
@@ -30,17 +30,19 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 @Composable fun TUIToggleRow(
   title: String,
   style: ToggleRowStyle = Title,
-  modifier: Modifier = Modifier.fillMaxWidth(),
+  modifier: Modifier = Modifier,
 ) {
   Row(
-    modifier.defaultMinSize(minHeight = 40.dp), verticalAlignment = Alignment.CenterVertically
+    modifier
+      .fillMaxWidth()
+      .defaultMinSize(minHeight = 40.dp),
+    verticalAlignment = Alignment.CenterVertically
   ) {
     Column(Modifier.weight(1f)) {
       when (style) {
         is TitleWithDescription ->  TUIToggleRowTitleWithDescription(title, style)
         is Title ->  TUIToggleRowTitle(title)
       }
-
     }
   }
 }
