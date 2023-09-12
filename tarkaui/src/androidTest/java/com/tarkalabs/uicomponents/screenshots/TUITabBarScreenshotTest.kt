@@ -1,10 +1,7 @@
 package com.tarkalabs.uicomponents.screenshots
 
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaicons.Circle12
 import com.tarkalabs.tarkaicons.TarkaIcons
@@ -33,143 +30,47 @@ class TUITabBarScreenshotTest(
     }
 
     val tabItems = listOf(
-      TabItem("Tab") {},
-      TabItem("Tab") {},
-      TabItem("Tab") {},
-      TabItem("Tab") {},
-      TabItem("Tab") {},
-      TabItem("Tab") {},
-      TabItem("Tab") {},
-      TabItem("Tab") {},
+      TabItem("Tab"),
+      TabItem("Tab"),
+      TabItem("Tab"),
+      TabItem("Tab"),
+      TabItem("Tab"),
+      TabItem("Tab"),
+      TabItem("Tab"),
+      TabItem("Tab"),
     )
 
     val tabItemsWithIcons = listOf(
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {},
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
     )
 
     val tabItemsWithContent = listOf(
-      TabItem("Tab") {
-        Text(
-          modifier = Modifier.fillMaxSize(),
-          text = "Content 1",
-          textAlign = TextAlign.Center
-        )
-      },
-      TabItem("Tab") {
-        Text(
-          modifier = Modifier.fillMaxSize(),
-          text = "Content 2",
-          textAlign = TextAlign.Center
-        )
-      },
-      TabItem("Tab") {
-        Text(
-          modifier = Modifier.fillMaxSize(),
-          text = "Content 3",
-          textAlign = TextAlign.Center
-        )
-      },
-      TabItem("Tab") {
-        Text(
-          modifier = Modifier.fillMaxSize(),
-          text = "Content 4",
-          textAlign = TextAlign.Center
-        )
-      },
-      TabItem("Tab") {
-        Text(
-          modifier = Modifier.fillMaxSize(),
-          text = "Content 5",
-          textAlign = TextAlign.Center
-        )
-      },
-      TabItem("Tab") {
-        Text(
-          modifier = Modifier.fillMaxSize(),
-          text = "Content 6",
-          textAlign = TextAlign.Center
-        )
-      },
-      TabItem("Tab") {
-        Text(
-          modifier = Modifier.fillMaxSize(),
-          text = "Content 7",
-          textAlign = TextAlign.Center
-        )
-      },
-      TabItem("Tab") {
-        Text(
-          modifier = Modifier.fillMaxSize(),
-          text = "Content 8",
-          textAlign = TextAlign.Center
-        )
-      },
+      TabItem("Tab"),
+      TabItem("Tab"),
+      TabItem("Tab"),
+      TabItem("Tab"),
+      TabItem("Tab"),
+      TabItem("Tab"),
+      TabItem("Tab"),
+      TabItem("Tab"),
     )
 
     val tabItemsWithIconAndContent = listOf(
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {
-        Text(
-          modifier = Modifier.fillMaxSize(),
-          text = "Content 1",
-          textAlign = TextAlign.Center
-        )
-      },
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {
-        Text(
-          modifier = Modifier.fillMaxSize(),
-          text = "Content 2",
-          textAlign = TextAlign.Center
-        )
-      },
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {
-        Text(
-          modifier = Modifier.fillMaxSize(),
-          text = "Content 3",
-          textAlign = TextAlign.Center
-        )
-      },
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {
-        Text(
-          modifier = Modifier.fillMaxSize(),
-          text = "Content 4",
-          textAlign = TextAlign.Center
-        )
-      },
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {
-        Text(
-          modifier = Modifier.fillMaxSize(),
-          text = "Content 5",
-          textAlign = TextAlign.Center
-        )
-      },
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {
-        Text(
-          modifier = Modifier.fillMaxSize(),
-          text = "Content 6",
-          textAlign = TextAlign.Center
-        )
-      },
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {
-        Text(
-          modifier = Modifier.fillMaxSize(),
-          text = "Content 7",
-          textAlign = TextAlign.Center
-        )
-      },
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12) {
-        Text(
-          modifier = Modifier.fillMaxSize(),
-          text = "Content 8",
-          textAlign = TextAlign.Center
-        )
-      },
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
     )
   }
 

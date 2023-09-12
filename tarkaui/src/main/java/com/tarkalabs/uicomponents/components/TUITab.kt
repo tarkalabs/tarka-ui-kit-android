@@ -55,7 +55,7 @@ fun TUITab(
   onTabClicked: () -> Unit,
 ) {
   Tab(modifier = modifier
-    .testTag(tags.parentTag)
+    .testTag(title)
     .padding(4.dp)
     .clip(RoundedCornerShape(32.dp))
     .background(if (isSelected) TUITheme.colors.secondary else Color.Transparent),
@@ -99,7 +99,6 @@ fun TUITab(
 }
 
 data class TUITabTags(
-  val parentTag: String = "TUITab",
   val leadIconTag: String = "TUITab_leadIcon_Tag",
 )
 
