@@ -110,18 +110,18 @@ fun TUISelectionCard(
         style = TUITheme.typography.heading6
       )
 
-      secondaryDescription?.let {
-        Text(
-          modifier = Modifier.testTag(tags.description2Tag),
-          text = it,
-          color = TUITheme.colors.inputText,
-          style = TUITheme.typography.heading6
-        )
-      }
-
       primaryDetails?.let {
         Text(
           modifier = Modifier.testTag(tags.detailsTag),
+          text = it,
+          color = TUITheme.colors.inputTextDim.copy(alpha = 0.7f),
+          style = TUITheme.typography.body7
+        )
+      }
+
+      secondaryDescription?.let {
+        Text(
+          modifier = Modifier.testTag(tags.description2Tag),
           text = it,
           color = TUITheme.colors.inputText,
           style = TUITheme.typography.heading6
@@ -132,8 +132,8 @@ fun TUISelectionCard(
         Text(
           modifier = Modifier.testTag(tags.details2Tag),
           text = it,
-          color = TUITheme.colors.inputText,
-          style = TUITheme.typography.heading6
+          color = TUITheme.colors.inputTextDim.copy(alpha = 0.7f),
+          style = TUITheme.typography.body7
         )
       }
 
@@ -155,7 +155,8 @@ fun TUISelectionCard(
           .size(24.dp)
           .testTag(tags.trailingFrontArrowIconTag),
         painter = painterResource(id = TarkaIcons.Regular.ChevronRight24.iconRes),
-        contentDescription = TarkaIcons.Regular.ChevronRight24.contentDescription
+        contentDescription = TarkaIcons.Regular.ChevronRight24.contentDescription,
+        tint = if (isSelected) TUITheme.colors.onSecondaryAlt else TUITheme.colors.utilityOutline
       )
     }
 
