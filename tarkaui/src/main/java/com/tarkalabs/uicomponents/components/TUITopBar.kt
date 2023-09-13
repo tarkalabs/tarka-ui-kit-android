@@ -1,5 +1,6 @@
 package com.tarkalabs.uicomponents.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -23,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaicons.ChevronLeft24
 import com.tarkalabs.tarkaicons.ChevronRight20
+import com.tarkalabs.tarkaicons.Search16
 import com.tarkalabs.tarkaicons.TarkaIcon
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.base.IconButtonSize.XL
@@ -101,6 +103,7 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
 
   Column(
     modifier = modifier
+      .background(color = TUITheme.colors.surface)
       .fillMaxWidth()
       .wrapContentSize(),
     horizontalAlignment = Alignment.CenterHorizontally
@@ -211,11 +214,23 @@ data class TUITopBarTags(
 
 @OptIn(ExperimentalMaterial3Api::class) @Preview @Composable fun EamNormalTopBar(
 ) {
-  TUITopBar(
-    title = "Lorem Ipsum",
-    navigationIcon = TarkaIcons.Regular.ChevronRight20,
-    menuItemIconOne = TarkaIcons.Regular.ChevronRight20,
-    menuItemIconTwo = TarkaIcons.Regular.ChevronRight20,
-    menuItemIconThree = TarkaIcons.Regular.ChevronRight20
-  )
+
+  TUITheme {
+    Column {
+
+     /* TUITopBar(
+        title = "Lorem Ipsum",
+        navigationIcon = TarkaIcons.Regular.ChevronRight20,
+        menuItemIconOne = TarkaIcons.Regular.ChevronRight20,
+        menuItemIconTwo = TarkaIcons.Regular.ChevronRight20,
+        menuItemIconThree = TarkaIcons.Regular.ChevronRight20
+      )*/
+
+      TUITopBar(
+        title = "Lorem Ipsum",
+        navigationIcon = TarkaIcons.Regular.ChevronRight20,
+        searchIcon = TarkaIcons.Regular.Search16
+      )
+    }
+  }
 }
