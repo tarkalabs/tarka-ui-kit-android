@@ -226,6 +226,8 @@ data class TUITopBarTags(
         menuItemIconThree = TarkaIcons.Regular.ChevronRight20
       )
 
+      VerticalSpacer(space = 5)
+
       TUITopBar(
         title = "Lorem Ipsum",
         navigationIcon = TarkaIcons.Regular.ChevronRight20,
