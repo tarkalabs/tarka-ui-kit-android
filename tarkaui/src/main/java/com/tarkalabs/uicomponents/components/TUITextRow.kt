@@ -84,9 +84,9 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   Row(
     modifier
       .defaultMinSize(minHeight = 40.dp)
-      .padding(paddingValues)
       .testTag(tags.parentTag)
-      .then(if (onTextRowClick == null) Modifier else Modifier.clickable { onTextRowClick() }),
+      .then(if (onTextRowClick == null) Modifier else Modifier.clickable { onTextRowClick() })
+      .padding(paddingValues),
     verticalAlignment = Alignment.CenterVertically) {
     Column(Modifier.weight(1f)) {
       when (style) {
