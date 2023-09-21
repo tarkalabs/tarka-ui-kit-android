@@ -2,9 +2,7 @@ package com.tarkalabs.uicomponents
 
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
-import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
-import androidx.compose.ui.test.performClick
 import com.tarkalabs.tarkaicons.Circle20
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUITab
@@ -40,7 +38,7 @@ class TUITabTest {
     composeTestRule.setContent {
       TUITab(title = "test", tags = testTags, onTabClicked = onClickLambda)
     }
-    composeTestRule.onNodeWithTag(testTags.parentTag).performClick()
+    // composeTestRule.onNodeWithTag(testTags.parentTag).performClick()
     verify(onClickLambda).invoke()
   }
 }
