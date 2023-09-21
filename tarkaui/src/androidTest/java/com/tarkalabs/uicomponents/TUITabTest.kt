@@ -40,7 +40,8 @@ class TUITabTest {
     composeTestRule.setContent {
       TUITab(title = "test", tags = testTags, onTabClicked = onClickLambda)
     }
-    composeTestRule.onNodeWithTag(testTags.parentTag).performClick()
+    //Tab title is the parent tag for TUITab
+    composeTestRule.onNodeWithTag("test").performClick()
     verify(onClickLambda).invoke()
   }
 }
