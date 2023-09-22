@@ -1,13 +1,19 @@
 package com.tarkalabs.uicomponents
 
 import androidx.compose.ui.test.assertCountEquals
+import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertIsNotSelected
+import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onAllNodesWithContentDescription
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
 import com.tarkalabs.tarkaicons.Tabs24
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUITabBar
 import com.tarkalabs.uicomponents.components.TUITabBarTags
+import com.tarkalabs.uicomponents.components.TUITabTags
 import com.tarkalabs.uicomponents.components.TabItem
 import org.junit.Rule
 import org.junit.Test
@@ -38,9 +44,9 @@ class TUITabBarTest {
       )
     }
 
-    // composeTestRule.onNodeWithTag("Tab 1 ${TUITabTags().parentTag}").assertIsDisplayed()
-    // composeTestRule.onNodeWithTag("Tab 2 ${TUITabTags().parentTag}").assertIsDisplayed()
-    // composeTestRule.onNodeWithTag("Tab 2 ${TUITabTags().parentTag}").assertIsDisplayed()
+    composeTestRule.onNodeWithTag(tabItems[0].name).assertIsDisplayed()
+    composeTestRule.onNodeWithTag(tabItems[1].name).assertIsDisplayed()
+    composeTestRule.onNodeWithTag(tabItems[2].name).assertIsDisplayed()
   }
 
   @Test
@@ -108,10 +114,10 @@ class TUITabBarTest {
     }
 
     //Third tab should be shown due to the selected index 2
-    // composeTestRule.onNodeWithTag("Tab 3 ${TUITabTags().parentTag}").assertIsSelected()
+    composeTestRule.onNodeWithTag(tabItems[2].name, useUnmergedTree = true).assertIsSelected()
     //other tabs should not be shown
-    // composeTestRule.onNodeWithTag("Tab 1 ${TUITabTags().parentTag}").assertIsNotSelected()
-    // composeTestRule.onNodeWithTag("Tab 2 ${TUITabTags().parentTag}").assertIsNotSelected()
+    composeTestRule.onNodeWithTag(tabItems[0].name, useUnmergedTree = true).assertIsNotSelected()
+    composeTestRule.onNodeWithTag(tabItems[1].name, useUnmergedTree = true).assertIsNotSelected()
   }
 
   @Test
@@ -135,11 +141,11 @@ class TUITabBarTest {
     }
 
     var clickedTabIndex = 1
-    // composeTestRule.onNodeWithTag("Tab 2 ${TUITabTags().parentTag}").performClick()
+    composeTestRule.onNodeWithTag(tabItems[1].name).performClick()
     verify(onTabChange).invoke(clickedTabIndex)
 
     clickedTabIndex = 2
-    // composeTestRule.onNodeWithTag("Tab 3 ${TUITabTags().parentTag}").performClick()
+    composeTestRule.onNodeWithTag(tabItems[2].name).performClick()
     verify(onTabChange).invoke(clickedTabIndex)
   }
 
