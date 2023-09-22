@@ -32,8 +32,8 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 @Composable
 fun TUIMobileButtonBlock(
   modifier: Modifier = Modifier,
-  primaryButtonLabel: String,
-  primaryButtonOnClick: () -> Unit,
+  primaryButtonLabel: String?,
+  primaryButtonOnClick: (() -> Unit)?,
   outlineButtonLabel: String?,
   outlineButtonOnClick: (() -> Unit)?,
   primaryButtonWeight: Float? = null,
@@ -58,16 +58,18 @@ fun TUIMobileButtonBlock(
         )
         HorizontalSpacer(space = 8)
       }
-      TUIButton(
-        height = XL,
-        label = primaryButtonLabel,
-        onClick = primaryButtonOnClick,
-        buttonStyle = PRIMARY,
-        modifier = Modifier.weight(
-          if (outlineButtonLabel == null) 1f else primaryButtonWeight ?: 1f
-        ),
-        tags = TUIButtonTags(parentTag = tags.primaryButtonTag)
-      )
+      primaryButtonLabel?.let {
+        TUIButton(
+          height = XL,
+          label = it,
+          onClick = { primaryButtonOnClick?.invoke() },
+          buttonStyle = PRIMARY,
+          modifier = Modifier.weight(
+            if (outlineButtonLabel == null) 1f else primaryButtonWeight ?: 1f
+          ),
+          tags = TUIButtonTags(parentTag = tags.primaryButtonTag)
+        )
+      }
     }
   }
 }
@@ -100,11 +102,23 @@ fun TUIMobileButtonPreview1() {
 @Preview
 @Composable
 fun TUIMobileButtonPreview3() {
-  TUIMobileButtonBlock(
-    primaryButtonLabel = "Label",
-    primaryButtonOnClick = { /*TODO*/ },
-    outlineButtonLabel = "Label",
-    outlineButtonOnClick = { /*TODO*/ },
-    primaryButtonWeight = 3f
-  )
+ TUITheme {
+   Column {
+     TUIMobileButtonBlock(
+       primaryButtonLabel = "Label",
+       primaryButtonOnClick = { /*TODO*/ },
+       outlineButtonLabel = "Label",
+       outlineButtonOnClick = { /*TODO*/ },
+       primaryButtonWeight = 3f
+     )
+     TUIMobileButtonBlock(
+       primaryButtonLabel = null,
+       primaryButtonOnClick = null,
+       outlineButtonLabel = "Label",
+       outlineButtonOnClick = { /*TODO*/ },
+       primaryButtonWeight = null
+     )
+
+   }
+ }
 }

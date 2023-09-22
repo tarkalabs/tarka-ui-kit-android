@@ -13,6 +13,7 @@ import com.tarkalabs.tarkaicons.Tabs24
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUITabBar
 import com.tarkalabs.uicomponents.components.TUITabBarTags
+import com.tarkalabs.uicomponents.components.TUITabTags
 import com.tarkalabs.uicomponents.components.TabItem
 import org.junit.Rule
 import org.junit.Test
