@@ -48,6 +48,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * @param onThirdMenuItemClicked The callback function to be called when the third menu item icon is clicked.
  * @param onSearchQuery The callback function to be called when a search query is entered.
  * @param colors The colors to be applied to the top app bar.
+ * @param searchQuery the default search text that we need to show in searchbar
  * @param scrollBehavior The scroll behavior to be applied to the top app bar.
  * How to use TopBar()
 TopBar(
@@ -79,6 +80,7 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
   onSecondMenuItemClicked: () -> Unit = {},
   onThirdMenuItemClicked: () -> Unit = {},
   onSearchQuery: (String) -> Unit = {},
+  searchQuery : String = "",
   disableSearchIcon: Boolean = false,
   clearQueryAndHideSearchBar: Boolean = false,
   colors: TopAppBarColors = TopAppBarDefaults.topAppBarColors(
@@ -93,7 +95,7 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
   }
 
   var query by remember {
-    mutableStateOf("")
+    mutableStateOf(searchQuery)
   }
 
   if (clearQueryAndHideSearchBar && showSearchBar) {
