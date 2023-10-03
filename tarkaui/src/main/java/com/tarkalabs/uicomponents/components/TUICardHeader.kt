@@ -67,7 +67,6 @@ fun TUICardHeader(
         color = TUITheme.colors.onSurface,
         style = TUITheme.typography.heading6
       )
-
     }
 
     HorizontalSpacer(space = 8)
