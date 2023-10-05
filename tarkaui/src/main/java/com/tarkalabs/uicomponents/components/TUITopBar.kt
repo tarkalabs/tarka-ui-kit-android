@@ -112,7 +112,10 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
   ) {
     if (showSearchBar) {
       TUISearchBar(
-        modifier = Modifier,
+        modifier = Modifier
+          .fillMaxWidth()
+          .padding(horizontal = 16.dp)
+        ,
         query = query,
         placeholder = "",
         leadingIcon = TarkaIcons.Regular.ChevronLeft24,
