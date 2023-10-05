@@ -4,7 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
@@ -109,15 +109,14 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     modifier = modifier
       .background(color = TUITheme.colors.surface)
       .fillMaxWidth()
-      .wrapContentSize(),
+      .wrapContentHeight(),
     horizontalAlignment = Alignment.CenterHorizontally
   ) {
     if (showSearchBar) {
       TUISearchBar(
         modifier = Modifier
           .fillMaxWidth()
-          .padding(horizontal = 16.dp)
-        ,
+          .padding(start = 16.dp, end  = 16.dp, bottom = 8.dp),
         query = query,
         placeholder = searchQueryHint,
         leadingIcon = TarkaIcons.Regular.ChevronLeft24,
@@ -205,8 +204,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         scrollBehavior = scrollBehavior,
       )
     }
-
-    Divider(modifier = Modifier.padding(top = 8.dp), color = TUITheme.colors.surfaceVariant)
+    Divider(modifier = Modifier.fillMaxWidth(), color = TUITheme.colors.surfaceVariant)
   }
 }
 
