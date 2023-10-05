@@ -10,7 +10,6 @@ import androidx.compose.material3.SearchBarDefaults.inputFieldColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
@@ -83,7 +82,10 @@ import com.tarkalabs.uicomponents.theme.TUITheme
       containerColor = TUITheme.colors.inputBackground,
       dividerColor = Color.Transparent,
       inputFieldColors = inputFieldColors(
-        cursorColor = TUITheme.colors.inputText, focusedTextColor = TUITheme.colors.inputText
+        cursorColor = TUITheme.colors.inputText,
+        focusedTextColor = TUITheme.colors.inputText,
+        unfocusedPlaceholderColor = TUITheme.colors.inputText,
+        focusedPlaceholderColor = TUITheme.colors.inputText,
       ),
     ),
   ) {}
