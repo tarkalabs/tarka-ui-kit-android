@@ -26,9 +26,15 @@ import com.tarkalabs.tarkaicons.ChevronRight24
 import com.tarkalabs.tarkaicons.Person24
 import com.tarkalabs.tarkaicons.TarkaIcon
 import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.uicomponents.components.SecondaryDetailsStyle.ERROR
+import com.tarkalabs.uicomponents.components.SecondaryDetailsStyle.NORMAL
 import com.tarkalabs.uicomponents.components.base.TUIBadge
 import com.tarkalabs.uicomponents.theme.TUITheme
 
+enum class SecondaryDetailsStyle {
+  NORMAL,
+  ERROR
+}
 /**
  * This Composable function is used to Show the Cards in a list to pick the particular from User.
  *
@@ -39,6 +45,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * @param secondaryDescription - Optional additional description of the card.
  * @param primaryDetails - Optional details of the card.
  * @param secondaryDetails - Optional second details of the card.
+ * @param secondaryDetailStyle - Optional text color style for secondaryDetails.
  * @param badgeCount - Optional Count Details which is shown in Badge style.
  * @param showTrailingIcon - boolean indicated to shown the frontArrow at the end of the card.
  * @param isSelected - a boolean which indicates current clicked state of the card.
@@ -56,6 +63,7 @@ fun TUISelectionCard(
   secondaryDescription: String? = null,
   primaryDetails: String? = null,
   secondaryDetails: String? = null,
+  secondaryDetailStyle: SecondaryDetailsStyle = SecondaryDetailsStyle.NORMAL,
   badgeCount: Int? = null,
   showTrailingIcon: Boolean = false,
   isSelected: Boolean = false,
@@ -132,7 +140,7 @@ fun TUISelectionCard(
         Text(
           modifier = Modifier.testTag(tags.details2Tag),
           text = it,
-          color = TUITheme.colors.inputTextDim.copy(alpha = 0.7f),
+          color = if(secondaryDetailStyle == NORMAL) TUITheme.colors.inputTextDim.copy(alpha = 0.7f) else TUITheme.colors.error,
           style = TUITheme.typography.body7
         )
       }
@@ -187,6 +195,17 @@ fun TUISelectionCardPreview() {
     verticalArrangement = Arrangement.Center
   ) {
     TUISelectionCard(
+      label = "itemNum",
+      primaryDescription = "item Description",
+      primaryDetails = "location",
+      secondaryDetails = "- 11 Unit",
+      secondaryDetailStyle = ERROR,
+      showTrailingIcon = false
+    ) {
+    }
+    VerticalSpacer(space = 14)
+
+    TUISelectionCard(
       label = null,
       primaryDescription = "Description",
       isSelected = false
@@ -213,6 +232,7 @@ fun TUISelectionCardPreview() {
       secondaryDescription = "Description2",
       primaryDetails = "Details",
       secondaryDetails = "Details2",
+      secondaryDetailStyle = ERROR,
       badgeCount = 4,
       showTrailingIcon = true
     ) {}
@@ -247,6 +267,7 @@ fun TUISelectionCardPreview() {
       label = "Label",
       primaryDescription = "Description",
       secondaryDescription = "Description2",
+      secondaryDetailStyle = ERROR,
       primaryDetails = "Details",
       secondaryDetails = "Details2",
       badgeCount = 4,
