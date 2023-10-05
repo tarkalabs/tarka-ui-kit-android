@@ -47,25 +47,26 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * @param onSecondMenuItemClicked The callback function to be called when the second menu item icon is clicked.
  * @param onThirdMenuItemClicked The callback function to be called when the third menu item icon is clicked.
  * @param onSearchQuery The callback function to be called when a search query is entered.
+ * @param searchQueryHint the default search query hint that we need to show in searchbar
  * @param colors The colors to be applied to the top app bar.
  * @param searchQuery the default search text that we need to show in searchbar
  * @param scrollBehavior The scroll behavior to be applied to the top app bar.
  * How to use TopBar()
-TopBar(
-title = "My App",
-navigationIcon = TarkaIcon.Back, // Optional: Pass the navigation icon
-searchIcon = TarkaIcon.Search, // Optional: Pass the search icon
-menuItemIconOne = TarkaIcon.Menu, // Optional: Pass the first menu item icon
-menuItemIconTwo = TarkaIcon.Settings, // Optional: Pass the second menu item icon
-menuItemIconThree = TarkaIcon.Notifications, // Optional: Pass the third menu item icon
-onNavigationIconClick = { /* Handle navigation icon click */ },
-onFirstMenuItemClicked = { /* Handle first menu item click */ },
-onSecondMenuItemClicked = { /* Handle second menu item click */ },
-onThirdMenuItemClicked = { /* Handle third menu item click */ },
-onSearchQuery = { query -> /* Handle search query */ },
-colors = TopAppBarColors(/* Specify custom colors if needed */),
-scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Specify scroll behavior
-)
+      TopBar(
+    title = "My App",
+    navigationIcon = TarkaIcon.Back, // Optional: Pass the navigation icon
+    searchIcon = TarkaIcon.Search, // Optional: Pass the search icon
+    menuItemIconOne = TarkaIcon.Menu, // Optional: Pass the first menu item icon
+    menuItemIconTwo = TarkaIcon.Settings, // Optional: Pass the second menu item icon
+    menuItemIconThree = TarkaIcon.Notifications, // Optional: Pass the third menu item icon
+    onNavigationIconClick = { /* Handle navigation icon click */ },
+    onFirstMenuItemClicked = { /* Handle first menu item click */ },
+    onSecondMenuItemClicked = { /* Handle second menu item click */ },
+    onThirdMenuItemClicked = { /* Handle third menu item click */ },
+    onSearchQuery = { query -> /* Handle search query */ },
+    colors = TopAppBarColors(/* Specify custom colors if needed */),
+    scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Specify scroll behavior
+      )
  */
 @OptIn(ExperimentalMaterial3Api::class) @Composable fun TUITopBar(
   modifier: Modifier = Modifier,
@@ -81,6 +82,7 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
   onThirdMenuItemClicked: () -> Unit = {},
   onSearchQuery: (String) -> Unit = {},
   searchQuery : String = "",
+  searchQueryHint : String = "",
   disableSearchIcon: Boolean = false,
   clearQueryAndHideSearchBar: Boolean = false,
   colors: TopAppBarColors = TopAppBarDefaults.topAppBarColors(
@@ -117,7 +119,7 @@ scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Spec
           .padding(horizontal = 16.dp)
         ,
         query = query,
-        placeholder = "",
+        placeholder = searchQueryHint,
         leadingIcon = TarkaIcons.Regular.ChevronLeft24,
         onLeadingIconClick = {
           query = ""

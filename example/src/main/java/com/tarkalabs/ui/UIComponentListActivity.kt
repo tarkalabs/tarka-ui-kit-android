@@ -39,7 +39,8 @@ class UIComponentListActivity : ComponentActivity() {
             title = "Lorem Ipsum",
             navigationIcon = Regular.ChevronRight20,
             searchIcon = Regular.ChevronRight20,
-            searchQuery = query
+            searchQuery = query,
+            searchQueryHint = "search Query Hint"
           )
         }) { paddingValues ->
           Column(
