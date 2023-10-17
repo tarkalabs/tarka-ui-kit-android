@@ -1,15 +1,14 @@
 package com.tarkalabs.uicomponents.screenshots
 
-import ButtonSize.L
-import ButtonStyle.ERROR
-import ButtonStyle.GHOST
-import ButtonStyle.OUTLINE
-import ButtonStyle.PRIMARY
-import ButtonStyle.SECONDARY
-import TUIButton
+import com.tarkalabs.uicomponents.components.base.ButtonSize.L
+import com.tarkalabs.uicomponents.components.base.ButtonStyle.ERROR
+import com.tarkalabs.uicomponents.components.base.ButtonStyle.GHOST
+import com.tarkalabs.uicomponents.components.base.ButtonStyle.OUTLINE
+import com.tarkalabs.uicomponents.components.base.ButtonStyle.PRIMARY
+import com.tarkalabs.uicomponents.components.base.ButtonStyle.SECONDARY
+import com.tarkalabs.uicomponents.components.base.TUIButton
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
 import org.junit.runners.Parameterized
 
 @RunWith(Parameterized::class)
