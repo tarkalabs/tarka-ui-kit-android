@@ -1,12 +1,14 @@
-import ButtonSize.L
-import ButtonSize.M
-import ButtonSize.S
-import ButtonSize.XS
-import ButtonStyle.ERROR
-import ButtonStyle.GHOST
-import ButtonStyle.OUTLINE
-import ButtonStyle.PRIMARY
-import ButtonStyle.SECONDARY
+package com.tarkalabs.uicomponents.components.base
+
+import com.tarkalabs.uicomponents.components.base.ButtonSize.L
+import com.tarkalabs.uicomponents.components.base.ButtonSize.M
+import com.tarkalabs.uicomponents.components.base.ButtonSize.S
+import com.tarkalabs.uicomponents.components.base.ButtonSize.XS
+import com.tarkalabs.uicomponents.components.base.ButtonStyle.ERROR
+import com.tarkalabs.uicomponents.components.base.ButtonStyle.GHOST
+import com.tarkalabs.uicomponents.components.base.ButtonStyle.OUTLINE
+import com.tarkalabs.uicomponents.components.base.ButtonStyle.PRIMARY
+import com.tarkalabs.uicomponents.components.base.ButtonStyle.SECONDARY
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -34,7 +36,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.tarkalabs.tarkaicons.Add24
 import com.tarkalabs.tarkaicons.TarkaIcon
+import com.tarkalabs.tarkaicons.TarkaIcons.Regular
+import com.tarkalabs.uicomponents.components.HorizontalSpacer
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 enum class ButtonStyle {
@@ -54,9 +59,15 @@ enum class ButtonSize(val size: Dp) {
 
   fun iconSize(): Dp {
     return when (this) {
-      XL, L -> 17.5.dp
-      M -> 17.5.dp
-      S, XS -> 11.dp
+      XL, L, M -> 24.dp
+      S, XS -> 16.dp
+    }
+  }
+
+  fun iconSpace(): Int {
+    return when (this) {
+      XL, L, M -> 8
+      S, XS -> 4
     }
   }
 
@@ -84,8 +95,7 @@ enum class ButtonSize(val size: Dp) {
   }
 
   @Composable fun textStyle() = when (this) {
-    XL, L -> TUITheme.typography.button6
-    M -> TUITheme.typography.button6
+    XL, L, M -> TUITheme.typography.button6
     S -> TUITheme.typography.button7
     XS -> TUITheme.typography.button8
   }
@@ -162,7 +172,10 @@ onClick = {}
     modifier = modifier
       .height(height.size)
       .testTag(tags.parentTag),
-    contentPadding = height.paddingValues(leadingIcon == null, trailingIcon == null),
+    contentPadding = height.paddingValues(
+      isLeadingIconNull = leadingIcon == null,
+      isTrailingIconNull = trailingIcon == null
+    ),
     border = if (buttonStyle == OUTLINE) BorderStroke(
       width = 1.dp, color = TUITheme.colors.onSurface
     ) else null
@@ -178,9 +191,11 @@ onClick = {}
             .size(height.iconSize())
             .testTag(tags.leadingIconTag)
         )
+        HorizontalSpacer(space = height.iconSpace())
       }
       Text(text = label, style = height.textStyle())
       trailingIcon?.let {
+        HorizontalSpacer(space = height.iconSpace())
         Icon(
           painter = painterResource(id = trailingIcon.iconRes),
           contentDescription = trailingIcon.contentDescription,
@@ -211,25 +226,24 @@ data class TUIButtonTags(
         Column {
           Text("Primary Button", fontSize = 24.sp)
           Spacer(modifier = Modifier.height(20.dp))
-          TUIButton(label = "Primary ", height = M, buttonStyle = PRIMARY, onClick = {})
+          TUIButton(label = "Primary ", height = M, buttonStyle = PRIMARY, onClick = {}, trailingIcon = Regular.Add24)
           Spacer(modifier = Modifier.height(10.dp))
-          TUIButton(label = "Primary ", height = L, buttonStyle = PRIMARY, onClick = {})
+          TUIButton(label = "Primary ", height = L, buttonStyle = PRIMARY, onClick = {}, trailingIcon = Regular.Add24)
           Spacer(modifier = Modifier.height(10.dp))
-          TUIButton(label = "Primary ", height = S, buttonStyle = PRIMARY, onClick = {})
+          TUIButton(label = "Primary ", height = S, buttonStyle = PRIMARY, onClick = {}, trailingIcon = Regular.Add24)
           Spacer(modifier = Modifier.height(10.dp))
-          TUIButton(label = "Primary ", height = XS, buttonStyle = PRIMARY, onClick = {})
-
+          TUIButton(label = "Primary ", height = XS, buttonStyle = PRIMARY, onClick = {}, trailingIcon = Regular.Add24)
         }
         Column {
           Text("Secondary Button", fontSize = 24.sp)
           Spacer(modifier = Modifier.height(20.dp))
-          TUIButton(label = "Secondary ", height = M, buttonStyle = SECONDARY, onClick = {})
+          TUIButton(label = "Secondary ", height = M, buttonStyle = SECONDARY, onClick = {}, leadingIcon = Regular.Add24)
           Spacer(modifier = Modifier.height(10.dp))
-          TUIButton(label = "Secondary ", height = L, buttonStyle = SECONDARY, onClick = {})
+          TUIButton(label = "Secondary ", height = L, buttonStyle = SECONDARY, onClick = {}, leadingIcon = Regular.Add24)
           Spacer(modifier = Modifier.height(10.dp))
-          TUIButton(label = "Secondary ", height = S, buttonStyle = SECONDARY, onClick = {})
+          TUIButton(label = "Secondary ", height = S, buttonStyle = SECONDARY, onClick = {}, leadingIcon = Regular.Add24)
           Spacer(modifier = Modifier.height(10.dp))
-          TUIButton(label = "Secondary ", height = XS, buttonStyle = SECONDARY, onClick = {})
+          TUIButton(label = "Secondary ", height = XS, buttonStyle = SECONDARY, onClick = {}, leadingIcon = Regular.Add24)
         }
       }
 
