@@ -11,7 +11,6 @@ import com.tarkalabs.uicomponents.components.base.ButtonStyle.PRIMARY
 import com.tarkalabs.uicomponents.components.base.ButtonStyle.SECONDARY
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -59,13 +58,6 @@ enum class ButtonSize(val size: Dp) {
   XS(24.dp);
 
   fun iconSize(): Dp {
-    return when (this) {
-      XL, L, M -> 17.5.dp
-      S, XS -> 11.dp
-    }
-  }
-
-  fun iconBoxSize(): Dp {
     return when (this) {
       XL, L, M -> 24.dp
       S, XS -> 16.dp
@@ -192,29 +184,25 @@ onClick = {}
       verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center
     ) {
       leadingIcon?.let {
-        Box(modifier = Modifier.size(height.iconBoxSize()), contentAlignment = Alignment.Center) {
-          Icon(
-            painter = painterResource(id = leadingIcon.iconRes),
-            contentDescription = leadingIcon.contentDescription,
-            modifier = Modifier
-              .size(height.iconSize())
-              .testTag(tags.leadingIconTag)
-          )
-        }
+        Icon(
+          painter = painterResource(id = leadingIcon.iconRes),
+          contentDescription = leadingIcon.contentDescription,
+          modifier = Modifier
+            .size(height.iconSize())
+            .testTag(tags.leadingIconTag)
+        )
         HorizontalSpacer(space = height.iconSpace())
       }
       Text(text = label, style = height.textStyle())
       trailingIcon?.let {
         HorizontalSpacer(space = height.iconSpace())
-        Box(modifier = Modifier.size(height.iconBoxSize()), contentAlignment = Alignment.Center) {
-          Icon(
-            painter = painterResource(id = trailingIcon.iconRes),
-            contentDescription = trailingIcon.contentDescription,
-            modifier = Modifier
-              .size(height.iconSize())
-              .testTag(tags.trailingIconTag)
-          )
-        }
+        Icon(
+          painter = painterResource(id = trailingIcon.iconRes),
+          contentDescription = trailingIcon.contentDescription,
+          modifier = Modifier
+            .size(height.iconSize())
+            .testTag(tags.trailingIconTag)
+        )
       }
     }
   }
@@ -245,7 +233,6 @@ data class TUIButtonTags(
           TUIButton(label = "Primary ", height = S, buttonStyle = PRIMARY, onClick = {}, trailingIcon = Regular.Add24)
           Spacer(modifier = Modifier.height(10.dp))
           TUIButton(label = "Primary ", height = XS, buttonStyle = PRIMARY, onClick = {}, trailingIcon = Regular.Add24)
-
         }
         Column {
           Text("Secondary Button", fontSize = 24.sp)
