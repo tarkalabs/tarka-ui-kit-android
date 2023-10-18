@@ -98,7 +98,7 @@ object TUIAttachmentUpload {
         Box(
           contentAlignment = Alignment.Center,
           modifier = Modifier
-            .size(48.dp)
+            .size(40.dp)
             .testTag(tags.leadingIconTag)
         ) {
           Icon(

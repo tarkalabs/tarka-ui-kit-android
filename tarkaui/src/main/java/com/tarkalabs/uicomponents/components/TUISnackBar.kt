@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -198,14 +197,12 @@ internal fun TUISnackBar(
 
   Box(
     modifier = modifier
-      .fillMaxWidth()
       .defaultMinSize(minHeight = 56.dp)
       .background(containerColor, shape = RoundedCornerShape(32.dp))
       .padding(16.dp)
   ) {
     Row(
       modifier = Modifier
-        .fillMaxWidth()
         .testTag(tags.parentTag),
       verticalAlignment = Alignment.CenterVertically,
       horizontalArrangement = Arrangement.Center,
@@ -220,7 +217,7 @@ internal fun TUISnackBar(
       }
       Text(
         modifier = Modifier
-          .weight(1f)
+          .weight(1f, fill = false)
           .padding(start = 8.dp),
         text = message,
         color = textColor,
@@ -266,7 +263,7 @@ enum class TUISnackBarType {
 @Composable
 fun TUIInformationSnackBarPreview() {
   TUISnackBar(
-    message = "Hello there",
+    message = "Hello there, How are doing ? ",
     actionLabel = "dgsd",
     leadingIcon = TarkaIcons.Regular.Delete24,
     type = Information
