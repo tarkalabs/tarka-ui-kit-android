@@ -263,7 +263,7 @@ enum class TUISnackBarType {
 @Composable
 fun TUIInformationSnackBarPreview() {
   TUISnackBar(
-    message = "Hello there",
+    message = "Hello there, How are doing ? ",
     actionLabel = "dgsd",
     leadingIcon = TarkaIcons.Regular.Delete24,
     type = Information
