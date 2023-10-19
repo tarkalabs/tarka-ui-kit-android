@@ -3,9 +3,9 @@ package com.tarkalabs.uicomponents.screenshots
 import android.graphics.BitmapFactory
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.test.platform.app.InstrumentationRegistry
-import com.tarkalabs.tarkaicons.CalendarAdd24
 import com.tarkalabs.tarkaicons.CalendarLtr24
 import com.tarkalabs.tarkaicons.Checkmark16
+import com.tarkalabs.tarkaicons.Dismiss20
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.ChipLeadingContent
 import com.tarkalabs.uicomponents.components.ChipSize
@@ -39,9 +39,9 @@ class TUIChipScreenshotTest(
       val types =
         leadingContent.map { ChipType.Assist(it) } + filterChipTypes() + leadingContent.map {
           ChipType.Input(
-            it, false
+            it, TarkaIcons.Filled.Dismiss20
           )
-        } + leadingContent.map { ChipType.Input(it, true) } + listOf(
+        } + leadingContent.map { ChipType.Input(it, TarkaIcons.Filled.Dismiss20) } + listOf(
           ChipType.Suggestion(null),
           ChipType.Suggestion(TarkaIcons.Regular.CalendarLtr24),
         )
@@ -55,7 +55,7 @@ class TUIChipScreenshotTest(
             val testName = when (type) {
               is ChipType.Assist -> "ChipSize_${chipSize}_chipType_${type.javaClass.simpleName}_chipTypeContent_${type.content?.javaClass?.simpleName.toString()}_darkTheme_${darkTheme}"
               is ChipType.Filter -> "ChipSize_${chipSize}_chipType_${type.javaClass.simpleName}_chipTypeShowLeadingCheck_${type.showLeadingCheck}_chipTypeShowTrailingCaret_${type.showTrailingCaret}_chipTypeShowTrailingDismiss_${type.showTrailingDismiss}_chipTypeSelected_${type.selected}_darkTheme_${darkTheme}"
-              is ChipType.Input -> "ChipSize_${chipSize}_chipType_${type.javaClass.simpleName}_chipTypeShowTrailingDismiss_${type.showTrailingDismiss}_chipTypeContent_${type.content?.javaClass?.simpleName}_darkTheme_${darkTheme}"
+              is ChipType.Input -> "ChipSize_${chipSize}_chipType_${type.javaClass.simpleName}_chipTypeShowTrailingDismiss_${type.trailingIcon}_chipTypeContent_${type.content?.javaClass?.simpleName}_darkTheme_${darkTheme}"
               is ChipType.Suggestion -> "ChipSize_${chipSize}_chipType_${type.javaClass.simpleName}_chipTypeImage_${type.image.toString()}_darkTheme_${darkTheme}"
             }
             testData.add(
