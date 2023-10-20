@@ -42,6 +42,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaicons.AddCircle24
+import com.tarkalabs.tarkaicons.Dismiss20
 import com.tarkalabs.tarkaicons.TarkaIcon
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.ChipType.Input
@@ -127,7 +128,8 @@ import kotlinx.coroutines.launch
             TUIChip(modifier = Modifier
               .padding(2.dp)
               .testTag(email), type = Input(
-              showTrailingDismiss = true, containerColor = TUITheme.colors.surfaceVariant
+              trailingIcon = TarkaIcons.Filled.Dismiss20,
+              containerColor = TUITheme.colors.surfaceVariant
             ), label = email, tags = tags.chipTags, onClick = {
 
             }, onDismissClick = {

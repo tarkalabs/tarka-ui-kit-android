@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AssistChip
@@ -26,6 +27,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.ArrowSort20
 import com.tarkalabs.tarkaicons.CaretDown20
 import com.tarkalabs.tarkaicons.Checkmark20
 import com.tarkalabs.tarkaicons.Dismiss20
@@ -58,12 +60,12 @@ sealed class ChipType {
    * Represents an input chip type for TUIChip.
    *
    * @param content The optional leading content for the chip.
-   * @param showTrailingDismiss Whether to show a dismiss icon as a trailing icon.
+   * @param trailingIcon The drawable resource for the trailing icon
    * @param containerColor The color of the chip's container. If null, the default color from the theme will be used.
    */
   data class Input(
     val content: ChipLeadingContent? = null,
-    val showTrailingDismiss: Boolean = false,
+    val trailingIcon: TarkaIcon? = null,
     val containerColor: Color? = null
   ) : ChipType()
 
@@ -146,10 +148,10 @@ enum class ChipSize(val size: Dp) {
       label = commonLabel,
       colors = InputChipDefaults.inputChipColors(containerColor = TUITheme.colors.surface),
       leadingIcon = { leadingIcon(type.content) },
-      trailingIcon = if (type.showTrailingDismiss) {
+      trailingIcon = if (type.trailingIcon != null) {
         {
           TUIIconButton(
-            icon = TarkaIcons.Filled.Dismiss20,
+            icon = type.trailingIcon,
             iconButtonStyle = GHOST,
             onIconClick = {
               onDismissClick?.invoke()
@@ -262,16 +264,16 @@ data class TUIChipTags(
 
 @Preview @Composable fun TUIChipPreview() {
 
-  Column {
+  Column(modifier = Modifier.padding(20.dp)) {
     TUIChip(
       type = ChipType.Input(
-        showTrailingDismiss = true,
+        trailingIcon = TarkaIcons.Regular.ArrowSort20,
         containerColor = TUITheme.colors.surfaceVariant
       ),
       label = "Something",
       onClick = { Log.e("TAG_CHIP", "TUIChipPreview: TAG_CLICKED") }
     )
-
+    VerticalSpacer(space = 20)
     TUIChip(
       type = ChipType.Assist(),
       label = "Something",

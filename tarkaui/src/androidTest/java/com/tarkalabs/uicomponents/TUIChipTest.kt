@@ -10,6 +10,7 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.test.platform.app.InstrumentationRegistry
 import com.tarkalabs.tarkaicons.CalendarLtr24
+import com.tarkalabs.tarkaicons.Dismiss20
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.ChipLeadingContent
 import com.tarkalabs.uicomponents.components.ChipType
@@ -68,7 +69,7 @@ class TUIChipTest {
     val onClick: () -> Unit = mock()
     composable.setContent {
       TUIChip(
-        type = ChipType.Input(null, true, TUITheme.colors.surface),
+        type = ChipType.Input(null, TarkaIcons.Filled.Dismiss20, TUITheme.colors.surface),
         label = "Input chip",
         onClick = onClick,
         tags = chipTags.copy(parentTag = "Input"),
@@ -86,7 +87,7 @@ class TUIChipTest {
     val bitmap = BitmapFactory.decodeStream(assetManager.open("avatarTest.webp"))
     composable.setContent {
       TUIChip(
-        type = ChipType.Input(content = ChipLeadingContent.Image(bitmap.asImageBitmap()), showTrailingDismiss = true, containerColor = TUITheme.colors.surface),
+        type = ChipType.Input(content = ChipLeadingContent.Image(bitmap.asImageBitmap()), trailingIcon = TarkaIcons.Filled.Dismiss20, containerColor = TUITheme.colors.surface),
         label = "Input chip",
         onClick = { },
         )
