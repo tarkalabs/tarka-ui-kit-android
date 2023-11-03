@@ -145,7 +145,6 @@ sealed class TUIInputFieldContentType {
   val labelLambda: @Composable () -> Unit = {
     if (label != null) Text(
       text = label,
-      style = TUITheme.typography.body8,
       modifier = Modifier.testTag(testTags.labelTag)
     )
   }
