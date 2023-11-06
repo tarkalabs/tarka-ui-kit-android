@@ -218,7 +218,7 @@ fun iconFor(status: TUIInputFieldStatus): TarkaIcon? {
       disabledLabelColor = TUITheme.colors.inputDim
     }
     LookupInputField -> {
-      disabledLabelColor = TUITheme.colors.inputText
+      disabledLabelColor = TUITheme.colors.inputDim
       disabledTextColor = TUITheme.colors.inputText
     }
   }
