@@ -164,8 +164,8 @@ enum class ChipSize(val size: Dp) {
     is Filter -> {
       FilterChip(
         type = type,
+        label = label,
         onClick = onClick,
-        commonLabel = commonLabel,
         modifier = commonModifier
       )
     }
@@ -190,18 +190,22 @@ enum class ChipSize(val size: Dp) {
 }
 
 @Composable @OptIn(ExperimentalMaterial3Api::class) private fun FilterChip(
-  type: Filter, onClick: () -> Unit, commonLabel: @Composable () -> Unit, modifier: Modifier
+  type: Filter,
+  label : String, onClick: () -> Unit, modifier: Modifier
 ) {
   Box(modifier = Modifier.wrapContentWidth()) {
     FilterChip(selected = type.selected,
       shape = RoundedCornerShape(8.dp),
       onClick = onClick,
-      label = commonLabel,
+      label = {
+        Text(
+          text = label, style = TUITheme.typography.button7, color = TUITheme.colors.onSecondary
+        ) },
       modifier = modifier,
       colors = FilterChipDefaults.filterChipColors(
-        containerColor = TUITheme.colors.surface,
+        containerColor = TUITheme.colors.secondary,
         selectedContainerColor = TUITheme.colors.secondary,
-        labelColor = TUITheme.colors.onSurface
+        labelColor = TUITheme.colors.onSecondary
       ),
       leadingIcon = if (type.showLeadingCheck) {
         {
