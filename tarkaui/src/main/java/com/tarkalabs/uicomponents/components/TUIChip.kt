@@ -208,7 +208,7 @@ enum class ChipSize(val size: Dp) {
           Icon(
             painter = painterResource(id = TarkaIcons.Filled.Checkmark20.iconRes),
             contentDescription = TarkaIcons.Filled.Checkmark20.contentDescription,
-            tint = TUITheme.colors.onSecondary
+            tint = TUITheme.colors.onSurface
           )
         }
       } else null,
