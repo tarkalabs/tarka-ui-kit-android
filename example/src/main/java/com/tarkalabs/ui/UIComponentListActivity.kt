@@ -13,20 +13,14 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaicons.ChevronRight20
 import com.tarkalabs.tarkaicons.TarkaIcons.Regular
-import com.tarkalabs.tarkaicons.Timer20
 import com.tarkalabs.uicomponents.components.ChipType.Filter
 import com.tarkalabs.uicomponents.components.TUIChip
 import com.tarkalabs.uicomponents.components.TUITopBar
 import com.tarkalabs.uicomponents.components.VerticalSpacer
-import com.tarkalabs.uicomponents.components.base.TUIInputField
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Icon
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Success
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldType.LookupInputField
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -68,26 +62,28 @@ class UIComponentListActivity : ComponentActivity() {
               },
             )
             VerticalSpacer(space = 20)
-            var textValue by remember {
-              mutableStateOf("")
-            }
-            TUIInputField(
-              trailingContent = Icon(Regular.Timer20),
-              value = textValue,
-              onValueChange = { textValue = it },
-              label = "Label",
-              status = Success
+            TUIChip(
+              type = Filter(
+                showLeadingCheck = true,
+                selected = true,
+                showTrailingCaret = true
+              ),
+              label = "spare_parts",
+              onClick = {
+              },
             )
-
             VerticalSpacer(space = 20)
-            TUIInputField(
-              trailingContent = Icon(Regular.Timer20),
-              value = textValue,
-              onValueChange = { textValue = it },
-              status = Success,
-              inputFieldTye = LookupInputField,
-              label = "Label",
+            TUIChip(
+              type = Filter(
+                showLeadingCheck = true,
+                selected = false,
+                showTrailingCaret = true
+              ),
+              label = "Reset",
+              onClick = {
+              },
             )
+            VerticalSpacer(space = 20)
 
           }
 
