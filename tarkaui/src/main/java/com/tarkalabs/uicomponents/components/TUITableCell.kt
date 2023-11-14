@@ -89,99 +89,101 @@ data class TUITableCellTags(
 @Preview(showBackground = true)
 @Composable
 fun PreviewTUITableCell() {
-  Box {
-    Column(modifier = Modifier.padding(10.dp)) {
-      Row(modifier = Modifier.height(Max)) {
-        TUITableCell(
-          modifier = Modifier
-            .weight(1f)
-            .padding(5.dp)
-            .fillMaxHeight(),
-          cellValue = "Label",
-          isHeader = true,
-          isBottomBorderVisible = true,
-          isTopBorderVisible = false
-        )
-        TUITableCell(
-          modifier = Modifier
-            .weight(1f)
-            .padding(5.dp)
-            .fillMaxHeight(),
-          cellValue = "Label",
-          isHeader = true,
-          isBottomBorderVisible = false,
-          isTopBorderVisible = true
-        )
-        TUITableCell(
-          modifier = Modifier
-            .weight(1f)
-            .padding(5.dp)
-            .fillMaxHeight(),
-          cellValue = "Label",
-          isHeader = true,
-          isBottomBorderVisible = true,
-          isTopBorderVisible = true
-        )
-        TUITableCell(
-          modifier = Modifier
-            .weight(1f)
-            .padding(5.dp)
-            .fillMaxHeight(),
-          cellValue = "Label",
-          isHeader = true,
-          isBottomBorderVisible = false,
-          isTopBorderVisible = false
-        )
-      }
-      Row(modifier = Modifier.height(Max)) {
-        TUITableCell(
-          modifier = Modifier
-            .weight(1f)
-            .padding(5.dp)
-            .fillMaxHeight(),
-          cellValue = "Label",
-          isHeader = false,
-          isBottomBorderVisible = true,
-          isTopBorderVisible = false
-        )
-        TUITableCell(
-          modifier = Modifier
-            .weight(1f)
-            .padding(5.dp)
-            .fillMaxHeight(),
-          cellValue = "Label",
-          isHeader = false,
-          isBottomBorderVisible = false,
-          isTopBorderVisible = true
-        )
-        TUITableCell(
-          modifier = Modifier
-            .weight(1f)
-            .padding(5.dp)
-            .fillMaxHeight(),
-          cellValue = "Label",
-          isHeader = false,
-          isBottomBorderVisible = true,
-          isTopBorderVisible = true
-        )
-        TUITableCell(
-          modifier = Modifier
-            .weight(1f)
-            .padding(5.dp)
-            .fillMaxHeight(),
-          cellValue = "Label",
-          isHeader = false,
-          isBottomBorderVisible = false,
-          isTopBorderVisible = false
-        )
+  TUITheme() {
+    Box {
+      Column(modifier = Modifier.padding(10.dp)) {
+        Row(modifier = Modifier.height(Max)) {
+          TUITableCell(
+            modifier = Modifier
+              .weight(1f)
+              .padding(5.dp)
+              .fillMaxHeight(),
+            cellValue = "Label",
+            isHeader = true,
+            isBottomBorderVisible = true,
+            isTopBorderVisible = false
+          )
+          TUITableCell(
+            modifier = Modifier
+              .weight(1f)
+              .padding(5.dp)
+              .fillMaxHeight(),
+            cellValue = "Label",
+            isHeader = true,
+            isBottomBorderVisible = false,
+            isTopBorderVisible = true
+          )
+          TUITableCell(
+            modifier = Modifier
+              .weight(1f)
+              .padding(5.dp)
+              .fillMaxHeight(),
+            cellValue = "Label",
+            isHeader = true,
+            isBottomBorderVisible = true,
+            isTopBorderVisible = true
+          )
+          TUITableCell(
+            modifier = Modifier
+              .weight(1f)
+              .padding(5.dp)
+              .fillMaxHeight(),
+            cellValue = "Label",
+            isHeader = true,
+            isBottomBorderVisible = false,
+            isTopBorderVisible = false
+          )
+        }
+        Row(modifier = Modifier.height(Max)) {
+          TUITableCell(
+            modifier = Modifier
+              .weight(1f)
+              .padding(5.dp)
+              .fillMaxHeight(),
+            cellValue = "Label",
+            isHeader = false,
+            isBottomBorderVisible = true,
+            isTopBorderVisible = false
+          )
+          TUITableCell(
+            modifier = Modifier
+              .weight(1f)
+              .padding(5.dp)
+              .fillMaxHeight(),
+            cellValue = "Label",
+            isHeader = false,
+            isBottomBorderVisible = false,
+            isTopBorderVisible = true
+          )
+          TUITableCell(
+            modifier = Modifier
+              .weight(1f)
+              .padding(5.dp)
+              .fillMaxHeight(),
+            cellValue = "Label",
+            isHeader = false,
+            isBottomBorderVisible = true,
+            isTopBorderVisible = true
+          )
+          TUITableCell(
+            modifier = Modifier
+              .weight(1f)
+              .padding(5.dp)
+              .fillMaxHeight(),
+            cellValue = "Label",
+            isHeader = false,
+            isBottomBorderVisible = false,
+            isTopBorderVisible = false
+          )
+        }
       }
     }
   }
 }
 
-@Preview(showBackground = true) @Composable
+@Preview() @Composable
 fun PreviewCombinedTUITableCell() {
-  TUITheme {
+  TUITheme(true) {
     Column(modifier = Modifier.padding(10.dp)) {
       Row(
         modifier = Modifier.height(Max),
@@ -248,5 +250,20 @@ fun PreviewCombinedTUITableCell() {
         )
       }
     }
+  }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Table() {
+  Box(
+    modifier = Modifier.padding(10.dp)
+  ) {
+    TUITableCell(
+      cellValue = "Label",
+      isHeader = true,
+      isTopBorderVisible = true,
+      isBottomBorderVisible = true
+    )
   }
 }
