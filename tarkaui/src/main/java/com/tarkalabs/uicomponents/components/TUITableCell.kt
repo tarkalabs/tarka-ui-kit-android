@@ -15,9 +15,25 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.theme.TUITheme
+
+/**
+ *Represents a table cell, this composable function creates the Table Cell with border.
+ * It is typically used to create the table.
+ *
+ * Note: If the table cell is used in the Row, need to provide the height modifier add intrinsicSize.MAX and provide the child element modifier add fillMaxHeight()
+ * @param modifier Modifier for the Table cell layout and appearance.
+ * @param cellValue The text value to display in the table cell
+ * @param isHeader Boolean value represents the cell value is header or not.
+ * @param tags Tags used for testing and identifying this Composable.
+ * @param isTopBorderVisible Boolean value which represents the top border is visible or not.
+ * @param isBottomBorderVisible Boolean value which represents the bottom border is visible or not.
+ *
+ */
 
 @Composable fun TUITableCell(
   modifier: Modifier = Modifier,
@@ -36,7 +52,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
             color = borderColor,
             start = Offset(x = 0f, y = 0f),
             end = Offset(x = size.width, y = 0f),
-            strokeWidth = 3f
+            strokeWidth = Stroke.HairlineWidth
           )
         }
         if (isBottomBorderVisible) {
@@ -44,21 +60,24 @@ import com.tarkalabs.uicomponents.theme.TUITheme
             color = borderColor,
             start = Offset(x = 0f, y = size.height),
             end = Offset(x = size.width, y = size.height),
-            strokeWidth = 3f
+            strokeWidth = Stroke.HairlineWidth
           )
         }
-      },
+      }
+      .testTag(tags.parentTag),
     horizontalArrangement = Arrangement.Start,
     verticalAlignment = Alignment.CenterVertically
   ) {
     Text(
-      modifier = Modifier.padding(top = 8.dp, bottom = 8.dp).fillMaxWidth(),
+      modifier = Modifier
+        .padding(top = 8.dp, bottom = 8.dp)
+        .fillMaxWidth(),
       style = TUITheme.typography.body7,
       text = cellValue,
       color = if (isHeader)
-        TUITheme.colors.onSurface
+        TUITheme.colors.utilityDisabledContent
       else
-        TUITheme.colors.utilityDisabledContent,
+        TUITheme.colors.onSurface,
     )
   }
 }
@@ -79,7 +98,7 @@ fun PreviewTUITableCell() {
             .padding(5.dp)
             .fillMaxHeight(),
           cellValue = "Label",
-          isHeader = false,
+          isHeader = true,
           isBottomBorderVisible = true,
           isTopBorderVisible = false
         )
@@ -89,7 +108,7 @@ fun PreviewTUITableCell() {
             .padding(5.dp)
             .fillMaxHeight(),
           cellValue = "Label",
-          isHeader = false,
+          isHeader = true,
           isBottomBorderVisible = false,
           isTopBorderVisible = true
         )
@@ -99,7 +118,7 @@ fun PreviewTUITableCell() {
             .padding(5.dp)
             .fillMaxHeight(),
           cellValue = "Label",
-          isHeader = false,
+          isHeader = true,
           isBottomBorderVisible = true,
           isTopBorderVisible = true
         )
@@ -109,7 +128,7 @@ fun PreviewTUITableCell() {
             .padding(5.dp)
             .fillMaxHeight(),
           cellValue = "Label",
-          isHeader = false,
+          isHeader = true,
           isBottomBorderVisible = false,
           isTopBorderVisible = false
         )
@@ -121,7 +140,7 @@ fun PreviewTUITableCell() {
             .padding(5.dp)
             .fillMaxHeight(),
           cellValue = "Label",
-          isHeader = true,
+          isHeader = false,
           isBottomBorderVisible = true,
           isTopBorderVisible = false
         )
@@ -131,7 +150,7 @@ fun PreviewTUITableCell() {
             .padding(5.dp)
             .fillMaxHeight(),
           cellValue = "Label",
-          isHeader = true,
+          isHeader = false,
           isBottomBorderVisible = false,
           isTopBorderVisible = true
         )
@@ -141,7 +160,7 @@ fun PreviewTUITableCell() {
             .padding(5.dp)
             .fillMaxHeight(),
           cellValue = "Label",
-          isHeader = true,
+          isHeader = false,
           isBottomBorderVisible = true,
           isTopBorderVisible = true
         )
@@ -151,7 +170,7 @@ fun PreviewTUITableCell() {
             .padding(5.dp)
             .fillMaxHeight(),
           cellValue = "Label",
-          isHeader = true,
+          isHeader = false,
           isBottomBorderVisible = false,
           isTopBorderVisible = false
         )
@@ -174,7 +193,7 @@ fun PreviewCombinedTUITableCell() {
             .weight(1f)
             .fillMaxHeight(),
           cellValue = "",
-          isHeader = false,
+          isHeader = true,
           isBottomBorderVisible = true,
           isTopBorderVisible = false
         )
@@ -183,7 +202,7 @@ fun PreviewCombinedTUITableCell() {
             .weight(1f)
             .fillMaxHeight(),
           cellValue = "Pending to be synced",
-          isHeader = false,
+          isHeader = true,
           isBottomBorderVisible = true,
           isTopBorderVisible = false
         )
@@ -192,7 +211,7 @@ fun PreviewCombinedTUITableCell() {
             .weight(1f)
             .fillMaxHeight(),
           cellValue = "Errored out",
-          isHeader = false,
+          isHeader = true,
           isBottomBorderVisible = true,
           isTopBorderVisible = false
         )
@@ -205,7 +224,7 @@ fun PreviewCombinedTUITableCell() {
             .weight(1f)
             .fillMaxHeight(),
           cellValue = "General",
-          isHeader = true,
+          isHeader = false,
           isBottomBorderVisible = true,
           isTopBorderVisible = false
         )
@@ -214,7 +233,7 @@ fun PreviewCombinedTUITableCell() {
             .weight(1f)
             .fillMaxHeight(),
           cellValue = "3",
-          isHeader = true,
+          isHeader = false,
           isBottomBorderVisible = true,
           isTopBorderVisible = false
         )
@@ -223,7 +242,7 @@ fun PreviewCombinedTUITableCell() {
             .weight(1f)
             .fillMaxHeight(),
           cellValue = "2",
-          isHeader = true,
+          isHeader = false,
           isBottomBorderVisible = true,
           isTopBorderVisible = false
         )
