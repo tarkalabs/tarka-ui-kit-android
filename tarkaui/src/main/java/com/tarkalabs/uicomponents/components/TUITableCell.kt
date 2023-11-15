@@ -22,8 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
- *Represents a table cell, this composable function creates the Table Cell with border.
- * It is typically used to create the table.
+ *Represents a table cell, this composable function creates the Table Cell with border. It is typically used to create the table.
  *
  * Note: If the table cell is used in the Row, need to provide the height modifier add intrinsicSize.MAX and provide the child element modifier add fillMaxHeight()
  * @param modifier Modifier for the Table cell layout and appearance.
@@ -250,20 +249,5 @@ fun PreviewCombinedTUITableCell() {
         )
       }
     }
-  }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun Table() {
-  Box(
-    modifier = Modifier.padding(10.dp)
-  ) {
-    TUITableCell(
-      cellValue = "Label",
-      isHeader = true,
-      isTopBorderVisible = true,
-      isBottomBorderVisible = true
-    )
   }
 }
