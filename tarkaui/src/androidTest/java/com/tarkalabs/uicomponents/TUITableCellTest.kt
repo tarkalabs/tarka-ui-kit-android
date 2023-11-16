@@ -1,6 +1,7 @@
 package com.tarkalabs.uicomponents
 
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import com.tarkalabs.uicomponents.components.TUITableCell
@@ -15,16 +16,18 @@ class TUITableCellTest {
   private val testTags: TUITableCellTags = TUITableCellTags()
 
   @Test fun tuiTableCellDisplayed() {
+    val cellValue = "Label"
     composeTestRule.setContent {
       TUITheme {
         TUITableCell(
-          cellValue ="Hello",
+          cellValue = cellValue,
           isHeader = true,
           isTopBorderVisible = true,
-          isBottomBorderVisible =true
+          isBottomBorderVisible = true
         )
       }
     }
-    composeTestRule.onNodeWithTag(testTags.parentTag, useUnmergedTree = true).assertIsDisplayed()
+    composeTestRule.onNodeWithTag(testTags.parentTag).assertExists().assertIsDisplayed()
+    composeTestRule.onNodeWithTag(testTags.cellValueTag).assertExists().assertIsDisplayed().assertTextEquals(cellValue)
   }
 }

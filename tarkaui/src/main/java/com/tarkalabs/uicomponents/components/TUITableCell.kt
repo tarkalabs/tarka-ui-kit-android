@@ -69,6 +69,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   ) {
     Text(
       modifier = Modifier
+        .testTag(tags.cellValueTag)
         .padding(top = 8.dp, bottom = 8.dp)
         .fillMaxWidth(),
       style = TUITheme.typography.body7,
@@ -83,12 +84,13 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 
 data class TUITableCellTags(
   val parentTag: String = "TUITableCell",
+  val cellValueTag: String = "CellValue"
 )
 
 @Preview(showBackground = true)
 @Composable
 fun PreviewTUITableCell() {
-  TUITheme() {
+  TUITheme {
     Box {
       Column(modifier = Modifier.padding(10.dp)) {
         Row(modifier = Modifier.height(Max)) {
@@ -180,7 +182,7 @@ fun PreviewTUITableCell() {
   }
 }
 
-@Preview() @Composable
+@Preview @Composable
 fun PreviewCombinedTUITableCell() {
   TUITheme(true) {
     Column(modifier = Modifier.padding(10.dp)) {
