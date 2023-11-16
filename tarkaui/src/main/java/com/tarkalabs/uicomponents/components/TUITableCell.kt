@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
- *Represents a table cell, this composable function creates the Table Cell with border. It is typically used to create the table.
+ * Represents a table cell, this composable function creates the Table Cell with border. It is typically used to create the table.
  *
  * Note: If the table cell is used in the Row, need to provide the height modifier add intrinsicSize.MAX and provide the child element modifier add fillMaxHeight()
  * @param modifier Modifier for the Table cell layout and appearance.
@@ -39,8 +39,8 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   cellValue: String,
   isHeader: Boolean,
   tags: TUITableCellTags = TUITableCellTags(),
-  isTopBorderVisible: Boolean,
-  isBottomBorderVisible: Boolean,
+  isTopBorderVisible: Boolean = false,
+  isBottomBorderVisible: Boolean = false,
 ) {
   val borderColor = TUITheme.colors.surfaceVariantHover
   Row(
@@ -69,7 +69,6 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   ) {
     Text(
       modifier = Modifier
-        .testTag(tags.cellValueTag)
         .padding(top = 8.dp, bottom = 8.dp)
         .fillMaxWidth(),
       style = TUITheme.typography.body7,
@@ -84,7 +83,6 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 
 data class TUITableCellTags(
   val parentTag: String = "TUITableCell",
-  val cellValueTag: String = "CellValue"
 )
 
 @Preview(showBackground = true)

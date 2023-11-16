@@ -28,6 +28,5 @@ class TUITableCellTest {
       }
     }
     composeTestRule.onNodeWithTag(testTags.parentTag).assertExists().assertIsDisplayed()
-    composeTestRule.onNodeWithTag(testTags.cellValueTag).assertExists().assertIsDisplayed().assertTextEquals(cellValue)
   }
 }
