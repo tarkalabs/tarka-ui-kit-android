@@ -13,10 +13,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.zIndex
 import com.tarkalabs.tarkaicons.ReOrderDotsVertical24
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
@@ -38,6 +40,7 @@ fun TUIDraggableCard(
   title: String,
   switchCheckedState: Boolean,
   onSwitchCheckChange: () -> Unit,
+  isDragging: Boolean = false,
   tags: TUIDraggableCardTags = TUIDraggableCardTags(),
 ) {
   Row(
@@ -45,7 +48,11 @@ fun TUIDraggableCard(
       .testTag(tags.parentTag)
       .fillMaxWidth()
       .background(color = TUITheme.colors.surface, shape = RoundedCornerShape(16.dp))
-      .padding(top = 8.dp, bottom = 8.dp, start = 8.dp, end = 16.dp),
+      .padding(top = 8.dp, bottom = 8.dp, start = 8.dp, end = 16.dp)
+      .zIndex(if (isDragging) 1f else 0f)
+      .graphicsLayer {
+        shadowElevation = if (isDragging) 8f else 0f
+      },
     verticalAlignment = Alignment.CenterVertically,
     horizontalArrangement = Arrangement.SpaceAround
   ) {
