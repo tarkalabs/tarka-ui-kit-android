@@ -51,7 +51,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
             color = borderColor,
             start = Offset(x = 0f, y = 0f),
             end = Offset(x = size.width, y = 0f),
-            strokeWidth = Stroke.HairlineWidth
+            strokeWidth = 3f
           )
         }
         if (isBottomBorderVisible) {
@@ -59,7 +59,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
             color = borderColor,
             start = Offset(x = 0f, y = size.height),
             end = Offset(x = size.width, y = size.height),
-            strokeWidth = Stroke.HairlineWidth
+            strokeWidth = 3f
           )
         }
       }

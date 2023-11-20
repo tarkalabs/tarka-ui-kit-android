@@ -1,9 +1,5 @@
 package com.tarkalabs.uicomponents.components
 
-import com.tarkalabs.uicomponents.components.base.ButtonSize.XL
-import com.tarkalabs.uicomponents.components.base.ButtonStyle.OUTLINE
-import com.tarkalabs.uicomponents.components.base.ButtonStyle.PRIMARY
-import com.tarkalabs.uicomponents.components.base.TUIButtonTags
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,7 +11,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.Add24
+import com.tarkalabs.tarkaicons.ChevronDown24
+import com.tarkalabs.tarkaicons.TarkaIcon
+import com.tarkalabs.tarkaicons.TarkaIcons.Regular
+import com.tarkalabs.uicomponents.components.base.ButtonSize.XL
+import com.tarkalabs.uicomponents.components.base.ButtonStyle.OUTLINE
+import com.tarkalabs.uicomponents.components.base.ButtonStyle.PRIMARY
 import com.tarkalabs.uicomponents.components.base.TUIButton
+import com.tarkalabs.uicomponents.components.base.TUIButtonTags
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -37,9 +41,10 @@ fun TUIMobileButtonBlock(
   outlineButtonLabel: String?,
   outlineButtonOnClick: (() -> Unit)?,
   primaryButtonWeight: Float? = null,
+  leadingIcon: TarkaIcon? = null,
+  trailingIcon: TarkaIcon? = null,
   tags: TUIMobileButtonBlockTags = TUIMobileButtonBlockTags()
 ) {
-
   Column(modifier.fillMaxWidth()) {
     Divider(color = TUITheme.colors.surfaceVariant, thickness = 1.dp)
     Row(
@@ -53,6 +58,8 @@ fun TUIMobileButtonBlock(
           label = outlineButtonLabel,
           onClick = { outlineButtonOnClick?.invoke() },
           buttonStyle = OUTLINE,
+          leadingIcon = leadingIcon,
+          trailingIcon = trailingIcon,
           modifier = if (primaryButtonWeight == null) Modifier.weight(1f) else Modifier.wrapContentWidth(),
           tags = TUIButtonTags(parentTag = tags.outlineButtonTag)
         )
@@ -64,6 +71,8 @@ fun TUIMobileButtonBlock(
           label = it,
           onClick = { primaryButtonOnClick?.invoke() },
           buttonStyle = PRIMARY,
+          leadingIcon = leadingIcon,
+          trailingIcon = trailingIcon,
           modifier = Modifier.weight(
             if (outlineButtonLabel == null) 1f else primaryButtonWeight ?: 1f
           ),
@@ -96,6 +105,19 @@ fun TUIMobileButtonPreview1() {
     primaryButtonOnClick = { /*TODO*/ },
     outlineButtonLabel = "Label",
     outlineButtonOnClick = { /*TODO*/ }
+  )
+}
+
+@Preview
+@Composable
+fun TUIMobileButtonPreview2() {
+  TUIMobileButtonBlock(
+    primaryButtonLabel = "Label",
+    primaryButtonOnClick = { /*TODO*/ },
+    outlineButtonLabel = "Label",
+    outlineButtonOnClick = { /*TODO*/ },
+    leadingIcon = Regular.Add24,
+    trailingIcon = Regular.ChevronDown24
   )
 }
 
