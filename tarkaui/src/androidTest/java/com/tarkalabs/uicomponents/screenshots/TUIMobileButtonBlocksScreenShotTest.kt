@@ -2,7 +2,6 @@ package com.tarkalabs.uicomponents.screenshots
 
 import com.tarkalabs.tarkaicons.ChevronDown24
 import com.tarkalabs.tarkaicons.ChevronUp24
-import com.tarkalabs.tarkaicons.TarkaIcon
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUIMobileButtonBlock
 import org.junit.Test
@@ -13,8 +12,6 @@ import org.junit.runners.Parameterized
 class TUIMobileButtonBlocksScreenShotTest(
   private val testName: String,
   private val darkTheme: Boolean,
-  private val leadIcon: TarkaIcon?,
-  private val trailIcon: TarkaIcon?,
 ) : ComposeScreenshotComparator() {
 
   companion object {
@@ -23,25 +20,41 @@ class TUIMobileButtonBlocksScreenShotTest(
     fun data(): Collection<Array<Any?>> {
       return mutableListOf<Array<Any?>>().apply {
         for (darkTheme in listOf(true, false)) {
-          for (leadIcon in listOf(TarkaIcons.Regular.ChevronUp24, null)) {
-            for (trailIcon in listOf(TarkaIcons.Regular.ChevronDown24, null)) {
-              val testName = "leadIC_Exist_${leadIcon !=null}_trailIC_Exist_${trailIcon != null}_darkTheme_${darkTheme}"
-              add(arrayOf(testName, darkTheme, leadIcon, trailIcon))
-            }
-          }
+          val testName = "_darkTheme_${darkTheme}"
+          add(arrayOf(testName, darkTheme))
         }
       }
     }
   }
 
-  @Test fun oneButtonOnly() = compareScreenshotFor(darkTheme, "_oneButtonOnly_$testName") {
+  @Test fun oneButtonOnlyWithoutIcon() = compareScreenshotFor(darkTheme, "_oneButtonOnlyWithoutIcon_$testName") {
     TUIMobileButtonBlock(
       primaryButtonLabel = "Label",
       primaryButtonOnClick = { /*TODO*/ },
       outlineButtonLabel = null,
       outlineButtonOnClick = null,
-      leadingIcon = leadIcon,
-      trailingIcon = trailIcon
+    )
+  }
+
+  @Test fun oneButtonOnlyWithPrimaryLeadingIcon() = compareScreenshotFor(darkTheme, "_oneButtonOnlyWithPrimaryLeadingIcon_$testName") {
+    TUIMobileButtonBlock(
+      primaryButtonLabel = "Label",
+      primaryButtonOnClick = { /*TODO*/ },
+      outlineButtonLabel = null,
+      outlineButtonOnClick = null,
+      primaryLeadingIcon = TarkaIcons.Regular.ChevronDown24,
+      primaryTrailingIcon = null
+    )
+  }
+
+  @Test fun oneButtonOnlyWithPrimaryTrailingIcon() = compareScreenshotFor(darkTheme, "_oneButtonOnlyWithPrimaryTrailingIcon_$testName") {
+    TUIMobileButtonBlock(
+      primaryButtonLabel = "Label",
+      primaryButtonOnClick = { /*TODO*/ },
+      outlineButtonLabel = null,
+      outlineButtonOnClick = null,
+      primaryLeadingIcon = null,
+      primaryTrailingIcon = TarkaIcons.Regular.ChevronUp24
     )
   }
 
@@ -51,20 +64,17 @@ class TUIMobileButtonBlocksScreenShotTest(
       primaryButtonOnClick = { /*TODO*/ },
       outlineButtonLabel = "Label",
       outlineButtonOnClick = { /*TODO*/ },
-      leadingIcon = leadIcon,
-      trailingIcon = trailIcon
     )
   }
 
-  @Test fun twoButtonsWithWeight() = compareScreenshotFor(darkTheme, "_twoButtonsWithWeight_$testName") {
-    TUIMobileButtonBlock(
-      primaryButtonLabel = "Label",
-      primaryButtonOnClick = { /*TODO*/ },
-      outlineButtonLabel = "Label",
-      outlineButtonOnClick = { /*TODO*/ },
-      primaryButtonWeight = 3f,
-      leadingIcon = leadIcon,
-      trailingIcon = trailIcon
-    )
-  }
+  @Test fun twoButtonsWithWeight() =
+    compareScreenshotFor(darkTheme, "_twoButtonsWithWeight_$testName") {
+      TUIMobileButtonBlock(
+        primaryButtonLabel = "Label",
+        primaryButtonOnClick = { /*TODO*/ },
+        outlineButtonLabel = "Label",
+        outlineButtonOnClick = { /*TODO*/ },
+        primaryButtonWeight = 3f,
+      )
+    }
 }

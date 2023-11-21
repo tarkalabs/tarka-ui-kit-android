@@ -44,8 +44,8 @@ fun TUIMobileButtonBlock(
   outlineButtonLabel: String?,
   outlineButtonOnClick: (() -> Unit)?,
   primaryButtonWeight: Float? = null,
-  leadingIcon: TarkaIcon? = null,
-  trailingIcon: TarkaIcon? = null,
+  primaryLeadingIcon: TarkaIcon? = null,
+  primaryTrailingIcon: TarkaIcon? = null,
   tags: TUIMobileButtonBlockTags = TUIMobileButtonBlockTags()
 ) {
   Column(modifier.fillMaxWidth()) {
@@ -61,8 +61,8 @@ fun TUIMobileButtonBlock(
           label = outlineButtonLabel,
           onClick = { outlineButtonOnClick?.invoke() },
           buttonStyle = OUTLINE,
-          leadingIcon = leadingIcon,
-          trailingIcon = trailingIcon,
+          leadingIcon = null,
+          trailingIcon = null,
           modifier = if (primaryButtonWeight == null) Modifier.weight(1f) else Modifier.wrapContentWidth(),
           tags = TUIButtonTags(parentTag = tags.outlineButtonTag)
         )
@@ -74,8 +74,8 @@ fun TUIMobileButtonBlock(
           label = it,
           onClick = { primaryButtonOnClick?.invoke() },
           buttonStyle = PRIMARY,
-          leadingIcon = leadingIcon,
-          trailingIcon = trailingIcon,
+          leadingIcon = primaryLeadingIcon,
+          trailingIcon = primaryTrailingIcon,
           modifier = Modifier.weight(
             if (outlineButtonLabel == null) 1f else primaryButtonWeight ?: 1f
           ),
@@ -119,7 +119,7 @@ fun TUIMobileButtonPreview2() {
     primaryButtonOnClick = { /*TODO*/ },
     outlineButtonLabel = null,
     outlineButtonOnClick = { /*TODO*/ },
-    trailingIcon = Regular.ChevronDown24
+    primaryTrailingIcon = Regular.ChevronDown24
   )
 }
 
@@ -131,7 +131,7 @@ fun TUIMobileButtonPreview3() {
     primaryButtonOnClick = { /*TODO*/ },
     outlineButtonLabel = null,
     outlineButtonOnClick = { /*TODO*/ },
-    leadingIcon = Regular.ChevronDown24
+    primaryLeadingIcon = Regular.ChevronDown24
   )
 }
 
