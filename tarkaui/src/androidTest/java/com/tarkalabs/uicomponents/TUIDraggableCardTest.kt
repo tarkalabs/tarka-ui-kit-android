@@ -18,8 +18,8 @@ class TUIDraggableCardTest {
     val initialSwitchState = false
     composable.setContent {
       TUIDraggableCard(
-        leadReOrderIconModifier = Modifier,
-        onSwitchCheckChange = {},
+        dragIconModifier = Modifier,
+        onSwitchCheckedChange = {},
         switchCheckedState = initialSwitchState,
         title = testTitle
       )

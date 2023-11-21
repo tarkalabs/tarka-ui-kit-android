@@ -31,9 +31,9 @@ class TUIDraggableCardScreenshotTest(
   @Test fun renderTUIDraggableCard() =
     compareScreenshotFor(darkTheme, "DraggableCard_$testName") {
       TUIDraggableCard(
-        leadReOrderIconModifier = Modifier,
+        dragIconModifier = Modifier,
         switchCheckedState = switchState,
         title = "Description 1",
-        onSwitchCheckChange = {})
+        onSwitchCheckedChange = {})
     }
 }

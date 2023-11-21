@@ -27,19 +27,19 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  *This Component is used to show the list of Cards those can be dragged vertically & re-arranged by the users.
  *
  * @param modifier - used to modify the parent (Row) attributes
- * @param leadReOrderIconModifier - a modifier with dragListener & used in trailingIcon which is used to consume drag events.
+ * @param dragIconModifier - a modifier with dragListener & used in trailingIcon which is used to consume drag events.
  * @param title - title text of the card which usually contains tab Name in TabConfigure Screen in Technician Settings.
  * @param switchCheckedState - initial checked status of the switch
- * @param onSwitchCheckChange - callback which invokes when switch state changes
+ * @param onSwitchCheckedChange - callback which invokes when switch state changes
  * @param tags - tags used to pick the compose items while testing
  */
 @Composable
 fun TUIDraggableCard(
   modifier: Modifier = Modifier,
-  leadReOrderIconModifier: Modifier,
+  dragIconModifier: Modifier,
   title: String,
   switchCheckedState: Boolean,
-  onSwitchCheckChange: () -> Unit,
+  onSwitchCheckedChange: () -> Unit,
   isDragging: Boolean = false,
   tags: TUIDraggableCardTags = TUIDraggableCardTags(),
 ) {
@@ -58,7 +58,7 @@ fun TUIDraggableCard(
   ) {
 
     Icon(
-      modifier = leadReOrderIconModifier
+      modifier = dragIconModifier
         .testTag(tags.leadReOrderIconTag)
         .size(48.dp)
         .padding(12.dp),
@@ -75,13 +75,13 @@ fun TUIDraggableCard(
       style = TUITheme.typography.heading6,
     )
 
-    TUIToggleSwitch(state = switchCheckedState, onToggleChange = onSwitchCheckChange)
+    TUIToggleSwitch(state = switchCheckedState, onToggleChange = onSwitchCheckedChange)
   }
 }
 
 data class TUIDraggableCardTags(
   val parentTag: String = "TUIDraggableCard",
-  val leadReOrderIconTag: String = "TUIDraggableCard_leadReOrderIconTag",
+  val leadReOrderIconTag: String = "TUIDraggableCard_DragIcon",
 )
 
 @Preview
@@ -95,8 +95,8 @@ fun TUIDraggableCardPreview() {
     TUIDraggableCard(
       title = "Description 1",
       switchCheckedState = true,
-      onSwitchCheckChange = {},
-      leadReOrderIconModifier = Modifier
+      onSwitchCheckedChange = {},
+      dragIconModifier = Modifier
     )
 
     VerticalSpacer(space = 5)
@@ -104,8 +104,8 @@ fun TUIDraggableCardPreview() {
     TUIDraggableCard(
       title = "Description 2",
       switchCheckedState = false,
-      onSwitchCheckChange = {},
-      leadReOrderIconModifier = Modifier
+      onSwitchCheckedChange = {},
+      dragIconModifier = Modifier
     )
 
     VerticalSpacer(space = 5)
