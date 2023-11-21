@@ -164,8 +164,8 @@ enum class ChipSize(val size: Dp) {
     is Filter -> {
       FilterChip(
         type = type,
+        label = label,
         onClick = onClick,
-        commonLabel = commonLabel,
         modifier = commonModifier
       )
     }
@@ -190,32 +190,42 @@ enum class ChipSize(val size: Dp) {
 }
 
 @Composable @OptIn(ExperimentalMaterial3Api::class) private fun FilterChip(
-  type: Filter, onClick: () -> Unit, commonLabel: @Composable () -> Unit, modifier: Modifier
+  type: Filter,
+  label : String,
+  onClick: () -> Unit,
+  modifier: Modifier
 ) {
   Box(modifier = Modifier.wrapContentWidth()) {
     FilterChip(selected = type.selected,
       shape = RoundedCornerShape(8.dp),
+      border =  FilterChipDefaults.filterChipBorder(borderColor = if(type.selected) TUITheme.colors.secondary else TUITheme.colors.utilityOutline),
       onClick = onClick,
-      label = commonLabel,
+      label = {
+        Text(
+          text = label,
+          style = TUITheme.typography.button7,
+          color = if (type.selected) TUITheme.colors.onSecondary else TUITheme.colors.onSurface,
+        )
+      },
       modifier = modifier,
       colors = FilterChipDefaults.filterChipColors(
-        containerColor = TUITheme.colors.surface,
-        selectedContainerColor = TUITheme.colors.secondary,
-        labelColor = TUITheme.colors.onSurface
+        containerColor = if (type.selected) TUITheme.colors.secondary else TUITheme.colors.surface,
+        selectedContainerColor = if (type.selected) TUITheme.colors.secondary else TUITheme.colors.surface,
       ),
       leadingIcon = if (type.showLeadingCheck) {
         {
           Icon(
             painter = painterResource(id = TarkaIcons.Filled.Checkmark20.iconRes),
             contentDescription = TarkaIcons.Filled.Checkmark20.contentDescription,
-            tint = TUITheme.colors.onSecondary
+            tint = if (type.selected) TUITheme.colors.onSecondary else TUITheme.colors.onSurface,
           )
         }
       } else null,
       trailingIcon = if (type.showTrailingDismiss) {
         {
           TUIIconButton(
-            icon = TarkaIcons.Filled.Dismiss20, iconButtonStyle = GHOST
+            icon = TarkaIcons.Filled.Dismiss20.copy(tintColor = if (type.selected) TUITheme.colors.onSecondary else TUITheme.colors.onSurface),
+            iconButtonStyle = GHOST,
           )
         }
       } else if (type.showTrailingCaret) {
@@ -223,7 +233,8 @@ enum class ChipSize(val size: Dp) {
           Icon(
             painter = painterResource(id = TarkaIcons.Filled.CaretDown20.iconRes),
             contentDescription = TarkaIcons.Filled.CaretDown20.contentDescription,
-            tint = TUITheme.colors.onSurface
+            tint = if (type.selected) TUITheme.colors.onSecondary else TUITheme.colors.onSurface
+
           )
         }
       } else null)

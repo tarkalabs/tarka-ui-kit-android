@@ -1,13 +1,12 @@
 package com.tarkalabs.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -18,11 +17,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaicons.ChevronRight20
 import com.tarkalabs.tarkaicons.TarkaIcons.Regular
-import com.tarkalabs.uicomponents.components.TUITextRow
+import com.tarkalabs.uicomponents.components.ChipType.Filter
+import com.tarkalabs.uicomponents.components.TUIChip
 import com.tarkalabs.uicomponents.components.TUITopBar
-import com.tarkalabs.uicomponents.components.TextRowStyle.Title
+import com.tarkalabs.uicomponents.components.VerticalSpacer
 import com.tarkalabs.uicomponents.theme.TUITheme
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 class UIComponentListActivity : ComponentActivity() {
 
   @OptIn(ExperimentalMaterial3Api::class) override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,43 +46,45 @@ class UIComponentListActivity : ComponentActivity() {
         }) { paddingValues ->
           Column(
             modifier = Modifier
-              .fillMaxSize()
-              .background(color = TUITheme.colors.surface)
               .padding(paddingValues)
-
+              .fillMaxWidth()
+              .fillMaxHeight()
+              .padding(horizontal = 8.dp)
           ) {
+            VerticalSpacer(space = 20)
+            TUIChip(
+              type = Filter(
+                showLeadingCheck = true,
+                selected = true,
+              ),
+              label = "spare_parts",
+              onClick = {
+              },
+            )
+            VerticalSpacer(space = 20)
+            TUIChip(
+              type = Filter(
+                showLeadingCheck = true,
+                selected = true,
+                showTrailingCaret = true
+              ),
+              label = "spare_parts",
+              onClick = {
+              },
+            )
+            VerticalSpacer(space = 20)
+            TUIChip(
+              type = Filter(
+                showLeadingCheck = true,
+                selected = false,
+                showTrailingCaret = true
+              ),
+              label = "Reset",
+              onClick = {
+              },
+            )
+            VerticalSpacer(space = 20)
 
-            TUITextRow(
-              title = "Title",
-              style = Title,
-              infoIcon = Regular.ChevronRight20,
-              onTextRowClick = {
-                Log.d("TAG", "TUITextRowPreview: ")
-              },
-              onInfoIconClick = null,
-              paddingValues = PaddingValues(horizontal = 20.dp, vertical = 0.dp)
-            )
-
-            TUITextRow(
-              title = "Title",
-              style = Title,
-              infoIcon = Regular.ChevronRight20,
-              onTextRowClick = {
-                Log.d("TAG", "TUITextRowPreview: ")
-              },
-              onInfoIconClick = null,
-              paddingValues = PaddingValues(horizontal = 20.dp, vertical = 0.dp)
-            )
-            TUITextRow(
-              title = "Title",
-              style = Title,
-              infoIcon = Regular.ChevronRight20,
-              onTextRowClick = {
-                Log.d("TAG", "TUITextRowPreview: ")
-              },
-              onInfoIconClick = null,
-              paddingValues = PaddingValues(horizontal = 20.dp, vertical = 0.dp)
-            )
           }
 
         }

@@ -145,7 +145,6 @@ sealed class TUIInputFieldContentType {
   val labelLambda: @Composable () -> Unit = {
     if (label != null) Text(
       text = label,
-      style = TUITheme.typography.body8,
       modifier = Modifier.testTag(testTags.labelTag)
     )
   }
@@ -219,7 +218,7 @@ fun iconFor(status: TUIInputFieldStatus): TarkaIcon? {
       disabledLabelColor = TUITheme.colors.inputDim
     }
     LookupInputField -> {
-      disabledLabelColor = TUITheme.colors.inputText
+      disabledLabelColor = TUITheme.colors.inputDim
       disabledTextColor = TUITheme.colors.inputText
     }
   }
