@@ -79,7 +79,10 @@ fun TUIMobileButtonBlock(
           modifier = Modifier.weight(
             if (outlineButtonLabel == null) 1f else primaryButtonWeight ?: 1f
           ),
-          tags = TUIButtonTags(parentTag = tags.primaryButtonTag)
+          tags = TUIButtonTags(
+            parentTag = tags.primaryButtonTag,
+            trailingIconTag = tags.primaryTrailingIconTag
+          )
         )
       }
     }
@@ -89,7 +92,10 @@ fun TUIMobileButtonBlock(
 data class TUIMobileButtonBlockTags(
   val primaryButtonTag: String = "TUIMobileButtonBlock_Primary",
   val outlineButtonTag: String = "TUIMobileButtonBlock_Outline",
-)
+  val primaryLeadingIconTag: String = "TUIMobileButtonBlock_PrimaryLeadingIcon",
+  val primaryTrailingIconTag: String = "TUIMobileButtonBlock_PrimaryTrailingIcon",
+
+  )
 
 @Preview @Composable fun TUIMobileButtonPreview() {
   TUIMobileButtonBlock(
