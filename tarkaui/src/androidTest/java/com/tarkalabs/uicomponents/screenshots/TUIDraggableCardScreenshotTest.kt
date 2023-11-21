@@ -1,8 +1,5 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
-
 package com.tarkalabs.uicomponents.screenshots
 
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.ui.Modifier
 import com.tarkalabs.uicomponents.components.TUIDraggableCard
 import org.junit.Test
@@ -34,7 +31,7 @@ class TUIDraggableCardScreenshotTest(
   @Test fun renderTUIDraggableCard() =
     compareScreenshotFor(darkTheme, "DraggableCard_$testName") {
       TUIDraggableCard(
-        trailIconModifier = Modifier,
+        leadReOrderIconModifier = Modifier,
         switchCheckedState = switchState,
         title = "Description 1",
         onSwitchCheckChange = {})
