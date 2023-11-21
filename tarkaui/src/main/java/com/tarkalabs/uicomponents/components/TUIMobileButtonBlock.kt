@@ -11,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaicons.Add24
 import com.tarkalabs.tarkaicons.ChevronDown24
 import com.tarkalabs.tarkaicons.TarkaIcon
 import com.tarkalabs.tarkaicons.TarkaIcons.Regular
@@ -31,8 +30,12 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * @param outlineButtonLabel The optional label text for the outline button. If null, the outline button will not be displayed.
  * @param outlineButtonOnClick The optional callback function to be invoked when the outline button is clicked.
  * @param primaryButtonWeight The optional weight of the primary button relative to the outline button.
- *                            If null, the primary button will occupy all available space.
+ * @param leadingIcon The drawable resource for the leading icon, if any. Default is null.
+ * @param trailingIcon The drawable resource for the trailing icon, if any. Default is null.
+ *
+ * If null, the primary button will occupy all available space.
  */
+
 @Composable
 fun TUIMobileButtonBlock(
   modifier: Modifier = Modifier,
@@ -114,9 +117,8 @@ fun TUIMobileButtonPreview2() {
   TUIMobileButtonBlock(
     primaryButtonLabel = "Label",
     primaryButtonOnClick = { /*TODO*/ },
-    outlineButtonLabel = "Label",
+    outlineButtonLabel = null,
     outlineButtonOnClick = { /*TODO*/ },
-    leadingIcon = Regular.Add24,
     trailingIcon = Regular.ChevronDown24
   )
 }
@@ -124,23 +126,34 @@ fun TUIMobileButtonPreview2() {
 @Preview
 @Composable
 fun TUIMobileButtonPreview3() {
- TUITheme {
-   Column {
-     TUIMobileButtonBlock(
-       primaryButtonLabel = "Label",
-       primaryButtonOnClick = { /*TODO*/ },
-       outlineButtonLabel = "Label",
-       outlineButtonOnClick = { /*TODO*/ },
-       primaryButtonWeight = 3f
-     )
-     TUIMobileButtonBlock(
-       primaryButtonLabel = null,
-       primaryButtonOnClick = null,
-       outlineButtonLabel = "Label",
-       outlineButtonOnClick = { /*TODO*/ },
-       primaryButtonWeight = null
-     )
+  TUIMobileButtonBlock(
+    primaryButtonLabel = "Label",
+    primaryButtonOnClick = { /*TODO*/ },
+    outlineButtonLabel = null,
+    outlineButtonOnClick = { /*TODO*/ },
+    leadingIcon = Regular.ChevronDown24
+  )
+}
 
-   }
- }
+@Preview
+@Composable
+fun TUIMobileButtonPreview4() {
+  TUITheme {
+    Column {
+      TUIMobileButtonBlock(
+        primaryButtonLabel = "Label",
+        primaryButtonOnClick = { /*TODO*/ },
+        outlineButtonLabel = "Label",
+        outlineButtonOnClick = { /*TODO*/ },
+        primaryButtonWeight = 3f
+      )
+      TUIMobileButtonBlock(
+        primaryButtonLabel = null,
+        primaryButtonOnClick = null,
+        outlineButtonLabel = "Label",
+        outlineButtonOnClick = { /*TODO*/ },
+        primaryButtonWeight = null
+      )
+    }
+  }
 }

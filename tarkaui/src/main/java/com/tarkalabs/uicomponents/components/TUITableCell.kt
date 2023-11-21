@@ -15,7 +15,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -51,7 +50,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
             color = borderColor,
             start = Offset(x = 0f, y = 0f),
             end = Offset(x = size.width, y = 0f),
-            strokeWidth = 3f
+            strokeWidth = 1.dp.toPx()
           )
         }
         if (isBottomBorderVisible) {
@@ -59,7 +58,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
             color = borderColor,
             start = Offset(x = 0f, y = size.height),
             end = Offset(x = size.width, y = size.height),
-            strokeWidth = 3f
+            strokeWidth = 1.dp.toPx()
           )
         }
       }
