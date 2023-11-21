@@ -39,6 +39,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  */
 
 @Composable fun TUIToggleSwitch(
+  modifier: Modifier = Modifier,
   state: Boolean, enabled: Boolean = true,
   tags: TUIToggleSwitchTags = TUIToggleSwitchTags(),
   onToggleChange: () -> Unit
@@ -46,7 +47,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   var switchCheckedState by remember { mutableStateOf(state) }
   TUITheme {
     Switch(
-      modifier = Modifier.testTag(tags.parentTag),
+      modifier = modifier.testTag(tags.parentTag),
       checked = switchCheckedState, enabled = enabled, onCheckedChange = {
         switchCheckedState = it
         onToggleChange()
