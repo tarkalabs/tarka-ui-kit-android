@@ -27,7 +27,9 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.uicomponents.R
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -64,19 +66,20 @@ fun TUILoadingSpinnerAnimation(
   modifier: Modifier = Modifier,
   tags: TUILoadingSpinnerAnimationTags = TUILoadingSpinnerAnimationTags(),
   progressImageDetail: ProgressImageDetail? = null,
+  spinnerHeight: Dp,
 ) {
   Box(modifier = modifier.testTag(tags.parentTag), contentAlignment = Alignment.Center) {
     CustomProgressIndicator(
       modifier = Modifier
-        .size(76.dp)
+        .size(spinnerHeight)
         .testTag(tags.progressBarTag)
     )
     progressImageDetail?.let {
       Image(
         modifier = Modifier
           .testTag(tags.loaderImageTag)
-          .width(60.dp)
-          .height(11.dp),
+          .width(progressImageDetail.progressImageWidth)
+          .height(progressImageDetail.progressImageHeight),
         painter = painterResource(id = progressImageDetail.imageResId),
         contentDescription = progressImageDetail.contentDescription
       )
@@ -110,7 +113,7 @@ fun TUILoadingSpinnerAnimation(
     val centerX = size.width / 2
     val centerY = size.height / 2
     val radius = canvasSize / 2
-    val strokeWidth = 4f
+    val strokeWidth = 4.dp.toPx()
 
     val circleRadius = radius - strokeWidth / 2
     drawCircle(
@@ -143,9 +146,11 @@ data class TUILoadingSpinnerAnimationTags(
 data class ProgressImageDetail(
   @DrawableRes val imageResId: Int,
   val contentDescription: String,
+  val progressImageHeight: Dp,
+  val progressImageWidth: Dp
 )
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun LoaderPreview() {
   Box(
@@ -154,7 +159,15 @@ fun LoaderPreview() {
       .background(Color.Black.copy(alpha = 0.4f)),
     contentAlignment = Alignment.Center
   ) {
-    TUILoadingSpinnerAnimation()
+    TUILoadingSpinnerAnimation(
+      spinnerHeight = 240.dp,
+      progressImageDetail = ProgressImageDetail(
+        imageResId = R.drawable.keyboard_arrow_right,
+        contentDescription = "",
+        progressImageHeight = 116.dp,
+        progressImageWidth = 116.dp
+      )
+    )
   }
 }
 

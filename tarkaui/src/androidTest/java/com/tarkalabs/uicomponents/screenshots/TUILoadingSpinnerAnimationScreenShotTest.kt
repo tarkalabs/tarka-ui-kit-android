@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.components.TUILoadingSpinnerAnimation
 import org.junit.Test
 
@@ -14,14 +15,14 @@ class TUILoadingSpinnerAnimationScreenShotTest : ComposeScreenshotComparator() {
   @Test
   fun loaderScreenShotTestInLightTheme() {
     compareScreenshotFor(darkTheme = false, imageName = "darkTheme_false") {
-      TUILoadingSpinnerAnimation()
+      TUILoadingSpinnerAnimation(spinnerHeight = 100.dp)
     }
   }
 
   @Test
   fun loaderScreenShotTestInDarkTheme() {
     compareScreenshotFor(darkTheme = true, imageName = "darkTheme_true") {
-      TUILoadingSpinnerAnimation()
+      TUILoadingSpinnerAnimation(spinnerHeight = 100.dp)
     }
   }
 
@@ -34,7 +35,7 @@ class TUILoadingSpinnerAnimationScreenShotTest : ComposeScreenshotComparator() {
           .background(Color.Black.copy(alpha = 0.4f)),
         contentAlignment = Alignment.Center
       ) {
-        TUILoadingSpinnerAnimation()
+        TUILoadingSpinnerAnimation(spinnerHeight = 100.dp)
       }
     }
   }
@@ -48,7 +49,7 @@ class TUILoadingSpinnerAnimationScreenShotTest : ComposeScreenshotComparator() {
           .background(Color.Black.copy(alpha = 0.4f)),
         contentAlignment = Alignment.Center
       ) {
-        TUILoadingSpinnerAnimation()
+        TUILoadingSpinnerAnimation(spinnerHeight = 100.dp)
       }
     }
   }
