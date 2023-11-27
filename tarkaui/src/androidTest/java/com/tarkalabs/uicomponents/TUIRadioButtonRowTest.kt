@@ -6,10 +6,10 @@ import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
-import com.tarkalabs.uicomponents.components.TUIRadioButtonRow
-import com.tarkalabs.uicomponents.components.TUIRadioButtonRowTags
-import com.tarkalabs.uicomponents.components.TUIRadioButtonTags
-import com.tarkalabs.uicomponents.components.base.ToggleRowStyle
+import com.tarkalabs.uicomponents.components.radiobutton.TUIRadioButtonRow
+import com.tarkalabs.uicomponents.components.radiobutton.TUIRadioButtonRowTags
+import com.tarkalabs.uicomponents.components.radiobutton.TUIRadioButtonTags
+import com.tarkalabs.uicomponents.components.base.ToggleRowStyle.Title
 import org.junit.Rule
 import org.junit.Test
 
@@ -30,7 +30,7 @@ class TUIRadioButtonRowTest {
       TUIRadioButtonRow(
         selected = selectedState,
         title = title,
-        style = ToggleRowStyle.Title,
+        style = Title,
         onOptionSelected = onOptionSelected,
         tags = radioButtonRowTag
       )
@@ -56,7 +56,7 @@ class TUIRadioButtonRowTest {
       TUIRadioButtonRow(
         selected = selectedState,
         title = title,
-        style = ToggleRowStyle.Title,
+        style = Title,
         onOptionSelected = onOptionSelected,
         tags = radioButtonRowTag
       )

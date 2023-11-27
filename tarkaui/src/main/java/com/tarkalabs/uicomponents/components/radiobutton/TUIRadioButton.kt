@@ -1,4 +1,4 @@
-package com.tarkalabs.uicomponents.components
+package com.tarkalabs.uicomponents.components.radiobutton
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -21,6 +21,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.uicomponents.components.VerticalSpacer
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**

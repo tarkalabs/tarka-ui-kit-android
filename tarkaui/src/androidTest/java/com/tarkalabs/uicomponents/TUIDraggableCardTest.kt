@@ -5,7 +5,7 @@ import androidx.compose.ui.test.assertIsToggleable
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
-import com.tarkalabs.uicomponents.components.TUIDraggableCard
+import com.tarkalabs.uicomponents.components.card.TUIDraggableCard
 import com.tarkalabs.uicomponents.components.TUIToggleSwitchTags
 import org.junit.Rule
 import org.junit.Test

@@ -1,4 +1,4 @@
-package com.tarkalabs.uicomponents.components
+package com.tarkalabs.uicomponents.components.tab
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -23,7 +23,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaicons.Circle20
 import com.tarkalabs.tarkaicons.TarkaIcon
-import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaicons.TarkaIcons.Regular
+import com.tarkalabs.uicomponents.components.HorizontalSpacer
+import com.tarkalabs.uicomponents.components.VerticalSpacer
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -119,13 +121,13 @@ fun TUITabPreview() {
       TUITab(
         modifier = Modifier.width(105.dp),
         title = "Tab",
-        leadingIcon = TarkaIcons.Regular.Circle20
+        leadingIcon = Regular.Circle20
       ) {}
       HorizontalSpacer(space = 5)
       TUITab(
         modifier = Modifier.width(105.dp),
         title = "Tab",
-        leadingIcon = TarkaIcons.Regular.Circle20,
+        leadingIcon = Regular.Circle20,
         isSelected = true
       ) {}
     }

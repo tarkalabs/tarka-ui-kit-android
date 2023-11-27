@@ -4,9 +4,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaicons.Circle12
-import com.tarkalabs.tarkaicons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUITabBar
-import com.tarkalabs.uicomponents.components.TabItem
+import com.tarkalabs.tarkaicons.TarkaIcons.Regular
+import com.tarkalabs.uicomponents.components.tab.TUITabBar
+import com.tarkalabs.uicomponents.components.tab.TabItem
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
@@ -41,14 +41,14 @@ class TUITabBarScreenshotTest(
     )
 
     val tabItemsWithIcons = listOf(
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = Regular.Circle12),
     )
 
     val tabItemsWithContent = listOf(
@@ -63,14 +63,14 @@ class TUITabBarScreenshotTest(
     )
 
     val tabItemsWithIconAndContent = listOf(
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
-      TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = Regular.Circle12),
+      TabItem("Tab", leadingTabIcon = Regular.Circle12),
     )
   }
 

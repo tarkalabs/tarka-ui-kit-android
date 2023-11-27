@@ -3,7 +3,7 @@ package com.tarkalabs.uicomponents.screenshots
 import com.tarkalabs.tarkaicons.Circle20
 import com.tarkalabs.tarkaicons.TarkaIcon
 import com.tarkalabs.tarkaicons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUITab
+import com.tarkalabs.uicomponents.components.tab.TUITab
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
