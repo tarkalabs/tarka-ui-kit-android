@@ -15,9 +15,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TextFieldDefaults.DecorationBox
 import androidx.compose.material3.TextFieldDefaults.indicatorLine
@@ -34,6 +36,7 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.ImeAction
@@ -53,7 +56,6 @@ import com.tarkalabs.uicomponents.extentions.clickableWithoutRipple
 import com.tarkalabs.uicomponents.theme.TUITheme
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-
 
 /**
  * A composable function that represents an email field style.
@@ -79,24 +81,26 @@ import kotlinx.coroutines.launch
   onItemRemoved: (Int) -> Unit,
   onItemAdd: (String) -> Unit,
   onInvalidEmail: () -> Unit,
+  showTextField : Boolean = false,
+  toggleTextFieldVisibility : () -> Unit = {}
 ) {
 
   var textData by rememberSaveable {
     mutableStateOf("")
   }
-  var showTextField by rememberSaveable {
-    mutableStateOf(false)
-  }
 
   val focusRequester = remember { FocusRequester() }
   val scope = rememberCoroutineScope()
+  val interactionSource = remember { MutableInteractionSource() }
+
+
   Column(verticalArrangement = Arrangement.Top,
     horizontalAlignment = Alignment.CenterHorizontally,
     modifier = modifier
       .testTag(tags.parentTag)
       .clickableWithoutRipple {
         scope.launch {
-          showTextField = !showTextField
+          toggleTextFieldVisibility.invoke()
           delay(100)
           focusRequester.requestFocus()
         }
@@ -148,7 +152,6 @@ import kotlinx.coroutines.launch
           focusedTextColor = TUITheme.colors.inputText,
           unfocusedTextColor =  TUITheme.colors.inputText,
         )
-        val interactionSource = remember { MutableInteractionSource() }
 
         AnimatedVisibility(visible = showTextField) {
           BasicTextField(
@@ -211,7 +214,7 @@ import kotlinx.coroutines.launch
     }
 
     Divider(
-      color = if (showTextField) TUITheme.colors.primary else TUITheme.colors.surfaceVariant,
+      color = if (showTextField  ) TUITheme.colors.primary else TUITheme.colors.surfaceVariant,
       thickness = 2.dp,
       modifier = Modifier.padding(top = 10.dp)
     )
@@ -230,28 +233,95 @@ data class TUIEmailFieldTags(
 @Preview @Composable fun PreviewTUIEmailField() {
   TUITheme {
     val emailList = remember {
-      mutableStateListOf(
-        "mike32@soft.com",
-        "mike.smith@corp.co",
-        "mike32@soft.com",
-      )
+      mutableStateListOf<String>()
     }
-    Box(modifier = Modifier.fillMaxWidth()) {
-      TUIEmailField(title = "To",
-        emailAddressList = emailList,
-        trailingIcon = TarkaIcons.Regular.AddCircle24,
-        onItemRemoved = { position ->
-          emailList.removeAt(position)
-        },
-        trailingIconClick = {
+    var showEditText by remember { mutableStateOf(false) }
+    var showEditText2 by remember { mutableStateOf(false) }
+    Column {
+      Box(modifier = Modifier.fillMaxWidth()) {
+        TUIEmailField(
+          title = "To",
+          emailAddressList = emailList,
+          trailingIcon = TarkaIcons.Regular.AddCircle24,
+          onItemRemoved = { position ->
+            emailList.removeAt(position)
+          },
+          trailingIconClick = {
 
-        },
-        onItemAdd = {
-          emailList.add(it)
-        },
-        onInvalidEmail = {
+          },
+          onItemAdd = {
+            emailList.add(it)
+          },
+          onInvalidEmail = {
 
-        })
+          },
+          showTextField = showEditText,
+          toggleTextFieldVisibility = {
+            showEditText = !showEditText
+            showEditText2  = false
+          }
+        )
+
+      }
+
+      Box(modifier = Modifier.fillMaxWidth()) {
+        TUIEmailField(
+          title = "Cc",
+          emailAddressList = emailList,
+          trailingIcon = TarkaIcons.Regular.AddCircle24,
+          onItemRemoved = { position ->
+            emailList.removeAt(position)
+          },
+          trailingIconClick = {
+
+          },
+          onItemAdd = {
+            emailList.add(it)
+          },
+          onInvalidEmail = {
+
+          },
+          showTextField = showEditText2,
+          toggleTextFieldVisibility = {
+            showEditText = false
+            showEditText2  = !showEditText2
+          }
+        )
+
+      }
+      TextField(
+        value = "",
+        onValueChange = {
+        },
+        modifier = Modifier
+          .fillMaxWidth()
+          .padding(20.dp)
+          .onFocusChanged {
+
+            if (it.hasFocus) {
+              showEditText = false
+              showEditText2 = false
+            }
+          },
+        label = { Text(text = "PlaceHolder")}
+      )
+
+      Button(
+        onClick = {
+          showEditText = true
+          showEditText2 = false
+        },
+      ) {
+        Text(text = "Field One")
+      }
+
+      Button(onClick = {
+        showEditText = false
+        showEditText2 = true
+      }) {
+
+        Text(text = "Field Two")
+      }
 
     }
   }
