@@ -1,4 +1,4 @@
-package com.tarkalabs.uicomponents.components
+package com.tarkalabs.uicomponents.components.card
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -26,8 +26,10 @@ import com.tarkalabs.tarkaicons.ChevronRight24
 import com.tarkalabs.tarkaicons.Person24
 import com.tarkalabs.tarkaicons.TarkaIcon
 import com.tarkalabs.tarkaicons.TarkaIcons
-import com.tarkalabs.uicomponents.components.SecondaryDetailsStyle.ERROR
-import com.tarkalabs.uicomponents.components.SecondaryDetailsStyle.NORMAL
+import com.tarkalabs.tarkaicons.TarkaIcons.Regular
+import com.tarkalabs.uicomponents.components.VerticalSpacer
+import com.tarkalabs.uicomponents.components.card.SecondaryDetailsStyle.ERROR
+import com.tarkalabs.uicomponents.components.card.SecondaryDetailsStyle.NORMAL
 import com.tarkalabs.uicomponents.components.base.TUIBadge
 import com.tarkalabs.uicomponents.theme.TUITheme
 
@@ -212,7 +214,7 @@ fun TUISelectionCardPreview() {
     ) {}
     VerticalSpacer(space = 14)
     TUISelectionCard(
-      leadingIcon = TarkaIcons.Regular.Person24,
+      leadingIcon = Regular.Person24,
       label = "Label",
       primaryDescription = "Description",
       isSelected = true
@@ -226,7 +228,7 @@ fun TUISelectionCardPreview() {
     VerticalSpacer(space = 14)
 
     TUISelectionCard(
-      leadingIcon = TarkaIcons.Regular.Person24,
+      leadingIcon = Regular.Person24,
       label = "Label",
       primaryDescription = "Description",
       secondaryDescription = "Description2",
@@ -238,7 +240,7 @@ fun TUISelectionCardPreview() {
     ) {}
     VerticalSpacer(space = 14)
     TUISelectionCard(
-      leadingIcon = TarkaIcons.Regular.Person24,
+      leadingIcon = Regular.Person24,
       label = "Label",
       primaryDescription = "Description",
       secondaryDescription = "Description2",
@@ -251,7 +253,7 @@ fun TUISelectionCardPreview() {
     VerticalSpacer(space = 14)
 
     TUISelectionCard(
-      leadingIcon = TarkaIcons.Regular.Person24,
+      leadingIcon = Regular.Person24,
       label = "Label",
       primaryDescription = "Description",
       secondaryDescription = "Description2",
@@ -263,7 +265,7 @@ fun TUISelectionCardPreview() {
     ) {}
     VerticalSpacer(space = 14)
     TUISelectionCard(
-      leadingIcon = TarkaIcons.Regular.Person24,
+      leadingIcon = Regular.Person24,
       label = "Label",
       primaryDescription = "Description",
       secondaryDescription = "Description2",

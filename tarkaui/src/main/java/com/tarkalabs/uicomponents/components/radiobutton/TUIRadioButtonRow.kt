@@ -1,4 +1,4 @@
-package com.tarkalabs.uicomponents.components
+package com.tarkalabs.uicomponents.components.radiobutton
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -16,8 +16,12 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.uicomponents.components.HorizontalSpacer
+import com.tarkalabs.uicomponents.components.TUITextRowTags
 import com.tarkalabs.uicomponents.components.base.TUIToggleRow
 import com.tarkalabs.uicomponents.components.base.ToggleRowStyle
+import com.tarkalabs.uicomponents.components.base.ToggleRowStyle.Title
+import com.tarkalabs.uicomponents.components.base.ToggleRowStyle.TitleWithDescription
 
 /**
  * A composable function that displays a RadioButton and a text row in a horizontal layout.
@@ -99,28 +103,28 @@ data class TUIRadioButtonRowTags(
         selected = true,
         enabled = true,
         title = "Title",
-        style = ToggleRowStyle.TitleWithDescription("Description")
+        style = TitleWithDescription("Description")
       ) {
       }
       TUIRadioButtonRow(
         selected = false,
         enabled = true,
         title = "Title",
-        style = ToggleRowStyle.TitleWithDescription("Description")
+        style = TitleWithDescription("Description")
       ) {
       }
       TUIRadioButtonRow(
         selected = true,
         enabled = true,
         title = "Title",
-        style = ToggleRowStyle.Title
+        style = Title
       ) {
       }
       TUIRadioButtonRow(
         selected = false,
         enabled = true,
         title = "Title",
-        style = ToggleRowStyle.Title
+        style = Title
       ) {
       }
     }

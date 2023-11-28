@@ -1,4 +1,4 @@
-package com.tarkalabs.uicomponents.components
+package com.tarkalabs.uicomponents.components.checkbox
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -21,6 +21,8 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaicons.Checkmark16
 import com.tarkalabs.tarkaicons.TarkaIcon
 import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaicons.TarkaIcons.Filled
+import com.tarkalabs.uicomponents.components.VerticalSpacer
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -97,16 +99,16 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         .fillMaxWidth()
         .padding(20.dp)
     ) {
-      TUICheckBox(checked = true, enabled = true, icon = TarkaIcons.Filled.Checkmark16) {
+      TUICheckBox(checked = true, enabled = true, icon = Filled.Checkmark16) {
       }
       VerticalSpacer(space = 20)
-      TUICheckBox(checked = true, enabled = false, icon = TarkaIcons.Filled.Checkmark16) {
+      TUICheckBox(checked = true, enabled = false, icon = Filled.Checkmark16) {
       }
       VerticalSpacer(space = 20)
-      TUICheckBox(checked = false, enabled = true, icon = TarkaIcons.Filled.Checkmark16) {
+      TUICheckBox(checked = false, enabled = true, icon = Filled.Checkmark16) {
       }
       VerticalSpacer(space = 20)
-      TUICheckBox(checked = false, enabled = false, icon = TarkaIcons.Filled.Checkmark16) {
+      TUICheckBox(checked = false, enabled = false, icon = Filled.Checkmark16) {
       }
     }
 
