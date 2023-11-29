@@ -6,7 +6,7 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaicons.Person24
 import com.tarkalabs.tarkaicons.TarkaIcon
 import com.tarkalabs.tarkaicons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUISelectionCard
+import com.tarkalabs.uicomponents.components.card.TUISelectionCard
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized

@@ -1,4 +1,4 @@
-package com.tarkalabs.uicomponents.components
+package com.tarkalabs.uicomponents.components.tab
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
@@ -22,7 +22,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaicons.Circle12
 import com.tarkalabs.tarkaicons.TarkaIcon
-import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaicons.TarkaIcons.Regular
+import com.tarkalabs.uicomponents.components.VerticalSpacer
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -99,14 +100,14 @@ fun PreviewTUITabRow() {
     TabItem("Tab"),
   )
   val tabItemsWithIcons = listOf(
-    TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
-    TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
-    TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
-    TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
-    TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
-    TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
-    TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
-    TabItem("Tab", leadingTabIcon = TarkaIcons.Regular.Circle12),
+    TabItem("Tab", leadingTabIcon = Regular.Circle12),
+    TabItem("Tab", leadingTabIcon = Regular.Circle12),
+    TabItem("Tab", leadingTabIcon = Regular.Circle12),
+    TabItem("Tab", leadingTabIcon = Regular.Circle12),
+    TabItem("Tab", leadingTabIcon = Regular.Circle12),
+    TabItem("Tab", leadingTabIcon = Regular.Circle12),
+    TabItem("Tab", leadingTabIcon = Regular.Circle12),
+    TabItem("Tab", leadingTabIcon = Regular.Circle12),
   )
 
   TUITheme {

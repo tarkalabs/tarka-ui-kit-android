@@ -7,8 +7,8 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import com.tarkalabs.tarkaicons.ChevronRight24
 import com.tarkalabs.tarkaicons.Person24
-import com.tarkalabs.uicomponents.components.TUISelectionCard
-import com.tarkalabs.uicomponents.components.TUISelectionCardTags
+import com.tarkalabs.uicomponents.components.card.TUISelectionCard
+import com.tarkalabs.uicomponents.components.card.TUISelectionCardTags
 import com.tarkalabs.tarkaicons.TarkaIcons
 import org.junit.Rule
 import org.junit.Test

@@ -1,4 +1,4 @@
-package com.tarkalabs.uicomponents.components
+package com.tarkalabs.uicomponents.components.card
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -21,6 +21,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import com.tarkalabs.tarkaicons.ReOrderDotsVertical24
 import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.uicomponents.components.TUIToggleSwitch
+import com.tarkalabs.uicomponents.components.VerticalSpacer
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**

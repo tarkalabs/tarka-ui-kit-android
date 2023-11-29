@@ -1,10 +1,11 @@
 package com.tarkalabs.uicomponents.screenshots
 
-import com.tarkalabs.uicomponents.components.TUICheckBoxRow
-import com.tarkalabs.uicomponents.components.TUIRadioButtonRow
+import com.tarkalabs.uicomponents.components.checkbox.TUICheckBoxRow
+import com.tarkalabs.uicomponents.components.radiobutton.TUIRadioButtonRow
 import com.tarkalabs.uicomponents.components.base.TUIToggleRow
 import com.tarkalabs.uicomponents.components.base.ToggleRowStyle
 import com.tarkalabs.uicomponents.components.base.ToggleRowStyle.Title
+import com.tarkalabs.uicomponents.components.base.ToggleRowStyle.TitleWithDescription
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
@@ -48,7 +49,7 @@ open class TUIToggleRowScreenShotTest(
     compareScreenshotFor(darkTheme, "_testCheckboxRowStyleTitleDescription_$testName") {
       TUICheckBoxRow(
         title = "Title",
-        style = ToggleRowStyle.TitleWithDescription("Description"),
+        style = TitleWithDescription("Description"),
         checked = isChecked,
         onCheckedChange = {})
     }
@@ -57,7 +58,7 @@ open class TUIToggleRowScreenShotTest(
     compareScreenshotFor(darkTheme, "_testRadioRowStyleTitleDescription_$testName") {
       TUIRadioButtonRow(
         title = "Title",
-        style = ToggleRowStyle.TitleWithDescription("Description"),
+        style = TitleWithDescription("Description"),
         selected = isChecked,
         onOptionSelected = {})
     }

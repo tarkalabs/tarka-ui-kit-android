@@ -11,10 +11,9 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import com.tarkalabs.tarkaicons.Tabs24
 import com.tarkalabs.tarkaicons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUITabBar
-import com.tarkalabs.uicomponents.components.TUITabBarTags
-import com.tarkalabs.uicomponents.components.TUITabTags
-import com.tarkalabs.uicomponents.components.TabItem
+import com.tarkalabs.uicomponents.components.tab.TUITabBar
+import com.tarkalabs.uicomponents.components.tab.TUITabBarTags
+import com.tarkalabs.uicomponents.components.tab.TabItem
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock

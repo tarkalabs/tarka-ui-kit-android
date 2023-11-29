@@ -7,11 +7,11 @@ import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
-import com.tarkalabs.uicomponents.components.TUICheckBoxRow
-import com.tarkalabs.uicomponents.components.TUICheckBoxRowTags
-import com.tarkalabs.uicomponents.components.TUICheckBoxTags
+import com.tarkalabs.uicomponents.components.checkbox.TUICheckBoxRow
+import com.tarkalabs.uicomponents.components.checkbox.TUICheckBoxRowTags
+import com.tarkalabs.uicomponents.components.checkbox.TUICheckBoxTags
 import com.tarkalabs.uicomponents.components.TUITextRowTags
-import com.tarkalabs.uicomponents.components.base.ToggleRowStyle
+import com.tarkalabs.uicomponents.components.base.ToggleRowStyle.Title
 import org.junit.Rule
 import org.junit.Test
 
@@ -34,7 +34,7 @@ class TUICheckBoxRowTest {
       TUICheckBoxRow(
         checked = checkedState,
         title = title,
-        style = ToggleRowStyle.Title,
+        style = Title,
         onCheckedChange = onCheckedChange,
         tags = tuiCheckBoxRowTags
       )
@@ -60,7 +60,7 @@ class TUICheckBoxRowTest {
       TUICheckBoxRow(
         checked = checkedState,
         title = title,
-        style = ToggleRowStyle.Title,
+        style = Title,
         onCheckedChange = onCheckedChange,
         tags = tuiCheckBoxRowTags
       )
