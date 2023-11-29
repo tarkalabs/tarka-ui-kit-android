@@ -1,4 +1,4 @@
-package com.tarkalabs.uicomponents.components
+package com.tarkalabs.uicomponents.components.checkbox
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -18,8 +18,13 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaicons.Checkmark16
 import com.tarkalabs.tarkaicons.TarkaIcon
 import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaicons.TarkaIcons.Filled
+import com.tarkalabs.uicomponents.components.HorizontalSpacer
+import com.tarkalabs.uicomponents.components.TUITextRowTags
 import com.tarkalabs.uicomponents.components.base.TUIToggleRow
 import com.tarkalabs.uicomponents.components.base.ToggleRowStyle
+import com.tarkalabs.uicomponents.components.base.ToggleRowStyle.Title
+import com.tarkalabs.uicomponents.components.base.ToggleRowStyle.TitleWithDescription
 
 /**
  * A composable function that displays a checkbox and a text row in a horizontal layout.
@@ -101,35 +106,35 @@ data class TUICheckBoxRowTags(
       TUICheckBoxRow(
         checked = true,
         enabled = true,
-        icon = TarkaIcons.Filled.Checkmark16,
+        icon = Filled.Checkmark16,
         title = "Title",
-        style = ToggleRowStyle.TitleWithDescription("Description")
+        style = TitleWithDescription("Description")
       ) {
       }
       TUICheckBoxRow(
         checked = false,
         enabled = true,
-        icon = TarkaIcons.Filled.Checkmark16,
+        icon = Filled.Checkmark16,
         title = "Title",
-        style = ToggleRowStyle.TitleWithDescription("Description")
+        style = TitleWithDescription("Description")
       ) {
       }
 
       TUICheckBoxRow(
         checked = true,
         enabled = false,
-        icon = TarkaIcons.Filled.Checkmark16,
+        icon = Filled.Checkmark16,
         title = "Title",
-        style = ToggleRowStyle.TitleWithDescription("Description")
+        style = TitleWithDescription("Description")
       ) {
       }
 
       TUICheckBoxRow(
         checked = true,
         enabled = false,
-        icon = TarkaIcons.Filled.Checkmark16,
+        icon = Filled.Checkmark16,
         title = "Title",
-        style = ToggleRowStyle.Title
+        style = Title
       ) {
       }
 

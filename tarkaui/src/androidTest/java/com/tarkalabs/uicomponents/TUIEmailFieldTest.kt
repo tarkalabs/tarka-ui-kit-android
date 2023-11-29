@@ -10,9 +10,9 @@ import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performImeAction
 import androidx.compose.ui.test.performTextInput
 import com.tarkalabs.tarkaicons.AddCircle24
-import com.tarkalabs.tarkaicons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUIEmailField
-import com.tarkalabs.uicomponents.components.TUIEmailFieldTags
+import com.tarkalabs.tarkaicons.TarkaIcons.Regular
+import com.tarkalabs.uicomponents.components.email.TUIEmailField
+import com.tarkalabs.uicomponents.components.email.TUIEmailFieldTags
 import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
 import org.junit.Rule
 import org.junit.Test
@@ -41,7 +41,7 @@ class TUIEmailFieldTest {
       TUIEmailField(
         title = "To",
         emailAddressList = emailList,
-        trailingIcon = TarkaIcons.Regular.AddCircle24,
+        trailingIcon = Regular.AddCircle24,
         onItemRemoved = { position ->
 
         },
@@ -82,7 +82,7 @@ class TUIEmailFieldTest {
       TUIEmailField(
         title = "To",
         emailAddressList = emailList,
-        trailingIcon = TarkaIcons.Regular.AddCircle24,
+        trailingIcon = Regular.AddCircle24,
         onItemRemoved = { position ->
 
         },
