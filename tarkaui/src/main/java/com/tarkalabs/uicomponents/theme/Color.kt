@@ -126,7 +126,7 @@ val defaultDarkColors = TUIColors(
   utilityDisabledContent = Color(0XFFFCFCFD).copy(alpha = 0.38f),
   utilityDisabledBackground = Color(0XFFFCFCFD).copy(alpha = 0.12f),
   utilityLink = Color(0xFF80B0FF),
-  inputBackground = Color(0XFF0F1115).copy(alpha = 0.60f),
+  inputBackground = Color(0XFF0F1115).copy(alpha = 0.85f),
   inputText = Color(0XFFFCFCFD),
   inputDim = Color(0XFFFCFCFD).copy(alpha = 0.70f),
   surface = Color(0xFF212731),
