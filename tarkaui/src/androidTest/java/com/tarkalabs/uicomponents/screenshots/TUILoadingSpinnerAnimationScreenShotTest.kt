@@ -3,6 +3,7 @@ package com.tarkalabs.uicomponents.screenshots
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.google.android.material.R.drawable
@@ -42,10 +43,11 @@ class TUILoadingSpinnerAnimationScreenShotTest(
       Box(
         modifier = Modifier
           .fillMaxSize()
-          .background(TUITheme.colors.surface)
+          .background(TUITheme.colors.surface),
+        contentAlignment = Alignment.Center
       ) {
         TUILoadingSpinnerAnimation(
-          spinnerHeight = 100.dp,
+          spinnerHeight = 240.dp,
           progressImageDetail = if (spinnerImage) ProgressImageDetail(
             imageResId = drawable.material_ic_keyboard_arrow_right_black_24dp,
             contentDescription = "loader_content",
