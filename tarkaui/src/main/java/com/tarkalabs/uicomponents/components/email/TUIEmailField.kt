@@ -47,8 +47,8 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaicons.AddCircle24
 import com.tarkalabs.tarkaicons.Dismiss20
 import com.tarkalabs.tarkaicons.TarkaIcon
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.tarkaicons.TarkaIcons.Filled
-import com.tarkalabs.tarkaicons.TarkaIcons.Regular
 import com.tarkalabs.uicomponents.components.ChipType.Input
 import com.tarkalabs.uicomponents.components.TUIChip
 import com.tarkalabs.uicomponents.components.TUIChipTags
