@@ -1,5 +1,8 @@
 package com.tarkalabs.uicomponents.components.tab
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -45,18 +48,17 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   onSelected: () -> Unit,
 ) {
 
-  val tabBgColor = if (selected) {
-    TUITheme.colors.primary
-  } else {
-    Color.Transparent
-  }
+  val tabBgColor = animateColorAsState(
+    targetValue = if (selected)  TUITheme.colors.primary else Color.Transparent,
+    animationSpec = tween(500, 0, LinearEasing), label = "animateColorAsState"
+  )
 
   Box(modifier = modifier
     .clickableWithoutRipple {
       onSelected()
     }
     .defaultMinSize(minWidth = 61.dp)
-    .background(shape = RoundedCornerShape(32.dp), color = tabBgColor)
+    .background(shape = RoundedCornerShape(32.dp), color = tabBgColor.value)
     .testTag(tags.parentTag),
     contentAlignment = Alignment.Center) {
     Text(
