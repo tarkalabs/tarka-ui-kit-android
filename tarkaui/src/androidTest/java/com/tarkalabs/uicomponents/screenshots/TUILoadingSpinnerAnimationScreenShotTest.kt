@@ -3,53 +3,56 @@ package com.tarkalabs.uicomponents.screenshots
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.google.android.material.R.drawable
+import com.tarkalabs.uicomponents.components.ProgressImageDetail
 import com.tarkalabs.uicomponents.components.TUILoadingSpinnerAnimation
+import com.tarkalabs.uicomponents.theme.TUITheme
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.junit.runners.Parameterized
 
-class TUILoadingSpinnerAnimationScreenShotTest : ComposeScreenshotComparator() {
+@RunWith(Parameterized::class)
+class TUILoadingSpinnerAnimationScreenShotTest(
+  private val testName: String,
+  private val darkTheme: Boolean,
+  private val spinnerImage: Boolean,
+) : ComposeScreenshotComparator() {
 
-  @Test
-  fun loaderScreenShotTestInLightTheme() {
-    compareScreenshotFor(darkTheme = false, imageName = "darkTheme_false") {
-      TUILoadingSpinnerAnimation(spinnerHeight = 100.dp)
-    }
-  }
-
-  @Test
-  fun loaderScreenShotTestInDarkTheme() {
-    compareScreenshotFor(darkTheme = true, imageName = "darkTheme_true") {
-      TUILoadingSpinnerAnimation(spinnerHeight = 100.dp)
-    }
-  }
-
-  @Test
-  fun loaderScreenShotTestInDarkThemeInFullScreen() {
-    compareScreenshotFor(darkTheme = true, imageName = "darkTheme_true_fullscreen") {
-      Box(
-        modifier = Modifier
-          .fillMaxSize()
-          .background(Color.Black.copy(alpha = 0.4f)),
-        contentAlignment = Alignment.Center
-      ) {
-        TUILoadingSpinnerAnimation(spinnerHeight = 100.dp)
+  companion object {
+    @JvmStatic
+    @Parameterized.Parameters
+    fun data(): Collection<Array<Any?>> {
+      return mutableListOf<Array<Any?>>().apply {
+        for (darkTheme in listOf(true, false)) {
+          for (withImage in listOf(true, false)) {
+            val testName =
+              "darkTheme_${darkTheme}_withImage_${withImage}"
+            add(arrayOf(testName, darkTheme, withImage))
+          }
+        }
       }
     }
   }
 
   @Test
-  fun loaderScreenShotTestInLightThemeInFullScreen() {
-    compareScreenshotFor(darkTheme = false, imageName = "darkTheme_false_fullscreen") {
+  fun loaderScreenShotTest() {
+    compareScreenshotFor(darkTheme = darkTheme, imageName = testName) {
       Box(
         modifier = Modifier
           .fillMaxSize()
-          .background(Color.Black.copy(alpha = 0.4f)),
-        contentAlignment = Alignment.Center
+          .background(TUITheme.colors.surface)
       ) {
-        TUILoadingSpinnerAnimation(spinnerHeight = 100.dp)
+        TUILoadingSpinnerAnimation(
+          spinnerHeight = 100.dp,
+          progressImageDetail = if (spinnerImage) ProgressImageDetail(
+            imageResId = drawable.material_ic_keyboard_arrow_right_black_24dp,
+            contentDescription = "loader_content",
+            progressImageHeight = 100.dp,
+            progressImageWidth = 100.dp
+          ) else null
+        )
       }
     }
   }

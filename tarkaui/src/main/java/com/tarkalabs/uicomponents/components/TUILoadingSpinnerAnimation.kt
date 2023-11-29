@@ -10,9 +10,12 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
@@ -39,6 +42,8 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * This composable function simply contains
  * @param modifier to modify the properties of the parent component - Box
  * @param tags tags to used while testing to pick the particular component used inside this component.
+ * @param progressImageDetail object is used to draw an image inside the loader with the params of imageResId: Int, contentDescription: String, progressImageHeight: Dp and progressImageWidth: Dp
+ * @param spinnerHeight is a Dp which is used to set the Loading spinner height.
  *
  * CustomProgressIndicator Composable function uses the canvas API in jetpack compose to the
  * The Custom Circular Progressbar with below steps.
@@ -75,14 +80,21 @@ fun TUILoadingSpinnerAnimation(
         .testTag(tags.progressBarTag)
     )
     progressImageDetail?.let {
-      Image(
+      Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center,
         modifier = Modifier
-          .testTag(tags.loaderImageTag)
-          .width(progressImageDetail.progressImageWidth)
-          .height(progressImageDetail.progressImageHeight),
-        painter = painterResource(id = progressImageDetail.imageResId),
-        contentDescription = progressImageDetail.contentDescription
-      )
+          .padding(start = 31.dp, top = 6.dp, end = 31.dp, bottom = 6.dp)
+      ) {
+        Image(
+          modifier = Modifier
+            .testTag(tags.loaderImageTag)
+            .width(progressImageDetail.progressImageWidth)
+            .height(progressImageDetail.progressImageHeight),
+          painter = painterResource(id = progressImageDetail.imageResId),
+          contentDescription = progressImageDetail.contentDescription
+        )
+      }
     }
   }
 }
@@ -153,21 +165,38 @@ data class ProgressImageDetail(
 @Preview(showBackground = true)
 @Composable
 fun LoaderPreview() {
-  Box(
-    modifier = Modifier
-      .fillMaxSize()
-      .background(Color.Black.copy(alpha = 0.4f)),
-    contentAlignment = Alignment.Center
-  ) {
-    TUILoadingSpinnerAnimation(
-      spinnerHeight = 240.dp,
-      progressImageDetail = ProgressImageDetail(
-        imageResId = R.drawable.keyboard_arrow_right,
-        contentDescription = "",
-        progressImageHeight = 116.dp,
-        progressImageWidth = 116.dp
+  TUITheme {
+    Box(
+      modifier = Modifier
+        .fillMaxSize()
+        .background(TUITheme.colors.surface),
+      contentAlignment = Alignment.Center
+    ) {
+      TUILoadingSpinnerAnimation(spinnerHeight = 240.dp,)
+    }
+  }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun LoaderPreviewWithImage() {
+  TUITheme {
+    Box(
+      modifier = Modifier
+        .fillMaxSize()
+        .background(TUITheme.colors.surface),
+      contentAlignment = Alignment.Center
+    ) {
+      TUILoadingSpinnerAnimation(
+        spinnerHeight = 240.dp,
+        progressImageDetail = ProgressImageDetail(
+          imageResId = R.drawable.keyboard_arrow_right,
+          contentDescription = "",
+          progressImageHeight = 100.dp,
+          progressImageWidth = 100.dp
+        )
       )
-    )
+    }
   }
 }
 
