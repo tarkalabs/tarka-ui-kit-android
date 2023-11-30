@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.google.android.material.R.drawable
 import com.tarkalabs.uicomponents.components.ProgressImageDetail
-import com.tarkalabs.uicomponents.components.TUILoadingSpinnerAnimation
+import com.tarkalabs.uicomponents.components.TUILoader
 import com.tarkalabs.uicomponents.theme.TUITheme
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -46,7 +46,7 @@ class TUILoaderScreenShotTest(
           .background(TUITheme.colors.surface),
         contentAlignment = Alignment.Center
       ) {
-        TUILoadingSpinnerAnimation(
+        TUILoader(
           spinnerHeight = 240.dp,
           progressImageDetail = if (spinnerImage) ProgressImageDetail(
             imageResId = drawable.material_ic_keyboard_arrow_right_black_24dp,

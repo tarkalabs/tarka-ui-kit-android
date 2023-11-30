@@ -66,7 +66,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  *  otherwise the arc will be deviated from circle.
  * */
 @Composable
-fun TUILoadingSpinnerAnimation(
+fun TUILoader(
   modifier: Modifier = Modifier,
   tags: TUILoadingSpinnerAnimationTags = TUILoadingSpinnerAnimationTags(),
   progressImageDetail: ProgressImageDetail? = null,
@@ -171,7 +171,7 @@ fun LoaderPreview() {
         .background(TUITheme.colors.surface),
       contentAlignment = Alignment.Center
     ) {
-      TUILoadingSpinnerAnimation(spinnerHeight = 240.dp,)
+      TUILoader(spinnerHeight = 240.dp,)
     }
   }
 }
@@ -186,7 +186,7 @@ fun LoaderPreviewWithImage() {
         .background(TUITheme.colors.surface),
       contentAlignment = Alignment.Center
     ) {
-      TUILoadingSpinnerAnimation(
+      TUILoader(
         spinnerHeight = 240.dp,
         progressImageDetail = ProgressImageDetail(
           imageResId = R.drawable.keyboard_arrow_right,
