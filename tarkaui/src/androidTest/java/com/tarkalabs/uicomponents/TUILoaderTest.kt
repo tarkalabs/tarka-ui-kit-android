@@ -8,7 +8,7 @@ import com.tarkalabs.uicomponents.components.TUILoadingSpinnerAnimation
 import org.junit.Rule
 import org.junit.Test
 
-class TUILoadingSpinnerAnimationTest {
+class TUILoaderTest {
 
   @get:Rule
   val composable = createComposeRule()
