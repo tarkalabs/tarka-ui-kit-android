@@ -7,7 +7,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.google.android.material.R.drawable
-import com.tarkalabs.uicomponents.components.ProgressImageDetail
+import com.tarkalabs.uicomponents.components.TUILoaderSpinnerImage
 import com.tarkalabs.uicomponents.components.TUILoader
 import com.tarkalabs.uicomponents.theme.TUITheme
 import org.junit.Test
@@ -47,11 +47,11 @@ class TUILoaderScreenShotTest(
         contentAlignment = Alignment.Center
       ) {
         TUILoader(
-          spinnerHeight = 240.dp,
-          progressImageDetail = if (spinnerImage) ProgressImageDetail(
-            imageResId = drawable.material_ic_keyboard_arrow_right_black_24dp,
+          size = 240.dp,
+          TUILoadingSpinnerImage = if (spinnerImage) TUILoaderSpinnerImage(
+            resourceId = drawable.material_ic_keyboard_arrow_right_black_24dp,
             contentDescription = "loader_content",
-            progressImageHeight = 100.dp,
+            height = 100.dp,
             progressImageWidth = 100.dp
           ) else null
         )

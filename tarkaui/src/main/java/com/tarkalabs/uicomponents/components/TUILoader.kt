@@ -41,8 +41,8 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * This composable function simply contains
  * @param modifier to modify the properties of the parent component - Box
  * @param tags tags to used while testing to pick the particular component used inside this component.
- * @param progressImageDetail object is used to draw an image inside the loader with the params of imageResId: Int, contentDescription: String, progressImageHeight: Dp and progressImageWidth: Dp
- * @param spinnerHeight is a Dp which is used to set the Loading spinner height.
+ * @param TUILoadingSpinnerImage object is used to draw an image inside the loader with the params of imageResId: Int, contentDescription: String, progressImageHeight: Dp and progressImageWidth: Dp
+ * @param size is a Dp which is used to set the Loading spinner height.
  *
  * CustomProgressIndicator Composable function uses the canvas API in jetpack compose to the
  * The Custom Circular Progressbar with below steps.
@@ -65,51 +65,47 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  *  which is explained in above paragraph to position the arc in a right way above the circle
  *  otherwise the arc will be deviated from circle.
  * */
+
 @Composable
 fun TUILoader(
   modifier: Modifier = Modifier,
-  tags: TUILoadingSpinnerAnimationTags = TUILoadingSpinnerAnimationTags(),
-  progressImageDetail: ProgressImageDetail? = null,
-  spinnerHeight: Dp,
+  spinnerImage: TUILoaderSpinnerImage? = null,
+  size: Dp,
+  tags: TUILoaderTags = TUILoaderTags(),
 ) {
   Box(modifier = modifier.testTag(tags.parentTag), contentAlignment = Alignment.Center) {
-    CustomProgressIndicator(
+    TUILoaderProgressIndicator(
       modifier = Modifier
-        .size(spinnerHeight)
+        .size(size)
         .testTag(tags.progressBarTag)
     )
-    progressImageDetail?.let {
+    spinnerImage?.let {
       Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
-        modifier = Modifier
-          .padding(start = 31.dp, top = 6.dp, end = 31.dp, bottom = 6.dp)
+        modifier = Modifier.padding(start = 31.dp, top = 6.dp, end = 31.dp, bottom = 6.dp)
       ) {
         Image(
           modifier = Modifier
             .testTag(tags.loaderImageTag)
-            .width(progressImageDetail.progressImageWidth)
-            .height(progressImageDetail.progressImageHeight),
-          painter = painterResource(id = progressImageDetail.imageResId),
-          contentDescription = progressImageDetail.contentDescription
+            .width(spinnerImage.width)
+            .height(spinnerImage.height),
+          painter = painterResource(id = spinnerImage.resourceId),
+          contentDescription = spinnerImage.contentDescription
         )
       }
     }
   }
 }
 
-@Composable private fun CustomProgressIndicator(
+@Composable private fun TUILoaderProgressIndicator(
   modifier: Modifier,
 ) {
 
   val angle by rememberInfiniteTransition(label = "InfiniteTransition").animateFloat(
-    initialValue = 0f,
-    targetValue = 360f,
-    animationSpec = infiniteRepeatable(
-      animation = tween(1300, easing = LinearEasing),
-      repeatMode = Restart
-    ),
-    label = "FloatAnimation"
+    initialValue = 0f, targetValue = 360f, animationSpec = infiniteRepeatable(
+      animation = tween(1300, easing = LinearEasing), repeatMode = Restart
+    ), label = "FloatAnimation"
   )
 
   val outerCircleColor = TUITheme.colors.surfaceVariantHover
@@ -148,17 +144,15 @@ fun TUILoader(
   }
 }
 
-data class TUILoadingSpinnerAnimationTags(
+data class TUILoaderTags(
   val parentTag: String = "TUILoadingSpinnerAnimationTag",
   val progressBarTag: String = "TUILoadingSpinnerAnimationTag_progressBarTag",
   val loaderImageTag: String = "TUILoadingSpinnerAnimationTag_EamImageTag",
 )
 
-data class ProgressImageDetail(
-  @DrawableRes val imageResId: Int,
-  val contentDescription: String,
-  val progressImageHeight: Dp,
-  val progressImageWidth: Dp
+data class TUILoaderSpinnerImage(
+  @DrawableRes val resourceId: Int,
+  val contentDescription: String, val height: Dp, val width: Dp
 )
 
 @Preview(showBackground = true)
@@ -171,7 +165,7 @@ fun LoaderPreview() {
         .background(TUITheme.colors.surface),
       contentAlignment = Alignment.Center
     ) {
-      TUILoader(spinnerHeight = 240.dp,)
+      TUILoader(size = 240.dp)
     }
   }
 }
@@ -187,12 +181,11 @@ fun LoaderPreviewWithImage() {
       contentAlignment = Alignment.Center
     ) {
       TUILoader(
-        spinnerHeight = 240.dp,
-        progressImageDetail = ProgressImageDetail(
-          imageResId = R.drawable.keyboard_arrow_right,
+        size = 240.dp, spinnerImage = TUILoaderSpinnerImage(
+          resourceId = R.drawable.keyboard_arrow_right,
           contentDescription = "",
-          progressImageHeight = 100.dp,
-          progressImageWidth = 100.dp
+          height = 100.dp,
+          width = 100.dp
         )
       )
     }
