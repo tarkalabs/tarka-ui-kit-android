@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import com.tarkalabs.tarkaicons.ReOrderDotsVertical24
 import com.tarkalabs.tarkaicons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUIToggleSwitch
+import com.tarkalabs.uicomponents.components.TUISwitch
 import com.tarkalabs.uicomponents.components.VerticalSpacer
 import com.tarkalabs.uicomponents.theme.TUITheme
 
@@ -65,7 +65,8 @@ fun TUIDraggableCard(
         .size(48.dp)
         .padding(12.dp),
       painter = painterResource(id = TarkaIcons.Regular.ReOrderDotsVertical24.iconRes),
-      contentDescription = TarkaIcons.Regular.ReOrderDotsVertical24.contentDescription
+      contentDescription = TarkaIcons.Regular.ReOrderDotsVertical24.contentDescription,
+      tint = TUITheme.colors.onSurface
     )
 
     Text(
@@ -77,7 +78,7 @@ fun TUIDraggableCard(
       style = TUITheme.typography.heading6,
     )
 
-    TUIToggleSwitch(state = switchCheckedState, onToggleChange = onSwitchCheckedChange)
+    TUISwitch(isChecked = switchCheckedState, onCheckedChange = onSwitchCheckedChange)
   }
 }
 
@@ -89,28 +90,30 @@ data class TUIDraggableCardTags(
 @Preview
 @Composable
 fun TUIDraggableCardPreview() {
+  TUITheme(darkTheme = true) {
 
-  Column(modifier = Modifier.background(color = TUITheme.colors.onSurface)) {
+    Column(modifier = Modifier.background(color = TUITheme.colors.onSurface)) {
 
-    VerticalSpacer(space = 5)
+      VerticalSpacer(space = 5)
 
-    TUIDraggableCard(
-      title = "Description 1",
-      switchCheckedState = true,
-      onSwitchCheckedChange = {},
-      dragIconModifier = Modifier
-    )
+      TUIDraggableCard(
+        title = "Description 1",
+        switchCheckedState = true,
+        onSwitchCheckedChange = {},
+        dragIconModifier = Modifier
+      )
 
-    VerticalSpacer(space = 5)
+      VerticalSpacer(space = 5)
 
-    TUIDraggableCard(
-      title = "Description 2",
-      switchCheckedState = false,
-      onSwitchCheckedChange = {},
-      dragIconModifier = Modifier
-    )
+      TUIDraggableCard(
+        title = "Description 2",
+        switchCheckedState = false,
+        onSwitchCheckedChange = {},
+        dragIconModifier = Modifier
+      )
 
-    VerticalSpacer(space = 5)
+      VerticalSpacer(space = 5)
 
+    }
   }
 }
