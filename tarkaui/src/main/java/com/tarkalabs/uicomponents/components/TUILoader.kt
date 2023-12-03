@@ -41,8 +41,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * This composable function simply contains
  * @param modifier to modify the properties of the parent component - Box
  * @param tags tags to used while testing to pick the particular component used inside this component.
- * @param TUILoadingSpinnerImage object is used to draw an image inside the loader with the params of imageResId: Int, contentDescription: String, progressImageHeight: Dp and progressImageWidth: Dp
- * @param size is a Dp which is used to set the Loading spinner height.
+ * @param spinnerImage object is used to draw an image inside the loader with the params of imageResId: Int, contentDescription: String, progressImageHeight: Dp and progressImageWidth: Dp
  *
  * CustomProgressIndicator Composable function uses the canvas API in jetpack compose to the
  * The Custom Circular Progressbar with below steps.
@@ -70,13 +69,15 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 fun TUILoader(
   modifier: Modifier = Modifier,
   spinnerImage: TUILoaderSpinnerImage? = null,
-  size: Dp,
   tags: TUILoaderTags = TUILoaderTags(),
 ) {
-  Box(modifier = modifier.testTag(tags.parentTag), contentAlignment = Alignment.Center) {
+  Box(
+    modifier = modifier.testTag(tags.parentTag),
+    contentAlignment = Alignment.Center
+  ) {
     TUILoaderProgressIndicator(
       modifier = Modifier
-        .size(size)
+        .size(240.dp)
         .testTag(tags.progressBarTag)
     )
     spinnerImage?.let {
@@ -101,11 +102,19 @@ fun TUILoader(
 @Composable private fun TUILoaderProgressIndicator(
   modifier: Modifier,
 ) {
-
-  val angle by rememberInfiniteTransition(label = "InfiniteTransition").animateFloat(
-    initialValue = 0f, targetValue = 360f, animationSpec = infiniteRepeatable(
-      animation = tween(1300, easing = LinearEasing), repeatMode = Restart
-    ), label = "FloatAnimation"
+  val angle by rememberInfiniteTransition(
+    label = "InfiniteTransition"
+  ).animateFloat(
+    initialValue = 0f,
+    targetValue = 360f,
+    animationSpec = infiniteRepeatable(
+      animation = tween(
+        durationMillis = 1300,
+        easing = LinearEasing
+      ),
+      repeatMode = Restart
+    ),
+    label = "FloatAnimation"
   )
 
   val outerCircleColor = TUITheme.colors.surfaceVariantHover
@@ -145,14 +154,16 @@ fun TUILoader(
 }
 
 data class TUILoaderTags(
-  val parentTag: String = "TUILoadingSpinnerAnimationTag",
-  val progressBarTag: String = "TUILoadingSpinnerAnimationTag_progressBarTag",
-  val loaderImageTag: String = "TUILoadingSpinnerAnimationTag_EamImageTag",
+  val parentTag: String = "TUILoaderTag",
+  val progressBarTag: String = "TUILoaderTag_spinnerTag",
+  val loaderImageTag: String = "TUILoaderTag_spinnerImageTag",
 )
 
 data class TUILoaderSpinnerImage(
   @DrawableRes val resourceId: Int,
-  val contentDescription: String, val height: Dp, val width: Dp
+  val contentDescription: String,
+  val height: Dp,
+  val width: Dp,
 )
 
 @Preview(showBackground = true)
@@ -165,7 +176,7 @@ fun LoaderPreview() {
         .background(TUITheme.colors.surface),
       contentAlignment = Alignment.Center
     ) {
-      TUILoader(size = 240.dp)
+      TUILoader()
     }
   }
 }
@@ -181,7 +192,7 @@ fun LoaderPreviewWithImage() {
       contentAlignment = Alignment.Center
     ) {
       TUILoader(
-        size = 240.dp, spinnerImage = TUILoaderSpinnerImage(
+        spinnerImage = TUILoaderSpinnerImage(
           resourceId = R.drawable.keyboard_arrow_right,
           contentDescription = "",
           height = 100.dp,

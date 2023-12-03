@@ -17,9 +17,7 @@ class TUILoaderTest {
   fun is_eam_logo_shown_without_image() {
     val eamLogoContentDescription = "EAM360Loader"
     composable.setContent {
-      TUILoader(
-        size = 100.dp
-      )
+      TUILoader()
     }
     composable.onNodeWithContentDescription(eamLogoContentDescription)
   }
@@ -29,11 +27,10 @@ class TUILoaderTest {
     val eamLogoContentDescription = "EAM360Loader"
     composable.setContent {
       TUILoader(
-        size = 100.dp,
-        TUILoadingSpinnerImage = TUILoaderSpinnerImage(
+        spinnerImage = TUILoaderSpinnerImage(
           resourceId = com.google.android.material.R.drawable.material_ic_keyboard_arrow_right_black_24dp,
           contentDescription = "",
-          progressImageWidth = 130.dp,
+          width = 130.dp,
           height = 50.dp
         )
       )
