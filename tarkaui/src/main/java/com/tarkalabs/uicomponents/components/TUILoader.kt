@@ -10,9 +10,12 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
@@ -22,12 +25,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.uicomponents.R
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -37,6 +41,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * This composable function simply contains
  * @param modifier to modify the properties of the parent component - Box
  * @param tags tags to used while testing to pick the particular component used inside this component.
+ * @param spinnerImage object is used to draw an image inside the loader with the params of imageResId: Int, contentDescription: String, progressImageHeight: Dp and progressImageWidth: Dp
  *
  * CustomProgressIndicator Composable function uses the canvas API in jetpack compose to the
  * The Custom Circular Progressbar with below steps.
@@ -59,40 +64,54 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  *  which is explained in above paragraph to position the arc in a right way above the circle
  *  otherwise the arc will be deviated from circle.
  * */
+
 @Composable
-fun TUILoadingSpinnerAnimation(
+fun TUILoader(
   modifier: Modifier = Modifier,
-  tags: TUILoadingSpinnerAnimationTags = TUILoadingSpinnerAnimationTags(),
-  progressImageDetail: ProgressImageDetail? = null,
+  spinnerImage: TUILoaderSpinnerImage? = null,
+  tags: TUILoaderTags = TUILoaderTags(),
 ) {
-  Box(modifier = modifier.testTag(tags.parentTag), contentAlignment = Alignment.Center) {
-    CustomProgressIndicator(
+  Box(
+    modifier = modifier.testTag(tags.parentTag),
+    contentAlignment = Alignment.Center
+  ) {
+    TUILoaderProgressIndicator(
       modifier = Modifier
-        .size(76.dp)
+        .size(240.dp)
         .testTag(tags.progressBarTag)
     )
-    progressImageDetail?.let {
-      Image(
-        modifier = Modifier
-          .testTag(tags.loaderImageTag)
-          .width(60.dp)
-          .height(11.dp),
-        painter = painterResource(id = progressImageDetail.imageResId),
-        contentDescription = progressImageDetail.contentDescription
-      )
+    spinnerImage?.let {
+      Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center,
+        modifier = Modifier.padding(start = 31.dp, top = 6.dp, end = 31.dp, bottom = 6.dp)
+      ) {
+        Image(
+          modifier = Modifier
+            .testTag(tags.loaderImageTag)
+            .width(spinnerImage.width)
+            .height(spinnerImage.height),
+          painter = painterResource(id = spinnerImage.resourceId),
+          contentDescription = spinnerImage.contentDescription
+        )
+      }
     }
   }
 }
 
-@Composable private fun CustomProgressIndicator(
+@Composable private fun TUILoaderProgressIndicator(
   modifier: Modifier,
 ) {
-
-  val angle by rememberInfiniteTransition(label = "InfiniteTransition").animateFloat(
+  val angle by rememberInfiniteTransition(
+    label = "InfiniteTransition"
+  ).animateFloat(
     initialValue = 0f,
     targetValue = 360f,
     animationSpec = infiniteRepeatable(
-      animation = tween(1300, easing = LinearEasing),
+      animation = tween(
+        durationMillis = 1300,
+        easing = LinearEasing
+      ),
       repeatMode = Restart
     ),
     label = "FloatAnimation"
@@ -110,7 +129,7 @@ fun TUILoadingSpinnerAnimation(
     val centerX = size.width / 2
     val centerY = size.height / 2
     val radius = canvasSize / 2
-    val strokeWidth = 4f
+    val strokeWidth = 4.dp.toPx()
 
     val circleRadius = radius - strokeWidth / 2
     drawCircle(
@@ -134,27 +153,53 @@ fun TUILoadingSpinnerAnimation(
   }
 }
 
-data class TUILoadingSpinnerAnimationTags(
-  val parentTag: String = "TUILoadingSpinnerAnimationTag",
-  val progressBarTag: String = "TUILoadingSpinnerAnimationTag_progressBarTag",
-  val loaderImageTag: String = "TUILoadingSpinnerAnimationTag_EamImageTag",
+data class TUILoaderTags(
+  val parentTag: String = "TUILoaderTag",
+  val progressBarTag: String = "TUILoaderTag_spinnerTag",
+  val loaderImageTag: String = "TUILoaderTag_spinnerImageTag",
 )
 
-data class ProgressImageDetail(
-  @DrawableRes val imageResId: Int,
+data class TUILoaderSpinnerImage(
+  @DrawableRes val resourceId: Int,
   val contentDescription: String,
+  val height: Dp,
+  val width: Dp,
 )
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun LoaderPreview() {
-  Box(
-    modifier = Modifier
-      .fillMaxSize()
-      .background(Color.Black.copy(alpha = 0.4f)),
-    contentAlignment = Alignment.Center
-  ) {
-    TUILoadingSpinnerAnimation()
+  TUITheme {
+    Box(
+      modifier = Modifier
+        .fillMaxSize()
+        .background(TUITheme.colors.surface),
+      contentAlignment = Alignment.Center
+    ) {
+      TUILoader()
+    }
+  }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun LoaderPreviewWithImage() {
+  TUITheme {
+    Box(
+      modifier = Modifier
+        .fillMaxSize()
+        .background(TUITheme.colors.surface),
+      contentAlignment = Alignment.Center
+    ) {
+      TUILoader(
+        spinnerImage = TUILoaderSpinnerImage(
+          resourceId = R.drawable.keyboard_arrow_right,
+          contentDescription = "",
+          height = 100.dp,
+          width = 100.dp
+        )
+      )
+    }
   }
 }
 

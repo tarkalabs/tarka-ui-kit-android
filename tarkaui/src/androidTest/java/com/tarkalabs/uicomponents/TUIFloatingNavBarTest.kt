@@ -50,7 +50,7 @@ class TUIFloatingNavBarTest {
           TUIFloatingNavBar(
             tabItems = tabItems,
             onTabSelected = onTabSelected,
-            currentTabItem = currentTabItem
+            selectedTabIndex = currentTabItem
           )
           VerticalSpacer(space = 40)
         }
