@@ -26,7 +26,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * The TUIFloatingNavBar is a composable function designed to create a customizable floating tab in a user interface.
  * @param modifier A modifier for the tab's layout and behavior.
  * @param tabItems list of tab title.
- * @param currentTabItem  current selected tab in the tab bar.
+ * @param selectedTabIndex  current selected tab in the tab bar.
  * @param onTabSelected callback method when tab is selected.
  *
  * How To use TUIFloatingTab()
@@ -37,7 +37,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 @Composable fun TUIFloatingNavBar(
   modifier: Modifier = Modifier,
   tabItems: List<String>,
-  currentTabItem: Int = 0,
+  selectedTabIndex: Int = 0,
   onTabSelected: (currentTabItem: Int) -> Unit
 ) {
   Row(
@@ -47,11 +47,12 @@ import com.tarkalabs.uicomponents.theme.TUITheme
       .border(
         width = 1.dp, color = TUITheme.colors.primaryAltHover, shape = RoundedCornerShape(32.dp)
       )
+      .background(color = TUITheme.colors.onPrimary)
       .padding(4.dp)
   ) {
     tabItems.forEachIndexed { index, tab ->
       TUIFloatingTab(title = tab,
-        selected = currentTabItem == index,
+        selected = selectedTabIndex == index,
         onSelected = {
         onTabSelected.invoke(index)
       },
@@ -93,7 +94,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
       VerticalSpacer(space = 40)
       TUIFloatingNavBar(tabItems = tabItems, onTabSelected = {
         currentTabItem = it
-      }, currentTabItem = currentTabItem)
+      }, selectedTabIndex = currentTabItem)
       VerticalSpacer(space = 40)
     }
   }
