@@ -22,10 +22,11 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.CheckmarkCircle24
 import com.tarkalabs.tarkaicons.ChevronRight24
 import com.tarkalabs.tarkaicons.Person24
 import com.tarkalabs.tarkaicons.TarkaIcon
-import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaicons.TarkaIcons.Filled
 import com.tarkalabs.tarkaicons.TarkaIcons.Regular
 import com.tarkalabs.uicomponents.components.VerticalSpacer
 import com.tarkalabs.uicomponents.components.card.SecondaryDetailsStyle.ERROR
@@ -65,10 +66,11 @@ fun TUISelectionCard(
   secondaryDescription: String? = null,
   primaryDetails: String? = null,
   secondaryDetails: String? = null,
-  secondaryDetailStyle: SecondaryDetailsStyle = SecondaryDetailsStyle.NORMAL,
+  secondaryDetailStyle: SecondaryDetailsStyle = NORMAL,
   badgeCount: Int? = null,
   showTrailingIcon: Boolean = false,
   isSelected: Boolean = false,
+  showCheckMarkIconWhenSelected: Boolean = false,
   tags: TUISelectionCardTags = TUISelectionCardTags(),
   onCardClicked: () -> Unit,
 ) {
@@ -100,7 +102,7 @@ fun TUISelectionCard(
 
     Column(
       modifier = Modifier
-        .padding(start = if(leadingIcon != null) 16.dp else 0.dp)
+        .padding(start = if (leadingIcon != null) 16.dp else 0.dp)
         .weight(1f)
     ) {
 
@@ -151,7 +153,8 @@ fun TUISelectionCard(
 
     badgeCount?.let {
       TUIBadge(
-        modifier = Modifier.align(Alignment.CenterVertically)
+        modifier = Modifier
+          .align(Alignment.CenterVertically)
           .padding(start = 16.dp)
           .testTag(tags.badgeTag),
         count = badgeCount,
@@ -159,15 +162,28 @@ fun TUISelectionCard(
       )
     }
 
-    if (showTrailingIcon) {
+    if (showCheckMarkIconWhenSelected && isSelected) {
       Icon(
-        modifier = Modifier.align(Alignment.CenterVertically)
+        modifier = Modifier
+          .align(Alignment.CenterVertically)
           .size(24.dp)
-          .testTag(tags.trailingFrontArrowIconTag),
-        painter = painterResource(id = TarkaIcons.Regular.ChevronRight24.iconRes),
-        contentDescription = TarkaIcons.Regular.ChevronRight24.contentDescription,
-        tint = if (isSelected) TUITheme.colors.onSecondaryAlt else TUITheme.colors.utilityOutline
+          .testTag(tags.trailingCheckMarkIconTag),
+        painter = painterResource(id = Filled.CheckmarkCircle24.iconRes),
+        contentDescription = Regular.CheckmarkCircle24.contentDescription,
+        tint = TUITheme.colors.onSecondaryAlt
       )
+    } else {
+      if (showTrailingIcon) {
+        Icon(
+          modifier = Modifier
+            .align(Alignment.CenterVertically)
+            .size(24.dp)
+            .testTag(tags.trailingFrontArrowIconTag),
+          painter = painterResource(id = Regular.ChevronRight24.iconRes),
+          contentDescription = Regular.ChevronRight24.contentDescription,
+          tint = if (isSelected) TUITheme.colors.onSecondaryAlt else TUITheme.colors.utilityOutline
+        )
+      }
     }
 
   }
@@ -183,6 +199,7 @@ data class TUISelectionCardTags(
   val details2Tag: String = "TUISelectionCard_SecondaryDetailsTag",
   val badgeTag: String = "TUISelectionCard_BadgeTag",
   val trailingFrontArrowIconTag: String = "TUISelectionCard_TrailingFrontArrowIconTag",
+  val trailingCheckMarkIconTag: String = "TUISelectionCard_TrailingCheckMarkIconTag",
 )
 
 @Preview
@@ -236,7 +253,9 @@ fun TUISelectionCardPreview() {
       secondaryDetails = "Details2",
       secondaryDetailStyle = ERROR,
       badgeCount = 4,
-      showTrailingIcon = true
+      showTrailingIcon = true,
+      isSelected = true,
+      showCheckMarkIconWhenSelected = true
     ) {}
     VerticalSpacer(space = 14)
     TUISelectionCard(
@@ -247,7 +266,9 @@ fun TUISelectionCardPreview() {
       primaryDetails = "Details",
       secondaryDetails = "Details2",
       badgeCount = 4,
-      showTrailingIcon = true
+      showTrailingIcon = false,
+      isSelected = true,
+      showCheckMarkIconWhenSelected = true
     ) {}
 
     VerticalSpacer(space = 14)

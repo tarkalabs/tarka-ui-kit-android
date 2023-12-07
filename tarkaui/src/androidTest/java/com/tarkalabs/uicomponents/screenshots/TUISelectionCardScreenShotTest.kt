@@ -21,6 +21,7 @@ class TUISelectionCardScreenShotTest(
   private val detail2: String?,
   private val badgeCount: Int?,
   private val trailingIconEnabled: Boolean,
+  private val showSelectedCheckMarIconEnabled: Boolean,
   private val testName: String,
 ) : ComposeScreenshotComparator() {
 
@@ -37,6 +38,7 @@ class TUISelectionCardScreenShotTest(
       val detail2Values = listOf(null, "Detail2")
       val badgeCountValues = listOf(null, 4)
       val trailingIconEnabledValues = listOf(false, true)
+      val showSelectedCheckMarIconValues = listOf(false, true)
 
       val testData = arrayListOf<Array<Any?>>()
 
@@ -48,6 +50,7 @@ class TUISelectionCardScreenShotTest(
                 for (detail2 in detail2Values) {
                   for (badgeCount in badgeCountValues) {
                     for (trailingIconEnabled in trailingIconEnabledValues) {
+                    for (showSelectedCheckMarIcon in showSelectedCheckMarIconValues) {
 
                       val testName =
                         "darkTheme_${darkTheme}_isSelected${isSelected}_leadIcShown_${if (leadingIcon != null) "true" else "false"}" +
@@ -64,9 +67,11 @@ class TUISelectionCardScreenShotTest(
                           detail2,
                           badgeCount,
                           trailingIconEnabled,
+                          showSelectedCheckMarIcon,
                           testName
                         )
                       )
+                    }
                     }
                   }
                 }
@@ -94,7 +99,8 @@ class TUISelectionCardScreenShotTest(
         primaryDetails = detail,
         secondaryDetails = detail2,
         badgeCount = badgeCount,
-        showTrailingIcon = trailingIconEnabled
+        showTrailingIcon = trailingIconEnabled,
+        showCheckMarkIconWhenSelected = showSelectedCheckMarIconEnabled,
       ) {}
     }
   }
