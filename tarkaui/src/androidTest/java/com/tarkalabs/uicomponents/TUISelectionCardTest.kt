@@ -50,7 +50,7 @@ class TUISelectionCardTest {
         leadingIcon = leadingIcon,
         isSelected = true,
         showTrailingIcon = true,
-        showCheckMarkIconWhenSelected = true,
+        showCheckMarkIcon = true,
         tags = tags,
       ) {}
     }

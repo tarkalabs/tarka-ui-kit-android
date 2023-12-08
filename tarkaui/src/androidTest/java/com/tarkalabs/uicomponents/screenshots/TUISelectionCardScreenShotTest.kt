@@ -21,7 +21,7 @@ class TUISelectionCardScreenShotTest(
   private val detail2: String?,
   private val badgeCount: Int?,
   private val trailingIconEnabled: Boolean,
-  private val showSelectedCheckMarIconEnabled: Boolean,
+  private val checkMarkIconEnabled: Boolean,
   private val testName: String,
 ) : ComposeScreenshotComparator() {
 
@@ -100,7 +100,7 @@ class TUISelectionCardScreenShotTest(
         secondaryDetails = detail2,
         badgeCount = badgeCount,
         showTrailingIcon = trailingIconEnabled,
-        showCheckMarkIconWhenSelected = showSelectedCheckMarIconEnabled,
+        showCheckMarkIcon = checkMarkIconEnabled,
       ) {}
     }
   }

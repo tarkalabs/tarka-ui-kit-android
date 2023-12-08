@@ -70,7 +70,7 @@ fun TUISelectionCard(
   badgeCount: Int? = null,
   showTrailingIcon: Boolean = false,
   isSelected: Boolean = false,
-  showCheckMarkIconWhenSelected: Boolean = false,
+  showCheckMarkIcon: Boolean = false,
   tags: TUISelectionCardTags = TUISelectionCardTags(),
   onCardClicked: () -> Unit,
 ) {
@@ -162,7 +162,7 @@ fun TUISelectionCard(
       )
     }
 
-    if (showCheckMarkIconWhenSelected && isSelected) {
+    if (showCheckMarkIcon && isSelected) {
       Icon(
         modifier = Modifier
           .align(Alignment.CenterVertically)
@@ -255,7 +255,7 @@ fun TUISelectionCardPreview() {
       badgeCount = 4,
       showTrailingIcon = true,
       isSelected = true,
-      showCheckMarkIconWhenSelected = true
+      showCheckMarkIcon = true
     ) {}
     VerticalSpacer(space = 14)
     TUISelectionCard(
@@ -268,7 +268,7 @@ fun TUISelectionCardPreview() {
       badgeCount = 4,
       showTrailingIcon = false,
       isSelected = true,
-      showCheckMarkIconWhenSelected = true
+      showCheckMarkIcon = true
     ) {}
 
     VerticalSpacer(space = 14)
