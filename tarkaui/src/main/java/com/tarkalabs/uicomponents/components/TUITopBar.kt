@@ -1,5 +1,6 @@
 package com.tarkalabs.uicomponents.components
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaicons.ChevronLeft24
 import com.tarkalabs.tarkaicons.ChevronRight20
 import com.tarkalabs.tarkaicons.Search16
+import com.tarkalabs.tarkaicons.Search24
 import com.tarkalabs.tarkaicons.TarkaIcon
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.base.IconButtonSize.XL
@@ -103,6 +105,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   if (clearQueryAndHideSearchBar && showSearchBar) {
     query = ""
     showSearchBar = false
+    onSearchQuery("")
   }
 
   Column(
@@ -116,13 +119,14 @@ import com.tarkalabs.uicomponents.theme.TUITheme
       TUISearchBar(
         modifier = Modifier
           .fillMaxWidth()
-          .padding(start = 16.dp, end  = 16.dp, bottom = 8.dp),
+          .padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
         query = query,
         placeholder = searchQueryHint,
         leadingIcon = TarkaIcons.Regular.ChevronLeft24,
         onLeadingIconClick = {
           query = ""
           showSearchBar = false
+          onSearchQuery("")
         },
         onQueryTextChange = {
           query = it
@@ -228,7 +232,13 @@ data class TUITopBarTags(
         navigationIcon = TarkaIcons.Regular.ChevronRight20,
         menuItemIconOne = TarkaIcons.Regular.ChevronRight20,
         menuItemIconTwo = TarkaIcons.Regular.ChevronRight20,
-        menuItemIconThree = TarkaIcons.Regular.ChevronRight20
+        menuItemIconThree = TarkaIcons.Regular.ChevronRight20,
+        searchQuery = "Search",
+        onSearchQuery = { searchQuery ->
+          Log.e("SEARCH_QUERY", ": $searchQuery", )
+        },
+        searchIcon = TarkaIcons.Regular.Search24,
+        searchQueryHint = "Search"
       )
 
       VerticalSpacer(space = 5)
