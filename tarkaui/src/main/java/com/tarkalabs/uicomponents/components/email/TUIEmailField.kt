@@ -2,6 +2,7 @@ package com.tarkalabs.uicomponents.components.email
 
 import android.util.Patterns
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -38,6 +39,7 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -190,6 +192,7 @@ import kotlinx.coroutines.launch
             singleLine = true,
             interactionSource = interactionSource,
             textStyle = TUITheme.typography.body7.copy(color = TUITheme.colors.inputText ),
+            cursorBrush = SolidColor(TUITheme.colors.inputText)
           ) {
             DecorationBox(
               value = textData,
@@ -240,7 +243,7 @@ data class TUIEmailFieldTags(
     }
     var showEditText by remember { mutableStateOf(false) }
     var showEditText2 by remember { mutableStateOf(false) }
-    Column {
+    Column(modifier = Modifier.background(color = TUITheme.colors.surface)) {
       Box(modifier = Modifier.fillMaxWidth()) {
         TUIEmailField(
           title = "To",
