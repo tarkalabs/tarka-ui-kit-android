@@ -1,6 +1,5 @@
 package com.tarkalabs.uicomponents.components
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -223,10 +222,8 @@ data class TUITopBarTags(
 
 @OptIn(ExperimentalMaterial3Api::class) @Preview @Composable fun EamNormalTopBar(
 ) {
-
   TUITheme {
     Column {
-
       TUITopBar(
         title = "Lorem Ipsum",
         navigationIcon = TarkaIcons.Regular.ChevronRight20,
@@ -235,14 +232,11 @@ data class TUITopBarTags(
         menuItemIconThree = TarkaIcons.Regular.ChevronRight20,
         searchQuery = "Search",
         onSearchQuery = { searchQuery ->
-          Log.e("SEARCH_QUERY", ": $searchQuery", )
         },
         searchIcon = TarkaIcons.Regular.Search24,
         searchQueryHint = "Search"
       )
-
       VerticalSpacer(space = 5)
-
       TUITopBar(
         title = "Lorem Ipsum",
         navigationIcon = TarkaIcons.Regular.ChevronRight20,
