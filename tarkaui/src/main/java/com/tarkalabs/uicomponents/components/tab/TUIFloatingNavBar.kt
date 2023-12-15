@@ -44,11 +44,13 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     horizontalArrangement = Arrangement.SpaceAround,
     modifier = modifier
       .horizontalScroll(rememberScrollState())
+      .background(color = TUITheme.colors.onPrimary, shape = RoundedCornerShape(32.dp))
       .border(
-        width = 1.dp, color = TUITheme.colors.primaryAltHover, shape = RoundedCornerShape(32.dp)
+        width = 1.dp,
+        color = TUITheme.colors.primaryAltHover,
+        shape = RoundedCornerShape(32.dp)
       )
-      .background(color = TUITheme.colors.onPrimary)
-      .padding(4.dp)
+      .padding(4.dp),
   ) {
     tabItems.forEachIndexed { index, tab ->
       TUIFloatingTab(title = tab,
@@ -85,7 +87,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     )
     Column(
       modifier = Modifier
-        .background(color = TUITheme.colors.surface)
+        .background(color = TUITheme.colors.error)
         .fillMaxWidth()
         .padding(10.dp),
       verticalArrangement = Arrangement.Center,
