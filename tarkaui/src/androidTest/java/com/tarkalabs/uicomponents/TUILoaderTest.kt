@@ -30,8 +30,8 @@ class TUILoaderTest {
         spinnerImage = TUILoaderSpinnerImage(
           resourceId = com.google.android.material.R.drawable.material_ic_keyboard_arrow_right_black_24dp,
           contentDescription = "",
-          width = 130.dp,
-          height = 50.dp
+          imageWidth = 130.dp,
+          imageHeight = 50.dp
         )
       )
     }

@@ -50,8 +50,8 @@ class TUILoaderScreenShotTest(
           spinnerImage = if (spinnerImage) TUILoaderSpinnerImage(
             resourceId = drawable.material_ic_keyboard_arrow_right_black_24dp,
             contentDescription = "loader_content",
-            height = 100.dp,
-            width = 100.dp
+            imageHeight = 100.dp,
+            imageWidth = 100.dp
           ) else null
         )
       }

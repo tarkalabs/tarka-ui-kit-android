@@ -32,6 +32,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.R
+import com.tarkalabs.uicomponents.components.LoaderHeight.L
+import com.tarkalabs.uicomponents.components.LoaderHeight.M
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -65,10 +67,17 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  *  otherwise the arc will be deviated from circle.
  * */
 
+enum class LoaderHeight(val size: Dp) {
+  L(240.dp),
+  M(120.dp),
+  S(50.dp);
+}
+
 @Composable
 fun TUILoader(
   modifier: Modifier = Modifier,
   spinnerImage: TUILoaderSpinnerImage? = null,
+  loaderHeight: LoaderHeight = L,
   tags: TUILoaderTags = TUILoaderTags(),
 ) {
   Box(
@@ -77,20 +86,25 @@ fun TUILoader(
   ) {
     TUILoaderProgressIndicator(
       modifier = Modifier
-        .size(240.dp)
+        .size(loaderHeight.size)
         .testTag(tags.progressBarTag)
     )
     spinnerImage?.let {
       Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
-        modifier = Modifier.padding(start = 31.dp, top = 6.dp, end = 31.dp, bottom = 6.dp)
+        modifier = Modifier.padding(
+          start = 31.dp,
+          top = 6.dp,
+          end = 31.dp,
+          bottom = 6.dp
+        )
       ) {
         Image(
           modifier = Modifier
             .testTag(tags.loaderImageTag)
-            .width(spinnerImage.width)
-            .height(spinnerImage.height),
+            .width(spinnerImage.imageWidth)
+            .height(spinnerImage.imageHeight),
           painter = painterResource(id = spinnerImage.resourceId),
           contentDescription = spinnerImage.contentDescription
         )
@@ -162,8 +176,8 @@ data class TUILoaderTags(
 data class TUILoaderSpinnerImage(
   @DrawableRes val resourceId: Int,
   val contentDescription: String,
-  val height: Dp,
-  val width: Dp,
+  val imageHeight: Dp,
+  val imageWidth: Dp,
 )
 
 @Preview(showBackground = true)
@@ -192,11 +206,12 @@ fun LoaderPreviewWithImage() {
       contentAlignment = Alignment.Center
     ) {
       TUILoader(
+        loaderHeight = L,
         spinnerImage = TUILoaderSpinnerImage(
           resourceId = R.drawable.keyboard_arrow_right,
           contentDescription = "",
-          height = 100.dp,
-          width = 100.dp
+          imageHeight = 100.dp,
+          imageWidth = 100.dp
         )
       )
     }
