@@ -32,8 +32,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.R
-import com.tarkalabs.uicomponents.components.LoaderSize.L
-import com.tarkalabs.uicomponents.components.LoaderSize.S
+import com.tarkalabs.uicomponents.components.LoaderStyle.L
+import com.tarkalabs.uicomponents.components.LoaderStyle.S
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -43,7 +43,8 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * This composable function simply contains
  * @param modifier to modify the properties of the parent component - Box
  * @param tags tags to used while testing to pick the particular component used inside this component.
- * @param spinnerImage object is used to draw an image inside the loader with the params of imageResId: Int, contentDescription: String, progressImageHeight: Dp and progressImageWidth: Dp
+ * @param spinnerImage object is used to draw an image inside the loader with the params of imageResId: Int, contentDescription: String.
+ * @param loaderStyle is used to define the size of the loader and the image if present. The default style of the loader is LoaderStyle.L
  *
  * CustomProgressIndicator Composable function uses the canvas API in jetpack compose to the
  * The Custom Circular Progressbar with below steps.
@@ -67,26 +68,11 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  *  otherwise the arc will be deviated from circle.
  * */
 
-enum class LoaderSize(val size: Dp) {
-  L(size = 240.dp),
-  M(size = 180.dp),
-  S(size = 90.dp);
-}
-
-enum class LoaderImageSize(
-  val height: Dp,
-  val width: Dp,
-) {
-  L(height = 120.dp, width = 120.dp),
-  M(height = 95.dp, width = 95.dp),
-  S(height = 60.dp, width = 60.dp);
-}
-
 @Composable
 fun TUILoader(
   modifier: Modifier = Modifier,
   spinnerImage: TUILoaderSpinnerImage? = null,
-  loaderHeight: LoaderSize = L,
+  loaderStyle: LoaderStyle = L,
   tags: TUILoaderTags = TUILoaderTags(),
 ) {
   Box(
@@ -95,7 +81,7 @@ fun TUILoader(
   ) {
     TUILoaderProgressIndicator(
       modifier = Modifier
-        .size(loaderHeight.size)
+        .size(loaderStyle.size)
         .testTag(tags.progressBarTag)
     )
     spinnerImage?.let {
@@ -112,8 +98,8 @@ fun TUILoader(
         Image(
           modifier = Modifier
             .testTag(tags.loaderImageTag)
-            .width(spinnerImage.imageSize.width)
-            .height(spinnerImage.imageSize.height),
+            .width(loaderStyle.width)
+            .height(loaderStyle.height),
           painter = painterResource(id = spinnerImage.resourceId),
           contentDescription = spinnerImage.contentDescription
         )
@@ -185,7 +171,6 @@ data class TUILoaderTags(
 data class TUILoaderSpinnerImage(
   @DrawableRes val resourceId: Int,
   val contentDescription: String,
-  val imageSize: LoaderImageSize = LoaderImageSize.L
 )
 
 @Preview(showBackground = true)
@@ -214,15 +199,20 @@ fun LoaderPreviewWithImage() {
       contentAlignment = Alignment.Center
     ) {
       TUILoader(
-        loaderHeight = S,
+        loaderStyle = S,
         spinnerImage = TUILoaderSpinnerImage(
-          resourceId = R.drawable.eam360_loader,
+          resourceId = R.drawable.keyboard_arrow_right,
           contentDescription = "",
-          imageSize = LoaderImageSize.S
         )
       )
     }
   }
+}
+
+enum class LoaderStyle(val size: Dp, val height: Dp, val width: Dp) {
+  L(size = 240.dp, height = 120.dp, width = 120.dp),
+  M(size = 180.dp, height = 95.dp, width = 95.dp),
+  S(size = 90.dp, height = 60.dp, width = 60.dp);
 }
 
 

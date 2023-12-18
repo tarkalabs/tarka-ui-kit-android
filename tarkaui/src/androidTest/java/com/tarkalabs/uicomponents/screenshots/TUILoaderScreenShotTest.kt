@@ -6,11 +6,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.google.android.material.R.drawable
-import com.tarkalabs.uicomponents.components.LoaderImageSize
-import com.tarkalabs.uicomponents.components.LoaderSize
-import com.tarkalabs.uicomponents.components.LoaderSize.L
-import com.tarkalabs.uicomponents.components.LoaderSize.M
-import com.tarkalabs.uicomponents.components.LoaderSize.S
+import com.tarkalabs.uicomponents.components.LoaderStyle
+import com.tarkalabs.uicomponents.components.LoaderStyle.L
+import com.tarkalabs.uicomponents.components.LoaderStyle.M
+import com.tarkalabs.uicomponents.components.LoaderStyle.S
 import com.tarkalabs.uicomponents.components.TUILoaderSpinnerImage
 import com.tarkalabs.uicomponents.components.TUILoader
 import com.tarkalabs.uicomponents.theme.TUITheme
@@ -23,7 +22,7 @@ class TUILoaderScreenShotTest(
   private val testName: String,
   private val darkTheme: Boolean,
   private val spinnerImage: Boolean,
-  private val loaderSize: LoaderSize,
+  private val loaderSize: LoaderStyle,
 ) : ComposeScreenshotComparator() {
 
   companion object {
@@ -54,11 +53,10 @@ class TUILoaderScreenShotTest(
         contentAlignment = Alignment.Center
       ) {
         TUILoader(
-          loaderHeight = loaderSize,
+          loaderStyle = loaderSize,
           spinnerImage = if (spinnerImage) TUILoaderSpinnerImage(
             resourceId = drawable.material_ic_keyboard_arrow_right_black_24dp,
             contentDescription = "loader_content",
-            imageSize = if (loaderSize == L) LoaderImageSize.L else if (loaderSize == M) LoaderImageSize.M else LoaderImageSize.S
           ) else null
         )
       }
