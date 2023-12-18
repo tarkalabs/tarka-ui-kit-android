@@ -14,10 +14,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -99,9 +97,7 @@ fun TUILoader(
         Image(
           modifier = Modifier
             .testTag(tags.loaderImageTag)
-            .size(loaderStyle.iconSize)
-            .width(loaderStyle.iconSize)
-            .height(loaderStyle.iconSize),
+            .size(loaderStyle.iconSize),
           painter = painterResource(id = spinnerImage.resourceId),
           contentDescription = spinnerImage.contentDescription
         )
@@ -200,24 +196,9 @@ fun LoaderPreviewWithImage() {
         .background(TUITheme.colors.surface),
       contentAlignment = Alignment.Center
     ) {
-
       Row {
         TUILoader(
           loaderStyle = S,
-          spinnerImage = TUILoaderSpinnerImage(
-            resourceId = R.drawable.keyboard_arrow_right,
-            contentDescription = "",
-          )
-        )
-        TUILoader(
-          loaderStyle = M,
-          spinnerImage = TUILoaderSpinnerImage(
-            resourceId = R.drawable.keyboard_arrow_right,
-            contentDescription = "",
-          )
-        )
-        TUILoader(
-          loaderStyle = L,
           spinnerImage = TUILoaderSpinnerImage(
             resourceId = R.drawable.keyboard_arrow_right,
             contentDescription = "",
