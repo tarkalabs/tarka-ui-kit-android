@@ -14,10 +14,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -32,6 +30,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.R
+import com.tarkalabs.uicomponents.components.LoaderStyle.L
+import com.tarkalabs.uicomponents.components.LoaderStyle.M
+import com.tarkalabs.uicomponents.components.LoaderStyle.S
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -41,7 +42,8 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * This composable function simply contains
  * @param modifier to modify the properties of the parent component - Box
  * @param tags tags to used while testing to pick the particular component used inside this component.
- * @param spinnerImage object is used to draw an image inside the loader with the params of imageResId: Int, contentDescription: String, progressImageHeight: Dp and progressImageWidth: Dp
+ * @param spinnerImage object is used to draw an image inside the loader with the params of imageResId: Int, contentDescription: String.
+ * @param loaderStyle is used to define the size of the loader and the image if present. The default style of the loader is LoaderStyle.L
  *
  * CustomProgressIndicator Composable function uses the canvas API in jetpack compose to the
  * The Custom Circular Progressbar with below steps.
@@ -69,6 +71,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 fun TUILoader(
   modifier: Modifier = Modifier,
   spinnerImage: TUILoaderSpinnerImage? = null,
+  loaderStyle: LoaderStyle = L,
   tags: TUILoaderTags = TUILoaderTags(),
 ) {
   Box(
@@ -77,20 +80,24 @@ fun TUILoader(
   ) {
     TUILoaderProgressIndicator(
       modifier = Modifier
-        .size(240.dp)
+        .size(loaderStyle.spinnerSize)
         .testTag(tags.progressBarTag)
     )
     spinnerImage?.let {
       Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
-        modifier = Modifier.padding(start = 31.dp, top = 6.dp, end = 31.dp, bottom = 6.dp)
+        modifier = Modifier.padding(
+          start = 31.dp,
+          top = 6.dp,
+          end = 31.dp,
+          bottom = 6.dp
+        )
       ) {
         Image(
           modifier = Modifier
             .testTag(tags.loaderImageTag)
-            .width(spinnerImage.width)
-            .height(spinnerImage.height),
+            .size(loaderStyle.iconSize),
           painter = painterResource(id = spinnerImage.resourceId),
           contentDescription = spinnerImage.contentDescription
         )
@@ -162,8 +169,6 @@ data class TUILoaderTags(
 data class TUILoaderSpinnerImage(
   @DrawableRes val resourceId: Int,
   val contentDescription: String,
-  val height: Dp,
-  val width: Dp,
 )
 
 @Preview(showBackground = true)
@@ -181,7 +186,7 @@ fun LoaderPreview() {
   }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun LoaderPreviewWithImage() {
   TUITheme {
@@ -191,16 +196,23 @@ fun LoaderPreviewWithImage() {
         .background(TUITheme.colors.surface),
       contentAlignment = Alignment.Center
     ) {
-      TUILoader(
-        spinnerImage = TUILoaderSpinnerImage(
-          resourceId = R.drawable.keyboard_arrow_right,
-          contentDescription = "",
-          height = 100.dp,
-          width = 100.dp
+      Row {
+        TUILoader(
+          loaderStyle = S,
+          spinnerImage = TUILoaderSpinnerImage(
+            resourceId = R.drawable.keyboard_arrow_right,
+            contentDescription = "",
+          )
         )
-      )
+      }
     }
   }
+}
+
+enum class LoaderStyle(val spinnerSize: Dp, val iconSize: Dp) {
+  L(spinnerSize = 240.dp, iconSize = 120.dp),
+  M(spinnerSize = 180.dp, iconSize = 95.dp),
+  S(spinnerSize = 90.dp, iconSize = 60.dp);
 }
 
 
