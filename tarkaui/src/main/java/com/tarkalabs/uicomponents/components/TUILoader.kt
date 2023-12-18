@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.R
 import com.tarkalabs.uicomponents.components.LoaderStyle.L
+import com.tarkalabs.uicomponents.components.LoaderStyle.M
 import com.tarkalabs.uicomponents.components.LoaderStyle.S
 import com.tarkalabs.uicomponents.theme.TUITheme
 
@@ -81,7 +82,7 @@ fun TUILoader(
   ) {
     TUILoaderProgressIndicator(
       modifier = Modifier
-        .size(loaderStyle.size)
+        .size(loaderStyle.spinnerSize)
         .testTag(tags.progressBarTag)
     )
     spinnerImage?.let {
@@ -98,8 +99,9 @@ fun TUILoader(
         Image(
           modifier = Modifier
             .testTag(tags.loaderImageTag)
-            .width(loaderStyle.width)
-            .height(loaderStyle.height),
+            .size(loaderStyle.iconSize)
+            .width(loaderStyle.iconSize)
+            .height(loaderStyle.iconSize),
           painter = painterResource(id = spinnerImage.resourceId),
           contentDescription = spinnerImage.contentDescription
         )
@@ -198,21 +200,38 @@ fun LoaderPreviewWithImage() {
         .background(TUITheme.colors.surface),
       contentAlignment = Alignment.Center
     ) {
-      TUILoader(
-        loaderStyle = S,
-        spinnerImage = TUILoaderSpinnerImage(
-          resourceId = R.drawable.keyboard_arrow_right,
-          contentDescription = "",
+
+      Row {
+        TUILoader(
+          loaderStyle = S,
+          spinnerImage = TUILoaderSpinnerImage(
+            resourceId = R.drawable.keyboard_arrow_right,
+            contentDescription = "",
+          )
         )
-      )
+        TUILoader(
+          loaderStyle = M,
+          spinnerImage = TUILoaderSpinnerImage(
+            resourceId = R.drawable.keyboard_arrow_right,
+            contentDescription = "",
+          )
+        )
+        TUILoader(
+          loaderStyle = L,
+          spinnerImage = TUILoaderSpinnerImage(
+            resourceId = R.drawable.keyboard_arrow_right,
+            contentDescription = "",
+          )
+        )
+      }
     }
   }
 }
 
-enum class LoaderStyle(val size: Dp, val height: Dp, val width: Dp) {
-  L(size = 240.dp, height = 120.dp, width = 120.dp),
-  M(size = 180.dp, height = 95.dp, width = 95.dp),
-  S(size = 90.dp, height = 60.dp, width = 60.dp);
+enum class LoaderStyle(val spinnerSize: Dp, val iconSize: Dp) {
+  L(spinnerSize = 240.dp, iconSize = 120.dp),
+  M(spinnerSize = 180.dp, iconSize = 95.dp),
+  S(spinnerSize = 90.dp, iconSize = 60.dp);
 }
 
 
