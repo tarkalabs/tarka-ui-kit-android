@@ -5,8 +5,12 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.google.android.material.R.drawable
+import com.tarkalabs.uicomponents.components.LoaderImageSize
+import com.tarkalabs.uicomponents.components.LoaderSize
+import com.tarkalabs.uicomponents.components.LoaderSize.L
+import com.tarkalabs.uicomponents.components.LoaderSize.M
+import com.tarkalabs.uicomponents.components.LoaderSize.S
 import com.tarkalabs.uicomponents.components.TUILoaderSpinnerImage
 import com.tarkalabs.uicomponents.components.TUILoader
 import com.tarkalabs.uicomponents.theme.TUITheme
@@ -19,6 +23,7 @@ class TUILoaderScreenShotTest(
   private val testName: String,
   private val darkTheme: Boolean,
   private val spinnerImage: Boolean,
+  private val loaderSize: LoaderSize,
 ) : ComposeScreenshotComparator() {
 
   companion object {
@@ -28,9 +33,11 @@ class TUILoaderScreenShotTest(
       return mutableListOf<Array<Any?>>().apply {
         for (darkTheme in listOf(true, false)) {
           for (withImage in listOf(true, false)) {
-            val testName =
-              "darkTheme_${darkTheme}_withImage_${withImage}"
-            add(arrayOf(testName, darkTheme, withImage))
+            for (loaderSize in listOf(L, M, S)) {
+              val testName =
+                "darkTheme_${darkTheme}_withImage_${withImage}_loaderSize_${loaderSize}"
+              add(arrayOf(testName, darkTheme, withImage, loaderSize))
+            }
           }
         }
       }
@@ -47,11 +54,11 @@ class TUILoaderScreenShotTest(
         contentAlignment = Alignment.Center
       ) {
         TUILoader(
+          loaderHeight = loaderSize,
           spinnerImage = if (spinnerImage) TUILoaderSpinnerImage(
             resourceId = drawable.material_ic_keyboard_arrow_right_black_24dp,
             contentDescription = "loader_content",
-            imageHeight = 100.dp,
-            imageWidth = 100.dp
+            imageSize = if (loaderSize == L) LoaderImageSize.L else if (loaderSize == M) LoaderImageSize.M else LoaderImageSize.S
           ) else null
         )
       }

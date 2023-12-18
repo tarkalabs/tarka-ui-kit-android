@@ -32,8 +32,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.R
-import com.tarkalabs.uicomponents.components.LoaderHeight.L
-import com.tarkalabs.uicomponents.components.LoaderHeight.M
+import com.tarkalabs.uicomponents.components.LoaderSize.L
+import com.tarkalabs.uicomponents.components.LoaderSize.S
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
@@ -67,17 +67,26 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  *  otherwise the arc will be deviated from circle.
  * */
 
-enum class LoaderHeight(val size: Dp) {
-  L(240.dp),
-  M(120.dp),
-  S(50.dp);
+enum class LoaderSize(val size: Dp) {
+  L(size = 240.dp),
+  M(size = 180.dp),
+  S(size = 90.dp);
+}
+
+enum class LoaderImageSize(
+  val height: Dp,
+  val width: Dp,
+) {
+  L(height = 120.dp, width = 120.dp),
+  M(height = 95.dp, width = 95.dp),
+  S(height = 60.dp, width = 60.dp);
 }
 
 @Composable
 fun TUILoader(
   modifier: Modifier = Modifier,
   spinnerImage: TUILoaderSpinnerImage? = null,
-  loaderHeight: LoaderHeight = L,
+  loaderHeight: LoaderSize = L,
   tags: TUILoaderTags = TUILoaderTags(),
 ) {
   Box(
@@ -103,8 +112,8 @@ fun TUILoader(
         Image(
           modifier = Modifier
             .testTag(tags.loaderImageTag)
-            .width(spinnerImage.imageWidth)
-            .height(spinnerImage.imageHeight),
+            .width(spinnerImage.imageSize.width)
+            .height(spinnerImage.imageSize.height),
           painter = painterResource(id = spinnerImage.resourceId),
           contentDescription = spinnerImage.contentDescription
         )
@@ -176,8 +185,7 @@ data class TUILoaderTags(
 data class TUILoaderSpinnerImage(
   @DrawableRes val resourceId: Int,
   val contentDescription: String,
-  val imageHeight: Dp,
-  val imageWidth: Dp,
+  val imageSize: LoaderImageSize = LoaderImageSize.L
 )
 
 @Preview(showBackground = true)
@@ -195,7 +203,7 @@ fun LoaderPreview() {
   }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun LoaderPreviewWithImage() {
   TUITheme {
@@ -206,12 +214,11 @@ fun LoaderPreviewWithImage() {
       contentAlignment = Alignment.Center
     ) {
       TUILoader(
-        loaderHeight = L,
+        loaderHeight = S,
         spinnerImage = TUILoaderSpinnerImage(
-          resourceId = R.drawable.keyboard_arrow_right,
+          resourceId = R.drawable.eam360_loader,
           contentDescription = "",
-          imageHeight = 100.dp,
-          imageWidth = 100.dp
+          imageSize = LoaderImageSize.S
         )
       )
     }

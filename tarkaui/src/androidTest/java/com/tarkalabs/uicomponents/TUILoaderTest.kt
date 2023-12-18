@@ -3,6 +3,7 @@ package com.tarkalabs.uicomponents
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.uicomponents.components.LoaderImageSize.L
 import com.tarkalabs.uicomponents.components.TUILoaderSpinnerImage
 import com.tarkalabs.uicomponents.components.TUILoader
 import org.junit.Rule
@@ -30,8 +31,7 @@ class TUILoaderTest {
         spinnerImage = TUILoaderSpinnerImage(
           resourceId = com.google.android.material.R.drawable.material_ic_keyboard_arrow_right_black_24dp,
           contentDescription = "",
-          imageWidth = 130.dp,
-          imageHeight = 50.dp
+          imageSize = L
         )
       )
     }
