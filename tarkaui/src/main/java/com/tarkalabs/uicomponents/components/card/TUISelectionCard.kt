@@ -62,7 +62,7 @@ fun TUISelectionCard(
   modifier: Modifier = Modifier,
   leadingIcon: TarkaIcon? = null,
   label: String? = null,
-  primaryDescription: String,
+  primaryDescription: String?,
   secondaryDescription: String? = null,
   primaryDetails: String? = null,
   secondaryDetails: String? = null,
@@ -117,7 +117,7 @@ fun TUISelectionCard(
 
       Text(
         modifier = Modifier.testTag(tags.descriptionTag),
-        text = primaryDescription,
+        text = primaryDescription.orEmpty(),
         color = TUITheme.colors.inputText,
         style = TUITheme.typography.heading6
       )
