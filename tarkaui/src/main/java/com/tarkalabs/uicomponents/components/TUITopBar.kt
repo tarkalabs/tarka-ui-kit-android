@@ -130,7 +130,8 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         onQueryTextChange = {
           query = it
           onSearchQuery(it)
-        })
+        },
+        showKeyboard = showSearchBar)
     } else {
       TopAppBar(
         title = {
