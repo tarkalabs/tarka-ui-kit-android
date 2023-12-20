@@ -1,23 +1,21 @@
 package com.tarkalabs.uicomponents.components
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.SearchBarDefaults.inputFieldColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaicons.BarcodeScanner24
@@ -30,6 +28,7 @@ import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.components.base.TUIIconButton
 import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
 import com.tarkalabs.uicomponents.theme.TUITheme
+import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class) @Composable fun TUISearchBar(
   modifier: Modifier = Modifier,
@@ -40,9 +39,13 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   leadingIcon: TarkaIcon? = null,
   onLeadingIconClick: (() -> Unit)? = null,
   searchBarTags: TUISearchBarTags = TUISearchBarTags(),
-  showKeyboard: Boolean,
 ) {
-  val text = mutableStateOf(query)
+  val focusRequester = remember { FocusRequester() }
+
+  LaunchedEffect(Unit) {
+    delay(500)
+    focusRequester.requestFocus()
+  }
 
   val leadingIconLambda: @Composable (() -> Unit)? = if (leadingIcon != null) {
     {
@@ -57,11 +60,11 @@ import com.tarkalabs.uicomponents.theme.TUITheme
       )
     }
   } else null
-  val trailingIconLambda: @Composable (() -> Unit)? = if (text.value.isNotEmpty()) {
+
+  val trailingIconLambda: @Composable (() -> Unit)? = if (query.isNotEmpty()) {
     {
       TUIIconButton(
         icon = trailingIcon, buttonSize = L, iconButtonStyle = GHOST, onIconClick = {
-          text.value = ""
           onQueryTextChange.invoke("")
         }, tags = searchBarTags.trailingIconTags
       )
@@ -69,16 +72,18 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   } else null
 
   SearchBar(
-    modifier = modifier.testTag(searchBarTags.parentTag),
-    query = text.value,
+    modifier = modifier
+      .testTag(searchBarTags.parentTag)
+      .focusRequester(focusRequester)
+    ,
+    query = query,
     onQueryChange = {
-      text.value = it
       onQueryTextChange.invoke(it)
     },
     onSearch = {
       onQueryTextChange.invoke(it)
     },
-    active = showKeyboard,
+    active = false,
     onActiveChange = {},
     shape = RoundedCornerShape(75.dp),
     leadingIcon = leadingIconLambda,
@@ -94,6 +99,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         focusedPlaceholderColor = TUITheme.colors.inputText,
       ),
     ),
+    enabled = true
   ) {}
 }
 
@@ -116,8 +122,6 @@ data class TUISearchBarTags(
         leadingIcon = TarkaIcons.Regular.BarcodeScanner24,
         onLeadingIconClick = {},
         modifier = Modifier.padding(10.dp),
-        showKeyboard = false
-
       )
 
       TUISearchBar(
@@ -128,9 +132,7 @@ data class TUISearchBarTags(
         leadingIcon = TarkaIcons.Regular.BarcodeScanner24,
         onLeadingIconClick = {},
         modifier = Modifier.padding(10.dp),
-        showKeyboard = true
       )
-
     }
   }
 }
