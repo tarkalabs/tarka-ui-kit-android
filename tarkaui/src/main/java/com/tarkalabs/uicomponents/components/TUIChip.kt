@@ -90,7 +90,8 @@ sealed class ChipType {
     val showLeadingCheck: Boolean = false,
     val showTrailingDismiss: Boolean = false,
     val showTrailingCaret: Boolean = false,
-    val badgeCount: Int? = null
+    val badgeCount: Int? = null,
+    val leadingIcon: TarkaIcon? = null
   ) : ChipType()
 }
 
@@ -166,7 +167,7 @@ enum class ChipSize(val size: Dp) {
         type = type,
         label = label,
         onClick = onClick,
-        modifier = commonModifier
+        modifier = commonModifier,
       )
     }
 
@@ -193,7 +194,7 @@ enum class ChipSize(val size: Dp) {
   type: Filter,
   label : String,
   onClick: () -> Unit,
-  modifier: Modifier
+  modifier: Modifier,
 ) {
   Box(modifier = Modifier.wrapContentWidth()) {
     FilterChip(selected = type.selected,
@@ -215,8 +216,8 @@ enum class ChipSize(val size: Dp) {
       leadingIcon = if (type.showLeadingCheck) {
         {
           Icon(
-            painter = painterResource(id = TarkaIcons.Filled.Checkmark20.iconRes),
-            contentDescription = TarkaIcons.Filled.Checkmark20.contentDescription,
+            painter = painterResource(id = type.leadingIcon?.iconRes ?: TarkaIcons.Filled.Checkmark20.iconRes),
+            contentDescription = type.leadingIcon?.contentDescription ?:TarkaIcons.Filled.Checkmark20.contentDescription,
             tint = if (type.selected) TUITheme.colors.onSecondary else TUITheme.colors.onSurface,
           )
         }

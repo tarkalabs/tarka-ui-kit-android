@@ -75,7 +75,8 @@ class UIComponentListActivity : ComponentActivity() {
               type = Filter(
                 showLeadingCheck = true,
                 selected = true,
-                showTrailingCaret = true
+                showTrailingCaret = true,
+                leadingIcon = TarkaIcons.Regular.ChevronRight20,
               ),
               label = "spare_parts",
               onClick = {
