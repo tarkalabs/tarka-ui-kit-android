@@ -97,12 +97,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     mutableStateOf(false)
   }
 
-  var query by remember {
-    mutableStateOf(searchQuery)
-  }
-
   if (clearQueryAndHideSearchBar && showSearchBar) {
-    query = ""
     showSearchBar = false
     onSearchQuery("")
   }
@@ -119,16 +114,14 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         modifier = Modifier
           .fillMaxWidth()
           .padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
-        query = query,
+        query = searchQuery,
         placeholder = searchQueryHint,
         leadingIcon = TarkaIcons.Regular.ChevronLeft24,
         onLeadingIconClick = {
-          query = ""
           showSearchBar = false
           onSearchQuery("")
         },
         onQueryTextChange = {
-          query = it
           onSearchQuery(it)
         })
     } else {

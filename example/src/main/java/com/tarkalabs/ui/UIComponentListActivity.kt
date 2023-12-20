@@ -13,10 +13,12 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaicons.ChevronRight20
-import com.tarkalabs.tarkaicons.TarkaIcons.Regular
+import com.tarkalabs.tarkaicons.Search24
+import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.ChipType.Filter
 import com.tarkalabs.uicomponents.components.TUIChip
 import com.tarkalabs.uicomponents.components.TUITopBar
@@ -31,18 +33,25 @@ class UIComponentListActivity : ComponentActivity() {
 
     setContent {
       TUITheme {
-        val query by remember {
+        var query by remember {
           mutableStateOf("")
         }
 
         Scaffold(topBar = {
           TUITopBar(
             title = "Lorem Ipsum",
-            navigationIcon = Regular.ChevronRight20,
-            searchIcon = Regular.ChevronRight20,
+            navigationIcon = TarkaIcons.Regular.ChevronRight20,
+            menuItemIconOne = TarkaIcons.Regular.ChevronRight20,
+            menuItemIconTwo = TarkaIcons.Regular.ChevronRight20,
+            menuItemIconThree = TarkaIcons.Regular.ChevronRight20,
             searchQuery = query,
-            searchQueryHint = "search Query Hint"
+            onSearchQuery = { searchQuery ->
+              query = searchQuery
+            },
+            searchIcon = TarkaIcons.Regular.Search24,
+            searchQueryHint = "Search Here"
           )
+
         }) { paddingValues ->
           Column(
             modifier = Modifier
@@ -66,7 +75,8 @@ class UIComponentListActivity : ComponentActivity() {
               type = Filter(
                 showLeadingCheck = true,
                 selected = true,
-                showTrailingCaret = true
+                showTrailingCaret = true,
+                leadingIcon = TarkaIcons.Regular.ChevronRight20,
               ),
               label = "spare_parts",
               onClick = {
