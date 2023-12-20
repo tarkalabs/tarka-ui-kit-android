@@ -91,7 +91,7 @@ sealed class ChipType {
     val showTrailingDismiss: Boolean = false,
     val showTrailingCaret: Boolean = false,
     val badgeCount: Int? = null,
-    val leadingIcon: TarkaIcon? = null
+    val trailingIcon: TarkaIcon? = null
   ) : ChipType()
 }
 
@@ -216,8 +216,8 @@ enum class ChipSize(val size: Dp) {
       leadingIcon = if (type.showLeadingCheck) {
         {
           Icon(
-            painter = painterResource(id = type.leadingIcon?.iconRes ?: TarkaIcons.Filled.Checkmark20.iconRes),
-            contentDescription = type.leadingIcon?.contentDescription ?:TarkaIcons.Filled.Checkmark20.contentDescription,
+            painter =  painterResource(id = TarkaIcons.Filled.Checkmark20.iconRes),
+            contentDescription = TarkaIcons.Filled.Checkmark20.contentDescription,
             tint = if (type.selected) TUITheme.colors.onSecondary else TUITheme.colors.onSurface,
           )
         }
@@ -232,8 +232,8 @@ enum class ChipSize(val size: Dp) {
       } else if (type.showTrailingCaret) {
         {
           Icon(
-            painter = painterResource(id = TarkaIcons.Filled.CaretDown20.iconRes),
-            contentDescription = TarkaIcons.Filled.CaretDown20.contentDescription,
+            painter = painterResource(id = type.trailingIcon?.iconRes ?: TarkaIcons.Filled.CaretDown20.iconRes),
+            contentDescription = type.trailingIcon?.contentDescription ?:TarkaIcons.Filled.CaretDown20.contentDescription,
             tint = if (type.selected) TUITheme.colors.onSecondary else TUITheme.colors.onSurface
 
           )
