@@ -107,9 +107,10 @@ import kotlinx.coroutines.launch
         scope.launch {
           toggleTextFieldVisibility.invoke()
           delay(100)
-          focusRequester.requestFocus()
+          if (showTextField) {
+            focusRequester.requestFocus()
+          }
         }
-
       }
 
   ) {
@@ -207,7 +208,6 @@ import kotlinx.coroutines.launch
               colors = colors,
             )
           }
-
         }
       }
 
