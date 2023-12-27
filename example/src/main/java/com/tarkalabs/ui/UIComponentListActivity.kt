@@ -16,13 +16,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.BarcodeScanner24
 import com.tarkalabs.tarkaicons.ChevronRight20
-import com.tarkalabs.tarkaicons.Search24
+import com.tarkalabs.tarkaicons.Dismiss16
 import com.tarkalabs.tarkaicons.TarkaIcons
-import com.tarkalabs.uicomponents.components.ChipType.Filter
-import com.tarkalabs.uicomponents.components.TUIChip
+import com.tarkalabs.tarkaicons.TarkaIcons.Filled
+import com.tarkalabs.tarkaicons.TarkaIcons.Regular
+import com.tarkalabs.uicomponents.components.TUISearchBar
 import com.tarkalabs.uicomponents.components.TUITopBar
-import com.tarkalabs.uicomponents.components.VerticalSpacer
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -44,12 +45,6 @@ class UIComponentListActivity : ComponentActivity() {
             menuItemIconOne = TarkaIcons.Regular.ChevronRight20,
             menuItemIconTwo = TarkaIcons.Regular.ChevronRight20,
             menuItemIconThree = TarkaIcons.Regular.ChevronRight20,
-            searchQuery = query,
-            onSearchQuery = { searchQuery ->
-              query = searchQuery
-            },
-            searchIcon = TarkaIcons.Regular.Search24,
-            searchQueryHint = "Search Here"
           )
 
         }) { paddingValues ->
@@ -60,40 +55,24 @@ class UIComponentListActivity : ComponentActivity() {
               .fillMaxHeight()
               .padding(horizontal = 8.dp)
           ) {
-            VerticalSpacer(space = 20)
-            TUIChip(
-              type = Filter(
-                showLeadingCheck = true,
-                selected = true,
-              ),
-              label = "spare_parts",
-              onClick = {
-              },
+            TUISearchBar(
+              query = "My Search",
+              placeholder = "Search",
+              onQueryTextChange = {},
+              trailingIcon = Filled.Dismiss16,
+              leadingIcon = Regular.BarcodeScanner24,
+              onLeadingIconClick = {},
+              modifier = Modifier.fillMaxWidth().padding(10.dp),
             )
-            VerticalSpacer(space = 20)
-            TUIChip(
-              type = Filter(
-                showLeadingCheck = true,
-                selected = true,
-                showTrailingCaret = true,
-                trailingIcon = TarkaIcons.Regular.ChevronRight20,
-              ),
-              label = "spare_parts",
-              onClick = {
-              },
+            TUISearchBar(
+              query = "Search",
+              placeholder = "Search Here",
+              onQueryTextChange = {},
+              trailingIcon = Filled.Dismiss16,
+              leadingIcon = Regular.BarcodeScanner24,
+              onLeadingIconClick = {},
+              modifier = Modifier.fillMaxWidth().padding(10.dp),
             )
-            VerticalSpacer(space = 20)
-            TUIChip(
-              type = Filter(
-                showLeadingCheck = true,
-                selected = false,
-                showTrailingCaret = true
-              ),
-              label = "Reset",
-              onClick = {
-              },
-            )
-            VerticalSpacer(space = 20)
 
           }
 
