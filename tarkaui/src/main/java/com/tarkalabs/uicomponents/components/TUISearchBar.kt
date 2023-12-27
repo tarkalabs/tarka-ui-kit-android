@@ -95,6 +95,7 @@ import kotlinx.coroutines.delay
       inputFieldColors = inputFieldColors(
         cursorColor = TUITheme.colors.inputText,
         focusedTextColor = TUITheme.colors.inputText,
+        unfocusedTextColor = TUITheme.colors.inputText,
         unfocusedPlaceholderColor = TUITheme.colors.inputText.copy(alpha = 0.7f),
         focusedPlaceholderColor = TUITheme.colors.inputText.copy(alpha = 0.7f),
       ),
