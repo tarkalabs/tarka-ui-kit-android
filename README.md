@@ -1,16 +1,24 @@
 ## Eam360-ui-android
 Android application for building UI components using Jetpack Compose
 
-
 ## List of components
+
 - TUIAvatar
 - TUIBadge
 - TUIButton
-- TUICheckBox
-- TUICheckBoxRow
 - TUIFloatingActionButton
 - TUIIconButton
 - TUIInputField
+- TUIToggleRow
+- TUIDraggableCard
+- TUISelectionCard
+- TUICheckBox
+- TUIRadioButton
+- TUIRadioButtonRow
+- TUIFloatingNavBar
+- TUIFloatingTab
+- TUITab
+- TUITabBar
 - TUINavigationRows
 - TUISearchBar
 - TUISnackBar
@@ -18,9 +26,18 @@ Android application for building UI components using Jetpack Compose
 - TUITextRow
 - TUIToggleSwitch
 - TUITopBar
+- TUIChip
+- TUIButtonBlock
+- TUIDraggableCard
+- TUIMenuItem
+- TUIOverlayFooter
+- TUISelectionRow
+- TUINavigationRow
+- TUITabBar
+- TUIChip
+- TUIMediaThumbnail
+- TUIRadioButton
+- TUITag
 
 ## TODO
-1. create searchbar UI interface and connect with EAM Topbar
-2. To request all the icon to be used in drawable res folder
-3. move the dimension to a dimens.xml resources file (need consistent naming wih the designers).
-4. use Microsoft fluent icons drawables.
+1. move the dimension to a dimens.xml resources file (need consistent naming with the designers).
