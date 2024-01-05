@@ -19,25 +19,25 @@ Android application for building UI components using Jetpack Compose
 - TUIFloatingTab
 - TUITab
 - TUITabBar
+- TUIAttachmentUpload
 - TUINavigationRows
 - TUISearchBar
 - TUISnackBar
 - TUIStatusIndicator
 - TUITextRow
-- TUIToggleSwitch
 - TUITopBar
 - TUIChip
-- TUIButtonBlock
+- TUIMobileButtonBlock
 - TUIDraggableCard
 - TUIMenuItem
-- TUIOverlayFooter
-- TUISelectionRow
-- TUINavigationRow
+- TUIMobileOverlayHeader
+- TUIMobileOverlayFooter
+- TUISelectionCard
 - TUITabBar
 - TUIChip
-- TUIMediaThumbnail
-- TUIRadioButton
 - TUITag
+- TUIPlayPauseButton
+- TUIMultiLevelSelectorHeader
 
 ## TODO
 1. move the dimension to a dimens.xml resources file (need consistent naming with the designers).
