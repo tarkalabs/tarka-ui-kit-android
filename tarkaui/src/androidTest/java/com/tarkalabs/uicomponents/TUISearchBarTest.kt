@@ -37,7 +37,6 @@ class TUISearchBarTest {
         searchBarTags = searchBarTags,
         trailingIcon = TarkaIcons.Regular.Dismiss24,
         leadingIcon = TarkaIcons.Regular.Search24,
-        showKeyboard = false
       )
     }
     composable.onNodeWithTag(searchBarTags.parentTag).assertIsDisplayed()
@@ -54,7 +53,6 @@ class TUISearchBarTest {
         onLeadingIconClick = {},
         searchBarTags = searchBarTags,
         trailingIcon = TarkaIcons.Regular.Dismiss24,
-        showKeyboard = false
       )
     }
     composable.onNodeWithTag(trailingIconTags.parentTag, useUnmergedTree = true).assertIsDisplayed()
@@ -72,7 +70,6 @@ class TUISearchBarTest {
         searchBarTags = searchBarTags,
         trailingIcon = TarkaIcons.Regular.Dismiss24,
         leadingIcon = TarkaIcons.Regular.Search24,
-        showKeyboard = false
       )
     }
     composable.onNodeWithTag(leadingIconTags.parentTag, useUnmergedTree = true)
@@ -89,7 +86,6 @@ class TUISearchBarTest {
         onLeadingIconClick = {},
         searchBarTags = searchBarTags,
         trailingIcon = TarkaIcons.Regular.Dismiss24,
-        showKeyboard = false
       )
     }
     composable.onNodeWithTag(trailingIconTags.parentTag, useUnmergedTree = true)
