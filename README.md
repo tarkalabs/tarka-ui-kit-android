@@ -20,7 +20,7 @@ Android application for building UI components using Jetpack Compose
 - TUITab
 - TUITabBar
 - TUIAttachmentUpload
-- TUINavigationRows
+- TUINavigationRow
 - TUISearchBar
 - TUISnackBar
 - TUIStatusIndicator
@@ -28,13 +28,10 @@ Android application for building UI components using Jetpack Compose
 - TUITopBar
 - TUIChip
 - TUIMobileButtonBlock
-- TUIDraggableCard
 - TUIMenuItem
 - TUIMobileOverlayHeader
 - TUIMobileOverlayFooter
 - TUISelectionCard
-- TUITabBar
-- TUIChip
 - TUITag
 - TUIPlayPauseButton
 - TUIMultiLevelSelectorHeader
