@@ -59,7 +59,7 @@ class TUIMobileButtonBlocksScreenShotTest(
     )
   }
 
-  @Test fun twoButtonsWithOutlineTrailingIcon() = compareScreenshotFor(darkTheme, "_twoButtons_$testName") {
+  @Test fun twoButtonsWithOutlineTrailingIcon() = compareScreenshotFor(darkTheme, "_twoButtonsWithOutlineTrailingIcon_$testName") {
     TUIMobileButtonBlock(
       primaryButtonLabel = "Label",
       primaryButtonOnClick = { /*TODO*/ },
@@ -69,7 +69,7 @@ class TUIMobileButtonBlocksScreenShotTest(
     )
   }
 
-  @Test fun twoButtonsWithOutlineLeadingIcon() = compareScreenshotFor(darkTheme, "_twoButtons_$testName") {
+  @Test fun twoButtonsWithOutlineLeadingIcon() = compareScreenshotFor(darkTheme, "_twoButtonsWithOutlineLeadingIcon_$testName") {
     TUIMobileButtonBlock(
       primaryButtonLabel = "Label",
       primaryButtonOnClick = { /*TODO*/ },
