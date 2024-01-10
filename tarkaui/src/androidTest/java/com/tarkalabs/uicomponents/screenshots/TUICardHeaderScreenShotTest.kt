@@ -35,6 +35,6 @@ class TUICardHeaderScreenShotTest(
   }
 
   @Test fun tui_card_header_test() = compareScreenshotFor(darkTheme, testName) {
-    TUICardHeader(title = "Pump Repair Pump", tagTitle = tagTitle, trailingIcon = trailIcon) {}
+    TUICardHeader(title = "Pump Repair Pump", tagOneTitle = tagTitle, trailingIcon = trailIcon) {}
   }
 }
