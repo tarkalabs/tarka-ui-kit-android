@@ -3,14 +3,12 @@ package com.tarkalabs.uicomponents.screenshots
 import android.graphics.BitmapFactory
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
-import com.tarkalabs.uicomponents.components.TUIThumbnail
-import com.tarkalabs.uicomponents.components.TUIThumbnailSize
-import com.tarkalabs.uicomponents.components.TUIThumbnailTags
-import com.tarkalabs.uicomponents.components.TUIThumbnailType
-import com.tarkalabs.uicomponents.components.TUIThumbnailType.Audio
-import com.tarkalabs.uicomponents.components.TUIThumbnailType.Document
-import com.tarkalabs.uicomponents.components.TUIThumbnailType.Image
-import com.tarkalabs.uicomponents.components.TUIThumbnailType.Video
+import com.tarkalabs.uicomponents.components.TUIMediaThumbnail
+import com.tarkalabs.uicomponents.components.TUIMediaThumbnailSize
+import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Audio
+import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Document
+import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Image
+import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Video
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -19,7 +17,7 @@ import org.junit.runners.Parameterized
 @RunWith(Parameterized::class)
 class TUIThumbnailScreenShotTest(
   private val showTrailingIcon: Boolean,
-  private val thumbnailSize: TUIThumbnailSize,
+  private val thumbnailSize: TUIMediaThumbnailSize,
   private val testName: String,
   private val darkTheme: Boolean,
 ) : ComposeScreenshotComparator() {
@@ -38,7 +36,7 @@ class TUIThumbnailScreenShotTest(
 
       val darkThemeValues = listOf(true, false)
       val showTrailingIconValues = listOf(true, false)
-      val thumbnailSizeValues = TUIThumbnailSize.values()
+      val thumbnailSizeValues = TUIMediaThumbnailSize.values()
 
 
       val testData = ArrayList<Array<Any?>>()
@@ -64,7 +62,7 @@ class TUIThumbnailScreenShotTest(
 
   @Test fun test_thumbnails_case_audio() {
     compareScreenshotFor(darkTheme = darkTheme, imageName = "TUIThumbnail_Type_Audio_$testName") {
-      TUIThumbnail(
+      TUIMediaThumbnail(
         type = Audio,
         showTrailingIcon = showTrailingIcon,
         size = thumbnailSize,
@@ -74,7 +72,7 @@ class TUIThumbnailScreenShotTest(
 
   @Test fun test_thumbnails_case_document() {
     compareScreenshotFor(darkTheme = darkTheme, imageName = "TUIThumbnail_Type_Document_$testName") {
-      TUIThumbnail(
+      TUIMediaThumbnail(
         type = Document,
         showTrailingIcon = showTrailingIcon,
         size = thumbnailSize,
@@ -84,7 +82,7 @@ class TUIThumbnailScreenShotTest(
 
   @Test fun test_thumbnails_case_image() {
     compareScreenshotFor(darkTheme = darkTheme, imageName = "TUIThumbnail_Type_Image_$testName") {
-      TUIThumbnail(
+      TUIMediaThumbnail(
         type = Image(bitmap),
         showTrailingIcon = showTrailingIcon,
         size = thumbnailSize,
@@ -94,7 +92,7 @@ class TUIThumbnailScreenShotTest(
 
   @Test fun test_thumbnails_case_video() {
     compareScreenshotFor(darkTheme = darkTheme, imageName = "TUIThumbnail_Type_Video_$testName") {
-      TUIThumbnail(
+      TUIMediaThumbnail(
         type = Video(bitmap),
         showTrailingIcon = showTrailingIcon,
         size = thumbnailSize,

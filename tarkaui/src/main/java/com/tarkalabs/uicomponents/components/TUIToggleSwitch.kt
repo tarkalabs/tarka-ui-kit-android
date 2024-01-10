@@ -32,7 +32,7 @@ import com.tarkalabs.uicomponents.extentions.clickableWithoutRipple
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
- * Below TUISwitch() defines a reusable composable function which can be used to create a Switch which takes several parameters such as
+ * Below TUIToggleSwitch() defines a reusable composable function which can be used to create a Switch which takes several parameters such as
  * @param isChecked Checked status of the ToggleSwitch
  * @param enabled Enable status of the ToggleSwitch
  * @param tags Test Tags for the  TUIToggleSwitch
@@ -44,7 +44,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  *
  */
 
-@Composable fun TUISwitch(
+@Composable fun TUIToggleSwitch(
   modifier: Modifier = Modifier,
   isChecked: Boolean,
   enabled: Boolean = true,
@@ -145,20 +145,20 @@ data class TUIToggleSwitchTags(
       Column(
         horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center
       ) {
-        TUISwitch(isChecked = isChecked, enabled = true) {
+        TUIToggleSwitch(isChecked = isChecked, enabled = true) {
           isChecked = !isChecked
         }
         VerticalSpacer(space = 16)
 
-        TUISwitch(isChecked = isChecked4, enabled = true) {
+        TUIToggleSwitch(isChecked = isChecked4, enabled = true) {
           isChecked4 = !isChecked4
         }
         VerticalSpacer(space = 16)
-        TUISwitch(isChecked = isChecked3, enabled = false) {
+        TUIToggleSwitch(isChecked = isChecked3, enabled = false) {
           isChecked3 = !isChecked3
         }
         VerticalSpacer(space = 16)
-        TUISwitch(isChecked = isChecked2, enabled = false) {
+        TUIToggleSwitch(isChecked = isChecked2, enabled = false) {
           isChecked2 = !isChecked2
         }
       }

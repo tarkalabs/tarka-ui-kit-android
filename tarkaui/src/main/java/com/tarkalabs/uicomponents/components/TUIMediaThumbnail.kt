@@ -38,39 +38,37 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaicons.DeviceEq24
 import com.tarkalabs.tarkaicons.Document24
 import com.tarkalabs.tarkaicons.Eye12
-import com.tarkalabs.tarkaicons.HandWave24
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.R
-import com.tarkalabs.uicomponents.components.PlayPauseButtonSize.L
 import com.tarkalabs.uicomponents.components.PlayPauseButtonSize.M
-import com.tarkalabs.uicomponents.components.TUIThumbnailSize.Large
-import com.tarkalabs.uicomponents.components.TUIThumbnailSize.Medium
-import com.tarkalabs.uicomponents.components.TUIThumbnailType.Audio
-import com.tarkalabs.uicomponents.components.TUIThumbnailType.Document
-import com.tarkalabs.uicomponents.components.TUIThumbnailType.Image
-import com.tarkalabs.uicomponents.components.TUIThumbnailType.Video
+import com.tarkalabs.uicomponents.components.TUIMediaThumbnailSize.Large
+import com.tarkalabs.uicomponents.components.TUIMediaThumbnailSize.Medium
+import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Audio
+import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Document
+import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Image
+import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Video
 import com.tarkalabs.uicomponents.theme.TUITheme
 
-sealed class TUIThumbnailType {
-  object Document : TUIThumbnailType()
-  object Audio : TUIThumbnailType()
-  data class Video(val image: ImageBitmap) : TUIThumbnailType()
-  data class Image(val image: ImageBitmap) : TUIThumbnailType()
+sealed class TUIMediaThumbnailType {
+  object Document : TUIMediaThumbnailType()
+  object Audio : TUIMediaThumbnailType()
+  data class Video(val image: ImageBitmap) : TUIMediaThumbnailType()
+  data class Image(val image: ImageBitmap) : TUIMediaThumbnailType()
 }
 
-enum class TUIThumbnailSize {
+enum class TUIMediaThumbnailSize {
   Large,
   Medium
 }
 
-@Composable fun TUIThumbnail(
+@Composable fun TUIMediaThumbnail(
   modifier: Modifier = Modifier,
-  size: TUIThumbnailSize = Large,
-  type: TUIThumbnailType,
+  size: TUIMediaThumbnailSize = Large,
+  type: TUIMediaThumbnailType,
   showTrailingIcon: Boolean,
   onThumbnailClick: (() -> Unit)? = null,
   onTrailingIconClick: (() -> Unit)? = null,
-  tags: TUIThumbnailTags = TUIThumbnailTags(),
+  tags: TUIMediaThumbnailTags = TUIMediaThumbnailTags(),
 ) {
   val (height, width) = when (size) {
     Large -> 60.dp to 80.dp
@@ -153,11 +151,11 @@ enum class TUIThumbnailSize {
   }
 }
 
-data class TUIThumbnailTags(
-  val parentTag: String = "TUIThumbnail",
-  val centerIconTag: String = "TUIThumbnail_CenterIcon",
-  val trailingIconTag: String = "TUIThumbnail_TrailingIcon",
-  val thumbImageTag: String = "TUIThumbnail_ThumbImage"
+data class TUIMediaThumbnailTags(
+  val parentTag: String = "TUIMediaThumbnail",
+  val centerIconTag: String = "TUIMediaThumbnail_CenterIcon",
+  val trailingIconTag: String = "TUIMediaThumbnail_TrailingIcon",
+  val thumbImageTag: String = "TUIMediaThumbnail_ThumbImage"
 )
 
 @Preview @Composable fun PreviewTUIThumbnail() {
@@ -182,21 +180,21 @@ data class TUIThumbnailTags(
         horizontalAlignment = Alignment.CenterHorizontally
       ) {
         VerticalSpacer(space = 50)
-        TUIThumbnail(type = Image(image = bitmap), showTrailingIcon = false)
+        TUIMediaThumbnail(type = Image(image = bitmap), showTrailingIcon = false)
         VerticalSpacer(space = 5)
-        TUIThumbnail(type = Video(image = bitmap), showTrailingIcon = false)
+        TUIMediaThumbnail(type = Video(image = bitmap), showTrailingIcon = false)
         VerticalSpacer(space = 5)
-        TUIThumbnail(type = Audio, showTrailingIcon = false)
+        TUIMediaThumbnail(type = Audio, showTrailingIcon = false)
         VerticalSpacer(space = 5)
-        TUIThumbnail(type = Document, showTrailingIcon = false)
+        TUIMediaThumbnail(type = Document, showTrailingIcon = false)
         VerticalSpacer(space = 50)
-        TUIThumbnail(type = Image(image = bitmap), showTrailingIcon = false, size = Medium)
+        TUIMediaThumbnail(type = Image(image = bitmap), showTrailingIcon = false, size = Medium)
         VerticalSpacer(space = 5)
-        TUIThumbnail(type = Video(image = bitmap), showTrailingIcon = false, size = Medium)
+        TUIMediaThumbnail(type = Video(image = bitmap), showTrailingIcon = false, size = Medium)
         VerticalSpacer(space = 5)
-        TUIThumbnail(type = Audio, showTrailingIcon = false, size = Medium)
+        TUIMediaThumbnail(type = Audio, showTrailingIcon = false, size = Medium)
         VerticalSpacer(space = 5)
-        TUIThumbnail(type = Document, showTrailingIcon = false, size = Medium)
+        TUIMediaThumbnail(type = Document, showTrailingIcon = false, size = Medium)
       }
 
       HorizontalSpacer(space = 100)
@@ -206,21 +204,21 @@ data class TUIThumbnailTags(
         horizontalAlignment = Alignment.CenterHorizontally
       ) {
         VerticalSpacer(space = 50)
-        TUIThumbnail(type = Image(image = bitmap), showTrailingIcon = true)
+        TUIMediaThumbnail(type = Image(image = bitmap), showTrailingIcon = true)
         VerticalSpacer(space = 5)
-        TUIThumbnail(type = Video(image = bitmap), showTrailingIcon = true)
+        TUIMediaThumbnail(type = Video(image = bitmap), showTrailingIcon = true)
         VerticalSpacer(space = 5)
-        TUIThumbnail(type = Audio, showTrailingIcon = true)
+        TUIMediaThumbnail(type = Audio, showTrailingIcon = true)
         VerticalSpacer(space = 5)
-        TUIThumbnail(type = Document, showTrailingIcon = true)
+        TUIMediaThumbnail(type = Document, showTrailingIcon = true)
         VerticalSpacer(space = 50)
-        TUIThumbnail(type = Image(image = bitmap), showTrailingIcon = true, size = Medium)
+        TUIMediaThumbnail(type = Image(image = bitmap), showTrailingIcon = true, size = Medium)
         VerticalSpacer(space = 5)
-        TUIThumbnail(type = Video(image = bitmap), showTrailingIcon = true, size = Medium)
+        TUIMediaThumbnail(type = Video(image = bitmap), showTrailingIcon = true, size = Medium)
         VerticalSpacer(space = 5)
-        TUIThumbnail(type = Audio, showTrailingIcon = true, size = Medium)
+        TUIMediaThumbnail(type = Audio, showTrailingIcon = true, size = Medium)
         VerticalSpacer(space = 5)
-        TUIThumbnail(type = Document, showTrailingIcon = true, size = Medium)
+        TUIMediaThumbnail(type = Document, showTrailingIcon = true, size = Medium)
 
       }
 
