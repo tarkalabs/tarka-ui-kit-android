@@ -7,16 +7,15 @@ import com.tarkalabs.tarkaicons.MoreHorizontal24
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUICardHeader
 import com.tarkalabs.uicomponents.components.TUICardHeaderTags
+import com.tarkalabs.uicomponents.components.TUICardTag
 import org.junit.Rule
 import org.junit.Test
 
 class TUICardHeaderTest {
 
-  @get:Rule
-  val composeTestRule = createComposeRule()
+  @get:Rule val composeTestRule = createComposeRule()
 
-  @Test
-  fun tuiCardHeader_component_displayed() {
+  @Test fun tuiCardHeader_component_displayed() {
 
     val title = "Header Title"
     val tagOneTitle = "tagOne"
@@ -28,18 +27,19 @@ class TUICardHeaderTest {
     composeTestRule.setContent {
       TUICardHeader(
         title = title,
-        tagOneTitle = tagOneTitle,
-        tagTwoTitle = tagTwoTitle,
+        primaryTag = TUICardTag(title = tagOneTitle, onClick = {}),
+        secondaryTag = TUICardTag(title = tagTwoTitle, onClick = {}),
+        teritaryTag = TUICardTag(title = tagThreeTitle, onClick = {}),
         trailingIcon = trailingIcon,
-        tagThreeTitle = tagThreeTitle,
         tags = testTags
       )
     }
 
-    composeTestRule.onNodeWithTag(tagOneTitle).assertIsDisplayed()
-    composeTestRule.onNodeWithTag(tagTwoTitle).assertIsDisplayed()
-    composeTestRule.onNodeWithTag(tagThreeTitle).assertIsDisplayed()
-    composeTestRule.onNodeWithTag(tagThreeTitle).assertIsDisplayed()
-    composeTestRule.onNodeWithTag(testTags.trailingIconTag).assertIsDisplayed()
+    composeTestRule.onNodeWithTag(tagOneTitle, useUnmergedTree = true).assertIsDisplayed()
+    composeTestRule.onNodeWithTag(tagTwoTitle, useUnmergedTree = true).assertIsDisplayed()
+    composeTestRule.onNodeWithTag(tagThreeTitle, useUnmergedTree = true).assertIsDisplayed()
+    composeTestRule.onNodeWithTag(tagThreeTitle, useUnmergedTree = true).assertIsDisplayed()
+    composeTestRule.onNodeWithTag(testTags.trailingIconTag, useUnmergedTree = true)
+      .assertIsDisplayed()
   }
 }
