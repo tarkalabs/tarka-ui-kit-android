@@ -4,6 +4,7 @@ import com.tarkalabs.tarkaicons.MoreHorizontal24
 import com.tarkalabs.tarkaicons.TarkaIcon
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUICardHeader
+import com.tarkalabs.uicomponents.components.TUICardTag
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
@@ -35,6 +36,7 @@ class TUICardHeaderScreenShotTest(
   }
 
   @Test fun tui_card_header_test() = compareScreenshotFor(darkTheme, testName) {
-    TUICardHeader(title = "Pump Repair Pump", tagTitle = tagTitle, trailingIcon = trailIcon) {}
+    TUICardHeader(title = "Pump Repair Pump", primaryTag = TUICardTag(title = tagTitle.orEmpty(), onClick = {}), trailingIcon = trailIcon) {}
+
   }
 }
