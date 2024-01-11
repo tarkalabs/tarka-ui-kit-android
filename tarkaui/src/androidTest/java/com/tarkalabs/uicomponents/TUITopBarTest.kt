@@ -15,7 +15,7 @@ import com.tarkalabs.tarkaicons.Delete24
 import com.tarkalabs.tarkaicons.Search24
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
-import com.tarkalabs.uicomponents.components.TUITopBar
+import com.tarkalabs.uicomponents.components.TUITopAppBar
 import com.tarkalabs.uicomponents.components.TUITopBarTags
 import org.junit.Rule
 import org.junit.Test
@@ -41,7 +41,7 @@ class TUITopBarTest {
 
   @OptIn(ExperimentalMaterial3Api::class) @Test fun topBar_Item_Displayed() {
     composeTestRule.setContent {
-      TUITopBar(
+      TUITopAppBar(
         title = "title",
         navigationIcon = TarkaIcons.Regular.ChevronRight20,
         menuItemIconOne = TarkaIcons.Filled.Checkmark16,
@@ -60,7 +60,7 @@ class TUITopBarTest {
 
   @OptIn(ExperimentalMaterial3Api::class) @Test fun topBar_SearchIcon_Displayed() {
     composeTestRule.setContent {
-      TUITopBar(
+      TUITopAppBar(
         title = "title",
         navigationIcon = TarkaIcons.Regular.ChevronRight20,
         searchIcon = TarkaIcons.Regular.Search24,
@@ -78,7 +78,7 @@ class TUITopBarTest {
     val onThirdMenuItemClicked: () -> Unit = mock()
 
     composeTestRule.setContent {
-      TUITopBar(
+      TUITopAppBar(
         title = "title",
         navigationIcon = TarkaIcons.Regular.ChevronRight20,
         searchIcon = TarkaIcons.Regular.Search24,
