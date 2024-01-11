@@ -16,6 +16,7 @@ dependencyResolutionManagement {
     mavenCentral()
   }
 }
-rootProject.name = "eam360-ui-android"
+rootProject.name = "tarka-ui-kit-android"
 include(":example")
-include(":common-ui")
+include(":tarkaui")
+include(":tarkaicons")

@@ -1,8 +1,42 @@
 ## Tarka-ui-kit-android
 Android application for building UI components using Jetpack Compose
 
+## List of components
+
+- TUIAvatar
+- TUIBadge
+- TUIButton
+- TUIFloatingActionButton
+- TUIIconButton
+- TUIInputField
+- TUIToggleRow
+- TUIDraggableCard
+- TUISelectionCard
+- TUICheckBox
+- TUIRadioButton
+- TUIRadioButtonRow
+- TUIFloatingNavBar
+- TUIFloatingTab
+- TUITab
+- TUITabBar
+- TUIAttachmentUpload
+- TUINavigationRow
+- TUISearchBar
+- TUISnackBar
+- TUIStatusIndicator
+- TUITextRow
+- TUIAppTopBar
+- TUIChip
+- TUIMobileButtonBlock
+- TUIMenuItem
+- TUIMobileOverlayHeader
+- TUIMobileOverlayFooter
+- TUISelectionCard
+- TUITag
+- TUIPlayPauseButton
+- TUIMultiLevelSelectorHeader
+
 ## TODO
-1. create searchbar UI interface and connect with EAM Topbar
-2. To request all the icon to be used in drawable res folder
-3. move the dimension to a dimens.xml resources file (need consistent naming wih the designers).
-4. use Microsoft fluent icons drawables.
+
+1. move the dimension to a dimens.xml resources file (need consistent naming with the designers).
+
