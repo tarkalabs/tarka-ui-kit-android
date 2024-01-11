@@ -25,7 +25,7 @@ Android application for building UI components using Jetpack Compose
 - TUISnackBar
 - TUIStatusIndicator
 - TUITextRow
-- TUITopAppBar
+- TUIAppTopBar
 - TUIChip
 - TUIMobileButtonBlock
 - TUIMenuItem
