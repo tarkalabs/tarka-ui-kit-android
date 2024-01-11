@@ -23,7 +23,7 @@ import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.tarkaicons.TarkaIcons.Filled
 import com.tarkalabs.tarkaicons.TarkaIcons.Regular
 import com.tarkalabs.uicomponents.components.TUISearchBar
-import com.tarkalabs.uicomponents.components.TUITopBar
+import com.tarkalabs.uicomponents.components.TUITopAppBar
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -39,7 +39,7 @@ class UIComponentListActivity : ComponentActivity() {
         }
 
         Scaffold(topBar = {
-          TUITopBar(
+          TUITopAppBar(
             title = "Lorem Ipsum",
             navigationIcon = TarkaIcons.Regular.ChevronRight20,
             menuItemIconOne = TarkaIcons.Regular.ChevronRight20,

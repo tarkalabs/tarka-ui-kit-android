@@ -69,7 +69,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Specify scroll behavior
       )
  */
-@OptIn(ExperimentalMaterial3Api::class) @Composable fun TUITopBar(
+@OptIn(ExperimentalMaterial3Api::class) @Composable fun TUITopAppBar(
   modifier: Modifier = Modifier,
   title: String,
   navigationIcon: TarkaIcon? = null,
@@ -217,7 +217,7 @@ data class TUITopBarTags(
 ) {
   TUITheme {
     Column {
-      TUITopBar(
+      TUITopAppBar(
         title = "Lorem Ipsum",
         navigationIcon = TarkaIcons.Regular.ChevronRight20,
         menuItemIconOne = TarkaIcons.Regular.ChevronRight20,
@@ -230,7 +230,7 @@ data class TUITopBarTags(
         searchQueryHint = "Search"
       )
       VerticalSpacer(space = 5)
-      TUITopBar(
+      TUITopAppBar(
         title = "Lorem Ipsum",
         navigationIcon = TarkaIcons.Regular.ChevronRight20,
         searchIcon = TarkaIcons.Regular.Search16
