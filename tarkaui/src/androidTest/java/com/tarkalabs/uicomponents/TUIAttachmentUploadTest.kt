@@ -11,7 +11,7 @@ import com.tarkalabs.uicomponents.components.TUIAttachmentUpload
 import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState.UpLoadSuccessful
 import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState.UpLoading
 import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.TUIAttachmentUploadTags
-import com.tarkalabs.uicomponents.components.TUIThumbnailType.Document
+import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Document
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock

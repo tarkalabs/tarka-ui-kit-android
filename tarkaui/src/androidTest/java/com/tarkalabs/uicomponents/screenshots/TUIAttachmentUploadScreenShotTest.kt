@@ -6,8 +6,8 @@ import com.tarkalabs.tarkaicons.Delete24
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUIAttachmentUpload
 import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState
-import com.tarkalabs.uicomponents.components.TUIThumbnailType.Document
-import com.tarkalabs.uicomponents.components.TUIThumbnailType.Image
+import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Document
+import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Image
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
