@@ -52,8 +52,8 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * @param colors The colors to be applied to the top app bar.
  * @param searchQuery the default search text that we need to show in searchbar
  * @param scrollBehavior The scroll behavior to be applied to the top app bar.
- * How to use TopBar()
-      TopBar(
+ * How to use TUIAppTopBar()
+  TUIAppTopBar(
     title = "My App",
     navigationIcon = TarkaIcon.Back, // Optional: Pass the navigation icon
     searchIcon = TarkaIcon.Search, // Optional: Pass the search icon
@@ -69,7 +69,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Specify scroll behavior
       )
  */
-@OptIn(ExperimentalMaterial3Api::class) @Composable fun TUITopAppBar(
+@OptIn(ExperimentalMaterial3Api::class) @Composable fun TUIAppTopBar(
   modifier: Modifier = Modifier,
   title: String,
   navigationIcon: TarkaIcon? = null,
@@ -90,7 +90,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     containerColor = TUITheme.colors.surface
   ),
   scrollBehavior: TopAppBarScrollBehavior? = null,
-  tags: TUITopBarTags = TUITopBarTags(),
+  tags: TUIAppTopBarTags = TUIAppTopBarTags(),
 ) {
 
   var showSearchBar by remember {
@@ -204,7 +204,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   }
 }
 
-data class TUITopBarTags(
+data class TUIAppTopBarTags(
   val parentTag: String = "TUITopBar",
   val navigationIconTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUITopBar_NavigationIcon"),
   val searchIconTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUITopBar_SearchIcon"),
@@ -217,7 +217,7 @@ data class TUITopBarTags(
 ) {
   TUITheme {
     Column {
-      TUITopAppBar(
+      TUIAppTopBar(
         title = "Lorem Ipsum",
         navigationIcon = TarkaIcons.Regular.ChevronRight20,
         menuItemIconOne = TarkaIcons.Regular.ChevronRight20,
@@ -230,7 +230,7 @@ data class TUITopBarTags(
         searchQueryHint = "Search"
       )
       VerticalSpacer(space = 5)
-      TUITopAppBar(
+      TUIAppTopBar(
         title = "Lorem Ipsum",
         navigationIcon = TarkaIcons.Regular.ChevronRight20,
         searchIcon = TarkaIcons.Regular.Search16
