@@ -76,56 +76,6 @@ repositories {
 }
 ```
 
-### Usage
-
-1. **Use the Theme Tarka:**
-   In your `Activity` class or  add the `TUITheme` to set the deafult themthing of the app:
-
-    ```kotlin
-    class Somectivity : ComponentActivity() {
-      override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-          TUITheme {
-            // rest of your UI
-          }
-        }
-      }
-    }
-    ```
-
-2. **Add UI Components:**
-   Use TarkaUi Kit's components in your Compose functions:
-
-   ```kotlin
-   @Composable
-   fun MyScreen() {
-       TUIButton(
-           label = "Click me",
-           onClick = { /* Handle button click */ }
-       )
-   }
-   ```
-
-3. **Customization:**
-   Customize the appearance of components using TarkaUi Kit's styling functions with modifiers and other available options in the functions
-
-   ```kotlin
-      TUIInputField(
-        value = "Input",
-        onValueChange = { // Handle Value Chagne },
-        status = Normal,
-        maxCharLength = Int.MAX_VALUE,
-        label = stringResource(id = string.someStringRes),
-        maxLines = Int.MAX_VALUE,
-        testTags = TUIInputFieldTags(parentTag = "YourTag")
-      )
-   ```
-
-## Examples
-
-Explore the `example` module in this repository to see comprehensive examples of TarkaUi Kit's usage. The sample module includes various screens showcasing different components and customization options.
-
 ## License
 
 TarkaUi Kit is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
