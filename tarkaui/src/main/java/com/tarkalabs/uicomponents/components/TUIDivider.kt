@@ -31,7 +31,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
  * @param horizontalPadding: Horizontal padding of this divider.
  * @param verticalPadding: The Vertical padding of this divider.
  * @param tags: The test tag for the row.
- * @param color: The color of the divider, by default we're using surface.
+ * @param color: The color of the divider, by default we're using surfaceVariantHover.
  *
  * Example usage:
  *
@@ -51,7 +51,7 @@ fun TUIDivider(
   thickness: Int = 1,
   horizontalPadding: HorizontalPaddingSize = S,
   verticalPadding: VerticalPaddingSize = M,
-  color: Color = TUITheme.colors.surface
+  color: Color = TUITheme.colors.surfaceVariantHover
 ) {
   when (orientation) {
     VERTICAL -> {
