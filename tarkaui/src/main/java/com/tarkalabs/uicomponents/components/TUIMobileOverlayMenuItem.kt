@@ -30,23 +30,23 @@ import com.tarkalabs.tarkaicons.AddCircle24
 import com.tarkalabs.tarkaicons.ChevronRight20
 import com.tarkalabs.tarkaicons.TarkaIcon
 import com.tarkalabs.tarkaicons.TarkaIcons
-import com.tarkalabs.uicomponents.components.MenuItemLeadingContentType.StatusIndicator
+import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemLeadingContentType.StatusIndicator
 import com.tarkalabs.uicomponents.components.MenuItemStyle.Title
 import com.tarkalabs.uicomponents.components.MenuItemStyle.TitleWithDescription
-import com.tarkalabs.uicomponents.components.MenuItemTrailingContentType.Icon
-import com.tarkalabs.uicomponents.components.MenuItemTrailingContentType.SubMenu
+import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemTrailingContentType.Icon
+import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemTrailingContentType.SubMobileOverlayMenu
 import com.tarkalabs.uicomponents.extentions.maxHeight
 import com.tarkalabs.uicomponents.extentions.maxWidth
 import com.tarkalabs.uicomponents.theme.TUITheme
 
-sealed class MenuItemLeadingContentType {
-  data class Icon(val icon: TarkaIcon) : MenuItemLeadingContentType()
-  object StatusIndicator : MenuItemLeadingContentType()
+sealed class MobileOverlayMenuItemLeadingContentType {
+  data class Icon(val icon: TarkaIcon) : MobileOverlayMenuItemLeadingContentType()
+  object StatusIndicator : MobileOverlayMenuItemLeadingContentType()
 }
 
-sealed class MenuItemTrailingContentType {
-  data class Icon(val icon: TarkaIcon) : MenuItemTrailingContentType()
-  object SubMenu : MenuItemTrailingContentType()
+sealed class MobileOverlayMenuItemTrailingContentType {
+  data class Icon(val icon: TarkaIcon) : MobileOverlayMenuItemTrailingContentType()
+  object SubMobileOverlayMenu : MobileOverlayMenuItemTrailingContentType()
 }
 
 sealed class MenuItemStyle {
@@ -66,13 +66,13 @@ sealed class MenuItemStyle {
  * @param onMenuItemClick A callback function to handle the click event on the menu item.
  * @param tags Tags for testing purposes to be applied to the various components of the menu item.
  */
-@Composable fun TUIMenuItem(
+@Composable fun TUIMobileOverlayMenuItem(
   modifier: Modifier = Modifier,
   title: String,
   isSelected: Boolean,
   style: MenuItemStyle,
-  leadingContent: MenuItemLeadingContentType? = null,
-  trailingContent: MenuItemTrailingContentType? = null,
+  leadingContent: MobileOverlayMenuItemLeadingContentType? = null,
+  trailingContent: MobileOverlayMenuItemTrailingContentType? = null,
   onMenuItemClick: () -> Unit,
   tags: TUIMenuItemTags = TUIMenuItemTags()
 ) {
@@ -86,7 +86,7 @@ sealed class MenuItemStyle {
     {
       val leadingContentModifier = Modifier.padding(start = 16.dp, end = 8.dp).testTag(tags.leadingContentTag)
       when (leadingContent) {
-        is MenuItemLeadingContentType.Icon -> Icon(
+        is MobileOverlayMenuItemLeadingContentType.Icon -> Icon(
           painter = painterResource(id = leadingContent.icon.iconRes),
           contentDescription = leadingContent.icon.contentDescription,
           tint = leadingContent.icon.tintColor ?: TUITheme.colors.onSurface,
@@ -126,7 +126,7 @@ sealed class MenuItemStyle {
           modifier = trailingContentModifier
         )
 
-        SubMenu -> {
+        SubMobileOverlayMenu -> {
           Icon(
             painter = painterResource(id = TarkaIcons.Regular.ChevronRight20.iconRes),
             contentDescription = TarkaIcons.Regular.ChevronRight20.contentDescription,
@@ -205,7 +205,7 @@ data class TUIMenuItemTags(
         .background(color = TUITheme.colors.surface)
         .padding(vertical = 10.dp)
     ) {
-      TUIMenuItem(
+      TUIMobileOverlayMenuItem(
         title = "Label",
         style = Title,
         onMenuItemClick = {},
@@ -213,18 +213,18 @@ data class TUIMenuItemTags(
         modifier = Modifier.fillMaxWidth()
       )
       VerticalSpacer(space = 10)
-      TUIMenuItem(
+      TUIMobileOverlayMenuItem(
         title = "Label",
         style = Title,
         onMenuItemClick = {},
         isSelected = true,
         modifier = Modifier.fillMaxWidth(),
-        leadingContent = MenuItemLeadingContentType.Icon(
+        leadingContent = MobileOverlayMenuItemLeadingContentType.Icon(
           TarkaIcons.Regular.AddCircle24.copy(tintColor = TUITheme.colors.success)
         )
       )
       VerticalSpacer(space = 10)
-      TUIMenuItem(
+      TUIMobileOverlayMenuItem(
         title = "Label",
         style = Title,
         onMenuItemClick = {},
@@ -235,7 +235,7 @@ data class TUIMenuItemTags(
         )
       )
       VerticalSpacer(space = 10)
-      TUIMenuItem(
+      TUIMobileOverlayMenuItem(
         title = "Label",
         style = Title,
         onMenuItemClick = {},
@@ -244,13 +244,13 @@ data class TUIMenuItemTags(
         leadingContent = StatusIndicator
       )
       VerticalSpacer(space = 10)
-      TUIMenuItem(
+      TUIMobileOverlayMenuItem(
         title = "Label",
         style = Title,
         onMenuItemClick = {},
         isSelected = true,
         modifier = Modifier.fillMaxWidth(),
-        leadingContent = MenuItemLeadingContentType.Icon(
+        leadingContent = MobileOverlayMenuItemLeadingContentType.Icon(
           TarkaIcons.Regular.AddCircle24.copy(tintColor = TUITheme.colors.success)
         ),
         trailingContent = Icon(
@@ -258,7 +258,7 @@ data class TUIMenuItemTags(
         )
       )
       VerticalSpacer(space = 10)
-      TUIMenuItem(
+      TUIMobileOverlayMenuItem(
         title = "Label",
         style = Title,
         onMenuItemClick = {},
@@ -271,18 +271,18 @@ data class TUIMenuItemTags(
       )
 
       VerticalSpacer(space = 10)
-      TUIMenuItem(
+      TUIMobileOverlayMenuItem(
         title = "Label",
         style = Title,
         onMenuItemClick = {},
         isSelected = false,
         modifier = Modifier.fillMaxWidth(),
         leadingContent = StatusIndicator,
-        trailingContent = SubMenu
+        trailingContent = SubMobileOverlayMenu
       )
 
       VerticalSpacer(space = 10)
-      TUIMenuItem(
+      TUIMobileOverlayMenuItem(
         title = "Label",
         style = TitleWithDescription("Label"),
         onMenuItemClick = {},

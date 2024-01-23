@@ -9,11 +9,11 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import com.tarkalabs.tarkaicons.AddCircle24
 import com.tarkalabs.tarkaicons.TarkaIcons
-import com.tarkalabs.uicomponents.components.MenuItemLeadingContentType.StatusIndicator
+import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemLeadingContentType.StatusIndicator
 import com.tarkalabs.uicomponents.components.MenuItemStyle.Title
 import com.tarkalabs.uicomponents.components.MenuItemStyle.TitleWithDescription
-import com.tarkalabs.uicomponents.components.MenuItemTrailingContentType.Icon
-import com.tarkalabs.uicomponents.components.TUIMenuItem
+import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemTrailingContentType.Icon
+import com.tarkalabs.uicomponents.components.TUIMobileOverlayMenuItem
 import com.tarkalabs.uicomponents.components.TUIMenuItemTags
 import com.tarkalabs.uicomponents.theme.TUITheme
 import org.junit.Rule
@@ -21,14 +21,14 @@ import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 
-class TUIMenuItemTest {
+class TUIMobileOverlayMenuItemTest {
 
   @get:Rule val composeTestRule = createComposeRule()
   val tags: TUIMenuItemTags = TUIMenuItemTags()
 
   @Test fun menuItem_Displayed() {
     composeTestRule.setContent {
-      TUIMenuItem(
+      TUIMobileOverlayMenuItem(
         title = "Label",
         style = Title,
         onMenuItemClick = {},
@@ -49,7 +49,7 @@ class TUIMenuItemTest {
 
   @Test fun menuItem_WithDescription_Displayed() {
     composeTestRule.setContent {
-      TUIMenuItem(
+      TUIMobileOverlayMenuItem(
         title = "Label",
         style = TitleWithDescription("TitleWithDescription"),
         onMenuItemClick = {},
@@ -67,7 +67,7 @@ class TUIMenuItemTest {
     val onMenuItemClick: () -> Unit = mock()
 
     composeTestRule.setContent {
-      TUIMenuItem(
+      TUIMobileOverlayMenuItem(
         title = "Label",
         style = Title,
         onMenuItemClick = onMenuItemClick,
