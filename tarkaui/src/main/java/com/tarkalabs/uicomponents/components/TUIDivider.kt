@@ -46,7 +46,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 
 @Composable
 fun TUIDivider(
-  orientation: Orientation,
+  orientation: Orientation = HORIZONTAL,
   tags: TUIDividerTags = TUIDividerTags(),
   thickness: Int = 1,
   horizontalPadding: HorizontalPaddingSize = S,
