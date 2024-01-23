@@ -10,11 +10,11 @@ import androidx.compose.ui.test.performClick
 import com.tarkalabs.tarkaicons.AddCircle24
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemLeadingContentType.StatusIndicator
-import com.tarkalabs.uicomponents.components.MenuItemStyle.Title
-import com.tarkalabs.uicomponents.components.MenuItemStyle.TitleWithDescription
+import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemStyle.Title
+import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemStyle.TitleWithDescription
 import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemTrailingContentType.Icon
 import com.tarkalabs.uicomponents.components.TUIMobileOverlayMenuItem
-import com.tarkalabs.uicomponents.components.TUIMenuItemTags
+import com.tarkalabs.uicomponents.components.TUIMobileOverlayMenuItemTags
 import com.tarkalabs.uicomponents.theme.TUITheme
 import org.junit.Rule
 import org.junit.Test
@@ -24,14 +24,14 @@ import org.mockito.kotlin.verify
 class TUIMobileOverlayMenuItemTest {
 
   @get:Rule val composeTestRule = createComposeRule()
-  val tags: TUIMenuItemTags = TUIMenuItemTags()
+  val tags: TUIMobileOverlayMenuItemTags = TUIMobileOverlayMenuItemTags()
 
-  @Test fun menuItem_Displayed() {
+  @Test fun mobileOverlayMenuItem_Displayed() {
     composeTestRule.setContent {
       TUIMobileOverlayMenuItem(
         title = "Label",
         style = Title,
-        onMenuItemClick = {},
+        onMobileOverlayMenuItemClick = {},
         isSelected = true,
         modifier = Modifier.fillMaxWidth(),
         leadingContent = StatusIndicator,
@@ -47,12 +47,12 @@ class TUIMobileOverlayMenuItemTest {
     composeTestRule.onNodeWithText("Label",useUnmergedTree = true).assertIsDisplayed()
   }
 
-  @Test fun menuItem_WithDescription_Displayed() {
+  @Test fun mobileOverlayMenuItem_WithDescription_Displayed() {
     composeTestRule.setContent {
       TUIMobileOverlayMenuItem(
         title = "Label",
         style = TitleWithDescription("TitleWithDescription"),
-        onMenuItemClick = {},
+        onMobileOverlayMenuItemClick = {},
         isSelected = true,
         modifier = Modifier.fillMaxWidth(),
         tags = tags
@@ -70,7 +70,7 @@ class TUIMobileOverlayMenuItemTest {
       TUIMobileOverlayMenuItem(
         title = "Label",
         style = Title,
-        onMenuItemClick = onMenuItemClick,
+        onMobileOverlayMenuItemClick = onMenuItemClick,
         isSelected = true,
         modifier = Modifier.fillMaxWidth(),
         leadingContent = StatusIndicator,

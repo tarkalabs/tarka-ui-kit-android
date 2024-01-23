@@ -5,9 +5,9 @@ import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemLeadingContentType
 import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemLeadingContentType.Icon
 import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemLeadingContentType.StatusIndicator
-import com.tarkalabs.uicomponents.components.MenuItemStyle
-import com.tarkalabs.uicomponents.components.MenuItemStyle.Title
-import com.tarkalabs.uicomponents.components.MenuItemStyle.TitleWithDescription
+import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemStyle
+import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemStyle.Title
+import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemStyle.TitleWithDescription
 import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemTrailingContentType
 import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemTrailingContentType.SubMobileOverlayMenu
 import com.tarkalabs.uicomponents.components.TUIMobileOverlayMenuItem
@@ -17,7 +17,7 @@ import org.junit.runners.Parameterized
 
 @RunWith(Parameterized::class)
 class TUIMobileOverlayMenuItemScreenshotTest(
-  private val style: MenuItemStyle,
+  private val style: MobileOverlayMenuItemStyle,
   private val leadingContentType: MobileOverlayMenuItemLeadingContentType?,
   private val trailingContentType: MobileOverlayMenuItemTrailingContentType?,
   private val isSelected: Boolean,
@@ -69,8 +69,8 @@ class TUIMobileOverlayMenuItemScreenshotTest(
       return testData
     }
 
-    private fun getSimpleName(menuItemStyle: MenuItemStyle): String {
-      return when(menuItemStyle){
+    private fun getSimpleName(mobileOverlayMenuItemStyle: MobileOverlayMenuItemStyle): String {
+      return when(mobileOverlayMenuItemStyle){
         Title -> "Title"
         is TitleWithDescription -> "TitleWithDescription"
       }
@@ -94,7 +94,7 @@ class TUIMobileOverlayMenuItemScreenshotTest(
   }
 
   @Test
-  fun testTuiMenuItem() {
+  fun testTuiMobileOverlayMenuItem() {
     compareScreenshotFor(darkTheme, testName) {
       TUIMobileOverlayMenuItem(
         title = "Label",
@@ -102,7 +102,7 @@ class TUIMobileOverlayMenuItemScreenshotTest(
         style = style,
         leadingContent = leadingContentType,
         trailingContent = trailingContentType,
-        onMenuItemClick = { /*TODO*/ },
+        onMobileOverlayMenuItemClick = { /*TODO*/ },
       )
     }
   }

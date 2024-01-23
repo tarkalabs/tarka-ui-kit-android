@@ -31,8 +31,8 @@ import com.tarkalabs.tarkaicons.ChevronRight20
 import com.tarkalabs.tarkaicons.TarkaIcon
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemLeadingContentType.StatusIndicator
-import com.tarkalabs.uicomponents.components.MenuItemStyle.Title
-import com.tarkalabs.uicomponents.components.MenuItemStyle.TitleWithDescription
+import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemStyle.Title
+import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemStyle.TitleWithDescription
 import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemTrailingContentType.Icon
 import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemTrailingContentType.SubMobileOverlayMenu
 import com.tarkalabs.uicomponents.extentions.maxHeight
@@ -49,9 +49,9 @@ sealed class MobileOverlayMenuItemTrailingContentType {
   object SubMobileOverlayMenu : MobileOverlayMenuItemTrailingContentType()
 }
 
-sealed class MenuItemStyle {
-  object Title : MenuItemStyle()
-  data class TitleWithDescription(val description: String) : MenuItemStyle()
+sealed class MobileOverlayMenuItemStyle {
+  object Title : MobileOverlayMenuItemStyle()
+  data class TitleWithDescription(val description: String) : MobileOverlayMenuItemStyle()
 }
 
 /**
@@ -60,21 +60,21 @@ sealed class MenuItemStyle {
  * @param modifier The optional [Modifier] to customize the appearance and layout of the menu item.
  * @param title The main title text to be displayed in the menu item.
  * @param isSelected A boolean flag indicating whether the menu item is selected or not.
- * @param style The style of the menu item title. It can be either [MenuItemStyle.Title] or [MenuItemStyle.TitleWithDescription].
+ * @param style The style of the menu item title. It can be either [MobileOverlayMenuItemStyle.Title] or [MobileOverlayMenuItemStyle.TitleWithDescription].
  * @param leadingContent The optional leading content to be displayed before the title. It can be an icon or a status indicator.
  * @param trailingContent The optional trailing content to be displayed after the title. It can be an icon or a submenu indicator.
- * @param onMenuItemClick A callback function to handle the click event on the menu item.
+ * @param onMobileOverlayMenuItemClick A callback function to handle the click event on the menu item.
  * @param tags Tags for testing purposes to be applied to the various components of the menu item.
  */
 @Composable fun TUIMobileOverlayMenuItem(
   modifier: Modifier = Modifier,
   title: String,
   isSelected: Boolean,
-  style: MenuItemStyle,
+  style: MobileOverlayMenuItemStyle,
   leadingContent: MobileOverlayMenuItemLeadingContentType? = null,
   trailingContent: MobileOverlayMenuItemTrailingContentType? = null,
-  onMenuItemClick: () -> Unit,
-  tags: TUIMenuItemTags = TUIMenuItemTags()
+  onMobileOverlayMenuItemClick: () -> Unit,
+  tags: TUIMobileOverlayMenuItemTags = TUIMobileOverlayMenuItemTags()
 ) {
 
   val bgColor = if (isSelected) TUITheme.colors.success10 else Color.Transparent
@@ -154,7 +154,7 @@ sealed class MenuItemStyle {
       .clickable(
         interactionSource = interactionSource,
         indication = rememberRipple(color = rippleColor),
-        onClick = onMenuItemClick
+        onClick = onMobileOverlayMenuItemClick
       )
       .testTag(tags.parentTag),
     verticalAlignment = Alignment.CenterVertically,
@@ -165,7 +165,7 @@ sealed class MenuItemStyle {
       .weight(1f)
       .padding(vertical = 8.dp)) {
       when (style) {
-        Title -> TUIMenuItemTitle(title)
+        Title -> TUIMobileOverlayMenuItemTitle(title)
         is TitleWithDescription -> TUIMenuItemTitleWithDescription(
           title = title, description = style.description
         )
@@ -175,7 +175,7 @@ sealed class MenuItemStyle {
   }
 }
 
-@Composable private fun TUIMenuItemTitle(title: String) {
+@Composable private fun TUIMobileOverlayMenuItemTitle(title: String) {
   Text(
     text = title,
     style = TUITheme.typography.body7,
@@ -192,10 +192,10 @@ sealed class MenuItemStyle {
   )
 }
 
-data class TUIMenuItemTags(
-  val parentTag: String = "TUIMenuItemParentTag",
-  val leadingContentTag: String = "TUIMenuItem_LeadingContent",
-  val trailingContentTag: String = "TUIMenuItem_TrailingContent"
+data class TUIMobileOverlayMenuItemTags(
+  val parentTag: String = "TUIMobileOverlayMenuItemParentTag",
+  val leadingContentTag: String = "TUIMobileOverlayMenuItem_LeadingContent",
+  val trailingContentTag: String = "TUIMobileOverlayMenuItem_TrailingContent"
 )
 
 @Preview @Composable fun PreviewTUIMenuItem() {
@@ -208,7 +208,7 @@ data class TUIMenuItemTags(
       TUIMobileOverlayMenuItem(
         title = "Label",
         style = Title,
-        onMenuItemClick = {},
+        onMobileOverlayMenuItemClick = {},
         isSelected = false,
         modifier = Modifier.fillMaxWidth()
       )
@@ -216,7 +216,7 @@ data class TUIMenuItemTags(
       TUIMobileOverlayMenuItem(
         title = "Label",
         style = Title,
-        onMenuItemClick = {},
+        onMobileOverlayMenuItemClick = {},
         isSelected = true,
         modifier = Modifier.fillMaxWidth(),
         leadingContent = MobileOverlayMenuItemLeadingContentType.Icon(
@@ -227,7 +227,7 @@ data class TUIMenuItemTags(
       TUIMobileOverlayMenuItem(
         title = "Label",
         style = Title,
-        onMenuItemClick = {},
+        onMobileOverlayMenuItemClick = {},
         isSelected = true,
         modifier = Modifier.fillMaxWidth(),
         trailingContent = Icon(
@@ -238,7 +238,7 @@ data class TUIMenuItemTags(
       TUIMobileOverlayMenuItem(
         title = "Label",
         style = Title,
-        onMenuItemClick = {},
+        onMobileOverlayMenuItemClick = {},
         isSelected = true,
         modifier = Modifier.fillMaxWidth(),
         leadingContent = StatusIndicator
@@ -247,7 +247,7 @@ data class TUIMenuItemTags(
       TUIMobileOverlayMenuItem(
         title = "Label",
         style = Title,
-        onMenuItemClick = {},
+        onMobileOverlayMenuItemClick = {},
         isSelected = true,
         modifier = Modifier.fillMaxWidth(),
         leadingContent = MobileOverlayMenuItemLeadingContentType.Icon(
@@ -261,7 +261,7 @@ data class TUIMenuItemTags(
       TUIMobileOverlayMenuItem(
         title = "Label",
         style = Title,
-        onMenuItemClick = {},
+        onMobileOverlayMenuItemClick = {},
         isSelected = true,
         modifier = Modifier.fillMaxWidth(),
         leadingContent = StatusIndicator,
@@ -274,7 +274,7 @@ data class TUIMenuItemTags(
       TUIMobileOverlayMenuItem(
         title = "Label",
         style = Title,
-        onMenuItemClick = {},
+        onMobileOverlayMenuItemClick = {},
         isSelected = false,
         modifier = Modifier.fillMaxWidth(),
         leadingContent = StatusIndicator,
@@ -285,7 +285,7 @@ data class TUIMenuItemTags(
       TUIMobileOverlayMenuItem(
         title = "Label",
         style = TitleWithDescription("Label"),
-        onMenuItemClick = {},
+        onMobileOverlayMenuItemClick = {},
         isSelected = false,
         modifier = Modifier.fillMaxWidth(),
       )
