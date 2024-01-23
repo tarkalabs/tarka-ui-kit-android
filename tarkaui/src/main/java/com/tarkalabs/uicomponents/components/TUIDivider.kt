@@ -55,13 +55,13 @@ fun TUIDivider(
 ) {
   when (orientation) {
     VERTICAL -> {
+      //todo vertical divider is not yet implemented in any of the components so we don't know height
+      // .height(40.dp)
       Row {
         HorizontalSpacer(space = horizontalPadding.size)
         Divider(
           modifier = Modifier
             .fillMaxHeight()
-            //todo vertical divider is not yet implemented in any of the components so we don't know height
-            // .height(40.dp)
             .width(thickness.dp)
             .padding(vertical = verticalPadding.size.dp)
             .testTag(tag = tags.parentTag),
