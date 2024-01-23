@@ -198,7 +198,7 @@ data class TUIMobileOverlayMenuItemTags(
   val trailingContentTag: String = "TUIMobileOverlayMenuItem_TrailingContent"
 )
 
-@Preview @Composable fun PreviewTUIMenuItem() {
+@Preview @Composable fun PreviewTUIMobileOverlayMenuItem() {
   TUITheme {
     Column(
       modifier = Modifier
