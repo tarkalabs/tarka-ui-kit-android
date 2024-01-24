@@ -63,18 +63,25 @@ sealed class TUIFloatingNavButtonContentType {
   object Burger : TUIFloatingNavButtonContentType()
 }
 
+/**
+ * TUIFloatingNavButton is a reusable compose function which can be used to create floating navigation button of different styles.
+ * @param modifier The modifier to be applied to this button.
+ * @param style The style of the button. Default being [TUIFloatingNavButtonStyle.defaultStyle]
+ * @param contentType The type of content to be displayed in the button.
+ * @param onClick The callback function to be invoked when the button is clicked.
+ * @param tags The tags to be applied to the button for testing.**/
 @Composable fun TUIFloatingNavButton(
   modifier: Modifier = Modifier,
   style: TUIFloatingNavButtonStyle = TUIFloatingNavButtonStyle.defaultStyle,
   contentType: TUIFloatingNavButtonContentType,
-  onClicked: (() -> Unit)? = null,
+  onClick: (() -> Unit)? = null,
   tags: TUIFloatingNavButtonTags = TUIFloatingNavButtonTags()
 ) {
   Row(modifier = modifier
     .wrapContentSize()
     .clickableWithoutRipple {
-      if (style != LIST && onClicked != null) {
-        onClicked()
+      if (style != LIST && onClick != null) {
+        onClick()
       }
     }
     .background(shape = RoundedCornerShape(32.dp), color = TUITheme.colors.primaryAltHover)
