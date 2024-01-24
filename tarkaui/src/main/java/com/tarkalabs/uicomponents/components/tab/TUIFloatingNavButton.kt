@@ -88,17 +88,9 @@ sealed class TUIFloatingNavButtonContentType {
     .testTag(tags.parentTag)) {
 
     when (contentType) {
-      is Burger -> {
-        TUIFloatingNavBurgerButton()
-      }
-
-      is Navigation -> {
-        TUIFloatingNavTypeButton(contentType, style)
-      }
-
-      is List -> {
-        TUIFloatingNavListButton(contentType)
-      }
+      is Burger -> TUIFloatingNavBurgerButton()
+      is Navigation -> TUIFloatingNavTypeButton(contentType, style)
+      is List -> TUIFloatingNavListButton(contentType)
     }
   }
 }
