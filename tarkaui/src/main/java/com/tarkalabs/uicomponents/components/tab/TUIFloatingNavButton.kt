@@ -84,7 +84,7 @@ sealed class TUIFloatingNavButtonContentType {
         onClick()
       }
     }
-    .background(shape = RoundedCornerShape(32.dp), color = TUITheme.colors.primaryAltHover)
+    .background(shape = RoundedCornerShape(32.dp), color = TUITheme.colors.primaryAltHover.copy(alpha = 0.3f))
     .testTag(tags.parentTag)) {
 
     when (contentType) {
@@ -215,7 +215,7 @@ data class TUIFloatingNavButtonTags(
   val iconThreeTag: String = "TUIFloatingNavButton_Icon_Three",
 )
 
-@Preview @Composable fun TUIFloatingNavButtonPreview() {
+@Preview(showBackground = true, showSystemUi = true) @Composable fun TUIFloatingNavButtonPreview() {
   TUITheme {
     Column(
       horizontalAlignment = Alignment.CenterHorizontally
