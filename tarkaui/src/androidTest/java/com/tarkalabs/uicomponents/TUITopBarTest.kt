@@ -15,8 +15,8 @@ import com.tarkalabs.tarkaicons.Delete24
 import com.tarkalabs.tarkaicons.Search24
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
-import com.tarkalabs.uicomponents.components.TUITopBar
-import com.tarkalabs.uicomponents.components.TUITopBarTags
+import com.tarkalabs.uicomponents.components.TUIAppTopBar
+import com.tarkalabs.uicomponents.components.TUIAppTopBarTags
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock
@@ -31,7 +31,7 @@ class TUITopBarTest {
   private val menuIconTwoTags = TUIIconButtonTags(parentTag = "MenuIconTwo")
   private val menuIconThreeTags = TUIIconButtonTags(parentTag = "MenuIconThree")
 
-  private val tags = TUITopBarTags(
+  private val tags = TUIAppTopBarTags(
     navigationIconTags = navigationIconTags,
     searchIconTags = searchIconTags,
     menuIconOneTags = menuIconOneTags,
@@ -41,7 +41,7 @@ class TUITopBarTest {
 
   @OptIn(ExperimentalMaterial3Api::class) @Test fun topBar_Item_Displayed() {
     composeTestRule.setContent {
-      TUITopBar(
+      TUIAppTopBar(
         title = "title",
         navigationIcon = TarkaIcons.Regular.ChevronRight20,
         menuItemIconOne = TarkaIcons.Filled.Checkmark16,
@@ -60,11 +60,11 @@ class TUITopBarTest {
 
   @OptIn(ExperimentalMaterial3Api::class) @Test fun topBar_SearchIcon_Displayed() {
     composeTestRule.setContent {
-      TUITopBar(
+      TUIAppTopBar(
         title = "title",
         navigationIcon = TarkaIcons.Regular.ChevronRight20,
         searchIcon = TarkaIcons.Regular.Search24,
-        tags = TUITopBarTags(searchIconTags = searchIconTags)
+        tags = TUIAppTopBarTags(searchIconTags = searchIconTags)
       )
     }
 
@@ -78,7 +78,7 @@ class TUITopBarTest {
     val onThirdMenuItemClicked: () -> Unit = mock()
 
     composeTestRule.setContent {
-      TUITopBar(
+      TUIAppTopBar(
         title = "title",
         navigationIcon = TarkaIcons.Regular.ChevronRight20,
         searchIcon = TarkaIcons.Regular.Search24,

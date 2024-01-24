@@ -1,8 +1,8 @@
 package com.tarkalabs.uicomponents.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,30 +16,38 @@ import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TagSize.S
 import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.components.base.TUIIconButton
+import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 /**
  * This Component is used as a Header part in the Card Typed Detail Views.
  *
  * @param title - Title of the Header.
- * @param tagTitle - optional Title of the TUITag.
+ * @param title - optional Title of the card header.
+ * @param tagOneTitle - optional tag title
+ * @param tagTwoTitle - optional tag title
+ * @param tagThreeTitle - optional tag title
+ * @param tagOneClick - optional tag click
+ * @param tagTwoClick - optional tag click
+ * @param tagThreeClick - optional tag click
  * @param trailingIcon - optional end Icon.
+ * @param onTrailingIconClick - optional end Icon click.
  *
  * TUICardHeader(
  *     title = "Pump Repair Pump",
- *     tagTitle = "Tag1",
  *     trailingIcon = TarkaIcons.Filled.MoreHorizontal24.copy(tintColor = TUITheme.colors.secondary)
  *   ) {}
  *
  * **/
-@Composable
-fun TUICardHeader(
+@Composable fun TUICardHeader(
   modifier: Modifier = Modifier,
-  title: String,
-  tagTitle: String? = null,
+  title: String? = null,
+  primaryTag: TUICardTag? = null,
+  secondaryTag: TUICardTag? = null,
+  teritaryTag: TUICardTag? = null,
   trailingIcon: TarkaIcon? = null,
   tags: TUICardHeaderTags = TUICardHeaderTags(),
-  onTrailingIconClick: () -> Unit,
+  onTrailingIconClick: (() -> Unit)? = null,
 ) {
 
   Row(
@@ -48,57 +56,122 @@ fun TUICardHeader(
       .fillMaxWidth(),
     verticalAlignment = Alignment.CenterVertically
   ) {
-
     HorizontalSpacer(space = 16)
-
-    Column {
-      tagTitle?.let {
-        TUITag(
-          modifier = Modifier.testTag(tags.tagTitleTag),
-          title = tagTitle,
-          tagSize = S,
-          tagType = TagType.LOW
-        ) {}
+    Column(
+      modifier = modifier
+        .fillMaxWidth()
+        .weight(1f)
+    ) {
+      Row(modifier = modifier.fillMaxWidth()) {
+        primaryTag?.let { tag ->
+          TUITag(
+            title = tag.title,
+            tagSize = S,
+            tagType = TagType.LOW,
+            tags = TUITagTestTags(parentTag = tag.title)
+          ) { tag.onClick() }
+          HorizontalSpacer(space = 8)
+        }
+        secondaryTag?.let { tag ->
+          TUITag(
+            title = tag.title,
+            tagSize = S,
+            tagType = TagType.LOW,
+            tags = TUITagTestTags(parentTag = tag.title)
+          ) { tag.onClick() }
+          HorizontalSpacer(space = 8)
+        }
+        teritaryTag?.let { tag ->
+          TUITag(
+            title = tag.title,
+            tagSize = S,
+            tagType = TagType.LOW,
+            tags = TUITagTestTags(parentTag = tag.title)
+          ) { tag.onClick() }
+          HorizontalSpacer(space = 8)
+        }
+      }
+      if ((primaryTag != null || secondaryTag != null || teritaryTag != null) &&
+        !title.isNullOrEmpty()) {
         VerticalSpacer(space = 8)
       }
-
-      Text(
-        text = title,
-        color = TUITheme.colors.onSurface,
-        style = TUITheme.typography.heading6
-      )
+      title?.let {
+        Text(
+          text = it, color = TUITheme.colors.onSurface, style = TUITheme.typography.heading6
+        )
+      }
     }
-
     HorizontalSpacer(space = 8)
-
     trailingIcon?.let {
-      Spacer(modifier = Modifier.weight(1f))
       TUIIconButton(
-        modifier = Modifier
-          .testTag(tags.trailingIconTag),
         icon = trailingIcon,
         iconButtonStyle = GHOST,
-        onIconClick = { onTrailingIconClick.invoke() }
+        onIconClick = { onTrailingIconClick?.invoke() },
+        tags = TUIIconButtonTags(parentTag = tags.trailingIconTag)
       )
     }
-
     HorizontalSpacer(space = 16)
-
   }
 }
 
 data class TUICardHeaderTags(
   val parentTag: String = "TUICardHeader",
-  val tagTitleTag: String = "TUICardHeader_tagTitleTag",
   val trailingIconTag: String = "TUICardHeader_trailingIconTag",
 )
 
-@Preview
-@Composable
-fun TUICardHeaderPreview() {
-  TUICardHeader(
-    title = "Pump Repair Pump",
-    tagTitle = "Tag1",
-    trailingIcon = TarkaIcons.Filled.MoreHorizontal24.copy(tintColor = TUITheme.colors.secondary)
-  ) {}
+data class TUICardTag(
+  val title: String, val onClick: () -> Unit
+)
+
+@Preview @Composable fun TUICardHeaderPreview() {
+  Column {
+    TUITheme {
+      Column(modifier = Modifier.background(color = TUITheme.colors.surface)) {
+        VerticalSpacer(space = 32)
+        TUICardHeader(
+          title = "Pump Repair Pump",
+          trailingIcon = TarkaIcons.Filled.MoreHorizontal24.copy(tintColor = TUITheme.colors.secondary)
+        )
+        VerticalSpacer(space = 16)
+        TUICardHeader(
+          primaryTag = TUICardTag(title = "Tag One", onClick = {}),
+          trailingIcon = TarkaIcons.Filled.MoreHorizontal24.copy(tintColor = TUITheme.colors.secondary)
+        )
+        VerticalSpacer(space = 16)
+        TUICardHeader(
+          title = "Pump Repair Pump",
+          primaryTag = TUICardTag(title = "Tag 1", onClick = {}),
+          secondaryTag = TUICardTag(title = "Tag 2", onClick = {}),
+          teritaryTag = TUICardTag(title = "Tag 3", onClick = {}),
+          trailingIcon = TarkaIcons.Filled.MoreHorizontal24.copy(tintColor = TUITheme.colors.secondary)
+        )
+        VerticalSpacer(space = 32)
+      }
+    }
+    TUITheme(darkTheme = true) {
+      Column(modifier = Modifier.background(color = TUITheme.colors.surface)) {
+        VerticalSpacer(space = 32)
+        TUICardHeader(
+          title = "Pump Repair Pump",
+          trailingIcon = TarkaIcons.Filled.MoreHorizontal24.copy(tintColor = TUITheme.colors.secondary)
+        )
+        VerticalSpacer(space = 16)
+        TUICardHeader(
+          primaryTag = TUICardTag(title = "Tag 1", onClick = {}),
+
+          trailingIcon = TarkaIcons.Filled.MoreHorizontal24.copy(tintColor = TUITheme.colors.secondary)
+        )
+        VerticalSpacer(space = 16)
+        TUICardHeader(
+          title = "Pump Repair Pump",
+          primaryTag = TUICardTag(title = "Tag 1", onClick = {}),
+          secondaryTag = TUICardTag(title = "Tag 2", onClick = {}),
+          teritaryTag = TUICardTag(title = "Tag 3", onClick = {}),
+          trailingIcon = TarkaIcons.Filled.MoreHorizontal24.copy(tintColor = TUITheme.colors.secondary)
+        )
+        VerticalSpacer(space = 32)
+      }
+    }
+
+  }
 }

@@ -37,7 +37,7 @@ publishing {
       run {
         groupId = "com.tarkalabs"
         artifactId = "tarkaicons"
-        version = "0.1-alpha"
+        version = "1.0.0"
         artifact("$buildDir/outputs/aar/tarkaicons-release.aar")
       }
     }
@@ -46,7 +46,7 @@ publishing {
   repositories {
     maven {
       name = "GitHubPackages"
-      url = uri("https://maven.pkg.github.com/REPOSITORY_URL_HERE")
+      url = uri("https://maven.pkg.github.com/tarkalabs/tarka-ui-kit-android")
       credentials {
         username = System.getenv("GITHUB_USER")
         password = System.getenv("GITHUB_TOKEN")

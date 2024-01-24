@@ -1,6 +1,6 @@
 package com.tarkalabs.uicomponents.screenshots
 
-import com.tarkalabs.uicomponents.components.TUISwitch
+import com.tarkalabs.uicomponents.components.TUIToggleSwitch
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
@@ -24,18 +24,18 @@ class TUIToggleSwitchScreenShotTest(
     }
   }
   @Test fun test_checked_status() = compareScreenshotFor(darkTheme, "_testCheckedStatus_$testName") {
-    TUISwitch(isChecked = true, onCheckedChange = {})
+    TUIToggleSwitch(isChecked = true, onCheckedChange = {})
   }
 
   @Test fun test_unchecked_status() = compareScreenshotFor(darkTheme, "_testUncheckedStatus_$testName") {
-    TUISwitch(isChecked = false, onCheckedChange = {})
+    TUIToggleSwitch(isChecked = false, onCheckedChange = {})
   }
 
   @Test fun test_checked_state_with_disabled_status() = compareScreenshotFor(darkTheme, "_testCheckedStateWithDisabledStatus_$testName") {
-    TUISwitch(isChecked = true, enabled = false, onCheckedChange = {})
+    TUIToggleSwitch(isChecked = true, enabled = false, onCheckedChange = {})
   }
 
   @Test fun test_unchecked_state_with_disabled_status() = compareScreenshotFor(darkTheme, "_testUncheckedStateWithDisabledStatus_$testName") {
-    TUISwitch(isChecked = false, enabled = false, onCheckedChange = {})
+    TUIToggleSwitch(isChecked = false, enabled = false, onCheckedChange = {})
   }
 }

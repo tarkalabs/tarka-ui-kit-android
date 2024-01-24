@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import com.tarkalabs.tarkaicons.ReOrderDotsVertical24
 import com.tarkalabs.tarkaicons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUISwitch
+import com.tarkalabs.uicomponents.components.TUIToggleSwitch
 import com.tarkalabs.uicomponents.components.VerticalSpacer
 import com.tarkalabs.uicomponents.theme.TUITheme
 
@@ -78,7 +78,7 @@ fun TUIDraggableCard(
       style = TUITheme.typography.heading6,
     )
 
-    TUISwitch(isChecked = switchCheckedState, onCheckedChange = onSwitchCheckedChange)
+    TUIToggleSwitch(isChecked = switchCheckedState, onCheckedChange = onSwitchCheckedChange)
   }
 }
 

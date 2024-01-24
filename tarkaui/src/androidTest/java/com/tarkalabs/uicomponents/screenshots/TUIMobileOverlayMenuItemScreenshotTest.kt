@@ -2,24 +2,24 @@ package com.tarkalabs.uicomponents.screenshots
 
 import com.tarkalabs.tarkaicons.AddCircle24
 import com.tarkalabs.tarkaicons.TarkaIcons
-import com.tarkalabs.uicomponents.components.MenuItemLeadingContentType
-import com.tarkalabs.uicomponents.components.MenuItemLeadingContentType.Icon
-import com.tarkalabs.uicomponents.components.MenuItemLeadingContentType.StatusIndicator
-import com.tarkalabs.uicomponents.components.MenuItemStyle
-import com.tarkalabs.uicomponents.components.MenuItemStyle.Title
-import com.tarkalabs.uicomponents.components.MenuItemStyle.TitleWithDescription
-import com.tarkalabs.uicomponents.components.MenuItemTrailingContentType
-import com.tarkalabs.uicomponents.components.MenuItemTrailingContentType.SubMenu
-import com.tarkalabs.uicomponents.components.TUIMenuItem
+import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemLeadingContentType
+import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemLeadingContentType.Icon
+import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemLeadingContentType.StatusIndicator
+import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemStyle
+import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemStyle.Title
+import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemStyle.TitleWithDescription
+import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemTrailingContentType
+import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemTrailingContentType.SubMobileOverlayMenu
+import com.tarkalabs.uicomponents.components.TUIMobileOverlayMenuItem
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 
 @RunWith(Parameterized::class)
-class TUIMenuItemScreenshotTest(
-  private val style: MenuItemStyle,
-  private val leadingContentType: MenuItemLeadingContentType?,
-  private val trailingContentType: MenuItemTrailingContentType?,
+class TUIMobileOverlayMenuItemScreenshotTest(
+  private val style: MobileOverlayMenuItemStyle,
+  private val leadingContentType: MobileOverlayMenuItemLeadingContentType?,
+  private val trailingContentType: MobileOverlayMenuItemTrailingContentType?,
   private val isSelected: Boolean,
   private val darkTheme: Boolean,
   private val testName: String
@@ -39,8 +39,8 @@ class TUIMenuItemScreenshotTest(
       )
       val trailingContentTypes = listOf(
         null,
-        MenuItemTrailingContentType.Icon(TarkaIcons.Regular.AddCircle24),
-        SubMenu
+        MobileOverlayMenuItemTrailingContentType.Icon(TarkaIcons.Regular.AddCircle24),
+        SubMobileOverlayMenu
       )
       val isSelectedValues = listOf(true, false)
       val darkThemeValues = listOf(true, false)
@@ -69,14 +69,14 @@ class TUIMenuItemScreenshotTest(
       return testData
     }
 
-    private fun getSimpleName(menuItemStyle: MenuItemStyle): String {
-      return when(menuItemStyle){
+    private fun getSimpleName(mobileOverlayMenuItemStyle: MobileOverlayMenuItemStyle): String {
+      return when(mobileOverlayMenuItemStyle){
         Title -> "Title"
         is TitleWithDescription -> "TitleWithDescription"
       }
     }
 
-    private fun getSimpleName(type: MenuItemLeadingContentType?): String {
+    private fun getSimpleName(type: MobileOverlayMenuItemLeadingContentType?): String {
       return when(type){
         is Icon -> "Icon"
         StatusIndicator -> "StatusIndicator"
@@ -84,25 +84,25 @@ class TUIMenuItemScreenshotTest(
       }
     }
 
-    private fun getSimpleName(type: MenuItemTrailingContentType?): String {
+    private fun getSimpleName(type: MobileOverlayMenuItemTrailingContentType?): String {
       return when(type){
-        is MenuItemTrailingContentType.Icon -> "Icon"
-        SubMenu -> "SubMenu"
+        is MobileOverlayMenuItemTrailingContentType.Icon -> "Icon"
+        SubMobileOverlayMenu -> "SubMobileOverlayMenu"
         else -> "null"
       }
     }
   }
 
   @Test
-  fun testTuiMenuItem() {
+  fun testTuiMobileOverlayMenuItem() {
     compareScreenshotFor(darkTheme, testName) {
-      TUIMenuItem(
+      TUIMobileOverlayMenuItem(
         title = "Label",
         isSelected = isSelected,
         style = style,
         leadingContent = leadingContentType,
         trailingContent = trailingContentType,
-        onMenuItemClick = { /*TODO*/ },
+        onMobileOverlayMenuItemClick = { /*TODO*/ },
       )
     }
   }

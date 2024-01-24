@@ -10,11 +10,11 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
-import com.tarkalabs.uicomponents.components.TUIThumbnail
-import com.tarkalabs.uicomponents.components.TUIThumbnailTags
-import com.tarkalabs.uicomponents.components.TUIThumbnailType
-import com.tarkalabs.uicomponents.components.TUIThumbnailType.Image
-import com.tarkalabs.uicomponents.components.TUIThumbnailType.Video
+import com.tarkalabs.uicomponents.components.TUIMediaThumbnail
+import com.tarkalabs.uicomponents.components.TUIMediaThumbnailTags
+import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType
+import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Image
+import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Video
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock
@@ -22,12 +22,12 @@ import org.mockito.kotlin.verify
 
 class TUIThumbnailTest {
   @get:Rule val composeTestRule = createComposeRule()
-  private val tags: TUIThumbnailTags = TUIThumbnailTags()
+  private val tags: TUIMediaThumbnailTags = TUIMediaThumbnailTags()
 
   @Test fun document_thumbnail_Displayed() {
     composeTestRule.setContent {
-      TUIThumbnail(
-        type = TUIThumbnailType.Document, showTrailingIcon = true, tags = tags
+      TUIMediaThumbnail(
+        type = TUIMediaThumbnailType.Document, showTrailingIcon = true, tags = tags
       )
     }
     composeTestRule.onNodeWithTag(tags.parentTag, useUnmergedTree = true).assertIsDisplayed()
@@ -45,7 +45,7 @@ class TUIThumbnailTest {
 
   @Test fun image_thumbnail_Displayed() {
     composeTestRule.setContent {
-      TUIThumbnail(
+      TUIMediaThumbnail(
         type = Image(getBitmap()), showTrailingIcon = true, tags = tags
       )
     }
@@ -55,7 +55,7 @@ class TUIThumbnailTest {
 
   @Test fun video_thumbnail_Displayed() {
     composeTestRule.setContent {
-      TUIThumbnail(
+      TUIMediaThumbnail(
         type = Video(getBitmap()), showTrailingIcon = true, tags = tags
       )
     }
@@ -68,7 +68,7 @@ class TUIThumbnailTest {
     val onThumbnailClick: () -> Unit = mock()
 
     composeTestRule.setContent {
-      TUIThumbnail(
+      TUIMediaThumbnail(
         type = Video(getBitmap()),
         showTrailingIcon = true,
         tags = tags,

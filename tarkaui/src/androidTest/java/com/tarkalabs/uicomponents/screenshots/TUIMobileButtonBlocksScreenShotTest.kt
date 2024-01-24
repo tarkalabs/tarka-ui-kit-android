@@ -2,6 +2,7 @@ package com.tarkalabs.uicomponents.screenshots
 
 import com.tarkalabs.tarkaicons.ChevronDown24
 import com.tarkalabs.tarkaicons.ChevronUp24
+import com.tarkalabs.tarkaicons.Eraser24
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUIMobileButtonBlock
 import org.junit.Test
@@ -55,6 +56,26 @@ class TUIMobileButtonBlocksScreenShotTest(
       outlineButtonOnClick = null,
       primaryLeadingIcon = null,
       primaryTrailingIcon = TarkaIcons.Regular.ChevronUp24
+    )
+  }
+
+  @Test fun twoButtonsWithOutlineTrailingIcon() = compareScreenshotFor(darkTheme, "_twoButtonsWithOutlineTrailingIcon_$testName") {
+    TUIMobileButtonBlock(
+      primaryButtonLabel = "Label",
+      primaryButtonOnClick = { /*TODO*/ },
+      outlineButtonLabel = "Label",
+      outlineButtonOnClick = { /*TODO*/ },
+      outlineTrailingIcon = TarkaIcons.Regular.Eraser24
+    )
+  }
+
+  @Test fun twoButtonsWithOutlineLeadingIcon() = compareScreenshotFor(darkTheme, "_twoButtonsWithOutlineLeadingIcon_$testName") {
+    TUIMobileButtonBlock(
+      primaryButtonLabel = "Label",
+      primaryButtonOnClick = { /*TODO*/ },
+      outlineButtonLabel = "Label",
+      outlineButtonOnClick = { /*TODO*/ },
+      outlineLeadingIcon = TarkaIcons.Regular.Eraser24
     )
   }
 

@@ -20,9 +20,6 @@ import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -38,7 +35,7 @@ import com.tarkalabs.tarkaicons.TarkaIcon
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState.UpLoadSuccessful
 import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState.UpLoading
-import com.tarkalabs.uicomponents.components.TUIThumbnailType.Document
+import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Document
 import com.tarkalabs.uicomponents.components.base.IconButtonSize
 import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
 import com.tarkalabs.uicomponents.components.base.TUIIconButton
@@ -74,7 +71,7 @@ object TUIAttachmentUpload {
    */
   @Composable operator fun invoke(
     modifier: Modifier = Modifier,
-    type: TUIThumbnailType,
+    type: TUIMediaThumbnailType,
     attachmentName: String,
     onAttachmentClick: () -> Unit,
     onTrailingIconClick: () -> Unit,
@@ -113,7 +110,7 @@ object TUIAttachmentUpload {
         }
       }
 
-      TUIThumbnail(type = type, showTrailingIcon = false, tags = tags.thumbTag)
+      TUIMediaThumbnail(type = type, showTrailingIcon = false, tags = tags.thumbTag)
 
       val attachmentModifier = Modifier
         .weight(1f)
@@ -203,7 +200,7 @@ object TUIAttachmentUpload {
     val leadingIconTag: String = "TUIAttachmentUpload_leadingIcon",
     val successIconTag: String = "TUIAttachmentUpload_SuccessIcon",
     val progressBarTag: String = "TUIAttachmentUpload_ProgressBar",
-    val thumbTag: TUIThumbnailTags = TUIThumbnailTags(),
+    val thumbTag: TUIMediaThumbnailTags = TUIMediaThumbnailTags(),
   )
 
   /**
