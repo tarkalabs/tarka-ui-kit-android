@@ -189,9 +189,12 @@ private fun TUIFloatingNavTypeButton(
   }
 }
 
-@Composable fun TUIFloatingNavBurgerButton() {
+@Composable
+fun TUIFloatingNavBurgerButton(tags: TUIFloatingNavButtonTags = TUIFloatingNavButtonTags()) {
   Icon(
-    modifier = Modifier.padding(12.dp),
+    modifier = Modifier
+      .padding(12.dp)
+      .testTag(tags.burgerIconTag),
     painter = painterResource(id = TarkaIcons.Filled.Navigation24.iconRes),
     contentDescription = TarkaIcons.Filled.Navigation24.contentDescription,
     tint = TUITheme.colors.primary
@@ -206,6 +209,7 @@ data class TUIFloatingNavButtonTags(
   val iconOneTag: String = "TUIFloatingNavButton_Icon_One",
   val iconTwoTag: String = "TUIFloatingNavButton_Icon_Two",
   val iconThreeTag: String = "TUIFloatingNavButton_Icon_Three",
+  val burgerIconTag: String = "TUIFloatingNavButton_Burger_Icon"
 )
 
 @Preview @Composable fun TUIFloatingNavButtonPreview() {
