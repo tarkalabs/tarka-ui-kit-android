@@ -120,10 +120,10 @@ enum class HorizontalPaddingSize(val size: Int) {
   L(24),
   M(16),
   S(8),
-  XS(0);
+  NONE(0);
 }
 
 enum class VerticalPaddingSize(val size: Int) {
   M(8),
-  S(0)
+  NONE(0)
 }

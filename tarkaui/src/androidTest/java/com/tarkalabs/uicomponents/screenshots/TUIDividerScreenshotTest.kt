@@ -5,7 +5,7 @@ import com.tarkalabs.uicomponents.components.HorizontalPaddingSize.L
 import com.tarkalabs.uicomponents.components.HorizontalPaddingSize.M
 import com.tarkalabs.uicomponents.components.HorizontalPaddingSize.S
 import com.tarkalabs.uicomponents.components.HorizontalPaddingSize.XL
-import com.tarkalabs.uicomponents.components.HorizontalPaddingSize.XS
+import com.tarkalabs.uicomponents.components.HorizontalPaddingSize.NONE
 import com.tarkalabs.uicomponents.components.Orientation
 import com.tarkalabs.uicomponents.components.Orientation.HORIZONTAL
 import com.tarkalabs.uicomponents.components.Orientation.VERTICAL
@@ -33,8 +33,8 @@ class TUIDividerScreenshotTest(
       val darkThemeValues = listOf(true, false)
       val orientationValues = listOf(HORIZONTAL, VERTICAL)
       val tuiDividerTags = TUIDividerTags("TUIDivider")
-      val horizontalPaddingSize = listOf(XS, S, M, L, XL)
-      val verticalPaddingSize = listOf(VerticalPaddingSize.S, VerticalPaddingSize.M)
+      val horizontalPaddingSize = listOf(NONE, S, M, L, XL)
+      val verticalPaddingSize = listOf(VerticalPaddingSize.NONE, VerticalPaddingSize.M)
 
       val testData = arrayListOf<Array<Any?>>()
 
