@@ -14,14 +14,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.components.Orientation.HORIZONTAL
-import com.tarkalabs.uicomponents.components.Orientation.VERTICAL
 import com.tarkalabs.uicomponents.components.HorizontalPaddingSize.L
 import com.tarkalabs.uicomponents.components.HorizontalPaddingSize.NONE
-import com.tarkalabs.uicomponents.components.HorizontalPaddingSize.S
+import com.tarkalabs.uicomponents.components.Orientation.HORIZONTAL
+import com.tarkalabs.uicomponents.components.Orientation.VERTICAL
 import com.tarkalabs.uicomponents.components.VerticalPaddingSize.M
 import com.tarkalabs.uicomponents.theme.TUITheme
-
 
 /**
  *
@@ -106,7 +104,6 @@ fun TestTUIDivider() {
     verticalPadding = M,
   )
 }
-
 
 data class TUIDividerTags(
   val parentTag: String = "TUIDivider",
