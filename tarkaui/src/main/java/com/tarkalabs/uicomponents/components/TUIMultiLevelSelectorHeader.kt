@@ -17,8 +17,8 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaicons.ApprovalsApp24
-import com.tarkalabs.tarkaicons.TarkaIcon
+import com.tarkalabs.tarkaicons.CheckmarkCircle24
+import com.tarkalabs.tarkaicons.ChevronLeft24
 import com.tarkalabs.tarkaicons.TarkaIcons
 import com.tarkalabs.uicomponents.extentions.maxHeight
 import com.tarkalabs.uicomponents.extentions.maxWidth
@@ -35,18 +35,14 @@ object TUIMultiLevelSelectorHeader {
    * @param modifier Modifier for the header layout and appearance.
    * @param isSelected Boolean indicating whether the header is selected.
    * @param title Title text to be displayed in the header.
-   * @param leadingIcon Icon to be displayed on the leading (left) side of the header.
-   * @param trailingIcon Icon to be displayed on the trailing (right) side of the header (optional).
    * @param paddingValues Padding values for the header content.
    * @param tags Tags used for testing and identifying this Composable.
    * @param onClick Lambda function invoked when the header is clicked.
    */
   @Composable operator fun invoke(
     modifier: Modifier = Modifier,
-    isSelected: Boolean,
     title: String,
-    leadingIcon: TarkaIcon,
-    trailingIcon: TarkaIcon? = null,
+    isSelected: Boolean,
     paddingValues: PaddingValues = PaddingValues(),
     tags: TUIMultiLevelSelectorHeaderTags = TUIMultiLevelSelectorHeaderTags(),
     onClick: () -> Unit,
@@ -63,8 +59,8 @@ object TUIMultiLevelSelectorHeader {
         verticalAlignment = Alignment.CenterVertically
       ) {
         Icon(
-          painter = painterResource(id = leadingIcon.iconRes),
-          contentDescription = leadingIcon.contentDescription,
+          painter = painterResource(id = TarkaIcons.Regular.ChevronLeft24.iconRes),
+          contentDescription = TarkaIcons.Regular.ChevronLeft24.contentDescription,
           modifier = Modifier
             .maxHeight(24)
             .maxWidth(24),
@@ -80,10 +76,10 @@ object TUIMultiLevelSelectorHeader {
           color = color
         )
         HorizontalSpacer(space = 12)
-        if (trailingIcon != null) {
+        if (isSelected) {
           Icon(
-            painter = painterResource(id = trailingIcon.iconRes),
-            contentDescription = trailingIcon.contentDescription,
+            painter = painterResource(id = TarkaIcons.Filled.CheckmarkCircle24.iconRes),
+            contentDescription = TarkaIcons.Filled.CheckmarkCircle24.contentDescription,
             modifier = Modifier
               .maxHeight(24)
               .maxWidth(24),
@@ -108,8 +104,6 @@ object TUIMultiLevelSelectorHeader {
       TUIMultiLevelSelectorHeader(
         modifier = Modifier.fillMaxWidth(),
         isSelected = true,
-        leadingIcon = TarkaIcons.Filled.ApprovalsApp24,
-        trailingIcon = TarkaIcons.Filled.ApprovalsApp24,
         title = "Hello There",
       ) {}
 
@@ -119,8 +113,7 @@ object TUIMultiLevelSelectorHeader {
         modifier = Modifier.fillMaxWidth(),
         isSelected = false,
         title = "Hello There",
-        leadingIcon = TarkaIcons.Filled.ApprovalsApp24,
-        ) {}
+      ) {}
 
     }
   }
