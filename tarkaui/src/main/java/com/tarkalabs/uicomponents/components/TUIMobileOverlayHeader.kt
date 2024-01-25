@@ -201,27 +201,27 @@ fun TUIMobileOverlayHeaderPreview() {
         .fillMaxSize()
         .background(TUITheme.colors.surface)
     ) {
-      // TUIMobileOverlayHeader(
-      //   modifier = Modifier.fillMaxWidth(), style = None
-      // )
-      // VerticalSpacer(space = 10)
+      TUIMobileOverlayHeader(
+        modifier = Modifier.fillMaxWidth(), style = None
+      )
+      VerticalSpacer(space = 10)
       TUIMobileOverlayHeader(
         modifier = Modifier.fillMaxWidth(), style = HeaderWithTitle("Select Asset")
       )
-      // VerticalSpacer(space = 10)
-      // TUIMobileOverlayHeader(
-      //   modifier = Modifier.fillMaxWidth(), style = HeaderWithTrailingIcon(title = "Select Asset",
-      //     trailingIcon = TarkaIcons.Regular.Dismiss24,
-      //     onTrailingIconClick = {
-      //
-      //     })
-      // )
-      // VerticalSpacer(space = 10)
-      // TUIMobileOverlayHeader(
-      //   modifier = Modifier.fillMaxWidth(),
-      //   style = HeaderWithBackIcon(title = "Select Asset", onBackIconClick = {})
-      // )
-      // VerticalSpacer(space = 10)
+      VerticalSpacer(space = 10)
+      TUIMobileOverlayHeader(
+        modifier = Modifier.fillMaxWidth(), style = HeaderWithTrailingIcon(title = "Select Asset",
+          trailingIcon = TarkaIcons.Regular.Dismiss24,
+          onTrailingIconClick = {
+
+          })
+      )
+      VerticalSpacer(space = 10)
+      TUIMobileOverlayHeader(
+        modifier = Modifier.fillMaxWidth(),
+        style = HeaderWithBackIcon(title = "Select Asset", onBackIconClick = {})
+      )
+      VerticalSpacer(space = 10)
     }
 
   }
