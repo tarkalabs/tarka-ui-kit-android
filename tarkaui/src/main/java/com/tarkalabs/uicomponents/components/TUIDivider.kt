@@ -47,11 +47,11 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 fun TUIDivider(
   modifier: Modifier = Modifier,
   orientation: Orientation = HORIZONTAL,
-  tags: TUIDividerTags = TUIDividerTags(),
   thickness: Int = 1,
+  color: Color = TUITheme.colors.surfaceVariantHover,
   horizontalPadding: HorizontalPaddingSize = NONE,
   verticalPadding: VerticalPaddingSize = VerticalPaddingSize.NONE,
-  color: Color = TUITheme.colors.surfaceVariantHover
+  tags: TUIDividerTags = TUIDividerTags(),
 ) {
   when (orientation) {
     VERTICAL -> {
