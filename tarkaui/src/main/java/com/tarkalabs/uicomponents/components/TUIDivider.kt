@@ -46,6 +46,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 
 @Composable
 fun TUIDivider(
+  modifier: Modifier? = null,
   orientation: Orientation = HORIZONTAL,
   tags: TUIDividerTags = TUIDividerTags(),
   thickness: Int = 1,
@@ -53,6 +54,7 @@ fun TUIDivider(
   verticalPadding: VerticalPaddingSize = M,
   color: Color = TUITheme.colors.surfaceVariantHover
 ) {
+  val localModifier = modifier ?: Modifier
   when (orientation) {
     VERTICAL -> {
       //todo vertical divider is not yet implemented in any of the components so we don't know height
@@ -60,7 +62,7 @@ fun TUIDivider(
       Row {
         HorizontalSpacer(space = horizontalPadding.size)
         Divider(
-          modifier = Modifier
+          modifier = localModifier
             .fillMaxHeight()
             .width(thickness.dp)
             .padding(vertical = verticalPadding.size.dp)
@@ -75,7 +77,7 @@ fun TUIDivider(
       Column {
         VerticalSpacer(space = verticalPadding.size)
         Divider(
-          modifier = Modifier
+          modifier = localModifier
             .fillMaxWidth()
             .height(thickness.dp)
             .padding(horizontal = horizontalPadding.size.dp)
@@ -90,14 +92,16 @@ fun TUIDivider(
 
 @Preview
 @Composable
-fun TuiDivider() {
+fun TestTUIDivider() {
   TUIDivider(
+    modifier = null,
     orientation = VERTICAL,
     thickness = 20,
     horizontalPadding = L,
     verticalPadding = M,
   )
   TUIDivider(
+    modifier = null,
     orientation = HORIZONTAL,
     thickness = 20,
     horizontalPadding = L,
