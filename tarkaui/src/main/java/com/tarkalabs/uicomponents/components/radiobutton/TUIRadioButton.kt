@@ -66,7 +66,6 @@ enabled = true)
             onClick = { if (enabled) onOptionSelected.invoke() },
             enabled = enabled
           )
-
       )
       .testTag(tags.parentTag)
   ) {

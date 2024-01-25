@@ -86,7 +86,10 @@ enum class TUIMediaThumbnailSize {
       .heightIn(max = 24.dp)
       .widthIn(max = 24.dp)
       .testTag(tags.centerIconTag)
-      .then(if (onThumbnailClick != null) Modifier.clickable { onThumbnailClick.invoke() } else Modifier)
+
+    if (onThumbnailClick != null){
+      iconModifier.clickable {onThumbnailClick.invoke()}
+    }
     when (type) {
       Audio -> {
         Icon(
@@ -123,6 +126,7 @@ enum class TUIMediaThumbnailSize {
             contentDescription = stringResource(id = R.string.video_thumbnail),
             modifier = Modifier
               .fillMaxSize()
+              .testTag(tags.centerIconTag)
               .clip(RoundedCornerShape(8.dp)),
             contentScale = ContentScale.Crop
           )
