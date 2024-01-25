@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.uicomponents.components.Orientation.HORIZONTAL
 import com.tarkalabs.uicomponents.components.Orientation.VERTICAL
 import com.tarkalabs.uicomponents.components.HorizontalPaddingSize.L
+import com.tarkalabs.uicomponents.components.HorizontalPaddingSize.NONE
 import com.tarkalabs.uicomponents.components.HorizontalPaddingSize.S
 import com.tarkalabs.uicomponents.components.VerticalPaddingSize.M
 import com.tarkalabs.uicomponents.theme.TUITheme
@@ -46,15 +47,14 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 
 @Composable
 fun TUIDivider(
-  modifier: Modifier? = null,
+  modifier: Modifier = Modifier,
   orientation: Orientation = HORIZONTAL,
   tags: TUIDividerTags = TUIDividerTags(),
   thickness: Int = 1,
-  horizontalPadding: HorizontalPaddingSize = S,
-  verticalPadding: VerticalPaddingSize = M,
+  horizontalPadding: HorizontalPaddingSize = NONE,
+  verticalPadding: VerticalPaddingSize = VerticalPaddingSize.NONE,
   color: Color = TUITheme.colors.surfaceVariantHover
 ) {
-  val localModifier = modifier ?: Modifier
   when (orientation) {
     VERTICAL -> {
       //todo vertical divider is not yet implemented in any of the components so we don't know height
@@ -62,7 +62,7 @@ fun TUIDivider(
       Row {
         HorizontalSpacer(space = horizontalPadding.size)
         Divider(
-          modifier = localModifier
+          modifier = modifier
             .fillMaxHeight()
             .width(thickness.dp)
             .padding(vertical = verticalPadding.size.dp)
@@ -77,7 +77,7 @@ fun TUIDivider(
       Column {
         VerticalSpacer(space = verticalPadding.size)
         Divider(
-          modifier = localModifier
+          modifier = modifier
             .fillMaxWidth()
             .height(thickness.dp)
             .padding(horizontal = horizontalPadding.size.dp)
@@ -94,14 +94,12 @@ fun TUIDivider(
 @Composable
 fun TestTUIDivider() {
   TUIDivider(
-    modifier = null,
     orientation = VERTICAL,
     thickness = 20,
     horizontalPadding = L,
     verticalPadding = M,
   )
   TUIDivider(
-    modifier = null,
     orientation = HORIZONTAL,
     thickness = 20,
     horizontalPadding = L,

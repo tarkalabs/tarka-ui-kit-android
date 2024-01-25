@@ -137,7 +137,9 @@ fun TUIMobileOverlayHeader(
 
           is HeaderWithTrailingIcon -> {
             HeaderText(
-              title = style.title, textAlign = TextAlign.Start, modifier = Modifier.weight(1f).padding(start = 16.dp)
+              title = style.title, textAlign = TextAlign.Start, modifier = Modifier
+                .weight(1f)
+                .padding(start = 16.dp)
 
             )
             TUIIconButton(
@@ -152,6 +154,21 @@ fun TUIMobileOverlayHeader(
           None -> {
           }
         }
+      }
+      when(style) {
+        is HeaderWithBackIcon -> {
+          VerticalSpacer(space = 8)
+          TUIDivider()
+        }
+        is HeaderWithTitle -> {
+          VerticalSpacer(space = 16)
+          TUIDivider()
+        }
+        is HeaderWithTrailingIcon -> {
+          VerticalSpacer(space = 12)
+          TUIDivider()
+        }
+        None -> {}
       }
     }
   }
@@ -184,27 +201,27 @@ fun TUIMobileOverlayHeaderPreview() {
         .fillMaxSize()
         .background(TUITheme.colors.surface)
     ) {
-      TUIMobileOverlayHeader(
-        modifier = Modifier.fillMaxWidth(), style = None
-      )
-      VerticalSpacer(space = 10)
+      // TUIMobileOverlayHeader(
+      //   modifier = Modifier.fillMaxWidth(), style = None
+      // )
+      // VerticalSpacer(space = 10)
       TUIMobileOverlayHeader(
         modifier = Modifier.fillMaxWidth(), style = HeaderWithTitle("Select Asset")
       )
-      VerticalSpacer(space = 10)
-      TUIMobileOverlayHeader(
-        modifier = Modifier.fillMaxWidth(), style = HeaderWithTrailingIcon(title = "Select Asset",
-          trailingIcon = TarkaIcons.Regular.Dismiss24,
-          onTrailingIconClick = {
-
-          })
-      )
-      VerticalSpacer(space = 10)
-      TUIMobileOverlayHeader(
-        modifier = Modifier.fillMaxWidth(),
-        style = HeaderWithBackIcon(title = "Select Asset", onBackIconClick = {})
-      )
-      VerticalSpacer(space = 10)
+      // VerticalSpacer(space = 10)
+      // TUIMobileOverlayHeader(
+      //   modifier = Modifier.fillMaxWidth(), style = HeaderWithTrailingIcon(title = "Select Asset",
+      //     trailingIcon = TarkaIcons.Regular.Dismiss24,
+      //     onTrailingIconClick = {
+      //
+      //     })
+      // )
+      // VerticalSpacer(space = 10)
+      // TUIMobileOverlayHeader(
+      //   modifier = Modifier.fillMaxWidth(),
+      //   style = HeaderWithBackIcon(title = "Select Asset", onBackIconClick = {})
+      // )
+      // VerticalSpacer(space = 10)
     }
 
   }
