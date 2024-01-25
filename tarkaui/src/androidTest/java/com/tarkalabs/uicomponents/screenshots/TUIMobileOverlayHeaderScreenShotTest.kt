@@ -15,7 +15,7 @@ import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 
 @RunWith(Parameterized::class)
-class TUIMobileOverlayScreenShotTest(
+class TUIMobileOverlayHeaderScreenShotTest(
   private val testName: String,
   private val darkTheme: Boolean
 ) : ComposeScreenshotComparator() {
