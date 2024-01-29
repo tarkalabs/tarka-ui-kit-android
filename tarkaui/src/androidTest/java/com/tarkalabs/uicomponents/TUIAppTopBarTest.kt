@@ -22,7 +22,7 @@ import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 
-class TUITopBarTest {
+class TUIAppTopBarTest {
   @get:Rule val composeTestRule = createComposeRule()
 
   private val navigationIconTags = TUIIconButtonTags(parentTag = "NavigationIcon")

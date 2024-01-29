@@ -12,7 +12,7 @@ import org.junit.runners.Parameterized
 
 @OptIn(ExperimentalMaterial3Api::class)
 @RunWith(Parameterized::class)
-class TUITopBarScreenShotTest(
+class TUIAppTopBarScreenShotTest(
   private val testName: String,
   private val darkTheme: Boolean
 ) : ComposeScreenshotComparator() {

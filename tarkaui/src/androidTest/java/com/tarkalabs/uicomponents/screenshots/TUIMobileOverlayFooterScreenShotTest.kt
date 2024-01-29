@@ -11,7 +11,7 @@ import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 
 @RunWith(Parameterized::class)
-class TUIMobileFooterScreenShotTest(
+class TUIMobileOverlayFooterScreenShotTest(
   private val showMiddleDismiss: Boolean,
   private val showLeftArrow: Boolean,
   private val showRightArrow: Boolean,
