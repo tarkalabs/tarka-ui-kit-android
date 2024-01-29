@@ -137,7 +137,9 @@ fun TUIMobileOverlayHeader(
 
           is HeaderWithTrailingIcon -> {
             HeaderText(
-              title = style.title, textAlign = TextAlign.Start, modifier = Modifier.weight(1f).padding(start = 16.dp)
+              title = style.title, textAlign = TextAlign.Start, modifier = Modifier
+                .weight(1f)
+                .padding(start = 16.dp)
 
             )
             TUIIconButton(
@@ -152,6 +154,21 @@ fun TUIMobileOverlayHeader(
           None -> {
           }
         }
+      }
+      when(style) {
+        is HeaderWithBackIcon -> {
+          VerticalSpacer(space = 8)
+          TUIDivider()
+        }
+        is HeaderWithTitle -> {
+          VerticalSpacer(space = 16)
+          TUIDivider()
+        }
+        is HeaderWithTrailingIcon -> {
+          VerticalSpacer(space = 12)
+          TUIDivider()
+        }
+        None -> {}
       }
     }
   }

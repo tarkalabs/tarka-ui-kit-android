@@ -68,7 +68,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 @Composable fun TUITextRow(
   title: String,
   style: TextRowStyle = Title,
-  modifier: Modifier = Modifier.fillMaxWidth(),
+  modifier: Modifier = Modifier,
   iconOne: TarkaIcon? = null,
   iconTwo: TarkaIcon? = null,
   buttonTitle: String? = null,
