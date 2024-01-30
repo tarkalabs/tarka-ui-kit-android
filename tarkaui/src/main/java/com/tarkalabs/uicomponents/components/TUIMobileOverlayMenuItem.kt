@@ -55,7 +55,7 @@ sealed class MobileOverlayMenuItemStyle {
 }
 
 /**
- * A composable function that creates a Menu Item.
+ * A composable function that creates a Mobile Overlay Menu Item
  *
  * @param modifier The optional [Modifier] to customize the appearance and layout of the menu item.
  * @param title The main title text to be displayed in the menu item.

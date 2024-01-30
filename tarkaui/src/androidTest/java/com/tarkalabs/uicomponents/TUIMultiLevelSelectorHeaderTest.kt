@@ -28,8 +28,6 @@ class TUIMultiLevelSelectorHeaderTest {
       TUIMultiLevelSelectorHeader(
         modifier = Modifier.fillMaxWidth(),
         isSelected = true,
-        leadingIcon = Filled.ApprovalsApp24.copy(contentDescription = "leadingIcon"),
-        trailingIcon = Filled.ApprovalsApp24.copy(contentDescription = "trailingIcon"),
         title = "Hello There",
         tags = tags
       ) {}
@@ -48,8 +46,6 @@ class TUIMultiLevelSelectorHeaderTest {
       TUIMultiLevelSelectorHeader(
         modifier = Modifier.fillMaxWidth(),
         isSelected = true,
-        leadingIcon = Filled.ApprovalsApp24,
-        trailingIcon = Filled.ApprovalsApp24,
         title = "Hello There",
         tags = tags,
         onClick = onClick
