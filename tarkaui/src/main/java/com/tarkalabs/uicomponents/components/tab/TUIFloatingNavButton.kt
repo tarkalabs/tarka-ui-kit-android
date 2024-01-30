@@ -1,8 +1,11 @@
 package com.tarkalabs.uicomponents.components.tab
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -15,6 +18,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.Add24
 import com.tarkalabs.tarkaicons.CalendarRtl24
 import com.tarkalabs.tarkaicons.ChevronDown24
 import com.tarkalabs.tarkaicons.Directions24
@@ -23,7 +27,11 @@ import com.tarkalabs.tarkaicons.Map24
 import com.tarkalabs.tarkaicons.Navigation24
 import com.tarkalabs.tarkaicons.TarkaIcon
 import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaicons.TarkaIcons.Regular
+import com.tarkalabs.uicomponents.components.HorizontalSpacer
 import com.tarkalabs.uicomponents.components.VerticalSpacer
+import com.tarkalabs.uicomponents.components.base.FloatingActionButtonSize.R
+import com.tarkalabs.uicomponents.components.base.TUIFloatingActionButton
 import com.tarkalabs.uicomponents.components.tab.TUIFloatingNavButtonContentType.Burger
 import com.tarkalabs.uicomponents.components.tab.TUIFloatingNavButtonContentType.List
 import com.tarkalabs.uicomponents.components.tab.TUIFloatingNavButtonContentType.Navigation
@@ -185,14 +193,19 @@ private fun TUIFloatingNavTypeButton(
 
 @Composable
 fun TUIFloatingNavBurgerButton(tags: TUIFloatingNavButtonTags = TUIFloatingNavButtonTags()) {
-  Icon(
+  Box(
     modifier = Modifier
-      .padding(12.dp)
-      .testTag(tags.burgerIconTag),
-    painter = painterResource(id = TarkaIcons.Filled.Navigation24.iconRes),
-    contentDescription = TarkaIcons.Filled.Navigation24.contentDescription,
-    tint = TUITheme.colors.primary
-  )
+      .padding(horizontal = 8.dp, vertical = 8.dp),
+  ) {
+    Icon(
+      modifier = Modifier
+        .padding(8.dp)
+        .testTag(tags.burgerIconTag),
+      painter = painterResource(id = TarkaIcons.Filled.Navigation24.iconRes),
+      contentDescription = TarkaIcons.Filled.Navigation24.contentDescription,
+      tint = TUITheme.colors.primary
+    )
+  }
 }
 
 
@@ -230,5 +243,6 @@ data class TUIFloatingNavButtonTags(
       VerticalSpacer(space = 40)
       TUIFloatingNavButton(contentType = Burger, style = BURGER)
     }
+
   }
 }
