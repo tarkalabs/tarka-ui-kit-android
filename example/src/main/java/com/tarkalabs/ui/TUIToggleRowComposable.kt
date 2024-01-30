@@ -9,6 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.uicomponents.components.base.TUIToggleRow
+import com.tarkalabs.uicomponents.components.base.ToggleRowStyle
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 
@@ -17,5 +19,14 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 fun TUIToggleRowComposable() {
     Column(Modifier.fillMaxSize(). padding(8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = "TUIToggleRow", style = TUITheme.typography.heading3)
+        TUIToggleRow(
+            title = "Title",
+            style = ToggleRowStyle.Title
+        )
+
+        TUIToggleRow(
+            title = "Title",
+            style = ToggleRowStyle.TitleWithDescription("Description")
+        )
     }
 }

@@ -9,6 +9,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.Call20
+import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.uicomponents.components.TUINavigationRow
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 
@@ -17,5 +20,13 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 fun TUINavigationRowComposable() {
     Column(Modifier.fillMaxSize(). padding(8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = "TUINavigationRow", style = TUITheme.typography.heading3)
+        TUINavigationRow(
+            title = "Label",
+            leadingIcon = TarkaIcons.Regular.Call20,
+            onClick = { /*Handle click*/ },
+        ) {
+            Text(text = "NILESH")
+        }
+
     }
 }

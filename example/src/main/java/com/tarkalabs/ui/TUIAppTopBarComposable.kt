@@ -9,6 +9,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaicons.ChevronRight20
+import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.uicomponents.components.TUIAppTopBar
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 
@@ -17,5 +20,9 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 fun TUIAppTopBarComposable() {
     Column(Modifier.fillMaxSize(). padding(8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = "TUIAppTopBar", style = TUITheme.typography.heading3)
+        TUIAppTopBar(
+            title = "Lorem Ipsum",
+            navigationIcon = TarkaIcons.Regular.ChevronRight20,
+        )
     }
 }

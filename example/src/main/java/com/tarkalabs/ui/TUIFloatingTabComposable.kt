@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.uicomponents.components.tab.TUIFloatingTab
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 
@@ -17,5 +18,15 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 fun TUIFloatingTabComposable() {
     Column(Modifier.fillMaxSize(). padding(8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = "TUIFloatingTab", style = TUITheme.typography.heading3)
+        // Example Floating tab with default appearance
+        TUIFloatingTab(
+            modifier = Modifier
+                .padding(8.dp),
+            title = "Tab 1",
+            selected = true,
+            onSelected = {
+                // Handle tab selection
+            },
+        )
     }
 }

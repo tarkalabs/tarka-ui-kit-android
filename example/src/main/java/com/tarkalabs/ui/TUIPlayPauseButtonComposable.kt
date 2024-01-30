@@ -9,6 +9,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.uicomponents.components.PlayPauseButtonSize
+import com.tarkalabs.uicomponents.components.PlayPauseButtonState
+import com.tarkalabs.uicomponents.components.TUIPlayPauseButton
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 
@@ -17,5 +20,11 @@ import com.tarkalabs.uicomponents.theme.TUITheme
 fun TUIPlayPauseButtonComposable() {
     Column(Modifier.fillMaxSize(). padding(8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = "TUIPlayPauseButton", style = TUITheme.typography.heading3)
+        TUIPlayPauseButton(
+            modifier = Modifier.padding(top = 16.dp),
+            buttonSize = PlayPauseButtonSize.M,
+            state = PlayPauseButtonState.Pause,
+            onClick = { /* Handle pause button click */ }
+        )
     }
 }
