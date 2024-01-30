@@ -20,13 +20,13 @@ class TUITabBarScreenshotTest(
   companion object {
     @JvmStatic
     @Parameterized.Parameters
-    fun data(): Collection<Array<Any>> {
-      return mutableListOf(arrayOf(Any())).apply {
-        for (darkTheme in listOf(true, false)) {
-          val testName = "darkTheme_$darkTheme"
-          add(arrayOf(testName, darkTheme))
-        }
+    fun data(): Collection<Array<Any?>> {
+      val testData = ArrayList<Array<Any?>>()
+      for (darkTheme in listOf(true, false)) {
+        val testName = "darkTheme_$darkTheme"
+        testData.add(arrayOf(testName, darkTheme))
       }
+      return testData
     }
 
     val tabItems = listOf(
