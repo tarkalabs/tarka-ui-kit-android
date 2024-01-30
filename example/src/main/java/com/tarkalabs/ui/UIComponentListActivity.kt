@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -23,6 +24,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -36,14 +38,17 @@ import com.tarkalabs.tarkaicons.TarkaIcons.Regular
 import com.tarkalabs.uicomponents.components.TUIAppTopBar
 import com.tarkalabs.uicomponents.theme.TUITheme
 
+private const val TITLE = "Kitchen Sink"
+
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 class UIComponentListActivity : ComponentActivity() {
 
   @OptIn(ExperimentalMaterial3Api::class) override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
+
     setContent {
-      var title by remember { mutableStateOf("Kitchen Sink") }
+      var title by remember { mutableStateOf(TITLE) }
       var isInComponent by remember { mutableStateOf(false) }
       val navController = rememberNavController()
       TUITheme {
@@ -55,14 +60,15 @@ class UIComponentListActivity : ComponentActivity() {
               if (isInComponent) {
                 navController.popBackStack()
                 isInComponent = false
+                title = TITLE
               }
             }
           )
         }) { paddingValues ->
 
-          NavHost(navController = navController, startDestination = "home") {
+          NavHost(navController = navController, startDestination = "home", modifier = Modifier.padding(paddingValues)) {
             composable("home") {
-              LazyVerticalGrid(columns = GridCells.Fixed(2), Modifier.padding(paddingValues)) {
+              LazyVerticalGrid(columns = GridCells.Fixed(2)) {
                 items(componentList) {
                   UiItem(it) {
                     title = it
@@ -72,132 +78,132 @@ class UIComponentListActivity : ComponentActivity() {
                 }
               }
             }
-            TuiComposable("TUIAvatar"){
-
+            tuiComposable("TUIAvatar") {
+              TUIAvatarComposable()
             }
 
-            TuiComposable("TUIBadge"){
-
+            tuiComposable("TUIBadge") {
+              TUIBadgeComposable()
             }
 
-            TuiComposable("TUIButton"){
-
+            tuiComposable("TUIButton") {
+              TUIButtonComposable()
             }
 
-            TuiComposable("TUIFloatingActionButton"){
-
+            tuiComposable("TUIFloatingActionButton") {
+              TUIFloatingActionButtonComposable()
             }
 
-            TuiComposable("TUIIconButton"){
-
+            tuiComposable("TUIIconButton") {
+              TUIIconButtonComposable()
             }
 
-            TuiComposable("TUIInputField"){
-
+            tuiComposable("TUIInputField") {
+              TUIInputFieldComposable()
             }
 
-            TuiComposable("TUIToggleRow"){
-
+            tuiComposable("TUIToggleRow") {
+              TUIToggleRowComposable()
             }
 
-            TuiComposable("TUIDraggableCard"){
-
+            tuiComposable("TUIDraggableCard") {
+              TUIDraggableCardComposable()
             }
 
-            TuiComposable("TUISelectionCard"){
-
+            tuiComposable("TUISelectionCard") {
+              TUISelectionCardComposable()
             }
 
-            TuiComposable("TUICheckBox"){
-
+            tuiComposable("TUICheckBox") {
+              TUICheckBoxComposable()
             }
 
-            TuiComposable("TUIRadioButton"){
-
+            tuiComposable("TUIRadioButton") {
+              TUIRadioButtonComposable()
             }
 
-            TuiComposable("TUIRadioButtonRow"){
-
+            tuiComposable("TUIRadioButtonRow") {
+              TUIRadioButtonRowComposable()
             }
 
-            TuiComposable("TUIFloatingNavBar"){
-
+            tuiComposable("TUIFloatingNavBar") {
+              TUIFloatingNavBarComposable()
             }
 
-            TuiComposable("TUIFloatingTab"){
-
+            tuiComposable("TUIFloatingTab") {
+              TUIFloatingTabComposable()
             }
 
-            TuiComposable("TUITab"){
-
+            tuiComposable("TUITab") {
+              TUITabComposable()
             }
 
-            TuiComposable("TUITabBar"){
-
+            tuiComposable("TUITabBar") {
+              TUITabBarComposable()
             }
 
-            TuiComposable("TUIAttachmentUpload"){
-
+            tuiComposable("TUIAttachmentUpload") {
+              TUIAttachmentUploadComposable()
             }
 
-            TuiComposable("TUINavigationRow"){
-
+            tuiComposable("TUINavigationRow") {
+              TUINavigationRowComposable()
             }
 
-            TuiComposable("TUISearchBar"){
-
+            tuiComposable("TUISearchBar") {
+              TUISearchBarComposable()
             }
 
-            TuiComposable("TUISnackBar"){
-
+            tuiComposable("TUISnackBar") {
+              TUISnackBarComposable()
             }
 
-            TuiComposable("TUIStatusIndicator"){
-
+            tuiComposable("TUIStatusIndicator") {
+              TUIStatusIndicatorComposable()
             }
 
-            TuiComposable("TUITextRow"){
-
+            tuiComposable("TUITextRow") {
+              TUITextRowComposable()
             }
 
-            TuiComposable("TUIAppTopBar"){
-
+            tuiComposable("TUIAppTopBar") {
+              TUIAppTopBarComposable()
             }
 
-            TuiComposable("TUIChip"){
-
+            tuiComposable("TUIChip") {
+              TUIChipComposable()
             }
 
-            TuiComposable("TUIMobileButtonBlock"){
-
+            tuiComposable("TUIMobileButtonBlock") {
+              TUIMobileButtonBlockComposable()
             }
 
-            TuiComposable("TUIMenuItem"){
-
+            tuiComposable("TUIMenuItem") {
+              TUIMenuItemComposable()
             }
 
-            TuiComposable("TUIMobileOverlayHeader"){
-
+            tuiComposable("TUIMobileOverlayHeader") {
+              TUIMobileOverlayHeaderComposable()
             }
 
-            TuiComposable("TUIMobileOverlayFooter"){
-
+            tuiComposable("TUIMobileOverlayFooter") {
+              TUIMobileOverlayFooterComposable()
             }
 
-            TuiComposable("TUISelectionCard"){
-
+            tuiComposable("TUISelectionCard") {
+              TUISelectionCardComposable()
             }
 
-            TuiComposable("TUITag"){
-
+            tuiComposable("TUITag") {
+              TUITagComposable()
             }
 
-            TuiComposable("TUIPlayPauseButton"){
-
+            tuiComposable("TUIPlayPauseButton") {
+              TUIPlayPauseButtonComposable()
             }
 
-            TuiComposable("TUIMultiLevelSelectorHeader"){
-
+            tuiComposable("TUIMultiLevelSelectorHeader") {
+              TUIMultiLevelSelectorHeaderComposable()
             }
           }
         }
@@ -205,10 +211,12 @@ class UIComponentListActivity : ComponentActivity() {
     }
   }
 
-  private fun NavGraphBuilder.TuiComposable(name: String,  content : @Composable () -> Unit) {
+  private fun NavGraphBuilder.tuiComposable(
+    name: String,
+    content: @Composable () -> Unit,
+  ) {
     composable(name) {
-      content()
-
+        content()
     }
   }
 
@@ -235,18 +243,6 @@ class UIComponentListActivity : ComponentActivity() {
           style = MaterialTheme.typography.bodyMedium
         )
       }
-    }
-  }
-
-  @OptIn(ExperimentalMaterial3Api::class)
-  @Composable
-  fun GenericComposable(name: String, navController: NavController) {
-    Column {
-      TUIAppTopBar(
-        title = name,
-        navigationIcon = Regular.ChevronLeft24,
-        onNavigationIconClick = { navController.popBackStack() }
-      )
     }
   }
 }
