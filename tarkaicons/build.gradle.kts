@@ -37,7 +37,7 @@ publishing {
       run {
         groupId = "com.tarkalabs"
         artifactId = "tarkaicons"
-        version = "1.0.0"
+        version = "1.0.1"
         artifact("$buildDir/outputs/aar/tarkaicons-release.aar")
       }
     }
