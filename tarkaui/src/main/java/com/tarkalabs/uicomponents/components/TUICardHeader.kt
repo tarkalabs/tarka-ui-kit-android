@@ -56,13 +56,12 @@ import com.tarkalabs.uicomponents.theme.TUITheme
       .fillMaxWidth(),
     verticalAlignment = Alignment.CenterVertically
   ) {
-    HorizontalSpacer(space = 16)
     Column(
-      modifier = modifier
+      modifier = Modifier
         .fillMaxWidth()
         .weight(1f)
     ) {
-      Row(modifier = modifier.fillMaxWidth()) {
+      Row(modifier = Modifier.fillMaxWidth()) {
         primaryTag?.let { tag ->
           TUITag(
             title = tag.title,
@@ -110,7 +109,6 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         tags = TUIIconButtonTags(parentTag = tags.trailingIconTag)
       )
     }
-    HorizontalSpacer(space = 16)
   }
 }
 
