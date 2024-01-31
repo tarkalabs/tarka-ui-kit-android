@@ -52,11 +52,11 @@ class TUIEmailFieldTest {
 
         },
         tags = tags,
-        onInvalidEmail = {}
+        onInvalidEmail = {},
+        showTextField = true
       )
-
     }
-
+    //Thread.sleep(50000)
     composable.onNodeWithTag(tags.parentTag, useUnmergedTree = true).assertIsDisplayed()
     composable.onNodeWithTag(tags.textFieldTag, useUnmergedTree = true).assertIsDisplayed()
     composable.onNodeWithTag(tags.flowRowTag, useUnmergedTree = true).assertIsDisplayed()
@@ -90,7 +90,8 @@ class TUIEmailFieldTest {
         onItemAdd = {
           emailList.add(it)
         },
-        tags = tags, onInvalidEmail = {}
+        tags = tags, onInvalidEmail = {},
+        showTextField = true
       )
     }
 

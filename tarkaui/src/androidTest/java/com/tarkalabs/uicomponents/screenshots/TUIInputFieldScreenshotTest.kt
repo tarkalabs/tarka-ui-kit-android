@@ -1,10 +1,17 @@
 package com.tarkalabs.uicomponents.screenshots
 
+import androidx.compose.foundation.focusable
+import androidx.compose.ui.Modifier
 import com.tarkalabs.tarkaicons.Checkmark16
 import com.tarkalabs.tarkaicons.Dismiss16
 import com.tarkalabs.tarkaicons.TarkaIcon
 import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.uicomponents.components.base.TUIInputField
+import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus
+import com.tarkalabs.uicomponents.components.base.TUIInputFieldTags
+import org.junit.Ignore
+import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 
@@ -17,7 +24,7 @@ class TUIInputFieldScreenshotTest(
   private val status: TUIInputFieldStatus,
   private val darkTheme: Boolean,
   private val helperMessage: String?,
-  private val testName: String
+  private val testName: String,
 ) : ComposeScreenshotComparator() {
 
   companion object {
@@ -65,24 +72,29 @@ class TUIInputFieldScreenshotTest(
     }
   }
 
-  // @Test
-  // @Ignore
-  // fun test_input_field() {
-  //   compareScreenshotFor(darkTheme, testName, {
-  //     it.onNodeWithTag("TUIInputField_mainInputField").performClick()
-  //   }) {
-  //     TUITheme {
-  //       TUIInputField(
-  //         modifier = Modifier.focusable(),
-  //         value = inputText,
-  //         onValueChange = {},
-  //         status = status,
-  //         label = label,
-  //         leadingIcon = leadingIcon,
-  //         trailingIcon = trailingIcon,
-  //         helperMessage = helperMessage
-  //       )
-  //     }
-  //   }
-  // }
+  @Test
+  fun test_input_field() {
+    compareScreenshotFor(darkTheme, testName) {
+      TUIInputField(
+        modifier = Modifier.focusable(),
+        value = inputText,
+        onValueChange = {},
+        status = status,
+        label = label,
+        helperMessage = helperMessage,
+        enabled = false,
+        leadingContent = if (leadingIcon!= null) TUIInputFieldContentType.Icon(leadingIcon) else null,
+        trailingContent = if (trailingIcon!= null)TUIInputFieldContentType.Icon(trailingIcon) else null,
+        testTags = TUIInputFieldTags(
+          parentTag = "",
+          trailingContentTag = "",
+          leadingContentTag = "",
+          labelTag = "",
+          helperTextTag = "",
+          helperIconTag = ""
+        ),
+        singleLine = false,
+      )
+    }
+  }
 }

@@ -9,12 +9,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
 import com.tarkalabs.uicomponents.components.TUIMediaThumbnail
 import com.tarkalabs.uicomponents.components.TUIMediaThumbnailTags
 import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType
 import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Image
 import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Video
+import androidx.compose.ui.test.printToLog
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock
@@ -73,14 +75,13 @@ class TUIThumbnailTest {
         showTrailingIcon = true,
         tags = tags,
         onTrailingIconClick = onTrailingIconClick,
-        onThumbnailClick = onThumbnailClick
+        onThumbnailClick = onThumbnailClick,
       )
     }
-
+    composeTestRule.onRoot(useUnmergedTree = true).printToLog("tommorow")
     composeTestRule.onNodeWithTag(tags.trailingIconTag, useUnmergedTree = true).performClick()
     verify(onTrailingIconClick).invoke()
-
-
+    //Thread.sleep(50_000)
     composeTestRule.onNodeWithTag(tags.centerIconTag, useUnmergedTree = true).performClick()
     verify(onThumbnailClick).invoke()
   }

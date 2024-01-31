@@ -35,8 +35,6 @@ object TUIMultiLevelSelectorHeader {
    * @param modifier Modifier for the header layout and appearance.
    * @param isSelected Boolean indicating whether the header is selected.
    * @param title Title text to be displayed in the header.
-   * @param leadingIcon Icon to be displayed on the leading (left) side of the header.
-   * @param trailingIcon Icon to be displayed on the trailing (right) side of the header (optional).
    * @param paddingValues Padding values for the header content.
    * @param tags Tags used for testing and identifying this Composable.
    * @param onClick Lambda function invoked when the header is clicked.

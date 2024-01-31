@@ -64,7 +64,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     Text(
       modifier = Modifier.padding(16.dp),
       text = title,
-      style = TUITheme.typography.body6,
+      style = TUITheme.typography.heading6,
       color = if (selected) TUITheme.colors.onPrimary else TUITheme.colors.primary
     )
   }
