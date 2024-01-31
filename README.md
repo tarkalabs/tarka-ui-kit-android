@@ -3,42 +3,42 @@ Android application for building UI components using Jetpack Compose
 
 ## List of components
 
+- TUIAppTopBar
+- TUIAttachmentUpload
 - TUIAvatar
 - TUIBadge
 - TUIButton
-- TUIFloatingActionButton
-- TUIIconButton
-- TUIInputField
-- TUIToggleRow
-- TUIDraggableCard
-- TUISelectionCard
 - TUICheckBox
-- TUIRadioButton
-- TUIRadioButtonRow
-- TUIFloatingNavBar
-- TUIFloatingTab
-- TUITab
-- TUITabBar
-- TUIAttachmentUpload
-- TUINavigationRow
-- TUISearchBar
-- TUISnackBar
-- TUIStatusIndicator
-- TUITextRow
-- TUIAppTopBar
+- TUICheckBoxRow
 - TUIChip
-- TUIMobileButtonBlock
-- TUIMenuItem
-- TUIMobileOverlayHeader
-- TUIMobileOverlayFooter
-- TUISelectionCard
-- TUITag
-- TUIPlayPauseButton
-- TUIMultiLevelSelectorHeader
-- TUITableCell
+- TUIDraggableCard
+- TUIDivider
+- TUIFloatingActionButton
 - TUIEmailField
 - TUIEmailSubjectField
+- TUIIconButton
+- TUIInputField
+- TUIMobileButtonBlock
+- TUIMenuItem
 - TUIMediaThumbnail
+- TUIMobileOverlayHeader
+- TUIMobileOverlayFooter
+- TUIMobileOverlayMenu
+- TUINavigationRow
+- TUIPlayPauseButton
+- TUIRadioButton
+- TUIRadioButtonRow
+- TUISearchBar
+- TUISelectionCard
+- TUISnackBar
+- TUIStatusIndicator
+- TUITableCell
+- TUITab
+- TUITag
+- TUITabBar
+- TUITextRow
+- TUIToggleRow
+
 
 ## TODO
 
