@@ -1,11 +1,11 @@
 package com.tarkalabs.uicomponents.components.tab
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -18,7 +18,6 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaicons.Add24
 import com.tarkalabs.tarkaicons.CalendarRtl24
 import com.tarkalabs.tarkaicons.ChevronDown24
 import com.tarkalabs.tarkaicons.Directions24
@@ -27,11 +26,7 @@ import com.tarkalabs.tarkaicons.Map24
 import com.tarkalabs.tarkaicons.Navigation24
 import com.tarkalabs.tarkaicons.TarkaIcon
 import com.tarkalabs.tarkaicons.TarkaIcons
-import com.tarkalabs.tarkaicons.TarkaIcons.Regular
-import com.tarkalabs.uicomponents.components.HorizontalSpacer
 import com.tarkalabs.uicomponents.components.VerticalSpacer
-import com.tarkalabs.uicomponents.components.base.FloatingActionButtonSize.R
-import com.tarkalabs.uicomponents.components.base.TUIFloatingActionButton
 import com.tarkalabs.uicomponents.components.tab.TUIFloatingNavButtonContentType.Burger
 import com.tarkalabs.uicomponents.components.tab.TUIFloatingNavButtonContentType.List
 import com.tarkalabs.uicomponents.components.tab.TUIFloatingNavButtonContentType.Navigation
@@ -85,7 +80,12 @@ sealed class TUIFloatingNavButtonContentType {
         onClicked()
       }
     }
-    .background(shape = RoundedCornerShape(32.dp), color = TUITheme.colors.primaryAltHover)
+    .background(
+      shape = RoundedCornerShape(32.dp), color = TUITheme.colors.primaryAltHover.copy(0.3f)
+    )
+    .border(
+      width = 1.dp, color = TUITheme.colors.primaryAltHover, shape = RoundedCornerShape(32.dp)
+    )
     .testTag(tags.parentTag)) {
 
     when (contentType) {
@@ -222,6 +222,9 @@ data class TUIFloatingNavButtonTags(
 @Preview @Composable fun TUIFloatingNavButtonPreview() {
   TUITheme {
     Column(
+      modifier = Modifier
+        .fillMaxSize()
+        .background(TUITheme.colors.surface),
       horizontalAlignment = Alignment.CenterHorizontally
     ) {
       VerticalSpacer(space = 40)
