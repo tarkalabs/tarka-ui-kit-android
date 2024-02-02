@@ -132,7 +132,8 @@ Example:
 #### Updating module specific build.gradle file.
 Add dependency in your module level build.gradle file. i.e in `app/build.gradle` file.
 ```
-implementation 'com.tarkalabs:common-ui:1.0.0'
+implementation("com.tarkalabs:tarkaui:1.0.0")
+implementation("com.tarkalabs:tarkaicons:1.0.0")
 ```
 
 That's it. you are done. Do a gradle sync and you will be able to use the library in your project.
