@@ -142,7 +142,7 @@ val defaultDarkColors = TUIColors(
   surfaceVariantHover = Color(0xFF353F50),
   inputTextDim = Color(0xFFFCFCFD),
   surfaceHover = Color(0xFF29313D),
-  primaryAltHover = Color(0xFFC4D7F3),
+  primaryAltHover = Color(0xFF324767),
   accent = Color(0xFF32203C),
   onAccent = Color(0xFFDD99FF)
   )

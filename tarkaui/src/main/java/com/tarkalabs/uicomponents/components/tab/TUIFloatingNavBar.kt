@@ -44,7 +44,7 @@ import com.tarkalabs.uicomponents.theme.TUITheme
     horizontalArrangement = Arrangement.SpaceAround,
     modifier = modifier
       .horizontalScroll(rememberScrollState())
-      .background(color = TUITheme.colors.primaryAltHover, shape = RoundedCornerShape(32.dp))
+      .background(color = TUITheme.colors.primaryAltHover.copy(alpha = 0.3f), shape = RoundedCornerShape(32.dp))
       .border(
         width = 1.dp,
         color = TUITheme.colors.primaryAltHover,
