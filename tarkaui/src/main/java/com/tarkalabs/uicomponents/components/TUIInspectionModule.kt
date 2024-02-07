@@ -144,6 +144,7 @@ fun TUIInspectionModulePreview() {
   TUITheme {
     Column(
       modifier = Modifier
+        .background(TUITheme.colors.background)
         .fillMaxWidth()
         .padding(8.dp)
         .verticalScroll(rememberScrollState())
