@@ -2,8 +2,10 @@ package com.tarkalabs.uicomponents.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -48,22 +50,23 @@ import com.tarkalabs.uicomponents.theme.TUITheme
   teritaryTag: TUICardTag? = null,
   trailingIcon: TarkaIcon? = null,
   tags: TUICardHeaderTags = TUICardHeaderTags(),
+  paddingValues: PaddingValues = PaddingValues(),
   onTrailingIconClick: (() -> Unit)? = null,
 ) {
 
   Row(
     modifier = modifier
       .testTag(tags.parentTag)
-      .fillMaxWidth(),
+      .fillMaxWidth()
+      .padding(paddingValues),
     verticalAlignment = Alignment.CenterVertically
   ) {
-    HorizontalSpacer(space = 16)
     Column(
-      modifier = modifier
+      modifier = Modifier
         .fillMaxWidth()
         .weight(1f)
     ) {
-      Row(modifier = modifier.fillMaxWidth()) {
+      Row(modifier = Modifier.fillMaxWidth()) {
         primaryTag?.let { tag ->
           TUITag(
             title = tag.title,
@@ -113,7 +116,6 @@ import com.tarkalabs.uicomponents.theme.TUITheme
         tags = TUIIconButtonTags(parentTag = tags.trailingIconTag)
       )
     }
-    HorizontalSpacer(space = 16)
   }
 }
 
