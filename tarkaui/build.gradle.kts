@@ -5,6 +5,8 @@ plugins {
   id("org.jetbrains.kotlin.android")
   id("shot")
   id("maven-publish")
+  id ("org.jetbrains.dokka")
+  id ("com.vanniktech.maven.publish")
 }
 
 android {
