@@ -95,7 +95,6 @@ dependencies {
   androidTestImplementation("androidx.test.ext:junit:1.1.5")
   androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
   androidTestImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
-  androidTestImplementation("org.mockito:mockito-android:4.5.1")
 
   androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.4.3")
   androidTestImplementation("org.mockito:mockito-android:4.5.1")
