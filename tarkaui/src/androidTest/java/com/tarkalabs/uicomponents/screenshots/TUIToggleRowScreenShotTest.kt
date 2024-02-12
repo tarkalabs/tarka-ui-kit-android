@@ -1,7 +1,7 @@
 package com.tarkalabs.uicomponents.screenshots
 
 import com.tarkalabs.uicomponents.components.checkbox.TUICheckBoxRow
-import com.tarkalabs.uicomponents.components.radiobutton.TUIRadioButtonRow
+import com.tarkalabs.uicomponents.components.radiobutton.TUIRadioRow
 import com.tarkalabs.uicomponents.components.base.TUIToggleRow
 import com.tarkalabs.uicomponents.components.base.ToggleRowStyle
 import com.tarkalabs.uicomponents.components.base.ToggleRowStyle.Title
@@ -56,7 +56,7 @@ open class TUIToggleRowScreenShotTest(
 
   @Test fun testRadioRowStyleTitleDescription() =
     compareScreenshotFor(darkTheme, "_testRadioRowStyleTitleDescription_$testName") {
-      TUIRadioButtonRow(
+      TUIRadioRow(
         title = "Title",
         style = TitleWithDescription("Description"),
         selected = isChecked,
@@ -65,6 +65,6 @@ open class TUIToggleRowScreenShotTest(
 
   @Test fun testRadioRowStyleTitle() =
     compareScreenshotFor(darkTheme, "_testRadioRowStyleTitle_$testName") {
-      TUIRadioButtonRow(title = "Title", style = Title, selected = isChecked, onOptionSelected = {})
+      TUIRadioRow(title = "Title", style = Title, selected = isChecked, onOptionSelected = {})
     }
 }
