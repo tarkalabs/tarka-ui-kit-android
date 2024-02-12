@@ -27,7 +27,7 @@ Android application for building UI components using Jetpack Compose
 - TUINavigationRow
 - TUIPlayPauseButton
 - TUIRadioButton
-- TUIRadioButtonRow
+- TUIRadioRow
 - TUISearchBar
 - TUISelectionCard
 - TUISnackBar
