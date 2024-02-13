@@ -16,12 +16,12 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.components.HorizontalSpacer
-import com.tarkalabs.uicomponents.components.TUITextRowTags
-import com.tarkalabs.uicomponents.components.base.TUIToggleRow
-import com.tarkalabs.uicomponents.components.base.ToggleRowStyle
-import com.tarkalabs.uicomponents.components.base.ToggleRowStyle.Title
-import com.tarkalabs.uicomponents.components.base.ToggleRowStyle.TitleWithDescription
+import com.tarkalabs.tarkaui.components.HorizontalSpacer
+import com.tarkalabs.tarkaui.components.TUITextRowTags
+import com.tarkalabs.tarkaui.components.base.TUIToggleRow
+import com.tarkalabs.tarkaui.components.base.ToggleRowStyle
+import com.tarkalabs.tarkaui.components.base.ToggleRowStyle.Title
+import com.tarkalabs.tarkaui.components.base.ToggleRowStyle.TitleWithDescription
 
 /**
  * A composable function that displays a RadioButton and a text row in a horizontal layout.

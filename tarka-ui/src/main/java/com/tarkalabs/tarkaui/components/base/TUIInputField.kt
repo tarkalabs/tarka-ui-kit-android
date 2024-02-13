@@ -27,21 +27,22 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaui.components.HorizontalSpacer
+import com.tarkalabs.tarkaui.components.base.TUIInputFieldContentType.Icon
+import com.tarkalabs.tarkaui.components.base.TUIInputFieldContentType.Text
+import com.tarkalabs.tarkaui.components.base.TUIInputFieldStatus.Alert
+import com.tarkalabs.tarkaui.components.base.TUIInputFieldStatus.Error
+import com.tarkalabs.tarkaui.components.base.TUIInputFieldStatus.Normal
+import com.tarkalabs.tarkaui.components.base.TUIInputFieldStatus.Success
+import com.tarkalabs.tarkaui.components.base.TUIInputFieldType.InputField
+import com.tarkalabs.tarkaui.components.base.TUIInputFieldType.LookupInputField
+import com.tarkalabs.tarkaui.extentions.clickableWithoutRipple
 import com.tarkalabs.tarkaui.icons.CheckmarkCircle16
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.icons.Timer20
 import com.tarkalabs.tarkaui.icons.Warning12
-import com.tarkalabs.uicomponents.components.HorizontalSpacer
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Icon
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType.Text
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Alert
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Normal
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus.Success
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldType.InputField
-import com.tarkalabs.uicomponents.components.base.TUIInputFieldType.LookupInputField
-import com.tarkalabs.uicomponents.extentions.clickableWithoutRipple
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 enum class TUIInputFieldStatus {
   Normal,

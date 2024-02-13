@@ -22,12 +22,12 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaui.icons.ChevronRight20
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TextRowStyle.Title
-import com.tarkalabs.uicomponents.components.TextRowStyle.TitleWithDescription
-import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
-import com.tarkalabs.uicomponents.components.base.TUIIconButton
-import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.components.TextRowStyle.Title
+import com.tarkalabs.tarkaui.components.TextRowStyle.TitleWithDescription
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.GHOST
+import com.tarkalabs.tarkaui.components.base.TUIIconButton
+import com.tarkalabs.tarkaui.components.base.TUIIconButtonTags
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 /**
  * A composable function that represents a text row in a UI.

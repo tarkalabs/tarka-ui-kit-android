@@ -39,15 +39,15 @@ import com.tarkalabs.tarkaui.icons.DeviceEq24
 import com.tarkalabs.tarkaui.icons.Document24
 import com.tarkalabs.tarkaui.icons.Eye12
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.R
-import com.tarkalabs.uicomponents.components.PlayPauseButtonSize.M
-import com.tarkalabs.uicomponents.components.TUIMediaThumbnailSize.Large
-import com.tarkalabs.uicomponents.components.TUIMediaThumbnailSize.Medium
-import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Audio
-import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Document
-import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Image
-import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Video
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.R
+import com.tarkalabs.tarkaui.components.PlayPauseButtonSize.M
+import com.tarkalabs.tarkaui.components.TUIMediaThumbnailSize.Large
+import com.tarkalabs.tarkaui.components.TUIMediaThumbnailSize.Medium
+import com.tarkalabs.tarkaui.components.TUIMediaThumbnailType.Audio
+import com.tarkalabs.tarkaui.components.TUIMediaThumbnailType.Document
+import com.tarkalabs.tarkaui.components.TUIMediaThumbnailType.Image
+import com.tarkalabs.tarkaui.components.TUIMediaThumbnailType.Video
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 sealed class TUIMediaThumbnailType {
   object Document : TUIMediaThumbnailType()

@@ -10,9 +10,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.components.base.ToggleRowStyle.Title
-import com.tarkalabs.uicomponents.components.base.ToggleRowStyle.TitleWithDescription
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.components.base.ToggleRowStyle.Title
+import com.tarkalabs.tarkaui.components.base.ToggleRowStyle.TitleWithDescription
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 /**
  * A composable function that represents a row containing a toggle-style UI element with an optional title and description.

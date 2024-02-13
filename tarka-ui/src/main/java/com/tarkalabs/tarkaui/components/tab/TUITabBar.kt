@@ -23,8 +23,8 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaui.icons.Circle12
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
-import com.tarkalabs.uicomponents.components.VerticalSpacer
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.components.VerticalSpacer
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 /**
  * A composable function that displays a horizontal tabRow with Tabs with or without icons.

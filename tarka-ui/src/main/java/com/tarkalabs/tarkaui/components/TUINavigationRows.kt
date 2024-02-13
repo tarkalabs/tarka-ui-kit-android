@@ -19,7 +19,7 @@ import com.tarkalabs.tarkaui.icons.Call20
 import com.tarkalabs.tarkaui.icons.ChevronRight20
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 // TODO: 5/2/2023 use dimensions instead of hard coded things
 /**

@@ -32,13 +32,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaui.components.TUISnackBarType.Information
+import com.tarkalabs.tarkaui.components.TUISnackBarType.Success
+import com.tarkalabs.tarkaui.components.TUISnackBarType.Warning
 import com.tarkalabs.tarkaui.icons.Delete24
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUISnackBarType.Information
-import com.tarkalabs.uicomponents.components.TUISnackBarType.Success
-import com.tarkalabs.uicomponents.components.TUISnackBarType.Warning
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 @Composable
 fun rememberTUISnackBarState(
@@ -188,10 +188,12 @@ internal fun TUISnackBar(
       containerColor = TUITheme.colors.warning
     }
 
-    Error -> {
+    TUISnackBarType.Error -> {
       textColor = TUITheme.colors.onError
       containerColor = TUITheme.colors.error
     }
+
+    else -> {}
   }
 
   Box(
@@ -289,6 +291,6 @@ fun TUIWarningSnackBarPreview() {
 @Composable
 fun TUIErrorSnackBarPreview() {
   TUISnackBar(
-    message = "Hello there", type = Error
+    message = "Hello there", type = TUISnackBarType.Error
   )
 }

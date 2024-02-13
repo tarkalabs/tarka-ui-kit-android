@@ -25,13 +25,13 @@ import com.tarkalabs.tarkaui.icons.Pause24
 import com.tarkalabs.tarkaui.icons.Play12
 import com.tarkalabs.tarkaui.icons.Play24
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.PlayPauseButtonSize.L
-import com.tarkalabs.uicomponents.components.PlayPauseButtonSize.M
-import com.tarkalabs.uicomponents.components.PlayPauseButtonState.Pause
-import com.tarkalabs.uicomponents.components.PlayPauseButtonState.Play
-import com.tarkalabs.uicomponents.extentions.maxHeight
-import com.tarkalabs.uicomponents.extentions.maxWidth
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.components.PlayPauseButtonSize.L
+import com.tarkalabs.tarkaui.components.PlayPauseButtonSize.M
+import com.tarkalabs.tarkaui.components.PlayPauseButtonState.Pause
+import com.tarkalabs.tarkaui.components.PlayPauseButtonState.Play
+import com.tarkalabs.tarkaui.extentions.maxHeight
+import com.tarkalabs.tarkaui.extentions.maxWidth
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 /**
  * A composable function that displays a button with Play & Pause.

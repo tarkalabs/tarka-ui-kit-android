@@ -7,7 +7,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.tarkalabs.uicomponents.R
+import com.tarkalabs.tarkaui.R
 
 val InterFontFamily = FontFamily(
   Font(R.font.inter_regular, FontWeight.Normal),

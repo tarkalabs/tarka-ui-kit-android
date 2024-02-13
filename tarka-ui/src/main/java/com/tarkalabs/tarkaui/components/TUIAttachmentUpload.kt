@@ -28,19 +28,19 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaui.components.TUIAttachmentUpload.AttachmentState.UpLoadSuccessful
+import com.tarkalabs.tarkaui.components.TUIAttachmentUpload.AttachmentState.UpLoading
+import com.tarkalabs.tarkaui.components.TUIMediaThumbnailType.Document
+import com.tarkalabs.tarkaui.components.base.IconButtonSize
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.GHOST
+import com.tarkalabs.tarkaui.components.base.TUIIconButton
+import com.tarkalabs.tarkaui.components.base.TUIIconButtonTags
 import com.tarkalabs.tarkaui.icons.Checkmark12
 import com.tarkalabs.tarkaui.icons.Delete24
 import com.tarkalabs.tarkaui.icons.ReOrder24
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState.UpLoadSuccessful
-import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState.UpLoading
-import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Document
-import com.tarkalabs.uicomponents.components.base.IconButtonSize
-import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
-import com.tarkalabs.uicomponents.components.base.TUIIconButton
-import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 object TUIAttachmentUpload {
 

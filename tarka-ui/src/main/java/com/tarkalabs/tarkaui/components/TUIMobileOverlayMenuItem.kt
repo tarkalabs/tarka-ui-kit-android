@@ -30,14 +30,14 @@ import com.tarkalabs.tarkaui.icons.AddCircle24
 import com.tarkalabs.tarkaui.icons.ChevronRight20
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemLeadingContentType.StatusIndicator
-import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemStyle.Title
-import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemStyle.TitleWithDescription
-import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemTrailingContentType.Icon
-import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemTrailingContentType.SubMobileOverlayMenu
-import com.tarkalabs.uicomponents.extentions.maxHeight
-import com.tarkalabs.uicomponents.extentions.maxWidth
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.components.MobileOverlayMenuItemLeadingContentType.StatusIndicator
+import com.tarkalabs.tarkaui.components.MobileOverlayMenuItemStyle.Title
+import com.tarkalabs.tarkaui.components.MobileOverlayMenuItemStyle.TitleWithDescription
+import com.tarkalabs.tarkaui.components.MobileOverlayMenuItemTrailingContentType.Icon
+import com.tarkalabs.tarkaui.components.MobileOverlayMenuItemTrailingContentType.SubMobileOverlayMenu
+import com.tarkalabs.tarkaui.extentions.maxHeight
+import com.tarkalabs.tarkaui.extentions.maxWidth
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 sealed class MobileOverlayMenuItemLeadingContentType {
   data class Icon(val icon: TarkaIcon) : MobileOverlayMenuItemLeadingContentType()

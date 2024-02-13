@@ -33,17 +33,17 @@ import com.tarkalabs.tarkaui.icons.Checkmark20
 import com.tarkalabs.tarkaui.icons.Dismiss20
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.ChipLeadingContent.Icon
-import com.tarkalabs.uicomponents.components.ChipLeadingContent.Image
-import com.tarkalabs.uicomponents.components.ChipType.Filter
-import com.tarkalabs.uicomponents.components.base.AvatarSize.XS
-import com.tarkalabs.uicomponents.components.base.AvatarType
-import com.tarkalabs.uicomponents.components.base.IconButtonSize.M
-import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
-import com.tarkalabs.uicomponents.components.base.TUIAvatar
-import com.tarkalabs.uicomponents.components.base.TUIBadge
-import com.tarkalabs.uicomponents.components.base.TUIIconButton
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.components.ChipLeadingContent.Icon
+import com.tarkalabs.tarkaui.components.ChipLeadingContent.Image
+import com.tarkalabs.tarkaui.components.ChipType.Filter
+import com.tarkalabs.tarkaui.components.base.AvatarSize.XS
+import com.tarkalabs.tarkaui.components.base.AvatarType
+import com.tarkalabs.tarkaui.components.base.IconButtonSize.M
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.GHOST
+import com.tarkalabs.tarkaui.components.base.TUIAvatar
+import com.tarkalabs.tarkaui.components.base.TUIBadge
+import com.tarkalabs.tarkaui.components.base.TUIIconButton
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 /**
  * Represents a generic chip type. The ChipType superclass serves as a generic base for the different chip types in the sealed class hierarchy.

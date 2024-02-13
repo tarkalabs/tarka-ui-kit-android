@@ -13,12 +13,12 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaui.icons.ChevronDown24
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
-import com.tarkalabs.uicomponents.components.base.ButtonSize.XL
-import com.tarkalabs.uicomponents.components.base.ButtonStyle.OUTLINE
-import com.tarkalabs.uicomponents.components.base.ButtonStyle.PRIMARY
-import com.tarkalabs.uicomponents.components.base.TUIButton
-import com.tarkalabs.uicomponents.components.base.TUIButtonTags
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.components.base.ButtonSize.XL
+import com.tarkalabs.tarkaui.components.base.ButtonStyle.OUTLINE
+import com.tarkalabs.tarkaui.components.base.ButtonStyle.PRIMARY
+import com.tarkalabs.tarkaui.components.base.TUIButton
+import com.tarkalabs.tarkaui.components.base.TUIButtonTags
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 /**
  * A composable function that displays a block of two buttons for main action and secondary action.

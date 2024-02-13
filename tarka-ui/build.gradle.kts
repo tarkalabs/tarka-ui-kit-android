@@ -10,7 +10,7 @@ plugins {
 }
 
 android {
-  namespace = "com.tarkalabs.uicomponents"
+  namespace = "com.tarkalabs.tarkaui"
   compileSdk = 33
 
   defaultConfig {
@@ -18,7 +18,7 @@ android {
     targetSdk = 33
 
     testInstrumentationRunner = "com.karumi.shot.ShotTestRunner"
-    testApplicationId = "com.tarkalabs.uicomponents"
+    testApplicationId = "com.tarkalabs.tarkaui"
     consumerProguardFiles("consumer-rules.pro")
   }
 
@@ -48,7 +48,7 @@ android {
   }
   shot {
     tolerance = 0.1
-    applicationId = "com.tarkalabs.uicomponents"
+    applicationId = "com.tarkalabs.tarkaui"
   }
   testOptions {
     emulatorSnapshots.maxSnapshotsForTestFailures = 10
@@ -91,7 +91,7 @@ dependencies {
   implementation("androidx.compose.ui:ui-tooling-preview:$composeUiVersion")
   implementation("androidx.compose.material3:material3:1.1.0-rc01")
   implementation("androidx.compose.foundation:foundation:$composeUiVersion")
-  api(project(":tarkaicons"))
+  api(project(":tarka-ui-icons"))
 
   testImplementation("junit:junit:4.13.2")
   androidTestImplementation("androidx.test.ext:junit:1.1.5")

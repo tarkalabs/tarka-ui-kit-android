@@ -21,8 +21,8 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.components.VerticalSpacer
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.components.VerticalSpacer
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 /**
  * A composable function that displays a RadioButton with customizable appearance and behavior.

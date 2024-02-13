@@ -10,10 +10,10 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.components.base.BadgeSize.L
-import com.tarkalabs.uicomponents.components.base.BadgeSize.M
-import com.tarkalabs.uicomponents.components.base.BadgeSize.S
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.components.base.BadgeSize.L
+import com.tarkalabs.tarkaui.components.base.BadgeSize.M
+import com.tarkalabs.tarkaui.components.base.BadgeSize.S
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 enum class BadgeSize(val size: Dp) {
   S(12.dp),

@@ -21,9 +21,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import com.tarkalabs.tarkaui.icons.ReOrderDotsVertical24
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUIToggleSwitch
-import com.tarkalabs.uicomponents.components.VerticalSpacer
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.components.TUIToggleSwitch
+import com.tarkalabs.tarkaui.components.VerticalSpacer
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 /**
  *This Component is used to show the list of Cards those can be dragged vertically & re-arranged by the users.

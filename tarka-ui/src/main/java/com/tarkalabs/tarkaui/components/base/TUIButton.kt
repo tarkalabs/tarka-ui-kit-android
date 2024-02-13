@@ -1,14 +1,14 @@
 package com.tarkalabs.tarkaui.components.base
 
-import com.tarkalabs.uicomponents.components.base.ButtonSize.L
-import com.tarkalabs.uicomponents.components.base.ButtonSize.M
-import com.tarkalabs.uicomponents.components.base.ButtonSize.S
-import com.tarkalabs.uicomponents.components.base.ButtonSize.XS
-import com.tarkalabs.uicomponents.components.base.ButtonStyle.ERROR
-import com.tarkalabs.uicomponents.components.base.ButtonStyle.GHOST
-import com.tarkalabs.uicomponents.components.base.ButtonStyle.OUTLINE
-import com.tarkalabs.uicomponents.components.base.ButtonStyle.PRIMARY
-import com.tarkalabs.uicomponents.components.base.ButtonStyle.SECONDARY
+import com.tarkalabs.tarkaui.components.base.ButtonSize.L
+import com.tarkalabs.tarkaui.components.base.ButtonSize.M
+import com.tarkalabs.tarkaui.components.base.ButtonSize.S
+import com.tarkalabs.tarkaui.components.base.ButtonSize.XS
+import com.tarkalabs.tarkaui.components.base.ButtonStyle.ERROR
+import com.tarkalabs.tarkaui.components.base.ButtonStyle.GHOST
+import com.tarkalabs.tarkaui.components.base.ButtonStyle.OUTLINE
+import com.tarkalabs.tarkaui.components.base.ButtonStyle.PRIMARY
+import com.tarkalabs.tarkaui.components.base.ButtonStyle.SECONDARY
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -39,8 +39,8 @@ import androidx.compose.ui.unit.sp
 import com.tarkalabs.tarkaui.icons.Add24
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
-import com.tarkalabs.uicomponents.components.HorizontalSpacer
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.components.HorizontalSpacer
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 enum class ButtonStyle {
   PRIMARY,

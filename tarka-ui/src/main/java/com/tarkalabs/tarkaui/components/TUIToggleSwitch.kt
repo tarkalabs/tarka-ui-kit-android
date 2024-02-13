@@ -28,8 +28,8 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaui.icons.Checkmark16
 import com.tarkalabs.tarkaui.icons.Dismiss16
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.extentions.clickableWithoutRipple
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.extentions.clickableWithoutRipple
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 /**
  * Below TUIToggleSwitch() defines a reusable composable function which can be used to create a Switch which takes several parameters such as

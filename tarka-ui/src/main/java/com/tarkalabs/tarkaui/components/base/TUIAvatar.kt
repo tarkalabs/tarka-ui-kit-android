@@ -21,16 +21,16 @@ import androidx.compose.ui.unit.sp
 import com.tarkalabs.tarkaui.icons.Search24
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.base.AvatarSize.L
-import com.tarkalabs.uicomponents.components.base.AvatarSize.M
-import com.tarkalabs.uicomponents.components.base.AvatarSize.S
-import com.tarkalabs.uicomponents.components.base.AvatarSize.XL
-import com.tarkalabs.uicomponents.components.base.AvatarSize.XS
-import com.tarkalabs.uicomponents.components.base.AvatarSize.XXL
-import com.tarkalabs.uicomponents.components.base.AvatarType.Icon
-import com.tarkalabs.uicomponents.components.base.AvatarType.Image
-import com.tarkalabs.uicomponents.components.base.AvatarType.Text
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.components.base.AvatarSize.L
+import com.tarkalabs.tarkaui.components.base.AvatarSize.M
+import com.tarkalabs.tarkaui.components.base.AvatarSize.S
+import com.tarkalabs.tarkaui.components.base.AvatarSize.XL
+import com.tarkalabs.tarkaui.components.base.AvatarSize.XS
+import com.tarkalabs.tarkaui.components.base.AvatarSize.XXL
+import com.tarkalabs.tarkaui.components.base.AvatarType.Icon
+import com.tarkalabs.tarkaui.components.base.AvatarType.Image
+import com.tarkalabs.tarkaui.components.base.AvatarType.Text
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 enum class AvatarSize(val size: Dp) {
   XS(24.dp),

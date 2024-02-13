@@ -14,12 +14,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.components.HorizontalPaddingSize.L
-import com.tarkalabs.uicomponents.components.HorizontalPaddingSize.NONE
-import com.tarkalabs.uicomponents.components.Orientation.HORIZONTAL
-import com.tarkalabs.uicomponents.components.Orientation.VERTICAL
-import com.tarkalabs.uicomponents.components.VerticalPaddingSize.M
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.components.HorizontalPaddingSize.L
+import com.tarkalabs.tarkaui.components.HorizontalPaddingSize.NONE
+import com.tarkalabs.tarkaui.components.Orientation.HORIZONTAL
+import com.tarkalabs.tarkaui.components.Orientation.VERTICAL
+import com.tarkalabs.tarkaui.components.VerticalPaddingSize.M
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 /**
  *

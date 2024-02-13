@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-  namespace = "com.tarkalabs.tarkaicons"
+  namespace = "com.tarkalabs.tarkaui.icons"
   compileSdk = 33
 
   defaultConfig {
@@ -38,7 +38,7 @@ publishing {
     create<MavenPublication>("gpr") {
       run {
         groupId = "com.tarkalabs"
-        artifactId = "tarkaicons"
+        artifactId = "tarkaui.icons"
         version = "1.0.0"
         artifact("$buildDir/outputs/aar/tarkaicons-release.aar")
       }

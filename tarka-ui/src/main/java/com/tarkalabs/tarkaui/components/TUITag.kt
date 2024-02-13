@@ -26,13 +26,13 @@ import com.tarkalabs.tarkaui.icons.Circle12
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.icons.Warning12
-import com.tarkalabs.uicomponents.components.TagSize.L
-import com.tarkalabs.uicomponents.components.TagSize.M
-import com.tarkalabs.uicomponents.components.TagSize.S
-import com.tarkalabs.uicomponents.components.TagType.CUSTOM
-import com.tarkalabs.uicomponents.components.TagType.HIGH
-import com.tarkalabs.uicomponents.components.TagType.LOW
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.components.TagSize.L
+import com.tarkalabs.tarkaui.components.TagSize.M
+import com.tarkalabs.tarkaui.components.TagSize.S
+import com.tarkalabs.tarkaui.components.TagType.CUSTOM
+import com.tarkalabs.tarkaui.components.TagType.HIGH
+import com.tarkalabs.tarkaui.components.TagType.LOW
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 /**
  * A composable function that displays a text with leading or trailing icon at a time.

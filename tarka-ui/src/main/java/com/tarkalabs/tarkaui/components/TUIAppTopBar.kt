@@ -21,17 +21,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaui.components.base.IconButtonSize.XL
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.GHOST
+import com.tarkalabs.tarkaui.components.base.TUIIconButton
+import com.tarkalabs.tarkaui.components.base.TUIIconButtonTags
 import com.tarkalabs.tarkaui.icons.ChevronLeft24
 import com.tarkalabs.tarkaui.icons.ChevronRight20
 import com.tarkalabs.tarkaui.icons.Search16
 import com.tarkalabs.tarkaui.icons.Search24
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.base.IconButtonSize.XL
-import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
-import com.tarkalabs.uicomponents.components.base.TUIIconButton
-import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 /**
  * Displays a customized top app bar with optional navigation icon, search icon, and menu item icons.

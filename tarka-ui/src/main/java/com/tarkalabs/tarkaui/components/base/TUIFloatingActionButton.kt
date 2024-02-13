@@ -19,10 +19,10 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaui.icons.ChevronRight20
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.base.FloatingActionButtonSize.L
-import com.tarkalabs.uicomponents.components.base.FloatingActionButtonSize.R
-import com.tarkalabs.uicomponents.components.base.FloatingActionButtonSize.S
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.components.base.FloatingActionButtonSize.L
+import com.tarkalabs.tarkaui.components.base.FloatingActionButtonSize.R
+import com.tarkalabs.tarkaui.components.base.FloatingActionButtonSize.S
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 enum class FloatingActionButtonSize(val size: Dp) {
   S(40.dp),

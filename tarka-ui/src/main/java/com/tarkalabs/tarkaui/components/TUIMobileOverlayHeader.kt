@@ -20,19 +20,19 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaui.components.TUIMobileOverlayHeaderStyle.HeaderWithBackIcon
+import com.tarkalabs.tarkaui.components.TUIMobileOverlayHeaderStyle.HeaderWithTitle
+import com.tarkalabs.tarkaui.components.TUIMobileOverlayHeaderStyle.HeaderWithTrailingIcon
+import com.tarkalabs.tarkaui.components.TUIMobileOverlayHeaderStyle.None
+import com.tarkalabs.tarkaui.components.base.IconButtonSize
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle
+import com.tarkalabs.tarkaui.components.base.TUIIconButton
+import com.tarkalabs.tarkaui.components.base.TUIIconButtonTags
 import com.tarkalabs.tarkaui.icons.ChevronLeft24
 import com.tarkalabs.tarkaui.icons.Dismiss24
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUIMobileOverlayHeaderStyle.HeaderWithBackIcon
-import com.tarkalabs.uicomponents.components.TUIMobileOverlayHeaderStyle.HeaderWithTitle
-import com.tarkalabs.uicomponents.components.TUIMobileOverlayHeaderStyle.HeaderWithTrailingIcon
-import com.tarkalabs.uicomponents.components.TUIMobileOverlayHeaderStyle.None
-import com.tarkalabs.uicomponents.components.base.IconButtonSize
-import com.tarkalabs.uicomponents.components.base.IconButtonStyle
-import com.tarkalabs.uicomponents.components.base.TUIIconButton
-import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 /**
  * Represents different styles for a mobile overlay header.

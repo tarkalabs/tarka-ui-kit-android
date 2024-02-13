@@ -28,11 +28,11 @@ import com.tarkalabs.tarkaui.icons.Person24
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons.Filled
 import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
-import com.tarkalabs.uicomponents.components.VerticalSpacer
-import com.tarkalabs.uicomponents.components.card.SecondaryDetailsStyle.ERROR
-import com.tarkalabs.uicomponents.components.card.SecondaryDetailsStyle.NORMAL
-import com.tarkalabs.uicomponents.components.base.TUIBadge
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.components.VerticalSpacer
+import com.tarkalabs.tarkaui.components.card.SecondaryDetailsStyle.ERROR
+import com.tarkalabs.tarkaui.components.card.SecondaryDetailsStyle.NORMAL
+import com.tarkalabs.tarkaui.components.base.TUIBadge
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 enum class SecondaryDetailsStyle {
   NORMAL,

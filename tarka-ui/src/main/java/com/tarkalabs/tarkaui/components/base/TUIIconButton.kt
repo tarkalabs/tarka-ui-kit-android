@@ -31,16 +31,16 @@ import androidx.compose.ui.unit.sp
 import com.tarkalabs.tarkaui.icons.ChevronRight20
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.base.IconButtonSize.L
-import com.tarkalabs.uicomponents.components.base.IconButtonSize.M
-import com.tarkalabs.uicomponents.components.base.IconButtonSize.S
-import com.tarkalabs.uicomponents.components.base.IconButtonSize.XL
-import com.tarkalabs.uicomponents.components.base.IconButtonSize.XS
-import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
-import com.tarkalabs.uicomponents.components.base.IconButtonStyle.OUTLINE
-import com.tarkalabs.uicomponents.components.base.IconButtonStyle.PRIMARY
-import com.tarkalabs.uicomponents.components.base.IconButtonStyle.SECONDARY
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.components.base.IconButtonSize.L
+import com.tarkalabs.tarkaui.components.base.IconButtonSize.M
+import com.tarkalabs.tarkaui.components.base.IconButtonSize.S
+import com.tarkalabs.tarkaui.components.base.IconButtonSize.XL
+import com.tarkalabs.tarkaui.components.base.IconButtonSize.XS
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.GHOST
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.OUTLINE
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.PRIMARY
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.SECONDARY
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 enum class IconButtonSize(val size: Dp) {
   XS(20.dp),
