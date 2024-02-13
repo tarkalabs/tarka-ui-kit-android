@@ -36,20 +36,20 @@ import com.tarkalabs.uicomponents.components.base.ToggleRowStyle.TitleWithDescri
  *
  * How to use TUIRadioButtonRow() composable function
  * TUIRadioButtonRow(
-      selected = isSelected,
-      enabled = true,
-      title = "RadioButton Row",
-      style = ToggleRowStyle.Title,
-      onOptionSelected = { selected = !isSelected }
-    )
+selected = isSelected,
+enabled = true,
+title = "RadioButton Row",
+style = ToggleRowStyle.Title,
+onOptionSelected = { selected = !isSelected }
+)
  */
-@Composable fun TUIRadioButtonRow(
+@Composable fun TUIRadioRow(
   modifier: Modifier = Modifier,
   selected: Boolean,
   enabled: Boolean = true,
   title: String,
   style: ToggleRowStyle,
-  tags: TUIRadioButtonRowTags = TUIRadioButtonRowTags(),
+  tags: TUIRadioRowTags = TUIRadioRowTags(),
   paddingValues: PaddingValues = PaddingValues(),
   onOptionSelected: () -> Unit,
 ) {
@@ -80,13 +80,13 @@ import com.tarkalabs.uicomponents.components.base.ToggleRowStyle.TitleWithDescri
   }
 }
 
-data class TUIRadioButtonRowTags(
+data class TUIRadioRowTags(
   val parentTag: String = "TUIRadioButtonRow",
   val radioButtonTags: TUIRadioButtonTags = TUIRadioButtonTags(parentTag = "TUIRadioButtonRow_RadioButton"),
   val textRowTags: TUITextRowTags = TUITextRowTags(parentTag = "TUIRadioButtonRow_TextRow"),
 )
 
-@Preview @Composable fun PreviewTUIRadioButtonRow() {
+@Preview @Composable fun PreviewTUIRadioRow() {
   Column(
     modifier = Modifier
       .padding(20.dp)
@@ -99,28 +99,28 @@ data class TUIRadioButtonRowTags(
         .fillMaxWidth()
         .padding(20.dp)
     ) {
-      TUIRadioButtonRow(
+      TUIRadioRow(
         selected = true,
         enabled = true,
         title = "Title",
         style = TitleWithDescription("Description")
       ) {
       }
-      TUIRadioButtonRow(
+      TUIRadioRow(
         selected = false,
         enabled = true,
         title = "Title",
         style = TitleWithDescription("Description")
       ) {
       }
-      TUIRadioButtonRow(
+      TUIRadioRow(
         selected = true,
         enabled = true,
         title = "Title",
         style = Title
       ) {
       }
-      TUIRadioButtonRow(
+      TUIRadioRow(
         selected = false,
         enabled = true,
         title = "Title",

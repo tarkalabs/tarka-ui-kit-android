@@ -5,6 +5,8 @@ plugins {
   id("org.jetbrains.kotlin.android")
   id("shot")
   id("maven-publish")
+  id ("org.jetbrains.dokka")
+  id ("com.vanniktech.maven.publish")
 }
 
 android {
@@ -64,7 +66,7 @@ publishing {
       run {
         groupId = "com.tarkalabs"
         artifactId = getLibraryArtifactId()
-        version = "1.0.6"
+        version = "1.0.7"
         artifact("$buildDir/outputs/aar/${getLibraryArtifactId()}-release.aar")
       }
     }
