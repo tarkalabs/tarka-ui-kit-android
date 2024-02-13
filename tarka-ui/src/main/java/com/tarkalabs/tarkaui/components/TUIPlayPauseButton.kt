@@ -20,11 +20,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaicons.Pause12
-import com.tarkalabs.tarkaicons.Pause24
-import com.tarkalabs.tarkaicons.Play12
-import com.tarkalabs.tarkaicons.Play24
-import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.Pause12
+import com.tarkalabs.tarkaui.icons.Pause24
+import com.tarkalabs.tarkaui.icons.Play12
+import com.tarkalabs.tarkaui.icons.Play24
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.uicomponents.components.PlayPauseButtonSize.L
 import com.tarkalabs.uicomponents.components.PlayPauseButtonSize.M
 import com.tarkalabs.uicomponents.components.PlayPauseButtonState.Pause

@@ -6,8 +6,8 @@ import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
-import com.tarkalabs.tarkaicons.Circle12
-import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.Circle12
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUITag
 import com.tarkalabs.uicomponents.components.TUITagTestTags
 import org.junit.Rule

@@ -28,9 +28,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.tarkalabs.tarkaicons.ChevronRight20
-import com.tarkalabs.tarkaicons.TarkaIcon
-import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.ChevronRight20
+import com.tarkalabs.tarkaui.icons.TarkaIcon
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.uicomponents.components.base.IconButtonSize.L
 import com.tarkalabs.uicomponents.components.base.IconButtonSize.M
 import com.tarkalabs.uicomponents.components.base.IconButtonSize.S

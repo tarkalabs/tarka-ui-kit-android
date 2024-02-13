@@ -15,11 +15,10 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.R.drawable
-import com.tarkalabs.tarkaicons.Call20
-import com.tarkalabs.tarkaicons.ChevronRight20
-import com.tarkalabs.tarkaicons.TarkaIcon
-import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.Call20
+import com.tarkalabs.tarkaui.icons.ChevronRight20
+import com.tarkalabs.tarkaui.icons.TarkaIcon
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.uicomponents.theme.TUITheme
 
 // TODO: 5/2/2023 use dimensions instead of hard coded things

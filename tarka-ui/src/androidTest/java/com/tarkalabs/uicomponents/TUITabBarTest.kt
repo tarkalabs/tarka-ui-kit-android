@@ -9,8 +9,8 @@ import androidx.compose.ui.test.onAllNodesWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
-import com.tarkalabs.tarkaicons.Tabs24
-import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.Tabs24
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.uicomponents.components.tab.TUITabBar
 import com.tarkalabs.uicomponents.components.tab.TUITabBarTags
 import com.tarkalabs.uicomponents.components.tab.TabItem

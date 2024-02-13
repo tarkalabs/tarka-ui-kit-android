@@ -22,10 +22,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaicons.Circle12
-import com.tarkalabs.tarkaicons.TarkaIcon
-import com.tarkalabs.tarkaicons.TarkaIcons
-import com.tarkalabs.tarkaicons.Warning12
+import com.tarkalabs.tarkaui.icons.Circle12
+import com.tarkalabs.tarkaui.icons.TarkaIcon
+import com.tarkalabs.tarkaui.icons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.Warning12
 import com.tarkalabs.uicomponents.components.TagSize.L
 import com.tarkalabs.uicomponents.components.TagSize.M
 import com.tarkalabs.uicomponents.components.TagSize.S

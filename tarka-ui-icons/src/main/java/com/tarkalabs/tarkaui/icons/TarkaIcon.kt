@@ -1,4 +1,4 @@
-package com.tarkalabs.tarkaicons
+package com.tarkalabs.tarkaui.icons
 
 import androidx.annotation.DrawableRes
 import androidx.compose.ui.graphics.Color

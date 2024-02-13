@@ -9,9 +9,9 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.test.platform.app.InstrumentationRegistry
-import com.tarkalabs.tarkaicons.CalendarLtr24
-import com.tarkalabs.tarkaicons.Dismiss20
-import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.CalendarLtr24
+import com.tarkalabs.tarkaui.icons.Dismiss20
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.uicomponents.components.ChipLeadingContent
 import com.tarkalabs.uicomponents.components.ChipType
 import com.tarkalabs.uicomponents.components.TUIChip

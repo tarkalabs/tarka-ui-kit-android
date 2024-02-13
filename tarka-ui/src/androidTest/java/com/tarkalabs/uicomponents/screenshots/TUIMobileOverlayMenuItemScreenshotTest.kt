@@ -1,7 +1,7 @@
 package com.tarkalabs.uicomponents.screenshots
 
-import com.tarkalabs.tarkaicons.AddCircle24
-import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.AddCircle24
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemLeadingContentType
 import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemLeadingContentType.Icon
 import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemLeadingContentType.StatusIndicator

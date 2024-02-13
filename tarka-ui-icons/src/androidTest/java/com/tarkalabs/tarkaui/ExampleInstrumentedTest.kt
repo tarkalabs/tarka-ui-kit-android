@@ -1,4 +1,4 @@
-package com.tarkalabs.tarkaicons
+package com.tarkalabs.tarkaui
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

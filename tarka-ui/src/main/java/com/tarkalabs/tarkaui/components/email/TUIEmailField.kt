@@ -44,11 +44,11 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaicons.AddCircle24
-import com.tarkalabs.tarkaicons.Dismiss20
-import com.tarkalabs.tarkaicons.TarkaIcon
-import com.tarkalabs.tarkaicons.TarkaIcons
-import com.tarkalabs.tarkaicons.TarkaIcons.Filled
+import com.tarkalabs.tarkaui.icons.AddCircle24
+import com.tarkalabs.tarkaui.icons.Dismiss20
+import com.tarkalabs.tarkaui.icons.TarkaIcon
+import com.tarkalabs.tarkaui.icons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.TarkaIcons.Filled
 import com.tarkalabs.uicomponents.components.ChipType.Input
 import com.tarkalabs.uicomponents.components.TUIChip
 import com.tarkalabs.uicomponents.components.TUIChipTags

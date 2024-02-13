@@ -3,10 +3,10 @@ package com.tarkalabs.uicomponents.screenshots
 import android.graphics.BitmapFactory
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.test.platform.app.InstrumentationRegistry
-import com.tarkalabs.tarkaicons.CalendarLtr24
-import com.tarkalabs.tarkaicons.Checkmark16
-import com.tarkalabs.tarkaicons.Dismiss20
-import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.CalendarLtr24
+import com.tarkalabs.tarkaui.icons.Checkmark16
+import com.tarkalabs.tarkaui.icons.Dismiss20
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.uicomponents.components.ChipLeadingContent
 import com.tarkalabs.uicomponents.components.ChipSize
 import com.tarkalabs.uicomponents.components.ChipType

@@ -6,12 +6,12 @@ import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
-import com.tarkalabs.tarkaicons.CheckmarkCircle24
-import com.tarkalabs.tarkaicons.ChevronRight24
-import com.tarkalabs.tarkaicons.Person24
+import com.tarkalabs.tarkaui.icons.CheckmarkCircle24
+import com.tarkalabs.tarkaui.icons.ChevronRight24
+import com.tarkalabs.tarkaui.icons.Person24
 import com.tarkalabs.uicomponents.components.card.TUISelectionCard
 import com.tarkalabs.uicomponents.components.card.TUISelectionCardTags
-import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock

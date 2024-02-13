@@ -1,4 +1,4 @@
-package com.tarkalabs.tarkaicons
+package com.tarkalabs.tarkaui
 
 import org.junit.Test
 

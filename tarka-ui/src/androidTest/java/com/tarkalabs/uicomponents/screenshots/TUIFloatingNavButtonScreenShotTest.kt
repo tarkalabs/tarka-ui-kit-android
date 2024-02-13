@@ -1,13 +1,12 @@
 package com.tarkalabs.uicomponents.screenshots
 
-import com.tarkalabs.tarkaicons.CalendarRtl24
-import com.tarkalabs.tarkaicons.Directions24
-import com.tarkalabs.tarkaicons.Diversity24
-import com.tarkalabs.tarkaicons.Map24
-import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.CalendarRtl24
+import com.tarkalabs.tarkaui.icons.Directions24
+import com.tarkalabs.tarkaui.icons.Diversity24
+import com.tarkalabs.tarkaui.icons.Map24
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.uicomponents.components.tab.TUIFloatingNavButton
 import com.tarkalabs.uicomponents.components.tab.TUIFloatingNavButtonContentType.Burger
-import com.tarkalabs.uicomponents.components.tab.TUIFloatingNavButtonContentType.List
 import com.tarkalabs.uicomponents.components.tab.TUIFloatingNavButtonContentType.Navigation
 import com.tarkalabs.uicomponents.components.tab.TUIFloatingNavButtonStyle.BURGER
 import com.tarkalabs.uicomponents.components.tab.TUIFloatingNavButtonStyle.LIST

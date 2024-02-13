@@ -3,8 +3,8 @@ package com.tarkalabs.uicomponents.screenshots
 import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaicons.Circle12
-import com.tarkalabs.tarkaicons.TarkaIcons.Regular
+import com.tarkalabs.tarkaui.icons.Circle12
+import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
 import com.tarkalabs.uicomponents.components.tab.TUITabBar
 import com.tarkalabs.uicomponents.components.tab.TabItem
 import org.junit.Test

@@ -23,8 +23,8 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaicons.Delete24
-import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.Delete24
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUISnackBar
 import com.tarkalabs.uicomponents.components.TUISnackBarTags
 import com.tarkalabs.uicomponents.components.TUISnackBarType.Success

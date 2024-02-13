@@ -9,8 +9,8 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performImeAction
 import androidx.compose.ui.test.performTextInput
-import com.tarkalabs.tarkaicons.AddCircle24
-import com.tarkalabs.tarkaicons.TarkaIcons.Regular
+import com.tarkalabs.tarkaui.icons.AddCircle24
+import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
 import com.tarkalabs.uicomponents.components.email.TUIEmailField
 import com.tarkalabs.uicomponents.components.email.TUIEmailFieldTags
 import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags

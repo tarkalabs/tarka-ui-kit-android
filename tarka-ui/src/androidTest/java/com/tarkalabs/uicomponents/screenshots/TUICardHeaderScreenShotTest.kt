@@ -1,8 +1,8 @@
 package com.tarkalabs.uicomponents.screenshots
 
-import com.tarkalabs.tarkaicons.MoreHorizontal24
-import com.tarkalabs.tarkaicons.TarkaIcon
-import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.MoreHorizontal24
+import com.tarkalabs.tarkaui.icons.TarkaIcon
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUICardHeader
 import com.tarkalabs.uicomponents.components.TUICardTag
 import org.junit.Test

@@ -8,8 +8,6 @@ import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
-import com.tarkalabs.tarkaicons.ApprovalsApp24
-import com.tarkalabs.tarkaicons.TarkaIcons.Filled
 import com.tarkalabs.uicomponents.components.TUIMultiLevelSelectorHeader
 import com.tarkalabs.uicomponents.components.TUIMultiLevelSelectorHeader.TUIMultiLevelSelectorHeaderTags
 import org.junit.Rule

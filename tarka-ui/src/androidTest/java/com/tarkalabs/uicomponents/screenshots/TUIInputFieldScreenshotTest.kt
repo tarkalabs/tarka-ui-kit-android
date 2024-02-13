@@ -2,15 +2,14 @@ package com.tarkalabs.uicomponents.screenshots
 
 import androidx.compose.foundation.focusable
 import androidx.compose.ui.Modifier
-import com.tarkalabs.tarkaicons.Checkmark16
-import com.tarkalabs.tarkaicons.Dismiss16
-import com.tarkalabs.tarkaicons.TarkaIcon
-import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.Checkmark16
+import com.tarkalabs.tarkaui.icons.Dismiss16
+import com.tarkalabs.tarkaui.icons.TarkaIcon
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.uicomponents.components.base.TUIInputField
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldContentType
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldStatus
 import com.tarkalabs.uicomponents.components.base.TUIInputFieldTags
-import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized

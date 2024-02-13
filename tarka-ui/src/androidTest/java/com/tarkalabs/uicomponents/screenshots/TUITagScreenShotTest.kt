@@ -1,8 +1,8 @@
 package com.tarkalabs.uicomponents.screenshots
 
 import androidx.compose.ui.graphics.Color
-import com.tarkalabs.tarkaicons.Circle12
-import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.Circle12
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.uicomponents.components.TUITag
 import com.tarkalabs.uicomponents.components.TagSize
 import com.tarkalabs.uicomponents.components.TagType

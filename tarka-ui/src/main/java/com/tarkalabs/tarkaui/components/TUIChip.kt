@@ -27,12 +27,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaicons.ArrowSort20
-import com.tarkalabs.tarkaicons.CaretDown20
-import com.tarkalabs.tarkaicons.Checkmark20
-import com.tarkalabs.tarkaicons.Dismiss20
-import com.tarkalabs.tarkaicons.TarkaIcon
-import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.ArrowSort20
+import com.tarkalabs.tarkaui.icons.CaretDown20
+import com.tarkalabs.tarkaui.icons.Checkmark20
+import com.tarkalabs.tarkaui.icons.Dismiss20
+import com.tarkalabs.tarkaui.icons.TarkaIcon
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.uicomponents.components.ChipLeadingContent.Icon
 import com.tarkalabs.uicomponents.components.ChipLeadingContent.Image
 import com.tarkalabs.uicomponents.components.ChipType.Filter
@@ -233,7 +233,7 @@ enum class ChipSize(val size: Dp) {
         {
           Icon(
             painter = painterResource(id = type.trailingIcon?.iconRes ?: TarkaIcons.Filled.CaretDown20.iconRes),
-            contentDescription = type.trailingIcon?.contentDescription ?:TarkaIcons.Filled.CaretDown20.contentDescription,
+            contentDescription = type.trailingIcon?.contentDescription ?: TarkaIcons.Filled.CaretDown20.contentDescription,
             tint = if (type.selected) TUITheme.colors.onSecondary else TUITheme.colors.onSurface
 
           )

@@ -2,9 +2,9 @@ package com.tarkalabs.uicomponents.screenshots
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.ui.Modifier
-import com.tarkalabs.tarkaicons.Checkmark24
-import com.tarkalabs.tarkaicons.Circle24
-import com.tarkalabs.tarkaicons.TarkaIcons.Regular
+import com.tarkalabs.tarkaui.icons.Checkmark24
+import com.tarkalabs.tarkaui.icons.Circle24
+import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
 import com.tarkalabs.uicomponents.components.TUIMenuItem
 import com.tarkalabs.uicomponents.components.TUIMenuItemIconStyle
 import com.tarkalabs.uicomponents.components.TUIMenuItemIconStyle.SUCCESS

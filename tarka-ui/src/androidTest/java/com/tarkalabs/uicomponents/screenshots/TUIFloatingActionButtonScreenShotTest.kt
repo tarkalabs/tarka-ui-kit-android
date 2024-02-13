@@ -1,7 +1,7 @@
 package com.tarkalabs.uicomponents.screenshots
 
-import com.tarkalabs.tarkaicons.ArrowExportLtr24
-import com.tarkalabs.tarkaicons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.ArrowExportLtr24
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.uicomponents.components.base.FloatingActionButtonSize.L
 import com.tarkalabs.uicomponents.components.base.FloatingActionButtonSize.R
 import com.tarkalabs.uicomponents.components.base.FloatingActionButtonSize.S
