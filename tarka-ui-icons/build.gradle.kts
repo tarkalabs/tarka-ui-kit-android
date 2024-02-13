@@ -38,9 +38,9 @@ publishing {
     create<MavenPublication>("gpr") {
       run {
         groupId = "com.tarkalabs"
-        artifactId = "tarkaui.icons"
+        artifactId = "tarkaui-icons"
         version = "1.0.0"
-        artifact("$buildDir/outputs/aar/tarkaicons-release.aar")
+        artifact("$buildDir/outputs/aar/tarka-ui-icons-release.aar")
       }
     }
   }
