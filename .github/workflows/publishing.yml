@@ -38,7 +38,7 @@ jobs:
         run: bash ./gradlew :tarkaui:assemble
 
       - name: Publish to GitHub Package 🚀
-        run: bash ./gradlew :tarkaui:publish
+        run: bash ./gradlew :tarka-ui:publish
         env:
           GITHUB_USER: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}
