@@ -16,15 +16,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaicons.BarcodeScanner24
-import com.tarkalabs.tarkaicons.ChevronRight20
-import com.tarkalabs.tarkaicons.Dismiss16
-import com.tarkalabs.tarkaicons.TarkaIcons
-import com.tarkalabs.tarkaicons.TarkaIcons.Filled
-import com.tarkalabs.tarkaicons.TarkaIcons.Regular
-import com.tarkalabs.uicomponents.components.TUISearchBar
-import com.tarkalabs.uicomponents.components.TUIAppTopBar
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.components.TUIAppTopBar
+import com.tarkalabs.tarkaui.components.TUISearchBar
+import com.tarkalabs.tarkaui.icons.BarcodeScanner24
+import com.tarkalabs.tarkaui.icons.ChevronRight20
+import com.tarkalabs.tarkaui.icons.Dismiss16
+import com.tarkalabs.tarkaui.icons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.TarkaIcons.Filled
+import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 class UIComponentListActivity : ComponentActivity() {
@@ -62,7 +62,9 @@ class UIComponentListActivity : ComponentActivity() {
               trailingIcon = Filled.Dismiss16,
               leadingIcon = Regular.BarcodeScanner24,
               onLeadingIconClick = {},
-              modifier = Modifier.fillMaxWidth().padding(10.dp),
+              modifier = Modifier
+                .fillMaxWidth()
+                .padding(10.dp),
             )
             TUISearchBar(
               query = "Search",
@@ -71,7 +73,9 @@ class UIComponentListActivity : ComponentActivity() {
               trailingIcon = Filled.Dismiss16,
               leadingIcon = Regular.BarcodeScanner24,
               onLeadingIconClick = {},
-              modifier = Modifier.fillMaxWidth().padding(10.dp),
+              modifier = Modifier
+                .fillMaxWidth()
+                .padding(10.dp),
             )
 
           }
