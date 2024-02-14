@@ -35,10 +35,10 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build AAR 🔨
-        run: bash ./gradlew :tarkaui:assemble
+        run: bash ./gradlew :tarka-ui:assemble
 
       - name: Publish to GitHub Package 🚀
-        run: bash ./gradlew :tarkaui:publish
+        run: bash ./gradlew :tarka-ui:publish
         env:
           GITHUB_USER: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}
