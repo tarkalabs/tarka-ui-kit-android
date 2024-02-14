@@ -8,8 +8,8 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import com.tarkalabs.tarkaui.icons.Circle12
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUITag
-import com.tarkalabs.uicomponents.components.TUITagTestTags
+import com.tarkalabs.tarkaui.components.TUITag
+import com.tarkalabs.tarkaui.components.TUITagTestTags
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock

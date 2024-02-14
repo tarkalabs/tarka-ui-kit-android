@@ -12,11 +12,11 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.tarkalabs.tarkaui.icons.CalendarLtr24
 import com.tarkalabs.tarkaui.icons.Dismiss20
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.ChipLeadingContent
-import com.tarkalabs.uicomponents.components.ChipType
-import com.tarkalabs.uicomponents.components.TUIChip
-import com.tarkalabs.uicomponents.components.TUIChipTags
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.components.ChipLeadingContent
+import com.tarkalabs.tarkaui.components.ChipType
+import com.tarkalabs.tarkaui.components.TUIChip
+import com.tarkalabs.tarkaui.components.TUIChipTags
+import com.tarkalabs.tarkaui.theme.TUITheme
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock

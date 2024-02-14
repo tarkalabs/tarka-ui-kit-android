@@ -1,9 +1,9 @@
 package com.tarkalabs.uicomponents.screenshots
 
+import com.tarkalabs.tarkaui.components.TUISnackBar
+import com.tarkalabs.tarkaui.components.TUISnackBarType.*
 import com.tarkalabs.tarkaui.icons.Delete24
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUISnackBar
-import com.tarkalabs.uicomponents.components.TUISnackBarType.*
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4

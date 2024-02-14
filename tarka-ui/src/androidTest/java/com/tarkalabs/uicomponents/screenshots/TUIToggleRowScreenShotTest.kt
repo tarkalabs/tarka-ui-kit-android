@@ -1,11 +1,11 @@
 package com.tarkalabs.uicomponents.screenshots
 
-import com.tarkalabs.uicomponents.components.checkbox.TUICheckBoxRow
-import com.tarkalabs.uicomponents.components.radiobutton.TUIRadioRow
-import com.tarkalabs.uicomponents.components.base.TUIToggleRow
-import com.tarkalabs.uicomponents.components.base.ToggleRowStyle
-import com.tarkalabs.uicomponents.components.base.ToggleRowStyle.Title
-import com.tarkalabs.uicomponents.components.base.ToggleRowStyle.TitleWithDescription
+import com.tarkalabs.tarkaui.components.base.TUIToggleRow
+import com.tarkalabs.tarkaui.components.base.ToggleRowStyle
+import com.tarkalabs.tarkaui.components.base.ToggleRowStyle.Title
+import com.tarkalabs.tarkaui.components.base.ToggleRowStyle.TitleWithDescription
+import com.tarkalabs.tarkaui.components.checkbox.TUICheckBoxRow
+import com.tarkalabs.tarkaui.components.radiobutton.TUIRadioRow
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized

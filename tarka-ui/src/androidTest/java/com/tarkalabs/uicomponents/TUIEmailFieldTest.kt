@@ -11,9 +11,9 @@ import androidx.compose.ui.test.performImeAction
 import androidx.compose.ui.test.performTextInput
 import com.tarkalabs.tarkaui.icons.AddCircle24
 import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
-import com.tarkalabs.uicomponents.components.email.TUIEmailField
-import com.tarkalabs.uicomponents.components.email.TUIEmailFieldTags
-import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
+import com.tarkalabs.tarkaui.components.email.TUIEmailField
+import com.tarkalabs.tarkaui.components.email.TUIEmailFieldTags
+import com.tarkalabs.tarkaui.components.base.TUIIconButtonTags
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock

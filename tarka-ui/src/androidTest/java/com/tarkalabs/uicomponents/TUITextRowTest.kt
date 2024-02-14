@@ -11,9 +11,9 @@ import com.tarkalabs.tarkaui.icons.Checkmark16
 import com.tarkalabs.tarkaui.icons.Copy24
 import com.tarkalabs.tarkaui.icons.Delete24
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUITextRow
-import com.tarkalabs.uicomponents.components.TUITextRowTags
-import com.tarkalabs.uicomponents.components.TextRowStyle
+import com.tarkalabs.tarkaui.components.TUITextRow
+import com.tarkalabs.tarkaui.components.TUITextRowTags
+import com.tarkalabs.tarkaui.components.TextRowStyle
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock

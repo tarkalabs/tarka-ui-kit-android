@@ -1,7 +1,7 @@
 package com.tarkalabs.uicomponents.screenshots
 
 import androidx.compose.ui.Modifier
-import com.tarkalabs.uicomponents.components.card.TUIDraggableCard
+import com.tarkalabs.tarkaui.components.card.TUIDraggableCard
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized

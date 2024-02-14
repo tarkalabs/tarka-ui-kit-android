@@ -1,7 +1,7 @@
 package com.tarkalabs.uicomponents.screenshots
 
-import com.tarkalabs.uicomponents.components.TUIStatus
-import com.tarkalabs.uicomponents.components.TUIStatusIndicator
+import com.tarkalabs.tarkaui.components.TUIStatus
+import com.tarkalabs.tarkaui.components.TUIStatusIndicator
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized

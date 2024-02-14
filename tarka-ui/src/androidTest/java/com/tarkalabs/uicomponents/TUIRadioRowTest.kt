@@ -8,10 +8,10 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.printToLog
-import com.tarkalabs.uicomponents.components.radiobutton.TUIRadioRow
-import com.tarkalabs.uicomponents.components.radiobutton.TUIRadioRowTags
-import com.tarkalabs.uicomponents.components.radiobutton.TUIRadioButtonTags
-import com.tarkalabs.uicomponents.components.base.ToggleRowStyle.Title
+import com.tarkalabs.tarkaui.components.base.ToggleRowStyle.Title
+import com.tarkalabs.tarkaui.components.radiobutton.TUIRadioButtonTags
+import com.tarkalabs.tarkaui.components.radiobutton.TUIRadioRow
+import com.tarkalabs.tarkaui.components.radiobutton.TUIRadioRowTags
 import org.junit.Rule
 import org.junit.Test
 

@@ -5,12 +5,12 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
+import com.tarkalabs.tarkaui.components.TUISearchBar
+import com.tarkalabs.tarkaui.components.TUISearchBarTags
+import com.tarkalabs.tarkaui.components.base.TUIIconButtonTags
 import com.tarkalabs.tarkaui.icons.Dismiss24
 import com.tarkalabs.tarkaui.icons.Search24
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
-import com.tarkalabs.uicomponents.components.TUISearchBar
-import com.tarkalabs.uicomponents.components.TUISearchBarTags
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock

@@ -2,12 +2,12 @@ package com.tarkalabs.uicomponents.screenshots
 
 import android.graphics.BitmapFactory
 import androidx.compose.ui.graphics.asImageBitmap
+import com.tarkalabs.tarkaui.components.TUIAttachmentUpload
+import com.tarkalabs.tarkaui.components.TUIAttachmentUpload.AttachmentState
+import com.tarkalabs.tarkaui.components.TUIMediaThumbnailType.Document
+import com.tarkalabs.tarkaui.components.TUIMediaThumbnailType.Image
 import com.tarkalabs.tarkaui.icons.Delete24
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUIAttachmentUpload
-import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState
-import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Document
-import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Image
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized

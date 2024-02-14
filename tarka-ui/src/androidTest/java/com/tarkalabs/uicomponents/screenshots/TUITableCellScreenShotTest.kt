@@ -4,7 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.components.TUITableCell
+import com.tarkalabs.tarkaui.components.TUITableCell
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
