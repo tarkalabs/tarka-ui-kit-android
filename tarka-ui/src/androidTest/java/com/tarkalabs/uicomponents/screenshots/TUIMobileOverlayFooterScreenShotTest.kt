@@ -41,9 +41,9 @@ class TUIMobileOverlayFooterScreenShotTest(
     compareScreenshotFor(darkTheme, "_TestMobileFooter_$testName") {
       TUIMobileOverlayFooter(
         modifier = Modifier.fillMaxWidth(),
-        showLeftArrow = showLeftArrow,
+        showLeftButton = showLeftArrow,
         showMiddleDismiss = showMiddleDismiss,
-        showRightArrow = showRightArrow,
+        showRightButton = showRightArrow,
       )
     }
 }
