@@ -14,9 +14,9 @@ import com.tarkalabs.tarkaui.icons.Copy24
 import com.tarkalabs.tarkaui.icons.Delete24
 import com.tarkalabs.tarkaui.icons.Search24
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.base.TUIIconButtonTags
-import com.tarkalabs.uicomponents.components.TUIAppTopBar
-import com.tarkalabs.uicomponents.components.TUIAppTopBarTags
+import com.tarkalabs.tarkaui.components.base.TUIIconButtonTags
+import com.tarkalabs.tarkaui.components.TUIAppTopBar
+import com.tarkalabs.tarkaui.components.TUIAppTopBarTags
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock

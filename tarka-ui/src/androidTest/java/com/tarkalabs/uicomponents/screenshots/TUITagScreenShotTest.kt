@@ -1,14 +1,14 @@
 package com.tarkalabs.uicomponents.screenshots
 
 import androidx.compose.ui.graphics.Color
+import com.tarkalabs.tarkaui.components.TUITag
+import com.tarkalabs.tarkaui.components.TagSize
+import com.tarkalabs.tarkaui.components.TagType
+import com.tarkalabs.tarkaui.components.TagType.CUSTOM
+import com.tarkalabs.tarkaui.components.TagType.HIGH
+import com.tarkalabs.tarkaui.components.TagType.LOW
 import com.tarkalabs.tarkaui.icons.Circle12
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUITag
-import com.tarkalabs.uicomponents.components.TagSize
-import com.tarkalabs.uicomponents.components.TagType
-import com.tarkalabs.uicomponents.components.TagType.CUSTOM
-import com.tarkalabs.uicomponents.components.TagType.HIGH
-import com.tarkalabs.uicomponents.components.TagType.LOW
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized

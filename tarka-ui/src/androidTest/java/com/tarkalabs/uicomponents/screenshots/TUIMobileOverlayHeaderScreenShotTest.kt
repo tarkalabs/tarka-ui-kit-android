@@ -3,13 +3,13 @@
 package com.tarkalabs.uicomponents.screenshots
 
 import androidx.compose.material3.ExperimentalMaterial3Api
+import com.tarkalabs.tarkaui.components.TUIMobileOverlayHeader
+import com.tarkalabs.tarkaui.components.TUIMobileOverlayHeaderStyle.HeaderWithBackIcon
+import com.tarkalabs.tarkaui.components.TUIMobileOverlayHeaderStyle.HeaderWithTitle
+import com.tarkalabs.tarkaui.components.TUIMobileOverlayHeaderStyle.HeaderWithTrailingIcon
+import com.tarkalabs.tarkaui.components.TUIMobileOverlayHeaderStyle.None
 import com.tarkalabs.tarkaui.icons.Dismiss16
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUIMobileOverlayHeader
-import com.tarkalabs.uicomponents.components.TUIMobileOverlayHeaderStyle.HeaderWithBackIcon
-import com.tarkalabs.uicomponents.components.TUIMobileOverlayHeaderStyle.HeaderWithTitle
-import com.tarkalabs.uicomponents.components.TUIMobileOverlayHeaderStyle.HeaderWithTrailingIcon
-import com.tarkalabs.uicomponents.components.TUIMobileOverlayHeaderStyle.None
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized

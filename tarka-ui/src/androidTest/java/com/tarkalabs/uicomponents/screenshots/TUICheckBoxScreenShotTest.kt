@@ -1,6 +1,6 @@
 package com.tarkalabs.uicomponents.screenshots
 
-import com.tarkalabs.uicomponents.components.checkbox.TUICheckBox
+import com.tarkalabs.tarkaui.components.checkbox.TUICheckBox
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized

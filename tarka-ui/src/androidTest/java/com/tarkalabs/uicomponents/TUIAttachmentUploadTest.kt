@@ -7,11 +7,11 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import com.tarkalabs.tarkaui.icons.Delete24
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUIAttachmentUpload
-import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState.UpLoadSuccessful
-import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState.UpLoading
-import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.TUIAttachmentUploadTags
-import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType.Document
+import com.tarkalabs.tarkaui.components.TUIAttachmentUpload
+import com.tarkalabs.tarkaui.components.TUIAttachmentUpload.AttachmentState.UpLoadSuccessful
+import com.tarkalabs.tarkaui.components.TUIAttachmentUpload.AttachmentState.UpLoading
+import com.tarkalabs.tarkaui.components.TUIAttachmentUpload.TUIAttachmentUploadTags
+import com.tarkalabs.tarkaui.components.TUIMediaThumbnailType.Document
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock

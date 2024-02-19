@@ -3,14 +3,14 @@
 package com.tarkalabs.uicomponents.screenshots
 
 import androidx.compose.material3.ExperimentalMaterial3Api
+import com.tarkalabs.tarkaui.components.base.IconButtonSize.XS
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.GHOST
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.OUTLINE
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.PRIMARY
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.SECONDARY
+import com.tarkalabs.tarkaui.components.base.TUIIconButton
 import com.tarkalabs.tarkaui.icons.ChevronRight20
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.base.TUIIconButton
-import com.tarkalabs.uicomponents.components.base.IconButtonSize.XS
-import com.tarkalabs.uicomponents.components.base.IconButtonStyle.GHOST
-import com.tarkalabs.uicomponents.components.base.IconButtonStyle.OUTLINE
-import com.tarkalabs.uicomponents.components.base.IconButtonStyle.PRIMARY
-import com.tarkalabs.uicomponents.components.base.IconButtonStyle.SECONDARY
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized

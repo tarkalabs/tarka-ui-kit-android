@@ -1,9 +1,9 @@
 package com.tarkalabs.uicomponents.screenshots
 
+import com.tarkalabs.tarkaui.components.TUINavigationRow
 import com.tarkalabs.tarkaui.icons.AddCircle24
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUINavigationRow
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized

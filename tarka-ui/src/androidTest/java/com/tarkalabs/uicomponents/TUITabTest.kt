@@ -5,10 +5,10 @@ import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import com.tarkalabs.tarkaui.components.tab.TUITab
+import com.tarkalabs.tarkaui.components.tab.TUITabTags
 import com.tarkalabs.tarkaui.icons.Circle20
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.tab.TUITab
-import com.tarkalabs.uicomponents.components.tab.TUITabTags
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock

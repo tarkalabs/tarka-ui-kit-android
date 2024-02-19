@@ -23,12 +23,12 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaui.components.TUISnackBar
+import com.tarkalabs.tarkaui.components.TUISnackBarTags
+import com.tarkalabs.tarkaui.components.TUISnackBarType.Success
 import com.tarkalabs.tarkaui.icons.Delete24
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUISnackBar
-import com.tarkalabs.uicomponents.components.TUISnackBarTags
-import com.tarkalabs.uicomponents.components.TUISnackBarType.Success
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.theme.TUITheme
 import kotlinx.coroutines.launch
 import org.junit.Rule
 import org.junit.Test

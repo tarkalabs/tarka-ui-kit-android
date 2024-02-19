@@ -2,9 +2,9 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
-import com.tarkalabs.uicomponents.components.TUIStatus.ON
-import com.tarkalabs.uicomponents.components.TUIStatusIndicator
-import com.tarkalabs.uicomponents.components.TUIStatusIndicatorTags
+import com.tarkalabs.tarkaui.components.TUIStatus.ON
+import com.tarkalabs.tarkaui.components.TUIStatusIndicator
+import com.tarkalabs.tarkaui.components.TUIStatusIndicatorTags
 import org.junit.Rule
 import org.junit.Test
 

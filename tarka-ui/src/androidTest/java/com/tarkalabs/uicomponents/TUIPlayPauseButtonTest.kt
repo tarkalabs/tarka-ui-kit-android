@@ -5,13 +5,13 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
+import com.tarkalabs.tarkaui.components.PlayPauseButtonState.Pause
+import com.tarkalabs.tarkaui.components.PlayPauseButtonState.Play
+import com.tarkalabs.tarkaui.components.TUIPlayPauseButton
+import com.tarkalabs.tarkaui.components.TUIPlayPauseButtonsTestTags
 import com.tarkalabs.tarkaui.icons.Pause12
 import com.tarkalabs.tarkaui.icons.Play12
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.PlayPauseButtonState.Pause
-import com.tarkalabs.uicomponents.components.PlayPauseButtonState.Play
-import com.tarkalabs.uicomponents.components.TUIPlayPauseButton
-import com.tarkalabs.uicomponents.components.TUIPlayPauseButtonsTestTags
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock

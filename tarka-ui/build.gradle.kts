@@ -66,8 +66,8 @@ publishing {
       run {
         groupId = "com.tarkalabs"
         artifactId = getLibraryArtifactId()
-        version = "1.0.9"
-        artifact("$buildDir/outputs/aar/${getLibraryArtifactId()}-release.aar")
+        version = "1.1.1"
+        artifact("$buildDir/outputs/aar/tarka-ui-release.aar")
       }
     }
   }
@@ -81,6 +81,7 @@ publishing {
         password = System.getenv("GITHUB_TOKEN")
       }
     }
+    mavenCentral()
   }
 }
 
@@ -91,8 +92,7 @@ dependencies {
   implementation("androidx.compose.ui:ui-tooling-preview:$composeUiVersion")
   implementation("androidx.compose.material3:material3:1.1.0-rc01")
   implementation("androidx.compose.foundation:foundation:$composeUiVersion")
-  api(project(":tarka-ui-icons"))
-
+  api("com.tarkalabs:tarkaui-icons:1.0.0")
   testImplementation("junit:junit:4.13.2")
   androidTestImplementation("androidx.test.ext:junit:1.1.5")
   androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

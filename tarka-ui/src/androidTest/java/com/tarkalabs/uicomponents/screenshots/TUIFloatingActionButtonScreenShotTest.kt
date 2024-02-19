@@ -1,11 +1,11 @@
 package com.tarkalabs.uicomponents.screenshots
 
+import com.tarkalabs.tarkaui.components.base.FloatingActionButtonSize.L
+import com.tarkalabs.tarkaui.components.base.FloatingActionButtonSize.R
+import com.tarkalabs.tarkaui.components.base.FloatingActionButtonSize.S
+import com.tarkalabs.tarkaui.components.base.TUIFloatingActionButton
 import com.tarkalabs.tarkaui.icons.ArrowExportLtr24
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.base.FloatingActionButtonSize.L
-import com.tarkalabs.uicomponents.components.base.FloatingActionButtonSize.R
-import com.tarkalabs.uicomponents.components.base.FloatingActionButtonSize.S
-import com.tarkalabs.uicomponents.components.base.TUIFloatingActionButton
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized

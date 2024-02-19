@@ -1,6 +1,6 @@
 package com.tarkalabs.uicomponents.screenshots
 
-import com.tarkalabs.uicomponents.components.TUIToggleSwitch
+import com.tarkalabs.tarkaui.components.TUIToggleSwitch
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
