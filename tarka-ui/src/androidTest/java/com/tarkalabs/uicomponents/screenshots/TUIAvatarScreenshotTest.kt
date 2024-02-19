@@ -2,20 +2,19 @@
 
 package com.tarkalabs.uicomponents.screenshots
 
-import org.junit.runners.Parameterized;
-
 import android.graphics.BitmapFactory
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.ui.graphics.asImageBitmap
+import com.tarkalabs.tarkaui.components.base.AvatarSize
+import com.tarkalabs.tarkaui.components.base.AvatarType.Icon
+import com.tarkalabs.tarkaui.components.base.AvatarType.Image
+import com.tarkalabs.tarkaui.components.base.AvatarType.Text
+import com.tarkalabs.tarkaui.components.base.TUIAvatar
 import com.tarkalabs.tarkaui.icons.Dismiss16
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.base.AvatarSize
-import com.tarkalabs.uicomponents.components.base.AvatarType.Icon
-import com.tarkalabs.uicomponents.components.base.AvatarType.Image
-import com.tarkalabs.uicomponents.components.base.AvatarType.Text
-import com.tarkalabs.uicomponents.components.base.TUIAvatar
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.junit.runners.Parameterized
 
 @RunWith(Parameterized::class)
 class TUIAvatarScreenshotTest(

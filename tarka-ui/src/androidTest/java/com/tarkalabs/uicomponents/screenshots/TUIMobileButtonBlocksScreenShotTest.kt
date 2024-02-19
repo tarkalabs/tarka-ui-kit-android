@@ -1,10 +1,10 @@
 package com.tarkalabs.uicomponents.screenshots
 
+import com.tarkalabs.tarkaui.components.TUIMobileButtonBlock
 import com.tarkalabs.tarkaui.icons.ChevronDown24
 import com.tarkalabs.tarkaui.icons.ChevronUp24
 import com.tarkalabs.tarkaui.icons.Eraser24
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUIMobileButtonBlock
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized

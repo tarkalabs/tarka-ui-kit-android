@@ -1,12 +1,12 @@
 package com.tarkalabs.uicomponents
 
-import com.tarkalabs.uicomponents.components.base.ButtonStyle.SECONDARY
-import com.tarkalabs.uicomponents.components.base.TUIButtonTags
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
-import com.tarkalabs.uicomponents.components.base.TUIButton
+import com.tarkalabs.tarkaui.components.base.ButtonStyle.SECONDARY
+import com.tarkalabs.tarkaui.components.base.TUIButton
+import com.tarkalabs.tarkaui.components.base.TUIButtonTags
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock

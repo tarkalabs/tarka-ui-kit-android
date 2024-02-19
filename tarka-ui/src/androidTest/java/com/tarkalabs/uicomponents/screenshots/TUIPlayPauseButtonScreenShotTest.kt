@@ -3,9 +3,9 @@ package com.tarkalabs.uicomponents.screenshots
 import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.uicomponents.components.PlayPauseButtonSize
-import com.tarkalabs.uicomponents.components.PlayPauseButtonState
-import com.tarkalabs.uicomponents.components.TUIPlayPauseButton
+import com.tarkalabs.tarkaui.components.PlayPauseButtonSize
+import com.tarkalabs.tarkaui.components.PlayPauseButtonState
+import com.tarkalabs.tarkaui.components.TUIPlayPauseButton
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized

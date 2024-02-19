@@ -3,9 +3,9 @@ package com.tarkalabs.uicomponents
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
-import com.tarkalabs.uicomponents.components.Orientation.HORIZONTAL
-import com.tarkalabs.uicomponents.components.TUIDivider
-import com.tarkalabs.uicomponents.components.TUIDividerTags
+import com.tarkalabs.tarkaui.components.Orientation.HORIZONTAL
+import com.tarkalabs.tarkaui.components.TUIDivider
+import com.tarkalabs.tarkaui.components.TUIDividerTags
 import org.junit.Rule
 import org.junit.Test
 

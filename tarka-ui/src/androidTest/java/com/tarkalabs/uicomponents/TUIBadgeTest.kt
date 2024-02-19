@@ -3,9 +3,9 @@ package com.tarkalabs.uicomponents
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
-import com.tarkalabs.uicomponents.components.base.BadgeSize.L
-import com.tarkalabs.uicomponents.components.base.TUIBadge
-import com.tarkalabs.uicomponents.components.base.TUIBadgeTags
+import com.tarkalabs.tarkaui.components.base.BadgeSize.L
+import com.tarkalabs.tarkaui.components.base.TUIBadge
+import com.tarkalabs.tarkaui.components.base.TUIBadgeTags
 import org.junit.Rule
 import org.junit.Test
 

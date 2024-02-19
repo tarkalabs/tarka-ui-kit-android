@@ -4,9 +4,9 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
-import com.tarkalabs.uicomponents.components.TUITableCell
-import com.tarkalabs.uicomponents.components.TUITableCellTags
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.components.TUITableCell
+import com.tarkalabs.tarkaui.components.TUITableCellTags
+import com.tarkalabs.tarkaui.theme.TUITheme
 import org.junit.Rule
 import org.junit.Test
 

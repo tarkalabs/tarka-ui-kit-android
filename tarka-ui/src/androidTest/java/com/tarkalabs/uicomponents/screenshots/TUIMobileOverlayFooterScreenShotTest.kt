@@ -5,7 +5,7 @@ package com.tarkalabs.uicomponents.screenshots
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.ui.Modifier
-import com.tarkalabs.uicomponents.components.TUIMobileOverlayFooter
+import com.tarkalabs.tarkaui.components.TUIMobileOverlayFooter
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized

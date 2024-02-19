@@ -5,7 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.karumi.shot.ScreenshotTest
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.theme.TUITheme
 import com.tarkalabs.uicomponents.utils.ComposeBaseTest
 
 open class ComposeScreenshotComparator : ComposeBaseTest(), ScreenshotTest {

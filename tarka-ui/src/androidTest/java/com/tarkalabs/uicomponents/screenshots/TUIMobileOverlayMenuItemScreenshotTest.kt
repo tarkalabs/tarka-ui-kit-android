@@ -1,16 +1,16 @@
 package com.tarkalabs.uicomponents.screenshots
 
+import com.tarkalabs.tarkaui.components.MobileOverlayMenuItemLeadingContentType
+import com.tarkalabs.tarkaui.components.MobileOverlayMenuItemLeadingContentType.Icon
+import com.tarkalabs.tarkaui.components.MobileOverlayMenuItemLeadingContentType.StatusIndicator
+import com.tarkalabs.tarkaui.components.MobileOverlayMenuItemStyle
+import com.tarkalabs.tarkaui.components.MobileOverlayMenuItemStyle.Title
+import com.tarkalabs.tarkaui.components.MobileOverlayMenuItemStyle.TitleWithDescription
+import com.tarkalabs.tarkaui.components.MobileOverlayMenuItemTrailingContentType
+import com.tarkalabs.tarkaui.components.MobileOverlayMenuItemTrailingContentType.SubMobileOverlayMenu
+import com.tarkalabs.tarkaui.components.TUIMobileOverlayMenuItem
 import com.tarkalabs.tarkaui.icons.AddCircle24
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemLeadingContentType
-import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemLeadingContentType.Icon
-import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemLeadingContentType.StatusIndicator
-import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemStyle
-import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemStyle.Title
-import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemStyle.TitleWithDescription
-import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemTrailingContentType
-import com.tarkalabs.uicomponents.components.MobileOverlayMenuItemTrailingContentType.SubMobileOverlayMenu
-import com.tarkalabs.uicomponents.components.TUIMobileOverlayMenuItem
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized

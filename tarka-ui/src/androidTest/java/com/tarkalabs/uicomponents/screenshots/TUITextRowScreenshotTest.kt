@@ -3,8 +3,8 @@ package com.tarkalabs.uicomponents.screenshots
 import com.tarkalabs.tarkaui.icons.Person24
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUITextRow
-import com.tarkalabs.uicomponents.components.TextRowStyle
+import com.tarkalabs.tarkaui.components.TUITextRow
+import com.tarkalabs.tarkaui.components.TextRowStyle
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
