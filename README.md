@@ -69,6 +69,7 @@ To integrate TarkaUi Kit and Tarka Icons into your Android project, add the foll
 
 ```kotlin
 implementation("com.tarkalabs:tarkaui:1.1.0")
+
 ```
 
 ## License
