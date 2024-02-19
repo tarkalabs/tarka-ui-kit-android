@@ -3,38 +3,42 @@ Android application for building UI components using Jetpack Compose
 
 ## List of components
 
+- TUIAppTopBar
+- TUIAttachmentUpload
 - TUIAvatar
 - TUIBadge
 - TUIButton
+- TUICheckBox
+- TUICheckBoxRow
+- TUIChip
+- TUIDraggableCard
+- TUIDivider
 - TUIFloatingActionButton
+- TUIEmailField
+- TUIEmailSubjectField
 - TUIIconButton
 - TUIInputField
-- TUIToggleRow
-- TUIDraggableCard
-- TUISelectionCard
-- TUICheckBox
-- TUIRadioButton
-- TUIRadioButtonRow
-- TUIFloatingNavBar
-- TUIFloatingTab
-- TUITab
-- TUITabBar
-- TUIAttachmentUpload
-- TUINavigationRow
-- TUISearchBar
-- TUISnackBar
-- TUIStatusIndicator
-- TUITextRow
-- TUIAppTopBar
-- TUIChip
 - TUIMobileButtonBlock
 - TUIMenuItem
+- TUIMediaThumbnail
 - TUIMobileOverlayHeader
 - TUIMobileOverlayFooter
-- TUISelectionCard
-- TUITag
+- TUIMobileOverlayMenu
+- TUINavigationRow
 - TUIPlayPauseButton
-- TUIMultiLevelSelectorHeader
+- TUIRadioButton
+- TUIRadioRow
+- TUISearchBar
+- TUISelectionCard
+- TUISnackBar
+- TUIStatusIndicator
+- TUITableCell
+- TUITab
+- TUITag
+- TUITabBar
+- TUITextRow
+- TUIToggleRow
+
 
 ## TODO
 
@@ -64,16 +68,10 @@ TarkaUI Kit is a versatile Design Library built on top of Jetpack Compose, based
 To integrate TarkaUi Kit and Tarka Icons into your Android project, add the following dependencies in your app-level `build.gradle` file:
 
 ```kotlin
-implementation("com.tarkalabs:tarkaui:1.0.0")
-implementation("com.tarkalabs:tarkaicons:0.1-alpha")
-```
 
-You'll need also to mention the repository that you will get it from, we are using github package, make sure you include this code where you are mentionning your repositories 
+implementation("com.tarkalabs:tarkaui:1.1.0")
 
-```kotlin
-repositories {
-    maven(url = "https://maven.pkg.github.com/tarkalabs/tarka-ui-kit-android")
-}
+
 ```
 
 ## License
