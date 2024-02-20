@@ -27,14 +27,14 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaui.icons.ChevronRight20
-import com.tarkalabs.tarkaui.icons.TarkaIcon
-import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.components.TextRowStyle.Title
 import com.tarkalabs.tarkaui.components.TextRowStyle.TitleWithDescription
 import com.tarkalabs.tarkaui.components.base.IconButtonStyle.GHOST
 import com.tarkalabs.tarkaui.components.base.TUIIconButton
 import com.tarkalabs.tarkaui.components.base.TUIIconButtonTags
+import com.tarkalabs.tarkaui.icons.ChevronRight20
+import com.tarkalabs.tarkaui.icons.TarkaIcon
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.theme.TUITheme
 
 /**
@@ -86,7 +86,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
   onInfoIconClick: (() -> Unit)? = {},
   onTextRowClick: (() -> Unit)? = null,
   menuItemList: List<TUIPopUpMenuItem>? = null,
-  onMenuItemClick: ((Int) -> Unit)? = null,
+  onMenuItemClick: ((TUIPopUpMenuItem) -> Unit)? = null,
   paddingValues: PaddingValues = PaddingValues(),
   tags: TUITextRowTags = TUITextRowTags()
 ) {
@@ -162,14 +162,14 @@ import com.tarkalabs.tarkaui.theme.TUITheme
               .background(TUITheme.colors.surface)
               .align(Alignment.TopEnd),
           ) {
-            menuItemList?.forEachIndexed { index, item ->
+            menuItemList?.forEach { item ->
               TUIMobileOverlayMenuItem(
                 title = item.title,
                 isSelected = false,
                 style = MobileOverlayMenuItemStyle.Title,
                 onMobileOverlayMenuItemClick = {
                   expanded = false
-                  onMenuItemClick?.invoke(index)
+                  onMenuItemClick?.invoke(item)
                 },
                 modifier = Modifier.width(160.dp),
                 leadingContent = MobileOverlayMenuItemLeadingContentType.Icon(item.icon)
