@@ -59,6 +59,8 @@ open class TUIColors(
   val onAccentC: Color,
   val accentJ: Color,
   val onAccentJ: Color,
+  val accentQ: Color,
+  val onAccentQ: Color
 )
 
 val LocalTUIColors = staticCompositionLocalOf {
@@ -119,6 +121,8 @@ val defaultLightColors = TUIColors(
   onAccentC = Color(0xFF8F5F00),
   accentJ = Color(0XFFDEEDED),
   onAccentJ = Color(0xFF008F82),
+  accentQ = Color(0xFFEDDEE8),
+  onAccentQ = Color(0xFF8F005F)
 )
 
 val defaultDarkColors = TUIColors(
@@ -175,5 +179,7 @@ val defaultDarkColors = TUIColors(
   onAccentC =Color(0xFFFFDD99),
   accentJ = Color(0xFF203C3C),
   onAccentJ = Color(0xFF99FFFF),
+  accentQ = Color(0xFF3C2032),
+  onAccentQ = Color(0xFFFF99DD)
   )
 
