@@ -193,7 +193,6 @@ internal fun TUISnackBar(
       containerColor = TUITheme.colors.error
     }
 
-    else -> {}
   }
 
   Box(

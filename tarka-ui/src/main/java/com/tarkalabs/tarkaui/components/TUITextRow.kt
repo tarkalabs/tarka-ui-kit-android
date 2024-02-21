@@ -52,7 +52,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
  * @param onInfoIconClick: The callback function when the info icon is clicked.
  * @param onTextRowClick: The callback function when the text row is clicked.
  * @param paddingValues: The padding values to apply to the row.
- * @param testTag: The test tag for the first icon.
+ * @param tags: The tags for the component.
  *
  * The TUITextRow composable function creates a row that represents a text item in a UI.
  * It handles click events and provides callback functions for customization. The row displays
@@ -73,9 +73,9 @@ import com.tarkalabs.tarkaui.theme.TUITheme
  *
  */
 @Composable fun TUITextRow(
+  modifier: Modifier = Modifier,
   title: String,
   style: TextRowStyle = Title,
-  modifier: Modifier = Modifier,
   iconOne: TarkaIcon? = null,
   iconTwo: TarkaIcon? = null,
   buttonTitle: String? = null,
