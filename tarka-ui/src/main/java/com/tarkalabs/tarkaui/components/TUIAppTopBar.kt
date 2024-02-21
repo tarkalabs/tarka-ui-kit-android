@@ -223,7 +223,7 @@ data class TUIAppTopBarTags(
         menuItemIconTwo = TarkaIcons.Regular.ChevronRight20,
         menuItemIconThree = TarkaIcons.Regular.ChevronRight20,
         searchQuery = "Search",
-        onSearchQuery = { searchQuery ->
+        onSearchQuery = { _ ->
         },
         searchIcon = TarkaIcons.Regular.Search24,
         searchQueryHint = "Search"
