@@ -113,8 +113,8 @@ enum class TUIMediaThumbnailSize {
       }
 
       is Image -> {
-        type.image?.let {
-          Image(bitmap = it,
+        if (type.image != null) {
+          Image(bitmap = type.image,
             contentDescription = stringResource(id = R.string.image_thumbnail),
             modifier = Modifier
               .then(
@@ -122,28 +122,30 @@ enum class TUIMediaThumbnailSize {
               .fillMaxSize()
               .clip(RoundedCornerShape(8.dp)),
             contentScale = ContentScale.Crop)
-        } ?: Icon(
-          painter = painterResource(id = Regular.Image24.iconRes),
-          contentDescription = Regular.Image24.contentDescription,
-          modifier = iconModifier,
-          tint = TUITheme.colors.onSurface
-        )
+        } else {
+          Icon(
+            painter = painterResource(id = Regular.Image24.iconRes),
+            contentDescription = Regular.Image24.contentDescription,
+            modifier = iconModifier,
+            tint = TUITheme.colors.onSurface
+          )
+        }
       }
 
       is Video -> {
-        Box(contentAlignment = Alignment.Center) {
-          type.image?.let {
-            Image(
-              bitmap = it,
-              contentDescription = stringResource(id = R.string.video_thumbnail),
-              modifier = Modifier
-                .fillMaxSize()
-                .testTag(tags.centerIconTag)
-                .clip(RoundedCornerShape(8.dp)),
-              contentScale = ContentScale.Crop
-            )
-            TUIPlayPauseButton(buttonSize = M, onClick = { onThumbnailClick?.invoke() })
-          } ?: Icon(
+        if (type.image != null) {
+          Image(
+            bitmap = type.image,
+            contentDescription = stringResource(id = R.string.video_thumbnail),
+            modifier = Modifier
+              .fillMaxSize()
+              .testTag(tags.centerIconTag)
+              .clip(RoundedCornerShape(8.dp)),
+            contentScale = ContentScale.Crop
+          )
+          TUIPlayPauseButton(buttonSize = M, onClick = { onThumbnailClick?.invoke() })
+        } else {
+          Icon(
             painter = painterResource(id = Regular.Video24.iconRes),
             contentDescription = Regular.Video24.contentDescription,
             modifier = iconModifier,
@@ -153,7 +155,6 @@ enum class TUIMediaThumbnailSize {
       }
       else -> {}
     }
-
 
     if (showTrailingIcon) {
       Icon(
