@@ -203,8 +203,8 @@ import com.tarkalabs.tarkaui.theme.TUITheme
         painter = painterResource(id = style.icon.iconRes),
         contentDescription = style.icon.contentDescription,
         modifier = Modifier
-          .height(24.dp)
-          .width(24.dp)
+          .height(20.dp)
+          .width(20.dp)
       )
       Text(
         text = style.startDate,
@@ -219,7 +219,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
     Canvas(
       Modifier
         .width(0.dp)
-        .height(16.dp)
+        .height(12.dp)
     ) {
       drawLine(
         color = color,
@@ -233,8 +233,8 @@ import com.tarkalabs.tarkaui.theme.TUITheme
         painter = painterResource(id = style.icon.iconRes),
         contentDescription = style.icon.contentDescription,
         modifier = Modifier
-          .height(24.dp)
-          .width(24.dp)
+          .height(20.dp)
+          .width(20.dp)
       )
       Text(
         text = style.endDate,
