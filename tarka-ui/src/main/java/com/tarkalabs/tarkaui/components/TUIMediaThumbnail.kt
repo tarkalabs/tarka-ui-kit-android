@@ -48,7 +48,6 @@ import com.tarkalabs.tarkaui.icons.DeviceEq24
 import com.tarkalabs.tarkaui.icons.Document24
 import com.tarkalabs.tarkaui.icons.Eye12
 import com.tarkalabs.tarkaui.icons.Image24
-import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
 import com.tarkalabs.tarkaui.icons.Video24
 import com.tarkalabs.tarkaui.theme.TUITheme
@@ -97,8 +96,8 @@ enum class TUIMediaThumbnailSize {
     when (type) {
       Audio -> {
         Icon(
-          painter = painterResource(id = TarkaIcons.Regular.DeviceEq24.iconRes),
-          contentDescription = TarkaIcons.Regular.DeviceEq24.contentDescription,
+          painter = painterResource(id = Regular.DeviceEq24.iconRes),
+          contentDescription = Regular.DeviceEq24.contentDescription,
           modifier = iconModifier,
           tint = TUITheme.colors.onSurface
         )
@@ -106,8 +105,8 @@ enum class TUIMediaThumbnailSize {
 
       Document -> {
         Icon(
-          painter = painterResource(id = TarkaIcons.Regular.Document24.iconRes),
-          contentDescription = TarkaIcons.Regular.Document24.contentDescription,
+          painter = painterResource(id = Regular.Document24.iconRes),
+          contentDescription = Regular.Document24.contentDescription,
           modifier = iconModifier,
           tint = TUITheme.colors.onSurface
         )
@@ -158,8 +157,8 @@ enum class TUIMediaThumbnailSize {
 
     if (showTrailingIcon) {
       Icon(
-        painter = painterResource(id = TarkaIcons.Regular.Eye12.iconRes),
-        contentDescription = TarkaIcons.Regular.Eye12.contentDescription,
+        painter = painterResource(id = Regular.Eye12.iconRes),
+        contentDescription = Regular.Eye12.contentDescription,
         tint = Color.White,
         modifier = Modifier
           .align(Alignment.TopEnd)
