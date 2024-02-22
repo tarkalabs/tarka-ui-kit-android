@@ -1,6 +1,7 @@
 package com.tarkalabs.tarkaui.components
 
 import android.util.Log
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -23,10 +24,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaui.components.TextRowStyle.DateStyle
 import com.tarkalabs.tarkaui.components.TextRowStyle.Title
 import com.tarkalabs.tarkaui.components.TextRowStyle.TitleWithDescription
 import com.tarkalabs.tarkaui.components.base.IconButtonStyle.GHOST
@@ -99,7 +103,8 @@ import com.tarkalabs.tarkaui.theme.TUITheme
       .testTag(tags.parentTag)
       .then(if (onTextRowClick == null) Modifier else Modifier.clickable { onTextRowClick() })
       .padding(paddingValues),
-    verticalAlignment = Alignment.CenterVertically) {
+    verticalAlignment = Alignment.CenterVertically
+  ) {
     Column(Modifier.weight(1f)) {
       when (style) {
         is TitleWithDescription -> {
@@ -108,6 +113,10 @@ import com.tarkalabs.tarkaui.theme.TUITheme
 
         is Title -> {
           TUITextRowTitle(title)
+        }
+
+        is DateStyle -> {
+          TUIDateStyle(title, style)
         }
       }
 
@@ -182,6 +191,62 @@ import com.tarkalabs.tarkaui.theme.TUITheme
   }
 }
 
+@Composable fun TUIDateStyle(title: String, style: DateStyle) {
+  Text(
+    text = title,
+    style = TUITheme.typography.body8,
+    color = TUITheme.colors.onSurface.copy(alpha = 0.7f)
+  )
+  Column {
+    Row {
+      Icon(
+        painter = painterResource(id = style.icon.iconRes),
+        contentDescription = style.icon.contentDescription,
+        modifier = Modifier
+          .height(24.dp)
+          .width(24.dp)
+      )
+      Text(
+        text = style.startDate,
+        style = TUITheme.typography.body7,
+        color = TUITheme.colors.onSurface,
+        modifier = Modifier.padding(start = 8.dp)
+      )
+
+    }
+    val color = TUITheme.colors.utilityOutline
+    val pathEffect = PathEffect.dashPathEffect(floatArrayOf(10f, 10f), 0f)
+    Canvas(
+      Modifier
+        .width(0.dp)
+        .height(16.dp)
+    ) {
+      drawLine(
+        color = color,
+        start = Offset(27f, 0f),
+        end = Offset(27f, 40f),
+        pathEffect = pathEffect
+      )
+    }
+    Row {
+      Icon(
+        painter = painterResource(id = style.icon.iconRes),
+        contentDescription = style.icon.contentDescription,
+        modifier = Modifier
+          .height(24.dp)
+          .width(24.dp)
+      )
+      Text(
+        text = style.endDate,
+        style = TUITheme.typography.body7,
+        color = TUITheme.colors.onSurface,
+        modifier = Modifier.padding(start = 8.dp)
+      )
+    }
+
+  }
+}
+
 @Composable
 private fun TUITextRowTitle(title: String) {
   Text(
@@ -207,6 +272,9 @@ private fun TUITextRowTitleWithDescription(title: String, style: TitleWithDescri
 
 sealed class TextRowStyle {
   data class TitleWithDescription(val description: String) : TextRowStyle()
+  data class DateStyle(val startDate: String, val endDate: String, val icon: TarkaIcon) :
+    TextRowStyle()
+
   object Title : TextRowStyle()
 }
 
@@ -231,5 +299,6 @@ fun TUITextRowPreview() {
     infoIcon = TarkaIcons.Regular.ChevronRight20,
     onTextRowClick = {
       Log.d("TAG", "TUITextRowPreview: ")
-    }, onInfoIconClick = null)
+    }, onInfoIconClick = null
+  )
 }
