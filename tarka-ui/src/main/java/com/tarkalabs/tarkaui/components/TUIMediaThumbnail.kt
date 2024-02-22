@@ -1,5 +1,6 @@
 package com.tarkalabs.tarkaui.components
 
+import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.compose.foundation.Image
@@ -183,7 +184,9 @@ data class TUIMediaThumbnailTags(
   val thumbImageTag: String = "TUIMediaThumbnail_ThumbImage"
 )
 
-@Preview @Composable fun PreviewTUIThumbnail() {
+@Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable fun PreviewTUIThumbnail() {
   TUITheme {
     val option = BitmapFactory.Options()
     option.inPreferredConfig = Bitmap.Config.ARGB_8888
@@ -214,8 +217,6 @@ data class TUIMediaThumbnailTags(
         TUIMediaThumbnail(type = Document, showTrailingIcon = false)
         VerticalSpacer(space = 5)
         TUIMediaThumbnail(type = Image(), showTrailingIcon = false)
-        VerticalSpacer(space = 5)
-        TUIMediaThumbnail(type = Video(), showTrailingIcon = false)
         VerticalSpacer(space = 50)
         TUIMediaThumbnail(type = Image(image = bitmap), showTrailingIcon = false, size = Medium)
         VerticalSpacer(space = 5)
@@ -226,8 +227,6 @@ data class TUIMediaThumbnailTags(
         TUIMediaThumbnail(type = Document, showTrailingIcon = false, size = Medium)
         VerticalSpacer(space = 5)
         TUIMediaThumbnail(type = Image(), showTrailingIcon = false, size = Medium)
-        VerticalSpacer(space = 5)
-        TUIMediaThumbnail(type = Video(), showTrailingIcon = false, size = Medium)
       }
 
       HorizontalSpacer(space = 100)
@@ -245,9 +244,7 @@ data class TUIMediaThumbnailTags(
         VerticalSpacer(space = 5)
         TUIMediaThumbnail(type = Document, showTrailingIcon = true)
         VerticalSpacer(space = 5)
-        TUIMediaThumbnail(type = Image(image = bitmap), showTrailingIcon = true)
-        VerticalSpacer(space = 5)
-        TUIMediaThumbnail(type = Video(image = bitmap), showTrailingIcon = true)
+        TUIMediaThumbnail(type = Video(), showTrailingIcon = false)
         VerticalSpacer(space = 50)
         TUIMediaThumbnail(type = Image(image = bitmap), showTrailingIcon = true, size = Medium)
         VerticalSpacer(space = 5)
@@ -257,9 +254,7 @@ data class TUIMediaThumbnailTags(
         VerticalSpacer(space = 5)
         TUIMediaThumbnail(type = Document, showTrailingIcon = true, size = Medium)
         VerticalSpacer(space = 5)
-        TUIMediaThumbnail(type = Image(image = bitmap), showTrailingIcon = true, size = Medium)
-        VerticalSpacer(space = 5)
-        TUIMediaThumbnail(type = Video(image = bitmap), showTrailingIcon = true, size = Medium)
+        TUIMediaThumbnail(type = Video(), showTrailingIcon = false, size = Medium)
       }
     }
   }
