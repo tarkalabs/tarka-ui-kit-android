@@ -1,5 +1,6 @@
 package com.tarkalabs.tarkaui.components
 
+import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.compose.foundation.Image
@@ -35,10 +36,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaui.icons.DeviceEq24
-import com.tarkalabs.tarkaui.icons.Document24
-import com.tarkalabs.tarkaui.icons.Eye12
-import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.R
 import com.tarkalabs.tarkaui.components.PlayPauseButtonSize.M
 import com.tarkalabs.tarkaui.components.TUIMediaThumbnailSize.Large
@@ -47,13 +44,20 @@ import com.tarkalabs.tarkaui.components.TUIMediaThumbnailType.Audio
 import com.tarkalabs.tarkaui.components.TUIMediaThumbnailType.Document
 import com.tarkalabs.tarkaui.components.TUIMediaThumbnailType.Image
 import com.tarkalabs.tarkaui.components.TUIMediaThumbnailType.Video
+import com.tarkalabs.tarkaui.icons.DeviceEq24
+import com.tarkalabs.tarkaui.icons.Document24
+import com.tarkalabs.tarkaui.icons.Eye12
+import com.tarkalabs.tarkaui.icons.Image24
+import com.tarkalabs.tarkaui.icons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
+import com.tarkalabs.tarkaui.icons.Video24
 import com.tarkalabs.tarkaui.theme.TUITheme
 
 sealed class TUIMediaThumbnailType {
   object Document : TUIMediaThumbnailType()
   object Audio : TUIMediaThumbnailType()
-  data class Video(val image: ImageBitmap) : TUIMediaThumbnailType()
-  data class Image(val image: ImageBitmap) : TUIMediaThumbnailType()
+  data class Video(val image: ImageBitmap? = null) : TUIMediaThumbnailType()
+  data class Image(val image: ImageBitmap? = null) : TUIMediaThumbnailType()
 }
 
 enum class TUIMediaThumbnailSize {
@@ -64,7 +68,7 @@ enum class TUIMediaThumbnailSize {
 @Composable fun TUIMediaThumbnail(
   modifier: Modifier = Modifier,
   size: TUIMediaThumbnailSize = Large,
-  type: TUIMediaThumbnailType,
+  type: TUIMediaThumbnailType?,
   showTrailingIcon: Boolean,
   onThumbnailClick: (() -> Unit)? = null,
   onTrailingIconClick: (() -> Unit)? = null,
@@ -110,29 +114,45 @@ enum class TUIMediaThumbnailSize {
       }
 
       is Image -> {
-        Image(bitmap = type.image,
-          contentDescription = stringResource(id = R.string.image_thumbnail),
-          modifier = Modifier
-            .then(if (onThumbnailClick != null) Modifier.clickable { onThumbnailClick.invoke() } else Modifier)
-            .fillMaxSize()
-            .clip(RoundedCornerShape(8.dp)),
-          contentScale = ContentScale.Crop)
+        type.image?.let {
+          Image(bitmap = it,
+            contentDescription = stringResource(id = R.string.image_thumbnail),
+            modifier = Modifier
+              .then(
+                if (onThumbnailClick != null) Modifier.clickable { onThumbnailClick.invoke() } else Modifier)
+              .fillMaxSize()
+              .clip(RoundedCornerShape(8.dp)),
+            contentScale = ContentScale.Crop)
+        } ?: Icon(
+          painter = painterResource(id = Regular.Image24.iconRes),
+          contentDescription = Regular.Image24.contentDescription,
+          modifier = iconModifier,
+          tint = TUITheme.colors.onSurface
+        )
       }
 
       is Video -> {
         Box(contentAlignment = Alignment.Center) {
-          Image(
-            bitmap = type.image,
-            contentDescription = stringResource(id = R.string.video_thumbnail),
-            modifier = Modifier
-              .fillMaxSize()
-              .testTag(tags.centerIconTag)
-              .clip(RoundedCornerShape(8.dp)),
-            contentScale = ContentScale.Crop
+          type.image?.let {
+            Image(
+              bitmap = it,
+              contentDescription = stringResource(id = R.string.video_thumbnail),
+              modifier = Modifier
+                .fillMaxSize()
+                .testTag(tags.centerIconTag)
+                .clip(RoundedCornerShape(8.dp)),
+              contentScale = ContentScale.Crop
+            )
+            TUIPlayPauseButton(buttonSize = M, onClick = { onThumbnailClick?.invoke() })
+          } ?: Icon(
+            painter = painterResource(id = Regular.Video24.iconRes),
+            contentDescription = Regular.Video24.contentDescription,
+            modifier = iconModifier,
+            tint = TUITheme.colors.onSurface
           )
-          TUIPlayPauseButton(buttonSize = M, onClick = {onThumbnailClick?.invoke()})
         }
       }
+      else -> {}
     }
 
 
@@ -162,7 +182,9 @@ data class TUIMediaThumbnailTags(
   val thumbImageTag: String = "TUIMediaThumbnail_ThumbImage"
 )
 
-@Preview @Composable fun PreviewTUIThumbnail() {
+@Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable fun PreviewTUIThumbnail() {
   TUITheme {
     val option = BitmapFactory.Options()
     option.inPreferredConfig = Bitmap.Config.ARGB_8888
@@ -191,6 +213,8 @@ data class TUIMediaThumbnailTags(
         TUIMediaThumbnail(type = Audio, showTrailingIcon = false)
         VerticalSpacer(space = 5)
         TUIMediaThumbnail(type = Document, showTrailingIcon = false)
+        VerticalSpacer(space = 5)
+        TUIMediaThumbnail(type = Image(), showTrailingIcon = false)
         VerticalSpacer(space = 50)
         TUIMediaThumbnail(type = Image(image = bitmap), showTrailingIcon = false, size = Medium)
         VerticalSpacer(space = 5)
@@ -199,6 +223,8 @@ data class TUIMediaThumbnailTags(
         TUIMediaThumbnail(type = Audio, showTrailingIcon = false, size = Medium)
         VerticalSpacer(space = 5)
         TUIMediaThumbnail(type = Document, showTrailingIcon = false, size = Medium)
+        VerticalSpacer(space = 5)
+        TUIMediaThumbnail(type = Image(), showTrailingIcon = false, size = Medium)
       }
 
       HorizontalSpacer(space = 100)
@@ -215,6 +241,8 @@ data class TUIMediaThumbnailTags(
         TUIMediaThumbnail(type = Audio, showTrailingIcon = true)
         VerticalSpacer(space = 5)
         TUIMediaThumbnail(type = Document, showTrailingIcon = true)
+        VerticalSpacer(space = 5)
+        TUIMediaThumbnail(type = Video(), showTrailingIcon = false)
         VerticalSpacer(space = 50)
         TUIMediaThumbnail(type = Image(image = bitmap), showTrailingIcon = true, size = Medium)
         VerticalSpacer(space = 5)
@@ -223,9 +251,9 @@ data class TUIMediaThumbnailTags(
         TUIMediaThumbnail(type = Audio, showTrailingIcon = true, size = Medium)
         VerticalSpacer(space = 5)
         TUIMediaThumbnail(type = Document, showTrailingIcon = true, size = Medium)
-
+        VerticalSpacer(space = 5)
+        TUIMediaThumbnail(type = Video(), showTrailingIcon = false, size = Medium)
       }
-
     }
   }
 }
