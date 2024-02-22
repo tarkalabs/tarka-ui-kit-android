@@ -99,24 +99,4 @@ class TUIMediaThumbnailScreenShotTest(
       )
     }
   }
-
-  @Test fun test_thumbnails_case_no_image() {
-    compareScreenshotFor(darkTheme = darkTheme, imageName = "TUIThumbnail_Type_No_Image_$testName") {
-      TUIMediaThumbnail(
-        type = Image(),
-        showTrailingIcon = showTrailingIcon,
-        size = thumbnailSize,
-      )
-    }
-  }
-
-  @Test fun test_thumbnails_case_no_video() {
-    compareScreenshotFor(darkTheme = darkTheme, imageName = "TUIThumbnail_Type_No_Video_$testName") {
-      TUIMediaThumbnail(
-        type = Video(),
-        showTrailingIcon = showTrailingIcon,
-        size = thumbnailSize,
-      )
-    }
-  }
 }

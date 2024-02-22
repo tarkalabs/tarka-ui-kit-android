@@ -1,6 +1,5 @@
 package com.tarkalabs.tarkaui.components
 
-import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.compose.foundation.Image
@@ -47,16 +46,14 @@ import com.tarkalabs.tarkaui.components.TUIMediaThumbnailType.Video
 import com.tarkalabs.tarkaui.icons.DeviceEq24
 import com.tarkalabs.tarkaui.icons.Document24
 import com.tarkalabs.tarkaui.icons.Eye12
-import com.tarkalabs.tarkaui.icons.Image24
-import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
-import com.tarkalabs.tarkaui.icons.Video24
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.theme.TUITheme
 
 sealed class TUIMediaThumbnailType {
   object Document : TUIMediaThumbnailType()
   object Audio : TUIMediaThumbnailType()
-  data class Video(val image: ImageBitmap? = null) : TUIMediaThumbnailType()
-  data class Image(val image: ImageBitmap? = null) : TUIMediaThumbnailType()
+  data class Video(val image: ImageBitmap) : TUIMediaThumbnailType()
+  data class Image(val image: ImageBitmap) : TUIMediaThumbnailType()
 }
 
 enum class TUIMediaThumbnailSize {
@@ -67,7 +64,7 @@ enum class TUIMediaThumbnailSize {
 @Composable fun TUIMediaThumbnail(
   modifier: Modifier = Modifier,
   size: TUIMediaThumbnailSize = Large,
-  type: TUIMediaThumbnailType?,
+  type: TUIMediaThumbnailType,
   showTrailingIcon: Boolean,
   onThumbnailClick: (() -> Unit)? = null,
   onTrailingIconClick: (() -> Unit)? = null,
@@ -96,8 +93,8 @@ enum class TUIMediaThumbnailSize {
     when (type) {
       Audio -> {
         Icon(
-          painter = painterResource(id = Regular.DeviceEq24.iconRes),
-          contentDescription = Regular.DeviceEq24.contentDescription,
+          painter = painterResource(id = TarkaIcons.Regular.DeviceEq24.iconRes),
+          contentDescription = TarkaIcons.Regular.DeviceEq24.contentDescription,
           modifier = iconModifier,
           tint = TUITheme.colors.onSurface
         )
@@ -105,59 +102,44 @@ enum class TUIMediaThumbnailSize {
 
       Document -> {
         Icon(
-          painter = painterResource(id = Regular.Document24.iconRes),
-          contentDescription = Regular.Document24.contentDescription,
+          painter = painterResource(id = TarkaIcons.Regular.Document24.iconRes),
+          contentDescription = TarkaIcons.Regular.Document24.contentDescription,
           modifier = iconModifier,
           tint = TUITheme.colors.onSurface
         )
       }
 
       is Image -> {
-        type.image?.let {
-          Image(bitmap = it,
-            contentDescription = stringResource(id = R.string.image_thumbnail),
-            modifier = Modifier
-              .then(
-                if (onThumbnailClick != null) Modifier.clickable { onThumbnailClick.invoke() } else Modifier)
-              .fillMaxSize()
-              .clip(RoundedCornerShape(8.dp)),
-            contentScale = ContentScale.Crop)
-        } ?: Icon(
-          painter = painterResource(id = Regular.Image24.iconRes),
-          contentDescription = Regular.Image24.contentDescription,
-          modifier = iconModifier,
-          tint = TUITheme.colors.onSurface
-        )
+        Image(bitmap = type.image,
+          contentDescription = stringResource(id = R.string.image_thumbnail),
+          modifier = Modifier
+            .then(if (onThumbnailClick != null) Modifier.clickable { onThumbnailClick.invoke() } else Modifier)
+            .fillMaxSize()
+            .clip(RoundedCornerShape(8.dp)),
+          contentScale = ContentScale.Crop)
       }
 
       is Video -> {
         Box(contentAlignment = Alignment.Center) {
-          type.image?.let {
-            Image(
-              bitmap = it,
-              contentDescription = stringResource(id = R.string.video_thumbnail),
-              modifier = Modifier
-                .fillMaxSize()
-                .testTag(tags.centerIconTag)
-                .clip(RoundedCornerShape(8.dp)),
-              contentScale = ContentScale.Crop
-            )
-            TUIPlayPauseButton(buttonSize = M, onClick = { onThumbnailClick?.invoke() })
-          } ?: Icon(
-            painter = painterResource(id = Regular.Video24.iconRes),
-            contentDescription = Regular.Video24.contentDescription,
-            modifier = iconModifier,
-            tint = TUITheme.colors.onSurface
+          Image(
+            bitmap = type.image,
+            contentDescription = stringResource(id = R.string.video_thumbnail),
+            modifier = Modifier
+              .fillMaxSize()
+              .testTag(tags.centerIconTag)
+              .clip(RoundedCornerShape(8.dp)),
+            contentScale = ContentScale.Crop
           )
+          TUIPlayPauseButton(buttonSize = M, onClick = {onThumbnailClick?.invoke()})
         }
       }
-      else -> {}
     }
+
 
     if (showTrailingIcon) {
       Icon(
-        painter = painterResource(id = Regular.Eye12.iconRes),
-        contentDescription = Regular.Eye12.contentDescription,
+        painter = painterResource(id = TarkaIcons.Regular.Eye12.iconRes),
+        contentDescription = TarkaIcons.Regular.Eye12.contentDescription,
         tint = Color.White,
         modifier = Modifier
           .align(Alignment.TopEnd)
@@ -166,12 +148,8 @@ enum class TUIMediaThumbnailSize {
           .clip(CircleShape)
           .background(color = Color(0xFF000000).copy(alpha = 0.5f))
           .size(20.dp)
-          .then(
-            if (onTrailingIconClick != null)
-              Modifier.clickable { onTrailingIconClick.invoke() }
-            else
-              Modifier
-          )
+          .then(if (onTrailingIconClick != null) Modifier.clickable { onTrailingIconClick.invoke() } else Modifier)
+
       )
     }
   }
@@ -184,9 +162,7 @@ data class TUIMediaThumbnailTags(
   val thumbImageTag: String = "TUIMediaThumbnail_ThumbImage"
 )
 
-@Preview
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Composable fun PreviewTUIThumbnail() {
+@Preview @Composable fun PreviewTUIThumbnail() {
   TUITheme {
     val option = BitmapFactory.Options()
     option.inPreferredConfig = Bitmap.Config.ARGB_8888
@@ -215,8 +191,6 @@ data class TUIMediaThumbnailTags(
         TUIMediaThumbnail(type = Audio, showTrailingIcon = false)
         VerticalSpacer(space = 5)
         TUIMediaThumbnail(type = Document, showTrailingIcon = false)
-        VerticalSpacer(space = 5)
-        TUIMediaThumbnail(type = Image(), showTrailingIcon = false)
         VerticalSpacer(space = 50)
         TUIMediaThumbnail(type = Image(image = bitmap), showTrailingIcon = false, size = Medium)
         VerticalSpacer(space = 5)
@@ -225,8 +199,6 @@ data class TUIMediaThumbnailTags(
         TUIMediaThumbnail(type = Audio, showTrailingIcon = false, size = Medium)
         VerticalSpacer(space = 5)
         TUIMediaThumbnail(type = Document, showTrailingIcon = false, size = Medium)
-        VerticalSpacer(space = 5)
-        TUIMediaThumbnail(type = Image(), showTrailingIcon = false, size = Medium)
       }
 
       HorizontalSpacer(space = 100)
@@ -243,8 +215,6 @@ data class TUIMediaThumbnailTags(
         TUIMediaThumbnail(type = Audio, showTrailingIcon = true)
         VerticalSpacer(space = 5)
         TUIMediaThumbnail(type = Document, showTrailingIcon = true)
-        VerticalSpacer(space = 5)
-        TUIMediaThumbnail(type = Video(), showTrailingIcon = false)
         VerticalSpacer(space = 50)
         TUIMediaThumbnail(type = Image(image = bitmap), showTrailingIcon = true, size = Medium)
         VerticalSpacer(space = 5)
@@ -253,9 +223,9 @@ data class TUIMediaThumbnailTags(
         TUIMediaThumbnail(type = Audio, showTrailingIcon = true, size = Medium)
         VerticalSpacer(space = 5)
         TUIMediaThumbnail(type = Document, showTrailingIcon = true, size = Medium)
-        VerticalSpacer(space = 5)
-        TUIMediaThumbnail(type = Video(), showTrailingIcon = false, size = Medium)
+
       }
+
     }
   }
 }
