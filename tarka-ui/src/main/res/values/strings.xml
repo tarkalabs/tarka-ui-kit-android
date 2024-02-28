@@ -1,4 +1,5 @@
 <resources>
   <string name="image_thumbnail">Image ThumbNail</string>
   <string name="video_thumbnail">Video ThumbNail</string>
+  <string name="not_availble">Not Available</string>
 </resources>
