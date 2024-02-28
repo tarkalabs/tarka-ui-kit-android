@@ -199,7 +199,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
     style = TUITheme.typography.body8,
     color = TUITheme.colors.onSurface.copy(alpha = 0.7f)
   )
-  Column {
+  Column(modifier = Modifier.padding(top = 8.dp)) {
     Row {
       Icon(
         painter = painterResource(id = TarkaIcons.Regular.Circle24.iconRes),
@@ -221,12 +221,12 @@ import com.tarkalabs.tarkaui.theme.TUITheme
     Canvas(
       Modifier
         .width(0.dp)
-        .height(12.dp)
+        .height(18.dp)
     ) {
       drawLine(
         color = color,
         start = Offset(27f, 0f),
-        end = Offset(27f, 40f),
+        end = Offset(27f, 60f),
         pathEffect = pathEffect
       )
     }
