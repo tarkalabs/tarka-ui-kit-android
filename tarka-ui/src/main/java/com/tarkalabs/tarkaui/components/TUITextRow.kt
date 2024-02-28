@@ -205,14 +205,15 @@ import com.tarkalabs.tarkaui.theme.TUITheme
         painter = painterResource(id = TarkaIcons.Regular.Circle24.iconRes),
         contentDescription = TarkaIcons.Regular.Circle24.contentDescription,
         modifier = Modifier
-          .height(20.dp)
-          .width(20.dp)
+          .height(18.dp)
+          .width(12.dp)
+          .align(Alignment.CenterVertically)
       )
       Text(
         text = style.startDate,
         style = TUITheme.typography.body7,
         color = TUITheme.colors.onSurface,
-        modifier = Modifier.padding(start = 8.dp)
+        modifier = Modifier.padding(start = 4.dp)
       )
 
     }
@@ -225,8 +226,8 @@ import com.tarkalabs.tarkaui.theme.TUITheme
     ) {
       drawLine(
         color = color,
-        start = Offset(27f, 0f),
-        end = Offset(27f, 60f),
+        start = Offset(18f, 0f),
+        end = Offset(18f, 60f),
         pathEffect = pathEffect
       )
     }
@@ -235,14 +236,15 @@ import com.tarkalabs.tarkaui.theme.TUITheme
         painter = painterResource(id = TarkaIcons.Regular.Circle24.iconRes),
         contentDescription = TarkaIcons.Regular.Circle24.contentDescription,
         modifier = Modifier
-          .height(20.dp)
-          .width(20.dp)
+          .height(18.dp)
+          .width(12.dp)
+          .align(Alignment.CenterVertically)
       )
       Text(
         text = style.endDate,
         style = TUITheme.typography.body7,
         color = TUITheme.colors.onSurface,
-        modifier = Modifier.padding(start = 8.dp)
+        modifier = Modifier.padding(start = 4.dp)
       )
     }
   }
@@ -295,9 +297,8 @@ data class TUITextRowTags(
 @Preview(showBackground = true)
 @Composable
 fun TUITextRowPreview() {
-  TUITextRow(title = "Title",
-    style = Title,
-    infoIcon = TarkaIcons.Regular.ChevronRight20,
+  TUITextRow(title = "Duration",
+    style = DateStyle("Jan 20 3000 friday march 32", "Jan 20 3000 friday march 32"),
     onTextRowClick = {
       Log.d("TAG", "TUITextRowPreview: ")
     }, onInfoIconClick = null
