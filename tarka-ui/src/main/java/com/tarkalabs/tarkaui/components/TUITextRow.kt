@@ -37,6 +37,8 @@ import com.tarkalabs.tarkaui.components.base.IconButtonStyle.GHOST
 import com.tarkalabs.tarkaui.components.base.TUIIconButton
 import com.tarkalabs.tarkaui.components.base.TUIIconButtonTags
 import com.tarkalabs.tarkaui.icons.ChevronRight20
+import com.tarkalabs.tarkaui.icons.Circle24
+import com.tarkalabs.tarkaui.icons.Shapes24
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.theme.TUITheme
@@ -200,8 +202,8 @@ import com.tarkalabs.tarkaui.theme.TUITheme
   Column {
     Row {
       Icon(
-        painter = painterResource(id = style.icon.iconRes),
-        contentDescription = style.icon.contentDescription,
+        painter = painterResource(id = TarkaIcons.Regular.Circle24.iconRes),
+        contentDescription = TarkaIcons.Regular.Circle24.contentDescription,
         modifier = Modifier
           .height(20.dp)
           .width(20.dp)
@@ -230,8 +232,8 @@ import com.tarkalabs.tarkaui.theme.TUITheme
     }
     Row {
       Icon(
-        painter = painterResource(id = style.icon.iconRes),
-        contentDescription = style.icon.contentDescription,
+        painter = painterResource(id = TarkaIcons.Regular.Circle24.iconRes),
+        contentDescription = TarkaIcons.Regular.Circle24.contentDescription,
         modifier = Modifier
           .height(20.dp)
           .width(20.dp)
@@ -243,7 +245,6 @@ import com.tarkalabs.tarkaui.theme.TUITheme
         modifier = Modifier.padding(start = 8.dp)
       )
     }
-
   }
 }
 
@@ -272,7 +273,7 @@ private fun TUITextRowTitleWithDescription(title: String, style: TitleWithDescri
 
 sealed class TextRowStyle {
   data class TitleWithDescription(val description: String) : TextRowStyle()
-  data class DateStyle(val startDate: String, val endDate: String, val icon: TarkaIcon) :
+  data class DateStyle(val startDate: String, val endDate: String) :
     TextRowStyle()
 
   object Title : TextRowStyle()
