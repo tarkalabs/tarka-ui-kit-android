@@ -12,10 +12,6 @@ import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
@@ -52,22 +48,29 @@ import com.tarkalabs.tarkaui.theme.TUITheme
  * @param searchQuery the default search text that we need to show in searchbar
  * @param scrollBehavior The scroll behavior to be applied to the top app bar.
  * How to use TUIAppTopBar()
-  TUIAppTopBar(
-    title = "My App",
-    navigationIcon = TarkaIcon.Back, // Optional: Pass the navigation icon
-    searchIcon = TarkaIcon.Search, // Optional: Pass the search icon
-    menuItemIconOne = TarkaIcon.Menu, // Optional: Pass the first menu item icon
-    menuItemIconTwo = TarkaIcon.Settings, // Optional: Pass the second menu item icon
-    menuItemIconThree = TarkaIcon.Notifications, // Optional: Pass the third menu item icon
-    onNavigationIconClick = { /* Handle navigation icon click */ },
-    onFirstMenuItemClicked = { /* Handle first menu item click */ },
-    onSecondMenuItemClicked = { /* Handle second menu item click */ },
-    onThirdMenuItemClicked = { /* Handle third menu item click */ },
-    onSearchQuery = { query -> /* Handle search query */ },
-    colors = TopAppBarColors(/* Specify custom colors if needed */),
-    scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Specify scroll behavior
-      )
+TUIAppTopBar(
+title = "My App",
+navigationIcon = TarkaIcon.Back, // Optional: Pass the navigation icon
+searchIcon = TarkaIcon.Search, // Optional: Pass the search icon
+menuItemIconOne = TarkaIcon.Menu, // Optional: Pass the first menu item icon
+menuItemIconTwo = TarkaIcon.Settings, // Optional: Pass the second menu item icon
+menuItemIconThree = TarkaIcon.Notifications, // Optional: Pass the third menu item icon
+onNavigationIconClick = { /* Handle navigation icon click */ },
+onFirstMenuItemClicked = { /* Handle first menu item click */ },
+onSecondMenuItemClicked = { /* Handle second menu item click */ },
+onThirdMenuItemClicked = { /* Handle third menu item click */ },
+onSearchQuery = { query -> /* Handle search query */ },
+colors = TopAppBarColors(/* Specify custom colors if needed */),
+scrollBehavior = TopAppBarScrollBehavior.ScrollOnAppBarScroll, // Optional: Specify scroll behavior
+)
  */
+
+data class TUISearchBarState(
+  val searchQuery: String = "",
+  val searchQueryHint: String = "",
+  val showSearchBar: Boolean = false,
+)
+
 @OptIn(ExperimentalMaterial3Api::class) @Composable fun TUIAppTopBar(
   modifier: Modifier = Modifier,
   title: String,
@@ -80,11 +83,10 @@ import com.tarkalabs.tarkaui.theme.TUITheme
   onFirstMenuItemClicked: () -> Unit = {},
   onSecondMenuItemClicked: () -> Unit = {},
   onThirdMenuItemClicked: () -> Unit = {},
+  onSearchIconClick: () -> Unit = {},
+  onSearchCloseIconClick: () -> Unit = {},
   onSearchQuery: (String) -> Unit = {},
-  searchQuery : String = "",
-  searchQueryHint : String = "",
-  disableSearchIcon: Boolean = false,
-  clearQueryAndHideSearchBar: Boolean = false,
+  searchBarState: TUISearchBarState = TUISearchBarState(),
   colors: TopAppBarColors = TopAppBarDefaults.topAppBarColors(
     containerColor = TUITheme.colors.surface
   ),
@@ -92,34 +94,20 @@ import com.tarkalabs.tarkaui.theme.TUITheme
   tags: TUIAppTopBarTags = TUIAppTopBarTags(),
 ) {
 
-  var showSearchBar by remember {
-    mutableStateOf(false)
-  }
-
-  if (clearQueryAndHideSearchBar && showSearchBar) {
-    showSearchBar = false
-    onSearchQuery("")
-  }
-
   Column(
     modifier = modifier
       .background(color = TUITheme.colors.surface)
       .fillMaxWidth()
-      .wrapContentHeight(),
-    horizontalAlignment = Alignment.CenterHorizontally
+      .wrapContentHeight(), horizontalAlignment = Alignment.CenterHorizontally
   ) {
-    if (showSearchBar) {
-      TUISearchBar(
-        modifier = Modifier
-          .fillMaxWidth()
-          .padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
-        query = searchQuery,
-        placeholder = searchQueryHint,
+    if (searchBarState.showSearchBar) {
+      TUISearchBar(modifier = Modifier
+        .fillMaxWidth()
+        .padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
+        query = searchBarState.searchQuery,
+        placeholder = searchBarState.searchQueryHint,
         leadingIcon = TarkaIcons.Regular.ChevronLeft24,
-        onLeadingIconClick = {
-          showSearchBar = false
-          onSearchQuery("")
-        },
+        onLeadingIconClick = onSearchCloseIconClick,
         onQueryTextChange = {
           onSearchQuery(it)
         })
@@ -136,7 +124,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
         },
         navigationIcon = {
           if (navigationIcon != null) {
-            if (!showSearchBar) {
+            if (!searchBarState.showSearchBar) {
               TUIIconButton(
                 onIconClick = onNavigationIconClick,
                 icon = navigationIcon,
@@ -148,17 +136,13 @@ import com.tarkalabs.tarkaui.theme.TUITheme
           }
         },
         actions = {
-          if (!showSearchBar) {
+          if (!searchBarState.showSearchBar) {
             if (searchIcon != null) {
               TUIIconButton(
                 icon = searchIcon,
                 tags = tags.searchIconTags,
                 iconButtonStyle = GHOST,
-                onIconClick = {
-                  if (!disableSearchIcon) {
-                    showSearchBar = true
-                  }
-                },
+                onIconClick = onSearchIconClick,
                 buttonSize = XL
               )
             }
@@ -222,11 +206,9 @@ data class TUIAppTopBarTags(
         menuItemIconOne = TarkaIcons.Regular.ChevronRight20,
         menuItemIconTwo = TarkaIcons.Regular.ChevronRight20,
         menuItemIconThree = TarkaIcons.Regular.ChevronRight20,
-        searchQuery = "Search",
         onSearchQuery = { _ ->
         },
         searchIcon = TarkaIcons.Regular.Search24,
-        searchQueryHint = "Search"
       )
       VerticalSpacer(space = 5)
       TUIAppTopBar(

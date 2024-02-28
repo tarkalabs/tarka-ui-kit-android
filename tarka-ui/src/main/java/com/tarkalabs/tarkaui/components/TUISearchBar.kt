@@ -43,20 +43,18 @@ import kotlinx.coroutines.delay
   val focusRequester = remember { FocusRequester() }
 
   LaunchedEffect(Unit) {
-    delay(500)
-    focusRequester.requestFocus()
+    if (query.isEmpty()) {
+      delay(500)
+      focusRequester.requestFocus()
+    }
   }
 
   val leadingIconLambda: @Composable (() -> Unit)? = if (leadingIcon != null) {
     {
       TUIIconButton(
-        icon = leadingIcon,
-        buttonSize = L,
-        iconButtonStyle = GHOST,
-        onIconClick = {
+        icon = leadingIcon, buttonSize = L, iconButtonStyle = GHOST, onIconClick = {
           onLeadingIconClick?.invoke()
-        },
-        tags = searchBarTags.leadingIconTags
+        }, tags = searchBarTags.leadingIconTags
       )
     }
   } else null
@@ -74,15 +72,10 @@ import kotlinx.coroutines.delay
   SearchBar(
     modifier = modifier
       .testTag(searchBarTags.parentTag)
-      .focusRequester(focusRequester)
-    ,
+      .focusRequester(focusRequester),
     query = query,
-    onQueryChange = {
-      onQueryTextChange.invoke(it)
-    },
-    onSearch = {
-      onQueryTextChange.invoke(it)
-    },
+    onQueryChange = onQueryTextChange,
+    onSearch = onQueryTextChange,
     active = false,
     onActiveChange = {},
     shape = RoundedCornerShape(75.dp),

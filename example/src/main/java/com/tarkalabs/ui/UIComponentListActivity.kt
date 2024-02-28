@@ -17,13 +17,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaui.components.TUIAppTopBar
-import com.tarkalabs.tarkaui.components.TUISearchBar
-import com.tarkalabs.tarkaui.icons.BarcodeScanner24
+import com.tarkalabs.tarkaui.components.TUISearchBarState
+import com.tarkalabs.tarkaui.components.base.TUIButton
 import com.tarkalabs.tarkaui.icons.ChevronRight20
-import com.tarkalabs.tarkaui.icons.Dismiss16
+import com.tarkalabs.tarkaui.icons.Search24
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.tarkaui.icons.TarkaIcons.Filled
-import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
 import com.tarkalabs.tarkaui.theme.TUITheme
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -34,17 +32,29 @@ class UIComponentListActivity : ComponentActivity() {
 
     setContent {
       TUITheme {
-        var query by remember {
-          mutableStateOf("")
+
+        var searchbarState by remember {
+          mutableStateOf(
+            TUISearchBarState(
+              searchQuery = "", searchQueryHint = "Search something"
+            )
+          )
         }
 
         Scaffold(topBar = {
-          TUIAppTopBar(
-            title = "Lorem Ipsum",
+          TUIAppTopBar(title = "Lorem Ipsum",
             navigationIcon = TarkaIcons.Regular.ChevronRight20,
-            menuItemIconOne = TarkaIcons.Regular.ChevronRight20,
-            menuItemIconTwo = TarkaIcons.Regular.ChevronRight20,
-            menuItemIconThree = TarkaIcons.Regular.ChevronRight20,
+            searchIcon = TarkaIcons.Regular.Search24,
+            onSearchQuery = {
+              searchbarState = searchbarState.copy(searchQuery = it)
+            },
+            onSearchIconClick = {
+              searchbarState = searchbarState.copy(showSearchBar = !searchbarState.showSearchBar)
+            },
+            onSearchCloseIconClick = {
+              searchbarState = searchbarState.copy(showSearchBar = !searchbarState.showSearchBar)
+            },
+            searchBarState = searchbarState
           )
 
         }) { paddingValues ->
@@ -55,29 +65,9 @@ class UIComponentListActivity : ComponentActivity() {
               .fillMaxHeight()
               .padding(horizontal = 8.dp)
           ) {
-            TUISearchBar(
-              query = "My Search",
-              placeholder = "Search",
-              onQueryTextChange = {},
-              trailingIcon = Filled.Dismiss16,
-              leadingIcon = Regular.BarcodeScanner24,
-              onLeadingIconClick = {},
-              modifier = Modifier
-                .fillMaxWidth()
-                .padding(10.dp),
-            )
-            TUISearchBar(
-              query = "Search",
-              placeholder = "Search Here",
-              onQueryTextChange = {},
-              trailingIcon = Filled.Dismiss16,
-              leadingIcon = Regular.BarcodeScanner24,
-              onLeadingIconClick = {},
-              modifier = Modifier
-                .fillMaxWidth()
-                .padding(10.dp),
-            )
-
+            TUIButton(label = "Toggle Searchbar") {
+              searchbarState = searchbarState.copy(showSearchBar = !searchbarState.showSearchBar, searchQuery = "Hello There")
+            }
           }
 
         }
