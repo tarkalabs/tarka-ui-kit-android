@@ -37,6 +37,7 @@ import com.tarkalabs.tarkaui.components.base.IconButtonStyle.GHOST
 import com.tarkalabs.tarkaui.components.base.TUIIconButton
 import com.tarkalabs.tarkaui.components.base.TUIIconButtonTags
 import com.tarkalabs.tarkaui.icons.ChevronRight20
+import com.tarkalabs.tarkaui.icons.Circle12
 import com.tarkalabs.tarkaui.icons.Circle24
 import com.tarkalabs.tarkaui.icons.Shapes24
 import com.tarkalabs.tarkaui.icons.TarkaIcon
@@ -226,8 +227,8 @@ import com.tarkalabs.tarkaui.theme.TUITheme
     ) {
       drawLine(
         color = color,
-        start = Offset(18f, 0f),
-        end = Offset(18f, 60f),
+        start = Offset(16f, 0f),
+        end = Offset(16f, 60f),
         pathEffect = pathEffect
       )
     }
