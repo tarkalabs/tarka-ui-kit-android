@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -26,6 +28,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.PathEffect
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -36,10 +40,7 @@ import com.tarkalabs.tarkaui.components.TextRowStyle.TitleWithDescription
 import com.tarkalabs.tarkaui.components.base.IconButtonStyle.GHOST
 import com.tarkalabs.tarkaui.components.base.TUIIconButton
 import com.tarkalabs.tarkaui.components.base.TUIIconButtonTags
-import com.tarkalabs.tarkaui.icons.ChevronRight20
-import com.tarkalabs.tarkaui.icons.Circle12
 import com.tarkalabs.tarkaui.icons.Circle24
-import com.tarkalabs.tarkaui.icons.Shapes24
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.theme.TUITheme
@@ -195,59 +196,75 @@ import com.tarkalabs.tarkaui.theme.TUITheme
 }
 
 @Composable fun TUIDateStyle(title: String, style: DateStyle) {
+  val localDensity = LocalDensity.current
+
   Text(
     text = title,
     style = TUITheme.typography.body8,
     color = TUITheme.colors.onSurface.copy(alpha = 0.7f)
   )
-  Column(modifier = Modifier.padding(top = 8.dp)) {
-    Row {
+  var columnHeightPx by remember {
+    mutableStateOf(0f)
+  }
+
+  // Create element height in dp state
+  var columnHeightDp by remember {
+    mutableStateOf(0.dp)
+  }
+  Row(
+    modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.Top
+  ) {
+    Column(modifier = Modifier.fillMaxHeight(columnHeightPx)) {
       Icon(
         painter = painterResource(id = TarkaIcons.Regular.Circle24.iconRes),
         contentDescription = TarkaIcons.Regular.Circle24.contentDescription,
         modifier = Modifier
           .height(18.dp)
           .width(12.dp)
-          .align(Alignment.CenterVertically)
       )
+      val color = TUITheme.colors.utilityOutline
+      val pathEffect = PathEffect.dashPathEffect(floatArrayOf(10f, 10f), 0f)
+      Canvas(
+        Modifier
+          .width(0.dp)
+          .height((columnHeightDp / 2) - 18.dp)
+      ) {
+        drawLine(
+          color = color,
+          start = Offset(16f, 0f),
+          end = Offset(16f, (columnHeightPx / 2) - 36f),
+          pathEffect = pathEffect
+        )
+      }
+      Icon(
+        painter = painterResource(id = TarkaIcons.Regular.Circle24.iconRes),
+        contentDescription = TarkaIcons.Regular.Circle24.contentDescription,
+        modifier = Modifier
+          .height(18.dp)
+          .width(12.dp)
+          .align(Alignment.CenterHorizontally)
+      )
+    }
+
+    Column(modifier = Modifier.onGloballyPositioned { coordinates ->
+      columnHeightPx = coordinates.size.height.toFloat()
+      columnHeightDp = with(localDensity) { coordinates.size.height.toDp() }
+    }) {
       Text(
         text = style.startDate,
         style = TUITheme.typography.body7,
         color = TUITheme.colors.onSurface,
         modifier = Modifier.padding(start = 4.dp)
       )
-
-    }
-    val color = TUITheme.colors.utilityOutline
-    val pathEffect = PathEffect.dashPathEffect(floatArrayOf(10f, 10f), 0f)
-    Canvas(
-      Modifier
-        .width(0.dp)
-        .height(18.dp)
-    ) {
-      drawLine(
-        color = color,
-        start = Offset(16f, 0f),
-        end = Offset(16f, 60f),
-        pathEffect = pathEffect
-      )
-    }
-    Row {
-      Icon(
-        painter = painterResource(id = TarkaIcons.Regular.Circle24.iconRes),
-        contentDescription = TarkaIcons.Regular.Circle24.contentDescription,
-        modifier = Modifier
-          .height(18.dp)
-          .width(12.dp)
-          .align(Alignment.CenterVertically)
-      )
       Text(
-        text = style.endDate,
+        text = style.startDate,
         style = TUITheme.typography.body7,
         color = TUITheme.colors.onSurface,
-        modifier = Modifier.padding(start = 4.dp)
-      )
+        modifier = Modifier.padding(start = 4.dp),
+
+        )
     }
+
   }
 }
 
@@ -298,9 +315,11 @@ data class TUITextRowTags(
 @Preview(showBackground = true)
 @Composable
 fun TUITextRowPreview() {
-  TUITextRow(title = "Duration",
-    style = DateStyle("Jan 20 3000 friday march 32", "Jan 20 3000 friday march 32"),
-    onTextRowClick = {
+  TUITextRow(
+    title = "Duration", style = DateStyle(
+      "Jan 20 3000 friday march 32 Jan 20 3000 friday  Jan 20 3000 friday ",
+      "Jan 20 3000 friday march 32 Jan 20 3000 friday  Jan 20 3000 friday "
+    ), onTextRowClick = {
       Log.d("TAG", "TUITextRowPreview: ")
     }, onInfoIconClick = null
   )
