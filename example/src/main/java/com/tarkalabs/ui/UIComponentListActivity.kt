@@ -32,11 +32,15 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.tarkalabs.tarkaicons.ChevronLeft24
-import com.tarkalabs.tarkaicons.Stack24
-import com.tarkalabs.tarkaicons.TarkaIcons.Regular
-import com.tarkalabs.uicomponents.components.TUIAppTopBar
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.components.TUIAppTopBar
+import com.tarkalabs.tarkaui.components.TUISearchBar
+import com.tarkalabs.tarkaui.icons.BarcodeScanner24
+import com.tarkalabs.tarkaui.icons.ChevronRight20
+import com.tarkalabs.tarkaui.icons.Dismiss16
+import com.tarkalabs.tarkaui.icons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.TarkaIcons.Filled
+import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 private const val TITLE = "Kitchen Sink"
 
