@@ -9,8 +9,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -28,8 +26,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.PathEffect
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -96,7 +92,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
   menuItemList: List<TUIPopUpMenuItem>? = null,
   onMenuItemClick: ((TUIPopUpMenuItem) -> Unit)? = null,
   paddingValues: PaddingValues = PaddingValues(),
-  tags: TUITextRowTags = TUITextRowTags()
+  tags: TUITextRowTags = TUITextRowTags(),
 ) {
 
   var expanded by remember { mutableStateOf(false) }
@@ -195,74 +191,67 @@ import com.tarkalabs.tarkaui.theme.TUITheme
   }
 }
 
-@Composable fun TUIDateStyle(title: String, style: DateStyle) {
-  val localDensity = LocalDensity.current
-
+@Composable fun TUIDateStyle(
+  title: String,
+  style: DateStyle,
+) {
   Text(
     text = title,
     style = TUITheme.typography.body8,
-    color = TUITheme.colors.onSurface.copy(alpha = 0.7f)
+    color = TUITheme.colors.inputTextDim
   )
-  var columnHeightPx by remember {
-    mutableStateOf(0f)
-  }
-
-  // Create element height in dp state
-  var columnHeightDp by remember {
-    mutableStateOf(0.dp)
-  }
-  Row(
-    modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.Top
-  ) {
-    Column(modifier = Modifier.fillMaxHeight(columnHeightPx)) {
-      Icon(
-        painter = painterResource(id = TarkaIcons.Regular.Circle24.iconRes),
-        contentDescription = TarkaIcons.Regular.Circle24.contentDescription,
-        modifier = Modifier
-          .height(18.dp)
-          .width(12.dp)
-      )
-      val color = TUITheme.colors.utilityOutline
-      val pathEffect = PathEffect.dashPathEffect(floatArrayOf(10f, 10f), 0f)
-      Canvas(
-        Modifier
-          .width(0.dp)
-          .height((columnHeightDp / 2) - 18.dp)
-      ) {
-        drawLine(
-          color = color,
-          start = Offset(16f, 0f),
-          end = Offset(16f, (columnHeightPx / 2) - 36f),
-          pathEffect = pathEffect
-        )
-      }
-      Icon(
-        painter = painterResource(id = TarkaIcons.Regular.Circle24.iconRes),
-        contentDescription = TarkaIcons.Regular.Circle24.contentDescription,
-        modifier = Modifier
-          .height(18.dp)
-          .width(12.dp)
-          .align(Alignment.CenterHorizontally)
+  Box(modifier = Modifier) {
+    val color = TUITheme.colors.utilityOutline
+    val pathEffect = PathEffect.dashPathEffect(floatArrayOf(4f, 4f), 0f)
+    Canvas(
+      Modifier
+        .width(0.dp)
+        .height(5.dp)
+        .align(Alignment.CenterStart)
+    ) {
+      drawLine(
+        color = color,
+        start = Offset(16f, -2f),
+        end = Offset(16f, 20f),
+        pathEffect = pathEffect
       )
     }
-
-    Column(modifier = Modifier.onGloballyPositioned { coordinates ->
-      columnHeightPx = coordinates.size.height.toFloat()
-      columnHeightDp = with(localDensity) { coordinates.size.height.toDp() }
-    }) {
-      Text(
-        text = style.startDate,
-        style = TUITheme.typography.body7,
-        color = TUITheme.colors.onSurface,
-        modifier = Modifier.padding(start = 4.dp)
-      )
-      Text(
-        text = style.startDate,
-        style = TUITheme.typography.body7,
-        color = TUITheme.colors.onSurface,
-        modifier = Modifier.padding(start = 4.dp),
-
+    Column(modifier = Modifier) {
+      Row {
+        Icon(
+          painter = painterResource(id = TarkaIcons.Regular.Circle24.iconRes),
+          contentDescription = TarkaIcons.Regular.Circle24.contentDescription,
+          modifier = Modifier
+            .height(18.dp)
+            .width(12.dp)
+            .align(Alignment.CenterVertically),
+          tint = TUITheme.colors.utilityOutline
         )
+        Text(
+          text = style.startDate,
+          style = TUITheme.typography.body7,
+          color = TUITheme.colors.onSurface,
+          modifier = Modifier.padding(start = 4.dp)
+        )
+
+      }
+      Row {
+        Icon(
+          painter = painterResource(id = TarkaIcons.Regular.Circle24.iconRes),
+          contentDescription = TarkaIcons.Regular.Circle24.contentDescription,
+          modifier = Modifier
+            .height(18.dp)
+            .width(12.dp)
+            .align(Alignment.CenterVertically),
+          tint = TUITheme.colors.utilityOutline
+        )
+        Text(
+          text = style.endDate,
+          style = TUITheme.typography.body7,
+          color = TUITheme.colors.onSurface,
+          modifier = Modifier.padding(start = 4.dp)
+        )
+      }
     }
 
   }
@@ -278,7 +267,10 @@ private fun TUITextRowTitle(title: String) {
 }
 
 @Composable
-private fun TUITextRowTitleWithDescription(title: String, style: TitleWithDescription) {
+private fun TUITextRowTitleWithDescription(
+  title: String,
+  style: TitleWithDescription,
+) {
   Text(
     text = title,
     style = TUITheme.typography.body8,
@@ -293,7 +285,10 @@ private fun TUITextRowTitleWithDescription(title: String, style: TitleWithDescri
 
 sealed class TextRowStyle {
   data class TitleWithDescription(val description: String) : TextRowStyle()
-  data class DateStyle(val startDate: String, val endDate: String) :
+  data class DateStyle(
+    val startDate: String,
+    val endDate: String,
+  ) :
     TextRowStyle()
 
   object Title : TextRowStyle()
@@ -309,7 +304,7 @@ data class TUITextRowTags(
   val iconOneTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUITextRow_IconOne"),
   val iconTwoTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUITextRow_IconTwo"),
   val buttonTag: String = "TUITextRow_Button",
-  val infoIconTag: String = "TUITextRow_InfoIcon"
+  val infoIconTag: String = "TUITextRow_InfoIcon",
 )
 
 @Preview(showBackground = true)
@@ -317,10 +312,10 @@ data class TUITextRowTags(
 fun TUITextRowPreview() {
   TUITextRow(
     title = "Duration", style = DateStyle(
-      "Jan 20 3000 friday march 32 Jan 20 3000 friday  Jan 20 3000 friday ",
-      "Jan 20 3000 friday march 32 Jan 20 3000 friday  Jan 20 3000 friday "
-    ), onTextRowClick = {
-      Log.d("TAG", "TUITextRowPreview: ")
-    }, onInfoIconClick = null
+    "Jan 20 3000 friday march 32",
+    "Jan 20 3000 friday march 32"
+  ), onTextRowClick = {
+    Log.d("TAG", "TUITextRowPreview: ")
+  }, onInfoIconClick = null
   )
 }
