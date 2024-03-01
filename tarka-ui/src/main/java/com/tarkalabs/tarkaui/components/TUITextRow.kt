@@ -280,6 +280,7 @@ private fun TUITextRowTitle(title: String) {
     style = TUITheme.typography.body8,
     color = TUITheme.colors.onSurface.copy(alpha = 0.7f)
   )
+  VerticalSpacer(space = 4)
   Text(
     text = style.description, style = TUITheme.typography.body7, color = TUITheme.colors.onSurface
   )
@@ -293,6 +294,7 @@ private fun TUITextRowTitle(title: String) {
     style = TUITheme.typography.body8,
     color = TUITheme.colors.onSurface.copy(alpha = 0.7f)
   )
+  VerticalSpacer(space = 4)
   Text(
     text = style.text,
     style = TUITheme.typography.body7,
