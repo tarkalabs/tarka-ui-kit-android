@@ -2,6 +2,7 @@ package com.tarkalabs.tarkaui.components
 
 import android.util.Log
 import androidx.compose.foundation.Canvas
+import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -32,11 +33,13 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaui.components.TextRowStyle.DateStyle
 import com.tarkalabs.tarkaui.components.TextRowStyle.Title
 import com.tarkalabs.tarkaui.components.TextRowStyle.TitleWithDescription
+import com.tarkalabs.tarkaui.components.TextRowStyle.TitleWithNotAvailable
 import com.tarkalabs.tarkaui.components.base.IconButtonStyle.GHOST
 import com.tarkalabs.tarkaui.components.base.TUIIconButton
 import com.tarkalabs.tarkaui.components.base.TUIIconButtonTags
@@ -80,6 +83,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
  * )
  *
  */
+
 @Composable fun TUITextRow(
   modifier: Modifier = Modifier,
   title: String,
@@ -93,8 +97,8 @@ import com.tarkalabs.tarkaui.theme.TUITheme
   onButtonClick: () -> Unit = {},
   onInfoIconClick: (() -> Unit)? = {},
   onTextRowClick: (() -> Unit)? = null,
-  menuItemList: List<TUIPopUpMenuItem>? = null,
-  onMenuItemClick: ((TUIPopUpMenuItem) -> Unit)? = null,
+  menuItemList: List<TUIPopUpMenu>? = null,
+  onMenuItemClick: ((TUIPopUpMenu) -> Unit)? = null,
   paddingValues: PaddingValues = PaddingValues(),
   tags: TUITextRowTags = TUITextRowTags()
 ) {
@@ -121,6 +125,10 @@ import com.tarkalabs.tarkaui.theme.TUITheme
 
         is DateStyle -> {
           TUIDateStyle(title, style)
+        }
+
+        is TitleWithNotAvailable -> {
+          TUITextRowTitleWithNotAvailable(title, style)
         }
       }
 
@@ -177,7 +185,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
           ) {
             menuItemList?.forEach { item ->
               TUIMobileOverlayMenuItem(
-                title = item.title,
+                title = stringResource(id = item.title),
                 isSelected = false,
                 style = MobileOverlayMenuItemStyle.Title,
                 onMobileOverlayMenuItemClick = {
@@ -277,32 +285,47 @@ private fun TUITextRowTitle(title: String) {
   )
 }
 
-@Composable
-private fun TUITextRowTitleWithDescription(title: String, style: TitleWithDescription) {
+@Composable private fun TUITextRowTitleWithDescription(title: String, style: TitleWithDescription) {
   Text(
     text = title,
     style = TUITheme.typography.body8,
     color = TUITheme.colors.onSurface.copy(alpha = 0.7f)
   )
   Text(
-    text = style.description,
+    text = style.description, style = TUITheme.typography.body7, color = TUITheme.colors.onSurface
+  )
+}
+
+@Composable private fun TUITextRowTitleWithNotAvailable(
+  title: String, style: TitleWithNotAvailable
+) {
+  Text(
+    text = title,
+    style = TUITheme.typography.body8,
+    color = TUITheme.colors.onSurface.copy(alpha = 0.7f)
+  )
+  Text(
+    text = style.text,
     style = TUITheme.typography.body7,
-    color = TUITheme.colors.onSurface
+    color = TUITheme.colors.utilityDisabledContent
   )
 }
 
 sealed class TextRowStyle {
   data class TitleWithDescription(val description: String) : TextRowStyle()
+
   data class DateStyle(val startDate: String, val endDate: String) :
     TextRowStyle()
+
+  data class TitleWithNotAvailable(val text: String) : TextRowStyle()
 
   object Title : TextRowStyle()
 }
 
-data class TUIPopUpMenuItem(
-  val title: String,
-  val icon: TarkaIcon,
-)
+interface TUIPopUpMenu {
+  @get:StringRes val title: Int
+  val icon: TarkaIcon
+}
 
 data class TUITextRowTags(
   val parentTag: String = "TUITextRow",
@@ -315,12 +338,23 @@ data class TUITextRowTags(
 @Preview(showBackground = true)
 @Composable
 fun TUITextRowPreview() {
-  TUITextRow(
-    title = "Duration", style = DateStyle(
-      "Jan 20 3000 friday march 32 Jan 20 3000 friday  Jan 20 3000 friday ",
-      "Jan 20 3000 friday march 32 Jan 20 3000 friday  Jan 20 3000 friday "
-    ), onTextRowClick = {
-      Log.d("TAG", "TUITextRowPreview: ")
-    }, onInfoIconClick = null
-  )
+
+  Column {
+
+    TUITextRow(
+      title = "Title",
+      style = Title,
+      infoIcon = TarkaIcons.Regular.ChevronRight20,
+      onTextRowClick = {
+        Log.d("TAG", "TUITextRowPreview: ")
+      },
+      onInfoIconClick = null
+    )
+
+    TUITextRow(
+      title = "Title", style = TitleWithNotAvailable("Not Available"), onTextRowClick = {
+        Log.d("TAG", "TUITextRowPreview: ")
+      }, onInfoIconClick = null
+    )
+  }
 }
