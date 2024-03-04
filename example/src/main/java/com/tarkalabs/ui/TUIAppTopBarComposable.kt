@@ -9,11 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaicons.ChevronRight20
-import com.tarkalabs.tarkaicons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUIAppTopBar
-import com.tarkalabs.uicomponents.theme.TUITheme
-
+import com.tarkalabs.tarkaui.components.TUIAppTopBar
+import com.tarkalabs.tarkaui.icons.ChevronRight20
+import com.tarkalabs.tarkaui.icons.TarkaIcons
+import com.tarkalabs.tarkaui.theme.TUITheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
