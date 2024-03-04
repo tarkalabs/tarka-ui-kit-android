@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -15,14 +14,13 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaicons.Send20
-import com.tarkalabs.tarkaicons.TarkaIcons
-import com.tarkalabs.uicomponents.components.TUIAttachmentUpload
-import com.tarkalabs.uicomponents.components.TUIAttachmentUpload.AttachmentState.UpLoading
-import com.tarkalabs.uicomponents.components.TUIMediaThumbnailType
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.components.TUIAttachmentUpload
+import com.tarkalabs.tarkaui.components.TUIAttachmentUpload.AttachmentState.UpLoading
+import com.tarkalabs.tarkaui.components.TUIMediaThumbnailType
+import com.tarkalabs.tarkaui.icons.Send20
+import com.tarkalabs.tarkaui.icons.TarkaIcons
+import com.tarkalabs.tarkaui.theme.TUITheme
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TUIAttachmentUploadComposable() {
   val bitmap: Bitmap =
