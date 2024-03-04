@@ -161,11 +161,11 @@ import com.tarkalabs.tarkaui.theme.TUITheme
             contentDescription = infoIcon.contentDescription,
             tint = TUITheme.colors.utilityOutline,
             modifier = Modifier
-              .then(if (onInfoIconClick == null) Modifier else Modifier.clickable(onClick = {
-                if (menuItemList.isNullOrEmpty()) {
-                  onInfoIconClick()
-                } else {
+              .then(if (onInfoIconClick == null && menuItemList.isNullOrEmpty()) Modifier else Modifier.clickable(onClick = {
+                if (menuItemList.isNullOrEmpty().not()) {
                   expanded = expanded.not()
+                } else if (onInfoIconClick != null) {
+                  onInfoIconClick()
                 }
               }))
               .height(40.dp)
