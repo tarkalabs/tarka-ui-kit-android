@@ -3,22 +3,21 @@ package com.tarkalabs.ui
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaicons.ClearFormatting16
-import com.tarkalabs.tarkaicons.TarkaIcons
-import com.tarkalabs.uicomponents.components.base.ButtonSize
-import com.tarkalabs.uicomponents.components.base.ButtonSize.M
-import com.tarkalabs.uicomponents.components.base.ButtonStyle
-import com.tarkalabs.uicomponents.components.base.ButtonStyle.ERROR
-import com.tarkalabs.uicomponents.components.base.TUIButton
-import com.tarkalabs.uicomponents.theme.TUITheme
+import com.tarkalabs.tarkaui.components.base.ButtonSize
+import com.tarkalabs.tarkaui.components.base.ButtonStyle.ERROR
+import com.tarkalabs.tarkaui.components.base.ButtonStyle.GHOST
+import com.tarkalabs.tarkaui.components.base.ButtonStyle.PRIMARY
+import com.tarkalabs.tarkaui.components.base.ButtonStyle.SECONDARY
+import com.tarkalabs.tarkaui.components.base.TUIButton
+import com.tarkalabs.tarkaui.icons.ClearFormatting16
+import com.tarkalabs.tarkaui.icons.TarkaIcons
+import com.tarkalabs.tarkaui.theme.TUITheme
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TUIButtonComposable() {
   Column(
@@ -30,7 +29,7 @@ fun TUIButtonComposable() {
 
     TUIButton(
       label = "Error Button",
-      height = M,
+      height = ButtonSize.M,
       buttonStyle = ERROR,
       onClick = { /*Handle click*/ }
     )
@@ -38,7 +37,7 @@ fun TUIButtonComposable() {
     TUIButton(
       label = "Primary Button",
       height = ButtonSize.M,
-      buttonStyle = ButtonStyle.PRIMARY,
+      buttonStyle = PRIMARY,
       onClick = {
       }
     )
@@ -46,7 +45,7 @@ fun TUIButtonComposable() {
     TUIButton(
       label = "Secondary Button",
       height = ButtonSize.M,
-      buttonStyle = ButtonStyle.SECONDARY,
+      buttonStyle = SECONDARY,
       leadingIcon = TarkaIcons.Regular.ClearFormatting16,
       onClick = {
       }
@@ -55,7 +54,7 @@ fun TUIButtonComposable() {
     TUIButton(
       label = "Ghost Button",
       height = ButtonSize.L,
-      buttonStyle = ButtonStyle.GHOST,
+      buttonStyle = GHOST,
       trailingIcon = TarkaIcons.Regular.ClearFormatting16,
       onClick = {
       }
