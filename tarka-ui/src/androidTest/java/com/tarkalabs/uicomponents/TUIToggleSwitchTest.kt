@@ -15,7 +15,7 @@ class TUIToggleSwitchTest {
   @get:Rule val composeTestRule = createComposeRule()
   private val tags: TUIToggleSwitchTags = TUIToggleSwitchTags()
 
-  @Test fun should_invoke_on_checked_change_called_upon_click() {
+  @Test fun should_invoke_on_checked_change_upon_click() {
     val onCheckedChange: () -> Unit = mock()
 
     composeTestRule.setContent {
