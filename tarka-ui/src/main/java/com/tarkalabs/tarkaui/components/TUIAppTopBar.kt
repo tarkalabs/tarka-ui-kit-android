@@ -12,6 +12,7 @@ import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -85,6 +86,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
   searchQueryHint : String = "",
   disableSearchIcon: Boolean = false,
   clearQueryAndHideSearchBar: Boolean = false,
+  toggleSearchbar: Boolean = false,
   colors: TopAppBarColors = TopAppBarDefaults.topAppBarColors(
     containerColor = TUITheme.colors.surface
   ),
@@ -99,6 +101,9 @@ import com.tarkalabs.tarkaui.theme.TUITheme
   if (clearQueryAndHideSearchBar && showSearchBar) {
     showSearchBar = false
     onSearchQuery("")
+  }
+  LaunchedEffect(key1 = toggleSearchbar){
+    showSearchBar = toggleSearchbar
   }
 
   Column(
