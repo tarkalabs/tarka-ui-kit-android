@@ -12,6 +12,7 @@ import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -81,10 +82,11 @@ import com.tarkalabs.tarkaui.theme.TUITheme
   onSecondMenuItemClicked: () -> Unit = {},
   onThirdMenuItemClicked: () -> Unit = {},
   onSearchQuery: (String) -> Unit = {},
-  searchQuery : String = "",
-  searchQueryHint : String = "",
+  searchQuery: String = "",
+  searchQueryHint: String = "",
   disableSearchIcon: Boolean = false,
   clearQueryAndHideSearchBar: Boolean = false,
+  showSearchBar: Boolean = false,
   colors: TopAppBarColors = TopAppBarDefaults.topAppBarColors(
     containerColor = TUITheme.colors.surface
   ),
@@ -92,23 +94,25 @@ import com.tarkalabs.tarkaui.theme.TUITheme
   tags: TUIAppTopBarTags = TUIAppTopBarTags(),
 ) {
 
-  var showSearchBar by remember {
+  var showSearchBarState by remember {
     mutableStateOf(false)
   }
 
-  if (clearQueryAndHideSearchBar && showSearchBar) {
-    showSearchBar = false
+  if (clearQueryAndHideSearchBar && showSearchBarState) {
+    showSearchBarState = false
     onSearchQuery("")
+  }
+  LaunchedEffect(key1 = showSearchBar) {
+    showSearchBarState = showSearchBar
   }
 
   Column(
     modifier = modifier
       .background(color = TUITheme.colors.surface)
       .fillMaxWidth()
-      .wrapContentHeight(),
-    horizontalAlignment = Alignment.CenterHorizontally
+      .wrapContentHeight(), horizontalAlignment = Alignment.CenterHorizontally
   ) {
-    if (showSearchBar) {
+    if (showSearchBarState) {
       TUISearchBar(
         modifier = Modifier
           .fillMaxWidth()
@@ -117,7 +121,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
         placeholder = searchQueryHint,
         leadingIcon = TarkaIcons.Regular.ChevronLeft24,
         onLeadingIconClick = {
-          showSearchBar = false
+          showSearchBarState = false
           onSearchQuery("")
         },
         onQueryTextChange = {
@@ -136,7 +140,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
         },
         navigationIcon = {
           if (navigationIcon != null) {
-            if (!showSearchBar) {
+            if (!showSearchBarState) {
               TUIIconButton(
                 onIconClick = onNavigationIconClick,
                 icon = navigationIcon,
@@ -148,7 +152,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
           }
         },
         actions = {
-          if (!showSearchBar) {
+          if (!showSearchBarState) {
             if (searchIcon != null) {
               TUIIconButton(
                 icon = searchIcon,
@@ -156,7 +160,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
                 iconButtonStyle = GHOST,
                 onIconClick = {
                   if (!disableSearchIcon) {
-                    showSearchBar = true
+                    showSearchBarState = true
                   }
                 },
                 buttonSize = XL
@@ -224,15 +228,20 @@ data class TUIAppTopBarTags(
         menuItemIconThree = TarkaIcons.Regular.ChevronRight20,
         searchQuery = "Search",
         onSearchQuery = { _ ->
-        },
-        searchIcon = TarkaIcons.Regular.Search24,
-        searchQueryHint = "Search"
+        }, searchIcon = TarkaIcons.Regular.Search24, searchQueryHint = "Search"
       )
       VerticalSpacer(space = 5)
       TUIAppTopBar(
         title = "Lorem Ipsum",
         navigationIcon = TarkaIcons.Regular.ChevronRight20,
         searchIcon = TarkaIcons.Regular.Search16
+      )
+      VerticalSpacer(space = 5)
+      TUIAppTopBar(
+        title = "Lorem Ipsum",
+        navigationIcon = TarkaIcons.Regular.ChevronRight20,
+        searchIcon = TarkaIcons.Regular.Search16,
+        showSearchBar = true
       )
     }
   }
