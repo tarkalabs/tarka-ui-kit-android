@@ -53,7 +53,7 @@ class UIComponentListActivity : ComponentActivity() {
             onSearchQuery = {
               query = it
             },
-            toggleSearchbar = showSearchbar
+            showSearchBar = showSearchbar
           )
 
         }) { paddingValues ->
