@@ -27,22 +27,23 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaui.components.ChipLeadingContent.Icon
+import com.tarkalabs.tarkaui.components.ChipLeadingContent.Image
+import com.tarkalabs.tarkaui.components.ChipType.Filter
+import com.tarkalabs.tarkaui.components.base.AvatarSize.XS
+import com.tarkalabs.tarkaui.components.base.AvatarType
+import com.tarkalabs.tarkaui.components.base.BadgeStyle
+import com.tarkalabs.tarkaui.components.base.IconButtonSize.M
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.GHOST
+import com.tarkalabs.tarkaui.components.base.TUIAvatar
+import com.tarkalabs.tarkaui.components.base.TUIBadge
+import com.tarkalabs.tarkaui.components.base.TUIIconButton
 import com.tarkalabs.tarkaui.icons.ArrowSort20
 import com.tarkalabs.tarkaui.icons.CaretDown20
 import com.tarkalabs.tarkaui.icons.Checkmark20
 import com.tarkalabs.tarkaui.icons.Dismiss20
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.tarkaui.components.ChipLeadingContent.Icon
-import com.tarkalabs.tarkaui.components.ChipLeadingContent.Image
-import com.tarkalabs.tarkaui.components.ChipType.Filter
-import com.tarkalabs.tarkaui.components.base.AvatarSize.XS
-import com.tarkalabs.tarkaui.components.base.AvatarType
-import com.tarkalabs.tarkaui.components.base.IconButtonSize.M
-import com.tarkalabs.tarkaui.components.base.IconButtonStyle.GHOST
-import com.tarkalabs.tarkaui.components.base.TUIAvatar
-import com.tarkalabs.tarkaui.components.base.TUIBadge
-import com.tarkalabs.tarkaui.components.base.TUIIconButton
 import com.tarkalabs.tarkaui.theme.TUITheme
 
 /**
@@ -240,7 +241,10 @@ enum class ChipSize(val size: Dp) {
         }
       } else null)
     if (type.badgeCount != null) {
-      TUIBadge(count = type.badgeCount, modifier = Modifier.align(Alignment.TopEnd))
+      TUIBadge(
+        style = BadgeStyle.Count(count = type.badgeCount),
+        modifier = Modifier.align(Alignment.TopEnd)
+      )
     }
   }
 }
