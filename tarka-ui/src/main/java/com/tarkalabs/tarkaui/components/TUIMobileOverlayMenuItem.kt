@@ -26,10 +26,6 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaui.icons.AddCircle24
-import com.tarkalabs.tarkaui.icons.ChevronRight20
-import com.tarkalabs.tarkaui.icons.TarkaIcon
-import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.components.MobileOverlayMenuItemLeadingContentType.StatusIndicator
 import com.tarkalabs.tarkaui.components.MobileOverlayMenuItemStyle.Title
 import com.tarkalabs.tarkaui.components.MobileOverlayMenuItemStyle.TitleWithDescription
@@ -37,6 +33,10 @@ import com.tarkalabs.tarkaui.components.MobileOverlayMenuItemTrailingContentType
 import com.tarkalabs.tarkaui.components.MobileOverlayMenuItemTrailingContentType.SubMobileOverlayMenu
 import com.tarkalabs.tarkaui.extentions.maxHeight
 import com.tarkalabs.tarkaui.extentions.maxWidth
+import com.tarkalabs.tarkaui.icons.AddCircle24
+import com.tarkalabs.tarkaui.icons.ChevronRight20
+import com.tarkalabs.tarkaui.icons.TarkaIcon
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.theme.TUITheme
 
 sealed class MobileOverlayMenuItemLeadingContentType {
@@ -84,7 +84,9 @@ sealed class MobileOverlayMenuItemStyle {
 
   val leadingIconLambda: @Composable () -> Unit = if (leadingContent != null && style is Title) {
     {
-      val leadingContentModifier = Modifier.padding(start = 16.dp, end = 8.dp).testTag(tags.leadingContentTag)
+      val leadingContentModifier = Modifier
+        .padding(start = 16.dp, end = 8.dp)
+        .testTag(tags.leadingContentTag)
       when (leadingContent) {
         is MobileOverlayMenuItemLeadingContentType.Icon -> Icon(
           painter = painterResource(id = leadingContent.icon.iconRes),
@@ -161,15 +163,20 @@ sealed class MobileOverlayMenuItemStyle {
     horizontalArrangement = Arrangement.SpaceBetween,
   ) {
     leadingIconLambda()
-    Column(modifier = Modifier
-      .weight(1f)
-      .padding(vertical = 8.dp)) {
+    Column(
+      modifier = Modifier
+        .weight(1f)
+        .padding(vertical = 8.dp)
+    ) {
       when (style) {
         Title -> TUIMobileOverlayMenuItemTitle(title)
         is TitleWithDescription -> TUIMenuItemTitleWithDescription(
           title = title, description = style.description
         )
       }
+    }
+    if (trailingContentLambda == null) {
+      HorizontalSpacer(space = 8)
     }
     trailingContentLambda?.invoke()
   }
