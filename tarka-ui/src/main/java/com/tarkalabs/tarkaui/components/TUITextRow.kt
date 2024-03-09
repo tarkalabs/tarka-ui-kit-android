@@ -32,7 +32,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaui.R
 import com.tarkalabs.tarkaui.components.TextRowStyle.DateStyle
 import com.tarkalabs.tarkaui.components.TextRowStyle.Title
 import com.tarkalabs.tarkaui.components.TextRowStyle.TitleWithDescription
@@ -40,11 +39,9 @@ import com.tarkalabs.tarkaui.components.TextRowStyle.TitleWithNotAvailable
 import com.tarkalabs.tarkaui.components.base.IconButtonStyle.GHOST
 import com.tarkalabs.tarkaui.components.base.TUIIconButton
 import com.tarkalabs.tarkaui.components.base.TUIIconButtonTags
-import com.tarkalabs.tarkaui.icons.Call24
 import com.tarkalabs.tarkaui.icons.Circle24
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.tarkaui.icons.Voicemail24
 import com.tarkalabs.tarkaui.theme.TUITheme
 
 /**
@@ -164,13 +161,16 @@ import com.tarkalabs.tarkaui.theme.TUITheme
             contentDescription = infoIcon.contentDescription,
             tint = TUITheme.colors.utilityOutline,
             modifier = Modifier
-              .then(if (onInfoIconClick == null) Modifier else Modifier.clickable(onClick = {
-                if (menuItemList.isNullOrEmpty()) {
-                  onInfoIconClick()
-                } else {
-                  expanded = expanded.not()
-                }
-              }))
+              .then(
+                if (onInfoIconClick == null && menuItemList.isNullOrEmpty()) Modifier else Modifier.clickable(
+                  onClick = {
+                    if (!menuItemList.isNullOrEmpty()) {
+                      expanded = !expanded
+                    } else {
+                      onInfoIconClick?.invoke()
+                    }
+                  })
+              )
               .height(40.dp)
               .width(24.dp)
               .testTag(tags.infoIconTag)
@@ -341,21 +341,4 @@ data class TUITextRowTags(
       Log.d("TAG", "TUITextRowPreview: ")
     }, onInfoIconClick = null
   )
-}
-
-enum class PersonMenu : TUIPopUpMenu {
-
-  CALL {
-    override val icon: TarkaIcon
-      get() = TarkaIcons.Regular.Call24
-    override val title: Int
-      get() = R.string.image_thumbnail
-  },
-
-  EMAIL {
-    override val icon: TarkaIcon
-      get() = TarkaIcons.Regular.Voicemail24
-    override val title: Int
-      get() = R.string.video_thumbnail
-  }
 }
