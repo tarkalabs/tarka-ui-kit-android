@@ -90,6 +90,7 @@ sealed class BadgeStyle {
       is BadgeStyle.Icon -> {
         Icon(
           modifier = Modifier
+            .testTag(tags.iconTag)
             .defaultMinSize(minHeight = 10.dp, minWidth = 10.dp)
             .wrapContentSize(),
           painter = painterResource(id = style.icon.iconRes),
@@ -102,6 +103,7 @@ sealed class BadgeStyle {
 
 data class TUIBadgeTags(
   val parentTag: String = "TUIBadge",
+  val iconTag: String = "BadgeIcon",
 )
 
 @Preview(showBackground = true) @Composable fun BadgePreview() {

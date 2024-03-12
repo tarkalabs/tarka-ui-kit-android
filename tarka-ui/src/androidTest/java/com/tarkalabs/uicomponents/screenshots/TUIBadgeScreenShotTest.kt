@@ -1,8 +1,10 @@
 package com.tarkalabs.uicomponents.screenshots
 
 import com.tarkalabs.tarkaui.components.base.BadgeSize.M
-import com.tarkalabs.tarkaui.components.base.BadgeSize.S
+import com.tarkalabs.tarkaui.components.base.BadgeStyle
 import com.tarkalabs.tarkaui.components.base.TUIBadge
+import com.tarkalabs.tarkaui.icons.Info20
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
@@ -27,10 +29,10 @@ open class TUIBadgeScreenShotTest(
   }
 
   @Test fun test_badge_with_count() = compareScreenshotFor(darkTheme, "_testBadgeWithCount_$testName") {
-    TUIBadge(count = 2, badgeSize = M)
+    TUIBadge(style = BadgeStyle.Count(2), badgeSize = M)
   }
 
-  @Test fun test_badge_with_out_count() = compareScreenshotFor(darkTheme, "_testBadgeWithoutCount_$testName") {
-    TUIBadge(badgeSize = S)
+  @Test fun test_badge_with_icon() = compareScreenshotFor(darkTheme, "_testBadgeWithIcon_$testName") {
+    TUIBadge(style = BadgeStyle.Icon(TarkaIcons.Regular.Info20), badgeSize = M)
   }
 }
