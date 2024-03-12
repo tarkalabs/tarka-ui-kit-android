@@ -22,16 +22,17 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaui.components.VerticalSpacer
+import com.tarkalabs.tarkaui.components.base.BadgeStyle
+import com.tarkalabs.tarkaui.components.base.TUIBadge
+import com.tarkalabs.tarkaui.components.card.SecondaryDetailsStyle.ERROR
+import com.tarkalabs.tarkaui.components.card.SecondaryDetailsStyle.NORMAL
 import com.tarkalabs.tarkaui.icons.CheckmarkCircle24
 import com.tarkalabs.tarkaui.icons.ChevronRight24
 import com.tarkalabs.tarkaui.icons.Person24
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons.Filled
 import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
-import com.tarkalabs.tarkaui.components.VerticalSpacer
-import com.tarkalabs.tarkaui.components.card.SecondaryDetailsStyle.ERROR
-import com.tarkalabs.tarkaui.components.card.SecondaryDetailsStyle.NORMAL
-import com.tarkalabs.tarkaui.components.base.TUIBadge
 import com.tarkalabs.tarkaui.theme.TUITheme
 
 enum class SecondaryDetailsStyle {
@@ -157,7 +158,7 @@ fun TUISelectionCard(
           .align(Alignment.CenterVertically)
           .padding(start = 16.dp)
           .testTag(tags.badgeTag),
-        count = badgeCount,
+        style = BadgeStyle.Count(count = badgeCount),
         color = TUITheme.colors.tertiary
       )
     }

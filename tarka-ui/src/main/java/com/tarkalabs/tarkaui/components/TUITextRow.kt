@@ -1,8 +1,8 @@
 package com.tarkalabs.tarkaui.components
 
 import android.util.Log
-import androidx.compose.foundation.Canvas
 import androidx.annotation.StringRes
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -191,7 +191,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
                   expanded = false
                   onMenuItemClick?.invoke(item)
                 },
-                modifier = Modifier.width(160.dp),
+                modifier = Modifier.defaultMinSize(minWidth = 160.dp),
                 leadingContent = MobileOverlayMenuItemLeadingContentType.Icon(item.icon)
               )
             }
@@ -333,14 +333,12 @@ data class TUITextRowTags(
 )
 
 @Preview(showBackground = true)
-@Composable
-fun TUITextRowPreview() {
+@Composable fun TUITextRowPreview() {
   TUITextRow(
     title = "Duration", style = DateStyle(
-    "Jan 20 3000 friday march 32",
-    "Jan 20 3000 friday march 32"
-  ), onTextRowClick = {
-    Log.d("TAG", "TUITextRowPreview: ")
-  }, onInfoIconClick = null
+      "Jan 20 3000 friday march 32", "Jan 20 3000 friday march 32"
+    ), onTextRowClick = {
+      Log.d("TAG", "TUITextRowPreview: ")
+    }, onInfoIconClick = null
   )
 }

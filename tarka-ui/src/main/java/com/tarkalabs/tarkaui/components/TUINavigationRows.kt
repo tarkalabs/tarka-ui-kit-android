@@ -75,8 +75,8 @@ import com.tarkalabs.tarkaui.theme.TUITheme
   ) {
     Row(modifier = modifier
       .clickable { onClick() }
-      .padding(8.dp)
       .defaultMinSize(minHeight = 40.dp)
+      .padding(8.dp)
       .testTag(tags.parentTag), verticalAlignment = Alignment.CenterVertically) {
       if (leadingIcon != null) Icon(
         modifier = Modifier
