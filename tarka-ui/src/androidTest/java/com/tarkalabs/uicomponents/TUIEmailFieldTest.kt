@@ -42,9 +42,7 @@ class TUIEmailFieldTest {
         title = "To",
         emailAddressList = emailList,
         trailingIcon = Regular.AddCircle24,
-        onItemRemoved = { position ->
-
-        },
+        onItemRemoved = {},
         trailingIconClick = {
 
         },
@@ -83,9 +81,7 @@ class TUIEmailFieldTest {
         title = "To",
         emailAddressList = emailList,
         trailingIcon = Regular.AddCircle24,
-        onItemRemoved = { position ->
-
-        },
+        onItemRemoved = {},
         trailingIconClick = trailingIconClick,
         onItemAdd = {
           emailList.add(it)
