@@ -6,12 +6,12 @@ plugins {
 
 android {
   namespace = "com.tarkalabs.ui"
-  compileSdk = 33
+  compileSdk = 34
 
   defaultConfig {
     applicationId = "com.tarkalabs.ui"
     minSdk = 26
-    targetSdk = 33
+    targetSdk = 34
     versionCode = 1
     versionName = "1.0"
 
@@ -56,7 +56,7 @@ dependencies {
   implementation("androidx.activity:activity-compose:1.7.1")
   implementation("androidx.compose.ui:ui:$composeUiVersion")
   implementation("androidx.compose.ui:ui-tooling-preview:$composeUiVersion")
-  implementation ("androidx.compose.material3:material3:1.1.0-rc01")
+  implementation ("androidx.compose.material3:material3:1.2.0")
 
   testImplementation("junit:junit:4.13.2")
   androidTestImplementation("androidx.test.ext:junit:1.1.5")
