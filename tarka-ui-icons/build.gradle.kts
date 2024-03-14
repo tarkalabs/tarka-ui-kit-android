@@ -8,7 +8,7 @@ plugins {
 
 android {
   namespace = "com.tarkalabs.tarkaui.icons"
-  compileSdk = 33
+  compileSdk = 34
 
   defaultConfig {
     minSdk = 24
@@ -62,7 +62,7 @@ dependencies {
 
   implementation("androidx.compose.ui:ui:$composeUiVersion")
   implementation("androidx.compose.ui:ui-tooling-preview:$composeUiVersion")
-  implementation("androidx.compose.material3:material3:1.1.0-rc01")
+  implementation("androidx.compose.material3:material3:1.2.0")
   implementation("androidx.compose.foundation:foundation:$composeUiVersion")
   api("com.microsoft.design:fluent-system-icons:1.1.201@aar")
   implementation("androidx.core:core-ktx:1.10.0")
