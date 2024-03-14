@@ -200,7 +200,7 @@ enum class ChipSize(val size: Dp) {
   Box(modifier = Modifier.wrapContentWidth()) {
     FilterChip(selected = type.selected,
       shape = RoundedCornerShape(8.dp),
-      border =  FilterChipDefaults.filterChipBorder(borderColor = if(type.selected) TUITheme.colors.secondary else TUITheme.colors.utilityOutline),
+      border =  FilterChipDefaults.filterChipBorder(borderColor = if(type.selected) TUITheme.colors.secondary else TUITheme.colors.utilityOutline, enabled = false, selected = type.selected),
       onClick = onClick,
       label = {
         Text(

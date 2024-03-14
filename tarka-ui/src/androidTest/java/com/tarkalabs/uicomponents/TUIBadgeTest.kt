@@ -16,9 +16,7 @@ class TUIBadgeTest {
 
   @Test fun badge_Displayed() {
     composeTestRule.setContent {
-      TUIBadge(
-        badgeSize = L, tags = tags, count = 299
-      )
+      TUIBadge(badgeSize = L, tags = tags)
     }
     composeTestRule.onNodeWithTag(tags.parentTag).assertIsDisplayed()
   }

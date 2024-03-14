@@ -27,7 +27,7 @@ open class TUIBadgeScreenShotTest(
   }
 
   @Test fun test_badge_with_count() = compareScreenshotFor(darkTheme, "_testBadgeWithCount_$testName") {
-    TUIBadge(count = 2, badgeSize = M)
+    TUIBadge(badgeSize = M)
   }
 
   @Test fun test_badge_with_out_count() = compareScreenshotFor(darkTheme, "_testBadgeWithoutCount_$testName") {
