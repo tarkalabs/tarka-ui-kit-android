@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.AssistChipDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
@@ -116,7 +115,7 @@ enum class ChipSize(val size: Dp) {
  * @param chipSize The size of the chip (default is ChipSize.SMALL).
  * @param tags The tags to be applied to the chip for testing purposes.
  */
-@OptIn(ExperimentalMaterial3Api::class) @Composable fun TUIChip(
+@Composable fun TUIChip(
   modifier: Modifier = Modifier,
   type: ChipType,
   label: String,
@@ -191,16 +190,21 @@ enum class ChipSize(val size: Dp) {
   }
 }
 
-@Composable @OptIn(ExperimentalMaterial3Api::class) private fun FilterChip(
+@Composable private fun FilterChip(
   type: Filter,
-  label : String,
+  label: String,
   onClick: () -> Unit,
   modifier: Modifier,
 ) {
   Box(modifier = Modifier.wrapContentWidth()) {
-    FilterChip(selected = type.selected,
+    FilterChip(
+      selected = type.selected,
       shape = RoundedCornerShape(8.dp),
-      border =  FilterChipDefaults.filterChipBorder(borderColor = if(type.selected) TUITheme.colors.secondary else TUITheme.colors.utilityOutline, enabled = false, selected = type.selected),
+      border = FilterChipDefaults.filterChipBorder(
+        borderColor = if (type.selected) TUITheme.colors.secondary else TUITheme.colors.utilityOutline,
+        enabled = false,
+        selected = type.selected
+      ),
       onClick = onClick,
       label = {
         Text(

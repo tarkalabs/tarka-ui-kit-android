@@ -21,7 +21,6 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaui.components.VerticalSpacer
 import com.tarkalabs.tarkaui.icons.Checkmark16
 import com.tarkalabs.tarkaui.icons.TarkaIcon
-import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.icons.TarkaIcons.Filled
 import com.tarkalabs.tarkaui.theme.TUITheme
 
@@ -33,7 +32,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
  * @param enabled Whether the checkbox is enabled and can be interacted with.
  * @param tags Additional tags to apply to the checkbox.
  * @param onCheckedChange Callback triggered when the checkbox's checked state changes.
- *
+
  * How to use TUICheckBox() composable function
  *
  *     TUICheckBox(
@@ -45,7 +44,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
 @Composable fun TUICheckBox(
   modifier: Modifier = Modifier,
   checked: Boolean,
-  icon: TarkaIcon = TarkaIcons.Filled.Checkmark16,
+  icon: TarkaIcon = Filled.Checkmark16,
   enabled: Boolean = true,
   tags: TUICheckBoxTags = TUICheckBoxTags(),
   onCheckedChange: (() -> Unit)? = null
@@ -63,8 +62,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
       )
       .border(width = 1.dp, color = borderColor, shape = shape)
       .then(
-        if (onCheckedChange == null) Modifier else Modifier.toggleable(
-          value = checked,
+        if (onCheckedChange == null) Modifier else Modifier.toggleable(value = checked,
           onValueChange = {
             if (enabled) {
               onCheckedChange.invoke()

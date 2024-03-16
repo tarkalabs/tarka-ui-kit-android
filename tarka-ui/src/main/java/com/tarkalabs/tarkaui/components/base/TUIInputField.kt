@@ -62,7 +62,9 @@ enum class TUIInputFieldType {
 }
 
 sealed class TUIInputFieldContentType {
-  data class Icon(val icon: TarkaIcon, val onIconClick: (() -> Unit)? = null,) : TUIInputFieldContentType()
+  data class Icon(val icon: TarkaIcon, val onIconClick: (() -> Unit)? = null) :
+    TUIInputFieldContentType()
+
   data class Text(val text: String) : TUIInputFieldContentType()
 }
 

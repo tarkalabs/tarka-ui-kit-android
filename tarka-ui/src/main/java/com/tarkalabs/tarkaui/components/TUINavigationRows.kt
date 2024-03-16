@@ -23,7 +23,6 @@ import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaui.icons.Call20
 import com.tarkalabs.tarkaui.icons.ChevronRight20
 import com.tarkalabs.tarkaui.icons.TarkaIcon
-import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
 import com.tarkalabs.tarkaui.theme.TUITheme
 
@@ -49,7 +48,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
  *
  * TUINavigationRow(
  *   title = "Profile",
- *   leadingIcon = TarkaIcons.Profile,
+ *   leadingIcon = TarkaIcon.Profile,
  *   modifier = Modifier.fillMaxWidth(),
  *   badgeTestTag = "profile_badge",
  *   rowTestTag = "profile_row",
@@ -117,7 +116,7 @@ data class TUINavigationRowTags(
   Column {
     TUINavigationRow(
       title = "Label",
-      leadingIcon = TarkaIcons.Regular.Call20,
+      leadingIcon = Regular.Call20,
       onClick = {
 
       },
@@ -129,7 +128,7 @@ data class TUINavigationRowTags(
     TUINavigationRow(
       title = "Label",
       isSelected = true,
-      leadingIcon = TarkaIcons.Regular.Call20,
+      leadingIcon = Regular.Call20,
       onClick = {
 
       },

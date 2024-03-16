@@ -29,8 +29,8 @@ import com.tarkalabs.tarkaui.theme.TUITheme
  * @param outlineButtonLabel The optional label text for the outline button. If null, the outline button will not be displayed.
  * @param outlineButtonOnClick The optional callback function to be invoked when the outline button is clicked.
  * @param primaryButtonWeight The optional weight of the primary button relative to the outline button.
- * @param leadingIcon The drawable resource for the leading icon, if any. Default is null.
- * @param trailingIcon The drawable resource for the trailing icon, if any. Default is null.
+ * @param primaryLeadingIcon The drawable resource for the leading icon, if any. Default is null.
+ * @param primaryTrailingIcon The drawable resource for the trailing icon, if any. Default is null.
  *
  * If null, the primary button will occupy all available space.
  */

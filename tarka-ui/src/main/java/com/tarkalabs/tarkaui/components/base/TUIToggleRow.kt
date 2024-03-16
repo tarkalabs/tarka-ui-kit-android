@@ -28,9 +28,9 @@ import com.tarkalabs.tarkaui.theme.TUITheme
  *
  */
 @Composable fun TUIToggleRow(
+  modifier: Modifier = Modifier,
   title: String,
   style: ToggleRowStyle = Title,
-  modifier: Modifier = Modifier,
 ) {
   Row(
     modifier
