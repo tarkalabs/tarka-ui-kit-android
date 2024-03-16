@@ -132,20 +132,21 @@ object TUIAttachmentUpload {
 
         is UpLoading -> {
           val animatedProgress by animateFloatAsState(
-            targetValue = state.progress / 100f, animationSpec = tween(durationMillis = 5000)
+            targetValue = state.progress / 100f, animationSpec = tween(durationMillis = 5000),
+            label = ""
           )
           Column(modifier = attachmentModifier) {
             AttachmentTitle(attachmentName = attachmentName)
             VerticalSpacer(space = 8)
             LinearProgressIndicator(
-              progress = animatedProgress,
+              progress = { animatedProgress },
               modifier = Modifier
                 .fillMaxWidth()
                 .height(8.dp)
                 .clip(RoundedCornerShape(4.dp))
                 .testTag(tags.progressBarTag),
+              color = TUITheme.colors.primaryAltHover,
               trackColor = TUITheme.colors.surfaceVariant,
-              color = TUITheme.colors.primaryAltHover
             )
           }
         }
