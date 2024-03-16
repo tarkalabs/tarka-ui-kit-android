@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ripple.rememberRipple
@@ -31,8 +32,6 @@ import com.tarkalabs.tarkaui.components.MobileOverlayMenuItemStyle.Title
 import com.tarkalabs.tarkaui.components.MobileOverlayMenuItemStyle.TitleWithDescription
 import com.tarkalabs.tarkaui.components.MobileOverlayMenuItemTrailingContentType.Icon
 import com.tarkalabs.tarkaui.components.MobileOverlayMenuItemTrailingContentType.SubMobileOverlayMenu
-import com.tarkalabs.tarkaui.extentions.maxHeight
-import com.tarkalabs.tarkaui.extentions.maxWidth
 import com.tarkalabs.tarkaui.icons.AddCircle24
 import com.tarkalabs.tarkaui.icons.ChevronRight20
 import com.tarkalabs.tarkaui.icons.TarkaIcon
@@ -93,8 +92,7 @@ sealed class MobileOverlayMenuItemStyle {
           contentDescription = leadingContent.icon.contentDescription,
           tint = leadingContent.icon.tintColor ?: TUITheme.colors.onSurface,
           modifier = leadingContentModifier
-            .maxHeight(24)
-            .maxWidth(24)
+            .sizeIn(maxHeight = 24.dp, maxWidth = 24.dp)
         )
 
         StatusIndicator -> Box(
@@ -116,8 +114,7 @@ sealed class MobileOverlayMenuItemStyle {
     {
       val trailingContentModifier = Modifier
         .padding(start = 8.dp, end = 8.dp)
-        .maxHeight(24)
-        .maxWidth(24)
+        .sizeIn(maxWidth = 24.dp, maxHeight = 24.dp)
         .testTag(tags.trailingContentTag)
 
       when (trailingContent) {
