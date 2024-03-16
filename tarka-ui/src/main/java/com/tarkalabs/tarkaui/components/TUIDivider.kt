@@ -1,24 +1,23 @@
 package com.tarkalabs.tarkaui.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaui.components.HorizontalPaddingSize.L
 import com.tarkalabs.tarkaui.components.HorizontalPaddingSize.NONE
 import com.tarkalabs.tarkaui.components.Orientation.HORIZONTAL
 import com.tarkalabs.tarkaui.components.Orientation.VERTICAL
-import com.tarkalabs.tarkaui.components.VerticalPaddingSize.M
 import com.tarkalabs.tarkaui.theme.TUITheme
 
 /**
@@ -59,13 +58,11 @@ fun TUIDivider(
       // .height(40.dp)
       Row {
         HorizontalSpacer(space = horizontalPadding.size)
-        Divider(
+        VerticalDivider(
           modifier = modifier
             .fillMaxHeight()
-            .width(thickness.dp)
             .padding(vertical = verticalPadding.size.dp)
-            .testTag(tag = tags.parentTag),
-          color = color
+            .testTag(tag = tags.parentTag), color = color, thickness = thickness.dp
         )
         HorizontalSpacer(space = horizontalPadding.size)
       }
@@ -74,13 +71,11 @@ fun TUIDivider(
     HORIZONTAL -> {
       Column {
         VerticalSpacer(space = verticalPadding.size)
-        Divider(
+        HorizontalDivider(
           modifier = modifier
             .fillMaxWidth()
-            .height(thickness.dp)
             .padding(horizontal = horizontalPadding.size.dp)
-            .testTag(tag = tags.parentTag),
-          color = color,
+            .testTag(tag = tags.parentTag), color = color, thickness = thickness.dp
         )
         VerticalSpacer(space = verticalPadding.size)
       }
@@ -91,18 +86,15 @@ fun TUIDivider(
 @Preview
 @Composable
 fun TestTUIDivider() {
-  TUIDivider(
-    orientation = VERTICAL,
-    thickness = 20,
-    horizontalPadding = L,
-    verticalPadding = M,
-  )
-  TUIDivider(
-    orientation = HORIZONTAL,
-    thickness = 20,
-    horizontalPadding = L,
-    verticalPadding = M,
-  )
+  Column(modifier = Modifier
+    .background(Color.Black)
+    .fillMaxSize()) {
+
+    VerticalSpacer(space = 10)
+    TUIDivider(color = TUITheme.colors.secondaryAlt)
+    VerticalSpacer(space = 10)
+    TUIDivider()
+  }
 }
 
 data class TUIDividerTags(

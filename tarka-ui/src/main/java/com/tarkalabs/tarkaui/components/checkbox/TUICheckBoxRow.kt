@@ -38,17 +38,17 @@ import com.tarkalabs.tarkaui.icons.TarkaIcons.Filled
  *
  * How to use TUICheckBoxRow() composable function
  *     TUICheckBoxRow(
-          checked = isChecked,
-          enabled = true,
-          title = "Checkbox Row",
-          style = ToggleRowStyle.Title,
-          onCheckedChange = { isChecked = !isChecked }
-        )
+checked = isChecked,
+enabled = true,
+title = "Checkbox Row",
+style = ToggleRowStyle.Title,
+onCheckedChange = { isChecked = !isChecked }
+)
  */
 @Composable fun TUICheckBoxRow(
   modifier: Modifier = Modifier,
   checked: Boolean,
-  icon: TarkaIcon = TarkaIcons.Filled.Checkmark16,
+  icon: TarkaIcon = Filled.Checkmark16,
   enabled: Boolean = true,
   title: String,
   style: ToggleRowStyle,
@@ -60,12 +60,11 @@ import com.tarkalabs.tarkaui.icons.TarkaIcons.Filled
     horizontalArrangement = Arrangement.Center,
     verticalAlignment = Alignment.CenterVertically,
     modifier = modifier
-      .toggleable(value = checked,
-        onValueChange = {
-          if (enabled) {
-            onCheckedChange.invoke()
-          }
-        })
+      .toggleable(value = checked, onValueChange = {
+        if (enabled) {
+          onCheckedChange.invoke()
+        }
+      })
       .padding(paddingValues)
       .testTag(tags.parentTag)
   ) {
@@ -109,16 +108,14 @@ data class TUICheckBoxRowTags(
         icon = Filled.Checkmark16,
         title = "Title",
         style = TitleWithDescription("Description")
-      ) {
-      }
+      ) {}
       TUICheckBoxRow(
         checked = false,
         enabled = true,
         icon = Filled.Checkmark16,
         title = "Title",
         style = TitleWithDescription("Description")
-      ) {
-      }
+      ) {}
 
       TUICheckBoxRow(
         checked = true,
@@ -126,17 +123,11 @@ data class TUICheckBoxRowTags(
         icon = Filled.Checkmark16,
         title = "Title",
         style = TitleWithDescription("Description")
-      ) {
-      }
+      ) {}
 
       TUICheckBoxRow(
-        checked = true,
-        enabled = false,
-        icon = Filled.Checkmark16,
-        title = "Title",
-        style = Title
-      ) {
-      }
+        checked = true, enabled = false, icon = Filled.Checkmark16, title = "Title", style = Title
+      ) {}
 
     }
 

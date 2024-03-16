@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
@@ -20,17 +21,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaui.components.PlayPauseButtonSize.L
+import com.tarkalabs.tarkaui.components.PlayPauseButtonSize.M
+import com.tarkalabs.tarkaui.components.PlayPauseButtonState.Pause
+import com.tarkalabs.tarkaui.components.PlayPauseButtonState.Play
 import com.tarkalabs.tarkaui.icons.Pause12
 import com.tarkalabs.tarkaui.icons.Pause24
 import com.tarkalabs.tarkaui.icons.Play12
 import com.tarkalabs.tarkaui.icons.Play24
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.tarkaui.components.PlayPauseButtonSize.L
-import com.tarkalabs.tarkaui.components.PlayPauseButtonSize.M
-import com.tarkalabs.tarkaui.components.PlayPauseButtonState.Pause
-import com.tarkalabs.tarkaui.components.PlayPauseButtonState.Play
-import com.tarkalabs.tarkaui.extentions.maxHeight
-import com.tarkalabs.tarkaui.extentions.maxWidth
 import com.tarkalabs.tarkaui.theme.TUITheme
 
 /**
@@ -66,12 +65,8 @@ import com.tarkalabs.tarkaui.theme.TUITheme
 ) {
 
   val iconModifier = when (buttonSize) {
-    L -> Modifier
-      .maxWidth(24)
-      .maxHeight(24)
-    M -> Modifier
-      .maxWidth(16)
-      .maxHeight(16)
+    L -> Modifier.sizeIn(maxHeight = 24.dp, maxWidth = 24.dp)
+    M -> Modifier.sizeIn(maxHeight = 16.dp, maxWidth = 16.dp)
   }
 
   when (buttonSize) {

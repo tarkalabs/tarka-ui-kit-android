@@ -11,11 +11,11 @@ plugins {
 
 android {
   namespace = "com.tarkalabs.tarkaui"
-  compileSdk = 33
+  compileSdk = 34
 
   defaultConfig {
     minSdk = 26
-    targetSdk = 33
+    targetSdk = 34
 
     testInstrumentationRunner = "com.karumi.shot.ShotTestRunner"
     testApplicationId = "com.tarkalabs.tarkaui"
@@ -66,7 +66,7 @@ publishing {
       run {
         groupId = "com.tarkalabs"
         artifactId = getLibraryArtifactId()
-        version = "1.1.7"
+        version = "1.1.8"
         artifact("$buildDir/outputs/aar/tarka-ui-release.aar")
       }
     }
@@ -90,7 +90,7 @@ dependencies {
   implementation("androidx.core:core-ktx:1.10.0")
   implementation("androidx.compose.ui:ui:$composeUiVersion")
   implementation("androidx.compose.ui:ui-tooling-preview:$composeUiVersion")
-  implementation("androidx.compose.material3:material3:1.1.0-rc01")
+  implementation("androidx.compose.material3:material3:1.2.0")
   implementation("androidx.compose.foundation:foundation:$composeUiVersion")
   api("com.tarkalabs:tarkaui-icons:1.0.0")
   testImplementation("junit:junit:4.13.2")

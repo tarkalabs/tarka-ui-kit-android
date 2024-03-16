@@ -130,7 +130,7 @@ import kotlinx.coroutines.launch
         FlowRow(
           modifier = Modifier.testTag(tags.flowRowTag),
           horizontalArrangement = Arrangement.Start,
-          verticalAlignment = Alignment.CenterVertically,
+          verticalArrangement = Arrangement.Center,
           maxItemsInEachRow = 3
         ) {
           emailAddressList.forEachIndexed { index, email ->

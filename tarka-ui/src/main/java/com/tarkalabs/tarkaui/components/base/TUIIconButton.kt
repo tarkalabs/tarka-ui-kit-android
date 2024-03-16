@@ -68,7 +68,7 @@ enum class IconButtonStyle {
  * @param iconButtonStyle The style of the button, which can be one of the values of the IconButtonStyle enum.
  * @param enabled Whether the button is clickable or not.
  * @param onIconClick A callback function that is invoked when the button is clicked.
- * @param testTag The test tag for the TUIButton.
+ * @param tags The test tag for the TUIButton.
  * The function calculates the size of the icon based on the buttonSize parameter and sets the colors of the button
  *
  * How to use IconButton() composable function

@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -43,7 +42,7 @@ sealed class BadgeStyle {
 
 /**
  * Below TUIBadge() defines a reusable composable function which can be used to create an Badge with various sizes which takes couple of  parameters
- * @param count The Count to be displayed on the badge.
+ * @param style The BadgeStyle for the badge {Eg: IconStyle, TextStyle}.
  * @param badgeSize The height size of the badge. Default is [BadgeSize.M].
  * @param tags  Test tag for the TUIBadge.
  *

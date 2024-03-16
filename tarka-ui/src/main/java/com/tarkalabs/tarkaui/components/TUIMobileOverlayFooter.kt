@@ -21,7 +21,6 @@ import com.tarkalabs.tarkaui.components.base.ButtonStyle.OUTLINE
 import com.tarkalabs.tarkaui.components.base.IconButtonStyle
 import com.tarkalabs.tarkaui.components.base.TUIButton
 import com.tarkalabs.tarkaui.components.base.TUIIconButton
-import com.tarkalabs.tarkaui.icons.ArrowLeft24
 import com.tarkalabs.tarkaui.icons.ChevronLeft24
 import com.tarkalabs.tarkaui.icons.ChevronRight24
 import com.tarkalabs.tarkaui.icons.Dismiss24
