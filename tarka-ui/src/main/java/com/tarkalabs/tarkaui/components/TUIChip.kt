@@ -15,6 +15,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.InputChip
 import androidx.compose.material3.InputChipDefaults
 import androidx.compose.material3.SuggestionChip
+import androidx.compose.material3.SuggestionChipDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -173,6 +174,7 @@ enum class ChipSize(val size: Dp) {
 
     is ChipType.Suggestion -> {
       SuggestionChip(
+        colors = SuggestionChipDefaults.suggestionChipColors(containerColor = TUITheme.colors.surface),
         onClick = onClick,
         label = commonLabel,
         shape = RoundedCornerShape(8.dp),
@@ -202,7 +204,7 @@ enum class ChipSize(val size: Dp) {
       shape = RoundedCornerShape(8.dp),
       border = FilterChipDefaults.filterChipBorder(
         borderColor = if (type.selected) TUITheme.colors.secondary else TUITheme.colors.utilityOutline,
-        enabled = false,
+        enabled = true,
         selected = type.selected
       ),
       onClick = onClick,
