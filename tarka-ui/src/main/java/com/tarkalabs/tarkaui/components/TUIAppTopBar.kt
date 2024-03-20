@@ -116,7 +116,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
       TUISearchBar(
         modifier = Modifier
           .fillMaxWidth()
-          .padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
+          .padding(start = 16.dp, end = 16.dp, bottom = 8.dp, top = 8.dp),
         query = searchQuery,
         placeholder = searchQueryHint,
         leadingIcon = TarkaIcons.Regular.ChevronLeft24,
