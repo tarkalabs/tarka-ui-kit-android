@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
@@ -37,6 +39,8 @@ import kotlinx.coroutines.delay
   query: String,
   placeholder: String,
   trailingIcon: TarkaIcon = TarkaIcons.Regular.Dismiss24,
+  keyboardOption: KeyboardOptions = KeyboardOptions.Default,
+  keyboardAction: KeyboardActions = KeyboardActions.Default,
   onQueryTextChange: (String) -> Unit,
   leadingIcon: TarkaIcon? = null,
   onLeadingIconClick: (() -> Unit)? = null,
@@ -52,13 +56,9 @@ import kotlinx.coroutines.delay
   val leadingIconLambda: @Composable (() -> Unit)? = if (leadingIcon != null) {
     {
       TUIIconButton(
-        icon = leadingIcon,
-        buttonSize = L,
-        iconButtonStyle = GHOST,
-        onIconClick = {
+        icon = leadingIcon, buttonSize = L, iconButtonStyle = GHOST, onIconClick = {
           onLeadingIconClick?.invoke()
-        },
-        tags = searchBarTags.leadingIconTags
+        }, tags = searchBarTags.leadingIconTags
       )
     }
   } else null
@@ -84,6 +84,8 @@ import kotlinx.coroutines.delay
     singleLine = true,
     interactionSource = interactionSource,
     textStyle = TUITheme.typography.body6,
+    keyboardActions = keyboardAction,
+    keyboardOptions = keyboardOption
   ) { innerTextField ->
     TextFieldDefaults.DecorationBox(
       value = query,
