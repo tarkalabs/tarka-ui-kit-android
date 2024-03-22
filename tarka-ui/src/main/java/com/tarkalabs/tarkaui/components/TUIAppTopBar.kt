@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -91,6 +93,8 @@ import com.tarkalabs.tarkaui.theme.TUITheme
     containerColor = TUITheme.colors.surface
   ),
   scrollBehavior: TopAppBarScrollBehavior? = null,
+  keyboardOption: KeyboardOptions = KeyboardOptions.Default,
+  keyboardAction: KeyboardActions = KeyboardActions.Default,
   tags: TUIAppTopBarTags = TUIAppTopBarTags(),
 ) {
 
@@ -116,7 +120,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
       TUISearchBar(
         modifier = Modifier
           .fillMaxWidth()
-          .padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
+          .padding(start = 16.dp, end = 16.dp, bottom = 8.dp, top = 8.dp),
         query = searchQuery,
         placeholder = searchQueryHint,
         leadingIcon = TarkaIcons.Regular.ChevronLeft24,
@@ -126,7 +130,9 @@ import com.tarkalabs.tarkaui.theme.TUITheme
         },
         onQueryTextChange = {
           onSearchQuery(it)
-        })
+        },
+        keyboardAction = keyboardAction,
+        keyboardOption = keyboardOption)
     } else {
       TopAppBar(
         title = {

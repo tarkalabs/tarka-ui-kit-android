@@ -1,13 +1,16 @@
 package com.tarkalabs.tarkaui.components
 
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.SearchBar
-import androidx.compose.material3.SearchBarDefaults
-import androidx.compose.material3.SearchBarDefaults.inputFieldColors
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -16,6 +19,7 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaui.components.base.IconButtonSize.L
@@ -35,6 +39,8 @@ import kotlinx.coroutines.delay
   query: String,
   placeholder: String,
   trailingIcon: TarkaIcon = TarkaIcons.Regular.Dismiss24,
+  keyboardOption: KeyboardOptions = KeyboardOptions.Default,
+  keyboardAction: KeyboardActions = KeyboardActions.Default,
   onQueryTextChange: (String) -> Unit,
   leadingIcon: TarkaIcon? = null,
   onLeadingIconClick: (() -> Unit)? = null,
@@ -50,13 +56,9 @@ import kotlinx.coroutines.delay
   val leadingIconLambda: @Composable (() -> Unit)? = if (leadingIcon != null) {
     {
       TUIIconButton(
-        icon = leadingIcon,
-        buttonSize = L,
-        iconButtonStyle = GHOST,
-        onIconClick = {
+        icon = leadingIcon, buttonSize = L, iconButtonStyle = GHOST, onIconClick = {
           onLeadingIconClick?.invoke()
-        },
-        tags = searchBarTags.leadingIconTags
+        }, tags = searchBarTags.leadingIconTags
       )
     }
   } else null
@@ -70,38 +72,48 @@ import kotlinx.coroutines.delay
       )
     }
   } else null
+  val interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 
-  SearchBar(
+  BasicTextField(
+    value = query,
+    onValueChange = onQueryTextChange,
     modifier = modifier
       .testTag(searchBarTags.parentTag)
       .focusRequester(focusRequester)
-    ,
-    query = query,
-    onQueryChange = {
-      onQueryTextChange.invoke(it)
-    },
-    onSearch = {
-      onQueryTextChange.invoke(it)
-    },
-    active = false,
-    onActiveChange = {},
-    shape = RoundedCornerShape(75.dp),
-    leadingIcon = leadingIconLambda,
-    trailingIcon = trailingIconLambda,
-    placeholder = { Text(text = placeholder) },
-    colors = SearchBarDefaults.colors(
-      containerColor = TUITheme.colors.inputBackground,
-      dividerColor = Color.Transparent,
-      inputFieldColors = inputFieldColors(
+      .height(48.dp),
+    singleLine = true,
+    interactionSource = interactionSource,
+    textStyle = TUITheme.typography.body6,
+    keyboardActions = keyboardAction,
+    keyboardOptions = keyboardOption
+  ) { innerTextField ->
+    TextFieldDefaults.DecorationBox(
+      value = query,
+      innerTextField = innerTextField,
+      enabled = true,
+      singleLine = true,
+      visualTransformation = VisualTransformation.None,
+      interactionSource = interactionSource,
+      contentPadding = TextFieldDefaults.contentPaddingWithoutLabel(
+        top = 0.dp, bottom = 0.dp, end = 10.dp, start = 10.dp
+      ),
+      colors = TextFieldDefaults.colors(
         cursorColor = TUITheme.colors.inputText,
         focusedTextColor = TUITheme.colors.inputText,
         unfocusedTextColor = TUITheme.colors.inputText,
         unfocusedPlaceholderColor = TUITheme.colors.inputText.copy(alpha = 0.7f),
         focusedPlaceholderColor = TUITheme.colors.inputText.copy(alpha = 0.7f),
+        focusedIndicatorColor = Color.Transparent,
+        unfocusedIndicatorColor = Color.Transparent,
+        focusedContainerColor = TUITheme.colors.inputBackground,
+        unfocusedContainerColor = TUITheme.colors.inputBackground,
       ),
-    ),
-    enabled = true
-  ) {}
+      shape = RoundedCornerShape(75.dp),
+      placeholder = { Text(text = placeholder) },
+      leadingIcon = leadingIconLambda,
+      trailingIcon = trailingIconLambda,
+    )
+  }
 }
 
 data class TUISearchBarTags(
