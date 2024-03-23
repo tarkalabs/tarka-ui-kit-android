@@ -220,7 +220,7 @@ import kotlinx.coroutines.launch
 
     TUIDivider(
       color = if (showTextField) TUITheme.colors.primary else TUITheme.colors.surfaceVariant,
-      thickness = 2,
+      thickness = if (showTextField) 2 else 1,
       modifier = Modifier.padding(top = 10.dp)
     )
 
