@@ -68,7 +68,10 @@ TarkaUI Kit is a versatile Design Library built on top of Jetpack Compose, based
 To integrate TarkaUi Kit and Tarka Icons into your Android project, add the following dependencies in your app-level `build.gradle` file:
 
 ```kotlin
+
 implementation("com.tarkalabs:tarkaui:1.1.0")
+
+
 ```
 
 ## License
