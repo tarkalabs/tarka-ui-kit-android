@@ -22,6 +22,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaui.components.HorizontalSpacer
 import com.tarkalabs.tarkaui.components.VerticalSpacer
 import com.tarkalabs.tarkaui.components.base.BadgeStyle
 import com.tarkalabs.tarkaui.components.base.TUIBadge
@@ -114,7 +115,9 @@ fun TUISelectionCard(
           color = TUITheme.colors.inputTextDim.copy(alpha = 0.7f),
           style = TUITheme.typography.body7
         )
+        VerticalSpacer(space = 4)
       }
+
 
       Text(
         modifier = Modifier.testTag(tags.descriptionTag),
@@ -122,6 +125,7 @@ fun TUISelectionCard(
         color = TUITheme.colors.inputText,
         style = TUITheme.typography.heading6
       )
+      VerticalSpacer(space = 4)
 
       primaryDetails?.let {
         Text(
@@ -130,6 +134,7 @@ fun TUISelectionCard(
           color = TUITheme.colors.inputTextDim.copy(alpha = 0.7f),
           style = TUITheme.typography.body7
         )
+        VerticalSpacer(space = 4)
       }
 
       secondaryDescription?.let {
@@ -139,15 +144,17 @@ fun TUISelectionCard(
           color = TUITheme.colors.inputText,
           style = TUITheme.typography.heading6
         )
+        VerticalSpacer(space = 4)
       }
 
       secondaryDetails?.let {
         Text(
           modifier = Modifier.testTag(tags.details2Tag),
           text = it,
-          color = if(secondaryDetailStyle == NORMAL) TUITheme.colors.inputTextDim.copy(alpha = 0.7f) else TUITheme.colors.error,
+          color = if (secondaryDetailStyle == NORMAL) TUITheme.colors.inputTextDim.copy(alpha = 0.7f) else TUITheme.colors.error,
           style = TUITheme.typography.body7
         )
+        VerticalSpacer(space = 4)
       }
 
     }
@@ -164,6 +171,7 @@ fun TUISelectionCard(
     }
 
     if (showCheckMarkIcon && isSelected) {
+      HorizontalSpacer(space = 4)
       Icon(
         modifier = Modifier
           .align(Alignment.CenterVertically)
@@ -175,6 +183,7 @@ fun TUISelectionCard(
       )
     } else {
       if (showTrailingIcon) {
+        HorizontalSpacer(space = 4)
         Icon(
           modifier = Modifier
             .align(Alignment.CenterVertically)

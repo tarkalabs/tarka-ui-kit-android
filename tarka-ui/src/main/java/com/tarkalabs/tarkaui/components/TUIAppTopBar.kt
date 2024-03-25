@@ -3,7 +3,9 @@ package com.tarkalabs.tarkaui.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -30,7 +32,8 @@ import com.tarkalabs.tarkaui.components.base.TUIIconButton
 import com.tarkalabs.tarkaui.components.base.TUIIconButtonTags
 import com.tarkalabs.tarkaui.icons.ChevronLeft24
 import com.tarkalabs.tarkaui.icons.ChevronRight20
-import com.tarkalabs.tarkaui.icons.Search16
+import com.tarkalabs.tarkaui.icons.ChevronRight24
+import com.tarkalabs.tarkaui.icons.Search20
 import com.tarkalabs.tarkaui.icons.Search24
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons
@@ -114,6 +117,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
     modifier = modifier
       .background(color = TUITheme.colors.surface)
       .fillMaxWidth()
+      .sizeIn(maxHeight = 64.dp)
       .wrapContentHeight(), horizontalAlignment = Alignment.CenterHorizontally
   ) {
     if (showSearchBarState) {
@@ -228,7 +232,7 @@ data class TUIAppTopBarTags(
     Column {
       TUIAppTopBar(
         title = "Lorem Ipsum",
-        navigationIcon = TarkaIcons.Regular.ChevronRight20,
+        navigationIcon = TarkaIcons.Regular.ChevronRight24,
         menuItemIconOne = TarkaIcons.Regular.ChevronRight20,
         menuItemIconTwo = TarkaIcons.Regular.ChevronRight20,
         menuItemIconThree = TarkaIcons.Regular.ChevronRight20,
@@ -240,13 +244,13 @@ data class TUIAppTopBarTags(
       TUIAppTopBar(
         title = "Lorem Ipsum",
         navigationIcon = TarkaIcons.Regular.ChevronRight20,
-        searchIcon = TarkaIcons.Regular.Search16
+        searchIcon = TarkaIcons.Regular.Search20
       )
       VerticalSpacer(space = 5)
       TUIAppTopBar(
         title = "Lorem Ipsum",
         navigationIcon = TarkaIcons.Regular.ChevronRight20,
-        searchIcon = TarkaIcons.Regular.Search16,
+        searchIcon = TarkaIcons.Regular.Search20,
         showSearchBar = true
       )
     }

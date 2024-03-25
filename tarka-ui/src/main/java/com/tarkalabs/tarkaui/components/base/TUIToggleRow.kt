@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaui.components.VerticalSpacer
 import com.tarkalabs.tarkaui.components.base.ToggleRowStyle.Title
 import com.tarkalabs.tarkaui.components.base.ToggleRowStyle.TitleWithDescription
 import com.tarkalabs.tarkaui.theme.TUITheme
@@ -64,7 +65,8 @@ sealed class ToggleRowStyle {
   title: String,
   style: TitleWithDescription
 ) {
-  TUIToggleRowTitle(title = title,)
+  TUIToggleRowTitle(title = title)
+  VerticalSpacer(space = 4)
   Text(
     text = style.description,
     style = TUITheme.typography.body7,
