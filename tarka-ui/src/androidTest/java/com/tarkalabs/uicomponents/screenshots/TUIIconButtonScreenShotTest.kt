@@ -69,7 +69,7 @@ class TUIIconButtonScreenShotTest(
       TUIIconButton(
         icon = TarkaIcons.Regular.Stop24,
         buttonSize = XS,
-        iconButtonStyle = Custom(TUITheme.colors.success),
+        iconButtonStyle = Custom(TUITheme.colors.success, TUITheme.colors.onSecondaryAlt),
       )
   }
 }
