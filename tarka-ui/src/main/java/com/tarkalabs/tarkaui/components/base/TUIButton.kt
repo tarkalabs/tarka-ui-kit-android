@@ -335,13 +335,25 @@ data class TUIButtonTags(
           Spacer(modifier = Modifier.height(5.dp))
           Text("Custom Button", fontSize = 24.sp)
           Spacer(modifier = Modifier.height(20.dp))
-          TUIButton(label = "Custom Button", height = M, buttonStyle = Custom(contentColor = TUITheme.colors.onSecondaryAlt, containerColor = TUITheme.colors.secondaryAlt), onClick = {})
+          TUIButton(label = "Custom Button", height = M, buttonStyle = Custom(
+            contentColor = TUITheme.colors.onSecondaryAlt,
+            containerColor = TUITheme.colors.secondaryAlt
+          ), onClick = {})
           Spacer(modifier = Modifier.height(10.dp))
-          TUIButton(label = "Custom Button", height = L, buttonStyle = Custom(contentColor = TUITheme.colors.onSecondaryAlt, containerColor = TUITheme.colors.secondaryAlt), onClick = {})
+          TUIButton(label = "Custom Button", height = L, buttonStyle = Custom(
+            contentColor = TUITheme.colors.onSecondaryAlt,
+            containerColor = TUITheme.colors.secondaryAlt
+          ), onClick = {})
           Spacer(modifier = Modifier.height(10.dp))
-          TUIButton(label = "Custom Button", height = S, buttonStyle = Custom(contentColor = TUITheme.colors.onSecondaryAlt, containerColor = TUITheme.colors.secondaryAlt), onClick = {})
+          TUIButton(label = "Custom Button", height = S, buttonStyle = Custom(
+            contentColor = TUITheme.colors.onSecondaryAlt,
+            containerColor = TUITheme.colors.secondaryAlt
+          ), onClick = {})
           Spacer(modifier = Modifier.height(10.dp))
-          TUIButton(label = "Custom Button", height = XS, buttonStyle = Custom(contentColor = TUITheme.colors.onSecondaryAlt, containerColor = TUITheme.colors.secondaryAlt), onClick = {})
+          TUIButton(label = "Custom Button", height = XS, buttonStyle = Custom(
+            contentColor = TUITheme.colors.onSecondaryAlt,
+            containerColor = TUITheme.colors.secondaryAlt
+          ), onClick = {})
         }
       }
     }
