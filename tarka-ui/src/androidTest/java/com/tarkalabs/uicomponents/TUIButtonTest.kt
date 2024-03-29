@@ -4,7 +4,7 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
-import com.tarkalabs.tarkaui.components.base.ButtonStyle.SECONDARY
+import com.tarkalabs.tarkaui.components.base.ButtonStyle.Secondary
 import com.tarkalabs.tarkaui.components.base.TUIButton
 import com.tarkalabs.tarkaui.components.base.TUIButtonTags
 import org.junit.Rule
@@ -20,7 +20,7 @@ class TUIButtonTest {
 
   @Test fun button_Displayed() {
     composable.setContent {
-      TUIButton(label = "Button", tags = tags, onClick = { }, buttonStyle = SECONDARY)
+      TUIButton(label = "Button", tags = tags, onClick = { }, buttonStyle = Secondary)
     }
     composable.onNodeWithText("Button").assertIsDisplayed()
   }
@@ -32,7 +32,7 @@ class TUIButtonTest {
       TUIButton(
         label = "Button",
         onClick = onClick,
-        buttonStyle = SECONDARY
+        buttonStyle = Secondary
       )
     }
     composable.onNodeWithText("Button").performClick()
