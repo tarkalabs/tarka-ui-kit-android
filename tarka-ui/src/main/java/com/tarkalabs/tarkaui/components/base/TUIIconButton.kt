@@ -59,7 +59,7 @@ sealed class IconButtonStyle {
   object Secondary : IconButtonStyle()
   object Ghost : IconButtonStyle()
   object Outline : IconButtonStyle()
-  data class Custom(val color: Color) : IconButtonStyle()
+  data class Custom(val contentColor: Color, val containerColor: Color) : IconButtonStyle()
 }
 
 /**
@@ -136,9 +136,9 @@ sealed class IconButtonStyle {
     }
 
     is Custom -> {
-      val contentColor = icon.tintColor ?: TUITheme.colors.onSecondary
+      val contentColor = icon.tintColor ?: iconButtonStyle.contentColor
       iconButtonColors = IconButtonDefaults.iconButtonColors(
-        containerColor = iconButtonStyle.color,
+        containerColor = iconButtonStyle.containerColor,
         contentColor = contentColor,
       )
     }
@@ -293,24 +293,24 @@ data class TUIIconButtonTags(
         verticalAlignment = Alignment.CenterVertically
       ) {
         TUIIconButton(
-          icon = TarkaIcons.Filled.Stop16, buttonSize = XS, iconButtonStyle = Custom(TUITheme.colors.success)
+          icon = TarkaIcons.Filled.Stop16, buttonSize = XS, iconButtonStyle = Custom(TUITheme.colors.onSecondaryAlt, TUITheme.colors.success)
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.Filled.Stop16, buttonSize = S, iconButtonStyle = Custom(TUITheme.colors.success)
+          icon = TarkaIcons.Filled.Stop16, buttonSize = S, iconButtonStyle = Custom(TUITheme.colors.onSecondaryAlt, TUITheme.colors.success)
         )
         Spacer(modifier = Modifier.width(20.dp))
 
         TUIIconButton(
-          icon = TarkaIcons.Filled.Stop20, buttonSize = M, iconButtonStyle = Custom(TUITheme.colors.success)
+          icon = TarkaIcons.Filled.Stop20, buttonSize = M, iconButtonStyle = Custom(TUITheme.colors.onSecondaryAlt, TUITheme.colors.success)
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.Filled.Stop20, buttonSize = L, iconButtonStyle = Custom(TUITheme.colors.success)
+          icon = TarkaIcons.Filled.Stop20, buttonSize = L, iconButtonStyle = Custom(TUITheme.colors.onSecondaryAlt, TUITheme.colors.success)
         )
         Spacer(modifier = Modifier.width(20.dp))
         TUIIconButton(
-          icon = TarkaIcons.Filled.Stop24, buttonSize = XL, iconButtonStyle = Custom(TUITheme.colors.onSecondaryAlt)
+          icon = TarkaIcons.Filled.Stop24, buttonSize = XL, iconButtonStyle = Custom(TUITheme.colors.onSecondaryAlt, TUITheme.colors.success)
         )
       }
     }
