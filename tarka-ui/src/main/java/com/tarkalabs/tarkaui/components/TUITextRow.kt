@@ -36,7 +36,7 @@ import com.tarkalabs.tarkaui.components.TextRowStyle.DateStyle
 import com.tarkalabs.tarkaui.components.TextRowStyle.Title
 import com.tarkalabs.tarkaui.components.TextRowStyle.TitleWithDescription
 import com.tarkalabs.tarkaui.components.TextRowStyle.TitleWithNotAvailable
-import com.tarkalabs.tarkaui.components.base.IconButtonStyle.GHOST
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.Ghost
 import com.tarkalabs.tarkaui.components.base.TUIIconButton
 import com.tarkalabs.tarkaui.components.base.TUIIconButtonTags
 import com.tarkalabs.tarkaui.icons.Circle24
@@ -133,13 +133,13 @@ import com.tarkalabs.tarkaui.theme.TUITheme
       if (iconOne != null) TUIIconButton(
         icon = iconOne,
         onIconClick = onIconOneClick,
-        iconButtonStyle = GHOST,
+        iconButtonStyle = Ghost,
         tags = tags.iconOneTags
       )
       if (iconTwo != null) TUIIconButton(
         icon = iconTwo,
         onIconClick = onIconTwoClick,
-        iconButtonStyle = GHOST,
+        iconButtonStyle = Ghost,
         tags = tags.iconTwoTags
 
       )

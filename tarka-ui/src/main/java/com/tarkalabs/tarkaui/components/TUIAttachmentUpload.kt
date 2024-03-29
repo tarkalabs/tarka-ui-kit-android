@@ -32,7 +32,7 @@ import com.tarkalabs.tarkaui.components.TUIAttachmentUpload.AttachmentState.UpLo
 import com.tarkalabs.tarkaui.components.TUIAttachmentUpload.AttachmentState.UpLoading
 import com.tarkalabs.tarkaui.components.TUIMediaThumbnailType.Document
 import com.tarkalabs.tarkaui.components.base.IconButtonSize
-import com.tarkalabs.tarkaui.components.base.IconButtonStyle.GHOST
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.Ghost
 import com.tarkalabs.tarkaui.components.base.TUIIconButton
 import com.tarkalabs.tarkaui.components.base.TUIIconButtonTags
 import com.tarkalabs.tarkaui.icons.Checkmark12
@@ -158,7 +158,7 @@ object TUIAttachmentUpload {
 
       TUIIconButton(
         icon = trailingIcon,
-        iconButtonStyle = GHOST,
+        iconButtonStyle = Ghost,
         buttonSize = IconButtonSize.XL,
         tags = tags.menuItemTag,
         onIconClick = onTrailingIconClick

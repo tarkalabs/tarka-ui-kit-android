@@ -48,7 +48,7 @@ import com.tarkalabs.tarkaui.components.ChipType.Input
 import com.tarkalabs.tarkaui.components.TUIChip
 import com.tarkalabs.tarkaui.components.TUIChipTags
 import com.tarkalabs.tarkaui.components.TUIDivider
-import com.tarkalabs.tarkaui.components.base.IconButtonStyle.GHOST
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.Ghost
 import com.tarkalabs.tarkaui.components.base.TUIIconButton
 import com.tarkalabs.tarkaui.components.base.TUIIconButtonTags
 import com.tarkalabs.tarkaui.extentions.clickableWithoutRipple
@@ -213,7 +213,7 @@ import kotlinx.coroutines.launch
       TUIIconButton(
         icon = trailingIcon,
         onIconClick = trailingIconClick,
-        iconButtonStyle = GHOST,
+        iconButtonStyle = Ghost,
         tags = tags.iconButtonTag
       )
     }

@@ -1,16 +1,16 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
-
 package com.tarkalabs.uicomponents.screenshots
 
-import androidx.compose.material3.ExperimentalMaterial3Api
 import com.tarkalabs.tarkaui.components.base.IconButtonSize.XS
-import com.tarkalabs.tarkaui.components.base.IconButtonStyle.GHOST
-import com.tarkalabs.tarkaui.components.base.IconButtonStyle.OUTLINE
-import com.tarkalabs.tarkaui.components.base.IconButtonStyle.PRIMARY
-import com.tarkalabs.tarkaui.components.base.IconButtonStyle.SECONDARY
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.Custom
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.Ghost
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.Outline
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.Primary
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.Secondary
 import com.tarkalabs.tarkaui.components.base.TUIIconButton
 import com.tarkalabs.tarkaui.icons.ChevronRight20
+import com.tarkalabs.tarkaui.icons.Stop24
 import com.tarkalabs.tarkaui.icons.TarkaIcons
+import com.tarkalabs.tarkaui.theme.TUITheme
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
@@ -37,7 +37,7 @@ class TUIIconButtonScreenShotTest(
       TUIIconButton(
         icon = TarkaIcons.Regular.ChevronRight20,
         buttonSize = XS,
-        iconButtonStyle = PRIMARY,
+        iconButtonStyle = Primary,
       )
   }
 
@@ -45,7 +45,7 @@ class TUIIconButtonScreenShotTest(
       TUIIconButton(
         icon = TarkaIcons.Regular.ChevronRight20,
         buttonSize = XS,
-        iconButtonStyle = SECONDARY,
+        iconButtonStyle = Secondary,
       )
   }
 
@@ -53,7 +53,7 @@ class TUIIconButtonScreenShotTest(
       TUIIconButton(
         icon = TarkaIcons.Regular.ChevronRight20,
         buttonSize = XS,
-        iconButtonStyle = GHOST,
+        iconButtonStyle = Ghost,
       )
   }
 
@@ -61,7 +61,15 @@ class TUIIconButtonScreenShotTest(
       TUIIconButton(
         icon = TarkaIcons.Regular.ChevronRight20,
         buttonSize = XS,
-        iconButtonStyle = OUTLINE,
+        iconButtonStyle = Outline,
+      )
+  }
+
+  @Test fun customIconButton() = compareScreenshotFor(darkTheme, "_customIconButton_$testName"){
+      TUIIconButton(
+        icon = TarkaIcons.Regular.Stop24,
+        buttonSize = XS,
+        iconButtonStyle = Custom(TUITheme.colors.success),
       )
   }
 }

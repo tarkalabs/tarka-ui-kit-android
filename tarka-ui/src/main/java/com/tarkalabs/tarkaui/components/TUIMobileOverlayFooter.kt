@@ -53,7 +53,7 @@ fun TUIMobileOverlayFooter(
     Spacer(modifier = Modifier.weight(1f))
     if (showMiddleDismiss) TUIIconButton(
       icon = TarkaIcons.Regular.Dismiss24,
-      iconButtonStyle = IconButtonStyle.GHOST,
+      iconButtonStyle = IconButtonStyle.Ghost,
       onIconClick = { onMiddleDismissClick?.invoke() }
     )
     Spacer(modifier = Modifier.weight(1f))
@@ -76,13 +76,13 @@ fun TUIMobileOverlayFooterPreview() {
         leftContent = {
           TUIIconButton(
             icon = TarkaIcons.Regular.ChevronLeft24,
-            iconButtonStyle = IconButtonStyle.GHOST
+            iconButtonStyle = IconButtonStyle.Ghost
           )
         },
         rightContent = {
           TUIIconButton(
             icon = TarkaIcons.Regular.ChevronRight24,
-            iconButtonStyle = IconButtonStyle.GHOST
+            iconButtonStyle = IconButtonStyle.Ghost
           )
         }
       )
@@ -96,13 +96,13 @@ fun TUIMobileOverlayFooterPreview() {
         leftContent = {
           TUIIconButton(
             icon = TarkaIcons.Regular.ChevronLeft24,
-            iconButtonStyle = IconButtonStyle.GHOST
+            iconButtonStyle = IconButtonStyle.Ghost
           )
         },
         rightContent = {
           TUIIconButton(
             icon = TarkaIcons.Regular.ChevronRight24,
-            iconButtonStyle = IconButtonStyle.GHOST
+            iconButtonStyle = IconButtonStyle.Ghost
           )
         }
       )
@@ -112,7 +112,7 @@ fun TUIMobileOverlayFooterPreview() {
         rightContent = {
           TUIIconButton(
             icon = TarkaIcons.Regular.ChevronRight24,
-            iconButtonStyle = IconButtonStyle.GHOST
+            iconButtonStyle = IconButtonStyle.Ghost
           )
         }
       )
@@ -122,7 +122,7 @@ fun TUIMobileOverlayFooterPreview() {
         leftContent = {
           TUIIconButton(
             icon = TarkaIcons.Regular.ChevronLeft24,
-            iconButtonStyle = IconButtonStyle.GHOST
+            iconButtonStyle = IconButtonStyle.Ghost
           )
         }
       )

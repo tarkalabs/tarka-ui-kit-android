@@ -23,7 +23,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaui.components.base.IconButtonSize.L
-import com.tarkalabs.tarkaui.components.base.IconButtonStyle.GHOST
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.Ghost
 import com.tarkalabs.tarkaui.components.base.TUIIconButton
 import com.tarkalabs.tarkaui.components.base.TUIIconButtonTags
 import com.tarkalabs.tarkaui.icons.BarcodeScanner24
@@ -56,7 +56,7 @@ import kotlinx.coroutines.delay
   val leadingIconLambda: @Composable (() -> Unit)? = if (leadingIcon != null) {
     {
       TUIIconButton(
-        icon = leadingIcon, buttonSize = L, iconButtonStyle = GHOST, onIconClick = {
+        icon = leadingIcon, buttonSize = L, iconButtonStyle = Ghost, onIconClick = {
           onLeadingIconClick?.invoke()
         }, tags = searchBarTags.leadingIconTags
       )
@@ -66,7 +66,7 @@ import kotlinx.coroutines.delay
   val trailingIconLambda: @Composable (() -> Unit)? = if (query.isNotEmpty()) {
     {
       TUIIconButton(
-        icon = trailingIcon, buttonSize = L, iconButtonStyle = GHOST, onIconClick = {
+        icon = trailingIcon, buttonSize = L, iconButtonStyle = Ghost, onIconClick = {
           onQueryTextChange.invoke("")
         }, tags = searchBarTags.trailingIconTags
       )
