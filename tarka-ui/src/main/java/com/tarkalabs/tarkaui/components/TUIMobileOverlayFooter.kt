@@ -16,8 +16,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaui.components.base.ButtonStyle.ERROR
-import com.tarkalabs.tarkaui.components.base.ButtonStyle.OUTLINE
+import com.tarkalabs.tarkaui.components.base.ButtonStyle
+import com.tarkalabs.tarkaui.components.base.ButtonStyle.Error
+import com.tarkalabs.tarkaui.components.base.ButtonStyle.Outline
 import com.tarkalabs.tarkaui.components.base.IconButtonStyle
 import com.tarkalabs.tarkaui.components.base.TUIButton
 import com.tarkalabs.tarkaui.components.base.TUIIconButton
@@ -134,14 +135,14 @@ fun TUIMobileOverlayFooterPreview() {
           TUIButton(
             label = "Cancel",
             onClick = {},
-            buttonStyle = OUTLINE
+            buttonStyle = Outline
           )
         },
         rightContent = {
           TUIButton(
             label = "Delete",
             onClick = {},
-            buttonStyle = ERROR
+            buttonStyle = Error
           )
         }
       )
@@ -155,14 +156,14 @@ fun TUIMobileOverlayFooterPreview() {
           TUIButton(
             label = "Cancel",
             onClick = {},
-            buttonStyle = OUTLINE
+            buttonStyle = Outline
           )
         },
         rightContent = {
           TUIButton(
             label = "Delete",
             onClick = {},
-            buttonStyle = ERROR
+            buttonStyle = ButtonStyle.Error
           )
         }
       )
@@ -173,7 +174,7 @@ fun TUIMobileOverlayFooterPreview() {
           TUIButton(
             label = "Delete",
             onClick = {},
-            buttonStyle = ERROR
+            buttonStyle = Error
           )
         }
       )
@@ -184,7 +185,7 @@ fun TUIMobileOverlayFooterPreview() {
           TUIButton(
             label = "Cancel",
             onClick = {},
-            buttonStyle = OUTLINE
+            buttonStyle = Outline
           )
         }
       )
