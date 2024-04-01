@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.toggleable
@@ -23,7 +24,6 @@ import com.tarkalabs.tarkaui.components.base.ToggleRowStyle.Title
 import com.tarkalabs.tarkaui.components.base.ToggleRowStyle.TitleWithDescription
 import com.tarkalabs.tarkaui.icons.Checkmark16
 import com.tarkalabs.tarkaui.icons.TarkaIcon
-import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.icons.TarkaIcons.Filled
 
 /**
@@ -56,6 +56,7 @@ onCheckedChange = { isChecked = !isChecked }
   paddingValues: PaddingValues = PaddingValues(),
   onCheckedChange: () -> Unit,
 ) {
+  val minHeight = if (style == Title) 40.dp else 56.dp
   Row(
     horizontalArrangement = Arrangement.Center,
     verticalAlignment = Alignment.CenterVertically,
@@ -67,6 +68,7 @@ onCheckedChange = { isChecked = !isChecked }
       })
       .padding(paddingValues)
       .testTag(tags.parentTag)
+      .defaultMinSize(minHeight = minHeight)
   ) {
     TUICheckBox(
       checked = checked,
