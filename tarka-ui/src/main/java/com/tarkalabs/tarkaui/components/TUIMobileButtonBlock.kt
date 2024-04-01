@@ -14,8 +14,8 @@ import com.tarkalabs.tarkaui.icons.ChevronDown24
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
 import com.tarkalabs.tarkaui.components.base.ButtonSize.XL
-import com.tarkalabs.tarkaui.components.base.ButtonStyle.OUTLINE
-import com.tarkalabs.tarkaui.components.base.ButtonStyle.PRIMARY
+import com.tarkalabs.tarkaui.components.base.ButtonStyle.Outline
+import com.tarkalabs.tarkaui.components.base.ButtonStyle.Primary
 import com.tarkalabs.tarkaui.components.base.TUIButton
 import com.tarkalabs.tarkaui.components.base.TUIButtonTags
 import com.tarkalabs.tarkaui.theme.TUITheme
@@ -61,7 +61,7 @@ fun TUIMobileButtonBlock(
           height = XL,
           label = outlineButtonLabel,
           onClick = { outlineButtonOnClick?.invoke() },
-          buttonStyle = OUTLINE,
+          buttonStyle = Outline,
           leadingIcon = outlineLeadingIcon,
           trailingIcon = outlineTrailingIcon,
           modifier = if (primaryButtonWeight == null) Modifier.weight(1f) else Modifier.wrapContentWidth(),
@@ -74,7 +74,7 @@ fun TUIMobileButtonBlock(
           height = XL,
           label = it,
           onClick = { primaryButtonOnClick?.invoke() },
-          buttonStyle = PRIMARY,
+          buttonStyle = Primary,
           leadingIcon = primaryLeadingIcon,
           trailingIcon = primaryTrailingIcon,
           modifier = Modifier.weight(
