@@ -118,7 +118,7 @@ fun TUIMobileOverlayHeader(
             TUIIconButton(
               icon = TarkaIcons.Regular.ChevronLeft24,
               buttonSize = IconButtonSize.XL,
-              iconButtonStyle = IconButtonStyle.GHOST,
+              iconButtonStyle = IconButtonStyle.Ghost,
               onIconClick = style.onBackIconClick,
               tags = tags.leadingIconButtonTag
             )
@@ -145,7 +145,7 @@ fun TUIMobileOverlayHeader(
             TUIIconButton(
               icon = style.trailingIcon,
               buttonSize = IconButtonSize.L,
-              iconButtonStyle = IconButtonStyle.GHOST,
+              iconButtonStyle = IconButtonStyle.Ghost,
               onIconClick = style.onTrailingIconClick,
               tags = tags.trailingIconButtonTag
             )

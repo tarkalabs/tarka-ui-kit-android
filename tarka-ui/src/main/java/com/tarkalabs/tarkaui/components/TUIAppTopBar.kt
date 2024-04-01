@@ -27,7 +27,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaui.components.base.IconButtonSize.XL
-import com.tarkalabs.tarkaui.components.base.IconButtonStyle.GHOST
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.Ghost
 import com.tarkalabs.tarkaui.components.base.TUIIconButton
 import com.tarkalabs.tarkaui.components.base.TUIIconButtonTags
 import com.tarkalabs.tarkaui.icons.ChevronLeft24
@@ -155,7 +155,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
                 onIconClick = onNavigationIconClick,
                 icon = navigationIcon,
                 tags = tags.navigationIconTags,
-                iconButtonStyle = GHOST,
+                iconButtonStyle = Ghost,
                 buttonSize = XL
               )
             }
@@ -167,7 +167,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
               TUIIconButton(
                 icon = searchIcon,
                 tags = tags.searchIconTags,
-                iconButtonStyle = GHOST,
+                iconButtonStyle = Ghost,
                 onIconClick = {
                   if (!disableSearchIcon) {
                     showSearchBarState = true
@@ -181,7 +181,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
               TUIIconButton(
                 icon = menuItemIconThree,
                 tags = tags.menuIconThreeTags,
-                iconButtonStyle = GHOST,
+                iconButtonStyle = Ghost,
                 onIconClick = onThirdMenuItemClicked,
                 buttonSize = XL
               )
@@ -192,7 +192,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
                 onIconClick = onSecondMenuItemClicked,
                 icon = menuItemIconTwo,
                 tags = tags.menuIconTwoTags,
-                iconButtonStyle = GHOST,
+                iconButtonStyle = Ghost,
                 buttonSize = XL
               )
             }
@@ -202,7 +202,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
                 onIconClick = onFirstMenuItemClicked,
                 tags = tags.menuIconOneTags,
                 icon = menuItemIconOne,
-                iconButtonStyle = GHOST,
+                iconButtonStyle = Ghost,
                 buttonSize = XL
               )
             }

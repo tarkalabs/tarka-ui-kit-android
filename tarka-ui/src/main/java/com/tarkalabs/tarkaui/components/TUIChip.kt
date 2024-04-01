@@ -34,7 +34,7 @@ import com.tarkalabs.tarkaui.components.base.AvatarSize.XS
 import com.tarkalabs.tarkaui.components.base.AvatarType
 import com.tarkalabs.tarkaui.components.base.BadgeStyle
 import com.tarkalabs.tarkaui.components.base.IconButtonSize.M
-import com.tarkalabs.tarkaui.components.base.IconButtonStyle.GHOST
+import com.tarkalabs.tarkaui.components.base.IconButtonStyle.Ghost
 import com.tarkalabs.tarkaui.components.base.TUIAvatar
 import com.tarkalabs.tarkaui.components.base.TUIBadge
 import com.tarkalabs.tarkaui.components.base.TUIIconButton
@@ -154,7 +154,7 @@ enum class ChipSize(val size: Dp) {
         {
           TUIIconButton(
             icon = type.trailingIcon,
-            iconButtonStyle = GHOST,
+            iconButtonStyle = Ghost,
             onIconClick = {
               onDismissClick?.invoke()
             },
@@ -233,7 +233,7 @@ enum class ChipSize(val size: Dp) {
         {
           TUIIconButton(
             icon = TarkaIcons.Filled.Dismiss20.copy(tintColor = if (type.selected) TUITheme.colors.onSecondary else TUITheme.colors.onSurface),
-            iconButtonStyle = GHOST,
+            iconButtonStyle = Ghost,
           )
         }
       } else if (type.showTrailingCaret) {
