@@ -116,7 +116,7 @@ import kotlinx.coroutines.launch
     Row(
       modifier = Modifier
         .fillMaxWidth(),
-      verticalAlignment = Alignment.CenterVertically,
+      verticalAlignment = Alignment.Top,
     ) {
       Text(
         text = title,
