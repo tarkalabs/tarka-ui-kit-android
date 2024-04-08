@@ -25,6 +25,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaui.components.HorizontalSpacer
@@ -100,7 +101,8 @@ sealed class TUIInputFieldContentType {
   maxCharLength: Int = Int.MAX_VALUE,
   singleLine: Boolean = false,
   inputShape: Shape = RoundedCornerShape(8.dp),
-  inputFieldTye: TUIInputFieldType = InputField
+  inputFieldTye: TUIInputFieldType = InputField,
+  visualTransformation: VisualTransformation = VisualTransformation.None,
 ) {
 
   val icon = iconFor(status)
@@ -193,7 +195,8 @@ sealed class TUIInputFieldContentType {
     supportingText = helperMessageLambda,
     maxLines = maxLines,
     minLines = minLines,
-    textStyle = TUITheme.typography.body6
+    textStyle = TUITheme.typography.body6,
+    visualTransformation = visualTransformation
   )
 }
 
