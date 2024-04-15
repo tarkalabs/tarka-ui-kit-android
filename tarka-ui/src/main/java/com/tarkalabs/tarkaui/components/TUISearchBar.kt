@@ -83,7 +83,7 @@ import kotlinx.coroutines.delay
       .height(48.dp),
     singleLine = true,
     interactionSource = interactionSource,
-    textStyle = TUITheme.typography.body6,
+    textStyle = TUITheme.typography.body6.copy(color = TUITheme.colors.inputText),
     keyboardActions = keyboardAction,
     keyboardOptions = keyboardOption
   ) { innerTextField ->
