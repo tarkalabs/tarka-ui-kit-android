@@ -1,11 +1,8 @@
 package com.tarkalabs.tarkaui.theme
 
 import android.app.Activity
-import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
@@ -22,12 +19,16 @@ import androidx.core.view.WindowCompat
 ) {
   val colors = if (darkTheme) darkColors else lightColors
   val view = LocalView.current
+  val  context = LocalContext.current
 
   if (!view.isInEditMode) {
-    SideEffect {
-      val window = (view.context as Activity).window
-      window.statusBarColor = colors.surface.toArgb()
-      WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
+    val activity = context as? Activity
+    if (activity != null) {
+      SideEffect {
+        val window = activity.window
+        window.statusBarColor = colors.surface.toArgb()
+        WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
+      }
     }
   }
 
