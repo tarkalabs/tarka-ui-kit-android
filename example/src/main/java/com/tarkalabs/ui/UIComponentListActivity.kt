@@ -17,10 +17,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaui.components.TUIAppTopBar
+import com.tarkalabs.tarkaui.components.TUISearchBar
 import com.tarkalabs.tarkaui.components.VerticalSpacer
 import com.tarkalabs.tarkaui.components.base.TUIButton
 import com.tarkalabs.tarkaui.icons.ChevronRight20
-import com.tarkalabs.tarkaui.icons.Search24
 import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.theme.TUITheme
 
@@ -47,15 +47,7 @@ class UIComponentListActivity : ComponentActivity() {
             menuItemIconOne = TarkaIcons.Regular.ChevronRight20,
             menuItemIconTwo = TarkaIcons.Regular.ChevronRight20,
             menuItemIconThree = TarkaIcons.Regular.ChevronRight20,
-            searchIcon = TarkaIcons.Regular.Search24,
-            searchQuery = query,
-            searchQueryHint = "Search something",
-            onSearchQuery = {
-              query = it
-            },
-            showSearchBar = showSearchbar
           )
-
         }) { paddingValues ->
           Column(
             modifier = Modifier
@@ -65,10 +57,9 @@ class UIComponentListActivity : ComponentActivity() {
               .padding(horizontal = 8.dp)
           ) {
             VerticalSpacer(space = 20)
-            TUIButton(label = "Show Searchbar") {
-              query = "Hello there"
-              showSearchbar = true
-            }
+            TUISearchBar(query = query, placeholder = "Search here", onQueryTextChange = {
+              query = it
+            })
             VerticalSpacer(space = 20)
             TUIButton(label = "Hide Searchbar") {
               query = ""
