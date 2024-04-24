@@ -17,9 +17,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaui.components.TUIAppTopBar
-import com.tarkalabs.tarkaui.components.TUISearchBar
+import com.tarkalabs.tarkaui.components.TUITextRow
+import com.tarkalabs.tarkaui.components.TextRowStyle
 import com.tarkalabs.tarkaui.components.VerticalSpacer
-import com.tarkalabs.tarkaui.components.base.TUIButton
 import com.tarkalabs.tarkaui.icons.ChevronRight20
 import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.theme.TUITheme
@@ -57,14 +57,9 @@ class UIComponentListActivity : ComponentActivity() {
               .padding(horizontal = 8.dp)
           ) {
             VerticalSpacer(space = 20)
-            TUISearchBar(query = query, placeholder = "Search here", onQueryTextChange = {
-              query = it
-            })
+            TUITextRow(title = "Dates", style = TextRowStyle.DateStyle("26-11-2020","26-11-2200"))
             VerticalSpacer(space = 20)
-            TUIButton(label = "Hide Searchbar") {
-              query = ""
-              showSearchbar = false
-            }
+            TUITextRow(title = "Dates", style = TextRowStyle.DateStyle("Not Available","Not Available"))
           }
 
         }
