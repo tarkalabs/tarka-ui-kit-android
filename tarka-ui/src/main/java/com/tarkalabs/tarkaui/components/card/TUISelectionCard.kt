@@ -18,10 +18,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaui.R
 import com.tarkalabs.tarkaui.components.HorizontalSpacer
 import com.tarkalabs.tarkaui.components.VerticalSpacer
 import com.tarkalabs.tarkaui.components.base.BadgeStyle
@@ -40,6 +42,7 @@ enum class SecondaryDetailsStyle {
   NORMAL,
   ERROR
 }
+
 /**
  * This Composable function is used to Show the Cards in a list to pick the particular from User.
  *
@@ -64,7 +67,7 @@ fun TUISelectionCard(
   modifier: Modifier = Modifier,
   leadingIcon: TarkaIcon? = null,
   label: String? = null,
-  primaryDescription: String,
+  primaryDescription: String? = null,
   secondaryDescription: String? = null,
   primaryDetails: String? = null,
   secondaryDetails: String? = null,
@@ -119,12 +122,21 @@ fun TUISelectionCard(
       }
 
 
-      Text(
-        modifier = Modifier.testTag(tags.descriptionTag),
-        text = primaryDescription,
-        color = TUITheme.colors.inputText,
-        style = TUITheme.typography.heading6
-      )
+      if (primaryDescription.isNullOrEmpty()) {
+        Text(
+          modifier = Modifier.testTag(tags.descriptionTag),
+          text = stringResource(id = R.string.not_availble),
+          color = TUITheme.colors.utilityDisabledContent,
+          style = TUITheme.typography.heading6
+        )
+      } else {
+        Text(
+          modifier = Modifier.testTag(tags.descriptionTag),
+          text = primaryDescription,
+          color = TUITheme.colors.inputText,
+          style = TUITheme.typography.heading6
+        )
+      }
       VerticalSpacer(space = 4)
 
       primaryDetails?.let {
@@ -225,7 +237,7 @@ fun TUISelectionCardPreview() {
   ) {
     TUISelectionCard(
       label = "itemNum",
-      primaryDescription = "item Description",
+      primaryDescription = null,
       primaryDetails = "location",
       secondaryDetails = "- 11 Unit",
       secondaryDetailStyle = ERROR,
@@ -286,7 +298,7 @@ fun TUISelectionCardPreview() {
     TUISelectionCard(
       leadingIcon = Regular.Person24,
       label = "Label",
-      primaryDescription = "Description",
+      primaryDescription = null,
       secondaryDescription = "Description2",
       primaryDetails = "Details",
       secondaryDetails = "Details2",
