@@ -42,6 +42,7 @@ enum class SecondaryDetailsStyle {
   NORMAL,
   ERROR
 }
+
 /**
  * This Composable function is used to Show the Cards in a list to pick the particular from User.
  *
@@ -121,18 +122,18 @@ fun TUISelectionCard(
       }
 
 
-      if (primaryDescription != null) {
-        Text(
-          modifier = Modifier.testTag(tags.descriptionTag),
-          text = primaryDescription,
-          color = TUITheme.colors.inputText,
-          style = TUITheme.typography.heading6
-        )
-      }else{
+      if (primaryDescription.isNullOrEmpty()) {
         Text(
           modifier = Modifier.testTag(tags.descriptionTag),
           text = stringResource(id = R.string.not_availble),
           color = TUITheme.colors.utilityDisabledContent,
+          style = TUITheme.typography.heading6
+        )
+      } else {
+        Text(
+          modifier = Modifier.testTag(tags.descriptionTag),
+          text = primaryDescription,
+          color = TUITheme.colors.inputText,
           style = TUITheme.typography.heading6
         )
       }
