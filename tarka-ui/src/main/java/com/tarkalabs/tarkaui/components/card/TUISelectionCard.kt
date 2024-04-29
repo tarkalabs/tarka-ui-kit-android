@@ -1,5 +1,6 @@
 package com.tarkalabs.tarkaui.components.card
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -68,6 +69,7 @@ fun TUISelectionCard(
   leadingIcon: TarkaIcon? = null,
   label: String? = null,
   primaryDescription: String? = null,
+  @StringRes primaryNotAvailableText : Int = R.string.not_availble,
   secondaryDescription: String? = null,
   primaryDetails: String? = null,
   secondaryDetails: String? = null,
@@ -125,7 +127,7 @@ fun TUISelectionCard(
       if (primaryDescription.isNullOrEmpty()) {
         Text(
           modifier = Modifier.testTag(tags.descriptionTag),
-          text = stringResource(id = R.string.not_availble),
+          text = stringResource(id = primaryNotAvailableText),
           color = TUITheme.colors.utilityDisabledContent,
           style = TUITheme.typography.heading6
         )
