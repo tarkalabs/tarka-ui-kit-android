@@ -120,7 +120,7 @@ val defaultLightColors = TUIColors(
   utilityDisabledContent = Color(0XFF1A1B1F).copy(alpha = 0.38f),
   utilityDisabledBackground = Color(0XFF1A1B1F).copy(alpha = 0.06f),
   utilityLink = Color(0xFF3381FF),
-  inputBackground = Color(0XFFEAECF0).copy(alpha = 0.85f),
+  inputBackground = Color(0XFFEAEDF0).copy(alpha = 0.85f),
   inputText = Color(0XFF1A1B1F),
   inputDim = Color(0XFF1A1B1F).copy(alpha = 0.70f),
   surface = Color(0xFFF9FAFB),
