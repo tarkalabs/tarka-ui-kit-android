@@ -66,7 +66,7 @@ publishing {
       run {
         groupId = "com.tarkalabs"
         artifactId = getLibraryArtifactId()
-        version = "1.1.18"
+        version = "1.1.19"
         artifact("$buildDir/outputs/aar/tarka-ui-release.aar")
       }
     }
@@ -92,7 +92,7 @@ dependencies {
   implementation("androidx.compose.ui:ui-tooling-preview:$composeUiVersion")
   implementation("androidx.compose.material3:material3:1.2.0")
   implementation("androidx.compose.foundation:foundation:$composeUiVersion")
-  api("com.tarkalabs:tarkaui-icons:1.0.0")
+  api("com.tarkalabs:tarkaui-icons:1.0.1")
   implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.7")
   testImplementation("junit:junit:4.13.2")
   androidTestImplementation("androidx.test.ext:junit:1.1.5")
