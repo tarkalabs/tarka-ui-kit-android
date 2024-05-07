@@ -8,6 +8,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Stable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -41,9 +42,13 @@ enum class AvatarSize(val size: Dp) {
   XXL(96.dp)
 }
 
+@Stable
 sealed class AvatarType {
+  @Stable
   data class Icon(val icon: TarkaIcon) : AvatarType()
+  @Stable
   data class Text(val text: String) : AvatarType()
+  @Stable
   data class Image(val image: ImageBitmap) : AvatarType()
 }
 

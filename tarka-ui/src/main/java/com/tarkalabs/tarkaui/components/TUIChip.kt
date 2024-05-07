@@ -18,6 +18,7 @@ import androidx.compose.material3.SuggestionChip
 import androidx.compose.material3.SuggestionChipDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Stable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -96,8 +97,11 @@ sealed class ChipType {
   ) : ChipType()
 }
 
+@Stable
 sealed class ChipLeadingContent {
+  @Stable
   data class Image(val imageBitmap: ImageBitmap) : ChipLeadingContent()
+  @Stable
   data class Icon(val icon: TarkaIcon) : ChipLeadingContent()
 }
 
