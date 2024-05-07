@@ -48,7 +48,7 @@ publishing {
       run {
         groupId = "com.tarkalabs"
         artifactId = "tarkaui-icons"
-        version = "1.0.1"
+        version = "1.0.2"
         artifact("$buildDir/outputs/aar/tarka-ui-icons-release.aar")
       }
     }
