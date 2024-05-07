@@ -58,6 +58,8 @@ import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.icons.TarkaIcons.Filled
 import com.tarkalabs.tarkaui.theme.TUITheme
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -78,7 +80,7 @@ import kotlinx.coroutines.launch
 ) @Composable fun TUIEmailField(
   modifier: Modifier = Modifier,
   title: String,
-  emailAddressList: List<String>,
+  emailAddressList: ImmutableList<String>,
   trailingIcon: TarkaIcon,
   tags: TUIEmailFieldTags = TUIEmailFieldTags(),
   trailingIconClick: () -> Unit,
@@ -246,7 +248,7 @@ data class TUIEmailFieldTags(
       Box(modifier = Modifier.fillMaxWidth()) {
         TUIEmailField(
           title = "To",
-          emailAddressList = emailList,
+          emailAddressList = emailList.toImmutableList(),
           trailingIcon = TarkaIcons.Regular.AddCircle24,
           onItemRemoved = { position ->
             emailList.removeAt(position)
@@ -272,7 +274,7 @@ data class TUIEmailFieldTags(
       Box(modifier = Modifier.fillMaxWidth()) {
         TUIEmailField(
           title = "Cc",
-          emailAddressList = emailList,
+          emailAddressList = emailList.toImmutableList(),
           trailingIcon = TarkaIcons.Regular.AddCircle24,
           onItemRemoved = { position ->
             emailList.removeAt(position)
