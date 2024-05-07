@@ -68,7 +68,7 @@ publishing {
 
 dependencies {
   val composeUiVersion = "1.4.1"
-
+  implementation("androidx.compose.runtime:runtime:$composeUiVersion")
   implementation("androidx.compose.ui:ui:$composeUiVersion")
   api("com.microsoft.design:fluent-system-icons:1.1.201@aar")
   implementation("androidx.core:core-ktx:1.10.0")
