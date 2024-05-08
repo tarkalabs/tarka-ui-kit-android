@@ -25,6 +25,8 @@ import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
 import com.tarkalabs.tarkaui.components.VerticalSpacer
 import com.tarkalabs.tarkaui.theme.TUITheme
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.toImmutableList
 
 /**
  * A composable function that displays a horizontal tabRow with Tabs with or without icons.
@@ -49,7 +51,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
 
 @Composable fun TUITabBar(
   modifier: Modifier = Modifier,
-  tabItems: List<TabItem>,
+  tabItems: ImmutableList<TabItem>,
   selectedTabIndex: Int,
   tags: TUITabBarTags = TUITabBarTags(),
   onTabChanged: (Int) -> Unit,
@@ -125,7 +127,7 @@ fun PreviewTUITabRow() {
 
       TUITabBar(
         modifier = Modifier.padding(10.dp),
-        tabItems = tabItems,
+        tabItems = tabItems.toImmutableList(),
         selectedTabIndex = currentTab,
         onTabChanged = {
           currentTab = it
@@ -136,7 +138,7 @@ fun PreviewTUITabRow() {
 
       TUITabBar(
         modifier = Modifier.padding(10.dp),
-        tabItems = tabItemsWithIcons,
+        tabItems = tabItemsWithIcons.toImmutableList(),
         selectedTabIndex = selectedTab,
         onTabChanged = {
           selectedTab = it

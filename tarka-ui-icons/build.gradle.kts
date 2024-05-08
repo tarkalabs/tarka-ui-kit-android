@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 plugins {
   id("com.android.library")
   id("org.jetbrains.kotlin.android")
@@ -24,11 +26,18 @@ android {
     }
   }
   compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
   }
   kotlinOptions {
-    jvmTarget = "1.8"
+    jvmTarget = "11"
+  }
+
+  buildFeatures {
+    compose = true
+  }
+  composeOptions {
+    kotlinCompilerExtensionVersion = "1.4.3"
   }
 }
 
@@ -39,7 +48,7 @@ publishing {
       run {
         groupId = "com.tarkalabs"
         artifactId = "tarkaui-icons"
-        version = "1.0.1"
+        version = "1.0.2"
         artifact("$buildDir/outputs/aar/tarka-ui-icons-release.aar")
       }
     }
@@ -59,15 +68,11 @@ publishing {
 
 dependencies {
   val composeUiVersion = "1.4.1"
-
+  implementation("androidx.compose.runtime:runtime:$composeUiVersion")
   implementation("androidx.compose.ui:ui:$composeUiVersion")
-  implementation("androidx.compose.ui:ui-tooling-preview:$composeUiVersion")
-  implementation("androidx.compose.material3:material3:1.2.0")
-  implementation("androidx.compose.foundation:foundation:$composeUiVersion")
   api("com.microsoft.design:fluent-system-icons:1.1.201@aar")
   implementation("androidx.core:core-ktx:1.10.0")
   implementation("androidx.appcompat:appcompat:1.6.1")
-  implementation("com.google.android.material:material:1.9.0")
   testImplementation("junit:junit:4.13.2")
   androidTestImplementation("androidx.test.ext:junit:1.1.5")
   androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

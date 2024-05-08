@@ -23,6 +23,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Stable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -52,10 +53,13 @@ import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
 import com.tarkalabs.tarkaui.icons.Video24
 import com.tarkalabs.tarkaui.theme.TUITheme
 
+@Stable
 sealed class TUIMediaThumbnailType {
   object Document : TUIMediaThumbnailType()
   object Audio : TUIMediaThumbnailType()
+  @Stable
   data class Video(val image: ImageBitmap? = null) : TUIMediaThumbnailType()
+  @Stable
   data class Image(val image: ImageBitmap? = null) : TUIMediaThumbnailType()
 }
 
