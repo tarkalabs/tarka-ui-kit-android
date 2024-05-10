@@ -234,9 +234,7 @@ object TUIAttachmentUpload {
       TUIAttachmentUpload(
         type = Document,
         attachmentName = "document.jpg",
-        onTrailingIconClick = {
-
-        },
+        onTrailingIconClick = {},
         onAttachmentClick = { },
         state = UpLoading(50),
         showLeadingIcon = true,
