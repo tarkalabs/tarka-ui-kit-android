@@ -133,6 +133,7 @@ onClick = {}
   leadingIcon: TarkaIcon? = null,
   trailingIcon: TarkaIcon? = null,
   tags: TUIButtonTags = TUIButtonTags(),
+  enabled : Boolean = true,
   onClick: () -> Unit,
 ) {
   val buttonColor = when (buttonStyle) {
@@ -180,6 +181,7 @@ onClick = {}
 
   Button(
     onClick = onClick,
+    enabled = enabled,
     colors = buttonColor,
     modifier = modifier
       .height(height.size)
