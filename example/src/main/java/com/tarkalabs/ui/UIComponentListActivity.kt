@@ -10,19 +10,27 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaui.components.TUIAppTopBar
+import com.tarkalabs.tarkaui.components.TUISnackBarHost
+import com.tarkalabs.tarkaui.components.TUISnackBarType
 import com.tarkalabs.tarkaui.components.TUITextRow
 import com.tarkalabs.tarkaui.components.TextRowStyle
 import com.tarkalabs.tarkaui.components.VerticalSpacer
+import com.tarkalabs.tarkaui.components.rememberTUISnackBarState
 import com.tarkalabs.tarkaui.icons.ChevronRight20
+import com.tarkalabs.tarkaui.icons.ErrorCircle24
 import com.tarkalabs.tarkaui.icons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.TarkaIcons.Filled
 import com.tarkalabs.tarkaui.theme.TUITheme
+import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 class UIComponentListActivity : ComponentActivity() {
@@ -32,13 +40,12 @@ class UIComponentListActivity : ComponentActivity() {
 
     setContent {
       TUITheme {
-        var query by remember {
-          mutableStateOf("")
-        }
-
-        var showSearchbar by remember {
-          mutableStateOf(false)
-        }
+        val scope = rememberCoroutineScope()
+        val state = rememberTUISnackBarState(
+          type = TUISnackBarType.Information,
+          hostState = SnackbarHostState(),
+          leadingIcon = Filled.ErrorCircle24
+        )
 
         Scaffold(topBar = {
           TUIAppTopBar(
@@ -47,7 +54,16 @@ class UIComponentListActivity : ComponentActivity() {
             menuItemIconOne = TarkaIcons.Regular.ChevronRight20,
             menuItemIconTwo = TarkaIcons.Regular.ChevronRight20,
             menuItemIconThree = TarkaIcons.Regular.ChevronRight20,
+            onFirstMenuItemClicked = {
+              scope.launch {
+                state.showSnackBar("Hola buddy")
+              }
+            }
           )
+        }, snackbarHost = {
+            TUISnackBarHost(
+              modifier = Modifier.padding(16.dp), state = state
+            )
         }) { paddingValues ->
           Column(
             modifier = Modifier
@@ -61,7 +77,6 @@ class UIComponentListActivity : ComponentActivity() {
             VerticalSpacer(space = 20)
             TUITextRow(title = "Dates", style = TextRowStyle.DateStyle("Not Available","Not Available"))
           }
-
         }
       }
     }

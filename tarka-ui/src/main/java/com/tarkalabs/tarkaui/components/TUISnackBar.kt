@@ -22,6 +22,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -66,11 +67,14 @@ class TUISnackBarState(
 ) {
 
   companion object {
-    val Saver = listSaver(save = {
-      listOf(it.type, it.leadingIcon)
-    }, restore = {
-      TUISnackBarState(it[0] as SnackbarHostState, it[1] as TUISnackBarType, it[2] as TarkaIcon?)
-    })
+    val Saver : Saver<TUISnackBarState, *> = Saver(
+      save = {
+        listOf(it.hostState, it.type, it.leadingIcon)
+      },
+      restore = {
+        TUISnackBarState(it[0] as SnackbarHostState, it[1] as TUISnackBarType, it[2] as TarkaIcon?)
+      }
+    )
   }
 
   internal val hostState: SnackbarHostState by mutableStateOf(hostState)
@@ -101,7 +105,7 @@ class TUISnackBarState(
     message: String,
     actionLabel: String? = null,
     withDismissAction: Boolean = false,
-    duration: SnackbarDuration = if (actionLabel == null) SnackbarDuration.Short else SnackbarDuration.Indefinite
+    duration: SnackbarDuration = if (actionLabel == null) SnackbarDuration.Short else SnackbarDuration.Indefinite,
   ): SnackbarResult {
     hostState.currentSnackbarData?.dismiss()
     return hostState.showSnackbar(message, actionLabel, withDismissAction, duration)
@@ -151,13 +155,13 @@ fun TUISnackBarHost(
  *  How to use TUISnackBar() composable function
  *
  *   TUISnackBar(
-      message = "Task completed successfully!",
-      type = Success,
-      leadingIcon = TarkaIcon.Success,
-      actionLabel = "Dismiss",
-      tags = TUISnackBarTags(parentTag = "example_snackbar"),
-      action = { /* Perform action on dismiss */ }
-    )
+message = "Task completed successfully!",
+type = Success,
+leadingIcon = TarkaIcon.Success,
+actionLabel = "Dismiss",
+tags = TUISnackBarTags(parentTag = "example_snackbar"),
+action = { /* Perform action on dismiss */ }
+)
  */
 @Composable
 internal fun TUISnackBar(
@@ -238,7 +242,8 @@ internal fun TUISnackBar(
         ) {
           Text(
             modifier = Modifier.padding(horizontal = 17.dp),
-            text = actionLabel, style = TUITheme.typography.body7)
+            text = actionLabel, style = TUITheme.typography.body7
+          )
         }
       }
     }
@@ -274,7 +279,10 @@ fun TUIInformationSnackBarPreview() {
 @Composable
 fun TUISuccessSnackBarPreview() {
   TUISnackBar(
-    message = "Hello there", actionLabel = "dgsd", leadingIcon = TarkaIcons.Regular.Delete24, type = Success
+    message = "Hello there",
+    actionLabel = "dgsd",
+    leadingIcon = TarkaIcons.Regular.Delete24,
+    type = Success
   )
 }
 
@@ -282,7 +290,10 @@ fun TUISuccessSnackBarPreview() {
 @Composable
 fun TUIWarningSnackBarPreview() {
   TUISnackBar(
-    message = "Hello there", actionLabel = "dgsd", leadingIcon = TarkaIcons.Regular.Delete24, type = Warning
+    message = "Hello there",
+    actionLabel = "dgsd",
+    leadingIcon = TarkaIcons.Regular.Delete24,
+    type = Warning
   )
 }
 
