@@ -14,6 +14,7 @@ import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
 import com.tarkalabs.tarkaui.components.email.TUIEmailField
 import com.tarkalabs.tarkaui.components.email.TUIEmailFieldTags
 import com.tarkalabs.tarkaui.components.base.TUIIconButtonTags
+import kotlinx.collections.immutable.toImmutableList
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock
@@ -40,7 +41,7 @@ class TUIEmailFieldTest {
       }
       TUIEmailField(
         title = "To",
-        emailAddressList = emailList,
+        emailAddressList = emailList.toImmutableList(),
         trailingIcon = Regular.AddCircle24,
         onItemRemoved = {},
         trailingIconClick = {
@@ -79,7 +80,7 @@ class TUIEmailFieldTest {
       }
       TUIEmailField(
         title = "To",
-        emailAddressList = emailList,
+        emailAddressList = emailList.toImmutableList(),
         trailingIcon = Regular.AddCircle24,
         onItemRemoved = {},
         trailingIconClick = trailingIconClick,

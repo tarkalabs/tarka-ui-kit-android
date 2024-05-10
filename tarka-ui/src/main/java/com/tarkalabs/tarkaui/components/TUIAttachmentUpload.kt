@@ -78,6 +78,7 @@ object TUIAttachmentUpload {
     trailingIcon: TarkaIcon,
     state: AttachmentState? = null,
     showLeadingIcon: Boolean,
+    showDeleteButton : Boolean = true,
     tags: TUIAttachmentUploadTags = TUIAttachmentUploadTags()
   ) {
 
@@ -155,15 +156,15 @@ object TUIAttachmentUpload {
           AttachmentTitle(attachmentName = attachmentName, attachmentModifier)
         }
       }
-
-      TUIIconButton(
-        icon = trailingIcon,
-        iconButtonStyle = Ghost,
-        buttonSize = IconButtonSize.XL,
-        tags = tags.menuItemTag,
-        onIconClick = onTrailingIconClick
-      )
-
+      if (showDeleteButton) {
+        TUIIconButton(
+          icon = trailingIcon,
+          iconButtonStyle = Ghost,
+          buttonSize = IconButtonSize.XL,
+          tags = tags.menuItemTag,
+          onIconClick = onTrailingIconClick
+        )
+      }
     }
   }
 
@@ -233,15 +234,13 @@ object TUIAttachmentUpload {
       TUIAttachmentUpload(
         type = Document,
         attachmentName = "document.jpg",
-        onTrailingIconClick = {
-
-        },
+        onTrailingIconClick = {},
         onAttachmentClick = { },
         state = UpLoading(50),
         showLeadingIcon = true,
-        trailingIcon = TarkaIcons.Regular.Delete24
+        trailingIcon = TarkaIcons.Regular.Delete24,
+        showDeleteButton = false
       )
-
     }
   }
 }
