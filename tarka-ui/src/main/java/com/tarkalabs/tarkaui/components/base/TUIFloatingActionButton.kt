@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
@@ -16,18 +17,25 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaui.icons.ChevronRight20
-import com.tarkalabs.tarkaui.icons.TarkaIcon
-import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.components.base.FloatingActionButtonSize.L
 import com.tarkalabs.tarkaui.components.base.FloatingActionButtonSize.R
 import com.tarkalabs.tarkaui.components.base.FloatingActionButtonSize.S
+import com.tarkalabs.tarkaui.components.base.FloatingButtonStyle.Outline
+import com.tarkalabs.tarkaui.components.base.FloatingButtonStyle.Primary
+import com.tarkalabs.tarkaui.icons.Layer24
+import com.tarkalabs.tarkaui.icons.TarkaIcon
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.theme.TUITheme
 
 enum class FloatingActionButtonSize(val size: Dp) {
   S(40.dp),
   R(56.dp),
   L(96.dp)
+}
+
+sealed class FloatingButtonStyle {
+  object Primary: FloatingButtonStyle()
+  object Outline: FloatingButtonStyle()
 }
 
 /**
@@ -47,15 +55,33 @@ enum class FloatingActionButtonSize(val size: Dp) {
   icon: TarkaIcon,
   tags: TUIFloatingActionButtonTags = TUIFloatingActionButtonTags(),
   onClick: () -> Unit,
+  buttonStyle: FloatingButtonStyle = Primary
 ) {
   val iconSize = when (fabSize) {
     S, R -> 18.dp
     L -> 22.dp
   }
+
+  val buttonColor = when (buttonStyle) {
+    Primary -> {
+      ButtonDefaults.buttonColors(
+        containerColor = TUITheme.colors.primary,
+        contentColor = TUITheme.colors.onPrimary
+      )
+    }
+
+    Outline -> {
+      ButtonDefaults.buttonColors(
+        containerColor = TUITheme.colors.surface,
+        contentColor = TUITheme.colors.onSurface
+      )
+    }
+  }
+
   FloatingActionButton(
     onClick = onClick,
-    containerColor = TUITheme.colors.primary,
-    contentColor = TUITheme.colors.onPrimary,
+    containerColor = buttonColor.containerColor,
+    contentColor = buttonColor.contentColor,
     shape = CircleShape,
     modifier = Modifier
       .defaultMinSize(minHeight = fabSize.size, minWidth = fabSize.size)
@@ -79,22 +105,16 @@ data class TUIFloatingActionButtonTags(
     verticalArrangement = Arrangement.SpaceEvenly
   ) {
     TUIFloatingActionButton(
-      L, TarkaIcons.Regular.ChevronRight20
-    ) {
-
-    }
+      L, TarkaIcons.Regular.Layer24, buttonStyle = Outline, onClick = {}
+    )
     Spacer(modifier = Modifier.padding(5.dp))
     TUIFloatingActionButton(
-      R, TarkaIcons.Regular.ChevronRight20
-    ) {
-
-    }
+      R, TarkaIcons.Regular.Layer24, buttonStyle = Outline, onClick = {}
+    )
     Spacer(modifier = Modifier.padding(5.dp))
     TUIFloatingActionButton(
-      S, TarkaIcons.Regular.ChevronRight20
-    ) {
-
-    }
+      S, TarkaIcons.Regular.Layer24, buttonStyle = Outline, onClick = {}
+    )
   }
 }
 
