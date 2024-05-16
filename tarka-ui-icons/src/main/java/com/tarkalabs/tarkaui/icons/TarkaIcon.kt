@@ -1,8 +1,10 @@
 package com.tarkalabs.tarkaui.icons
 
 import androidx.annotation.DrawableRes
+import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 
+@Immutable
 data class TarkaIcon internal constructor(
   @DrawableRes val iconRes: Int,
   val contentDescription: String,
