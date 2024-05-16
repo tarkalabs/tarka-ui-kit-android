@@ -7,9 +7,9 @@ buildscript {
 plugins {
   id("com.android.application") version "7.4.2" apply false
   id("com.android.library") version "7.4.2" apply false
-  id("org.jetbrains.kotlin.android") version "1.8.10" apply false
+  id("org.jetbrains.kotlin.android") version "1.9.23" apply false
   id("com.vanniktech.maven.publish") version "0.27.0"
-  id("org.jetbrains.dokka") version  "1.8.10" apply false
+  id("org.jetbrains.dokka") version  "1.9.20" apply false
 }
 
 subprojects {
