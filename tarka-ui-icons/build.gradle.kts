@@ -5,7 +5,6 @@ plugins {
   id("org.jetbrains.kotlin.android")
   id("maven-publish")
   id("org.jetbrains.dokka")
-  id("com.vanniktech.maven.publish")
 }
 
 android {
@@ -44,11 +43,11 @@ android {
 
 publishing {
   publications {
-    create<MavenPublication>("gpr") {
+    register<MavenPublication>("gpr") {
       run {
         groupId = "com.tarkalabs"
         artifactId = "tarkaui-icons"
-        version = "1.0.4"
+        version = "1.0.5"
         artifact("$buildDir/outputs/aar/tarka-ui-icons-release.aar")
       }
     }
