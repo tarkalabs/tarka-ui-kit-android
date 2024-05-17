@@ -106,7 +106,7 @@ sealed class MobileOverlayMenuItemStyle {
     }
   } else {
     {
-      HorizontalSpacer(space = 48)
+      HorizontalSpacer(space = 16)
     }
   }
 
