@@ -14,6 +14,12 @@ dependencyResolutionManagement {
   repositories {
     google()
     mavenCentral()
+    maven(url = "https://maven.pkg.github.com/tarkalabs/tarka-ui-kit-android") {
+      credentials {
+        username = System.getenv("GITHUB_USER")
+        password = System.getenv("GITHUB_TOKEN")
+      }
+    }
   }
 }
 rootProject.name = "tarka-ui-kit-android"

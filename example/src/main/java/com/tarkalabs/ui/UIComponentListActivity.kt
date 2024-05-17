@@ -17,11 +17,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.tarkalabs.tarkaui.components.TUIAppTopBar
+import com.tarkalabs.tarkaui.components.TUIAttachmentUpload
+import com.tarkalabs.tarkaui.components.TUIAttachmentUpload.AttachmentState.UpLoading
+import com.tarkalabs.tarkaui.components.TUIMediaThumbnailType.Document
+import com.tarkalabs.tarkaui.components.TUITextRow
+import com.tarkalabs.tarkaui.components.TextRowStyle
 import com.tarkalabs.tarkaui.components.VerticalSpacer
-import com.tarkalabs.tarkaui.components.base.TUIButton
 import com.tarkalabs.tarkaui.icons.ChevronRight20
-import com.tarkalabs.tarkaui.icons.Search24
+import com.tarkalabs.tarkaui.icons.Delete24
 import com.tarkalabs.tarkaui.icons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
 import com.tarkalabs.tarkaui.theme.TUITheme
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -47,15 +52,7 @@ class UIComponentListActivity : ComponentActivity() {
             menuItemIconOne = TarkaIcons.Regular.ChevronRight20,
             menuItemIconTwo = TarkaIcons.Regular.ChevronRight20,
             menuItemIconThree = TarkaIcons.Regular.ChevronRight20,
-            searchIcon = TarkaIcons.Regular.Search24,
-            searchQuery = query,
-            searchQueryHint = "Search something",
-            onSearchQuery = {
-              query = it
-            },
-            showSearchBar = showSearchbar
           )
-
         }) { paddingValues ->
           Column(
             modifier = Modifier
@@ -64,16 +61,16 @@ class UIComponentListActivity : ComponentActivity() {
               .fillMaxHeight()
               .padding(horizontal = 8.dp)
           ) {
-            VerticalSpacer(space = 20)
-            TUIButton(label = "Show Searchbar") {
-              query = "Hello there"
-              showSearchbar = true
-            }
-            VerticalSpacer(space = 20)
-            TUIButton(label = "Hide Searchbar") {
-              query = ""
-              showSearchbar = false
-            }
+            TUIAttachmentUpload(
+              type = Document,
+              attachmentName = "document.jpg",
+              onTrailingIconClick = {},
+              onAttachmentClick = { },
+              state = UpLoading(50),
+              showLeadingIcon = true,
+              trailingIcon = Regular.Delete24,
+              showDeleteButton = true
+            )
           }
 
         }

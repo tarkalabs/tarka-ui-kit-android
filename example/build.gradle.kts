@@ -28,17 +28,17 @@ android {
     }
   }
   compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
   }
   kotlinOptions {
-    jvmTarget = "11"
+    jvmTarget = "17"
   }
   buildFeatures {
     compose =  true
   }
   composeOptions {
-    kotlinCompilerExtensionVersion = "1.4.3"
+    kotlinCompilerExtensionVersion = "1.5.11"
   }
   packagingOptions {
     resources {
@@ -48,9 +48,8 @@ android {
 }
 
 dependencies {
-  val composeUiVersion = "1.4.0"
+  val composeUiVersion = "1.4.1"
   implementation(project(":tarka-ui"))
-  implementation(project(":tarka-ui-icons"))
   implementation("androidx.core:core-ktx:1.10.0")
   implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
   implementation("androidx.activity:activity-compose:1.7.1")

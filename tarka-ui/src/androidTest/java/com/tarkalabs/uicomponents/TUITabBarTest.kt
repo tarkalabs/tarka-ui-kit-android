@@ -14,6 +14,7 @@ import com.tarkalabs.tarkaui.components.tab.TUITabBarTags
 import com.tarkalabs.tarkaui.components.tab.TabItem
 import com.tarkalabs.tarkaui.icons.Tabs24
 import com.tarkalabs.tarkaui.icons.TarkaIcons
+import kotlinx.collections.immutable.toImmutableList
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.kotlin.mock
@@ -36,7 +37,7 @@ class TUITabBarTest {
 
     composeTestRule.setContent {
       TUITabBar(
-        tabItems = tabItems,
+        tabItems = tabItems.toImmutableList(),
         selectedTabIndex = 1,
         tags = testTags,
         onTabChanged = {},
@@ -61,7 +62,7 @@ class TUITabBarTest {
 
     composeTestRule.setContent {
       TUITabBar(
-        tabItems = tabItems,
+        tabItems = tabItems.toImmutableList(),
         selectedTabIndex = 1,
         tags = testTags,
         onTabChanged = {},
@@ -82,7 +83,7 @@ class TUITabBarTest {
 
     composeTestRule.setContent {
       TUITabBar(
-        tabItems = tabItems,
+        tabItems = tabItems.toImmutableList(),
         selectedTabIndex = 0,
         tags = testTags,
         onTabChanged = {},
@@ -105,7 +106,7 @@ class TUITabBarTest {
 
     composeTestRule.setContent {
       TUITabBar(
-        tabItems = tabItems,
+        tabItems = tabItems.toImmutableList(),
         selectedTabIndex = 2,
         tags = testTags,
         onTabChanged = {},
@@ -132,7 +133,7 @@ class TUITabBarTest {
 
     composeTestRule.setContent {
       TUITabBar(
-        tabItems = tabItems,
+        tabItems = tabItems.toImmutableList(),
         selectedTabIndex = 0,
         tags = testTags,
         onTabChanged = onTabChange,

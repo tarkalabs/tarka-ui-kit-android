@@ -7,6 +7,7 @@ import com.tarkalabs.tarkaui.components.tab.TUITabBar
 import com.tarkalabs.tarkaui.components.tab.TabItem
 import com.tarkalabs.tarkaui.icons.Circle12
 import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
+import kotlinx.collections.immutable.toImmutableList
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
@@ -78,7 +79,7 @@ class TUITabBarScreenshotTest(
     compareScreenshotFor(darkTheme = darkTheme, imageName = "WithoutIcon_$testName") {
       TUITabBar(
         modifier = Modifier.padding(10.dp),
-        tabItems = tabItems,
+        tabItems = tabItems.toImmutableList(),
         selectedTabIndex = 0,
         onTabChanged = {}
       )
@@ -88,7 +89,7 @@ class TUITabBarScreenshotTest(
     compareScreenshotFor(darkTheme = darkTheme, imageName = "WithIcon_$testName") {
       TUITabBar(
         modifier = Modifier.padding(10.dp),
-        tabItems = tabItemsWithIcons,
+        tabItems = tabItemsWithIcons.toImmutableList(),
         selectedTabIndex = 1,
         onTabChanged = {}
       )
@@ -98,7 +99,7 @@ class TUITabBarScreenshotTest(
     compareScreenshotFor(darkTheme = darkTheme, imageName = "WithContent_$testName") {
       TUITabBar(
         modifier = Modifier.padding(10.dp),
-        tabItems = tabItemsWithContent,
+        tabItems = tabItemsWithContent.toImmutableList(),
         selectedTabIndex = 2,
         onTabChanged = {}
       )
@@ -108,7 +109,7 @@ class TUITabBarScreenshotTest(
     compareScreenshotFor(darkTheme = darkTheme, imageName = "WithIconAndContent_$testName") {
       TUITabBar(
         modifier = Modifier.padding(10.dp),
-        tabItems = tabItemsWithIconAndContent,
+        tabItems = tabItemsWithIconAndContent.toImmutableList(),
         selectedTabIndex = 2,
         onTabChanged = {}
       )

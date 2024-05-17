@@ -211,6 +211,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
     style = TUITheme.typography.body8,
     color = TUITheme.colors.inputTextDim
   )
+  VerticalSpacer(space = 4)
   Box(modifier = Modifier) {
     val color = TUITheme.colors.utilityOutline
     val pathEffect = PathEffect.dashPathEffect(floatArrayOf(4f, 4f), 0f)
