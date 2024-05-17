@@ -18,8 +18,7 @@ class TUIFabTest {
 
   @Test fun fab_Displayed() {
     composable.setContent {
-      TUIFloatingActionButton(icon = TarkaIcons.Regular.Delete24, tags = tags) {
-      }
+      TUIFloatingActionButton(icon = TarkaIcons.Regular.Delete24, tags = tags, onClick = {})
     }
     composable.onNodeWithTag(tags.parentTag).assertIsDisplayed()
   }
