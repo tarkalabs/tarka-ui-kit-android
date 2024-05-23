@@ -207,7 +207,6 @@ enum class ChipSize(val size: Dp) {
   }
 }
 
-
 @Composable private fun FilterChip(
   type: Filter,
   label: String,
@@ -243,7 +242,7 @@ enum class ChipSize(val size: Dp) {
           tint = if (type.selected) TUITheme.colors.onSecondary else TUITheme.colors.onSurface,
         )
         HorizontalSpacer(space = 6)
-      } else{
+      } else {
         HorizontalSpacer(space = 20)
       }
       Text(
@@ -274,7 +273,7 @@ enum class ChipSize(val size: Dp) {
           tint = if (type.selected) TUITheme.colors.onSecondary else TUITheme.colors.onSurface
         )
         HorizontalSpacer(space = 6)
-      }else{
+      } else {
         HorizontalSpacer(space = 20)
       }
 
