@@ -49,6 +49,7 @@ android {
 
 dependencies {
   val composeUiVersion = "1.4.1"
+  
   implementation(project(":tarka-ui"))
   implementation("com.tarkalabs:tarkaui-icons:1.0.5")
   implementation("com.microsoft.design:fluent-system-icons:1.1.239@aar")
