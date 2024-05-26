@@ -1,6 +1,5 @@
 package com.tarkalabs.tarkaui.components
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -148,8 +147,6 @@ enum class ChipSize(val size: Dp) {
     .height(chipSize.size)
   val commonLabel = getCommonLabel(label)
   val leadingIcon = leadingIcon()
-
-  Log.e("TAG_CHIP", "TUIChipPreview: 888")
 
   when (type) {
     is ChipType.Assist -> {
@@ -339,11 +336,9 @@ data class TUIChipTags(
           label = "Something",
           onClick = {
             showSearchbar = true
-            Log.e("TAG_CHIP", "TUIChipPreview: TAG_CLICKED")
           },
           onDismissClick = {
             showSearchbar = !showSearchbar
-            Log.e("TAG_CHIP", "TUIChipPreview: 123")
           },
         )
         VerticalSpacer(space = 20)
