@@ -44,13 +44,16 @@ import kotlinx.coroutines.delay
   onQueryTextChange: (String) -> Unit,
   leadingIcon: TarkaIcon? = null,
   onLeadingIconClick: (() -> Unit)? = null,
+  isInitialAutoFocus: Boolean = true,
   searchBarTags: TUISearchBarTags = TUISearchBarTags(),
 ) {
   val focusRequester = remember { FocusRequester() }
 
-  LaunchedEffect(Unit) {
-    delay(500)
-    focusRequester.requestFocus()
+  LaunchedEffect(isInitialAutoFocus) {
+    if(isInitialAutoFocus) {
+      delay(500)
+      focusRequester.requestFocus()
+    }
   }
 
   val leadingIconLambda: @Composable (() -> Unit)? = if (leadingIcon != null) {
