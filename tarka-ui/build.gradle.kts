@@ -65,7 +65,7 @@ publishing {
       run {
         groupId = "com.tarkalabs"
         artifactId = getLibraryArtifactId()
-        version = "1.1.28"
+        version = "1.1.29"
         artifact("$buildDir/outputs/aar/tarka-ui-release.aar")
       }
     }

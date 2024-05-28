@@ -335,8 +335,8 @@ sealed class TextRowStyle {
     data class TitleWithDescription(val description: String) : TextRowStyle()
 
     data class DateStyle(
-        val startDate: String? = "",
-        val endDate: String? = "",
+        val startDate: String? = null,
+        val endDate: String? = null,
         @StringRes val primaryNotAvailableText: Int = R.string.not_availble,
     ) : TextRowStyle()
 
