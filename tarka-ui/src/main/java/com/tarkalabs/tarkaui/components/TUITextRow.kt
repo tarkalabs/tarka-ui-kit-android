@@ -242,7 +242,7 @@ fun TUIDateStyle(
                         .align(Alignment.CenterVertically),
                     tint = TUITheme.colors.utilityOutline
                 )
-                if (style.startDate.isEmpty()) {
+                if (style.startDate == null) {
                     Text(
                         text = stringResource(id = style.primaryNotAvailableText),
                         style = TUITheme.typography.body7,
@@ -269,7 +269,7 @@ fun TUIDateStyle(
                         .align(Alignment.CenterVertically),
                     tint = TUITheme.colors.utilityOutline
                 )
-                if (style.endDate.isEmpty()) {
+                if (style.endDate == null) {
                     Text(
                         text = stringResource(id = style.primaryNotAvailableText),
                         style = TUITheme.typography.body7,
@@ -335,8 +335,8 @@ sealed class TextRowStyle {
     data class TitleWithDescription(val description: String) : TextRowStyle()
 
     data class DateStyle(
-        val startDate: String = "",
-        val endDate: String = "",
+        val startDate: String? = "",
+        val endDate: String? = "",
         @StringRes val primaryNotAvailableText: Int = R.string.not_availble,
     ) : TextRowStyle()
 
@@ -362,9 +362,10 @@ data class TUITextRowTags(
 @Preview(showBackground = true)
 @Composable
 fun TUITextRowPreview() {
+
     TUITextRow(
         title = "Duration", style = DateStyle(
-            "Jan 20 3000 friday march 32", "Jan 20 3000 friday march 32"
+            null, "Jan 20 3000 friday march 32"
         ), onTextRowClick = {
             Log.d("TAG", "TUITextRowPreview: ")
         }, onInfoIconClick = null
