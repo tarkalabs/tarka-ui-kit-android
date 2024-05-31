@@ -5,7 +5,6 @@ plugins {
   id("org.jetbrains.kotlin.android")
   id("maven-publish")
   id("org.jetbrains.dokka")
-  id("com.vanniktech.maven.publish")
 }
 
 android {
@@ -44,11 +43,11 @@ android {
 
 publishing {
   publications {
-    create<MavenPublication>("gpr") {
+    register<MavenPublication>("gpr") {
       run {
         groupId = "com.tarkalabs"
         artifactId = "tarkaui-icons"
-        version = "1.0.3"
+        version = "1.0.5"
         artifact("$buildDir/outputs/aar/tarka-ui-icons-release.aar")
       }
     }
@@ -70,7 +69,7 @@ dependencies {
   val composeUiVersion = "1.4.1"
   implementation("androidx.compose.runtime:runtime:$composeUiVersion")
   implementation("androidx.compose.ui:ui:$composeUiVersion")
-  api("com.microsoft.design:fluent-system-icons:1.1.201@aar")
+  api("com.microsoft.design:fluent-system-icons:1.1.239@aar")
   implementation("androidx.core:core-ktx:1.10.0")
   implementation("androidx.appcompat:appcompat:1.6.1")
   testImplementation("junit:junit:4.13.2")

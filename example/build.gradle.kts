@@ -49,7 +49,10 @@ android {
 
 dependencies {
   val composeUiVersion = "1.4.1"
+  
   implementation(project(":tarka-ui"))
+  implementation("com.tarkalabs:tarkaui-icons:1.0.5")
+  implementation("com.microsoft.design:fluent-system-icons:1.1.239@aar")
   implementation("androidx.core:core-ktx:1.10.0")
   implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
   implementation("androidx.activity:activity-compose:1.7.1")
