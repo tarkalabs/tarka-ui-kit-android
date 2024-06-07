@@ -33,7 +33,7 @@ fun TUIAppBottomBar(
     itemIconThree: TarkaIcon? = null,
     itemIconFour: TarkaIcon? = null,
     itemIconFive: TarkaIcon? = null,
-    temIconSix: TarkaIcon? = null,
+    itemIconSix: TarkaIcon? = null,
     onFirstItemClicked: () -> Unit = {},
     onSecondItemClicked: () -> Unit = {},
     onThirdItemClicked: () -> Unit = {},
@@ -71,7 +71,8 @@ fun TUIAppBottomBar(
                     TUIIconButton(
                         modifier = Modifier
                             .weight(1f),
-                        icon = itemIconTwo, tags = tags.itemIconThreeTags,
+                        icon = itemIconTwo,
+                        tags = tags.itemIconTwoTags,
                         iconButtonStyle = IconButtonStyle.Ghost,
                         onIconClick = onSecondItemClicked,
                         buttonSize = IconButtonSize.XL
@@ -83,7 +84,7 @@ fun TUIAppBottomBar(
                         modifier = Modifier.weight(1f),
                         onIconClick = onThirdItemClicked,
                         icon = itemIconThree,
-                        tags = tags.itemIconTwoTags,
+                        tags = tags.itemIconThreeTags,
                         iconButtonStyle = IconButtonStyle.Ghost,
                         buttonSize = IconButtonSize.XL
                     )
@@ -93,7 +94,7 @@ fun TUIAppBottomBar(
                     TUIIconButton(
                         modifier = Modifier.weight(1f),
                         icon = itemIconFour,
-                        tags = tags.itemIconThreeTags,
+                        tags = tags.itemIconFourTags,
                         iconButtonStyle = IconButtonStyle.Ghost,
                         onIconClick = onFourthItemClicked,
                         buttonSize = IconButtonSize.XL
@@ -104,18 +105,18 @@ fun TUIAppBottomBar(
                     TUIIconButton(
                         modifier = Modifier.weight(1f),
                         icon = itemIconFive,
-                        tags = tags.itemIconThreeTags,
+                        tags = tags.itemIconFiveTags,
                         iconButtonStyle = IconButtonStyle.Ghost,
                         onIconClick = onFifthItemClicked,
                         buttonSize = IconButtonSize.XL
                     )
                 }
 
-                if (temIconSix != null) {
+                if (itemIconSix != null) {
                     TUIIconButton(
                         modifier = Modifier.weight(1f),
-                        icon = temIconSix,
-                        tags = tags.itemIconThreeTags,
+                        icon = itemIconSix,
+                        tags = tags.itemIconSixTags,
                         iconButtonStyle = IconButtonStyle.Ghost,
                         onIconClick = onSixthItemClicked,
                         buttonSize = IconButtonSize.XL
@@ -152,7 +153,7 @@ fun EamNormalBottomBar(
                 itemIconThree = TarkaIcons.Regular.ArrowUndo24,
                 itemIconFour = TarkaIcons.Regular.ArrowRedo24,
                 itemIconFive = TarkaIcons.Regular.Delete24,
-                temIconSix = TarkaIcons.Regular.Delete24,
+                itemIconSix = TarkaIcons.Regular.Delete24,
             )
         }
     }
