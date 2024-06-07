@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -50,7 +49,7 @@ fun TUIAppBottomBar(
             .background(color = TUITheme.colors.surface)
             .fillMaxWidth()
             .sizeIn(maxHeight = 64.dp)
-            .wrapContentHeight(), horizontalAlignment = Alignment.CenterHorizontally
+            .wrapContentHeight()
     ) {
         BottomAppBar(
             containerColor = color,
@@ -60,9 +59,7 @@ fun TUIAppBottomBar(
                 if (itemIconOne != null) {
                     TUIIconButton(
                         modifier = Modifier.weight(1f),
-                        onIconClick = {
-                            onFirstItemClicked()
-                        },
+                        onIconClick = onFirstItemClicked,
                         tags = tags.itemIconOneTags,
                         icon = itemIconOne,
                         iconButtonStyle = IconButtonStyle.Ghost,
@@ -76,9 +73,7 @@ fun TUIAppBottomBar(
                             .weight(1f),
                         icon = itemIconTwo, tags = tags.itemIconThreeTags,
                         iconButtonStyle = IconButtonStyle.Ghost,
-                        onIconClick = {
-                            onSecondItemClicked()
-                        },
+                        onIconClick = onSecondItemClicked,
                         buttonSize = IconButtonSize.XL
                     )
                 }
@@ -86,9 +81,7 @@ fun TUIAppBottomBar(
                 if (itemIconThree != null) {
                     TUIIconButton(
                         modifier = Modifier.weight(1f),
-                        onIconClick = {
-                            onThirdItemClicked()
-                        },
+                        onIconClick = onThirdItemClicked,
                         icon = itemIconThree,
                         tags = tags.itemIconTwoTags,
                         iconButtonStyle = IconButtonStyle.Ghost,
@@ -102,9 +95,7 @@ fun TUIAppBottomBar(
                         icon = itemIconFour,
                         tags = tags.itemIconThreeTags,
                         iconButtonStyle = IconButtonStyle.Ghost,
-                        onIconClick = {
-                            onFourthItemClicked()
-                        },
+                        onIconClick = onFourthItemClicked,
                         buttonSize = IconButtonSize.XL
                     )
                 }
@@ -115,9 +106,7 @@ fun TUIAppBottomBar(
                         icon = itemIconFive,
                         tags = tags.itemIconThreeTags,
                         iconButtonStyle = IconButtonStyle.Ghost,
-                        onIconClick = {
-                            onFifthItemClicked()
-                        },
+                        onIconClick = onFifthItemClicked,
                         buttonSize = IconButtonSize.XL
                     )
                 }
@@ -128,9 +117,7 @@ fun TUIAppBottomBar(
                         icon = temIconSix,
                         tags = tags.itemIconThreeTags,
                         iconButtonStyle = IconButtonStyle.Ghost,
-                        onIconClick = {
-                            onSixthItemClicked()
-                        },
+                        onIconClick = onSixthItemClicked,
                         buttonSize = IconButtonSize.XL
                     )
                 }
