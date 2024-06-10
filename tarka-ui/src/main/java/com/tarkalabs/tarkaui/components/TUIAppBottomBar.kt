@@ -1,5 +1,6 @@
 package com.tarkalabs.tarkaui.components
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,25 +26,33 @@ import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.theme.TUITheme
 
 
+sealed class BottomBarClickEvent(val index: Int) {
+    class ItemClick(index: Int) : BottomBarClickEvent(index)
+}
+
+
+/**   Displays a customized bottom app bar with listOfIcons,onClickEvent.
+ *
+ * @param modifier The modifier to customize the TUIAppBottomBar container.
+ * @param tags Tags for customizing test accessibility.
+ * @param onClickEvent The callback function to be invoked when the icon is clicked.
+ * @param icons for providing list of icons to be displayed in bottom bar.
+ * @param color: the colors to be applied to the bottom app bar.
+ *
+ * * How to use TUIAppBottomBar()
+ *   TUIAppBottomBar(
+ *     icons = pass the list of icons
+ *     onClickEvent = { event -> Handle event click based on the icon index}
+ *       )
+ */
 @Composable
 fun TUIAppBottomBar(
     modifier: Modifier = Modifier,
-    itemIconOne: TarkaIcon? = null,
-    itemIconTwo: TarkaIcon? = null,
-    itemIconThree: TarkaIcon? = null,
-    itemIconFour: TarkaIcon? = null,
-    itemIconFive: TarkaIcon? = null,
-    itemIconSix: TarkaIcon? = null,
-    onFirstItemClicked: () -> Unit = {},
-    onSecondItemClicked: () -> Unit = {},
-    onThirdItemClicked: () -> Unit = {},
-    onFourthItemClicked: () -> Unit = {},
-    onFifthItemClicked: () -> Unit = {},
-    onSixthItemClicked: () -> Unit = {},
-    tags: TUIAppBottomBarTag = TUIAppBottomBarTag(),
+    icons: List<TarkaIcon?> = emptyList(),
+    onClickEvent: (BottomBarClickEvent) -> Unit = {},
+    tags: List<TUIIconButtonTags> = emptyList(),
     color: Color = Color.Transparent,
 ) {
-
     Column(
         modifier = modifier
             .background(color = TUITheme.colors.surface)
@@ -55,107 +64,55 @@ fun TUIAppBottomBar(
             containerColor = color,
             modifier = Modifier.fillMaxWidth(),
             actions = {
-
-                if (itemIconOne != null) {
-                    TUIIconButton(
-                        modifier = Modifier.weight(1f),
-                        onIconClick = onFirstItemClicked,
-                        tags = tags.itemIconOneTags,
-                        icon = itemIconOne,
-                        iconButtonStyle = IconButtonStyle.Ghost,
-                        buttonSize = IconButtonSize.XL
-                    )
-                }
-
-                if (itemIconTwo != null) {
-                    TUIIconButton(
-                        modifier = Modifier
-                            .weight(1f),
-                        icon = itemIconTwo,
-                        tags = tags.itemIconTwoTags,
-                        iconButtonStyle = IconButtonStyle.Ghost,
-                        onIconClick = onSecondItemClicked,
-                        buttonSize = IconButtonSize.XL
-                    )
-                }
-
-                if (itemIconThree != null) {
-                    TUIIconButton(
-                        modifier = Modifier.weight(1f),
-                        onIconClick = onThirdItemClicked,
-                        icon = itemIconThree,
-                        tags = tags.itemIconThreeTags,
-                        iconButtonStyle = IconButtonStyle.Ghost,
-                        buttonSize = IconButtonSize.XL
-                    )
-                }
-
-                if (itemIconFour != null) {
-                    TUIIconButton(
-                        modifier = Modifier.weight(1f),
-                        icon = itemIconFour,
-                        tags = tags.itemIconFourTags,
-                        iconButtonStyle = IconButtonStyle.Ghost,
-                        onIconClick = onFourthItemClicked,
-                        buttonSize = IconButtonSize.XL
-                    )
-                }
-
-                if (itemIconFive != null) {
-                    TUIIconButton(
-                        modifier = Modifier.weight(1f),
-                        icon = itemIconFive,
-                        tags = tags.itemIconFiveTags,
-                        iconButtonStyle = IconButtonStyle.Ghost,
-                        onIconClick = onFifthItemClicked,
-                        buttonSize = IconButtonSize.XL
-                    )
-                }
-
-                if (itemIconSix != null) {
-                    TUIIconButton(
-                        modifier = Modifier.weight(1f),
-                        icon = itemIconSix,
-                        tags = tags.itemIconSixTags,
-                        iconButtonStyle = IconButtonStyle.Ghost,
-                        onIconClick = onSixthItemClicked,
-                        buttonSize = IconButtonSize.XL
-                    )
+                icons.forEachIndexed { index, icon ->
+                    icon?.let {
+                        TUIIconButton(
+                            modifier = Modifier.weight(1f),
+                            icon = it,
+                            onIconClick = { onClickEvent(BottomBarClickEvent.ItemClick(index)) },
+                            tags = tags[index],
+                            iconButtonStyle = IconButtonStyle.Ghost,
+                            buttonSize = IconButtonSize.XL
+                        )
+                    }
                 }
             }
         )
         TUIDivider()
-
     }
-
 }
-
-
-data class TUIAppBottomBarTag(
-    val itemIconOneTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUITopBar_itemIconOne"),
-    val itemIconTwoTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUITopBar_itemIconTwo"),
-    val itemIconThreeTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUITopBar_itemIconThree"),
-    val itemIconFourTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUITopBar_itemIconFour"),
-    val itemIconFiveTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUITopBar_itemIconFive"),
-    val itemIconSixTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUITopBar_itemIconSix"),
-)
-
 
 @Preview
 @Composable
-fun EamNormalBottomBar(
-) {
+fun EamNormalBottomBar() {
     TUITheme {
         Column {
             TUIAppBottomBar(
-                itemIconOne = TarkaIcons.Regular.SelectObjectSkew24,
-                itemIconTwo = TarkaIcons.Regular.Lasso24,
-                itemIconThree = TarkaIcons.Regular.ArrowUndo24,
-                itemIconFour = TarkaIcons.Regular.ArrowRedo24,
-                itemIconFive = TarkaIcons.Regular.Delete24,
-                itemIconSix = TarkaIcons.Regular.Delete24,
+                icons = listOf(
+                    TarkaIcons.Regular.SelectObjectSkew24,
+                    TarkaIcons.Regular.Lasso24,
+                    TarkaIcons.Regular.ArrowUndo24,
+                    TarkaIcons.Regular.ArrowRedo24,
+                    TarkaIcons.Regular.Delete24,
+                ),
+                onClickEvent = { event ->
+                    when (event.index) {
+                        0 -> Log.d("test", "1 item clicked")
+                        1 -> Log.d("test", "2 item clicked")
+                        2 -> Log.d("test", "3 item clicked")
+                        3 -> Log.d("test", "4item clicked")
+                        4 -> Log.d("test", "5 item clicked")
+
+                    }
+                },
+                tags = listOf(
+                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconOne"),
+                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconTwo"),
+                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconThree"),
+                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconFour"),
+                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconFive"),
+                )
             )
         }
     }
 }
-
