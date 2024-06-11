@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
@@ -85,7 +86,8 @@ import kotlinx.coroutines.delay
     interactionSource = interactionSource,
     textStyle = TUITheme.typography.body6.copy(color = TUITheme.colors.inputText),
     keyboardActions = keyboardAction,
-    keyboardOptions = keyboardOption
+    keyboardOptions = keyboardOption,
+    cursorBrush = SolidColor(TUITheme.colors.inputText)
   ) { innerTextField ->
     TextFieldDefaults.DecorationBox(
       value = query,
@@ -98,7 +100,7 @@ import kotlinx.coroutines.delay
         top = 0.dp, bottom = 0.dp, end = 10.dp, start = 10.dp
       ),
       colors = TextFieldDefaults.colors(
-        cursorColor = TUITheme.colors.inputText,
+        cursorColor = TUITheme.colors.error,
         focusedTextColor = TUITheme.colors.inputText,
         unfocusedTextColor = TUITheme.colors.inputText,
         unfocusedPlaceholderColor = TUITheme.colors.inputText.copy(alpha = 0.7f),
