@@ -16,19 +16,8 @@ import com.tarkalabs.tarkaui.components.base.IconButtonSize
 import com.tarkalabs.tarkaui.components.base.IconButtonStyle
 import com.tarkalabs.tarkaui.components.base.TUIIconButton
 import com.tarkalabs.tarkaui.components.base.TUIIconButtonTags
-import com.tarkalabs.tarkaui.icons.ArrowRedo24
-import com.tarkalabs.tarkaui.icons.ArrowUndo24
-import com.tarkalabs.tarkaui.icons.Delete24
-import com.tarkalabs.tarkaui.icons.Lasso24
-import com.tarkalabs.tarkaui.icons.SelectObjectSkew24
 import com.tarkalabs.tarkaui.icons.TarkaIcon
-import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.theme.TUITheme
-
-
-sealed class BottomBarClickEvent(val index: Int) {
-    class ItemClick(index: Int) : BottomBarClickEvent(index)
-}
 
 
 /**   Displays a customized bottom app bar with listOfIcons,onClickEvent.
@@ -45,14 +34,15 @@ sealed class BottomBarClickEvent(val index: Int) {
  *     onClickEvent = { event -> Handle event click based on the icon index}
  *       )
  */
+
 @Composable
 fun TUIAppBottomBar(
     modifier: Modifier = Modifier,
-    icons: List<TarkaIcon?> = emptyList(),
-    onClickEvent: (BottomBarClickEvent) -> Unit = {},
-    tags: List<TUIIconButtonTags> = emptyList(),
+    icons: List<TarkaIcon> = emptyList(),
+    onClickEvent: (index: Int) -> Unit, tags: List<TUIIconButtonTags>,
     color: Color = Color.Transparent,
 ) {
+
     Column(
         modifier = modifier
             .background(color = TUITheme.colors.surface)
@@ -65,16 +55,18 @@ fun TUIAppBottomBar(
             modifier = Modifier.fillMaxWidth(),
             actions = {
                 icons.forEachIndexed { index, icon ->
-                    icon?.let {
-                        TUIIconButton(
-                            modifier = Modifier.weight(1f),
-                            icon = it,
-                            onIconClick = { onClickEvent(BottomBarClickEvent.ItemClick(index)) },
-                            tags = tags[index],
-                            iconButtonStyle = IconButtonStyle.Ghost,
-                            buttonSize = IconButtonSize.XL
-                        )
-                    }
+                    TUIIconButton(
+                        modifier = Modifier.weight(1f),
+                        icon = icon,
+                        onIconClick = { onClickEvent(index) },
+                        tags = if (icons.size == tags.size) {
+                            tags[index]
+                        } else {
+                            TUIIconButtonTags()
+                        },
+                        iconButtonStyle = IconButtonStyle.Ghost,
+                        buttonSize = IconButtonSize.XL
+                    )
                 }
             }
         )
@@ -88,15 +80,9 @@ fun EamNormalBottomBar() {
     TUITheme {
         Column {
             TUIAppBottomBar(
-                icons = listOf(
-                    TarkaIcons.Regular.SelectObjectSkew24,
-                    TarkaIcons.Regular.Lasso24,
-                    TarkaIcons.Regular.ArrowUndo24,
-                    TarkaIcons.Regular.ArrowRedo24,
-                    TarkaIcons.Regular.Delete24,
-                ),
-                onClickEvent = { event ->
-                    when (event.index) {
+                icons = emptyList(),
+                onClickEvent = { index ->
+                    when (index) {
                         0 -> Log.d("test", "1 item clicked")
                         1 -> Log.d("test", "2 item clicked")
                         2 -> Log.d("test", "3 item clicked")
@@ -105,13 +91,7 @@ fun EamNormalBottomBar() {
 
                     }
                 },
-                tags = listOf(
-                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconOne"),
-                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconTwo"),
-                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconThree"),
-                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconFour"),
-                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconFive"),
-                )
+                tags = emptyList()
             )
         }
     }
