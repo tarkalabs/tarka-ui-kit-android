@@ -16,7 +16,12 @@ import com.tarkalabs.tarkaui.components.base.IconButtonSize
 import com.tarkalabs.tarkaui.components.base.IconButtonStyle
 import com.tarkalabs.tarkaui.components.base.TUIIconButton
 import com.tarkalabs.tarkaui.components.base.TUIIconButtonTags
+import com.tarkalabs.tarkaui.icons.ArrowRedo24
+import com.tarkalabs.tarkaui.icons.ArrowUndo24
+import com.tarkalabs.tarkaui.icons.Lasso24
+import com.tarkalabs.tarkaui.icons.SelectObjectSkew24
 import com.tarkalabs.tarkaui.icons.TarkaIcon
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.theme.TUITheme
 
 
@@ -27,6 +32,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
  * @param onClickEvent The callback function to be invoked when the icon is clicked.
  * @param icons for providing list of icons to be displayed in bottom bar.
  * @param color: the colors to be applied to the bottom app bar.
+ *  Note : icon and tags should not exceed more 6
  *
  * * How to use TUIAppBottomBar()
  *   TUIAppBottomBar(
@@ -42,6 +48,7 @@ fun TUIAppBottomBar(
     onClickEvent: (index: Int) -> Unit, tags: List<TUIIconButtonTags>,
     color: Color = Color.Transparent,
 ) {
+    require(icons.size < 6 && tags.size < 6) { "icon and tags should not exceed more 6"}
 
     Column(
         modifier = modifier
@@ -80,18 +87,26 @@ fun EamNormalBottomBar() {
     TUITheme {
         Column {
             TUIAppBottomBar(
-                icons = emptyList(),
+                icons =  listOf(
+                    TarkaIcons.Regular.SelectObjectSkew24,
+                    TarkaIcons.Regular.Lasso24,
+                    TarkaIcons.Regular.ArrowUndo24,
+                    TarkaIcons.Regular.ArrowRedo24,
+                ),
                 onClickEvent = { index ->
                     when (index) {
                         0 -> Log.d("test", "1 item clicked")
                         1 -> Log.d("test", "2 item clicked")
                         2 -> Log.d("test", "3 item clicked")
                         3 -> Log.d("test", "4item clicked")
-                        4 -> Log.d("test", "5 item clicked")
-
                     }
                 },
-                tags = emptyList()
+                tags = listOf(
+                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconOne"),
+                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconTwo"),
+                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconThree"),
+                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconFour"),
+                )
             )
         }
     }
