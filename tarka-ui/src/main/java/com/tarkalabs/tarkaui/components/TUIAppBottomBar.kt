@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -48,6 +49,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
  *       )
  */
 
+
 @Composable
 fun TUIAppBottomBar(
     modifier: Modifier = Modifier,
@@ -58,6 +60,7 @@ fun TUIAppBottomBar(
     require(icons.size <= 6 && tags.size <= 6) { "icon and tags should not exceed more 6" }
 
     var selectedIconIndex by remember { mutableIntStateOf(1) } // Initially, the second icon is selected
+    var isFirstSelected by remember { mutableStateOf(true) }
 
     Row(
         modifier = modifier
@@ -76,8 +79,12 @@ fun TUIAppBottomBar(
                     modifier = Modifier.wrapContentSize(),
                     icon = icon,
                     onIconClick = {
-                        selectedIconIndex = if (isIconSelected) -1 else index
-                        onClickEvent(selectedIconIndex)
+                        if (index == selectedIconIndex) {
+                            isFirstSelected = false
+                        } else {
+                            selectedIconIndex = index
+                        }
+                        onClickEvent(if (isIconSelected) -1 else index)
                     },
                     tags = if (icons.size == tags.size) {
                         tags[index]
@@ -96,8 +103,6 @@ fun TUIAppBottomBar(
     }
     TUIDivider()
 }
-
-
 
 
 @Preview
