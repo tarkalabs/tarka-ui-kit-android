@@ -50,7 +50,7 @@ import kotlinx.coroutines.delay
   val focusRequester = remember { FocusRequester() }
 
   LaunchedEffect(isInitialAutoFocus) {
-    if(isInitialAutoFocus) {
+    if (isInitialAutoFocus) {
       delay(500)
       focusRequester.requestFocus()
     }
