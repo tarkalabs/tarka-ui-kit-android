@@ -235,7 +235,7 @@ fun iconFor(status: TUIInputFieldStatus): TarkaIcon? {
     focusedContainerColor = TUITheme.colors.inputBackground,
     unfocusedLabelColor = TUITheme.colors.inputDim,
     unfocusedTextColor = TUITheme.colors.inputText,
-    unfocusedIndicatorColor = TUITheme.colors.utilityDisabledBackground,
+    unfocusedIndicatorColor = if (status == Error) focusedIndicatorColor else TUITheme.colors.utilityDisabledBackground,
     unfocusedContainerColor = TUITheme.colors.inputBackground,
     disabledLabelColor = disabledLabelColor,
     disabledTextColor = disabledTextColor,
