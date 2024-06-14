@@ -54,12 +54,15 @@ import com.tarkalabs.tarkaui.theme.TUITheme
 fun TUIAppBottomBar(
     modifier: Modifier = Modifier,
     icons: List<TarkaIcon> = emptyList(),
+    defaultSelectedItem: Int,
     onClickEvent: (index: Int) -> Unit,
     tags: List<TUIIconButtonTags>,
 ) {
-    require(icons.size <= 6 && tags.size <= 6) { "icon and tags should not exceed more 6" }
+    require(icons.isNotEmpty() && tags.isNotEmpty()) { "icon and tags should not empty" }
 
-    var selectedIconIndex by remember { mutableIntStateOf(1) } // Initially, the second icon is selected
+    require(defaultSelectedItem < 6 && icons.size <= 6 && tags.size <= 6) { "icon and tags should not exceed more 6" }
+
+    var selectedIconIndex by remember { mutableIntStateOf(defaultSelectedItem) } // Initially, the second icon is selected
     var isFirstSelected by remember { mutableStateOf(true) }
 
     Row(
@@ -132,10 +135,11 @@ fun EamNormalBottomBar() {
                     TUIIconButtonTags(parentTag = "TUITopBar_itemIconTwo"),
                     TUIIconButtonTags(parentTag = "TUITopBar_itemIconThree"),
                     TUIIconButtonTags(parentTag = "TUITopBar_itemIconFour"),
-                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconFour"),
-                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconFour"),
+                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconFive"),
+                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconSix"),
 
-                    )
+                    ),
+                defaultSelectedItem = 5
             )
             VerticalSpacer(space = 16)
 
@@ -160,8 +164,9 @@ fun EamNormalBottomBar() {
                     TUIIconButtonTags(parentTag = "TUITopBar_itemIconTwo"),
                     TUIIconButtonTags(parentTag = "TUITopBar_itemIconThree"),
                     TUIIconButtonTags(parentTag = "TUITopBar_itemIconFour"),
-                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconFour"),
-                )
+                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconFive"),
+                ),
+                defaultSelectedItem = 3
             )
             VerticalSpacer(space = 16)
             TUIAppBottomBar(
@@ -184,7 +189,8 @@ fun EamNormalBottomBar() {
                     TUIIconButtonTags(parentTag = "TUITopBar_itemIconTwo"),
                     TUIIconButtonTags(parentTag = "TUITopBar_itemIconThree"),
                     TUIIconButtonTags(parentTag = "TUITopBar_itemIconFour"),
-                )
+                ),
+                defaultSelectedItem = -1
             )
             VerticalSpacer(space = 16)
             TUIAppBottomBar(
@@ -205,7 +211,8 @@ fun EamNormalBottomBar() {
                     TUIIconButtonTags(parentTag = "TUITopBar_itemIconOne"),
                     TUIIconButtonTags(parentTag = "TUITopBar_itemIconTwo"),
                     TUIIconButtonTags(parentTag = "TUITopBar_itemIconThree"),
-                )
+                ),
+                defaultSelectedItem = 3
             )
             VerticalSpacer(space = 16)
             TUIAppBottomBar(
@@ -224,7 +231,8 @@ fun EamNormalBottomBar() {
                 tags = listOf(
                     TUIIconButtonTags(parentTag = "TUITopBar_itemIconOne"),
                     TUIIconButtonTags(parentTag = "TUITopBar_itemIconTwo"),
-                )
+                ),
+                defaultSelectedItem = 3
             )
             VerticalSpacer(space = 16)
             TUIAppBottomBar(
@@ -241,7 +249,8 @@ fun EamNormalBottomBar() {
                 },
                 tags = listOf(
                     TUIIconButtonTags(parentTag = "TUITopBar_itemIconOne"),
-                )
+                ),
+                defaultSelectedItem = 3
             )
         }
     }
