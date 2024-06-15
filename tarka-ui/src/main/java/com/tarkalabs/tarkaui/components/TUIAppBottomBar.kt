@@ -53,16 +53,16 @@ import com.tarkalabs.tarkaui.theme.TUITheme
 @Composable
 fun TUIAppBottomBar(
     modifier: Modifier = Modifier,
-    icons: List<TarkaIcon> = emptyList(),
+    icons: List<TarkaIcon>,
     defaultSelectedItem: Int,
     onClickEvent: (index: Int) -> Unit,
-    tags: List<TUIIconButtonTags>,
+    tags: List<TUIIconButtonTags> = emptyList(),
 ) {
-    require(icons.isNotEmpty() && tags.isNotEmpty()) { "icon and tags should not empty" }
+    require(icons.isNotEmpty()) { "icon should not empty" }
 
-    require(defaultSelectedItem < 6 && icons.size <= 6 && tags.size <= 6) { "icon and tags should not exceed more 6" }
+    require(defaultSelectedItem < 6 && icons.size <= 6) { "icon and tags should not exceed more 6" }
 
-    var selectedIconIndex by remember { mutableIntStateOf(defaultSelectedItem) } // Initially, the second icon is selected
+    var selectedIconIndex by remember { mutableIntStateOf(defaultSelectedItem) }
     var isFirstSelected by remember { mutableStateOf(true) }
 
     Row(
@@ -130,15 +130,6 @@ fun EamNormalBottomBar() {
                         3 -> Log.d("test", "4item clicked")
                     }
                 },
-                tags = listOf(
-                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconOne"),
-                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconTwo"),
-                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconThree"),
-                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconFour"),
-                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconFive"),
-                    TUIIconButtonTags(parentTag = "TUITopBar_itemIconSix"),
-
-                    ),
                 defaultSelectedItem = 5
             )
             VerticalSpacer(space = 16)
