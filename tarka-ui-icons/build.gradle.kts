@@ -1,10 +1,15 @@
 @file:Suppress("UnstableApiUsage")
 
+import java.io.FileInputStream
+import java.util.Properties
+
+
 plugins {
   id("com.android.library")
   id("org.jetbrains.kotlin.android")
   id("maven-publish")
   id("org.jetbrains.dokka")
+  id("org.jetbrains.kotlin.plugin.compose")
 }
 
 android {
@@ -31,13 +36,6 @@ android {
   kotlinOptions {
     jvmTarget = "17"
   }
-
-  buildFeatures {
-    compose = true
-  }
-  composeOptions {
-    kotlinCompilerExtensionVersion = "1.5.11"
-  }
 }
 
 
@@ -54,25 +52,32 @@ publishing {
   }
 
   repositories {
+    val localProperties = Properties()
+    val localPropertiesFile = File("local.properties")
+    if (localPropertiesFile.exists()) {
+      localProperties.load(FileInputStream(localPropertiesFile))
+    }
     maven {
       name = "GitHubPackages"
       url = uri("https://maven.pkg.github.com/tarkalabs/tarka-ui-kit-android")
       credentials {
-        username = System.getenv("GITHUB_USER")
-        password = System.getenv("GITHUB_TOKEN")
+        username =
+          System.getenv("GITHUB_USER") ?: localProperties.getProperty("GITHUB_USER")
+        password =
+          System.getenv("GITHUB_TOKEN") ?: localProperties.getProperty("GITHUB_TOKEN")
       }
     }
   }
 }
 
 dependencies {
-  val composeUiVersion = "1.4.1"
-  implementation("androidx.compose.runtime:runtime:$composeUiVersion")
-  implementation("androidx.compose.ui:ui:$composeUiVersion")
+  implementation("androidx.core:core-ktx:1.13.1")
+  implementation("androidx.appcompat:appcompat:1.7.0")
+  implementation(platform("androidx.compose:compose-bom:2024.10.00"))
+  implementation("androidx.compose.runtime:runtime")
+  implementation("androidx.compose.ui:ui")
   api("com.microsoft.design:fluent-system-icons:1.1.239@aar")
-  implementation("androidx.core:core-ktx:1.10.0")
-  implementation("androidx.appcompat:appcompat:1.6.1")
   testImplementation("junit:junit:4.13.2")
-  androidTestImplementation("androidx.test.ext:junit:1.1.5")
+  androidTestImplementation("androidx.test.ext:junit:1.2.1")
   androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
