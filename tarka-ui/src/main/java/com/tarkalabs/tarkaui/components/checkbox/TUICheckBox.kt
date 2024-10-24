@@ -36,10 +36,10 @@ import com.tarkalabs.tarkaui.theme.TUITheme
  * How to use TUICheckBox() composable function
  *
  *     TUICheckBox(
-        checked = isChecked,
-        enabled = true,
-        onCheckedChange = { isChecked = !isChecked }
-      )
+checked = isChecked,
+enabled = true,
+onCheckedChange = { isChecked = !isChecked }
+)
  */
 @Composable fun TUICheckBox(
   modifier: Modifier = Modifier,
@@ -62,12 +62,18 @@ import com.tarkalabs.tarkaui.theme.TUITheme
       )
       .border(width = 1.dp, color = borderColor, shape = shape)
       .then(
-        if (onCheckedChange == null) Modifier else Modifier.toggleable(value = checked,
-          onValueChange = {
-            if (enabled) {
-              onCheckedChange.invoke()
+        if (onCheckedChange == null) {
+          Modifier
+        } else {
+          Modifier.toggleable(
+            value = checked,
+            onValueChange = {
+              if (enabled) {
+                onCheckedChange.invoke()
+              }
             }
-          })
+          )
+        }
       )
       .testTag(tags.parentTag)
   ) {
@@ -84,7 +90,8 @@ import com.tarkalabs.tarkaui.theme.TUITheme
   }
 }
 
-@Preview @Composable fun PreviewTUICheckBox() {
+@Preview @Composable
+private fun PreviewTUICheckBox() {
   Column(
     modifier = Modifier
       .padding(20.dp)
@@ -109,10 +116,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
       TUICheckBox(checked = false, enabled = false, icon = Filled.Checkmark16) {
       }
     }
-
   }
 }
 
-data class TUICheckBoxTags(
-  val parentTag: String = "TUICheckBox",
-)
+data class TUICheckBoxTags(val parentTag: String = "TUICheckBox")

@@ -69,7 +69,8 @@ fun TUISelectionCard(
   leadingIcon: TarkaIcon? = null,
   label: String? = null,
   primaryDescription: String? = null,
-  @StringRes primaryNotAvailableText : Int = R.string.not_availble,
+  @StringRes primaryNotAvailableText: Int = R.string.not_availble,
+  showPrimaryDetails: Boolean = false,
   secondaryDescription: String? = null,
   primaryDetails: String? = null,
   secondaryDetails: String? = null,
@@ -79,23 +80,21 @@ fun TUISelectionCard(
   isSelected: Boolean = false,
   showCheckMarkIcon: Boolean = false,
   tags: TUISelectionCardTags = TUISelectionCardTags(),
-  onCardClicked: () -> Unit,
+  onCardClicked: () -> Unit
 ) {
-
   Row(
     modifier = modifier
       .testTag(tags.parentTag)
       .semantics { testTagsAsResourceId = true }
       .clip(RoundedCornerShape(16.dp))
       .background(
-        if (isSelected) TUITheme.colors.primaryAlt else TUITheme.colors.surface,
+        if (isSelected) TUITheme.colors.primaryAlt else TUITheme.colors.surface
       )
       .clickable {
         onCardClicked.invoke()
       }
-      .padding(horizontal = 16.dp, vertical = 12.dp),
+      .padding(horizontal = 16.dp, vertical = 12.dp)
   ) {
-
     leadingIcon?.let {
       Icon(
         modifier = Modifier
@@ -112,7 +111,6 @@ fun TUISelectionCard(
         .padding(start = if (leadingIcon != null) 16.dp else 0.dp)
         .weight(1f)
     ) {
-
       label?.let {
         Text(
           modifier = Modifier.testTag(tags.labelTag),
@@ -122,7 +120,6 @@ fun TUISelectionCard(
         )
         VerticalSpacer(space = 4)
       }
-
 
       if (primaryDescription.isNullOrEmpty()) {
         Text(
@@ -140,11 +137,18 @@ fun TUISelectionCard(
         )
       }
       VerticalSpacer(space = 4)
-
-      primaryDetails?.let {
+      if (primaryDetails.isNullOrEmpty() && showPrimaryDetails) {
         Text(
           modifier = Modifier.testTag(tags.detailsTag),
-          text = it,
+          text = stringResource(id = primaryNotAvailableText),
+          color = TUITheme.colors.utilityDisabledContent,
+          style = TUITheme.typography.body7
+        )
+        VerticalSpacer(space = 4)
+      } else if (!primaryDetails.isNullOrEmpty()) {
+        Text(
+          modifier = Modifier.testTag(tags.detailsTag),
+          text = primaryDetails,
           color = TUITheme.colors.inputTextDim.copy(alpha = 0.7f),
           style = TUITheme.typography.body7
         )
@@ -165,12 +169,17 @@ fun TUISelectionCard(
         Text(
           modifier = Modifier.testTag(tags.details2Tag),
           text = it,
-          color = if (secondaryDetailStyle == NORMAL) TUITheme.colors.inputTextDim.copy(alpha = 0.7f) else TUITheme.colors.error,
+          color = if (secondaryDetailStyle ==
+            NORMAL
+          ) {
+            TUITheme.colors.inputTextDim.copy(alpha = 0.7f)
+          } else {
+            TUITheme.colors.error
+          },
           style = TUITheme.typography.body7
         )
         VerticalSpacer(space = 4)
       }
-
     }
 
     badgeCount?.let {
@@ -209,7 +218,6 @@ fun TUISelectionCard(
         )
       }
     }
-
   }
 }
 
@@ -223,13 +231,12 @@ data class TUISelectionCardTags(
   val details2Tag: String = "TUISelectionCard_SecondaryDetailsTag",
   val badgeTag: String = "TUISelectionCard_BadgeTag",
   val trailingFrontArrowIconTag: String = "TUISelectionCard_TrailingFrontArrowIconTag",
-  val trailingCheckMarkIconTag: String = "TUISelectionCard_TrailingCheckMarkIconTag",
+  val trailingCheckMarkIconTag: String = "TUISelectionCard_TrailingCheckMarkIconTag"
 )
 
 @Preview
 @Composable
-fun TUISelectionCardPreview() {
-
+private fun TUISelectionCardPreview() {
   Column(
     modifier = Modifier
       .fillMaxSize()
@@ -321,6 +328,5 @@ fun TUISelectionCardPreview() {
       showTrailingIcon = true,
       isSelected = true
     ) {}
-
   }
 }
