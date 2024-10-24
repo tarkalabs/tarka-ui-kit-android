@@ -57,7 +57,6 @@ sealed class BadgeStyle {
   tags: TUIBadgeTags = TUIBadgeTags(),
   color: Color = TUITheme.colors.error
 ) {
-
   val textStyle = when (badgeSize) {
     S, M -> TUITheme.typography.button8
     L -> TUITheme.typography.button7
@@ -69,7 +68,7 @@ sealed class BadgeStyle {
       .testTag(tags.parentTag)
       .clip(CircleShape)
       .background(color),
-    contentAlignment = Alignment.Center,
+    contentAlignment = Alignment.Center
   ) {
     when (style) {
       is BadgeStyle.Count -> {
@@ -81,7 +80,7 @@ sealed class BadgeStyle {
             textAlign = TextAlign.Center,
             text = style.count.toString(),
             style = textStyle,
-            color = TUITheme.colors.onTertiary,
+            color = TUITheme.colors.onTertiary
           )
         }
       }
@@ -100,12 +99,11 @@ sealed class BadgeStyle {
   }
 }
 
-data class TUIBadgeTags(
-  val parentTag: String = "TUIBadge",
-  val iconTag: String = "BadgeIcon",
-)
+data class TUIBadgeTags(val parentTag: String = "TUIBadge", val iconTag: String = "BadgeIcon")
 
-@Preview(showBackground = true) @Composable fun BadgePreview() {
+@Preview(showBackground = true)
+@Composable
+private fun BadgePreview() {
   Column(horizontalAlignment = Alignment.CenterHorizontally) {
     TUIBadge(style = BadgeStyle.Count(4), badgeSize = M)
     VerticalSpacer(space = 8)

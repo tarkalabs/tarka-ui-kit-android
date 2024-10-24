@@ -17,14 +17,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaui.icons.ChevronRight20
-import com.tarkalabs.tarkaui.icons.TarkaIcon
-import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.components.base.FloatingActionButtonSize.L
 import com.tarkalabs.tarkaui.components.base.FloatingActionButtonSize.R
 import com.tarkalabs.tarkaui.components.base.FloatingActionButtonSize.S
 import com.tarkalabs.tarkaui.components.base.FloatingButtonStyle.Outline
 import com.tarkalabs.tarkaui.components.base.FloatingButtonStyle.Primary
+import com.tarkalabs.tarkaui.icons.ChevronRight20
+import com.tarkalabs.tarkaui.icons.TarkaIcon
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.theme.TUITheme
 
 enum class FloatingActionButtonSize(val size: Dp) {
@@ -34,8 +34,8 @@ enum class FloatingActionButtonSize(val size: Dp) {
 }
 
 sealed class FloatingButtonStyle {
-  object Primary: FloatingButtonStyle()
-  object Outline: FloatingButtonStyle()
+  data object Primary : FloatingButtonStyle()
+  data object Outline : FloatingButtonStyle()
 }
 
 /**
@@ -50,7 +50,8 @@ sealed class FloatingButtonStyle {
  * TUIFloatingActionButton(fabSize = S, icon = TarkaIcons.ChevronRight, onClick = {})
  *
  */
-@Composable fun TUIFloatingActionButton(
+@Composable
+fun TUIFloatingActionButton(
   fabSize: FloatingActionButtonSize = S,
   icon: TarkaIcon,
   tags: TUIFloatingActionButtonTags = TUIFloatingActionButtonTags(),
@@ -95,29 +96,31 @@ sealed class FloatingButtonStyle {
   }
 }
 
-data class TUIFloatingActionButtonTags(
-  val parentTag: String = "TUIFloatingActionButton",
-)
+data class TUIFloatingActionButtonTags(val parentTag: String = "TUIFloatingActionButton")
 
-@Preview(showBackground = true) @Composable fun FloatingActionButtonPreview() {
+@Preview(showBackground = true)
+@Composable
+private fun FloatingActionButtonPreview() {
   Column(
     horizontalAlignment = Alignment.CenterHorizontally,
     verticalArrangement = Arrangement.SpaceEvenly
   ) {
     TUIFloatingActionButton(
-      L, TarkaIcons.Regular.ChevronRight20, onClick = {}
+      L,
+      TarkaIcons.Regular.ChevronRight20,
+      onClick = {}
     )
     Spacer(modifier = Modifier.padding(5.dp))
     TUIFloatingActionButton(
-      R, TarkaIcons.Regular.ChevronRight20, onClick = {}
+      R,
+      TarkaIcons.Regular.ChevronRight20,
+      onClick = {}
     )
     Spacer(modifier = Modifier.padding(5.dp))
     TUIFloatingActionButton(
-      S, TarkaIcons.Regular.ChevronRight20, onClick = {}
+      S,
+      TarkaIcons.Regular.ChevronRight20,
+      onClick = {}
     )
   }
 }
-
-
-
-

@@ -19,9 +19,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.tarkalabs.tarkaui.icons.Search24
-import com.tarkalabs.tarkaui.icons.TarkaIcon
-import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.components.base.AvatarSize.L
 import com.tarkalabs.tarkaui.components.base.AvatarSize.M
 import com.tarkalabs.tarkaui.components.base.AvatarSize.S
@@ -31,6 +28,9 @@ import com.tarkalabs.tarkaui.components.base.AvatarSize.XXL
 import com.tarkalabs.tarkaui.components.base.AvatarType.Icon
 import com.tarkalabs.tarkaui.components.base.AvatarType.Image
 import com.tarkalabs.tarkaui.components.base.AvatarType.Text
+import com.tarkalabs.tarkaui.icons.Search24
+import com.tarkalabs.tarkaui.icons.TarkaIcon
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.theme.TUITheme
 
 enum class AvatarSize(val size: Dp) {
@@ -46,8 +46,10 @@ enum class AvatarSize(val size: Dp) {
 sealed class AvatarType {
   @Stable
   data class Icon(val icon: TarkaIcon) : AvatarType()
+
   @Stable
   data class Text(val text: String) : AvatarType()
+
   @Stable
   data class Image(val image: ImageBitmap) : AvatarType()
 }
@@ -119,12 +121,11 @@ fun TUIAvatar(
 }
 
 @Composable
-private fun badgeSizeFor(avatarSize: AvatarSize) =
-  when (avatarSize) {
-    XS, M, S -> BadgeSize.S
-    L -> BadgeSize.M
-    XXL, XL -> BadgeSize.L
-  }
+private fun badgeSizeFor(avatarSize: AvatarSize) = when (avatarSize) {
+  XS, M, S -> BadgeSize.S
+  L -> BadgeSize.M
+  XXL, XL -> BadgeSize.L
+}
 
 @Composable
 private fun iconSizeFor(size: AvatarSize) = when (size) {
@@ -145,12 +146,12 @@ private fun typographyFor(size: AvatarSize) = when (size) {
 
 data class TUIAvatarTags(
   val parentTag: String = "TUIAvatar",
-  val badgeTag: String = "TUIAvatar_Badge",
+  val badgeTag: String = "TUIAvatar_Badge"
 )
 
 @Composable
 @Preview(showBackground = true)
-fun TUIAvatarIconPreview() {
+private fun TUIAvatarIconPreview() {
   TUIAvatar(
     avatarType = Icon(TarkaIcons.Regular.Search24),
     avatarSize = L
@@ -159,9 +160,9 @@ fun TUIAvatarIconPreview() {
 
 @Composable
 @Preview(showBackground = true)
-fun TUIAvatarTextPreview() {
+private fun TUIAvatarTextPreview() {
   TUIAvatar(
     avatarType = Text(text = "TUK"),
-    avatarSize = L,
+    avatarSize = L
   )
 }
