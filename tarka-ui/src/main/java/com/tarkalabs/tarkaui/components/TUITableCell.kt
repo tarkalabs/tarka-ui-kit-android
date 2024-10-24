@@ -39,7 +39,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
   isHeader: Boolean,
   tags: TUITableCellTags = TUITableCellTags(),
   isTopBorderVisible: Boolean = false,
-  isBottomBorderVisible: Boolean = false,
+  isBottomBorderVisible: Boolean = false
 ) {
   val borderColor = TUITheme.colors.surfaceVariantHover
   Row(
@@ -72,21 +72,20 @@ import com.tarkalabs.tarkaui.theme.TUITheme
         .fillMaxWidth(),
       style = TUITheme.typography.body7,
       text = cellValue,
-      color = if (isHeader)
+      color = if (isHeader) {
         TUITheme.colors.utilityDisabledContent
-      else
-        TUITheme.colors.onSurface,
+      } else {
+        TUITheme.colors.onSurface
+      }
     )
   }
 }
 
-data class TUITableCellTags(
-  val parentTag: String = "TUITableCell",
-)
+data class TUITableCellTags(val parentTag: String = "TUITableCell")
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewTUITableCell() {
+private fun TUITableCellPreview() {
   TUITheme {
     Box {
       Column(modifier = Modifier.padding(10.dp)) {
@@ -180,13 +179,13 @@ fun PreviewTUITableCell() {
 }
 
 @Preview @Composable
-fun PreviewCombinedTUITableCell() {
+private fun CombinedTUITableCellPreview() {
   TUITheme(true) {
     Column(modifier = Modifier.padding(10.dp)) {
       Row(
         modifier = Modifier.height(Max),
         horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically,
+        verticalAlignment = Alignment.CenterVertically
       ) {
         TUITableCell(
           modifier = Modifier
@@ -217,7 +216,7 @@ fun PreviewCombinedTUITableCell() {
         )
       }
       Row(
-        modifier = Modifier.height(Max),
+        modifier = Modifier.height(Max)
       ) {
         TUITableCell(
           modifier = Modifier
