@@ -76,8 +76,11 @@ import kotlinx.coroutines.launch
  * @param onInvalidEmail The callback function to be invoked when user enter a invalid email address.
  */
 @OptIn(
-  ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class
-) @Composable fun TUIEmailField(
+  ExperimentalLayoutApi::class,
+  ExperimentalMaterial3Api::class
+)
+@Composable
+fun TUIEmailField(
   modifier: Modifier = Modifier,
   title: String,
   emailAddressList: ImmutableList<String>,
@@ -87,10 +90,9 @@ import kotlinx.coroutines.launch
   onItemRemoved: (Int) -> Unit,
   onItemAdd: (String) -> Unit,
   onInvalidEmail: () -> Unit,
-  showTextField : Boolean = false,
-  toggleTextFieldVisibility : () -> Unit = {}
+  showTextField: Boolean = false,
+  toggleTextFieldVisibility: () -> Unit = {}
 ) {
-
   var textData by rememberSaveable {
     mutableStateOf("")
   }
@@ -99,8 +101,8 @@ import kotlinx.coroutines.launch
   val scope = rememberCoroutineScope()
   val interactionSource = remember { MutableInteractionSource() }
 
-
-  Column(verticalArrangement = Arrangement.Top,
+  Column(
+    verticalArrangement = Arrangement.Top,
     horizontalAlignment = Alignment.CenterHorizontally,
     modifier = modifier
       .testTag(tags.parentTag)
@@ -118,7 +120,7 @@ import kotlinx.coroutines.launch
     Row(
       modifier = Modifier
         .fillMaxWidth(),
-      verticalAlignment = Alignment.Top,
+      verticalAlignment = Alignment.Top
     ) {
       Text(
         text = title,
@@ -136,16 +138,22 @@ import kotlinx.coroutines.launch
           maxItemsInEachRow = 3
         ) {
           emailAddressList.forEachIndexed { index, email ->
-            TUIChip(modifier = Modifier
-              .padding(2.dp)
-              .testTag(email), type = Input(
-              trailingIcon = Filled.Dismiss20,
-              containerColor = TUITheme.colors.surfaceVariant
-            ), label = email, tags = tags.chipTags, onClick = {
-
-            }, onDismissClick = {
-              onItemRemoved.invoke(index)
-            })
+            TUIChip(
+              modifier = Modifier
+                .padding(2.dp)
+                .testTag(email),
+              type = Input(
+                trailingIcon = Filled.Dismiss20,
+                containerColor = TUITheme.colors.surfaceVariant
+              ),
+              label = email,
+              tags = tags.chipTags,
+              onClick = {
+              },
+              onDismissClick = {
+                onItemRemoved.invoke(index)
+              }
+            )
           }
         }
 
@@ -157,7 +165,7 @@ import kotlinx.coroutines.launch
           disabledIndicatorColor = Color.Transparent,
           errorIndicatorColor = Color.Transparent,
           focusedTextColor = TUITheme.colors.inputText,
-          unfocusedTextColor =  TUITheme.colors.inputText,
+          unfocusedTextColor = TUITheme.colors.inputText
         )
 
         AnimatedVisibility(visible = showTextField) {
@@ -175,7 +183,8 @@ import kotlinx.coroutines.launch
               }
             }),
             keyboardOptions = KeyboardOptions(
-              keyboardType = KeyboardType.Email, imeAction = ImeAction.Done
+              keyboardType = KeyboardType.Email,
+              imeAction = ImeAction.Done
             ),
             modifier = Modifier
               .fillMaxWidth()
@@ -187,13 +196,15 @@ import kotlinx.coroutines.launch
                 colors = colors,
                 interactionSource = interactionSource,
                 focusedIndicatorLineThickness = 1.dp,
-                unfocusedIndicatorLineThickness = 1.dp,
+                unfocusedIndicatorLineThickness = 1.dp
               )
               .height(45.dp),
             enabled = true,
             singleLine = true,
             interactionSource = interactionSource,
-            textStyle = TUITheme.typography.body7.copy(color = TUITheme.colors.inputText ),
+            textStyle = TUITheme.typography.body7.copy(
+              color = TUITheme.colors.inputText
+            ),
             cursorBrush = SolidColor(TUITheme.colors.inputText)
           ) {
             DecorationBox(
@@ -203,10 +214,13 @@ import kotlinx.coroutines.launch
               enabled = true,
               visualTransformation = VisualTransformation.None,
               contentPadding = TextFieldDefaults.contentPaddingWithLabel(
-                top = 0.dp, bottom = 0.dp, start = 0.dp, end = 0.dp
+                top = 0.dp,
+                bottom = 0.dp,
+                start = 0.dp,
+                end = 0.dp
               ),
               interactionSource = interactionSource,
-              colors = colors,
+              colors = colors
             )
           }
         }
@@ -225,7 +239,6 @@ import kotlinx.coroutines.launch
       thickness = if (showTextField) 2 else 1,
       modifier = Modifier.padding(top = 10.dp)
     )
-
   }
 }
 
@@ -237,7 +250,8 @@ data class TUIEmailFieldTags(
   val chipTags: TUIChipTags = TUIChipTags()
 )
 
-@Preview @Composable fun PreviewTUIEmailField() {
+@Preview @Composable
+private fun PreviewTUIEmailField() {
   TUITheme {
     val emailList = remember {
       mutableStateListOf<String>()
@@ -254,21 +268,18 @@ data class TUIEmailFieldTags(
             emailList.removeAt(position)
           },
           trailingIconClick = {
-
           },
           onItemAdd = {
             emailList.add(it)
           },
           onInvalidEmail = {
-
           },
           showTextField = showEditText,
           toggleTextFieldVisibility = {
             showEditText = !showEditText
-            showEditText2  = false
+            showEditText2 = false
           }
         )
-
       }
 
       Box(modifier = Modifier.fillMaxWidth()) {
@@ -280,21 +291,18 @@ data class TUIEmailFieldTags(
             emailList.removeAt(position)
           },
           trailingIconClick = {
-
           },
           onItemAdd = {
             emailList.add(it)
           },
           onInvalidEmail = {
-
           },
           showTextField = showEditText2,
           toggleTextFieldVisibility = {
             showEditText = false
-            showEditText2  = !showEditText2
+            showEditText2 = !showEditText2
           }
         )
-
       }
       TextField(
         value = "",
@@ -304,20 +312,19 @@ data class TUIEmailFieldTags(
           .fillMaxWidth()
           .padding(20.dp)
           .onFocusChanged {
-
             if (it.hasFocus) {
               showEditText = false
               showEditText2 = false
             }
           },
-        label = { Text(text = "PlaceHolder")}
+        label = { Text(text = "PlaceHolder") }
       )
 
       Button(
         onClick = {
           showEditText = true
           showEditText2 = false
-        },
+        }
       ) {
         Text(text = "Field One")
       }
@@ -326,10 +333,8 @@ data class TUIEmailFieldTags(
         showEditText = false
         showEditText2 = true
       }) {
-
         Text(text = "Field Two")
       }
-
     }
   }
 }

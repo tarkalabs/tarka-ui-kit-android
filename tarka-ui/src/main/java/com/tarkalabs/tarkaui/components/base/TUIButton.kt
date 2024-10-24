@@ -1,14 +1,5 @@
 package com.tarkalabs.tarkaui.components.base
 
-import com.tarkalabs.tarkaui.components.base.ButtonSize.L
-import com.tarkalabs.tarkaui.components.base.ButtonSize.M
-import com.tarkalabs.tarkaui.components.base.ButtonSize.S
-import com.tarkalabs.tarkaui.components.base.ButtonSize.XS
-import com.tarkalabs.tarkaui.components.base.ButtonStyle.Error
-import com.tarkalabs.tarkaui.components.base.ButtonStyle.Ghost
-import com.tarkalabs.tarkaui.components.base.ButtonStyle.Outline
-import com.tarkalabs.tarkaui.components.base.ButtonStyle.Primary
-import com.tarkalabs.tarkaui.components.base.ButtonStyle.Secondary
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -36,23 +27,29 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.tarkalabs.tarkaui.components.HorizontalSpacer
+import com.tarkalabs.tarkaui.components.base.ButtonSize.L
+import com.tarkalabs.tarkaui.components.base.ButtonSize.M
+import com.tarkalabs.tarkaui.components.base.ButtonSize.S
+import com.tarkalabs.tarkaui.components.base.ButtonSize.XS
+import com.tarkalabs.tarkaui.components.base.ButtonStyle.Custom
+import com.tarkalabs.tarkaui.components.base.ButtonStyle.Error
+import com.tarkalabs.tarkaui.components.base.ButtonStyle.Ghost
+import com.tarkalabs.tarkaui.components.base.ButtonStyle.Outline
+import com.tarkalabs.tarkaui.components.base.ButtonStyle.Primary
+import com.tarkalabs.tarkaui.components.base.ButtonStyle.Secondary
 import com.tarkalabs.tarkaui.icons.Add24
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
-import com.tarkalabs.tarkaui.components.HorizontalSpacer
-import com.tarkalabs.tarkaui.components.base.ButtonStyle.Custom
 import com.tarkalabs.tarkaui.theme.TUITheme
 
 sealed class ButtonStyle {
-  object Primary: ButtonStyle()
-  object Secondary: ButtonStyle()
-  object Ghost: ButtonStyle()
-  object Error: ButtonStyle()
-  object Outline: ButtonStyle()
-  data class Custom(
-    val containerColor: Color,
-    val contentColor: Color
-  ) : ButtonStyle()
+  data object Primary : ButtonStyle()
+  data object Secondary : ButtonStyle()
+  data object Ghost : ButtonStyle()
+  data object Error : ButtonStyle()
+  data object Outline : ButtonStyle()
+  data class Custom(val containerColor: Color, val contentColor: Color) : ButtonStyle()
 }
 
 enum class ButtonSize(val size: Dp) {
@@ -62,18 +59,14 @@ enum class ButtonSize(val size: Dp) {
   S(32.dp),
   XS(24.dp);
 
-  fun iconSize(): Dp {
-    return when (this) {
-      XL, L, M -> 24.dp
-      S, XS -> 16.dp
-    }
+  fun iconSize(): Dp = when (this) {
+    XL, L, M -> 24.dp
+    S, XS -> 16.dp
   }
 
-  fun iconSpace(): Int {
-    return when (this) {
-      XL, L, M -> 8
-      S, XS -> 4
-    }
+  fun iconSpace(): Int = when (this) {
+    XL, L, M -> 8
+    S, XS -> 4
   }
 
   fun paddingValues(isLeadingIconNull: Boolean, isTrailingIconNull: Boolean) = when (this) {
@@ -133,8 +126,8 @@ onClick = {}
   leadingIcon: TarkaIcon? = null,
   trailingIcon: TarkaIcon? = null,
   tags: TUIButtonTags = TUIButtonTags(),
-  enabled : Boolean = true,
-  onClick: () -> Unit,
+  enabled: Boolean = true,
+  onClick: () -> Unit
 ) {
   val buttonColor = when (buttonStyle) {
     Primary -> {
@@ -153,14 +146,15 @@ onClick = {}
 
     Ghost -> {
       ButtonDefaults.buttonColors(
-        containerColor = Color.Transparent, contentColor = TUITheme.colors.secondary
+        containerColor = Color.Transparent,
+        contentColor = TUITheme.colors.secondary
       )
     }
 
     Error -> {
       ButtonDefaults.buttonColors(
         containerColor = TUITheme.colors.error,
-        contentColor = TUITheme.colors.onPrimary,
+        contentColor = TUITheme.colors.onPrimary
       )
     }
 
@@ -174,7 +168,7 @@ onClick = {}
     is Custom -> {
       ButtonDefaults.buttonColors(
         containerColor = buttonStyle.containerColor,
-        contentColor = buttonStyle.contentColor,
+        contentColor = buttonStyle.contentColor
       )
     }
   }
@@ -190,12 +184,18 @@ onClick = {}
       isLeadingIconNull = leadingIcon == null,
       isTrailingIconNull = trailingIcon == null
     ),
-    border = if (buttonStyle == Outline) BorderStroke(
-      width = 1.dp, color = TUITheme.colors.onSurface
-    ) else null
+    border = if (buttonStyle == Outline) {
+      BorderStroke(
+        width = 1.dp,
+        color = TUITheme.colors.onSurface
+      )
+    } else {
+      null
+    }
   ) {
     Row(
-      verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center
+      verticalAlignment = Alignment.CenterVertically,
+      horizontalArrangement = Arrangement.Center
     ) {
       leadingIcon?.let {
         Icon(
@@ -225,10 +225,12 @@ onClick = {}
 data class TUIButtonTags(
   val parentTag: String = "TUIButton",
   val leadingIconTag: String = "TUIButton_LeadingIcon",
-  val trailingIconTag: String = "TUIButton_TrailingIcon",
+  val trailingIconTag: String = "TUIButton_TrailingIcon"
 )
 
-@Composable @Preview(showBackground = true, showSystemUi = true) fun PreviewPrimaryButton() {
+@Composable
+@Preview(showBackground = true, showSystemUi = true)
+private fun PreviewPrimaryButton() {
   TUITheme {
     Column(
       horizontalAlignment = Alignment.CenterHorizontally,
@@ -241,22 +243,34 @@ data class TUIButtonTags(
           Text("Primary Button", fontSize = 24.sp)
           Spacer(modifier = Modifier.height(20.dp))
           TUIButton(
-            label = "Primary ", height = M, buttonStyle = Primary, onClick = {},
+            label = "Primary ",
+            height = M,
+            buttonStyle = Primary,
+            onClick = {},
             trailingIcon = Regular.Add24
           )
           Spacer(modifier = Modifier.height(10.dp))
           TUIButton(
-            label = "Primary ", height = L, buttonStyle = Primary, onClick = {},
+            label = "Primary ",
+            height = L,
+            buttonStyle = Primary,
+            onClick = {},
             trailingIcon = Regular.Add24
           )
           Spacer(modifier = Modifier.height(10.dp))
           TUIButton(
-            label = "Primary ", height = S, buttonStyle = Primary, onClick = {},
+            label = "Primary ",
+            height = S,
+            buttonStyle = Primary,
+            onClick = {},
             trailingIcon = Regular.Add24
           )
           Spacer(modifier = Modifier.height(10.dp))
           TUIButton(
-            label = "Primary ", height = XS, buttonStyle = Primary, onClick = {},
+            label = "Primary ",
+            height = XS,
+            buttonStyle = Primary,
+            onClick = {},
             trailingIcon = Regular.Add24
           )
         }
@@ -264,22 +278,34 @@ data class TUIButtonTags(
           Text("Secondary Button", fontSize = 24.sp)
           Spacer(modifier = Modifier.height(20.dp))
           TUIButton(
-            label = "Secondary ", height = M, buttonStyle = Secondary, onClick = {},
+            label = "Secondary ",
+            height = M,
+            buttonStyle = Secondary,
+            onClick = {},
             leadingIcon = Regular.Add24
           )
           Spacer(modifier = Modifier.height(10.dp))
           TUIButton(
-            label = "Secondary ", height = L, buttonStyle = Secondary, onClick = {},
+            label = "Secondary ",
+            height = L,
+            buttonStyle = Secondary,
+            onClick = {},
             leadingIcon = Regular.Add24
           )
           Spacer(modifier = Modifier.height(10.dp))
           TUIButton(
-            label = "Secondary ", height = S, buttonStyle = Secondary, onClick = {},
+            label = "Secondary ",
+            height = S,
+            buttonStyle = Secondary,
+            onClick = {},
             leadingIcon = Regular.Add24
           )
           Spacer(modifier = Modifier.height(10.dp))
           TUIButton(
-            label = "Secondary ", height = XS, buttonStyle = Secondary, onClick = {},
+            label = "Secondary ",
+            height = XS,
+            buttonStyle = Secondary,
+            onClick = {},
             leadingIcon = Regular.Add24
           )
         }
@@ -313,7 +339,6 @@ data class TUIButtonTags(
           TUIButton(label = "Error Button", height = S, buttonStyle = Error, onClick = {})
           Spacer(modifier = Modifier.height(10.dp))
           TUIButton(label = "Error Button", height = XS, buttonStyle = Error, onClick = {})
-
         }
       }
       Row(
@@ -337,25 +362,45 @@ data class TUIButtonTags(
           Spacer(modifier = Modifier.height(5.dp))
           Text("Custom Button", fontSize = 24.sp)
           Spacer(modifier = Modifier.height(20.dp))
-          TUIButton(label = "Custom Button", height = M, buttonStyle = Custom(
-            contentColor = TUITheme.colors.onSecondaryAlt,
-            containerColor = TUITheme.colors.secondaryAlt
-          ), onClick = {})
+          TUIButton(
+            label = "Custom Button",
+            height = M,
+            buttonStyle = Custom(
+              contentColor = TUITheme.colors.onSecondaryAlt,
+              containerColor = TUITheme.colors.secondaryAlt
+            ),
+            onClick = {}
+          )
           Spacer(modifier = Modifier.height(10.dp))
-          TUIButton(label = "Custom Button", height = L, buttonStyle = Custom(
-            contentColor = TUITheme.colors.onSecondaryAlt,
-            containerColor = TUITheme.colors.secondaryAlt
-          ), onClick = {})
+          TUIButton(
+            label = "Custom Button",
+            height = L,
+            buttonStyle = Custom(
+              contentColor = TUITheme.colors.onSecondaryAlt,
+              containerColor = TUITheme.colors.secondaryAlt
+            ),
+            onClick = {}
+          )
           Spacer(modifier = Modifier.height(10.dp))
-          TUIButton(label = "Custom Button", height = S, buttonStyle = Custom(
-            contentColor = TUITheme.colors.onSecondaryAlt,
-            containerColor = TUITheme.colors.secondaryAlt
-          ), onClick = {})
+          TUIButton(
+            label = "Custom Button",
+            height = S,
+            buttonStyle = Custom(
+              contentColor = TUITheme.colors.onSecondaryAlt,
+              containerColor = TUITheme.colors.secondaryAlt
+            ),
+            onClick = {}
+          )
           Spacer(modifier = Modifier.height(10.dp))
-          TUIButton(label = "Custom Button", height = XS, buttonStyle = Custom(
-            contentColor = TUITheme.colors.onSecondaryAlt,
-            containerColor = TUITheme.colors.secondaryAlt
-          ), onClick = {})
+          TUIButton(
+            label = "Custom Button",
+            height = XS,
+            buttonStyle = Custom(
+              contentColor = TUITheme.colors.onSecondaryAlt,
+              containerColor = TUITheme.colors.secondaryAlt
+            ),
+            onClick = {}
+          )
         }
       }
     }

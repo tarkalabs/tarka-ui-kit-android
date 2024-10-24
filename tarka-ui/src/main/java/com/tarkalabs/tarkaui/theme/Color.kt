@@ -24,6 +24,7 @@ open class TUIColors(
   val success20: Color,
   val error: Color,
   val onError: Color,
+  val error55: Color,
   val error10: Color,
   val warning: Color,
   val onWarning: Color,
@@ -46,7 +47,7 @@ open class TUIColors(
   val constantDark: Color,
   val inputTextDim: Color,
   val surfaceHover: Color,
-  val primaryAltHover:Color,
+  val primaryAltHover: Color,
   val accent: Color,
   val accentBaseA: Color,
   val accentBaseB: Color,
@@ -86,7 +87,6 @@ open class TUIColors(
   val onAccentQ: Color,
   val onAccentR: Color
 )
-
 val LocalTUIColors = staticCompositionLocalOf {
   defaultLightColors
 }
@@ -109,6 +109,7 @@ val defaultLightColors = TUIColors(
   success10 = Color(0xFF148F47).copy(alpha = 0.10f),
   success20 = Color(0xFF148F47).copy(alpha = 0.20f),
   error = Color(0xFFCD1D32),
+  error55 = Color(0xFFCD1D32).copy(alpha = 0.55f),
   onError = Color(0xFFFEFBFB),
   error10 = Color(0xFFCD1D32).copy(alpha = 0.10f),
   warning = Color(0xFFFFB938),
@@ -149,7 +150,7 @@ val defaultLightColors = TUIColors(
   accentBaseM = Color(0xFFDEDEED),
   accentBaseN = Color(0xFFE3DEED),
   accentBaseO = Color(0xFFE8DEED),
-  accentBaseP = Color(0XFFEDDEED) ,
+  accentBaseP = Color(0XFFEDDEED),
   accentBaseQ = Color(0xFFEDDEE8),
   accentBaseR = Color(0xFFEDDEE3),
   onAccent = Color(0xFF5F008F),
@@ -168,9 +169,9 @@ val defaultLightColors = TUIColors(
   onAccentM = Color(0xFF00008F),
   onAccentN = Color(0xFF30008F),
   onAccentO = Color(0xFF5F008F),
-  onAccentP = Color(0XFF8F008F) ,
+  onAccentP = Color(0XFF8F008F),
   onAccentQ = Color(0xFF8F005F),
-  onAccentR = Color(0xFF8F0030),
+  onAccentR = Color(0xFF8F0030)
 )
 
 val defaultDarkColors = TUIColors(
@@ -191,6 +192,7 @@ val defaultDarkColors = TUIColors(
   success10 = Color(0xFF55E792).copy(alpha = 0.10f),
   success20 = Color(0xFF55E792).copy(alpha = 0.20f),
   error = Color(0xFFD42136),
+  error55 = Color(0xFFD42136).copy(alpha = 0.55f),
   onError = Color(0xFFFFFAFA),
   error10 = Color(0xFFD42136).copy(alpha = 0.10f),
   warning = Color(0xFFFFB938),
@@ -231,13 +233,13 @@ val defaultDarkColors = TUIColors(
   accentBaseM = Color(0xFF20203C),
   accentBaseN = Color(0xFF29203C),
   accentBaseO = Color(0xFF32203C),
-  accentBaseP = Color(0XFF3C203C) ,
+  accentBaseP = Color(0XFF3C203C),
   accentBaseQ = Color(0xFF3C2032),
   accentBaseR = Color(0xFF3C2029),
   onAccent = Color(0xFFDD99FF),
   onAccentA = Color(0xFFFF9999),
   onAccentB = Color(0xFFFFBB99),
-  onAccentC =Color(0xFFFFDD99),
+  onAccentC = Color(0xFFFFDD99),
   onAccentD = Color(0xFFFFFF99),
   onAccentE = Color(0xFFDDFF99),
   onAccentF = Color(0XFFBBFF99),
@@ -250,8 +252,7 @@ val defaultDarkColors = TUIColors(
   onAccentM = Color(0xFF9999FF),
   onAccentN = Color(0xFFBB99FF),
   onAccentO = Color(0xFFDD99FF),
-  onAccentP = Color(0XFFFF99FF) ,
+  onAccentP = Color(0XFFFF99FF),
   onAccentQ = Color(0xFFFF99DD),
-  onAccentR = Color(0xFFFF99BB),
-  )
-
+  onAccentR = Color(0xFFFF99BB)
+)

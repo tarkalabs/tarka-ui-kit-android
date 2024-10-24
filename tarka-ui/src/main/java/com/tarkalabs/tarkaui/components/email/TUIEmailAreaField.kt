@@ -33,12 +33,12 @@ import com.tarkalabs.tarkaui.theme.TUITheme
  * @param testTags The test tags for testing purposes.
  *
  * TUIEmailAreaField(
-    modifier = Modifier,
-    placeHolder = "Enter email content",
-    text = emailContent,
-    onTextChanged = { text ->  },
-    testTags = TUIEmailAreaFieldTags()
-    )
+modifier = Modifier,
+placeHolder = "Enter email content",
+text = emailContent,
+onTextChanged = { text ->  },
+testTags = TUIEmailAreaFieldTags()
+)
  */
 
 @Composable fun TUIEmailAreaField(
@@ -53,16 +53,15 @@ import com.tarkalabs.tarkaui.theme.TUITheme
   onTextChanged: (String) -> Unit,
   testTags: TUIEmailAreaFieldTags = TUIEmailAreaFieldTags()
 ) {
-
   val colors = TextFieldDefaults.colors(
-    unfocusedIndicatorColor =  Color.Transparent,
+    unfocusedIndicatorColor = Color.Transparent,
     focusedIndicatorColor = Color.Transparent,
     focusedTextColor = TUITheme.colors.inputText,
     unfocusedTextColor = TUITheme.colors.inputText,
     unfocusedContainerColor = Color.Transparent,
     focusedContainerColor = Color.Transparent,
-    cursorColor = TUITheme.colors.inputText,
-    )
+    cursorColor = TUITheme.colors.inputText
+  )
   TextField(
     modifier = modifier,
     value = text,
@@ -88,10 +87,12 @@ import com.tarkalabs.tarkaui.theme.TUITheme
 }
 
 data class TUIEmailAreaFieldTags(
-  val parentTag: String = "TUIEmailSubjectFieldTag", val placeHolderTag: String = "PlaceHolderTag"
+  val parentTag: String = "TUIEmailSubjectFieldTag",
+  val placeHolderTag: String = "PlaceHolderTag"
 )
 
-@Preview @Composable fun TUIEmailAreaFieldPreview() {
+@Preview @Composable
+private fun TUIEmailAreaFieldPreview() {
   TUITheme {
     var data by remember {
       mutableStateOf("")
@@ -102,12 +103,13 @@ data class TUIEmailAreaFieldTags(
         .wrapContentHeight()
     ) {
       TUIEmailAreaField(
-        placeHolder = "Subject", text = data, onTextChanged = {
+        placeHolder = "Subject",
+        text = data,
+        onTextChanged = {
           data = it
-
-        }, modifier = Modifier.fillMaxWidth()
+        },
+        modifier = Modifier.fillMaxWidth()
       )
-
     }
   }
 }

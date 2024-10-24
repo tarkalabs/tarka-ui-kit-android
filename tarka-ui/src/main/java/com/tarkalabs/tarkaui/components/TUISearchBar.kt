@@ -35,18 +35,26 @@ import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.theme.TUITheme
 import kotlinx.coroutines.delay
 
-@OptIn(ExperimentalMaterial3Api::class) @Composable fun TUISearchBar(
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun TUISearchBar(
   modifier: Modifier = Modifier,
   query: String,
   placeholder: String,
-  trailingIcon: TarkaIcon = TarkaIcons.Regular.Dismiss24,
+  hasBarcode: Boolean = false,
+  trailingIcon: TarkaIcon? = if (hasBarcode) {
+    TarkaIcons.Regular.BarcodeScanner24
+  } else {
+    TarkaIcons.Regular.Dismiss24
+  },
   keyboardOption: KeyboardOptions = KeyboardOptions.Default,
   keyboardAction: KeyboardActions = KeyboardActions.Default,
   onQueryTextChange: (String) -> Unit,
   leadingIcon: TarkaIcon? = null,
   onLeadingIconClick: (() -> Unit)? = null,
+  onTrailingIconClick: (() -> Unit)? = null,
   isInitialAutoFocus: Boolean = true,
-  searchBarTags: TUISearchBarTags = TUISearchBarTags(),
+  searchBarTags: TUISearchBarTags = TUISearchBarTags()
 ) {
   val focusRequester = remember { FocusRequester() }
 
@@ -60,22 +68,48 @@ import kotlinx.coroutines.delay
   val leadingIconLambda: @Composable (() -> Unit)? = if (leadingIcon != null) {
     {
       TUIIconButton(
-        icon = leadingIcon, buttonSize = L, iconButtonStyle = Ghost, onIconClick = {
+        icon = leadingIcon,
+        buttonSize = L,
+        iconButtonStyle = Ghost,
+        onIconClick = {
           onLeadingIconClick?.invoke()
-        }, tags = searchBarTags.leadingIconTags
+        },
+        tags = searchBarTags.leadingIconTags
       )
     }
-  } else null
+  } else {
+    null
+  }
 
-  val trailingIconLambda: @Composable (() -> Unit)? = if (query.isNotEmpty()) {
-    {
+  val trailingIconLambda: @Composable () -> Unit = {
+    if (query.isNotEmpty()) {
       TUIIconButton(
-        icon = trailingIcon, buttonSize = L, iconButtonStyle = Ghost, onIconClick = {
+        icon = TarkaIcons.Regular.Dismiss24,
+        buttonSize = L,
+        iconButtonStyle = Ghost,
+        onIconClick = {
           onQueryTextChange.invoke("")
-        }, tags = searchBarTags.trailingIconTags
+        },
+        tags = searchBarTags.trailingIconTags
       )
+    } else {
+      if (trailingIcon == TarkaIcons.Regular.Dismiss24) {
+        null
+      } else {
+        if (trailingIcon != null) {
+          TUIIconButton(
+            icon = trailingIcon,
+            buttonSize = L,
+            iconButtonStyle = Ghost,
+            onIconClick = {
+              onTrailingIconClick?.invoke()
+            },
+            tags = searchBarTags.trailingIconTags
+          )
+        }
+      }
     }
-  } else null
+  }
   val interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 
   BasicTextField(
@@ -100,7 +134,10 @@ import kotlinx.coroutines.delay
       visualTransformation = VisualTransformation.None,
       interactionSource = interactionSource,
       contentPadding = TextFieldDefaults.contentPaddingWithoutLabel(
-        top = 0.dp, bottom = 0.dp, end = 10.dp, start = 10.dp
+        top = 0.dp,
+        bottom = 0.dp,
+        end = 10.dp,
+        start = 20.dp
       ),
       colors = TextFieldDefaults.colors(
         cursorColor = TUITheme.colors.inputText,
@@ -111,23 +148,27 @@ import kotlinx.coroutines.delay
         focusedIndicatorColor = Color.Transparent,
         unfocusedIndicatorColor = Color.Transparent,
         focusedContainerColor = TUITheme.colors.inputBackground,
-        unfocusedContainerColor = TUITheme.colors.inputBackground,
+        unfocusedContainerColor = TUITheme.colors.inputBackground
       ),
       shape = RoundedCornerShape(75.dp),
       placeholder = { Text(text = placeholder) },
       leadingIcon = leadingIconLambda,
-      trailingIcon = trailingIconLambda,
+      trailingIcon = trailingIconLambda
     )
   }
 }
 
 data class TUISearchBarTags(
   val parentTag: String = "TUISearchBar",
-  val leadingIconTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUISearchBar_LeadingIcon"),
-  val trailingIconTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUISearchBar_TrailingIcon")
+  val leadingIconTags: TUIIconButtonTags =
+    TUIIconButtonTags(parentTag = "TUISearchBar_LeadingIcon"),
+  val trailingIconTags: TUIIconButtonTags =
+    TUIIconButtonTags(parentTag = "TUISearchBar_TrailingIcon")
 )
 
-@Preview(showBackground = true, showSystemUi = true) @Composable fun Preview() {
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+private fun TUISearchBarPreview() {
   TUITheme {
     Column(
       modifier = Modifier.padding(20.dp)
@@ -139,7 +180,7 @@ data class TUISearchBarTags(
         trailingIcon = TarkaIcons.Filled.Dismiss16,
         leadingIcon = TarkaIcons.Regular.BarcodeScanner24,
         onLeadingIconClick = {},
-        modifier = Modifier.padding(10.dp),
+        modifier = Modifier.padding(10.dp)
       )
 
       TUISearchBar(
@@ -149,9 +190,8 @@ data class TUISearchBarTags(
         trailingIcon = TarkaIcons.Filled.Dismiss16,
         leadingIcon = TarkaIcons.Regular.BarcodeScanner24,
         onLeadingIconClick = {},
-        modifier = Modifier.padding(10.dp),
+        modifier = Modifier.padding(10.dp)
       )
     }
   }
 }
-

@@ -51,7 +51,7 @@ onOptionSelected = { selected = !isSelected }
   style: ToggleRowStyle,
   tags: TUIRadioRowTags = TUIRadioRowTags(),
   paddingValues: PaddingValues = PaddingValues(),
-  onOptionSelected: () -> Unit,
+  onOptionSelected: () -> Unit
 ) {
   Row(
     horizontalArrangement = Arrangement.Center,
@@ -75,18 +75,20 @@ onOptionSelected = { selected = !isSelected }
     HorizontalSpacer(space = 16)
     TUIToggleRow(
       title = title,
-      style = style,
+      style = style
     )
   }
 }
 
 data class TUIRadioRowTags(
   val parentTag: String = "TUIRadioButtonRow",
-  val radioButtonTags: TUIRadioButtonTags = TUIRadioButtonTags(parentTag = "TUIRadioButtonRow_RadioButton"),
-  val textRowTags: TUITextRowTags = TUITextRowTags(parentTag = "TUIRadioButtonRow_TextRow"),
+  val radioButtonTags: TUIRadioButtonTags =
+    TUIRadioButtonTags(parentTag = "TUIRadioButtonRow_RadioButton"),
+  val textRowTags: TUITextRowTags = TUITextRowTags(parentTag = "TUIRadioButtonRow_TextRow")
 )
 
-@Preview @Composable fun PreviewTUIRadioRow() {
+@Preview @Composable
+private fun PreviewTUIRadioRow() {
   Column(
     modifier = Modifier
       .padding(20.dp)
@@ -128,6 +130,5 @@ data class TUIRadioRowTags(
       ) {
       }
     }
-
   }
 }

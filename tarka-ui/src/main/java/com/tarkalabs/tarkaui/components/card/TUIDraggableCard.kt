@@ -19,10 +19,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
-import com.tarkalabs.tarkaui.icons.ReOrderDotsVertical24
-import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.components.TUIToggleSwitch
 import com.tarkalabs.tarkaui.components.VerticalSpacer
+import com.tarkalabs.tarkaui.icons.ReOrderDotsVertical24
+import com.tarkalabs.tarkaui.icons.TarkaIcons
 import com.tarkalabs.tarkaui.theme.TUITheme
 
 /**
@@ -43,7 +43,7 @@ fun TUIDraggableCard(
   switchCheckedState: Boolean,
   onSwitchCheckedChange: () -> Unit,
   isDragging: Boolean = false,
-  tags: TUIDraggableCardTags = TUIDraggableCardTags(),
+  tags: TUIDraggableCardTags = TUIDraggableCardTags()
 ) {
   Row(
     modifier = modifier
@@ -58,7 +58,6 @@ fun TUIDraggableCard(
     verticalAlignment = Alignment.CenterVertically,
     horizontalArrangement = Arrangement.SpaceAround
   ) {
-
     Icon(
       modifier = dragIconModifier
         .testTag(tags.leadReOrderIconTag)
@@ -75,7 +74,7 @@ fun TUIDraggableCard(
         .padding(horizontal = 16.dp),
       text = title,
       color = TUITheme.colors.inputText,
-      style = TUITheme.typography.heading6,
+      style = TUITheme.typography.heading6
     )
 
     TUIToggleSwitch(isChecked = switchCheckedState, onCheckedChange = onSwitchCheckedChange)
@@ -84,16 +83,14 @@ fun TUIDraggableCard(
 
 data class TUIDraggableCardTags(
   val parentTag: String = "TUIDraggableCard",
-  val leadReOrderIconTag: String = "TUIDraggableCard_DragIcon",
+  val leadReOrderIconTag: String = "TUIDraggableCard_DragIcon"
 )
 
 @Preview
 @Composable
-fun TUIDraggableCardPreview() {
+private fun TUIDraggableCardPreview() {
   TUITheme(darkTheme = true) {
-
     Column(modifier = Modifier.background(color = TUITheme.colors.onSurface)) {
-
       VerticalSpacer(space = 5)
 
       TUIDraggableCard(
@@ -113,7 +110,6 @@ fun TUIDraggableCardPreview() {
       )
 
       VerticalSpacer(space = 5)
-
     }
   }
 }

@@ -34,12 +34,12 @@ import com.tarkalabs.tarkaui.theme.TUITheme
  * @param maxCharLength the maximum numbers of text allowed in email subject field
  *
  * TUIEmailSubjectField(
-    modifier = Modifier,
-    placeHolder = "Enter subject",
-    text = emailSubject,
-    onTextChanged = { text -> },
-    testTags = TUIEmailSubjectFieldTags()
-    )
+modifier = Modifier,
+placeHolder = "Enter subject",
+text = emailSubject,
+onTextChanged = { text -> },
+testTags = TUIEmailSubjectFieldTags()
+)
  */
 @Composable fun TUIEmailSubjectField(
   modifier: Modifier = Modifier,
@@ -54,7 +54,6 @@ import com.tarkalabs.tarkaui.theme.TUITheme
   onTextChanged: (String) -> Unit,
   testTags: TUIEmailSubjectFieldTags = TUIEmailSubjectFieldTags()
 ) {
-
   val colors = TextFieldDefaults.colors(
     unfocusedIndicatorColor = TUITheme.colors.surfaceVariant,
     focusedIndicatorColor = TUITheme.colors.primary,
@@ -63,7 +62,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
     unfocusedContainerColor = Color.Transparent,
     focusedContainerColor = Color.Transparent,
     cursorColor = TUITheme.colors.inputText
-    )
+  )
   TextField(
     modifier = modifier,
     value = text,
@@ -89,10 +88,12 @@ import com.tarkalabs.tarkaui.theme.TUITheme
 }
 
 data class TUIEmailSubjectFieldTags(
-  val parentTag: String = "TUIEmailSubjectField", val placeHolderTag: String = "TUIEmailSubjectField_PlaceHolder"
+  val parentTag: String = "TUIEmailSubjectField",
+  val placeHolderTag: String = "TUIEmailSubjectField_PlaceHolder"
 )
 
-@Preview @Composable fun TUIEmailSubjectFieldPreview() {
+@Preview @Composable
+private fun TUIEmailSubjectFieldPreview() {
   TUITheme {
     var data by remember {
       mutableStateOf("")
@@ -103,12 +104,13 @@ data class TUIEmailSubjectFieldTags(
         .wrapContentHeight()
     ) {
       TUIEmailSubjectField(
-        placeHolder = "Subject", text = data, onTextChanged = {
+        placeHolder = "Subject",
+        text = data,
+        onTextChanged = {
           data = it
-
-        }, modifier = Modifier.fillMaxWidth()
+        },
+        modifier = Modifier.fillMaxWidth()
       )
-
     }
   }
 }

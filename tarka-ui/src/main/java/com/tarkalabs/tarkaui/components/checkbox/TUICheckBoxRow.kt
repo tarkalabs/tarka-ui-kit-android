@@ -1,5 +1,6 @@
 package com.tarkalabs.tarkaui.components.checkbox
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaui.R
 import com.tarkalabs.tarkaui.components.HorizontalSpacer
 import com.tarkalabs.tarkaui.components.TUITextRowTags
 import com.tarkalabs.tarkaui.components.base.TUIToggleRow
@@ -54,7 +56,8 @@ onCheckedChange = { isChecked = !isChecked }
   style: ToggleRowStyle,
   tags: TUICheckBoxRowTags = TUICheckBoxRowTags(),
   paddingValues: PaddingValues = PaddingValues(),
-  onCheckedChange: () -> Unit,
+  @StringRes primaryNotAvailableText: Int = R.string.not_availble,
+  onCheckedChange: () -> Unit
 ) {
   val minHeight = if (style == Title) 40.dp else 56.dp
   Row(
@@ -81,6 +84,7 @@ onCheckedChange = { isChecked = !isChecked }
     TUIToggleRow(
       title = title,
       style = style,
+      primaryNotAvailableText = primaryNotAvailableText
     )
   }
 }
@@ -88,10 +92,11 @@ onCheckedChange = { isChecked = !isChecked }
 data class TUICheckBoxRowTags(
   val parentTag: String = "TUICheckBoxRow",
   val checkBoxTags: TUICheckBoxTags = TUICheckBoxTags(parentTag = "TUICheckBoxRow_CheckBox"),
-  val textRowTags: TUITextRowTags = TUITextRowTags(parentTag = "TUICheckBoxRow_TextRow"),
+  val textRowTags: TUITextRowTags = TUITextRowTags(parentTag = "TUICheckBoxRow_TextRow")
 )
 
-@Preview @Composable fun PreviewTUICheckBoxRow() {
+@Preview @Composable
+private fun PreviewTUICheckBoxRow() {
   Column(
     modifier = Modifier
       .padding(20.dp)
@@ -128,10 +133,12 @@ data class TUICheckBoxRowTags(
       ) {}
 
       TUICheckBoxRow(
-        checked = true, enabled = false, icon = Filled.Checkmark16, title = "Title", style = Title
+        checked = true,
+        enabled = false,
+        icon = Filled.Checkmark16,
+        title = "Title",
+        style = Title
       ) {}
-
     }
-
   }
 }

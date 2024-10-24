@@ -44,16 +44,16 @@ import com.tarkalabs.tarkaui.theme.TUITheme
  * How to use TUIPlayPauseButtons() composable function
  *
  * TYPE 1 (LARGE):
-     TUIPlayPauseButtons(
-      modifier = Modifier.padding(top = 16.dp),
-      buttonType = NON_HOVER, buttonSize = L, state = Play
-    )
+TUIPlayPauseButtons(
+modifier = Modifier.padding(top = 16.dp),
+buttonType = NON_HOVER, buttonSize = L, state = Play
+)
  *
  * TYPE 2 (MEDIUM):
-     TUIPlayPauseButtons(
-      modifier = Modifier.padding(top = 16.dp),
-      buttonType = HOVER, buttonSize = M, state = Pause
-    )
+TUIPlayPauseButtons(
+modifier = Modifier.padding(top = 16.dp),
+buttonType = HOVER, buttonSize = M, state = Pause
+)
  *
  */
 @Composable fun TUIPlayPauseButton(
@@ -61,9 +61,8 @@ import com.tarkalabs.tarkaui.theme.TUITheme
   buttonSize: PlayPauseButtonSize = M,
   state: PlayPauseButtonState = Play,
   tags: TUIPlayPauseButtonsTestTags = TUIPlayPauseButtonsTestTags(),
-  onClick: () -> Unit,
+  onClick: () -> Unit
 ) {
-
   val iconModifier = when (buttonSize) {
     L -> Modifier.sizeIn(maxHeight = 24.dp, maxWidth = 24.dp)
     M -> Modifier.sizeIn(maxHeight = 16.dp, maxWidth = 16.dp)
@@ -89,10 +88,11 @@ import com.tarkalabs.tarkaui.theme.TUITheme
       .testTag(tags.parentId)
       .clip(RoundedCornerShape(size = 44.dp))
       .background(color = TUITheme.colors.constantDark.copy(alpha = 0.75f))
-      .clickable { onClick.invoke() }, contentAlignment = Alignment.Center
+      .clickable { onClick.invoke() },
+    contentAlignment = Alignment.Center
   ) {
     Box(
-      modifier = contentModifier,
+      modifier = contentModifier
     ) {
       Icon(
         modifier = iconModifier,
@@ -114,11 +114,10 @@ enum class PlayPauseButtonState {
   Pause
 }
 
-data class TUIPlayPauseButtonsTestTags(
-  val parentId: String = "TUIPlayPauseButtons",
-)
+data class TUIPlayPauseButtonsTestTags(val parentId: String = "TUIPlayPauseButtons")
 
-@Preview @Composable fun TUIPlayPauseButtonPreview() {
+@Preview @Composable
+private fun TUIPlayPauseButtonPreview() {
   Row(
     modifier = Modifier
       .padding(15.dp)
@@ -132,10 +131,14 @@ data class TUIPlayPauseButtonsTestTags(
       horizontalAlignment = Alignment.Start
     ) {
       TUIPlayPauseButton(
-        modifier = Modifier.padding(top = 16.dp), buttonSize = L, state = Play
+        modifier = Modifier.padding(top = 16.dp),
+        buttonSize = L,
+        state = Play
       ) {}
       TUIPlayPauseButton(
-        modifier = Modifier.padding(top = 16.dp), buttonSize = M, state = Play
+        modifier = Modifier.padding(top = 16.dp),
+        buttonSize = M,
+        state = Play
       ) {}
     }
 
@@ -145,10 +148,14 @@ data class TUIPlayPauseButtonsTestTags(
       horizontalAlignment = Alignment.Start
     ) {
       TUIPlayPauseButton(
-        modifier = Modifier.padding(top = 16.dp), buttonSize = L, state = Pause
+        modifier = Modifier.padding(top = 16.dp),
+        buttonSize = L,
+        state = Pause
       ) {}
       TUIPlayPauseButton(
-        modifier = Modifier.padding(top = 16.dp), buttonSize = M, state = Pause
+        modifier = Modifier.padding(top = 16.dp),
+        buttonSize = M,
+        state = Pause
       ) {}
     }
   }

@@ -1,5 +1,6 @@
 package com.tarkalabs.tarkaui.components.base
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
@@ -8,8 +9,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaui.R
 import com.tarkalabs.tarkaui.components.VerticalSpacer
 import com.tarkalabs.tarkaui.components.base.ToggleRowStyle.Title
 import com.tarkalabs.tarkaui.components.base.ToggleRowStyle.TitleWithDescription
@@ -28,10 +31,12 @@ import com.tarkalabs.tarkaui.theme.TUITheme
  *  TUIToggleRow(title = "Title", style = TitleWithDescription("Description"))
  *
  */
-@Composable fun TUIToggleRow(
+@Composable
+fun TUIToggleRow(
   modifier: Modifier = Modifier,
   title: String,
   style: ToggleRowStyle = Title,
+  @StringRes primaryNotAvailableText: Int = R.string.not_availble
 ) {
   Row(
     modifier
@@ -41,31 +46,51 @@ import com.tarkalabs.tarkaui.theme.TUITheme
   ) {
     Column(Modifier.weight(1f)) {
       when (style) {
-        is TitleWithDescription ->  TUIToggleRowTitleWithDescription(title, style)
-        is Title ->  TUIToggleRowTitle(title)
+        is TitleWithDescription -> TUIToggleRowTitleWithDescription(
+          title,
+          style,
+          primaryNotAvailableText
+        )
+
+        is Title -> TUIToggleRowTitle(title, primaryNotAvailableText)
       }
     }
   }
 }
 
 sealed class ToggleRowStyle {
-  data class TitleWithDescription(val description: String) : ToggleRowStyle()
-  object Title : ToggleRowStyle()
+  data class TitleWithDescription(
+    val description: String,
+    @StringRes val primaryNotAvailableText: Int = R.string.not_availble
+  ) : ToggleRowStyle()
+
+  data object Title : ToggleRowStyle()
 }
 
-@Composable private fun TUIToggleRowTitle(title: String) {
-  Text(
-    text = title,
-    style = TUITheme.typography.heading7,
-    color = TUITheme.colors.onSurface
-  )
+@Composable
+private fun TUIToggleRowTitle(title: String?, @StringRes primaryNotAvailableText: Int) {
+  if (title.isNullOrEmpty()) {
+    Text(
+      text = stringResource(id = primaryNotAvailableText),
+      style = TUITheme.typography.heading7,
+      color = TUITheme.colors.utilityDisabledContent
+    )
+  } else {
+    Text(
+      text = title,
+      style = TUITheme.typography.heading7,
+      color = TUITheme.colors.onSurface
+    )
+  }
 }
 
-@Composable private fun TUIToggleRowTitleWithDescription(
+@Composable
+private fun TUIToggleRowTitleWithDescription(
   title: String,
-  style: TitleWithDescription
+  style: TitleWithDescription,
+  @StringRes primaryNotAvailableText: Int = R.string.not_availble
 ) {
-  TUIToggleRowTitle(title = title)
+  TUIToggleRowTitle(title = title, primaryNotAvailableText)
   VerticalSpacer(space = 4)
   Text(
     text = style.description,
@@ -74,12 +99,16 @@ sealed class ToggleRowStyle {
   )
 }
 
-@Preview(showBackground = true) @Composable fun TUIToggleRowPreview() {
+@Preview(showBackground = true)
+@Composable
+private fun TUIToggleRowPreview() {
   TUITheme {
     Column {
       TUIToggleRow(title = "Title", style = Title)
       TUIToggleRow(title = "Title", style = TitleWithDescription("Description"))
+      TUIToggleRow(title = "", style = TitleWithDescription("Description"))
       TUIToggleRow(title = "Title", style = Title)
+      TUIToggleRow(title = "Title")
     }
   }
 }

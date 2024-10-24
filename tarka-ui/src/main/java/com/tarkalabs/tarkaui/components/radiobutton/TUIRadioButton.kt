@@ -44,7 +44,7 @@ enabled = true)
   selected: Boolean,
   enabled: Boolean = true,
   tags: TUIRadioButtonTags = TUIRadioButtonTags(),
-  onOptionSelected: (() -> Unit)? = null,
+  onOptionSelected: (() -> Unit)? = null
 ) {
   val borderColor = if (selected) Color.Transparent else TUITheme.colors.utilityOutline
   val backgroundColor = if (selected) TUITheme.colors.primary else Color.Transparent
@@ -59,13 +59,16 @@ enabled = true)
       )
       .border(width = 1.dp, color = borderColor, shape = shape)
       .then(
-        if (onOptionSelected == null) Modifier else
+        if (onOptionSelected == null) {
+          Modifier
+        } else {
           Modifier.selectable(
             selected = selected,
             role = Role.RadioButton,
             onClick = { if (enabled) onOptionSelected.invoke() },
             enabled = enabled
           )
+        }
       )
       .testTag(tags.parentTag)
   ) {
@@ -77,10 +80,7 @@ enabled = true)
 }
 
 @Composable
-fun Circle(
-  modifier: Modifier,
-  color: Color,
-) {
+fun Circle(modifier: Modifier, color: Color) {
   Canvas(
     modifier = modifier
       .width(8.dp)
@@ -96,7 +96,8 @@ fun Circle(
   }
 }
 
-@Preview @Composable fun PreviewTUIRadioButton() {
+@Preview @Composable
+private fun PreviewTUIRadioButton() {
   Column(
     modifier = Modifier
       .padding(20.dp)
@@ -121,10 +122,7 @@ fun Circle(
       TUIRadioButton(selected = true, enabled = false) {
       }
     }
-
   }
 }
 
-data class TUIRadioButtonTags(
-  val parentTag: String = "TUIRadioButton",
-)
+data class TUIRadioButtonTags(val parentTag: String = "TUIRadioButton")

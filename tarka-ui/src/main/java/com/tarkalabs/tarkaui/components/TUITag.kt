@@ -22,16 +22,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaui.icons.Circle12
-import com.tarkalabs.tarkaui.icons.TarkaIcon
-import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.tarkaui.icons.Warning12
 import com.tarkalabs.tarkaui.components.TagSize.L
 import com.tarkalabs.tarkaui.components.TagSize.M
 import com.tarkalabs.tarkaui.components.TagSize.S
 import com.tarkalabs.tarkaui.components.TagType.CUSTOM
 import com.tarkalabs.tarkaui.components.TagType.HIGH
 import com.tarkalabs.tarkaui.components.TagType.LOW
+import com.tarkalabs.tarkaui.icons.Circle12
+import com.tarkalabs.tarkaui.icons.TarkaIcon
+import com.tarkalabs.tarkaui.icons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.Warning12
 import com.tarkalabs.tarkaui.theme.TUITheme
 
 /**
@@ -89,9 +89,8 @@ fun TUITag(
   title: String?,
   trailingIcon: TarkaIcon? = null,
   tags: TUITagTestTags = TUITagTestTags(),
-  onClick: () -> Unit,
+  onClick: () -> Unit
 ) {
-
   val iconModifier = when (tagSize) {
     S -> Modifier.size(16.dp)
     M, L -> Modifier.size(20.dp)
@@ -134,10 +133,10 @@ fun TUITag(
   }
 
   Surface(
-     modifier = modifier
-       .clip(RoundedCornerShape(size = 4.dp))
-       .testTag(tags.parentTag)
-       .clickable { onClick.invoke() },
+    modifier = modifier
+      .clip(RoundedCornerShape(size = 4.dp))
+      .testTag(tags.parentTag)
+      .clickable { onClick.invoke() },
     color = backgroundColor
   ) {
     Box(modifier = Modifier.padding(contentPadding)) {
@@ -145,7 +144,6 @@ fun TUITag(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
       ) {
-
         leadingIcon?.let {
           Icon(
             modifier = iconModifier,
@@ -163,7 +161,7 @@ fun TUITag(
             text = it,
             color = titleColor,
             style = titleStyle,
-            maxLines = 1,
+            maxLines = 1
           )
           HorizontalSpacer(horizontalSpace)
         }
@@ -176,7 +174,6 @@ fun TUITag(
             tint = iconTint ?: Color.Transparent
           )
         }
-
       }
     }
   }
@@ -185,52 +182,43 @@ fun TUITag(
 enum class TagSize(val size: Dp) {
   S(24.dp),
   M(32.dp),
-  L(40.dp),
+  L(40.dp)
 }
 
 sealed class TagType {
-  object HIGH : TagType()
-  object LOW : TagType()
-  data class CUSTOM(
-    val bgContentColor: Color,
-    val titleColor: Color,
-    val iconTint: Color?,
-  ) : TagType()
+  data object HIGH : TagType()
+  data object LOW : TagType()
+  data class CUSTOM(val bgContentColor: Color, val titleColor: Color, val iconTint: Color?) :
+    TagType()
 
   companion object {
     val defaultStyle: TagType = HIGH
   }
 }
 
-data class TUITagTestTags(
-  val parentTag: String = "Tag"
-)
+data class TUITagTestTags(val parentTag: String = "Tag")
 
 @Composable
 @Preview(showBackground = true)
-fun TUITagPreview() {
-
+private fun TUITagPreview() {
   TUITheme {
-
     Row(
       horizontalArrangement = Arrangement.Center,
       verticalAlignment = Alignment.Top,
       modifier = Modifier.padding(top = 10.dp)
     ) {
-
       HorizontalSpacer(space = 10)
 
       Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.Start
       ) {
-
         TUITag(
           title = "Label",
           tagType = HIGH,
           tagSize = S,
           trailingIcon = TarkaIcons.Regular.Circle12,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -240,7 +228,7 @@ fun TUITagPreview() {
           tagType = HIGH,
           tagSize = M,
           trailingIcon = TarkaIcons.Regular.Circle12,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -250,7 +238,7 @@ fun TUITagPreview() {
           tagType = HIGH,
           tagSize = L,
           trailingIcon = TarkaIcons.Regular.Circle12,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -260,7 +248,7 @@ fun TUITagPreview() {
           tagType = LOW,
           tagSize = S,
           trailingIcon = TarkaIcons.Regular.Circle12,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -270,7 +258,7 @@ fun TUITagPreview() {
           tagType = LOW,
           tagSize = M,
           trailingIcon = TarkaIcons.Regular.Circle12,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -280,7 +268,7 @@ fun TUITagPreview() {
           tagType = LOW,
           tagSize = L,
           trailingIcon = TarkaIcons.Regular.Circle12,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -294,7 +282,7 @@ fun TUITagPreview() {
           ),
           tagSize = S,
           trailingIcon = TarkaIcons.Regular.Warning12,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -308,7 +296,7 @@ fun TUITagPreview() {
           ),
           tagSize = M,
           trailingIcon = TarkaIcons.Regular.Warning12,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -322,9 +310,8 @@ fun TUITagPreview() {
           ),
           tagSize = L,
           trailingIcon = TarkaIcons.Regular.Warning12,
-          onClick = {},
+          onClick = {}
         )
-
       }
 
       HorizontalSpacer(space = 35)
@@ -333,13 +320,12 @@ fun TUITagPreview() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.Start
       ) {
-
         TUITag(
           title = "Label",
           tagType = HIGH,
           tagSize = S,
           leadingIcon = TarkaIcons.Regular.Circle12,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -349,7 +335,7 @@ fun TUITagPreview() {
           tagType = HIGH,
           tagSize = M,
           leadingIcon = TarkaIcons.Regular.Circle12,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -359,7 +345,7 @@ fun TUITagPreview() {
           tagType = HIGH,
           tagSize = L,
           leadingIcon = TarkaIcons.Regular.Circle12,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -369,7 +355,7 @@ fun TUITagPreview() {
           tagType = LOW,
           tagSize = S,
           leadingIcon = TarkaIcons.Regular.Circle12,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -379,7 +365,7 @@ fun TUITagPreview() {
           tagType = LOW,
           tagSize = M,
           leadingIcon = TarkaIcons.Regular.Circle12,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -389,7 +375,7 @@ fun TUITagPreview() {
           tagType = LOW,
           tagSize = L,
           leadingIcon = TarkaIcons.Regular.Circle12,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -403,7 +389,7 @@ fun TUITagPreview() {
             iconTint = TUITheme.colors.onWarning
           ),
           leadingIcon = TarkaIcons.Regular.Warning12,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -417,7 +403,7 @@ fun TUITagPreview() {
             iconTint = TUITheme.colors.onWarning
           ),
           leadingIcon = TarkaIcons.Regular.Warning12,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -431,9 +417,8 @@ fun TUITagPreview() {
             iconTint = TUITheme.colors.onWarning
           ),
           leadingIcon = TarkaIcons.Regular.Warning12,
-          onClick = {},
+          onClick = {}
         )
-
       }
 
       HorizontalSpacer(space = 35)
@@ -442,12 +427,11 @@ fun TUITagPreview() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.Start
       ) {
-
         TUITag(
           title = "Label",
           tagType = HIGH,
           tagSize = S,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -456,7 +440,7 @@ fun TUITagPreview() {
           title = "Label",
           tagType = HIGH,
           tagSize = M,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -465,7 +449,7 @@ fun TUITagPreview() {
           title = "Label",
           tagType = HIGH,
           tagSize = L,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -474,7 +458,7 @@ fun TUITagPreview() {
           title = "Label",
           tagType = LOW,
           tagSize = S,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -483,7 +467,7 @@ fun TUITagPreview() {
           title = "Label",
           tagType = LOW,
           tagSize = M,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -492,7 +476,7 @@ fun TUITagPreview() {
           title = "Label",
           tagType = LOW,
           tagSize = L,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -505,7 +489,7 @@ fun TUITagPreview() {
             iconTint = null
           ),
           tagSize = S,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -518,7 +502,7 @@ fun TUITagPreview() {
             iconTint = null
           ),
           tagSize = M,
-          onClick = {},
+          onClick = {}
         )
 
         VerticalSpacer(15)
@@ -531,7 +515,7 @@ fun TUITagPreview() {
             iconTint = null
           ),
           tagSize = L,
-          onClick = {},
+          onClick = {}
         )
         VerticalSpacer(15)
 
@@ -540,11 +524,11 @@ fun TUITagPreview() {
           tagType = CUSTOM(
             bgContentColor = TUITheme.colors.warning,
             titleColor = TUITheme.colors.onWarning,
-            iconTint =  TUITheme.colors.onWarning,
+            iconTint = TUITheme.colors.onWarning
           ),
           tagSize = L,
           onClick = {},
-          trailingIcon =  TarkaIcons.Regular.Warning12
+          trailingIcon = TarkaIcons.Regular.Warning12
         )
         VerticalSpacer(space = 10)
         TUITag(
@@ -552,18 +536,15 @@ fun TUITagPreview() {
           tagType = CUSTOM(
             bgContentColor = TUITheme.colors.warning,
             titleColor = TUITheme.colors.onWarning,
-            iconTint =  TUITheme.colors.onWarning,
+            iconTint = TUITheme.colors.onWarning
           ),
           tagSize = L,
           onClick = {},
-          leadingIcon =  TarkaIcons.Regular.Warning12
+          leadingIcon = TarkaIcons.Regular.Warning12
         )
-
       }
 
       HorizontalSpacer(space = 20)
-
     }
-
   }
 }

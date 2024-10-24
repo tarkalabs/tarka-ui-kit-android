@@ -41,7 +41,10 @@ enum class TUIStatus {
   tags: TUIStatusIndicatorTags = TUIStatusIndicatorTags()
 ) {
   val statusColor = if (status == ON) TUITheme.colors.success else TUITheme.colors.error
-  Row(modifier = modifier.testTag(tags.parentTag), verticalAlignment = Alignment.CenterVertically) {
+  Row(
+    modifier = modifier.testTag(tags.parentTag),
+    verticalAlignment = Alignment.CenterVertically
+  ) {
     Text(
       text = text,
       style = TUITheme.typography.button8,
@@ -60,14 +63,15 @@ enum class TUIStatus {
 
 data class TUIStatusIndicatorTags(
   val parentTag: String = "TUIStatusIndicator",
-  val circleTag: String = "TUIStatusIndicator_Cirlce",
+  val circleTag: String = "TUIStatusIndicator_Cirlce"
 )
 
-@Preview(showBackground = true) @Composable fun PreviewTUIStatus() {
+@Preview(showBackground = true)
+@Composable
+private fun PreviewTUIStatus() {
   Column {
     TUIStatusIndicator(text = "Connected", status = ON)
     VerticalSpacer(space = 10)
     TUIStatusIndicator(text = "Disconnected", status = OFF)
   }
 }
-

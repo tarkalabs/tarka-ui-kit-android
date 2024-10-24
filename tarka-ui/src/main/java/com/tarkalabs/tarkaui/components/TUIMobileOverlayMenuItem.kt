@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.ripple
@@ -41,16 +40,16 @@ import com.tarkalabs.tarkaui.theme.TUITheme
 
 sealed class MobileOverlayMenuItemLeadingContentType {
   data class Icon(val icon: TarkaIcon) : MobileOverlayMenuItemLeadingContentType()
-  object StatusIndicator : MobileOverlayMenuItemLeadingContentType()
+  data object StatusIndicator : MobileOverlayMenuItemLeadingContentType()
 }
 
 sealed class MobileOverlayMenuItemTrailingContentType {
   data class Icon(val icon: TarkaIcon) : MobileOverlayMenuItemTrailingContentType()
-  object SubMobileOverlayMenu : MobileOverlayMenuItemTrailingContentType()
+  data object SubMobileOverlayMenu : MobileOverlayMenuItemTrailingContentType()
 }
 
 sealed class MobileOverlayMenuItemStyle {
-  object Title : MobileOverlayMenuItemStyle()
+  data object Title : MobileOverlayMenuItemStyle()
   data class TitleWithDescription(val description: String) : MobileOverlayMenuItemStyle()
 }
 
@@ -76,7 +75,6 @@ sealed class MobileOverlayMenuItemStyle {
   onMobileOverlayMenuItemClick: () -> Unit,
   tags: TUIMobileOverlayMenuItemTags = TUIMobileOverlayMenuItemTags()
 ) {
-
   val bgColor = if (isSelected) TUITheme.colors.success10 else Color.Transparent
   val rippleColor = if (isSelected) TUITheme.colors.success20 else TUITheme.colors.surfaceHover
 
@@ -103,7 +101,6 @@ sealed class MobileOverlayMenuItemStyle {
             .background(color = TUITheme.colors.success)
         )
       }
-
     }
   } else {
     {
@@ -111,7 +108,9 @@ sealed class MobileOverlayMenuItemStyle {
     }
   }
 
-  val trailingContentLambda: (@Composable () -> Unit)? = if (trailingContent != null && style is Title) {
+  val trailingContentLambda: (@Composable () -> Unit)? = if (trailingContent != null &&
+    style is Title
+  ) {
     {
       val trailingContentModifier = Modifier
         .padding(start = 8.dp, end = 8.dp)
@@ -136,7 +135,9 @@ sealed class MobileOverlayMenuItemStyle {
         }
       }
     }
-  } else null
+  } else {
+    null
+  }
 
   val height = when {
     leadingContent != null && trailingContent != null -> if (isSelected) 40 else 38
@@ -158,7 +159,7 @@ sealed class MobileOverlayMenuItemStyle {
       )
       .testTag(tags.parentTag),
     verticalAlignment = Alignment.CenterVertically,
-    horizontalArrangement = Arrangement.SpaceBetween,
+    horizontalArrangement = Arrangement.SpaceBetween
   ) {
     leadingIconLambda()
     Column(
@@ -169,7 +170,8 @@ sealed class MobileOverlayMenuItemStyle {
       when (style) {
         Title -> TUIMobileOverlayMenuItemTitle(title)
         is TitleWithDescription -> TUIMenuItemTitleWithDescription(
-          title = title, description = style.description
+          title = title,
+          description = style.description
         )
       }
     }
@@ -184,16 +186,20 @@ sealed class MobileOverlayMenuItemStyle {
   Text(
     text = title,
     style = TUITheme.typography.body7,
-    color = TUITheme.colors.onSurface,
+    color = TUITheme.colors.onSurface
   )
 }
 
 @Composable private fun TUIMenuItemTitleWithDescription(title: String, description: String) {
   Text(
-    text = title, style = TUITheme.typography.heading6, color = TUITheme.colors.onSurface
+    text = title,
+    style = TUITheme.typography.heading6,
+    color = TUITheme.colors.onSurface
   )
   Text(
-    text = description, style = TUITheme.typography.body7, color = TUITheme.colors.onSurface
+    text = description,
+    style = TUITheme.typography.body7,
+    color = TUITheme.colors.onSurface
   )
 }
 
@@ -203,7 +209,8 @@ data class TUIMobileOverlayMenuItemTags(
   val trailingContentTag: String = "TUIMobileOverlayMenuItem_TrailingContent"
 )
 
-@Preview @Composable fun PreviewTUIMobileOverlayMenuItem() {
+@Preview @Composable
+private fun PreviewTUIMobileOverlayMenuItem() {
   TUITheme {
     Column(
       modifier = Modifier
@@ -292,9 +299,8 @@ data class TUIMobileOverlayMenuItemTags(
         style = TitleWithDescription("Label"),
         onMobileOverlayMenuItemClick = {},
         isSelected = false,
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth()
       )
-
     }
   }
 }

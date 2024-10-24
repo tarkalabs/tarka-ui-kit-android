@@ -9,44 +9,50 @@ import com.tarkalabs.tarkaui.components.base.BadgeStyle
 import com.tarkalabs.tarkaui.components.base.TUIBadge
 import com.tarkalabs.tarkaui.components.base.TUIBadgeTags
 import com.tarkalabs.tarkaui.icons.Symbols16
-import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons
 import org.junit.Rule
 import org.junit.Test
 
 class TUIBadgeTest {
-  @get:Rule val composeTestRule = createComposeRule()
+    @get:Rule
+    val composeTestRule = createComposeRule()
 
-  private val tags = TUIBadgeTags(parentTag = "testTag")
+    private val tags = TUIBadgeTags(parentTag = "testTag")
 
-  @Test fun text_badge_Displayed() {
-    composeTestRule.setContent {
-      TUIBadge(
-        badgeSize = L, tags = tags, style = BadgeStyle.Count(299)
-      )
+    @Test
+    fun text_badge_Displayed() {
+        composeTestRule.setContent {
+            TUIBadge(
+                badgeSize = L,
+                tags = tags,
+                style = BadgeStyle.Count(299)
+            )
+        }
+        composeTestRule.onNodeWithText("299").assertIsDisplayed()
+        composeTestRule.onNodeWithTag(tags.iconTag).assertDoesNotExist()
     }
-    composeTestRule.onNodeWithText("299").assertIsDisplayed()
-    composeTestRule.onNodeWithTag(tags.iconTag).assertDoesNotExist()
-  }
 
-
-  @Test fun icon_badge_Displayed() {
-    composeTestRule.setContent {
-      TUIBadge(
-        badgeSize = L, tags = tags, style = BadgeStyle.Icon(TarkaIcons.Regular.Symbols16)
-      )
+    @Test
+    fun icon_badge_Displayed() {
+        composeTestRule.setContent {
+            TUIBadge(
+                badgeSize = L,
+                tags = tags,
+                style = BadgeStyle.Icon(TarkaIcons.Regular.Symbols16)
+            )
+        }
+        composeTestRule.onNodeWithTag(tags.iconTag).assertIsDisplayed()
     }
-    composeTestRule.onNodeWithTag(tags.iconTag).assertIsDisplayed()
-  }
 
-  @Test fun empty_badge_Displayed() {
-    composeTestRule.setContent {
-      TUIBadge(
-        badgeSize = L, tags = tags
-      )
+    @Test
+    fun empty_badge_Displayed() {
+        composeTestRule.setContent {
+            TUIBadge(
+                badgeSize = L,
+                tags = tags
+            )
+        }
+        composeTestRule.onNodeWithTag(tags.iconTag).assertDoesNotExist()
+        composeTestRule.onNodeWithTag(tags.parentTag).assertExists()
     }
-    composeTestRule.onNodeWithTag(tags.iconTag).assertDoesNotExist()
-    composeTestRule.onNodeWithTag(tags.parentTag).assertExists()
-  }
-
 }

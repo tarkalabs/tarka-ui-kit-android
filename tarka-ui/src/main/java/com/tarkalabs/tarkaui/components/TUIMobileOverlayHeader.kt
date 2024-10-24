@@ -52,7 +52,7 @@ sealed class TUIMobileOverlayHeaderStyle {
   /**
    * No additional header content.
    */
-  object None : TUIMobileOverlayHeaderStyle()
+  data object None : TUIMobileOverlayHeaderStyle()
 
   /**
    * Header style with a title.
@@ -73,7 +73,7 @@ sealed class TUIMobileOverlayHeaderStyle {
     val trailingIcon: TarkaIcon,
     val onTrailingIconClick: () -> Unit,
     val menuItemList: List<TUIPopUpMenu>? = null,
-    val onMenuItemClick: ((TUIPopUpMenu) -> Unit)? = null,
+    val onMenuItemClick: ((TUIPopUpMenu) -> Unit)? = null
   ) : TUIMobileOverlayHeaderStyle()
 
   /**
@@ -82,9 +82,8 @@ sealed class TUIMobileOverlayHeaderStyle {
    * @property title The title text to be displayed.
    * @property onBackIconClick The click listener for the back icon.
    */
-  data class HeaderWithBackIcon(
-    val title: String, val onBackIconClick: () -> Unit
-  ) : TUIMobileOverlayHeaderStyle()
+  data class HeaderWithBackIcon(val title: String, val onBackIconClick: () -> Unit) :
+    TUIMobileOverlayHeaderStyle()
 }
 
 /**
@@ -100,7 +99,6 @@ fun TUIMobileOverlayHeader(
   style: TUIMobileOverlayHeaderStyle,
   tags: TUIMobileOverlayHeaderTags = TUIMobileOverlayHeaderTags()
 ) {
-
   val height = when (style) {
     is None -> 24.dp
     else -> 64.dp
@@ -183,7 +181,7 @@ fun TUIMobileOverlayHeader(
                 onDismissRequest = { expanded = false },
                 modifier = Modifier
                   .background(TUITheme.colors.surface)
-                  .align(Alignment.TopEnd),
+                  .align(Alignment.TopEnd)
               ) {
                 style.menuItemList?.forEach { item ->
                   TUIMobileOverlayMenuItem(
@@ -231,8 +229,10 @@ fun TUIMobileOverlayHeader(
 data class TUIMobileOverlayHeaderTags(
   val parentTag: String = "TUIMobileOverlayHeader_Parent",
   val dividerTag: String = "TUIMobileOverlayHeader_Divider",
-  val leadingIconButtonTag: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUIMobileOverlayHeader_LeadingIcon"),
-  val trailingIconButtonTag: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUIMobileOverlayHeader_TrailingIcon"),
+  val leadingIconButtonTag: TUIIconButtonTags =
+    TUIIconButtonTags(parentTag = "TUIMobileOverlayHeader_LeadingIcon"),
+  val trailingIconButtonTag: TUIIconButtonTags =
+    TUIIconButtonTags(parentTag = "TUIMobileOverlayHeader_TrailingIcon")
 )
 
 @Composable
@@ -248,7 +248,7 @@ private fun HeaderText(title: String, textAlign: TextAlign, modifier: Modifier) 
 
 @Preview(showBackground = true)
 @Composable
-fun TUIMobileOverlayHeaderPreview() {
+private fun TUIMobileOverlayHeaderPreview() {
   TUITheme {
     Column(
       Modifier
@@ -256,16 +256,19 @@ fun TUIMobileOverlayHeaderPreview() {
         .background(TUITheme.colors.surface)
     ) {
       TUIMobileOverlayHeader(
-        modifier = Modifier.fillMaxWidth(), style = None
-      )
-      VerticalSpacer(space = 10)
-      TUIMobileOverlayHeader(
-        modifier = Modifier.fillMaxWidth(), style = HeaderWithTitle("Select Asset")
+        modifier = Modifier.fillMaxWidth(),
+        style = None
       )
       VerticalSpacer(space = 10)
       TUIMobileOverlayHeader(
         modifier = Modifier.fillMaxWidth(),
-        style = HeaderWithTrailingIcon(title = "Select Asset",
+        style = HeaderWithTitle("Select Asset")
+      )
+      VerticalSpacer(space = 10)
+      TUIMobileOverlayHeader(
+        modifier = Modifier.fillMaxWidth(),
+        style = HeaderWithTrailingIcon(
+          title = "Select Asset",
           trailingIcon = TarkaIcons.Regular.MoreHorizontal24,
           onTrailingIconClick = {}
         )
@@ -277,6 +280,5 @@ fun TUIMobileOverlayHeaderPreview() {
       )
       VerticalSpacer(space = 10)
     }
-
   }
 }

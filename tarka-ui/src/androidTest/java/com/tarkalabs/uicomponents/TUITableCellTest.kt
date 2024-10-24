@@ -1,7 +1,6 @@
 package com.tarkalabs.uicomponents
 
 import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import com.tarkalabs.tarkaui.components.TUITableCell
@@ -11,22 +10,24 @@ import org.junit.Rule
 import org.junit.Test
 
 class TUITableCellTest {
-  @get:Rule val composeTestRule = createComposeRule()
+    @get:Rule
+    val composeTestRule = createComposeRule()
 
-  private val testTags: TUITableCellTags = TUITableCellTags()
+    private val testTags: TUITableCellTags = TUITableCellTags()
 
-  @Test fun tuiTableCellDisplayed() {
-    val cellValue = "Label"
-    composeTestRule.setContent {
-      TUITheme {
-        TUITableCell(
-          cellValue = cellValue,
-          isHeader = true,
-          isTopBorderVisible = true,
-          isBottomBorderVisible = true
-        )
-      }
+    @Test
+    fun tuiTableCellDisplayed() {
+        val cellValue = "Label"
+        composeTestRule.setContent {
+            TUITheme {
+                TUITableCell(
+                    cellValue = cellValue,
+                    isHeader = true,
+                    isTopBorderVisible = true,
+                    isBottomBorderVisible = true
+                )
+            }
+        }
+        composeTestRule.onNodeWithTag(testTags.parentTag).assertExists().assertIsDisplayed()
     }
-    composeTestRule.onNodeWithTag(testTags.parentTag).assertExists().assertIsDisplayed()
-  }
 }

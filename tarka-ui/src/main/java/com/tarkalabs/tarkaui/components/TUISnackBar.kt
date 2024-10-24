@@ -45,11 +45,9 @@ fun rememberTUISnackBarState(
   key: String? = null,
   hostState: SnackbarHostState = SnackbarHostState(),
   type: TUISnackBarType = Information,
-  leadingIcon: TarkaIcon? = null,
-): TUISnackBarState {
-  return rememberSaveable(key = key, saver = TUISnackBarState.Saver) {
-    TUISnackBarState(hostState, type, leadingIcon)
-  }
+  leadingIcon: TarkaIcon? = null
+): TUISnackBarState = rememberSaveable(key = key, saver = TUISnackBarState.Saver) {
+  TUISnackBarState(hostState, type, leadingIcon)
 }
 
 /**
@@ -62,18 +60,22 @@ fun rememberTUISnackBarState(
 class TUISnackBarState(
   hostState: SnackbarHostState = SnackbarHostState(),
   type: TUISnackBarType = Information,
-  leadingIcon: TarkaIcon? = null,
+  leadingIcon: TarkaIcon? = null
 ) {
 
   companion object {
     val Saver = listSaver(save = {
       listOf(it.type, it.leadingIcon)
     }, restore = {
-      TUISnackBarState(it[0] as SnackbarHostState, it[1] as TUISnackBarType, it[2] as TarkaIcon?)
+      TUISnackBarState(
+        it[0] as SnackbarHostState,
+        it[1] as TUISnackBarType,
+        it[2] as TarkaIcon?
+      )
     })
   }
 
-  internal val hostState: SnackbarHostState by mutableStateOf(hostState)
+  val hostState: SnackbarHostState by mutableStateOf(hostState)
   var type: TUISnackBarType by mutableStateOf(type)
   var leadingIcon: TarkaIcon? by mutableStateOf(leadingIcon)
 
@@ -101,7 +103,13 @@ class TUISnackBarState(
     message: String,
     actionLabel: String? = null,
     withDismissAction: Boolean = false,
-    duration: SnackbarDuration = if (actionLabel == null) SnackbarDuration.Short else SnackbarDuration.Indefinite
+    duration: SnackbarDuration = if (actionLabel ==
+      null
+    ) {
+      SnackbarDuration.Short
+    } else {
+      SnackbarDuration.Indefinite
+    }
   ): SnackbarResult {
     hostState.currentSnackbarData?.dismiss()
     return hostState.showSnackbar(message, actionLabel, withDismissAction, duration)
@@ -119,11 +127,11 @@ class TUISnackBarState(
 fun TUISnackBarHost(
   state: TUISnackBarState,
   modifier: Modifier = Modifier,
-  tags: TUISnackBarTags = TUISnackBarTags(),
+  tags: TUISnackBarTags = TUISnackBarTags()
 ) {
   SnackbarHost(
     modifier = modifier,
-    hostState = state.hostState,
+    hostState = state.hostState
   ) { snackbarData: SnackbarData ->
     TUISnackBar(
       modifier = Modifier.padding(5.dp),
@@ -151,13 +159,13 @@ fun TUISnackBarHost(
  *  How to use TUISnackBar() composable function
  *
  *   TUISnackBar(
-      message = "Task completed successfully!",
-      type = Success,
-      leadingIcon = TarkaIcon.Success,
-      actionLabel = "Dismiss",
-      tags = TUISnackBarTags(parentTag = "example_snackbar"),
-      action = { /* Perform action on dismiss */ }
-    )
+message = "Task completed successfully!",
+type = Success,
+leadingIcon = TarkaIcon.Success,
+actionLabel = "Dismiss",
+tags = TUISnackBarTags(parentTag = "example_snackbar"),
+action = { /* Perform action on dismiss */ }
+)
  */
 @Composable
 internal fun TUISnackBar(
@@ -167,7 +175,7 @@ internal fun TUISnackBar(
   leadingIcon: TarkaIcon? = null,
   actionLabel: String? = null,
   tags: TUISnackBarTags = TUISnackBarTags(),
-  action: () -> Unit = {},
+  action: () -> Unit = {}
 ) {
   var containerColor = TUITheme.colors.secondary
   var textColor = TUITheme.colors.onSecondary
@@ -192,7 +200,6 @@ internal fun TUISnackBar(
       textColor = TUITheme.colors.onError
       containerColor = TUITheme.colors.error
     }
-
   }
 
   Box(
@@ -205,7 +212,7 @@ internal fun TUISnackBar(
       modifier = Modifier
         .testTag(tags.parentTag),
       verticalAlignment = Alignment.CenterVertically,
-      horizontalArrangement = Arrangement.Center,
+      horizontalArrangement = Arrangement.Center
     ) {
       if (leadingIcon != null) {
         Icon(
@@ -232,36 +239,38 @@ internal fun TUISnackBar(
             .padding(start = 24.dp),
           onClick = action,
           colors = ButtonDefaults.buttonColors(
-            contentColor = containerColor, containerColor = textColor
+            contentColor = containerColor,
+            containerColor = textColor
           ),
           contentPadding = PaddingValues(1.dp)
         ) {
           Text(
             modifier = Modifier.padding(horizontal = 17.dp),
-            text = actionLabel, style = TUITheme.typography.body7)
+            text = actionLabel,
+            style = TUITheme.typography.body7
+          )
         }
       }
     }
-
   }
 }
 
 data class TUISnackBarTags(
   val parentTag: String = "TUISnackBar",
   val leadingIconTag: String = "TUISnackBar_LeadingIcon",
-  val dismissActionTag: String = "TUISnackBar_DismissAction",
+  val dismissActionTag: String = "TUISnackBar_DismissAction"
 )
 
 enum class TUISnackBarType {
   Success,
   Information,
   Warning,
-  Error;
+  Error
 }
 
 @Preview
 @Composable
-fun TUIInformationSnackBarPreview() {
+private fun TUIInformationSnackBarPreview() {
   TUISnackBar(
     message = "Hello there, How are doing ? ",
     actionLabel = "dgsd",
@@ -272,24 +281,31 @@ fun TUIInformationSnackBarPreview() {
 
 @Preview
 @Composable
-fun TUISuccessSnackBarPreview() {
+private fun TUISuccessSnackBarPreview() {
   TUISnackBar(
-    message = "Hello there", actionLabel = "dgsd", leadingIcon = TarkaIcons.Regular.Delete24, type = Success
+    message = "Hello there",
+    actionLabel = "dgsd",
+    leadingIcon = TarkaIcons.Regular.Delete24,
+    type = Success
   )
 }
 
 @Preview
 @Composable
-fun TUIWarningSnackBarPreview() {
+private fun TUIWarningSnackBarPreview() {
   TUISnackBar(
-    message = "Hello there", actionLabel = "dgsd", leadingIcon = TarkaIcons.Regular.Delete24, type = Warning
+    message = "Hello there",
+    actionLabel = "dgsd",
+    leadingIcon = TarkaIcons.Regular.Delete24,
+    type = Warning
   )
 }
 
 @Preview
 @Composable
-fun TUIErrorSnackBarPreview() {
+private fun TUIErrorSnackBarPreview() {
   TUISnackBar(
-    message = "Hello there", type = TUISnackBarType.Error
+    message = "Hello there",
+    type = TUISnackBarType.Error
   )
 }

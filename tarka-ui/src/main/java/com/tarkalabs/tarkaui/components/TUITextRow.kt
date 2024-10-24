@@ -1,6 +1,5 @@
 package com.tarkalabs.tarkaui.components
 
-import android.util.Log
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -10,10 +9,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
@@ -42,7 +44,7 @@ import com.tarkalabs.tarkaui.components.base.TUIIconButton
 import com.tarkalabs.tarkaui.components.base.TUIIconButtonTags
 import com.tarkalabs.tarkaui.icons.Circle24
 import com.tarkalabs.tarkaui.icons.TarkaIcon
-import com.tarkalabs.tarkaui.icons.TarkaIcons
+import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
 import com.tarkalabs.tarkaui.theme.TUITheme
 
 /**
@@ -98,9 +100,8 @@ fun TUITextRow(
     menuItemList: List<TUIPopUpMenu>? = null,
     onMenuItemClick: ((TUIPopUpMenu) -> Unit)? = null,
     paddingValues: PaddingValues = PaddingValues(),
-    tags: TUITextRowTags = TUITextRowTags(),
+    tags: TUITextRowTags = TUITextRowTags()
 ) {
-
     var expanded by remember { mutableStateOf(false) }
 
     Row(
@@ -129,22 +130,25 @@ fun TUITextRow(
                     TUITextRowTitleWithNotAvailable(title, style)
                 }
             }
-
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
-            if (iconOne != null) TUIIconButton(
-                icon = iconOne,
-                onIconClick = onIconOneClick,
-                iconButtonStyle = Ghost,
-                tags = tags.iconOneTags
-            )
-            if (iconTwo != null) TUIIconButton(
-                icon = iconTwo,
-                onIconClick = onIconTwoClick,
-                iconButtonStyle = Ghost,
-                tags = tags.iconTwoTags
+            if (iconOne != null) {
+                TUIIconButton(
+                    icon = iconOne,
+                    onIconClick = onIconOneClick,
+                    iconButtonStyle = Ghost,
+                    tags = tags.iconOneTags
+                )
+            }
+            if (iconTwo != null) {
+                TUIIconButton(
+                    icon = iconTwo,
+                    onIconClick = onIconTwoClick,
+                    iconButtonStyle = Ghost,
+                    tags = tags.iconTwoTags
 
-            )
+                )
+            }
             if (buttonTitle != null) {
                 OutlinedButton(
                     modifier = Modifier
@@ -164,14 +168,17 @@ fun TUITextRow(
                         tint = TUITheme.colors.utilityOutline,
                         modifier = Modifier
                             .then(
-                                if (onInfoIconClick == null && menuItemList.isNullOrEmpty()) Modifier else Modifier.clickable(
-                                    onClick = {
+                                if (onInfoIconClick == null && menuItemList.isNullOrEmpty()) {
+                                    Modifier
+                                } else {
+                                    Modifier.clickable(onClick = {
                                         if (!menuItemList.isNullOrEmpty()) {
                                             expanded = !expanded
                                         } else {
                                             onInfoIconClick?.invoke()
                                         }
                                     })
+                                }
                             )
                             .height(40.dp)
                             .width(24.dp)
@@ -182,7 +189,7 @@ fun TUITextRow(
                         onDismissRequest = { expanded = false },
                         modifier = Modifier
                             .background(TUITheme.colors.surface)
-                            .align(Alignment.TopEnd),
+                            .align(Alignment.TopEnd)
                     ) {
                         menuItemList?.forEach { item ->
                             TUIMobileOverlayMenuItem(
@@ -194,7 +201,9 @@ fun TUITextRow(
                                     onMenuItemClick?.invoke(item)
                                 },
                                 modifier = Modifier.defaultMinSize(minWidth = 160.dp),
-                                leadingContent = MobileOverlayMenuItemLeadingContentType.Icon(item.icon)
+                                leadingContent = MobileOverlayMenuItemLeadingContentType.Icon(
+                                    item.icon
+                                )
                             )
                         }
                     }
@@ -205,88 +214,84 @@ fun TUITextRow(
 }
 
 @Composable
-fun TUIDateStyle(
-    title: String,
-    style: DateStyle,
-) {
+fun TUIDateStyle(title: String, style: DateStyle) {
     Text(
         text = title,
         style = TUITheme.typography.body8,
         color = TUITheme.colors.inputTextDim
     )
     VerticalSpacer(space = 4)
-    Box(modifier = Modifier) {
-        val color = TUITheme.colors.utilityOutline
-        val pathEffect = PathEffect.dashPathEffect(floatArrayOf(4f, 4f), 0f)
+    if (style.startDate == null && style.endDate == null) {
+        Text(
+            text = stringResource(id = style.primaryNotAvailableText),
+            style = TUITheme.typography.body7,
+            color = TUITheme.colors.utilityDisabledContent,
+            modifier = Modifier
+        )
+    } else {
+        Row {
+            TUITextRowStepper()
+            Column {
+                Text(
+                    text = style.startDate ?: stringResource(id = style.primaryNotAvailableText),
+                    style = TUITheme.typography.body7,
+                    color = if (style.startDate != null) TUITheme.colors.onSurface else TUITheme.colors.utilityDisabledContent,
+                    modifier = Modifier.padding(start = 4.dp)
+                )
+                VerticalSpacer(5)
+                Text(
+                    text = style.endDate ?: stringResource(id = style.primaryNotAvailableText),
+                    style = TUITheme.typography.body7,
+                    color = if (style.endDate != null) TUITheme.colors.onSurface else TUITheme.colors.utilityDisabledContent,
+                    modifier = Modifier.padding(start = 4.dp)
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun TUITextRowStepper() {
+    val color = TUITheme.colors.utilityOutline
+    val pathEffect = PathEffect.dashPathEffect(floatArrayOf(4f, 4f), 0f)
+    Box(
+        modifier = Modifier
+            .wrapContentWidth()
+            .height(40.dp)
+    ) {
+        Icon(
+            painter = painterResource(id = Regular.Circle24.iconRes),
+            contentDescription = Regular.Circle24.contentDescription,
+            modifier = Modifier
+                .height(18.dp)
+                .width(12.dp)
+                .align(Alignment.TopCenter),
+            tint = TUITheme.colors.utilityOutline
+
+        )
         Canvas(
-            Modifier
-                .width(0.dp)
-                .height(5.dp)
-                .align(Alignment.CenterStart)
+            modifier = Modifier
+                .size(10.dp, 12.dp)
+                .align(Alignment.Center)
+                .padding(vertical = 1.dp)
         ) {
             drawLine(
                 color = color,
-                start = Offset(16f, -2f),
-                end = Offset(16f, 20f),
+                start = Offset(x = size.width / 2, y = 0f),
+                end = Offset(x = size.width / 2, y = size.height),
+                strokeWidth = 2f,
                 pathEffect = pathEffect
             )
         }
-        Column(modifier = Modifier) {
-            Row {
-                Icon(
-                    painter = painterResource(id = TarkaIcons.Regular.Circle24.iconRes),
-                    contentDescription = TarkaIcons.Regular.Circle24.contentDescription,
-                    modifier = Modifier
-                        .height(18.dp)
-                        .width(12.dp)
-                        .align(Alignment.CenterVertically),
-                    tint = TUITheme.colors.utilityOutline
-                )
-                if (style.startDate == null) {
-                    Text(
-                        text = stringResource(id = style.primaryNotAvailableText),
-                        style = TUITheme.typography.body7,
-                        color = TUITheme.colors.utilityDisabledContent,
-                        modifier = Modifier.padding(start = 4.dp)
-                    )
-                } else {
-                    Text(
-                        text = style.startDate,
-                        style = TUITheme.typography.body7,
-                        color = TUITheme.colors.onSurface,
-                        modifier = Modifier.padding(start = 4.dp)
-                    )
-                }
-
-            }
-            Row {
-                Icon(
-                    painter = painterResource(id = TarkaIcons.Regular.Circle24.iconRes),
-                    contentDescription = TarkaIcons.Regular.Circle24.contentDescription,
-                    modifier = Modifier
-                        .height(18.dp)
-                        .width(12.dp)
-                        .align(Alignment.CenterVertically),
-                    tint = TUITheme.colors.utilityOutline
-                )
-                if (style.endDate == null) {
-                    Text(
-                        text = stringResource(id = style.primaryNotAvailableText),
-                        style = TUITheme.typography.body7,
-                        color = TUITheme.colors.utilityDisabledContent,
-                        modifier = Modifier.padding(start = 4.dp)
-                    )
-                } else {
-                    Text(
-                        text = style.endDate,
-                        style = TUITheme.typography.body7,
-                        color = TUITheme.colors.onSurface,
-                        modifier = Modifier.padding(start = 4.dp)
-                    )
-                }
-            }
-        }
-
+        Icon(
+            painter = painterResource(id = Regular.Circle24.iconRes),
+            contentDescription = Regular.Circle24.contentDescription,
+            modifier = Modifier
+                .height(18.dp)
+                .width(12.dp)
+                .align(Alignment.BottomCenter),
+            tint = TUITheme.colors.utilityOutline
+        )
     }
 }
 
@@ -315,9 +320,7 @@ private fun TUITextRowTitleWithDescription(title: String, style: TitleWithDescri
 }
 
 @Composable
-private fun TUITextRowTitleWithNotAvailable(
-    title: String, style: TitleWithNotAvailable
-) {
+private fun TUITextRowTitleWithNotAvailable(title: String, style: TitleWithNotAvailable) {
     Text(
         text = title,
         style = TUITheme.typography.body8,
@@ -338,11 +341,12 @@ sealed class TextRowStyle {
         val startDate: String? = null,
         val endDate: String? = null,
         @StringRes val primaryNotAvailableText: Int = R.string.not_availble,
+        @StringRes val secondaryNotAvailableText: Int = R.string.not_availble
     ) : TextRowStyle()
 
     data class TitleWithNotAvailable(val text: String) : TextRowStyle()
 
-    object Title : TextRowStyle()
+    data object Title : TextRowStyle()
 }
 
 interface TUIPopUpMenu {
@@ -356,18 +360,82 @@ data class TUITextRowTags(
     val iconOneTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUITextRow_IconOne"),
     val iconTwoTags: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUITextRow_IconTwo"),
     val buttonTag: String = "TUITextRow_Button",
-    val infoIconTag: String = "TUITextRow_InfoIcon",
+    val infoIconTag: String = "TUITextRow_InfoIcon"
 )
 
 @Preview(showBackground = true)
 @Composable
-fun TUITextRowPreview() {
+private fun TUITextRowPreview() {
+    TUITheme {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(20.dp)
+        ) {
+            TUITextRow(
+                title = "Duration",
+                style = DateStyle(
+                    null,
+                    null
+                ),
+                onTextRowClick = {
+                    println("TUITextRowPreview")
+                },
+                onInfoIconClick = null
+            )
 
-    TUITextRow(
-        title = "Duration", style = DateStyle(
-            null, "Jan 20 3000 friday march 32"
-        ), onTextRowClick = {
-            Log.d("TAG", "TUITextRowPreview: ")
-        }, onInfoIconClick = null
-    )
+            VerticalSpacer(20)
+
+            TUITextRow(
+                title = "Duration",
+                style = DateStyle(
+                    "Jan 20 3000 friday march 32",
+                    "Jan 20 3000 friday march 32"
+                ),
+                onTextRowClick = {
+                    println("TUITextRowPreview")
+                },
+                onInfoIconClick = null
+            )
+            VerticalSpacer(20)
+
+            TUITextRow(
+                title = "Duration",
+                style = DateStyle(
+                    "Jan 20 3000 friday march 32",
+                    "Jan 20 3000 friday march 32"
+                ),
+                onTextRowClick = {
+                    println("TUITextRowPreview")
+                },
+                onInfoIconClick = null
+            )
+            VerticalSpacer(20)
+
+            TUITextRow(
+                title = "Duration",
+                style = DateStyle(
+                    null,
+                    "Jan 20 3000 friday march 32"
+                ),
+                onTextRowClick = {
+                    println("TUITextRowPreview")
+                },
+                onInfoIconClick = null
+            )
+            VerticalSpacer(20)
+
+            TUITextRow(
+                title = "Duration",
+                style = DateStyle(
+                    "Jan 20 3000 friday march 32",
+                    null
+                ),
+                onTextRowClick = {
+                    println("TUITextRowPreview")
+                },
+                onInfoIconClick = null
+            )
+        }
+    }
 }
