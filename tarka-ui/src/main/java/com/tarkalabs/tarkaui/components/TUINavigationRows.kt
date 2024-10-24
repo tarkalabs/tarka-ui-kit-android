@@ -64,27 +64,31 @@ import com.tarkalabs.tarkaui.theme.TUITheme
   isSelected: Boolean = false,
   tags: TUINavigationRowTags = TUINavigationRowTags(),
   onClick: () -> Unit,
-  content: (@Composable RowScope.() -> Unit)? = null,
+  content: (@Composable RowScope.() -> Unit)? = null
 ) {
-
   Surface(
     color = if (isSelected) TUITheme.colors.primaryAlt else TUITheme.colors.surface,
     modifier = Modifier.fillMaxWidth(),
     shape = if (isSelected) RoundedCornerShape(8.dp) else RectangleShape
   ) {
-    Row(modifier = modifier
-      .clickable { onClick() }
-      .defaultMinSize(minHeight = 40.dp)
-      .padding(8.dp)
-      .testTag(tags.parentTag), verticalAlignment = Alignment.CenterVertically) {
-      if (leadingIcon != null) Icon(
-        modifier = Modifier
-          .size(24.dp)
-          .testTag(tags.leadingIconTag),
-        painter = painterResource(id = leadingIcon.iconRes),
-        contentDescription = leadingIcon.contentDescription,
-        tint = if (isSelected) TUITheme.colors.onSecondaryAlt else TUITheme.colors.secondary
-      )
+    Row(
+      modifier = modifier
+        .clickable { onClick() }
+        .defaultMinSize(minHeight = 40.dp)
+        .padding(8.dp)
+        .testTag(tags.parentTag),
+      verticalAlignment = Alignment.CenterVertically
+    ) {
+      if (leadingIcon != null) {
+        Icon(
+          modifier = Modifier
+            .size(24.dp)
+            .testTag(tags.leadingIconTag),
+          painter = painterResource(id = leadingIcon.iconRes),
+          contentDescription = leadingIcon.contentDescription,
+          tint = if (isSelected) TUITheme.colors.onSecondaryAlt else TUITheme.colors.secondary
+        )
+      }
       Text(
         text = title,
         modifier = Modifier
@@ -112,26 +116,25 @@ data class TUINavigationRowTags(
   val rightArrowTag: String = "TUINavigationRow_TrailingIcon"
 )
 
-@Preview(showBackground = true) @Composable fun TUINavigationRowPreview() {
+@Preview(showBackground = true)
+@Composable
+private fun TUINavigationRowPreview() {
   Column {
     TUINavigationRow(
       title = "Label",
       leadingIcon = Regular.Call20,
       onClick = {
-
-      },
+      }
     ) {
       Text(text = "NILESH")
     }
-
 
     TUINavigationRow(
       title = "Label",
       isSelected = true,
       leadingIcon = Regular.Call20,
       onClick = {
-
-      },
+      }
     ) {
       Text(text = "NILESH")
     }
