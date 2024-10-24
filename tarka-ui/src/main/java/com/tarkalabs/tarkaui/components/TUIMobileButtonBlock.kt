@@ -10,14 +10,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaui.icons.ChevronDown24
-import com.tarkalabs.tarkaui.icons.TarkaIcon
-import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
 import com.tarkalabs.tarkaui.components.base.ButtonSize.XL
+import com.tarkalabs.tarkaui.components.base.ButtonStyle
 import com.tarkalabs.tarkaui.components.base.ButtonStyle.Outline
 import com.tarkalabs.tarkaui.components.base.ButtonStyle.Primary
 import com.tarkalabs.tarkaui.components.base.TUIButton
 import com.tarkalabs.tarkaui.components.base.TUIButtonTags
+import com.tarkalabs.tarkaui.icons.ChevronDown24
+import com.tarkalabs.tarkaui.icons.TarkaIcon
+import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
 import com.tarkalabs.tarkaui.theme.TUITheme
 
 /**
@@ -47,7 +48,8 @@ fun TUIMobileButtonBlock(
   primaryTrailingIcon: TarkaIcon? = null,
   outlineLeadingIcon: TarkaIcon? = null,
   outlineTrailingIcon: TarkaIcon? = null,
-  tags: TUIMobileButtonBlockTags = TUIMobileButtonBlockTags()
+  tags: TUIMobileButtonBlockTags = TUIMobileButtonBlockTags(),
+  primaryBtnStyle: ButtonStyle = Primary
 ) {
   Column(modifier.fillMaxWidth()) {
     TUIDivider()
@@ -64,7 +66,13 @@ fun TUIMobileButtonBlock(
           buttonStyle = Outline,
           leadingIcon = outlineLeadingIcon,
           trailingIcon = outlineTrailingIcon,
-          modifier = if (primaryButtonWeight == null) Modifier.weight(1f) else Modifier.wrapContentWidth(),
+          modifier = if (primaryButtonWeight ==
+            null
+          ) {
+            Modifier.weight(1f)
+          } else {
+            Modifier.wrapContentWidth()
+          },
           tags = TUIButtonTags(parentTag = tags.outlineButtonTag)
         )
         HorizontalSpacer(space = 8)
@@ -74,7 +82,7 @@ fun TUIMobileButtonBlock(
           height = XL,
           label = it,
           onClick = { primaryButtonOnClick?.invoke() },
-          buttonStyle = Primary,
+          buttonStyle = primaryBtnStyle,
           leadingIcon = primaryLeadingIcon,
           trailingIcon = primaryTrailingIcon,
           modifier = Modifier.weight(
@@ -94,11 +102,13 @@ data class TUIMobileButtonBlockTags(
   val primaryButtonTag: String = "TUIMobileButtonBlock_Primary",
   val outlineButtonTag: String = "TUIMobileButtonBlock_Outline",
   val primaryLeadingIconTag: String = "TUIMobileButtonBlock_PrimaryLeadingIcon",
-  val primaryTrailingIconTag: String = "TUIMobileButtonBlock_PrimaryTrailingIcon",
+  val primaryTrailingIconTag: String = "TUIMobileButtonBlock_PrimaryTrailingIcon"
 
-  )
+)
 
-@Preview @Composable fun TUIMobileButtonPreview() {
+@Preview
+@Composable
+private fun TUIMobileButtonPreview() {
   TUIMobileButtonBlock(
     primaryButtonLabel = "Label",
     primaryButtonOnClick = { /*TODO*/ },
@@ -109,7 +119,7 @@ data class TUIMobileButtonBlockTags(
 
 @Preview
 @Composable
-fun TUIMobileButtonPreview1() {
+private fun TUIMobileButtonPreview1() {
   TUIMobileButtonBlock(
     primaryButtonLabel = "Label",
     primaryButtonOnClick = { /*TODO*/ },
@@ -120,7 +130,7 @@ fun TUIMobileButtonPreview1() {
 
 @Preview
 @Composable
-fun TUIMobileButtonPreview2() {
+private fun TUIMobileButtonPreview2() {
   TUIMobileButtonBlock(
     primaryButtonLabel = "Label",
     primaryButtonOnClick = { /*TODO*/ },
@@ -132,7 +142,7 @@ fun TUIMobileButtonPreview2() {
 
 @Preview
 @Composable
-fun TUIMobileButtonPreview3() {
+private fun TUIMobileButtonPreview3() {
   TUIMobileButtonBlock(
     primaryButtonLabel = "Label",
     primaryButtonOnClick = { /*TODO*/ },
@@ -144,7 +154,7 @@ fun TUIMobileButtonPreview3() {
 
 @Preview
 @Composable
-fun TUIMobileButtonPreview4() {
+private fun TUIMobileButtonPreview4() {
   TUITheme {
     Column {
       TUIMobileButtonBlock(
@@ -167,7 +177,7 @@ fun TUIMobileButtonPreview4() {
 
 @Preview
 @Composable
-fun TUIMobileButtonPreview5() {
+private fun TUIMobileButtonPreview5() {
   TUITheme {
     Column {
       TUIMobileButtonBlock(
@@ -184,7 +194,7 @@ fun TUIMobileButtonPreview5() {
 
 @Preview
 @Composable
-fun TUIMobileButtonPreview6() {
+private fun TUIMobileButtonPreview6() {
   TUITheme {
     Column {
       TUIMobileButtonBlock(
