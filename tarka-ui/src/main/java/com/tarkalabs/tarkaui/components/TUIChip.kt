@@ -79,7 +79,7 @@ sealed class ChipType {
   data class Input(
     val content: ChipLeadingContent? = null,
     val trailingIcon: TarkaIcon? = null,
-    val containerColor: Color? = null,
+    val containerColor: Color? = null
   ) : ChipType()
 
   /**
@@ -104,7 +104,7 @@ sealed class ChipType {
     val showTrailingDismiss: Boolean = false,
     val showTrailingCaret: Boolean = false,
     val badgeCount: Int? = null,
-    val trailingIcon: TarkaIcon? = null,
+    val trailingIcon: TarkaIcon? = null
   ) : ChipType()
 }
 
@@ -119,7 +119,7 @@ sealed class ChipLeadingContent {
 
 enum class ChipSize(val size: Dp) {
   SMALL(32.dp),
-  BIG(40.dp),
+  BIG(40.dp)
 }
 
 /**
@@ -139,9 +139,8 @@ enum class ChipSize(val size: Dp) {
   onClick: () -> Unit,
   onDismissClick: (() -> Unit)? = null,
   chipSize: ChipSize = ChipSize.SMALL,
-  tags: TUIChipTags = TUIChipTags(),
+  tags: TUIChipTags = TUIChipTags()
 ) {
-
   val commonModifier = modifier
     .testTag(tags.parentTag)
     .height(chipSize.size)
@@ -150,15 +149,20 @@ enum class ChipSize(val size: Dp) {
 
   when (type) {
     is ChipType.Assist -> {
-      AssistChip(modifier = commonModifier,
+      AssistChip(
+        modifier = commonModifier,
         shape = RoundedCornerShape(8.dp),
         label = commonLabel,
         onClick = onClick,
-        colors = AssistChipDefaults.assistChipColors(containerColor = TUITheme.colors.surface),
-        leadingIcon = { leadingIcon(type.content) })
+        colors = AssistChipDefaults.assistChipColors(
+          containerColor = TUITheme.colors.surface
+        ),
+        leadingIcon = { leadingIcon(type.content) }
+      )
     }
 
-    is ChipType.Input -> InputChip(modifier = commonModifier,
+    is ChipType.Input -> InputChip(
+      modifier = commonModifier,
       shape = RoundedCornerShape(8.dp),
       selected = false,
       onClick = onClick,
@@ -168,12 +172,18 @@ enum class ChipSize(val size: Dp) {
       trailingIcon = if (type.trailingIcon != null) {
         {
           TUIIconButton(
-            icon = type.trailingIcon, iconButtonStyle = Ghost, onIconClick = {
+            icon = type.trailingIcon,
+            iconButtonStyle = Ghost,
+            onIconClick = {
               onDismissClick?.invoke()
-            }, buttonSize = M
+            },
+            buttonSize = M
           )
         }
-      } else null)
+      } else {
+        null
+      }
+    )
 
     is Filter -> {
       FilterChip(
@@ -186,7 +196,10 @@ enum class ChipSize(val size: Dp) {
     }
 
     is ChipType.Suggestion -> {
-      SuggestionChip(colors = SuggestionChipDefaults.suggestionChipColors(containerColor = TUITheme.colors.surface),
+      SuggestionChip(
+        colors = SuggestionChipDefaults.suggestionChipColors(
+          containerColor = TUITheme.colors.surface
+        ),
         onClick = onClick,
         label = commonLabel,
         shape = RoundedCornerShape(8.dp),
@@ -199,7 +212,10 @@ enum class ChipSize(val size: Dp) {
               tint = TUITheme.colors.onSecondary
             )
           }
-        } else null)
+        } else {
+          null
+        }
+      )
     }
   }
 }
@@ -209,7 +225,7 @@ enum class ChipSize(val size: Dp) {
   label: String,
   onClick: () -> Unit,
   modifier: Modifier = Modifier,
-  onDismissClick: (() -> Unit)? = null,
+  onDismissClick: (() -> Unit)? = null
 ) {
   Box(
     modifier = Modifier
@@ -228,7 +244,8 @@ enum class ChipSize(val size: Dp) {
       modifier = modifier
         .clickable {
           onClick()
-        }, horizontalArrangement = Arrangement.Center,
+        },
+      horizontalArrangement = Arrangement.Center,
       verticalAlignment = Alignment.CenterVertically
     ) {
       if (type.showLeadingCheck) {
@@ -236,22 +253,24 @@ enum class ChipSize(val size: Dp) {
         Icon(
           painter = painterResource(id = TarkaIcons.Filled.Checkmark16.iconRes),
           contentDescription = TarkaIcons.Filled.Checkmark16.contentDescription,
-          tint = if (type.selected) TUITheme.colors.onSecondary else TUITheme.colors.onSurface,
+          tint = if (type.selected) TUITheme.colors.onSecondary else TUITheme.colors.onSurface
         )
         HorizontalSpacer(space = 6)
       } else {
-        HorizontalSpacer(space = 20)
+        HorizontalSpacer(space = 12)
       }
       Text(
         text = label,
         style = TUITheme.typography.button7,
-        color = if (type.selected) TUITheme.colors.onSecondary else TUITheme.colors.onSurface,
+        color = if (type.selected) TUITheme.colors.onSecondary else TUITheme.colors.onSurface
       )
 
       if (type.showTrailingDismiss) {
         HorizontalSpacer(space = 6)
         TUIIconButton(
-          icon = TarkaIcons.Filled.Dismiss16.copy(tintColor = if (type.selected) TUITheme.colors.onSecondary else TUITheme.colors.onSurface),
+          icon = TarkaIcons.Filled.Dismiss16.copy(
+            tintColor = if (type.selected) TUITheme.colors.onSecondary else TUITheme.colors.onSurface
+          ),
           iconButtonStyle = Ghost,
           onIconClick = {
             onDismissClick?.invoke()
@@ -273,7 +292,6 @@ enum class ChipSize(val size: Dp) {
       } else {
         HorizontalSpacer(space = 20)
       }
-
     }
     if (type.badgeCount != null) {
       TUIBadge(
@@ -281,15 +299,18 @@ enum class ChipSize(val size: Dp) {
         modifier = Modifier.align(Alignment.TopEnd)
       )
     }
-
   }
 }
 
-@Composable private fun getCommonLabel(label: String) = (@Composable {
-  Text(
-    text = label, style = TUITheme.typography.button7, color = TUITheme.colors.onSurface
-  )
-})
+@Composable private fun getCommonLabel(label: String) = (
+        @Composable {
+          Text(
+            text = label,
+            style = TUITheme.typography.button7,
+            color = TUITheme.colors.onSurface
+          )
+        }
+        )
 
 @Composable private fun leadingIcon(): @Composable (ChipLeadingContent?) -> Unit {
   val leadingIcon: @Composable (ChipLeadingContent?) -> Unit = @Composable {
@@ -301,7 +322,8 @@ enum class ChipSize(val size: Dp) {
       )
 
       is Image -> TUIAvatar(
-        avatarType = AvatarType.Image(it.imageBitmap), avatarSize = XS
+        avatarType = AvatarType.Image(it.imageBitmap),
+        avatarSize = XS
       )
 
       null -> {}
@@ -310,11 +332,10 @@ enum class ChipSize(val size: Dp) {
   return leadingIcon
 }
 
-data class TUIChipTags(
-  val parentTag: String = "TUIChip",
-)
+data class TUIChipTags(val parentTag: String = "TUIChip")
 
-@Preview @Composable fun TUIChipPreview() {
+@Preview @Composable
+private fun TUIChipPreview() {
   TUITheme {
     Column(modifier = Modifier.padding(20.dp)) {
       var showSearchbar by remember {
@@ -331,7 +352,9 @@ data class TUIChipTags(
         VerticalSpacer(space = 20)
         TUIChip(
           type = Filter(
-            trailingIcon = Regular.ArrowSort20, showTrailingDismiss = true, selected = showSearchbar
+            trailingIcon = Regular.ArrowSort20,
+            showTrailingDismiss = true,
+            selected = showSearchbar
           ),
           label = "Something",
           onClick = {
@@ -339,7 +362,7 @@ data class TUIChipTags(
           },
           onDismissClick = {
             showSearchbar = !showSearchbar
-          },
+          }
         )
         VerticalSpacer(space = 20)
       }
