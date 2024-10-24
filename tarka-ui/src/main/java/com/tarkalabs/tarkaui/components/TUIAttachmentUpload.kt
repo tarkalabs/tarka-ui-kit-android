@@ -60,13 +60,13 @@ object TUIAttachmentUpload {
    * How to use TUIAttachmentUpload()
    *
    *   TUIAttachmentUpload(
-          type = Document,
-          attachmentName = "document.jpg",
-          onMenuClick = {},
-          onAttachmentClick = {  },
-          state = UpLoading(50),
-          showLeadingIcon = true,
-       )
+  type = Document,
+  attachmentName = "document.jpg",
+  onMenuClick = {},
+  onAttachmentClick = {  },
+  state = UpLoading(50),
+  showLeadingIcon = true,
+  )
    *
    */
   @Composable operator fun invoke(
@@ -78,10 +78,9 @@ object TUIAttachmentUpload {
     trailingIcon: TarkaIcon,
     state: AttachmentState? = null,
     showLeadingIcon: Boolean,
-    showDeleteButton : Boolean = true,
+    showDeleteButton: Boolean = true,
     tags: TUIAttachmentUploadTags = TUIAttachmentUploadTags()
   ) {
-
     Row(
       modifier = modifier
         .testTag(tags.parentTag)
@@ -91,7 +90,6 @@ object TUIAttachmentUpload {
         },
       verticalAlignment = Alignment.CenterVertically
     ) {
-
       if (showLeadingIcon) {
         Box(
           contentAlignment = Alignment.Center,
@@ -107,7 +105,6 @@ object TUIAttachmentUpload {
             contentDescription = TarkaIcons.Regular.ReOrder24.contentDescription,
             tint = TUITheme.colors.onSurface
           )
-
         }
       }
 
@@ -119,7 +116,10 @@ object TUIAttachmentUpload {
 
       when (state) {
         UpLoadSuccessful -> {
-          Row(modifier = attachmentModifier, verticalAlignment = Alignment.CenterVertically) {
+          Row(
+            modifier = attachmentModifier,
+            verticalAlignment = Alignment.CenterVertically
+          ) {
             Icon(
               painter = painterResource(id = TarkaIcons.Regular.Checkmark12.iconRes),
               contentDescription = TarkaIcons.Regular.Checkmark12.contentDescription,
@@ -133,7 +133,8 @@ object TUIAttachmentUpload {
 
         is UpLoading -> {
           val animatedProgress by animateFloatAsState(
-            targetValue = state.progress / 100f, animationSpec = tween(durationMillis = 5000),
+            targetValue = state.progress / 100f,
+            animationSpec = tween(durationMillis = 5000),
             label = ""
           )
           Column(modifier = attachmentModifier) {
@@ -147,7 +148,7 @@ object TUIAttachmentUpload {
                 .clip(RoundedCornerShape(4.dp))
                 .testTag(tags.progressBarTag),
               color = TUITheme.colors.primaryAltHover,
-              trackColor = TUITheme.colors.surfaceVariant,
+              trackColor = TUITheme.colors.surfaceVariant
             )
           }
         }
@@ -177,14 +178,12 @@ object TUIAttachmentUpload {
      *
      * @param progress The progress percentage.
      */
-    data class UpLoading(
-      val progress: Int
-    ) : AttachmentState()
+    data class UpLoading(val progress: Int) : AttachmentState()
 
     /**
      * Represents the successful upload state.
      */
-    object UpLoadSuccessful : AttachmentState()
+    data object UpLoadSuccessful : AttachmentState()
   }
 
   /**
@@ -192,17 +191,18 @@ object TUIAttachmentUpload {
    *
    * @param parentTag The tag for the parent container of the attachment.
    * @param menuItemTag Tags for customizing test accessibility for the menu (three-dot) icon.
-   * @param leadingIconTag The tag for customizing test accessibility for the leading icon (if [showLeadingIcon] is `true`).
+   * @param leadingIconTag The tag for customizing test accessibility for the leading icon
    * @param successIconTag The tag for customizing test accessibility for the success icon.
    * @param thumbTag Tags for customizing test accessibility for the thumbnail.
    */
   data class TUIAttachmentUploadTags(
     val parentTag: String = "TUIAttachmentUpload",
-    val menuItemTag: TUIIconButtonTags = TUIIconButtonTags(parentTag = "TUIAttachmentUpload_menuItem"),
+    val menuItemTag: TUIIconButtonTags =
+      TUIIconButtonTags(parentTag = "TUIAttachmentUpload_menuItem"),
     val leadingIconTag: String = "TUIAttachmentUpload_leadingIcon",
     val successIconTag: String = "TUIAttachmentUpload_SuccessIcon",
     val progressBarTag: String = "TUIAttachmentUpload_ProgressBar",
-    val thumbTag: TUIMediaThumbnailTags = TUIMediaThumbnailTags(),
+    val thumbTag: TUIMediaThumbnailTags = TUIMediaThumbnailTags()
   )
 
   /**
@@ -218,12 +218,13 @@ object TUIAttachmentUpload {
       color = TUITheme.colors.onSurface,
       modifier = modifier,
       maxLines = 1,
-      overflow = TextOverflow.Ellipsis,
+      overflow = TextOverflow.Ellipsis
     )
   }
 }
 
-@Preview @Composable fun PreviewTUIAttachmentUpload() {
+@Preview @Composable
+private fun PreviewTUIAttachmentUpload() {
   TUITheme {
     Box(
       modifier = Modifier
