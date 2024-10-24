@@ -25,10 +25,10 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaui.extentions.clickableWithoutRipple
 import com.tarkalabs.tarkaui.icons.Checkmark16
 import com.tarkalabs.tarkaui.icons.Dismiss16
 import com.tarkalabs.tarkaui.icons.TarkaIcons
-import com.tarkalabs.tarkaui.extentions.clickableWithoutRipple
 import com.tarkalabs.tarkaui.theme.TUITheme
 
 /**
@@ -89,7 +89,7 @@ import com.tarkalabs.tarkaui.theme.TUITheme
       .width(40.dp)
       .height(24.dp)
       .background(shape = RoundedCornerShape(20.dp), color = switchBgColor)
-      .testTag(tags.parentTag),
+      .testTag(tags.parentTag)
   ) {
     Row(
       modifier = Modifier
@@ -108,21 +108,22 @@ import com.tarkalabs.tarkaui.theme.TUITheme
       ) {
         Icon(
           modifier = Modifier,
-          painter = painterResource(if (isChecked) TarkaIcons.Filled.Checkmark16.iconRes else TarkaIcons.Regular.Dismiss16.iconRes),
+          painter = painterResource(
+            if (isChecked) TarkaIcons.Filled.Checkmark16.iconRes else TarkaIcons.Regular.Dismiss16.iconRes
+          ),
           contentDescription = null,
           tint = iconTint
         )
       }
-
     }
   }
 }
 
-data class TUIToggleSwitchTags(
-  val parentTag: String = "TUIToggleSwitchParentTag",
-)
+data class TUIToggleSwitchTags(val parentTag: String = "TUIToggleSwitchParentTag")
 
-@Preview(showBackground = true) @Composable fun TUIToggleSwitchPreview() {
+@Preview(showBackground = true)
+@Composable
+private fun TUIToggleSwitchPreview() {
   TUITheme {
     var isChecked by remember {
       mutableStateOf(true)
@@ -140,10 +141,12 @@ data class TUIToggleSwitchTags(
 
     Box(
       modifier = Modifier.fillMaxSize()
-        .background(color = TUITheme.colors.surface), contentAlignment = Alignment.Center
+        .background(color = TUITheme.colors.surface),
+      contentAlignment = Alignment.Center
     ) {
       Column(
-        horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
       ) {
         TUIToggleSwitch(isChecked = isChecked, enabled = true) {
           isChecked = !isChecked
