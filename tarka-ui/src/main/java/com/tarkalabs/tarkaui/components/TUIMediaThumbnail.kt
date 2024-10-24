@@ -55,10 +55,12 @@ import com.tarkalabs.tarkaui.theme.TUITheme
 
 @Stable
 sealed class TUIMediaThumbnailType {
-  object Document : TUIMediaThumbnailType()
-  object Audio : TUIMediaThumbnailType()
+  data object Document : TUIMediaThumbnailType()
+  data object Audio : TUIMediaThumbnailType()
+
   @Stable
   data class Video(val image: ImageBitmap? = null) : TUIMediaThumbnailType()
+
   @Stable
   data class Image(val image: ImageBitmap? = null) : TUIMediaThumbnailType()
 }
@@ -68,14 +70,15 @@ enum class TUIMediaThumbnailSize {
   Medium
 }
 
-@Composable fun TUIMediaThumbnail(
+@Composable
+fun TUIMediaThumbnail(
   modifier: Modifier = Modifier,
   size: TUIMediaThumbnailSize = Large,
   type: TUIMediaThumbnailType?,
   showTrailingIcon: Boolean,
   onThumbnailClick: (() -> Unit)? = null,
   onTrailingIconClick: (() -> Unit)? = null,
-  tags: TUIMediaThumbnailTags = TUIMediaThumbnailTags(),
+  tags: TUIMediaThumbnailTags = TUIMediaThumbnailTags()
 ) {
   val (height, width) = when (size) {
     Large -> 60.dp to 80.dp
@@ -86,16 +89,16 @@ enum class TUIMediaThumbnailSize {
       .height(height)
       .width(width)
       .background(color = TUITheme.colors.surfaceVariant, shape = RoundedCornerShape(8.dp))
-      .testTag(tags.parentTag), contentAlignment = Alignment.Center
+      .testTag(tags.parentTag),
+    contentAlignment = Alignment.Center
   ) {
-
     val iconModifier = Modifier
       .heightIn(max = 24.dp)
       .widthIn(max = 24.dp)
       .testTag(tags.centerIconTag)
 
-    if (onThumbnailClick != null){
-      iconModifier.clickable {onThumbnailClick.invoke()}
+    if (onThumbnailClick != null) {
+      iconModifier.clickable { onThumbnailClick.invoke() }
     }
     when (type) {
       Audio -> {
@@ -118,14 +121,23 @@ enum class TUIMediaThumbnailSize {
 
       is Image -> {
         if (type.image != null) {
-          Image(bitmap = type.image,
+          Image(
+            bitmap = type.image,
             contentDescription = stringResource(id = R.string.image_thumbnail),
             modifier = Modifier
               .then(
-                if (onThumbnailClick != null) Modifier.clickable { onThumbnailClick.invoke() } else Modifier)
+                if (onThumbnailClick !=
+                  null
+                ) {
+                  Modifier.clickable { onThumbnailClick.invoke() }
+                } else {
+                  Modifier
+                }
+              )
               .fillMaxSize()
               .clip(RoundedCornerShape(8.dp)),
-            contentScale = ContentScale.Crop)
+            contentScale = ContentScale.Crop
+          )
         } else {
           Icon(
             painter = painterResource(id = Regular.Image24.iconRes),
@@ -157,6 +169,7 @@ enum class TUIMediaThumbnailSize {
           )
         }
       }
+
       else -> {}
     }
 
@@ -172,7 +185,15 @@ enum class TUIMediaThumbnailSize {
           .clip(CircleShape)
           .background(color = Color(0xFF000000).copy(alpha = 0.5f))
           .size(20.dp)
-          .then(if (onTrailingIconClick != null) Modifier.clickable { onTrailingIconClick.invoke() } else Modifier)
+          .then(
+            if (onTrailingIconClick !=
+              null
+            ) {
+              Modifier.clickable { onTrailingIconClick.invoke() }
+            } else {
+              Modifier
+            }
+          )
 
       )
     }
@@ -188,19 +209,22 @@ data class TUIMediaThumbnailTags(
 
 @Preview
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Composable fun PreviewTUIThumbnail() {
+@Composable
+private fun PreviewTUIThumbnail() {
   TUITheme {
     val option = BitmapFactory.Options()
     option.inPreferredConfig = Bitmap.Config.ARGB_8888
     val bitmap = BitmapFactory.decodeResource(
-      LocalContext.current.resources, R.drawable.tarka, option
+      LocalContext.current.resources,
+      R.drawable.tarka,
+      option
     ).asImageBitmap()
     Row(
       verticalAlignment = Alignment.CenterVertically,
       modifier = Modifier
         .fillMaxWidth()
         .fillMaxHeight()
-        .background(color = TUITheme.colors.surface),
+        .background(color = TUITheme.colors.surface)
     ) {
       Column(
         modifier = Modifier
@@ -220,9 +244,17 @@ data class TUIMediaThumbnailTags(
         VerticalSpacer(space = 5)
         TUIMediaThumbnail(type = Image(), showTrailingIcon = false)
         VerticalSpacer(space = 50)
-        TUIMediaThumbnail(type = Image(image = bitmap), showTrailingIcon = false, size = Medium)
+        TUIMediaThumbnail(
+          type = Image(image = bitmap),
+          showTrailingIcon = false,
+          size = Medium
+        )
         VerticalSpacer(space = 5)
-        TUIMediaThumbnail(type = Video(image = bitmap), showTrailingIcon = false, size = Medium)
+        TUIMediaThumbnail(
+          type = Video(image = bitmap),
+          showTrailingIcon = false,
+          size = Medium
+        )
         VerticalSpacer(space = 5)
         TUIMediaThumbnail(type = Audio, showTrailingIcon = false, size = Medium)
         VerticalSpacer(space = 5)
@@ -248,9 +280,17 @@ data class TUIMediaThumbnailTags(
         VerticalSpacer(space = 5)
         TUIMediaThumbnail(type = Video(), showTrailingIcon = false)
         VerticalSpacer(space = 50)
-        TUIMediaThumbnail(type = Image(image = bitmap), showTrailingIcon = true, size = Medium)
+        TUIMediaThumbnail(
+          type = Image(image = bitmap),
+          showTrailingIcon = true,
+          size = Medium
+        )
         VerticalSpacer(space = 5)
-        TUIMediaThumbnail(type = Video(image = bitmap), showTrailingIcon = true, size = Medium)
+        TUIMediaThumbnail(
+          type = Video(image = bitmap),
+          showTrailingIcon = true,
+          size = Medium
+        )
         VerticalSpacer(space = 5)
         TUIMediaThumbnail(type = Audio, showTrailingIcon = true, size = Medium)
         VerticalSpacer(space = 5)
