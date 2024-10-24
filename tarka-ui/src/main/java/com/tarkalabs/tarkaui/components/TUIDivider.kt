@@ -50,11 +50,11 @@ fun TUIDivider(
   color: Color = TUITheme.colors.surfaceVariantHover,
   horizontalPadding: HorizontalPaddingSize = NONE,
   verticalPadding: VerticalPaddingSize = VerticalPaddingSize.NONE,
-  tags: TUIDividerTags = TUIDividerTags(),
+  tags: TUIDividerTags = TUIDividerTags()
 ) {
   when (orientation) {
     VERTICAL -> {
-      //todo vertical divider is not yet implemented in any of the components so we don't know height
+      // todo vertical divider is not yet implemented in any of the components so we don't know height
       // .height(40.dp)
       Row {
         HorizontalSpacer(space = horizontalPadding.size)
@@ -62,7 +62,9 @@ fun TUIDivider(
           modifier = modifier
             .fillMaxHeight()
             .padding(vertical = verticalPadding.size.dp)
-            .testTag(tag = tags.parentTag), color = color, thickness = thickness.dp
+            .testTag(tag = tags.parentTag),
+          color = color,
+          thickness = thickness.dp
         )
         HorizontalSpacer(space = horizontalPadding.size)
       }
@@ -75,7 +77,9 @@ fun TUIDivider(
           modifier = modifier
             .fillMaxWidth()
             .padding(horizontal = horizontalPadding.size.dp)
-            .testTag(tag = tags.parentTag), color = color, thickness = thickness.dp
+            .testTag(tag = tags.parentTag),
+          color = color,
+          thickness = thickness.dp
         )
         VerticalSpacer(space = verticalPadding.size)
       }
@@ -85,11 +89,12 @@ fun TUIDivider(
 
 @Preview
 @Composable
-fun TestTUIDivider() {
-  Column(modifier = Modifier
-    .background(Color.Black)
-    .fillMaxSize()) {
-
+private fun TUIDividerPreview() {
+  Column(
+    modifier = Modifier
+      .background(Color.Black)
+      .fillMaxSize()
+  ) {
     VerticalSpacer(space = 10)
     TUIDivider(color = TUITheme.colors.secondaryAlt)
     VerticalSpacer(space = 10)
@@ -97,9 +102,7 @@ fun TestTUIDivider() {
   }
 }
 
-data class TUIDividerTags(
-  val parentTag: String = "TUIDivider",
-)
+data class TUIDividerTags(val parentTag: String = "TUIDivider")
 
 enum class Orientation {
   VERTICAL,
@@ -111,7 +114,7 @@ enum class HorizontalPaddingSize(val size: Int) {
   L(24),
   M(16),
   S(8),
-  NONE(0);
+  NONE(0)
 }
 
 enum class VerticalPaddingSize(val size: Int) {
