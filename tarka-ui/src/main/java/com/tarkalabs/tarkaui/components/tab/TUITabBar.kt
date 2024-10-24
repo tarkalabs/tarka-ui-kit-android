@@ -12,7 +12,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -20,10 +20,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.tarkalabs.tarkaui.components.VerticalSpacer
 import com.tarkalabs.tarkaui.icons.Circle12
 import com.tarkalabs.tarkaui.icons.TarkaIcon
 import com.tarkalabs.tarkaui.icons.TarkaIcons.Regular
-import com.tarkalabs.tarkaui.components.VerticalSpacer
 import com.tarkalabs.tarkaui.theme.TUITheme
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
@@ -40,13 +40,13 @@ import kotlinx.collections.immutable.toImmutableList
  *
  * How to use TUITab() composable function
  *
-    TUITab(
-      isUserScrollEnabledOnContent = true,
-      isPagerEnabled = true,
-      tabItems = listOf(TabItem("TabName", TarkaIcons.Tabs24Regular),
-      selectedTabIndex = 1,
-      onTabChanged = {}
-    )
+TUITab(
+isUserScrollEnabledOnContent = true,
+isPagerEnabled = true,
+tabItems = listOf(TabItem("TabName", TarkaIcons.Tabs24Regular),
+selectedTabIndex = 1,
+onTabChanged = {}
+)
  */
 
 @Composable fun TUITabBar(
@@ -54,7 +54,7 @@ import kotlinx.collections.immutable.toImmutableList
   tabItems: ImmutableList<TabItem>,
   selectedTabIndex: Int,
   tags: TUITabBarTags = TUITabBarTags(),
-  onTabChanged: (Int) -> Unit,
+  onTabChanged: (Int) -> Unit
 ) {
   Row(
     horizontalArrangement = Arrangement.SpaceAround,
@@ -68,29 +68,21 @@ import kotlinx.collections.immutable.toImmutableList
       TUITab(
         title = item.name,
         isSelected = selectedTabIndex == index,
-        leadingIcon = item.leadingTabIcon,
-        ) {
+        leadingIcon = item.leadingTabIcon
+      ) {
         onTabChanged.invoke(index)
       }
     }
-
   }
 }
 
-data class TabItem(
-  val name: String,
-  val leadingTabIcon: TarkaIcon? = null,
-)
+data class TabItem(val name: String, val leadingTabIcon: TarkaIcon? = null)
 
-data class TUITabBarTags(
-  val parentId: String = "TUITabBar",
-)
+data class TUITabBarTags(val parentId: String = "TUITabBar")
 
 @Composable
 @Preview(showBackground = true)
-fun PreviewTUITabRow() {
-
-
+private fun PreviewTUITabRow() {
   val tabItems = listOf(
     TabItem("Tab"),
     TabItem("Tab"),
@@ -99,7 +91,7 @@ fun PreviewTUITabRow() {
     TabItem("Tab"),
     TabItem("Tab"),
     TabItem("Tab"),
-    TabItem("Tab"),
+    TabItem("Tab")
   )
   val tabItemsWithIcons = listOf(
     TabItem("Tab", leadingTabIcon = Regular.Circle12),
@@ -109,22 +101,21 @@ fun PreviewTUITabRow() {
     TabItem("Tab", leadingTabIcon = Regular.Circle12),
     TabItem("Tab", leadingTabIcon = Regular.Circle12),
     TabItem("Tab", leadingTabIcon = Regular.Circle12),
-    TabItem("Tab", leadingTabIcon = Regular.Circle12),
+    TabItem("Tab", leadingTabIcon = Regular.Circle12)
   )
 
   TUITheme {
     var currentTab by remember {
-      mutableStateOf(0)
+      mutableIntStateOf(0)
     }
     var selectedTab by remember {
-      mutableStateOf(0)
+      mutableIntStateOf(0)
     }
     Column(
       modifier = Modifier.fillMaxSize(),
       verticalArrangement = Arrangement.Top,
-      horizontalAlignment = Alignment.CenterHorizontally,
+      horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
       TUITabBar(
         modifier = Modifier.padding(10.dp),
         tabItems = tabItems.toImmutableList(),
@@ -146,7 +137,6 @@ fun PreviewTUITabRow() {
       )
 
       VerticalSpacer(space = 10)
-
     }
   }
 }

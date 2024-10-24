@@ -54,25 +54,26 @@ fun TUITab(
   isSelected: Boolean = false,
   leadingIcon: TarkaIcon? = null,
   tags: TUITabTags = TUITabTags(),
-  onTabClicked: () -> Unit,
+  onTabClicked: () -> Unit
 ) {
-  Tab(modifier = modifier
-    .testTag(title)
-    .padding(4.dp)
-    .clip(RoundedCornerShape(32.dp))
-    .background(if (isSelected) TUITheme.colors.secondary else Color.Transparent),
+  Tab(
+    modifier = modifier
+      .testTag(title)
+      .padding(4.dp)
+      .clip(RoundedCornerShape(32.dp))
+      .background(if (isSelected) TUITheme.colors.secondary else Color.Transparent),
     selected = isSelected,
     selectedContentColor = TUITheme.colors.secondary,
     unselectedContentColor = TUITheme.colors.onSurface,
     onClick = {
       onTabClicked.invoke()
-    }) {
+    }
+  ) {
     Row(
       modifier = Modifier.padding(start = if (leadingIcon != null) 6.dp else 0.dp),
       horizontalArrangement = Arrangement.Center,
       verticalAlignment = Alignment.CenterVertically
     ) {
-
       leadingIcon?.let {
         Icon(
           modifier = Modifier
@@ -80,7 +81,7 @@ fun TUITab(
             .size(20.dp),
           painter = painterResource(id = it.iconRes),
           contentDescription = it.contentDescription,
-          tint = if (isSelected) TUITheme.colors.onSecondary else TUITheme.colors.onSurface,
+          tint = if (isSelected) TUITheme.colors.onSecondary else TUITheme.colors.onSurface
         )
       }
 
@@ -93,22 +94,18 @@ fun TUITab(
         ),
         text = title,
         style = TUITheme.typography.button6,
-        color = if (isSelected) TUITheme.colors.onSecondary else TUITheme.colors.onSurface,
+        color = if (isSelected) TUITheme.colors.onSecondary else TUITheme.colors.onSurface
       )
     }
-
   }
 }
 
-data class TUITabTags(
-  val leadIconTag: String = "TUITab_leadIcon_Tag",
-)
+data class TUITabTags(val leadIconTag: String = "TUITab_leadIcon_Tag")
 
 @Preview(showBackground = true)
 @Composable
-fun TUITabPreview() {
+private fun TUITabPreview() {
   Column {
-
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
       TUITab(modifier = Modifier.width(105.dp), title = "Tab") {}
       HorizontalSpacer(space = 5)
@@ -131,6 +128,5 @@ fun TUITabPreview() {
         isSelected = true
       ) {}
     }
-
   }
 }
