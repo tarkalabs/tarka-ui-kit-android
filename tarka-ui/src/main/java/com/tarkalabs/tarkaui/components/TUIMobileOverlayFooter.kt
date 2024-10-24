@@ -16,7 +16,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tarkalabs.tarkaui.components.base.ButtonStyle
 import com.tarkalabs.tarkaui.components.base.ButtonStyle.Error
 import com.tarkalabs.tarkaui.components.base.ButtonStyle.Outline
 import com.tarkalabs.tarkaui.components.base.IconButtonStyle
@@ -41,7 +40,7 @@ fun TUIMobileOverlayFooter(
   showMiddleDismiss: Boolean = true,
   onMiddleDismissClick: (() -> Unit)? = null,
   leftContent: (@Composable RowScope.() -> Unit)? = null,
-  rightContent: (@Composable RowScope.() -> Unit)? = null,
+  rightContent: (@Composable RowScope.() -> Unit)? = null
 ) {
   Row(
     modifier
@@ -52,11 +51,13 @@ fun TUIMobileOverlayFooter(
   ) {
     leftContent?.invoke(this)
     Spacer(modifier = Modifier.weight(1f))
-    if (showMiddleDismiss) TUIIconButton(
-      icon = TarkaIcons.Regular.Dismiss24,
-      iconButtonStyle = IconButtonStyle.Ghost,
-      onIconClick = { onMiddleDismissClick?.invoke() }
-    )
+    if (showMiddleDismiss) {
+      TUIIconButton(
+        icon = TarkaIcons.Regular.Dismiss24,
+        iconButtonStyle = IconButtonStyle.Ghost,
+        onIconClick = { onMiddleDismissClick?.invoke() }
+      )
+    }
     Spacer(modifier = Modifier.weight(1f))
     rightContent?.invoke(this)
   }
@@ -65,7 +66,7 @@ fun TUIMobileOverlayFooter(
 @Preview(showBackground = true)
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-fun TUIMobileOverlayFooterPreview() {
+private fun TUIMobileOverlayFooterPreview() {
   TUITheme {
     Column(
       modifier = Modifier
@@ -89,7 +90,7 @@ fun TUIMobileOverlayFooterPreview() {
       )
       TUIMobileOverlayFooter(
         Modifier.fillMaxWidth(),
-        showMiddleDismiss = true,
+        showMiddleDismiss = true
       )
       TUIMobileOverlayFooter(
         Modifier.fillMaxWidth(),
@@ -147,7 +148,7 @@ fun TUIMobileOverlayFooterPreview() {
         }
       )
       TUIMobileOverlayFooter(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth()
       )
       TUIMobileOverlayFooter(
         Modifier.fillMaxWidth(),
@@ -163,7 +164,7 @@ fun TUIMobileOverlayFooterPreview() {
           TUIButton(
             label = "Delete",
             onClick = {},
-            buttonStyle = ButtonStyle.Error
+            buttonStyle = Error
           )
         }
       )
