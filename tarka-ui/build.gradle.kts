@@ -1,8 +1,12 @@
 @file:Suppress("UnstableApiUsage")
 
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
   id("com.android.library")
   id("org.jetbrains.kotlin.android")
+  id("org.jetbrains.kotlin.plugin.compose")
   id("shot")
   id("maven-publish")
   id ("org.jetbrains.dokka")
@@ -33,12 +37,6 @@ android {
   }
   kotlinOptions {
     jvmTarget = "17"
-  }
-  buildFeatures {
-    compose = true
-  }
-  composeOptions {
-    kotlinCompilerExtensionVersion = "1.5.11"
   }
   packagingOptions {
     resources {
@@ -72,12 +70,19 @@ publishing {
   }
 
   repositories {
+    val localProperties = Properties()
+    val localPropertiesFile = File("local.properties")
+    if (localPropertiesFile.exists()) {
+      localProperties.load(FileInputStream(localPropertiesFile))
+    }
     maven {
       name = "GitHubPackages"
       url = uri("https://maven.pkg.github.com/tarkalabs/tarka-ui-kit-android")
       credentials {
-        username = System.getenv("GITHUB_USER")
-        password = System.getenv("GITHUB_TOKEN")
+        username =
+          System.getenv("GITHUB_USER") ?: localProperties.getProperty("GITHUB_USER")
+        password =
+          System.getenv("GITHUB_TOKEN") ?: localProperties.getProperty("GITHUB_TOKEN")
       }
     }
     mavenCentral()
@@ -85,25 +90,25 @@ publishing {
 }
 
 dependencies {
-  val composeUiVersion = "1.4.1"
-  implementation("androidx.core:core-ktx:1.10.0")
-  implementation("androidx.compose.ui:ui:$composeUiVersion")
-  implementation("androidx.compose.ui:ui-tooling-preview:$composeUiVersion")
-  implementation("androidx.compose.material3:material3:1.2.0")
-  implementation("androidx.compose.foundation:foundation:$composeUiVersion")
+  implementation("androidx.core:core-ktx:1.13.1")
+  implementation(platform("androidx.compose:compose-bom:2024.10.00"))
+  implementation("androidx.compose.ui:ui")
+  implementation("androidx.compose.ui:ui-tooling-preview")
+  implementation("androidx.compose.material3:material3:1.2.1")
+  implementation("androidx.compose.foundation:foundation")
   api("com.tarkalabs:tarkaui-icons:1.0.5")
   implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.7")
   testImplementation("junit:junit:4.13.2")
-  androidTestImplementation("androidx.test.ext:junit:1.1.5")
+  androidTestImplementation("androidx.test.ext:junit:1.2.1")
   androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
   androidTestImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
   api("com.microsoft.design:fluent-system-icons:1.1.239@aar")
 
-  androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.4.3")
+  androidTestImplementation("androidx.compose.ui:ui-test-junit4")
   androidTestImplementation("org.mockito:mockito-android:4.5.1")
-  debugImplementation("androidx.compose.ui:ui-test-manifest:1.4.3")
-  debugImplementation ("androidx.compose.ui:ui-tooling:1.4.3")
-  androidTestImplementation ("androidx.test:core:1.5.0")
+  debugImplementation("androidx.compose.ui:ui-test-manifest")
+  debugImplementation ("androidx.compose.ui:ui-tooling")
+  androidTestImplementation ("androidx.test:core:1.6.1")
 
 }
 

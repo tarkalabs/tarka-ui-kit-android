@@ -21,3 +21,6 @@ local.properties
 .idea/deploymentTargetDropDown.xml
 .idea/gradle.xml
 .idea/misc.xml
+
+# Kotlin 2.0
+.kotlin/

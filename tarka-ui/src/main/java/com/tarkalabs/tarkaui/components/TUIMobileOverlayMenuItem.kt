@@ -17,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -152,7 +153,7 @@ sealed class MobileOverlayMenuItemStyle {
       .background(color = bgColor)
       .clickable(
         interactionSource = interactionSource,
-        indication = rememberRipple(color = rippleColor),
+        indication = ripple(color = rippleColor),
         onClick = onMobileOverlayMenuItemClick
       )
       .testTag(tags.parentTag),
